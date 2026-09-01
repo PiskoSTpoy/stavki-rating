@@ -66,19 +66,37 @@ strong{color:var(--ink)}
 
 .wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--pad)}
 .prose{max-width:76ch;padding-block:clamp(28px,5vw,56px)}
+.prose:has(.hero-split){max-width:var(--wrap)}
+.prose-narrow{max-width:76ch}
 .prose>h1:first-child{margin-bottom:.55em}
-h1 b,h1 strong{color:var(--accent);font-weight:800}
+h1 b,h1 strong,h1 .hl{color:var(--accent);font-weight:800}
 
 .hero-art{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:20px;
   margin:1.4em 0 1.8em;border:1px solid var(--line);
-  box-shadow:0 30px 70px -20px rgba(0,0,0,.6);animation:float-art 7s ease-in-out infinite}
-@keyframes float-art{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@media (prefers-reduced-motion:reduce){.hero-art{animation:none}}
+  box-shadow:0 30px 70px -20px rgba(0,0,0,.6);transform-style:preserve-3d;will-change:transform}
 
-/* контейнер 3D-сцены — тот же формфактор, что и у статичной картинки,
-   которую он подменяет; animation:none — камера тут "плывёт" сама, через JS */
-div.hero-art.hero-3d{overflow:hidden;position:relative;animation:none;background:var(--sunk)}
-div.hero-art.hero-3d canvas{display:block;width:100%!important;height:100%!important}
+/* ── hero-сплит на главной: текст слева, крупный AI-рендер справа с
+   выбегающим световым пятном за ним — сам рендер несёт всю визуальную силу */
+.hero-split{display:grid;gap:2.2em;align-items:center;
+  padding-block:clamp(8px,2vw,16px) clamp(32px,6vw,64px)}
+@media (min-width:900px){.hero-split{grid-template-columns:.95fr 1.15fr;gap:3em}}
+.hero-split__copy{max-width:50ch}
+.hero-split__copy h1{margin-bottom:.5em}
+.hero-split__copy p{font-size:1.06rem;color:var(--body)}
+.hero-split__art{position:relative;isolation:isolate}
+.hero-split__art::before{content:"";position:absolute;inset:-18%;z-index:-1;
+  background:radial-gradient(circle at 62% 38%,rgba(217,164,65,.6) 0%,rgba(217,164,65,.24) 40%,transparent 70%);
+  filter:blur(4px);animation:drift 10s ease-in-out infinite}
+.hero-split .hero-art{aspect-ratio:4/5;margin:0;border-radius:26px}
+@media (min-width:900px){.hero-split .hero-art{aspect-ratio:1/1}}
+
+/* ── круглая CTA-кнопка со стрелкой, как акцент вместо сплошной pill-заливки ── */
+.btn-round{display:inline-flex;align-items:center;gap:.9em;text-decoration:none!important;
+  margin-top:.4em;font-family:var(--sans);font-weight:700;color:var(--ink)!important}
+.btn-round__circle{display:flex;align-items:center;justify-content:center;width:52px;height:52px;
+  border-radius:999px;border:1px solid var(--line);color:var(--accent);font-size:1.2rem;
+  transition:.25s;flex:none}
+.btn-round:hover .btn-round__circle{background:var(--accent);color:var(--accent-ink);transform:translateX(4px)}
 
 .eyebrow{display:block;font-family:var(--mono);font-size:.74rem;letter-spacing:.22em;
   text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:.9em}
