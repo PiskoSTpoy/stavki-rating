@@ -76,7 +76,7 @@ h1 b,h1 strong,h1 .hl{color:var(--accent);font-weight:800}
 .hero-art{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:20px;
   margin:1.4em 0 1.8em;border:1px solid var(--line);
   box-shadow:0 30px 70px -20px rgba(0,0,0,.65);transform-style:preserve-3d;will-change:transform;
-  filter:hue-rotate(-52deg) saturate(1.2) contrast(1.05) brightness(.98)}
+  filter:hue-rotate(-34deg) saturate(1.06) contrast(1.03) brightness(.98)}
 
 /* ── hero-сплит на главной: текст слева, крупный AI-рендер справа с
    выбегающим световым пятном за ним — сам рендер несёт всю визуальную силу */
