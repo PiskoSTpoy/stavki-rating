@@ -1,0 +1,190 @@
+/* ── Ставки Рейтинг: редакционная тёмная тема ─────────────────────────
+   Паспорт бренда: см. ПАСПОРТ_БРЕНДА.md
+   Полночь/Графит — холст, Пергамент — текст, Сигнал (золото) — знак
+   верификации (не CTA-заливка), Верификация (зелёный) — только бейдж ЦУПИС. */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --ink:#EDEEF0; --body:#C7CBD1; --muted:#8B95A1;
+  --paper:#12161C; --sunk:#1B212A; --line:rgba(237,238,240,.12);
+  --accent:#D9A441; --accent-ink:#12161C;
+  --verify:#4C9A6A;
+  --wrap:1120px; --pad:clamp(18px,4vw,40px);
+  --radius:6px;
+  --sans:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",Consolas,monospace;
+}
+/* Сайт спроектирован тёмным по умолчанию — редакционный холст, а не
+   рекламный щит. Светлого варианта намеренно нет (см. паспорт бренда). */
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+body{
+  margin:0; background:#07080a; color:var(--body);
+  font:400 17px/1.65 var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── холст и рамка-плакат: страница как афиша с полями, не край-в-край ── */
+.canvas{padding:clamp(10px,2.2vw,22px)}
+.frame{
+  max-width:1360px;margin-inline:auto;position:relative;overflow:hidden;
+  background:var(--paper);border:1px solid var(--line);
+  border-radius:clamp(18px,3vw,32px);
+  box-shadow:0 40px 100px -30px rgba(0,0,0,.7);
+}
+/* световое пятно за героем — один яркий акцент, как в рефах, не палитра */
+.glow{position:absolute;top:-120px;right:-160px;width:640px;height:640px;
+  background:radial-gradient(circle,rgba(217,164,65,.32) 0%,rgba(217,164,65,.12) 42%,transparent 70%);
+  filter:blur(10px);pointer-events:none;z-index:0;animation:drift 9s ease-in-out infinite}
+@keyframes drift{
+  0%,100%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(-18px,22px) scale(1.05)}
+}
+@media (prefers-reduced-motion:reduce){.glow{animation:none}}
+main{position:relative}
+main .wrap{position:relative;z-index:1}
+img,video{max-width:100%;height:auto;display:block}
+figure{margin:0}
+a{color:var(--accent);text-decoration-color:rgba(217,164,65,.4)}
+a:hover{text-decoration-color:var(--accent)}
+h1,h2,h3,h4{margin:0;color:var(--ink);line-height:1.15;text-wrap:balance;letter-spacing:-.02em;
+  overflow-wrap:break-word;hyphens:auto;font-family:var(--sans)}
+h1{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800;letter-spacing:-.03em}
+h2{font-size:clamp(1.4rem,2.7vw,2rem);font-weight:700;margin-top:2em;padding-top:1.1em;border-top:1px solid var(--line)}
+h3{font-size:1.2rem;font-weight:700;margin-top:1.6em}
+p,ul,ol,blockquote{margin:0 0 1.1em}
+ul,ol{padding-left:1.35em}
+li{margin-bottom:.45em}
+blockquote{border-left:2px solid var(--accent);padding:.1em 0 .1em 1.1em;color:var(--muted);font-style:italic}
+code{background:var(--sunk);padding:.12em .4em;border-radius:3px;font-size:.88em;font-family:var(--mono)}
+strong{color:var(--ink)}
+
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--pad)}
+.prose{max-width:76ch;padding-block:clamp(28px,5vw,56px)}
+.prose>h1:first-child{margin-bottom:.55em}
+h1 b,h1 strong{color:var(--accent);font-weight:800}
+
+.hero-art{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:20px;
+  margin:1.4em 0 1.8em;border:1px solid var(--line);
+  box-shadow:0 30px 70px -20px rgba(0,0,0,.6);animation:float-art 7s ease-in-out infinite}
+@keyframes float-art{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@media (prefers-reduced-motion:reduce){.hero-art{animation:none}}
+
+/* контейнер 3D-сцены — тот же формфактор, что и у статичной картинки,
+   которую он подменяет; animation:none — камера тут "плывёт" сама, через JS */
+div.hero-art.hero-3d{overflow:hidden;position:relative;animation:none;background:var(--sunk)}
+div.hero-art.hero-3d canvas{display:block;width:100%!important;height:100%!important}
+
+.eyebrow{display:block;font-family:var(--mono);font-size:.74rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:.9em}
+/* eyebrow-лейбл: первый h1 на странице получает моно-приставку через ::before
+   плейсхолдер, но проще и надёжнее — явный элемент в разметке контента.
+   Здесь задаём стиль на случай текстового маркера "· РЕЙТИНГ БК ·" в тексте. */
+.prose>p:first-of-type{color:var(--body)}
+
+.skip{position:fixed;left:0;top:-64px;z-index:200;background:var(--accent);color:var(--accent-ink);
+  padding:12px 18px;text-decoration:none;transition:top .2s;font-weight:650}
+.skip:focus{top:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ── плашка 18+ ── */
+.agewarn{background:var(--sunk);color:var(--muted);font-family:var(--mono);font-size:.72rem;
+  letter-spacing:.03em;text-align:center;padding:9px var(--pad);line-height:1.5;
+  border-bottom:1px solid var(--line)}
+
+/* ── шапка ── */
+.hdr{position:sticky;top:0;z-index:100;background:rgba(18,22,28,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line)}
+.hdr__in{display:flex;align-items:center;gap:20px;min-height:66px}
+.hdr__brand{display:flex;align-items:center;gap:.5em;min-height:44px;font-weight:800;color:var(--ink);
+  text-decoration:none;font-size:1.05rem;letter-spacing:-.02em}
+.hdr__brand::before{content:"◆";color:var(--accent);font-size:.8em}
+.hdr__nav{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap;background:var(--sunk);
+  border:1px solid var(--line);border-radius:999px;padding:5px}
+.hdr__nav a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:500;
+  padding:9px 16px;border-radius:999px;font-family:var(--mono);letter-spacing:.01em;transition:.2s}
+.hdr__nav a:hover{color:var(--ink)}
+.hdr__nav a.active{color:var(--accent-ink);background:var(--accent)}
+.burger{display:none;width:44px;height:44px;background:none;border:0;cursor:pointer;padding:0}
+.burger span{display:block;width:22px;height:2px;margin:5px auto;background:var(--ink);transition:.25s}
+.hdr.open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hdr.open .burger span:nth-child(2){opacity:0}
+.hdr.open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ── таблицы: досье-стиль, моно-цифры ── */
+.tw{overflow-x:auto;margin:0 0 1.5em;border:1px solid var(--line);border-radius:var(--radius);background:var(--sunk)}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line)}
+thead th{background:rgba(217,164,65,.06);font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--accent);font-weight:600}
+td{font-family:var(--mono);font-size:.88rem;color:var(--body)}
+td:first-child,td strong{color:var(--ink);font-family:var(--sans);font-weight:700;font-size:1rem}
+tbody tr:last-child td{border-bottom:0}
+tbody tr{transition:background .2s,transform .2s}
+tbody tr:hover{background:rgba(217,164,65,.05)}
+
+/* ── pill-кнопка перехода на БК ── */
+.btn-pill{display:inline-flex;align-items:center;gap:.5em;font-family:var(--sans);font-weight:700;
+  font-size:1rem;color:var(--accent-ink)!important;background:var(--accent);text-decoration:none!important;
+  padding:.85em 1.6em;border-radius:999px;margin:.4em 0 1.2em;box-shadow:0 12px 30px -10px rgba(217,164,65,.5);
+  transition:.2s}
+.btn-pill:hover{filter:brightness(1.06);transform:translateY(-1px)}
+
+/* ── бейдж верификации (единственный зелёный элемент сайта) ── */
+.verify{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.72rem;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--verify);background:rgba(76,154,106,.12);
+  border:1px solid rgba(76,154,106,.35);border-radius:999px;padding:.35em .8em .35em .6em}
+.verify::before{content:"✓";font-weight:700}
+
+/* ── форма ── */
+.form{display:grid;gap:12px;max-width:460px;margin:1.6em 0}
+.form input,.form textarea,.form select{
+  width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--sunk);color:var(--ink);font:inherit;font-size:16px;
+}
+.form button{
+  padding:14px 22px;border:0;border-radius:var(--radius);cursor:pointer;
+  background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:700;font-size:1rem;
+}
+.form button:hover{filter:brightness(1.08)}
+.form .ok,.form .err{font-size:.95rem}
+.form .ok{color:var(--verify)}
+.form .err{color:#d97070}
+
+/* ── подвал ── */
+.foot{background:var(--sunk);border-top:1px solid var(--line);margin-top:clamp(40px,7vw,80px)}
+.foot__in{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;padding-block:36px}
+.foot__name{font-weight:800;color:var(--ink);margin-bottom:6px}
+.foot__addr{color:var(--muted);margin:0;max-width:44ch;font-size:.92rem}
+.foot__contacts{display:grid;gap:8px}
+.foot__contacts a{color:var(--ink);text-decoration:none;font-weight:650;padding:6px 0;font-family:var(--mono);font-size:.9rem}
+.foot__bottom{padding-bottom:28px;color:var(--muted);font-size:.8rem;font-family:var(--mono)}
+
+.callbar{display:none}
+
+@media (max-width:860px){
+  .hdr__nav{
+    display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;
+    background:var(--paper);border:0;border-radius:0;border-bottom:1px solid var(--line);padding:8px var(--pad) 18px;
+  }
+  .hdr.open .hdr__nav{display:flex}
+  .hdr__nav a{padding:13px 4px;font-size:1rem;border-radius:0;border-bottom:1px solid var(--line)}
+  .hdr__nav a.active{background:none;color:var(--accent)}
+  .hdr__nav a:last-child{border-bottom:0}
+  .burger{display:block;margin-left:auto}
+  .foot__bottom{padding-bottom:28px}
+}
+
+@media (max-width:560px){
+  body{font-size:16px}
+  .foot__in{flex-direction:column;gap:20px}
+}
+
+@media (max-width:860px){
+  small,.small,figcaption,.foot__bottom,thead th{font-size:max(.78rem,12px)}
+}
