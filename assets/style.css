@@ -101,6 +101,28 @@ h1 b,h1 strong,h1 .hl{color:var(--accent);font-weight:800}
 .hero-split .hero-art{position:relative;z-index:1;aspect-ratio:4/5;margin:0;border-radius:26px}
 @media (min-width:900px){.hero-split .hero-art{aspect-ratio:1/1}}
 
+/* ── карточки-критерии выбора БК: цветной функциональный блок (по образцу
+   агрегаторов вроде vbr.ru), но только на реальных фактах из наших обзоров —
+   никаких выдуманных коэффициентов/live-данных ── */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:1.6em 0 2.2em}
+.cat-card{display:flex;flex-direction:column;gap:.6em;padding:1.3em 1.3em 1.5em;border-radius:18px;
+  text-decoration:none!important;border:1px solid var(--line);position:relative;overflow:hidden;
+  transition:transform .2s,border-color .2s}
+.cat-card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--tile) 55%,var(--line))}
+.cat-card__icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  font-size:1.25rem;background:color-mix(in srgb,var(--tile) 30%,transparent);flex:none}
+.cat-card__title{font-family:var(--display);font-weight:700;font-size:1.06rem;color:var(--ink);letter-spacing:-.01em}
+.cat-card__desc{font-size:.88rem;color:var(--body);line-height:1.5;margin:0}
+.cat-card__bk{margin-top:auto;padding-top:.7em;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;
+  text-transform:uppercase;color:color-mix(in srgb,var(--tile) 75%,white 15%)}
+.cat-card::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(circle at 85% -10%,color-mix(in srgb,var(--tile) 22%,transparent) 0%,transparent 60%),var(--sunk)}
+.cat-card--cyber{--tile:#8B5CF6}
+.cat-card--wide{--tile:#3FB6C9}
+.cat-card--fast{--tile:#E2A13A}
+.cat-card--app{--tile:#3FBE8C}
+.cat-card--cash{--tile:#E24D8A}
+
 /* ── круглая CTA-кнопка со стрелкой, как акцент вместо сплошной pill-заливки ── */
 .btn-round{display:inline-flex;align-items:center;gap:.9em;text-decoration:none!important;
   margin-top:.4em;font-family:var(--sans);font-weight:700;color:var(--ink)!important}
