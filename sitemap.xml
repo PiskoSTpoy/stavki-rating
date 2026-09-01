@@ -25,6 +25,14 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://stavki-rating.ru/novosti</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-samozapret-1-sentyabrya</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://stavki-rating.ru/pari-obzor</loc>
     <priority>0.7</priority>
   </url>
