@@ -1,18 +1,20 @@
 /* ── Ставки Рейтинг: редакционная тёмная тема ─────────────────────────
-   Паспорт бренда: см. ПАСПОРТ_БРЕНДА.md
-   Полночь/Графит — холст, Пергамент — текст, Сигнал (золото) — знак
-   верификации (не CTA-заливка), Верификация (зелёный) — только бейдж ЦУПИС. */
+   Полночь — холст, Пергамент — текст, Сигнал (глубокий красный) — единственный
+   яркий акцент (не палитра), Верификация (зелёный) — только бейдж ЦУПИС.
+   Типографика: Bricolage Grotesque — крупные заголовки (характер, не «нейросетевой»
+   Manrope/Inter по умолчанию), Hanken Grotesk — текст, JetBrains Mono — лейблы/цифры. */
 
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..900&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root{
-  --ink:#EDEEF0; --body:#C7CBD1; --muted:#8B95A1;
-  --paper:#12161C; --sunk:#1B212A; --line:rgba(237,238,240,.12);
-  --accent:#D9A441; --accent-ink:#12161C;
+  --ink:#F4EFEE; --body:#C8C0BF; --muted:#8F8583;
+  --paper:#121011; --sunk:#1D1818; --line:rgba(244,239,238,.12);
+  --accent:#E2392C; --accent-ink:#170E0D;
   --verify:#4C9A6A;
   --wrap:1120px; --pad:clamp(18px,4vw,40px);
   --radius:6px;
-  --sans:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --sans:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --display:"Bricolage Grotesque","Hanken Grotesk",system-ui,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,"SF Mono",Consolas,monospace;
 }
 /* Сайт спроектирован тёмным по умолчанию — редакционный холст, а не
@@ -24,7 +26,7 @@ html{scroll-behavior:smooth}
   *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
 body{
-  margin:0; background:#07080a; color:var(--body);
+  margin:0; background:#050405; color:var(--body);
   font:400 17px/1.65 var(--sans);
   -webkit-font-smoothing:antialiased;
 }
@@ -35,11 +37,11 @@ body{
   max-width:1360px;margin-inline:auto;position:relative;overflow:hidden;
   background:var(--paper);border:1px solid var(--line);
   border-radius:clamp(18px,3vw,32px);
-  box-shadow:0 40px 100px -30px rgba(0,0,0,.7);
+  box-shadow:0 40px 100px -30px rgba(0,0,0,.75);
 }
 /* световое пятно за героем — один яркий акцент, как в рефах, не палитра */
 .glow{position:absolute;top:-120px;right:-160px;width:640px;height:640px;
-  background:radial-gradient(circle,rgba(217,164,65,.32) 0%,rgba(217,164,65,.12) 42%,transparent 70%);
+  background:radial-gradient(circle,color-mix(in srgb,var(--accent) 34%,transparent) 0%,color-mix(in srgb,var(--accent) 13%,transparent) 42%,transparent 70%);
   filter:blur(10px);pointer-events:none;z-index:0;animation:drift 9s ease-in-out infinite}
 @keyframes drift{
   0%,100%{transform:translate(0,0) scale(1)}
@@ -50,11 +52,11 @@ main{position:relative}
 main .wrap{position:relative;z-index:1}
 img,video{max-width:100%;height:auto;display:block}
 figure{margin:0}
-a{color:var(--accent);text-decoration-color:rgba(217,164,65,.4)}
+a{color:var(--accent);text-decoration-color:color-mix(in srgb,var(--accent) 40%,transparent)}
 a:hover{text-decoration-color:var(--accent)}
-h1,h2,h3,h4{margin:0;color:var(--ink);line-height:1.15;text-wrap:balance;letter-spacing:-.02em;
-  overflow-wrap:break-word;hyphens:auto;font-family:var(--sans)}
-h1{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800;letter-spacing:-.03em}
+h1,h2,h3,h4{margin:0;color:var(--ink);line-height:1.12;text-wrap:balance;letter-spacing:-.01em;
+  overflow-wrap:break-word;hyphens:auto;font-family:var(--display)}
+h1{font-size:clamp(2.6rem,6.4vw,4.8rem);font-weight:800;letter-spacing:-.02em}
 h2{font-size:clamp(1.4rem,2.7vw,2rem);font-weight:700;margin-top:2em;padding-top:1.1em;border-top:1px solid var(--line)}
 h3{font-size:1.2rem;font-weight:700;margin-top:1.6em}
 p,ul,ol,blockquote{margin:0 0 1.1em}
@@ -73,7 +75,8 @@ h1 b,h1 strong,h1 .hl{color:var(--accent);font-weight:800}
 
 .hero-art{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:20px;
   margin:1.4em 0 1.8em;border:1px solid var(--line);
-  box-shadow:0 30px 70px -20px rgba(0,0,0,.6);transform-style:preserve-3d;will-change:transform}
+  box-shadow:0 30px 70px -20px rgba(0,0,0,.65);transform-style:preserve-3d;will-change:transform;
+  filter:hue-rotate(-52deg) saturate(1.2) contrast(1.05) brightness(.98)}
 
 /* ── hero-сплит на главной: текст слева, крупный AI-рендер справа с
    выбегающим световым пятном за ним — сам рендер несёт всю визуальную силу */
@@ -88,13 +91,13 @@ h1 b,h1 strong,h1 .hl{color:var(--accent);font-weight:800}
    выступающий за верхний край изображения (как в реф-дизайне) */
 .hero-split__art::before{content:"";position:absolute;z-index:-1;
   top:-8%;right:-12%;width:76%;aspect-ratio:1/1;border-radius:50%;
-  background:radial-gradient(circle at 38% 32%,rgba(217,164,65,.95) 0%,rgba(217,164,65,.62) 48%,rgba(217,164,65,.16) 74%,transparent 100%);
+  background:radial-gradient(circle at 38% 32%,color-mix(in srgb,var(--accent) 95%,transparent) 0%,color-mix(in srgb,var(--accent) 62%,transparent) 48%,color-mix(in srgb,var(--accent) 16%,transparent) 74%,transparent 100%);
   animation:drift 10s ease-in-out infinite}
 /* маленький акцентный круг, выбегающий за нижний край рендера */
 .hero-split__art::after{content:"";position:absolute;z-index:2;
   left:-5%;bottom:-5%;width:15%;aspect-ratio:1/1;border-radius:50%;
-  background:radial-gradient(circle at 35% 30%,rgba(217,164,65,1) 0%,rgba(217,164,65,.72) 60%,rgba(217,164,65,.3) 100%);
-  box-shadow:0 16px 36px -10px rgba(217,164,65,.55)}
+  background:radial-gradient(circle at 35% 30%,var(--accent) 0%,color-mix(in srgb,var(--accent) 72%,transparent) 60%,color-mix(in srgb,var(--accent) 30%,transparent) 100%);
+  box-shadow:0 16px 36px -10px color-mix(in srgb,var(--accent) 55%,transparent)}
 .hero-split .hero-art{position:relative;z-index:1;aspect-ratio:4/5;margin:0;border-radius:26px}
 @media (min-width:900px){.hero-split .hero-art{aspect-ratio:1/1}}
 
@@ -130,11 +133,11 @@ h1 b,h1 strong,h1 .hl{color:var(--accent);font-weight:800}
   border-bottom:1px solid var(--line)}
 
 /* ── шапка ── */
-.hdr{position:sticky;top:0;z-index:100;background:rgba(18,22,28,.92);backdrop-filter:blur(10px);
+.hdr{position:sticky;top:0;z-index:100;background:rgba(18,16,17,.92);backdrop-filter:blur(10px);
   border-bottom:1px solid var(--line)}
 .hdr__in{display:flex;align-items:center;gap:20px;min-height:66px}
 .hdr__brand{display:flex;align-items:center;gap:.5em;min-height:44px;font-weight:800;color:var(--ink);
-  text-decoration:none;font-size:1.05rem;letter-spacing:-.02em}
+  text-decoration:none;font-size:1.05rem;letter-spacing:-.02em;font-family:var(--display)}
 .hdr__brand::before{content:"◆";color:var(--accent);font-size:.8em}
 .hdr__nav{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap;background:var(--sunk);
   border:1px solid var(--line);border-radius:999px;padding:5px}
@@ -152,20 +155,20 @@ h1 b,h1 strong,h1 .hl{color:var(--accent);font-weight:800}
 .tw{overflow-x:auto;margin:0 0 1.5em;border:1px solid var(--line);border-radius:var(--radius);background:var(--sunk)}
 table{border-collapse:collapse;width:100%;font-size:.92rem}
 th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line)}
-thead th{background:rgba(217,164,65,.06);font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;
+thead th{background:color-mix(in srgb,var(--accent) 7%,transparent);font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;
   text-transform:uppercase;color:var(--accent);font-weight:600}
 td{font-family:var(--mono);font-size:.88rem;color:var(--body)}
 td:first-child,td strong{color:var(--ink);font-family:var(--sans);font-weight:700;font-size:1rem}
 tbody tr:last-child td{border-bottom:0}
 tbody tr{transition:background .2s,transform .2s}
-tbody tr:hover{background:rgba(217,164,65,.05)}
+tbody tr:hover{background:color-mix(in srgb,var(--accent) 6%,transparent)}
 
 /* ── pill-кнопка перехода на БК ── */
 .btn-pill{display:inline-flex;align-items:center;gap:.5em;font-family:var(--sans);font-weight:700;
   font-size:1rem;color:var(--accent-ink)!important;background:var(--accent);text-decoration:none!important;
-  padding:.85em 1.6em;border-radius:999px;margin:.4em 0 1.2em;box-shadow:0 12px 30px -10px rgba(217,164,65,.5);
+  padding:.85em 1.6em;border-radius:999px;margin:.4em 0 1.2em;box-shadow:0 12px 30px -10px color-mix(in srgb,var(--accent) 55%,transparent);
   transition:.2s}
-.btn-pill:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.btn-pill:hover{filter:brightness(1.08)}
 
 /* ── бейдж верификации (единственный зелёный элемент сайта) ── */
 .verify{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.72rem;
@@ -183,7 +186,7 @@ tbody tr:hover{background:rgba(217,164,65,.05)}
   padding:14px 22px;border:0;border-radius:var(--radius);cursor:pointer;
   background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:700;font-size:1rem;
 }
-.form button:hover{filter:brightness(1.08)}
+.form button:hover{filter:brightness(1.1)}
 .form .ok,.form .err{font-size:.95rem}
 .form .ok{color:var(--verify)}
 .form .err{color:#d97070}
@@ -191,7 +194,7 @@ tbody tr:hover{background:rgba(217,164,65,.05)}
 /* ── подвал ── */
 .foot{background:var(--sunk);border-top:1px solid var(--line);margin-top:clamp(40px,7vw,80px)}
 .foot__in{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;padding-block:36px}
-.foot__name{font-weight:800;color:var(--ink);margin-bottom:6px}
+.foot__name{font-weight:800;color:var(--ink);margin-bottom:6px;font-family:var(--display)}
 .foot__addr{color:var(--muted);margin:0;max-width:44ch;font-size:.92rem}
 .foot__contacts{display:grid;gap:8px}
 .foot__contacts a{color:var(--ink);text-decoration:none;font-weight:650;padding:6px 0;font-family:var(--mono);font-size:.9rem}
