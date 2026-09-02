@@ -192,6 +192,23 @@ tbody tr:hover{background:color-mix(in srgb,var(--accent) 6%,transparent)}
   transition:.2s}
 .btn-pill:hover{filter:brightness(1.08)}
 
+/* ── режим каталога: нейтральная ссылка без акцентной заливки и без призыва ── */
+.btn-neutral{display:inline-flex;align-items:center;gap:.5em;font-family:var(--sans);font-weight:600;
+  font-size:.98rem;color:var(--ink)!important;background:var(--sunk);text-decoration:none!important;
+  padding:.75em 1.3em;border-radius:999px;border:1px solid var(--line);margin:.3em 0 1em;transition:.2s}
+.btn-neutral:hover{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.notice{border:1px solid var(--line);border-left:3px solid var(--accent);background:var(--sunk);
+  border-radius:var(--radius);padding:.9em 1.1em;margin:1.4em 0;color:var(--body);font-size:.95rem}
+.notice p{margin:0}
+.notice [data-age-badge]{display:inline-block;border:1.5px solid var(--accent);color:var(--accent);
+  border-radius:6px;padding:0 .4em;font-family:var(--mono);font-size:.8rem;margin-right:.5em;vertical-align:middle}
+.go-note{font-size:1.05rem}
+/* каталог: равные строки, без выделения */
+.catalog td:first-child{font-family:var(--sans);font-weight:700;color:var(--ink);font-size:1rem}
+.catalog .ok{color:var(--verify);font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+.catalog a[rel~="sponsored"]{white-space:nowrap}
+.agewarn a{color:inherit;text-decoration:underline;text-decoration-color:rgba(255,255,255,.35)}
+
 /* ── бейдж верификации (единственный зелёный элемент сайта) ── */
 .verify{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.72rem;
   letter-spacing:.04em;text-transform:uppercase;color:var(--verify);background:rgba(76,154,106,.12);

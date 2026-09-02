@@ -37,6 +37,10 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://stavki-rating.ru/otvetstvennaya-igra</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://stavki-rating.ru/pari-obzor</loc>
     <priority>0.7</priority>
   </url>
