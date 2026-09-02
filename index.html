@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Рейтинг легальных букмекеров России — stavki-rating.ru</title>
 <meta name="description" content="Рейтинг легальных букмекеров России из реестра ЕЦУПС: лицензия ФНС, бонусы, маржа, скорость вывода и приложения. Дизайн-система «Volt Arena». 18+.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%23C8FF4D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpolygon points='36,8 17,36 29,36 26,56 47,27 35,27' fill='%2307090F'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap">
@@ -90,6 +91,7 @@
   .hero-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .7s ease; z-index: 2; }
   .hero-vid.on { opacity: 1; }
   .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% center; transform: scale(1.06); will-change: transform; }
+  .hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; cursor: pointer; }
   .glow { position: absolute; left: 50%; top: 48%; width: 60%; aspect-ratio: 1; transform: translate(-50%,-50%); border-radius: 50%; background: radial-gradient(circle, rgba(124,92,255,.35), rgba(200,255,77,.10) 45%, transparent 68%); filter: blur(6px); }
   /* Объекты сцены: обёртка = параллакс, вложенный элемент = «плавание» */
   .obj { position: absolute; will-change: transform; }
@@ -257,9 +259,10 @@
       <span class="age">18+</span>
     </div>
   </div>
-  <div class="scene" id="scene" role="img" aria-label="Спортивный баннер: американский футболист, парящие казино-фишки, золотые монеты и мячи в неоновом свете">
-    <img class="hero-img" id="heroImg" src="media/hero.jpg" alt="" loading="eager" decoding="async">
+  <div class="scene" id="scene" role="img" aria-label="Анимация: монеты букмекеров взлетают и кружатся">
+    <canvas id="coins" class="hero-canvas"></canvas>
     <video id="heroVid" class="hero-vid" autoplay muted loop playsinline preload="none"></video>
+    <span class="scene-label">Монеты БК · клик — повтор</span>
   </div>
 </div></section>
 
@@ -422,16 +425,54 @@ document.getElementById('tiles').innerHTML = RATINGS.map(r=>`<a class="tile" hre
 document.getElementById('toolTiles').innerHTML = TOOL_TILES.map(t=>`<a class="tile" href="#tools"><b>${esc(t[0])}</b><small>${esc(t[1])}</small></a>`).join('');
 requestAnimationFrame(()=>document.querySelectorAll('.ring-fg').forEach(c=>{ c.style.strokeDashoffset=c.dataset.off; }));
 
-/* ---------- Герой: параллакс изображения + опциональное видео ---------- */
+/* ---------- Герой: монеты БК взлетают и кружатся («удар по столу») ---------- */
 (function(){
   const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   const scene = document.getElementById('scene'); if(!scene) return;
-  const img = document.getElementById('heroImg');
-  let mx=0, my=0, tx=0, ty=0;
-  function loop(){ tx+=(mx-tx)*.06; ty+=(my-ty)*.06; if(img) img.style.transform=`scale(1.06) translate(${tx*10}px, ${ty*8}px)`; requestAnimationFrame(loop); }
-  function move(e){ const r=scene.getBoundingClientRect(); mx=((e.clientX-r.left)/r.width-.5)*-2; my=((e.clientY-r.top)/r.height-.5)*-2; }
-  if(!reduce){ loop(); scene.addEventListener('pointermove', move); }
-  // Фоновое видео героя: показываем поверх картинки, только если media/hero-video.mp4 реально загрузился
+  const cv = document.getElementById('coins'); if(!cv) return;
+  const ctx = cv.getContext('2d');
+  // Фирменные цвета БК + монограмма (не реальный логотип — товарный знак чужой)
+  const DATA = [['#D8312B','ФБ'],['#FF6A13','WL'],['#F59E0B','ЛС'],['#8B5CF6','PA'],['#06B6D4','BB'],['#EAB308','LN'],['#E11D48','OL']];
+  let W=0,H=0,dpr=Math.min(devicePixelRatio||1,2), coins=[], t0=0, mx=0,my=0,tx=0,ty=0, ring=null;
+  function shade(hex){ const n=parseInt(hex.slice(1),16); return `rgb(${((n>>16&255)*.45)|0},${((n>>8&255)*.45)|0},${((n&255)*.45)|0})`; }
+  function lay(){ const r=scene.getBoundingClientRect(); W=r.width; H=r.height; cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
+  function reset(){
+    const cx=W*0.5, cy=H*0.47, base=H+30, sz=Math.min(78, W*0.12), n=DATA.length;
+    coins = DATA.map((d,i)=>{
+      const la=(-Math.PI/2)+(i-(n-1)/2)*0.15, sp=13+Math.random()*4, ra=(i/n)*Math.PI*2 - Math.PI/2;
+      return { c:d[0], t:d[1], size:sz*(0.82+Math.random()*0.36),
+        x:cx+(Math.random()-0.5)*22, y:base, vx:Math.cos(la)*sp, vy:Math.sin(la)*sp,
+        rot:Math.random()*7, rv:0.15+Math.random()*0.14,
+        tX:cx+Math.cos(ra)*W*0.24, tY:cy+Math.sin(ra)*H*0.30, bob:Math.random()*7 };
+    });
+    ring={r:0,a:1}; t0=performance.now();
+  }
+  function coin(c){
+    const flip=Math.abs(Math.cos(c.rot)), w=c.size*Math.max(0.16,flip), h=c.size;
+    ctx.save(); ctx.translate(c.x+tx, c.y+ty);
+    ctx.shadowColor=c.c; ctx.shadowBlur=22;
+    ctx.beginPath(); ctx.ellipse(0,0,w/2,h/2,0,0,7);
+    const g=ctx.createRadialGradient(-w*0.15,-h*0.2,1,0,0,h*0.62);
+    g.addColorStop(0,'#ffffff'); g.addColorStop(.28,c.c); g.addColorStop(1,shade(c.c));
+    ctx.fillStyle=g; ctx.fill(); ctx.shadowBlur=0;
+    ctx.lineWidth=Math.max(2,w*0.09); ctx.strokeStyle='rgba(245,197,66,.95)'; ctx.stroke();
+    if(flip>0.6){ ctx.globalAlpha=(flip-0.6)/0.4; ctx.fillStyle='#fff'; ctx.font=`700 ${Math.round(h*0.3)}px "Unbounded", system-ui, sans-serif`; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText(c.t,0,1); ctx.globalAlpha=1; }
+    ctx.restore();
+  }
+  function frame(now){
+    const t=(now-t0)/1000; ctx.clearRect(0,0,W,H); tx+=(mx-tx)*.05; ty+=(my-ty)*.05;
+    if(ring){ ring.r+=W*0.022; ring.a*=0.93; if(ring.a<0.03) ring=null; else { ctx.save(); ctx.beginPath(); ctx.arc(W*0.5,H+8,ring.r,Math.PI,2*Math.PI); ctx.strokeStyle=`rgba(200,255,77,${ring.a*0.6})`; ctx.lineWidth=3; ctx.stroke(); ctx.restore(); } }
+    for(const c of coins){ c.rot+=c.rv;
+      if(t<1.5){ c.vy+=0.45; c.x+=c.vx; c.y+=c.vy; c.vx*=0.99; }
+      else { const by=Math.sin(now/900+c.bob)*8; c.x+=((c.tX)-c.x)*0.06; c.y+=((c.tY+by)-c.y)*0.06; }
+      coin(c);
+    }
+    requestAnimationFrame(frame);
+  }
+  function move(e){ const r=scene.getBoundingClientRect(); mx=((e.clientX-r.left)/r.width-.5)*18; my=((e.clientY-r.top)/r.height-.5)*18; }
+  lay(); addEventListener('resize', lay);
+  if(reduce){ reset(); coins.forEach(c=>{c.x=c.tX;c.y=c.tY;}); ctx.clearRect(0,0,W,H); coins.forEach(coin); }
+  else { reset(); requestAnimationFrame(frame); scene.addEventListener('pointermove', move); scene.addEventListener('click', reset); }
   const hv=document.getElementById('heroVid');
   if(hv){ hv.onloadeddata=()=>hv.classList.add('on'); hv.onerror=()=>hv.remove(); hv.src='media/hero-video.mp4'; }
 })();
