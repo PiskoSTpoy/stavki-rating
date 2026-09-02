@@ -5,7 +5,15 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://stavki-rating.ru/baltbet-obzor</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://stavki-rating.ru/betboom-obzor</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/betcity-obzor</loc>
     <priority>0.7</priority>
   </url>
   <url>
@@ -25,6 +33,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://stavki-rating.ru/ligastavok-obzor</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/marathonbet-obzor</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/melbet-obzor</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://stavki-rating.ru/novosti</loc>
     <priority>0.7</priority>
   </url>
@@ -34,6 +54,10 @@
   </url>
   <url>
     <loc>https://stavki-rating.ru/novosti-shtrafy-za-samozapret</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/olimpbet-obzor</loc>
     <priority>0.7</priority>
   </url>
   <url>
@@ -50,6 +74,10 @@
   </url>
   <url>
     <loc>https://stavki-rating.ru/winline-obzor</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/zenit-obzor</loc>
     <priority>0.7</priority>
   </url>
 </urlset>
