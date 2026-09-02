@@ -31,7 +31,7 @@
   img { max-width: 100%; display: block; }
   button { font: inherit; cursor: pointer; }
   h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.12; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
-  h1 { font-size: clamp(27px, 3.3vw, 42px); }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
   h2 { font-size: clamp(21px, 2.4vw, 28px); }
   h3 { font-size: 18px; font-weight: 500; }
   p { margin: 0; }
@@ -71,16 +71,16 @@
   @media (prefers-reduced-motion: reduce) { .btn, .ring-fg, .fade, .chipobj, .particles { transition: none !important; animation: none !important; } }
 
   /* Hero — компактный, чтобы Топ-3 был виден сразу */
-  .hero { position: relative; overflow: hidden; padding: 34px 0 26px; }
-  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; }
-  .hero h1 { margin-bottom: 12px; }
-  .hero .lead { font-size: 17px; color: var(--muted); max-width: 52ch; margin-bottom: 20px; }
-  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+  .hero { position: relative; overflow: hidden; padding: 18px 0 14px; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 36px; align-items: center; }
+  .hero h1 { margin-bottom: 10px; }
+  .hero .lead { font-size: 15.5px; color: var(--muted); max-width: 50ch; margin-bottom: 14px; }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
   .trust { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); align-items: center; }
   .trust span { display: inline-flex; align-items: center; gap: 7px; }
   .trust b { color: var(--text); font-weight: 600; }
   .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); box-shadow: 0 0 10px var(--success); }
-  .scene { position: relative; aspect-ratio: 1 / 1; max-height: 400px; width: 100%; border-radius: var(--r-lg); overflow: hidden; background:
+  .scene { position: relative; aspect-ratio: 16 / 11; max-height: 340px; width: 100%; border-radius: var(--r-lg); overflow: hidden; background:
       radial-gradient(60% 60% at 50% 45%, rgba(124,92,255,.35), transparent 70%),
       radial-gradient(35% 35% at 52% 48%, rgba(200,255,77,.24), transparent 70%),
       radial-gradient(120% 60% at 20% 0%, rgba(255,232,176,.10), transparent 60%),
@@ -124,9 +124,9 @@
   @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } .scene { max-height: 300px; aspect-ratio: 16/10; } .hero { padding-top: 22px; } }
 
   /* Секции */
-  .section { padding: 34px 0; }
-  .section.tight { padding-top: 8px; }
-  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+  .section { padding: 30px 0; }
+  .section.tight { padding-top: 2px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
   .section-head p { color: var(--muted); max-width: 60ch; }
   .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
 
@@ -137,7 +137,7 @@
   .ad.best { box-shadow: var(--glow); border-color: rgba(200,255,77,.35); }
   .ad-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; font-size: 11px; color: var(--muted); border-bottom: 1px solid var(--line); letter-spacing: .06em; text-transform: uppercase; }
   .ad-head .age { width: 30px; height: 20px; font-size: 11px; }
-  .ad-body { padding: 16px 16px 14px; display: grid; gap: 12px; }
+  .ad-body { padding: 14px 14px 12px; display: grid; gap: 10px; }
   .ad-warn { background: rgba(255,176,32,.10); border-top: 1px solid rgba(255,176,32,.35); color: var(--text); padding: 10px 14px; font-size: 12.5px; line-height: 1.4; display: grid; gap: 4px; min-height: 58px; }
   .ad-warn small { color: var(--muted); font-size: 11px; user-select: all; }
   .brand-row { display: flex; align-items: center; gap: 12px; }
@@ -397,8 +397,8 @@ function brandCard(b, best) {
     <div class="ad-body">
       <div class="brand-row">${logo(b)}<div><div class="brand-name">${esc(b.name)}</div><div class="brand-badges"><span class="badge ok">Легальная · ЕЦУПС</span><span class="badge">Лицензия ФНС</span></div></div>${ring(b.rating)}</div>
       <span class="chip">${esc(b.bonus)}</span>
-      <div class="facts"><div class="fact"><small>Вывод</small><b class="num">${b.payout}</b></div><div class="fact"><small>Маржа</small><b class="num">${b.margin}</b></div><div class="fact"><small>Приложение</small><b>iOS · Android</b></div></div>
       <a class="btn btn-primary btn-block" href="/go/${b.slug}" rel="sponsored nofollow noopener" data-cta>Получить бонус</a>
+      <div class="facts"><div class="fact"><small>Вывод</small><b class="num">${b.payout}</b></div><div class="fact"><small>Маржа</small><b class="num">${b.margin}</b></div><div class="fact"><small>Приложение</small><b>iOS · Android</b></div></div>
       <a class="card-review" href="/${b.slug}-obzor">Обзор ${esc(b.name)} →</a>
     </div>
     <div class="ad-warn"><span>${WARN}</span></div>
