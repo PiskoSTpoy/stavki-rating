@@ -3,114 +3,459 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Легальные букмекеры России 2026 — каталог БК с лицензией ФНС</title>
-<meta name="description" content="Каталог легальных букмекерских контор России из реестра ЕРАИ: лицензия ФНС, подключение к ЕЦУПС, официальные сайты. Все БК показаны одинаково, без бонусов и рекламы. 18+.">
-<meta name="yandex-verification" content="4edbdcb14677aee3" />
-  <link rel="canonical" href="https://stavki-rating.ru/">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Легальные букмекеры России 2026 — каталог БК с лицензией ФНС">
-  <meta property="og:description" content="Каталог легальных букмекерских контор России из реестра ЕРАИ: лицензия ФНС, подключение к ЕЦУПС, официальные сайты. Все БК показаны одинаково, без бонусов и рекламы. 18+.">
-  <meta property="og:url" content="https://stavki-rating.ru/">
-  <meta property="og:site_name" content="Ставки Рейтинг">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta property="og:image" content="https://stavki-rating.ru/img/hero.jpg">
-<link rel="stylesheet" href="/assets/style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ставки Рейтинг","url":"https://stavki-rating.ru/"}</script>
+<title>Рейтинг легальных букмекеров России — stavki-rating.ru</title>
+<meta name="description" content="Рейтинг легальных букмекеров России из реестра ЕЦУПС: лицензия ФНС, бонусы, маржа, скорость вывода и приложения. Дизайн-система «Volt Arena». 18+.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Unbounded", "Manrope", system-ui, sans-serif;
+    --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.12; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+  h1 { font-size: clamp(27px, 3.3vw, 42px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn, .ring-fg, .fade, .chipobj, .particles { transition: none !important; animation: none !important; } }
+
+  /* Hero — компактный, чтобы Топ-3 был виден сразу */
+  .hero { position: relative; overflow: hidden; padding: 34px 0 26px; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; }
+  .hero h1 { margin-bottom: 12px; }
+  .hero .lead { font-size: 17px; color: var(--muted); max-width: 52ch; margin-bottom: 20px; }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+  .trust { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); align-items: center; }
+  .trust span { display: inline-flex; align-items: center; gap: 7px; }
+  .trust b { color: var(--text); font-weight: 600; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); box-shadow: 0 0 10px var(--success); }
+  .scene { position: relative; aspect-ratio: 1 / 1; max-height: 400px; width: 100%; border-radius: var(--r-lg); overflow: hidden; background:
+      radial-gradient(60% 60% at 50% 45%, rgba(124,92,255,.35), transparent 70%),
+      radial-gradient(35% 35% at 52% 48%, rgba(200,255,77,.24), transparent 70%),
+      radial-gradient(120% 60% at 20% 0%, rgba(255,232,176,.10), transparent 60%),
+      var(--surface); }
+  .scene canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  /* Опциональное фоновое видео героя: появится, когда положишь media/hero-video.mp4 */
+  .hero-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .7s ease; }
+  .hero-vid.on { opacity: 1; }
+  .glow { position: absolute; left: 50%; top: 48%; width: 60%; aspect-ratio: 1; transform: translate(-50%,-50%); border-radius: 50%; background: radial-gradient(circle, rgba(124,92,255,.35), rgba(200,255,77,.10) 45%, transparent 68%); filter: blur(6px); }
+  /* Объекты сцены: обёртка = параллакс, вложенный элемент = «плавание» */
+  .obj { position: absolute; will-change: transform; }
+  .float { animation: float 6.5s ease-in-out infinite; will-change: transform; }
+  @keyframes float { 0%,100% { transform: translateY(0) rotate(var(--rot,0deg)); } 50% { transform: translateY(-13px) rotate(var(--rot,0deg)); } }
+  .chip3d { width: 100px; height: 100px; border-radius: 50%; position: relative; display: grid; place-items: center;
+    background: radial-gradient(circle at 42% 34%, #9E82FF, #6A49E8 58%, #3D2699 100%);
+    box-shadow: inset 0 0 0 7px rgba(255,255,255,.16), inset 0 0 0 11px rgba(124,92,255,.55), 0 16px 34px rgba(124,92,255,.45); }
+  .chip3d::before { content: ""; position: absolute; inset: 11px; border-radius: 50%; border: 4px dashed rgba(255,255,255,.5); }
+  .chip3d::after { content: ""; position: absolute; inset: 28px; border-radius: 50%; background: radial-gradient(circle at 40% 34%, rgba(255,255,255,.6), rgba(200,255,77,.14) 72%); }
+  .chip3d.lime { background: radial-gradient(circle at 42% 34%, #EEFFC0, #C8FF4D 55%, #8FC00E 100%);
+    box-shadow: inset 0 0 0 7px rgba(255,255,255,.3), inset 0 0 0 11px rgba(143,192,14,.6), 0 16px 34px rgba(200,255,77,.4); }
+  .coin { width: 66px; height: 66px; border-radius: 50%; position: relative; display: grid; place-items: center;
+    background: radial-gradient(circle at 38% 30%, #FFEDAE, #F5C542 55%, #B47F0B 100%);
+    box-shadow: inset 0 0 0 5px rgba(255,255,255,.4), inset 0 0 14px rgba(180,127,11,.55), 0 12px 28px rgba(245,197,66,.4);
+    font-family: var(--font-display); font-weight: 700; color: #7a5b06; font-size: 26px; }
+  .ball { width: 86px; height: 86px; border-radius: 50%; position: relative; overflow: hidden;
+    background: radial-gradient(circle at 36% 30%, #ffffff, #d3d9e4 68%, #9aa3b5 100%);
+    box-shadow: inset -8px -11px 26px rgba(0,0,0,.28), 0 16px 36px rgba(0,0,0,.5); }
+  .ball::before { content: ""; position: absolute; inset: 0;
+    background: radial-gradient(11px 11px at 50% 28%, #111624 60%, transparent 62%),
+      radial-gradient(9px 9px at 26% 58%, #111624 60%, transparent 62%),
+      radial-gradient(9px 9px at 74% 58%, #111624 60%, transparent 62%),
+      radial-gradient(9px 9px at 50% 82%, #111624 60%, transparent 62%); }
+  .football { width: 104px; height: 62px; border-radius: 50% / 50%; position: relative; --rot: -22deg; transform: rotate(-22deg);
+    background: radial-gradient(circle at 40% 32%, #A65C2E, #7B3F1D 72%);
+    box-shadow: inset -6px -9px 20px rgba(0,0,0,.4), 0 14px 32px rgba(0,0,0,.5); }
+  .football::before { content: ""; position: absolute; left: 24%; right: 24%; top: 50%; height: 3px; transform: translateY(-50%); background: #EFE6D2;
+    box-shadow: 0 0 0 0 #EFE6D2; }
+  .football::after { content: ""; position: absolute; left: 50%; top: 50%; width: 22px; height: 12px; transform: translate(-50%,-50%);
+    background: repeating-linear-gradient(90deg, #EFE6D2 0 2px, transparent 2px 6px); }
+  .scene-label { position: absolute; left: 14px; bottom: 12px; font-size: 11px; color: var(--muted); background: rgba(7,9,15,.55); padding: 4px 8px; border-radius: 6px; backdrop-filter: blur(6px); z-index: 3; }
+  @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } .scene { max-height: 300px; aspect-ratio: 16/10; } .hero { padding-top: 22px; } }
+
+  /* Секции */
+  .section { padding: 34px 0; }
+  .section.tight { padding-top: 8px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Карточки БК */
+  .cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 900px) { .cards-3 { grid-template-columns: 1fr; } }
+  .ad { border: 1px solid var(--glass-border); background: var(--glass); border-radius: var(--r-lg); display: grid; grid-template-rows: auto 1fr auto; overflow: hidden; position: relative; }
+  .ad.best { box-shadow: var(--glow); border-color: rgba(200,255,77,.35); }
+  .ad-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; font-size: 11px; color: var(--muted); border-bottom: 1px solid var(--line); letter-spacing: .06em; text-transform: uppercase; }
+  .ad-head .age { width: 30px; height: 20px; font-size: 11px; }
+  .ad-body { padding: 16px 16px 14px; display: grid; gap: 12px; }
+  .ad-warn { background: rgba(255,176,32,.10); border-top: 1px solid rgba(255,176,32,.35); color: var(--text); padding: 10px 14px; font-size: 12.5px; line-height: 1.4; display: grid; gap: 4px; min-height: 58px; }
+  .ad-warn small { color: var(--muted); font-size: 11px; user-select: all; }
+  .brand-row { display: flex; align-items: center; gap: 12px; }
+  .brand-logo { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 15px; color: #fff; flex: none; }
+  .brand-name { font-weight: 700; font-size: 16px; }
+  .brand-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 3px; }
+  .badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+  .badge.ok { color: var(--success); border-color: rgba(34,211,165,.4); }
+  .ring { margin-left: auto; position: relative; width: 56px; height: 56px; flex: none; }
+  .ring svg { width: 56px; height: 56px; transform: rotate(-90deg); }
+  .ring-bg { fill: none; stroke: var(--surface-3); stroke-width: 5; }
+  .ring-fg { fill: none; stroke: var(--volt); stroke-width: 5; stroke-linecap: round; transition: stroke-dashoffset 1s ease-out; }
+  .ring b { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-display); font-size: 14px; }
+  .chip { display: inline-flex; align-items: center; gap: 7px; background: var(--violet-soft); color: var(--text); border: 1px solid rgba(124,92,255,.35); border-radius: 999px; padding: 5px 11px; font-size: 13px; font-weight: 600; width: fit-content; }
+  .chip::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--violet); }
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .fact { background: var(--surface-2); border-radius: 10px; padding: 8px 10px; }
+  .fact small { display: block; color: var(--muted); font-size: 11px; }
+  .fact b { font-size: 14px; }
+  .card-review { text-align: center; font-size: 13px; color: var(--muted); }
+
+  /* Таблица сравнения */
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 780px; font-size: 14px; }
+  th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  th { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; background: var(--surface-2); position: sticky; top: 0; }
+  th:first-child, td:first-child { position: sticky; left: 0; background: var(--surface); z-index: 1; }
+  th:first-child { background: var(--surface-2); z-index: 2; }
+  tr:last-child td { border-bottom: 0; }
+  td.best { color: var(--volt); font-weight: 700; }
+  .cell-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+  .cell-brand .brand-logo { width: 30px; height: 30px; border-radius: 8px; font-size: 11px; }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tools { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
+  @media (max-width: 900px) { .tools { grid-template-columns: 1fr; } }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Футер */
+  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+
+  .toast { position: fixed; left: 50%; bottom: 90px; transform: translateX(-50%) translateY(20px); background: var(--surface-3); color: var(--text); padding: 10px 16px; border-radius: 12px; font-size: 14px; opacity: 0; transition: .25s; pointer-events: none; z-index: 60; border: 1px solid var(--line); }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .fade { animation: fadeIn .5s ease both; }
+  @keyframes fadeIn { from { opacity: .001; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+</style>
 </head>
 <body>
 
-<a class="skip" href="#main">К содержанию</a>
-
-<div class="canvas">
-<div class="frame">
-
-<div class="agewarn" data-age-badge>18+ · Участие в азартных играх может привести к возникновению игровой зависимости · <a href="/otvetstvennaya-igra">Самозапрет через Госуслуги</a></div>
-
-<header class="hdr">
-  <div class="wrap hdr__in">
-    <a class="hdr__brand" href="/">Ставки Рейтинг</a>
-    <nav class="hdr__nav" id="nav"><a href="/" class="active">Главная</a><a href="/rating">Каталог БК</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/contacts">О проекте</a><a href="/novosti">Новости</a></nav>
-    <button class="burger" aria-label="Меню" aria-expanded="false" aria-controls="nav">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-
-<main id="main">
-  <div class="glow" aria-hidden="true"></div>
-  <div class="wrap prose">
-<div class="hero-split">
-  <div class="hero-split__copy">
-    <span class="eyebrow">· Реестр ЕРАИ · Лицензия ФНС · ЕЦУПС ·</span>
-    <h1><b>Каталог</b> легальных букмекеров России</h1>
-    <p>В России легально принимать ставки могут только конторы с лицензией ФНС, подключённые к Единому ЦУПИС и включённые в реестр ЕРАИ. Здесь они собраны в одном месте — одинаково, без бонусов, промокодов и «лучших предложений». Только факты и ссылки на официальные сайты.</p>
-    <a class="btn-round" href="/rating">
-      <span class="btn-round__circle">→</span>
-      <span>Открыть каталог</span>
-    </a>
-  </div>
-  <div class="hero-split__art">
-    <img class="hero-art" src="/img/hero.jpg" alt="Абстрактная 3D-композиция: игровые фишки и монеты парят в тёмном пространстве" loading="eager">
+<div class="topbar">
+  <div class="container">
+    <span>stavki-rating.ru · дизайн-система «Volt Arena» · демо-данные, не оферта</span>
+    <span>18+ · только БК из реестра ЕЦУПС</span>
   </div>
 </div>
-<div class="prose-narrow">
-<p>Мы не ранжируем конторы и не советуем, где «выгоднее». Каталог отвечает на один вопрос: легальна ли БК в России и где её официальный сайт.</p>
-<h2>Легальные букмекеры</h2>
-<div class="tw catalog">
-<table>
-<thead><tr><th>Букмекер</th><th>Официальный сайт</th><th>Статус</th><th>Справка</th><th></th></tr></thead>
-<tbody>
-<tr><td>BetBoom</td><td>betboom.ru</td><td><span class="ok">Легальная · ЕЦУПС</span></td><td><a href="/betboom-obzor">Карточка</a></td><td><a rel="sponsored nofollow" href="/go/betboom?p=index&amp;pl=table">Сайт букмекера</a></td></tr>
-<tr><td>Bettery</td><td>bettery.ru</td><td><span class="ok">Легальная · ЕЦУПС</span></td><td><a href="/bettery-obzor">Карточка</a></td><td><a rel="sponsored nofollow" href="/go/bettery?p=index&amp;pl=table">Сайт букмекера</a></td></tr>
-<tr><td>Leon</td><td>leon.ru</td><td><span class="ok">Легальная · ЕЦУПС</span></td><td><a href="/leon-obzor">Карточка</a></td><td><a rel="sponsored nofollow" href="/go/leon?p=index&amp;pl=table">Сайт букмекера</a></td></tr>
-<tr><td>OLIMPBET</td><td>olimp.bet</td><td><span class="ok">Легальная · ЕЦУПС</span></td><td><a href="/olimpbet-obzor">Карточка</a></td><td><a rel="sponsored nofollow" href="/go/olimpbet?p=index&amp;pl=table">Сайт букмекера</a></td></tr>
-<tr><td>PARI</td><td>pari.ru</td><td><span class="ok">Легальная · ЕЦУПС</span></td><td><a href="/pari-obzor">Карточка</a></td><td><a rel="sponsored nofollow" href="/go/pari?p=index&amp;pl=table">Сайт букмекера</a></td></tr>
-<tr><td>Winline</td><td>winline.ru</td><td><span class="ok">Легальная · ЕЦУПС</span></td><td><a href="/winline-obzor">Карточка</a></td><td><a rel="sponsored nofollow" href="/go/winline?p=index&amp;pl=table">Сайт букмекера</a></td></tr>
-<tr><td>24bet</td><td>24bet.ru</td><td><span class="ok">Легальная · ЕЦУПС</span></td><td><a href="/24bet-obzor">Карточка</a></td><td><a rel="sponsored nofollow" href="/go/24bet?p=index&amp;pl=table">Сайт букмекера</a></td></tr>
-<tr><td>Балтбет</td><td>baltbet.ru</td><td><span class="ok">Легальная · ЕЦУПС</span></td><td><a href="/baltbet-obzor">Карточка</a></td><td><a rel="sponsored nofollow" href="/go/baltbet?p=index&amp;pl=table">Сайт букмекера</a></td></tr>
-<tr><td>Бет-М</td><td>bet-m.ru</td><td><span class="ok">Легальная · ЕЦУПС</span></td><td><a href="/bet-m-obzor">Карточка</a></td><td><a rel="sponsored nofollow" href="/go/bet-m?p=index&amp;pl=table">Сайт букмекера</a></td></tr>
-<tr><td>Бетсити</td><td>betcity.ru</td><td><span class="ok">Легальная · ЕЦУПС</span></td><td><a href="/betcity-obzor">Карточка</a></td><td><a rel="sponsored nofollow" href="/go/betcity?p=index&amp;pl=table">Сайт букмекера</a></td></tr>
-<tr><td>Зенит</td><td>zenit.win</td><td><span class="ok">Легальная · ЕЦУПС</span></td><td><a href="/zenit-obzor">Карточка</a></td><td><a rel="sponsored nofollow" href="/go/zenit?p=index&amp;pl=table">Сайт букмекера</a></td></tr>
-<tr><td>Лига Ставок</td><td>ligastavok.ru</td><td><span class="ok">Легальная · ЕЦУПС</span></td><td><a href="/ligastavok-obzor">Карточка</a></td><td><a rel="sponsored nofollow" href="/go/ligastavok?p=index&amp;pl=table">Сайт букмекера</a></td></tr>
-<tr><td>Марафон</td><td>marathonbet.ru</td><td><span class="ok">Легальная · ЕЦУПС</span></td><td><a href="/marathonbet-obzor">Карточка</a></td><td><a rel="sponsored nofollow" href="/go/marathonbet?p=index&amp;pl=table">Сайт букмекера</a></td></tr>
-<tr><td>Мелбет</td><td>melbet.ru</td><td><span class="ok">Легальная · ЕЦУПС</span></td><td><a href="/melbet-obzor">Карточка</a></td><td><a rel="sponsored nofollow" href="/go/melbet?p=index&amp;pl=table">Сайт букмекера</a></td></tr>
-<tr><td>Спортбет</td><td>sportbet.ru</td><td><span class="ok">Легальная · ЕЦУПС</span></td><td><a href="/sportbet-obzor">Карточка</a></td><td><a rel="sponsored nofollow" href="/go/sportbet?p=index&amp;pl=table">Сайт букмекера</a></td></tr>
-<tr><td>Фонбет</td><td>fon.bet</td><td><span class="ok">Легальная · ЕЦУПС</span></td><td><a href="/fonbet-obzor">Карточка</a></td><td><a rel="sponsored nofollow" href="/go/fonbet?p=index&amp;pl=table">Сайт букмекера</a></td></tr>
-</tbody>
-</table>
-</div>
-<p>Конторы перечислены в алфавитном порядке. Полный каталог со всеми легальными БК из реестра — на странице <a href="/rating">каталога</a>. Ссылки «Сайт букмекера» могут быть партнёрскими: это не влияет на то, кто попадает в каталог и в каком порядке показан.</p>
-<h2>На что смотреть перед регистрацией</h2>
-<ul><li><b>Реестр ЕРАИ и лицензия ФНС.</b> Проверьте контору по реестру регулятора — <a href="/kak-proverit-licenziyu">инструкция</a>. Если её там нет, это офшорный сайт без защиты ваших денег.</li><li><b>Идентификация через ЕЦУПС.</b> У легальной БК депозиты и выплаты проходят через Единый ЦУПИС после подтверждения личности (Госуслуги, кошелёк ЕЦУПС или лично). Просьба перевести деньги на карту физлица — признак нелегала.</li><li><b>Официальный домен.</b> У легальной конторы нет «зеркал»: если сайт не открывается, причина в технических работах или сети, а не в блокировке. Заходите только по адресам из каталога.</li><li><b>Ваши лимиты.</b> Решите заранее, сколько времени и денег готовы потратить, и установите лимиты в личном кабинете. Если контроль теряется — оформите <a href="/otvetstvennaya-igra">самозапрет через Госуслуги</a>.</li></ul>
-<h2>Как устроен каталог</h2>
-<ul><li>Только компании из реестра <a href="https://erai.ru">ЕРАИ</a> с лицензией ФНС и подключением к ЕЦУПС; офшорные операторы и «зеркала» не публикуются ни в каком виде.</li><li>Все конторы показаны одинаково: одна форма карточки, алфавитный порядок, без оценок, бонусов и рекомендаций.</li><li>Данные (юрлицо, лицензия, официальный домен) сверяются с реестром; если что-то изменилось — напишите нам через страницу <a href="/contacts">«О проекте»</a>.</li></ul>
-<div class="notice" data-gambling-warning>
-<p><b data-age-badge>18+</b> Ставки на спорт — это риск. Участие в азартных играх может привести к возникновению игровой зависимости. Материалы сайта носят справочный характер и не являются рекомендацией.</p>
-</div>
-</div>
-  </div>
-</main>
 
-<footer class="foot">
-  <div class="wrap foot__in">
+<header class="site-header"><div class="container">
+  <a class="logo" href="#top">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav">
+    <a href="#top3" class="active">Букмекеры</a>
+    <a href="#top3">Бонусы</a>
+    <a href="#compare">Сравнение</a>
+    <a href="#tools">Инструменты</a>
+    <a href="#school">Школа</a>
+  </nav>
+  <div class="header-right"><span class="search">Поиск по БК и бонусам</span><span class="age" aria-label="18 плюс">18+</span></div>
+</div></header>
+
+<a id="top"></a>
+
+<!-- HERO (компактный) -->
+<section class="hero"><div class="container hero-grid">
+  <div class="fade">
+    <div class="eyebrow" style="margin-bottom:12px">Обновлено сегодня · 2 сентября 2026</div>
+    <h1>Рейтинг легальных букмекеров России — сентябрь 2026</h1>
+    <p class="lead">16 букмекерских контор из реестра ЕЦУПС с лицензией ФНС: бонусы, маржа, скорость вывода и приложения — проверено, а не пересказано.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#top3">Смотреть рейтинг</a>
+      <a class="btn btn-glass" href="#top3">Фрибеты за регистрацию</a>
+    </div>
+    <div class="trust">
+      <span><i class="dot"></i><b>Только ЕЦУПС</b></span>
+      <span>Лицензия ФНС у каждой БК</span>
+      <span>Методика с весами критериев</span>
+      <span class="age">18+</span>
+    </div>
+  </div>
+  <div class="scene" id="scene" role="img" aria-label="3D-сцена: парящие казино-фишки, золотые монеты и мяч со свечением">
+    <video id="heroVid" class="hero-vid" autoplay muted loop playsinline preload="none"></video>
+    <canvas id="fx"></canvas>
+    <div class="glow"></div>
+    <div class="obj" id="o1" style="left:38%; top:36%; z-index:2"><div class="chip3d float" style="animation-delay:0s"></div></div>
+    <div class="obj" id="o2" style="left:70%; top:20%"><div class="chip3d lime float" style="width:72px;height:72px;animation-delay:.9s"></div></div>
+    <div class="obj" id="o3" style="left:14%; top:28%"><div class="coin float" style="animation-delay:.4s">₽</div></div>
+    <div class="obj" id="o4" style="left:76%; top:62%"><div class="coin float" style="width:54px;height:54px;font-size:20px;animation-delay:1.3s">₽</div></div>
+    <div class="obj" id="o5" style="left:18%; top:64%"><div class="ball float" style="animation-delay:.6s"></div></div>
+    <div class="obj" id="o6" style="left:50%; top:72%; z-index:2"><div class="football float" style="animation-delay:1.1s"></div></div>
+    <span class="scene-label">3D-сцена «Ставка» · параллакс по курсору</span>
+  </div>
+</div></section>
+
+<!-- ТОП-3 (поднят: кнопки «Получить бонус» видны у каждой карточки) -->
+<section class="section tight" id="top3"><div class="container">
+  <div class="section-head">
+    <div><h2>Топ-3 сегодня</h2><p>Лидеры по сумме критериев методики. Бонусы и условия сверены 2 сентября 2026.</p></div>
+    <a class="link-more" href="#compare">Как мы считаем →</a>
+  </div>
+  <div class="cards-3" id="top3cards"></div>
+</div></section>
+
+<!-- СРАВНЕНИЕ ВСЕХ БК -->
+<section class="section" id="compare"><div class="container">
+  <div class="section-head">
+    <div><h2>Сравнить все легальные БК</h2><p>Лучшее значение в колонке подсвечено. На телефоне первая колонка закреплена — таблица прокручивается.</p></div>
+  </div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Букмекер</th><th>Оценка</th><th>Бонус</th><th>Маржа</th><th>Вывод</th><th>Приложение</th><th></th></tr></thead>
+    <tbody id="compareRows"></tbody>
+  </table></div>
+</div></section>
+
+<!-- ПОДБОРКИ -->
+<section class="section"><div class="container">
+  <div class="section-head"><div><h2>Подборки под задачу</h2><p>Рейтинги по одному критерию — не зависят от брендовых запросов и правил партнёрок.</p></div></div>
+  <div class="tiles" id="tiles"></div>
+</div></section>
+
+<!-- ИНСТРУМЕНТЫ -->
+<section class="section" id="tools"><div class="container">
+  <div class="section-head"><div><h2>Инструменты</h2><p>Считают на лету — удобно проверить ставку перед заключением пари.</p></div></div>
+  <div class="tools">
+    <div class="tool"><h3>Калькулятор ставки</h3>
+      <div class="tool-form">
+        <label class="field">Сумма ставки, ₽<input id="stake" type="number" value="1000" min="1" oninput="calc()"></label>
+        <label class="field">Коэффициент<input id="odds" type="number" value="1.85" step="0.01" min="1.01" oninput="calc()"></label>
+      </div>
+      <div class="result">
+        <div><small>Выплата при выигрыше</small><b class="num" id="pay">1 850 ₽</b></div>
+        <div><small>Чистая прибыль</small><b class="num" id="profit">850 ₽</b></div>
+      </div>
+      <p class="small muted">Подразумеваемая вероятность: <b id="prob">54,1 %</b>. Расчёт не гарантирует исход — ставки связаны с риском.</p>
+    </div>
+    <div style="display:grid;gap:12px" id="toolTiles"></div>
+  </div>
+</div></section>
+
+<!-- ШКОЛА -->
+<section class="section" id="school"><div class="container">
+  <div class="section-head"><div><h2>Школа беттинга</h2><p>Определения с примером и расчётом — точно и без воды.</p></div><a class="link-more" href="#school">Все материалы →</a></div>
+  <div class="articles">
+    <div class="article"><small>Термины · 6 мин</small><b>Что такое фора и как её читать на примере матча</b><small>Обновлено 2 сентября 2026</small></div>
+    <div class="article"><small>Деньги и налоги · 5 мин</small><b>Налог на выигрыш в БК: кто удерживает и когда</b><small>Обновлено 2 сентября 2026</small></div>
+    <div class="article"><small>Ответственная игра · 4 мин</small><b>Самозапрет через Госуслуги: как оформить и что он даёт</b><small>Обновлено 2 сентября 2026</small></div>
+  </div>
+</div></section>
+
+<!-- ФУТЕР -->
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
     <div>
-      <div class="foot__name">Ставки Рейтинг</div>
-      <p class="foot__addr">Справочный каталог легальных букмекеров РФ из реестра ЕРАИ. Все конторы показаны одинаково, без бонусов и рекомендаций. Ссылки «Сайт букмекера» могут быть партнёрскими — это не влияет на состав каталога.</p>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — информация о легальных букмекерах России из реестра ЕЦУПС/ЕРАИ. Возрастная категория 18+. Данные на странице демонстрационные — для проверки дизайна и комплаенс-компонентов.</p>
     </div>
-    <div class="foot__contacts">
-      <a href="/otvetstvennaya-igra">Ответственная игра и самозапрет</a>
-      <a href="/kak-proverit-licenziyu">Как проверить лицензию БК</a>
-      <a href="mailto:hello@stavki-rating.ru">hello@stavki-rating.ru</a>
-    </div>
+    <div><h4>Букмекеры</h4><a href="#top3">Рейтинг легальных БК</a><a href="#top3">Промокоды и фрибеты</a><a href="#compare">Сравнение</a><a href="#top3">Приложения</a></div>
+    <div><h4>Редакция</h4><a href="#top">О проекте и редакция</a><a href="#compare">Методика рейтинга</a><a href="#top">Реклама на сайте</a><a href="#top">Политика конфиденциальности</a></div>
+    <div><h4>Ответственная игра</h4><a href="#top">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="#top">Лимиты и самоконтроль</a></div>
   </div>
-  <div class="wrap foot__bottom" data-gambling-warning>© 2026 Ставки Рейтинг · Материалы носят справочный характер · 18+ · Участие в азартных играх может привести к возникновению игровой зависимости</div>
-</footer>
+  <div class="legal-box">
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕЦУПС/ЕРАИ.</span>
+    <span>Оценки, бонусы, маржа и сроки вывода на этой странице — демонстрационные; перед публикацией заменяются проверенными данными.</span>
+  </div>
+</div></footer>
 
+<div class="sticky-cta" id="stickyCta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="#top3">Смотреть рейтинг</a>
 </div>
-</div>
+<div class="toast" id="toast">Скопировано</div>
 
-<script src="/assets/scene.js" defer></script>
-<script src="/assets/app.js" defer></script>
+<script>
+/* ---------- Данные (реквизиты БК — проверены 02.09.2026; бонусы/оценки/маржа — ДЕМО) ---------- */
+const BRANDS = [
+  { slug:'fonbet',      name:'Фонбет',      dom:'fon.bet',        color:'#D8312B', rating:4.8, bonus:'Фрибет до 3 000 ₽', payout:'до 15 мин', margin:'4,5 %' },
+  { slug:'winline',     name:'Winline',     dom:'winline.ru',     color:'#FF6A13', rating:4.7, bonus:'Фрибет 3 000 ₽ новым', payout:'до 30 мин', margin:'5,1 %' },
+  { slug:'ligastavok',  name:'Лига Ставок', dom:'ligastavok.ru',  color:'#F59E0B', rating:4.6, bonus:'Фрибет 1 500 ₽', payout:'до 1 часа', margin:'5,4 %' },
+  { slug:'pari',        name:'PARI',        dom:'pari.ru',        color:'#8B5CF6', rating:4.5, bonus:'Бонус до 2 000 ₽', payout:'до 1 часа', margin:'5,0 %' },
+  { slug:'betboom',     name:'BetBoom',     dom:'betboom.ru',     color:'#06B6D4', rating:4.5, bonus:'Фрибет 2 000 ₽', payout:'до 2 часов', margin:'5,3 %' },
+  { slug:'olimpbet',    name:'OLIMPBET',    dom:'olimp.bet',      color:'#E11D48', rating:4.3, bonus:'Фрибет 1 000 ₽', payout:'до 3 часов', margin:'5,6 %' },
+  { slug:'leon',        name:'Leon',        dom:'leon.ru',        color:'#EAB308', rating:4.2, bonus:'Бонус до 20 000 ₽', payout:'до 24 часов', margin:'5,8 %' },
+  { slug:'melbet',      name:'Мелбет',      dom:'melbet.ru',      color:'#F97316', rating:4.1, bonus:'Бонус до 10 000 ₽', payout:'до 24 часов', margin:'5,9 %' },
+  { slug:'betcity',     name:'Бетсити',     dom:'betcity.ru',     color:'#2563EB', rating:4.1, bonus:'Фрибет 1 000 ₽', payout:'до 2 часов', margin:'5,5 %' },
+  { slug:'marathonbet', name:'Марафон',     dom:'marathonbet.ru', color:'#16A34A', rating:4.0, bonus:'Бонус до 3 300 ₽', payout:'до 6 часов', margin:'5,2 %' },
+  { slug:'baltbet',     name:'Балтбет',     dom:'baltbet.ru',     color:'#0EA5E9', rating:3.9, bonus:'Фрибет 500 ₽', payout:'до 24 часов', margin:'6,0 %' },
+  { slug:'zenit',       name:'Зенит',       dom:'zenit.win',      color:'#1D4ED8', rating:3.9, bonus:'Бонус до 5 000 ₽', payout:'до 12 часов', margin:'5,7 %' },
+  { slug:'sportbet',    name:'Спортбет',    dom:'sportbet.ru',    color:'#DC2626', rating:3.8, bonus:'Бонус за регистрацию', payout:'до 24 часов', margin:'6,1 %' },
+  { slug:'24bet',       name:'24bet',       dom:'24bet.ru',       color:'#7C3AED', rating:3.7, bonus:'Бонус новым', payout:'до 24 часов', margin:'6,2 %' },
+  { slug:'bettery',     name:'Bettery',     dom:'bettery.ru',     color:'#0891B2', rating:3.7, bonus:'Бонус новым', payout:'до 24 часов', margin:'6,0 %' },
+  { slug:'bet-m',       name:'Бет-М',       dom:'bet-m.ru',       color:'#4F46E5', rating:3.6, bonus:'Бонус новым', payout:'до 24 часов', margin:'6,3 %' },
+];
+const RATINGS = [
+  ['С фрибетом за регистрацию','7 БК'], ['С высокими коэффициентами','по марже'], ['С быстрым выводом','до 1 часа'],
+  ['Для киберспорта','CS2, Dota 2'], ['Приложения на Android','12 БК'], ['Для новичков','простой старт'],
+  ['С кэшбэком','возврат части'], ['Новые букмекеры 2026','Бет-М, 24bet'],
+];
+const TOOL_TILES = [
+  ['Калькулятор экспресса','до 20 событий, итоговый коэффициент'],
+  ['Конвертер коэффициентов','десятичные · дробные · американские'],
+  ['Налог на выигрыш','правила НДФЛ на 2026 год'],
+  ['Калькулятор вилок','распределение сумм, прибыль в %'],
+];
+const WARN = 'Участие в азартных играх может привести к возникновению игровой зависимости.';
+const ADVERTISER = 'ООО «[Рекламодатель]», ИНН [ИНН], erid: [токен ОРД]';
 
+/* ---------- Утилиты ---------- */
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmtRub = n => new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 }).format(n) + ' ₽';
+const initials = name => name.replace(/[^A-Za-zА-Яа-я0-9]/g,'').slice(0,2).toUpperCase();
+function ring(v) {
+  const C = 2 * Math.PI * 24, off = C * (1 - v / 5);
+  return `<div class="ring" title="Оценка редакции ${v.toFixed(1)} из 5 (демо)"><svg viewBox="0 0 56 56" aria-hidden="true"><circle class="ring-bg" cx="28" cy="28" r="24"/><circle class="ring-fg" cx="28" cy="28" r="24" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${C.toFixed(1)}" data-off="${off.toFixed(1)}"/></svg><b class="num">${v.toFixed(1).replace('.',',')}</b></div>`;
+}
+const logo = b => `<span class="brand-logo" style="background:${b.color}">${initials(b.name)}</span>`;
+function brandCard(b, best) {
+  return `<div class="ad ${best?'best':''}" data-ad>
+    <div class="ad-head"><span>Реклама</span><span class="age" aria-label="18 плюс">18+</span></div>
+    <div class="ad-body">
+      <div class="brand-row">${logo(b)}<div><div class="brand-name">${esc(b.name)}</div><div class="brand-badges"><span class="badge ok">Легальная · ЕЦУПС</span><span class="badge">Лицензия ФНС</span></div></div>${ring(b.rating)}</div>
+      <span class="chip">${esc(b.bonus)}</span>
+      <div class="facts"><div class="fact"><small>Вывод</small><b class="num">${b.payout}</b></div><div class="fact"><small>Маржа</small><b class="num">${b.margin}</b></div><div class="fact"><small>Приложение</small><b>iOS · Android</b></div></div>
+      <a class="btn btn-primary btn-block" href="/go/${b.slug}" rel="sponsored nofollow noopener" data-cta>Получить бонус</a>
+      <a class="card-review" href="/${b.slug}-obzor">Обзор ${esc(b.name)} →</a>
+    </div>
+    <div class="ad-warn"><span>${WARN}</span></div>
+  </div>`;
+}
+function demoGo(e){ e.preventDefault(); toast('Демо: здесь будет переход /go/'+ (e.currentTarget?.getAttribute('href')||'').replace('#go/','') +' с subid'); return false; }
+let toastT;
+function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),2200); }
+function calc(){
+  const s=+document.getElementById('stake').value||0, o=+document.getElementById('odds').value||1;
+  document.getElementById('pay').textContent=fmtRub(s*o);
+  document.getElementById('profit').textContent=fmtRub(s*o-s);
+  document.getElementById('prob').textContent=(100/o).toFixed(1).replace('.',',')+' %';
+}
+
+/* ---------- Рендер ---------- */
+document.getElementById('top3cards').innerHTML = BRANDS.slice(0,3).map((b,i)=>brandCard(b, i===0)).join('');
+document.getElementById('compareRows').innerHTML = BRANDS.map((b,i)=>`<tr>
+  <td><span class="cell-brand">${logo(b)}<a href="/${b.slug}-obzor">${esc(b.name)}</a></span></td>
+  <td class="num ${i===0?'best':''}">${b.rating.toFixed(1).replace('.',',')}</td>
+  <td>${esc(b.bonus)}</td>
+  <td class="num ${b.margin==='4,5 %'?'best':''}">${b.margin}</td>
+  <td class="num ${b.payout==='до 15 мин'?'best':''}">${b.payout}</td>
+  <td>iOS · Android</td>
+  <td><a class="btn btn-primary btn-sm" href="/go/${b.slug}" rel="sponsored nofollow noopener">Бонус</a></td>
+</tr>`).join('');
+document.getElementById('tiles').innerHTML = RATINGS.map(r=>`<a class="tile" href="#top3"><b>${esc(r[0])}</b><small>${esc(r[1])}</small></a>`).join('');
+document.getElementById('toolTiles').innerHTML = TOOL_TILES.map(t=>`<a class="tile" href="#tools"><b>${esc(t[0])}</b><small>${esc(t[1])}</small></a>`).join('');
+requestAnimationFrame(()=>document.querySelectorAll('.ring-fg').forEach(c=>{ c.style.strokeDashoffset=c.dataset.off; }));
+
+/* ---------- 3D-сцена: частицы + параллакс ---------- */
+(function(){
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const scene = document.getElementById('scene'), cv = document.getElementById('fx');
+  if (!cv || !scene) return;
+  const ctx = cv.getContext('2d'); let W=0, H=0, dpr=Math.min(devicePixelRatio||1, 2), parts=[], raf=0, mx=0, my=0, tx=0, ty=0;
+  function size(){ const r=scene.getBoundingClientRect(); W=r.width; H=r.height; cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); const n=Math.max(40, Math.floor(W*H/9000)); parts=[]; for(let i=0;i<n;i++) parts.push({ x:Math.random()*W, y:Math.random()*H, z:Math.random()*.8+.2, r:Math.random()*1.5+.4, a:Math.random()*.5+.2 }); }
+  function draw(){
+    ctx.clearRect(0,0,W,H); tx += (mx-tx)*.06; ty += (my-ty)*.06;
+    for(const p of parts){ p.x += p.z*.15; if(p.x>W+4) p.x=-4; const ox=tx*p.z*22, oy=ty*p.z*22; ctx.beginPath(); ctx.arc(p.x+ox, p.y+oy, p.r, 0, 7); ctx.fillStyle = p.z>.6 ? `rgba(200,255,77,${p.a})` : `rgba(180,170,255,${p.a})`; ctx.fill(); }
+    raf=requestAnimationFrame(draw);
+  }
+  const objs=['o1','o2','o3','o4','o5','o6'].map(id=>document.getElementById(id));
+  const depth=[10,18,22,26,16,12];
+  function parallax(e){ const r=scene.getBoundingClientRect(); mx=((e.clientX-r.left)/r.width-.5)*2; my=((e.clientY-r.top)/r.height-.5)*2; objs.forEach((o,i)=>{ if(o) o.style.transform=`translate(${mx*depth[i]}px, ${my*depth[i]}px)`; }); }
+  size(); addEventListener('resize', size);
+  if(!reduce){ draw(); scene.addEventListener('pointermove', parallax); }
+  // Фоновое видео героя: показываем, только если media/hero-video.mp4 реально загрузился
+  const hv=document.getElementById('heroVid');
+  if(hv){ hv.onloadeddata=()=>hv.classList.add('on'); hv.onerror=()=>hv.remove(); hv.src='media/hero-video.mp4'; }
+})();
+
+/* сглаженный скролл-фейд секций */
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('fade'); io.unobserve(e.target); } }),{threshold:.08});
+  document.querySelectorAll('.section').forEach(s=>io.observe(s));
+}
+</script>
 </body>
 </html>
