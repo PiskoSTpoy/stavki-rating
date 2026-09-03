@@ -126,6 +126,24 @@
   .scene-label { position: absolute; left: 14px; bottom: 12px; font-size: 11px; color: var(--muted); background: rgba(7,9,15,.55); padding: 4px 8px; border-radius: 6px; backdrop-filter: blur(6px); z-index: 3; }
   @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } .scene { max-height: 300px; aspect-ratio: 16/10; } .hero { padding-top: 22px; } }
 
+  /* 3D-монеты героя: настоящий объём — толщина-прослойка из сегментов; лого не зеркалится; оборот 360 */
+  .scene { perspective: 1000px; }
+  .coins3d { position: absolute; inset: 0; transform-style: preserve-3d; }
+  .coin3 { position: absolute; left: var(--x); top: var(--y); width: var(--s); height: var(--s); margin-left: calc(var(--s) / -2); margin-top: calc(var(--s) / -2); transform-style: preserve-3d; }
+  .coin3 .spin { position: absolute; inset: 0; transform-style: preserve-3d; animation: spin3 var(--dur, 6s) linear infinite; animation-direction: var(--dir, normal); will-change: transform; }
+  @keyframes spin3 { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+  .coin3 .face { position: absolute; inset: 0; border-radius: 50%; overflow: hidden; backface-visibility: hidden; box-shadow: inset 0 3px 10px rgba(255,255,255,.32), inset 0 -8px 16px rgba(0,0,0,.3), inset 0 0 0 4px rgba(255,236,180,.85); }
+  .coin3 .face img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  /* глянцевый бегущий блик (без blend/z-index, чтобы не ломать backface 3D) */
+  .coin3 .face::after { content: ""; position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
+    background: linear-gradient(122deg, transparent 37%, rgba(255,255,255,.55) 49%, transparent 61%);
+    background-size: 250% 250%; animation: sheen 3.6s ease-in-out infinite; }
+  @keyframes sheen { 0% { background-position: 140% 50%; } 55%, 100% { background-position: -40% 50%; } }
+  .coin3 .face.front { transform: translateZ(var(--t)); }
+  .coin3 .face.back { transform: rotateY(180deg) translateZ(var(--t)); }
+  .coin3 .seg { position: absolute; left: 50%; top: 50%; background: var(--edge); }
+  @media (prefers-reduced-motion: reduce) { .coin3 .spin { animation: none; } }
+
   /* Секции */
   .section { padding: 30px 0; }
   .section.tight { padding-top: 2px; }
@@ -144,7 +162,9 @@
   .ad-warn { background: rgba(255,176,32,.10); border-top: 1px solid rgba(255,176,32,.35); color: var(--text); padding: 10px 14px; font-size: 12.5px; line-height: 1.4; display: grid; gap: 4px; min-height: 58px; }
   .ad-warn small { color: var(--muted); font-size: 11px; user-select: all; }
   .brand-row { display: flex; align-items: center; gap: 12px; }
-  .brand-logo { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 15px; color: #fff; flex: none; }
+  .brand-logo { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 15px; color: #fff; flex: none; overflow: hidden; }
+  .brand-logo.has-img { background: var(--surface-2); }
+  .brand-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .brand-name { font-weight: 700; font-size: 16px; }
   .brand-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 3px; }
   .badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
@@ -236,13 +256,6 @@
 </head>
 <body>
 
-<div class="topbar">
-  <div class="container">
-    <span>stavki-rating.ru · дизайн-система «Volt Arena» · демо-данные, не оферта</span>
-    <span>Только БК из реестра ЕЦУПС</span>
-  </div>
-</div>
-
 <header class="site-header"><div class="container">
   <a class="logo" href="#top">
     <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
@@ -263,7 +276,6 @@
 <!-- HERO (компактный) -->
 <section class="hero"><div class="container hero-grid">
   <div class="fade">
-    <div class="eyebrow" style="margin-bottom:12px">Обновлено сегодня · 2 сентября 2026</div>
     <h1>Рейтинг легальных букмекеров России — сентябрь 2026</h1>
     <p class="lead">16 букмекерских контор из реестра ЕЦУПС с лицензией ФНС: бонусы, фрибеты, промокоды и скорость вывода — коротко и по делу.</p>
     <div class="hero-cta">
@@ -275,9 +287,7 @@
     </div>
   </div>
   <div class="scene" id="scene" role="img" aria-label="Анимация: монеты букмекеров взлетают и кружатся">
-    <canvas id="coins" class="hero-canvas"></canvas>
-    <video id="heroVid" class="hero-vid" autoplay muted loop playsinline preload="none"></video>
-    <span class="scene-label">Монеты БК · клик — повтор</span>
+    <div class="coins3d" id="coins3d"></div>
   </div>
 </div></section>
 
@@ -287,7 +297,6 @@
     <div><h2>Топ-3 сегодня</h2><p>Актуальные бонусы за регистрацию у легальных БК из реестра ЕЦУПС.</p></div>
     <a class="link-more" href="#compare">Все букмекеры →</a>
   </div>
-  <p class="section-disclosure">Реклама · места оплачены. Размеры и условия бонусов уточняйте на сайтах букмекеров.</p>
   <div class="cards-3" id="top3cards"></div>
 </div></section>
 
@@ -350,7 +359,7 @@
   </div>
   <div class="legal-box">
     <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕЦУПС/ЕРАИ.</span>
-    <span>Оценки, бонусы, маржа и сроки вывода на этой странице — демонстрационные; перед публикацией заменяются проверенными данными.</span>
+    <span>Материалы могут содержать рекламу; отдельные места размещения партнёров оплачены. Оценки и бонусы — демонстрационные, заменяются проверенными данными.</span>
   </div>
 </div></footer>
 
@@ -402,7 +411,10 @@ function ring(v) {
   const C = 2 * Math.PI * 24, off = C * (1 - v / 5);
   return `<div class="ring" title="Оценка редакции ${v.toFixed(1)} из 5 (демо)"><svg viewBox="0 0 56 56" aria-hidden="true"><circle class="ring-bg" cx="28" cy="28" r="24"/><circle class="ring-fg" cx="28" cy="28" r="24" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${C.toFixed(1)}" data-off="${off.toFixed(1)}"/></svg><b class="num">${v.toFixed(1).replace('.',',')}</b></div>`;
 }
-const logo = b => `<span class="brand-logo" style="background:${b.color}">${initials(b.name)}</span>`;
+const LOGOS = new Set(['fonbet','winline','ligastavok','pari','betboom','zenit','melbet','olimpbet','leon','bet-m','sportbet','bettery','betcity','baltbet']);
+const logo = b => LOGOS.has(b.slug)
+  ? `<span class="brand-logo has-img"><img src="/img/logos/${b.slug}.png" alt="${esc(b.name)}" loading="lazy" width="46" height="46"></span>`
+  : `<span class="brand-logo" style="background:${b.color}">${initials(b.name)}</span>`;
 function brandCard(b, best) {
   return `<div class="ad ${best?'best':''}" data-ad>
     <div class="ad-body">
@@ -410,7 +422,6 @@ function brandCard(b, best) {
       <div class="bonus-hero">
         <small>Бонус за регистрацию</small>
         <b class="bonus-amt">${esc(b.bonus)}</b>
-        <span class="promo">Промокод: <b>${esc(b.promo||'STAVKI')}</b></span>
       </div>
       <a class="btn btn-primary btn-block" href="/go/${b.slug}" rel="sponsored nofollow noopener" data-cta>Получить бонус</a>
       <div class="ad-foot" style="justify-content:center"><a href="/${b.slug}-obzor">Обзор ${esc(b.name)} →</a></div>
@@ -449,7 +460,8 @@ requestAnimationFrame(()=>document.querySelectorAll('.ring-fg').forEach(c=>{ c.s
   const cv = document.getElementById('coins'); if(!cv) return;
   const ctx = cv.getContext('2d');
   // Фирменные цвета БК + монограмма (не реальный логотип — товарный знак чужой)
-  const DATA = [['#D8312B','ФБ'],['#FF6A13','WL'],['#F59E0B','ЛС'],['#8B5CF6','PA'],['#06B6D4','BB'],['#EAB308','LN'],['#E11D48','OL']];
+  const DATA = [['fonbet','#D8312B'],['winline','#FF6A13'],['ligastavok','#3A4150'],['pari','#00C9A7'],['betboom','#111318']];
+  const IMGS = {}; DATA.forEach(d=>{ const im=new Image(); im.src='/img/logos/'+d[0]+'.png'; IMGS[d[0]]=im; });
   let W=0,H=0,dpr=Math.min(devicePixelRatio||1,2), coins=[], t0=0, mx=0,my=0,tx=0,ty=0, ring=null;
   function shade(hex){ const n=parseInt(hex.slice(1),16); return `rgb(${((n>>16&255)*.45)|0},${((n>>8&255)*.45)|0},${((n&255)*.45)|0})`; }
   function lighten(hex){ const n=parseInt(hex.slice(1),16), f=(v)=>Math.min(255,(v*1.4+46)|0); return `rgb(${f(n>>16&255)},${f(n>>8&255)},${f(n&255)})`; }
@@ -458,9 +470,9 @@ requestAnimationFrame(()=>document.querySelectorAll('.ring-fg').forEach(c=>{ c.s
     const cx=W*0.5, cy=H*0.47, base=H+30, sz=Math.min(78, W*0.12), n=DATA.length;
     coins = DATA.map((d,i)=>{
       const la=(-Math.PI/2)+(i-(n-1)/2)*0.15, sp=13+Math.random()*4, ra=(i/n)*Math.PI*2 - Math.PI/2;
-      return { c:d[0], t:d[1], size:sz*(0.82+Math.random()*0.36),
+      return { slug:d[0], c:d[1], size:sz*(0.92+Math.random()*0.28),
         x:cx+(Math.random()-0.5)*22, y:base, vx:Math.cos(la)*sp, vy:Math.sin(la)*sp,
-        rot:Math.random()*7, rv:0.15+Math.random()*0.14,
+        rot:Math.random()*7, rv:(0.022+Math.random()*0.016)*(Math.random()<0.5?1:-1),
         tX:cx+Math.cos(ra)*W*0.24, tY:cy+Math.sin(ra)*H*0.30, bob:Math.random()*7 };
     });
     ring={r:0,a:1}; t0=performance.now();
@@ -471,40 +483,31 @@ requestAnimationFrame(()=>document.querySelectorAll('.ring-fg').forEach(c=>{ c.s
     // мягкое свечение в цвет БК
     ctx.shadowColor=c.c; ctx.shadowBlur=26; ctx.shadowOffsetY=5;
     // ребро монеты (толщина) — золотая полоса со сдвигом, видна при повороте
-    ctx.beginPath(); ctx.ellipse(spin*Math.max(2,w*0.16),0,r,R,0,0,7);
+    ctx.beginPath(); ctx.ellipse(spin*Math.max(3,w*0.26),0,r,R,0,0,7);
     const ed=ctx.createLinearGradient(0,-R,0,R);
     ed.addColorStop(0,'#7a5c18'); ed.addColorStop(.5,'#f3d074'); ed.addColorStop(1,'#5f470f');
     ctx.fillStyle=ed; ctx.fill();
     ctx.shadowBlur=0; ctx.shadowOffsetY=0;
-    // лицо монеты — металлический градиент в цвет БК
+    // лицо монеты — логотип БК, обрезанный по эллипсу (сжимается вместе с монетой при повороте)
+    ctx.save();
+    ctx.beginPath(); ctx.ellipse(0,0,r,R,0,0,7); ctx.clip();
+    const img=IMGS[c.slug];
+    if(img && img.complete && img.naturalWidth){ ctx.drawImage(img,-r,-R,w,h); }
+    else { ctx.fillStyle=c.c; ctx.fillRect(-r,-R,w,h); }
+    ctx.restore();
+    // золотой ободок
     ctx.beginPath(); ctx.ellipse(0,0,r,R,0,0,7);
-    const g=ctx.createRadialGradient(-w*0.22,-h*0.24,1,0,0,h*0.66);
-    g.addColorStop(0,'#ffffff'); g.addColorStop(.16,lighten(c.c)); g.addColorStop(.55,c.c); g.addColorStop(1,shade(c.c));
-    ctx.fillStyle=g; ctx.fill();
-    // рифлёный золотой ободок
-    ctx.lineWidth=Math.max(2,w*0.11);
+    ctx.lineWidth=Math.max(2.5,w*0.10);
     const rim=ctx.createLinearGradient(-r,-R,r,R);
     rim.addColorStop(0,'#fff0be'); rim.addColorStop(.5,'#d9a441'); rim.addColorStop(1,'#7a5c18');
     ctx.strokeStyle=rim; ctx.stroke();
-    // внутренний бортик (тиснение)
-    ctx.beginPath(); ctx.ellipse(0,0,r*0.80,R*0.80,0,0,7);
-    ctx.lineWidth=Math.max(1,w*0.03); ctx.strokeStyle='rgba(255,255,255,.30)'; ctx.stroke();
     // глянцевый блик сверху-слева
     if(flip>0.30){
       ctx.save(); ctx.globalCompositeOperation='screen';
       const hl=ctx.createRadialGradient(-w*0.16,-h*0.22,1,-w*0.16,-h*0.22,r*0.62);
-      hl.addColorStop(0,'rgba(255,255,255,.6)'); hl.addColorStop(1,'rgba(255,255,255,0)');
+      hl.addColorStop(0,'rgba(255,255,255,.4)'); hl.addColorStop(1,'rgba(255,255,255,0)');
       ctx.beginPath(); ctx.ellipse(-w*0.16,-h*0.22,r*0.5,R*0.34,-0.5,0,7); ctx.fillStyle=hl; ctx.fill();
       ctx.restore();
-    }
-    // тиснёная монограмма
-    if(flip>0.55){
-      ctx.globalAlpha=(flip-0.55)/0.45;
-      ctx.font=`800 ${Math.round(h*0.32)}px "Inter", system-ui, sans-serif`;
-      ctx.textAlign='center'; ctx.textBaseline='middle';
-      ctx.fillStyle='rgba(0,0,0,.35)'; ctx.fillText(c.t,0,2);
-      ctx.fillStyle='#fff'; ctx.fillText(c.t,0,0.5);
-      ctx.globalAlpha=1;
     }
     ctx.restore();
   }
@@ -513,7 +516,7 @@ requestAnimationFrame(()=>document.querySelectorAll('.ring-fg').forEach(c=>{ c.s
     if(ring){ ring.r+=W*0.022; ring.a*=0.93; if(ring.a<0.03) ring=null; else { ctx.save(); ctx.beginPath(); ctx.arc(W*0.5,H+8,ring.r,Math.PI,2*Math.PI); ctx.strokeStyle=`rgba(200,255,77,${ring.a*0.6})`; ctx.lineWidth=3; ctx.stroke(); ctx.restore(); } }
     for(const c of coins){ c.rot+=c.rv;
       if(t<1.5){ c.vy+=0.45; c.x+=c.vx; c.y+=c.vy; c.vx*=0.99; }
-      else { const by=Math.sin(now/900+c.bob)*8; c.x+=((c.tX)-c.x)*0.06; c.y+=((c.tY+by)-c.y)*0.06; }
+      else { c.x+=((c.tX)-c.x)*0.08; c.y+=((c.tY)-c.y)*0.08; }
       coin(c);
     }
     requestAnimationFrame(frame);
@@ -521,7 +524,7 @@ requestAnimationFrame(()=>document.querySelectorAll('.ring-fg').forEach(c=>{ c.s
   function move(e){ const r=scene.getBoundingClientRect(); mx=((e.clientX-r.left)/r.width-.5)*18; my=((e.clientY-r.top)/r.height-.5)*18; }
   lay(); addEventListener('resize', lay);
   if(reduce){ reset(); coins.forEach(c=>{c.x=c.tX;c.y=c.tY;}); ctx.clearRect(0,0,W,H); coins.forEach(coin); }
-  else { reset(); requestAnimationFrame(frame); scene.addEventListener('pointermove', move); scene.addEventListener('click', reset); }
+  else { reset(); requestAnimationFrame(frame); scene.addEventListener('click', reset); }
   const hv=document.getElementById('heroVid');
   if(hv){ hv.onloadeddata=()=>hv.classList.add('on'); hv.onerror=()=>hv.remove(); hv.src='media/hero-video.mp4'; }
 })();
@@ -531,6 +534,39 @@ if('IntersectionObserver' in window){
   const io=new IntersectionObserver((es)=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('fade'); io.unobserve(e.target); } }),{threshold:.08});
   document.querySelectorAll('.section').forEach(s=>io.observe(s));
 }
+
+/* ---------- 3D-монеты: настоящий объём (2 лица + кольцо сегментов-толщины), оборот 360 ---------- */
+(function(){
+  var host = document.getElementById('coins3d'); if(!host) return;
+  var COINS = [
+    { slug:'fonbet',     x:50, y:24, s:78, dur:6.5, dir:'normal',  edge:['#ffdcae','#e0473a','#4a0f0c'] },
+    { slug:'winline',    x:77, y:45, s:78, dur:7.0, dir:'reverse', edge:['#ffe2b8','#ff7a2e','#4a2000'] },
+    { slug:'betboom',    x:23, y:45, s:78, dur:6.0, dir:'normal',  edge:['#ffffff','#c4c4cc','#4a4a52'] },
+    { slug:'pari',       x:39, y:74, s:78, dur:7.5, dir:'reverse', edge:['#d6fff5','#12c6a6','#004237'] },
+    { slug:'ligastavok', x:63, y:75, s:78, dur:6.8, dir:'normal',  edge:['#fff3c8','#d9a441','#6e5316'] },
+  ];
+  var N = 28;
+  COINS.forEach(function(c){
+    var R = c.s/2, T = Math.round(c.s*0.14), chord = Math.ceil(2*Math.PI*R/N)+3;
+    var coin = document.createElement('div'); coin.className='coin3';
+    coin.style.cssText = '--x:'+c.x+'%;--y:'+c.y+'%;--s:'+c.s+'px;--t:'+(T/2)+'px;--dur:'+c.dur+'s;--dir:'+c.dir+
+      ';--edge:linear-gradient(to bottom,'+c.edge[0]+' 0%,'+c.edge[1]+' 55%,'+c.edge[2]+' 100%)';
+    var spin = document.createElement('div'); spin.className='spin';
+    ['front','back'].forEach(function(side){
+      var f=document.createElement('div'); f.className='face '+side;
+      var im=document.createElement('img'); im.src='/img/logos/'+c.slug+'.png'; im.alt=''; im.loading='lazy';
+      f.appendChild(im); spin.appendChild(f);
+    });
+    for(var i=0;i<N;i++){
+      var a=(360/N)*i, seg=document.createElement('div'); seg.className='seg';
+      seg.style.width=T+'px'; seg.style.height=chord+'px';
+      seg.style.marginLeft=(-T/2)+'px'; seg.style.marginTop=(-chord/2)+'px';
+      seg.style.transform='rotateZ('+a+'deg) translateX('+R+'px) rotateY(90deg)';
+      spin.appendChild(seg);
+    }
+    coin.appendChild(spin); host.appendChild(coin);
+  });
+})();
 </script>
 </body>
 </html>
