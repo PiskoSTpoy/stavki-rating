@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Калькулятор ставок онлайн — выплата и прибыль по коэффициенту</title>
-<meta name="description" content="Быстрый калькулятор ставки: введите сумму и коэффициент — узнайте выплату, чистую прибыль и подразумеваемую вероятность. Считает в браузере, без регистрации. 18+.">
-<link rel="canonical" href="https://stavki-rating.ru/instrumenty/kalkulyator-stavok">
+<title>Калькулятор вилок (surebet) — расчёт ставок и прибыли</title>
+<meta name="description" content="Калькулятор вилки на два исхода: введите коэффициенты и бюджет — узнайте, как распределить ставки для одинакового возврата и какая гарантированная прибыль в %. 18+.">
+<link rel="canonical" href="https://stavki-rating.ru/instrumenty/kalkulyator-vilok">
 <meta name="yandex-verification" content="4edbdcb14677aee3">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%23C8FF4D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpolygon points='36,8 17,36 29,36 26,56 47,27 35,27' fill='%2307090F'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -142,8 +142,8 @@
   .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Инструменты", "item": "https://stavki-rating.ru/instrumenty/kalkulyator-stavok"}, {"@type": "ListItem", "position": 3, "name": "Калькулятор ставок", "item": "https://stavki-rating.ru/instrumenty/kalkulyator-stavok"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Чем выплата отличается от прибыли?", "acceptedAnswer": {"@type": "Answer", "text": "Выплата — вся сумма при выигрыше, включая вашу ставку. Чистая прибыль — только заработок сверх вложенного."}}, {"@type": "Question", "name": "Что такое подразумеваемая вероятность?", "acceptedAnswer": {"@type": "Answer", "text": "Оценка вероятности исхода, «зашитая» в коэффициент: 100 % ÷ коэффициент. Для 1.85 это ≈ 54,1 %. В неё уже включена маржа букмекера."}}, {"@type": "Question", "name": "Калькулятор учитывает налог на выигрыш?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, здесь чистый расчёт по коэффициенту. Для налога есть отдельный калькулятор НДФЛ."}}, {"@type": "Question", "name": "Данные куда-то отправляются?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Расчёт идёт прямо в браузере, суммы никуда не уходят и не сохраняются."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Инструменты", "item": "https://stavki-rating.ru/instrumenty/kalkulyator-stavok"}, {"@type": "ListItem", "position": 3, "name": "Калькулятор вилок", "item": "https://stavki-rating.ru/instrumenty/kalkulyator-vilok"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что такое вилка (surebet)?", "acceptedAnswer": {"@type": "Answer", "text": "Ставки на все исходы одного события у разных БК с такими коэффициентами, что при любом результате вы в плюсе независимо от исхода."}}, {"@type": "Question", "name": "Когда вилка возможна?", "acceptedAnswer": {"@type": "Answer", "text": "Когда суммарная подразумеваемая вероятность S = 1/o_A + 1/o_B меньше 1 (меньше 100 %). Если S ≥ 1 — вилки нет, это обычная маржа букмекера."}}, {"@type": "Question", "name": "Как распределяются ставки?", "acceptedAnswer": {"@type": "Answer", "text": "Пропорционально вероятности каждого исхода: ставка = бюджет × (1/коэффициент) ÷ S. Тогда возврат при любом исходе равен бюджет ÷ S."}}, {"@type": "Question", "name": "Это законно и безопасно?", "acceptedAnswer": {"@type": "Answer", "text": "Ставки у легальных БК законны, но конторы вправе ограничивать счета за систематический арбитраж. Прибыль на вилках мала и требует быстрых действий; лимиты и комиссии её уменьшают."}}]}</script>
 </head>
 <body>
 
@@ -172,44 +172,47 @@
 <main>
 
   <section class="section tight"><div class="container">
-    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/instrumenty/kalkulyator-stavok">Инструменты</a><span>/</span>Калькулятор ставок</nav>
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/instrumenty/kalkulyator-stavok">Инструменты</a><span>/</span>Калькулятор вилок</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Инструмент ·</div>
-    <h1>Калькулятор ставок</h1>
-    <p class="muted" style="max-width:70ch;margin-top:10px">Введите сумму ставки и коэффициент — калькулятор мгновенно посчитает <strong style="color:var(--text)">выплату</strong> (сколько вернётся при выигрыше) и <strong style="color:var(--text)">чистую прибыль</strong> (выплата за вычетом ставки).</p>
+    <h1>Калькулятор вилок</h1>
+    <p class="muted" style="max-width:70ch;margin-top:10px">Вилка (surebet) — ставки на все исходы события у разных букмекеров так, что при любом результате возврат одинаков. Введите два коэффициента и бюджет — калькулятор распределит ставки и покажет <strong style="color:var(--text)">гарантированную прибыль</strong>.</p>
     <div class="tool" style="margin-top:18px">
-      <h3>Расчёт ставки</h3>
-      <div class="tool-form">
-        <label class="field">Сумма ставки, ₽<input id="stake" type="number" value="1000" min="1" step="50" inputmode="decimal"></label>
-        <label class="field">Коэффициент<input id="odds" type="number" value="1.85" min="1.01" step="0.01" inputmode="decimal"></label>
+      <h3>Расчёт вилки (2 исхода)</h3>
+      <div class="tool-form" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
+        <label class="field">Коэффициент на исход A<input id="aoA" type="number" value="2.10" min="1.01" step="0.01" inputmode="decimal"></label>
+        <label class="field">Коэффициент на исход B<input id="aoB" type="number" value="2.10" min="1.01" step="0.01" inputmode="decimal"></label>
+        <label class="field">Общий бюджет, ₽<input id="abud" type="number" value="10000" min="1" step="100" inputmode="decimal"></label>
       </div>
-      <div class="result">
-        <div><small>Выплата при выигрыше</small><b class="num" id="pay">—</b></div>
-        <div><small>Чистая прибыль</small><b class="num accent" id="profit">—</b></div>
+      <div class="result" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))">
+        <div><small>Ставка на A</small><b class="num" id="asA">—</b></div>
+        <div><small>Ставка на B</small><b class="num" id="asB">—</b></div>
+        <div><small>Прибыль (гарантированная)</small><b class="num accent" id="aprof">—</b></div>
       </div>
-      <p class="small muted">Подразумеваемая вероятность исхода: <b class="num" id="prob" style="color:var(--text)">—</b>. Расчёт в браузере — суммы не сохраняются. Ставки связаны с риском, расчёт не гарантирует исход.</p>
+      <p class="small muted" id="astatus">—</p>
     </div>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
     <h2>Как это считается</h2>
     <ul>
-      <li><strong>Выплата</strong> = сумма ставки × коэффициент.</li>
-      <li><strong>Чистая прибыль</strong> = выплата − сумма ставки.</li>
-      <li><strong>Подразумеваемая вероятность</strong> = 100 % ÷ коэффициент.</li>
+      <li><strong>«Книга»</strong> S = 1/o_A + 1/o_B — суммарная подразумеваемая вероятность.</li>
+      <li><strong>Ставка на исход</strong> = бюджет × (1/коэффициент) ÷ S — так возврат одинаков при любом результате.</li>
+      <li><strong>Гарантированная прибыль, %</strong> = (1/S − 1) × 100.</li>
+      <li><strong>Вилка существует</strong>, только если S &lt; 1 (суммарная вероятность меньше 100 %).</li>
     </ul>
-    <p>Пример: ставка 1 000 ₽ на коэффициент 1.85 → выплата 1 850 ₽, из них чистая прибыль 850 ₽, а «зашитая» в коэффициент вероятность ≈ 54,1 %.</p>
-    <div class="callout">Коэффициент уже включает маржу букмекера. Поэтому сумма подразумеваемых вероятностей по всем исходам события всегда больше 100 % — это и есть заработок конторы.</div>
+    <p>Пример: коэффициенты 2.10 и 2.10, бюджет 10 000 ₽ → S = 0,952, ставки по 5 000 ₽, возврат при любом исходе 10 500 ₽, гарантированная прибыль 500 ₽ (5 %).</p>
+    <div class="callout">Вилки существуют из-за расхождения линий у разных букмекеров и обычно недолговечны. Учтите: конторы могут ограничивать счета за арбитраж, а комиссии и лимиты снижают реальную прибыль.</div>
     <h2>Частые вопросы</h2>
-    <div class="faq"><details><summary>Чем выплата отличается от прибыли?</summary><p>Выплата — вся сумма при выигрыше, включая вашу ставку. Чистая прибыль — только заработок сверх вложенного.</p></details>
-<details><summary>Что такое подразумеваемая вероятность?</summary><p>Оценка вероятности исхода, «зашитая» в коэффициент: 100 % ÷ коэффициент. Для 1.85 это ≈ 54,1 %. В неё уже включена маржа букмекера.</p></details>
-<details><summary>Калькулятор учитывает налог на выигрыш?</summary><p>Нет, здесь чистый расчёт по коэффициенту. Для налога есть отдельный калькулятор НДФЛ.</p></details>
-<details><summary>Данные куда-то отправляются?</summary><p>Нет. Расчёт идёт прямо в браузере, суммы никуда не уходят и не сохраняются.</p></details></div>
+    <div class="faq"><details><summary>Что такое вилка (surebet)?</summary><p>Ставки на все исходы одного события у разных БК с такими коэффициентами, что при любом результате вы в плюсе независимо от исхода.</p></details>
+<details><summary>Когда вилка возможна?</summary><p>Когда суммарная подразумеваемая вероятность S = 1/o_A + 1/o_B меньше 1 (меньше 100 %). Если S ≥ 1 — вилки нет, это обычная маржа букмекера.</p></details>
+<details><summary>Как распределяются ставки?</summary><p>Пропорционально вероятности каждого исхода: ставка = бюджет × (1/коэффициент) ÷ S. Тогда возврат при любом исходе равен бюджет ÷ S.</p></details>
+<details><summary>Это законно и безопасно?</summary><p>Ставки у легальных БК законны, но конторы вправе ограничивать счета за систематический арбитраж. Прибыль на вилках мала и требует быстрых действий; лимиты и комиссии её уменьшают.</p></details></div>
     <h2 style="margin-top:20px">Другие инструменты</h2>
     <div class="tiles">
+      <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставки</b><small>выплата и чистая прибыль по коэффициенту</small></a>
       <a class="tile" href="/instrumenty/kalkulyator-ekspressa"><b>Калькулятор экспресса</b><small>итоговый коэффициент по всем событиям</small></a>
       <a class="tile" href="/instrumenty/konverter-koefficientov"><b>Конвертер коэффициентов</b><small>десятичные · дробные · американские</small></a>
       <a class="tile" href="/instrumenty/nalog-na-vyigrysh"><b>Налог на выигрыш</b><small>НДФЛ по правилам 2026 года</small></a>
-      <a class="tile" href="/instrumenty/kalkulyator-vilok"><b>Калькулятор вилок</b><small>распределение ставок, прибыль в %</small></a>
       <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить все конторы из реестра</small></a>
     </div>
   </div></section>
@@ -321,14 +324,17 @@ function fmtPct(n){return isFinite(n)?n.toFixed(1).replace('.',',')+' %':'—';}
 function fmtDec(n){return isFinite(n)?n.toFixed(2).replace('.',','):'—';}
 
 
-  function calcStake(){
-    var s=parseFloat(byId('stake').value), o=parseFloat(byId('odds').value);
-    var r=SRCalc.parlay([o],s), p=SRCalc.impliedProb(o);
-    byId('pay').textContent = r?fmtRub(r.payout):'\u2014';
-    byId('profit').textContent = r?fmtRub(r.profit):'\u2014';
-    byId('prob').textContent = p!=null?fmtPct(p):'\u2014';
+  function calcArb(){
+    var oA=parseFloat(byId('aoA').value), oB=parseFloat(byId('aoB').value), T=parseFloat(byId('abud').value);
+    var r=SRCalc.arb2(oA,oB,T), st=byId('astatus');
+    if(!r){ byId('asA').textContent='\u2014'; byId('asB').textContent='\u2014'; byId('aprof').textContent='\u2014'; st.textContent='Введите коэффициенты (>1) и бюджет.'; st.style.color='var(--muted)'; return; }
+    byId('asA').textContent=fmtRub(r.stakeA);
+    byId('asB').textContent=fmtRub(r.stakeB);
+    if(r.exists){ byId('aprof').textContent=fmtRub(r.profit); st.textContent='Вилка есть: возврат при любом исходе '+fmtRub(r.ret)+', гарантированная прибыль '+fmtPct(r.profitPct)+'.'; st.style.color='var(--success)'; }
+    else { byId('aprof').textContent=fmtRub(r.profit); st.textContent='Вилки нет: суммарная вероятность '+fmtPct(r.S*100)+' (≥100 %). При этих коэффициентах гарантированной прибыли не будет.'; st.style.color='var(--warning)'; }
   }
-  byId('stake').addEventListener('input',calcStake); byId('odds').addEventListener('input',calcStake); calcStake();
+  byId('aoA').addEventListener('input',calcArb); byId('aoB').addEventListener('input',calcArb); byId('abud').addEventListener('input',calcArb);
+  calcArb();
 
 </script>
 </main>

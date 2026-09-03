@@ -37,7 +37,23 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://stavki-rating.ru/instrumenty/kalkulyator-ekspressa</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://stavki-rating.ru/instrumenty/kalkulyator-stavok</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/instrumenty/kalkulyator-vilok</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/instrumenty/konverter-koefficientov</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/instrumenty/nalog-na-vyigrysh</loc>
     <priority>0.7</priority>
   </url>
   <url>

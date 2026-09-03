@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Калькулятор ставок онлайн — выплата и прибыль по коэффициенту</title>
-<meta name="description" content="Быстрый калькулятор ставки: введите сумму и коэффициент — узнайте выплату, чистую прибыль и подразумеваемую вероятность. Считает в браузере, без регистрации. 18+.">
-<link rel="canonical" href="https://stavki-rating.ru/instrumenty/kalkulyator-stavok">
+<title>Конвертер коэффициентов — форматы и вероятность онлайн</title>
+<meta name="description" content="Конвертер коэффициентов между форматами: десятичный, дробный (британский), американский (мани-лайн) и подразумеваемая вероятность. Считает в браузере. 18+.">
+<link rel="canonical" href="https://stavki-rating.ru/instrumenty/konverter-koefficientov">
 <meta name="yandex-verification" content="4edbdcb14677aee3">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%23C8FF4D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpolygon points='36,8 17,36 29,36 26,56 47,27 35,27' fill='%2307090F'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -142,8 +142,8 @@
   .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Инструменты", "item": "https://stavki-rating.ru/instrumenty/kalkulyator-stavok"}, {"@type": "ListItem", "position": 3, "name": "Калькулятор ставок", "item": "https://stavki-rating.ru/instrumenty/kalkulyator-stavok"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Чем выплата отличается от прибыли?", "acceptedAnswer": {"@type": "Answer", "text": "Выплата — вся сумма при выигрыше, включая вашу ставку. Чистая прибыль — только заработок сверх вложенного."}}, {"@type": "Question", "name": "Что такое подразумеваемая вероятность?", "acceptedAnswer": {"@type": "Answer", "text": "Оценка вероятности исхода, «зашитая» в коэффициент: 100 % ÷ коэффициент. Для 1.85 это ≈ 54,1 %. В неё уже включена маржа букмекера."}}, {"@type": "Question", "name": "Калькулятор учитывает налог на выигрыш?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, здесь чистый расчёт по коэффициенту. Для налога есть отдельный калькулятор НДФЛ."}}, {"@type": "Question", "name": "Данные куда-то отправляются?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Расчёт идёт прямо в браузере, суммы никуда не уходят и не сохраняются."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Инструменты", "item": "https://stavki-rating.ru/instrumenty/kalkulyator-stavok"}, {"@type": "ListItem", "position": 3, "name": "Конвертер коэффициентов", "item": "https://stavki-rating.ru/instrumenty/konverter-koefficientov"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Какой формат используют российские БК?", "acceptedAnswer": {"@type": "Answer", "text": "Десятичный (европейский): 1.85, 2.40 и т. д. Выплата = ставка × коэффициент. Дробный и американский — зарубежные форматы."}}, {"@type": "Question", "name": "Что показывает вероятность?", "acceptedAnswer": {"@type": "Answer", "text": "Подразумеваемую вероятность исхода, «зашитую» в коэффициент: 100 % ÷ коэффициент. В неё включена маржа букмекера."}}, {"@type": "Question", "name": "Как ввести дробный коэффициент?", "acceptedAnswer": {"@type": "Answer", "text": "Через дробь, например 17/20 или 3/2. Итоговый десятичный = числитель ÷ знаменатель + 1."}}, {"@type": "Question", "name": "Почему американский бывает со знаком минус?", "acceptedAnswer": {"@type": "Answer", "text": "Минус — для фаворитов (коэф. меньше 2.0): показывает, сколько нужно поставить, чтобы выиграть 100. Плюс — для андердогов."}}]}</script>
 </head>
 <body>
 
@@ -172,42 +172,48 @@
 <main>
 
   <section class="section tight"><div class="container">
-    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/instrumenty/kalkulyator-stavok">Инструменты</a><span>/</span>Калькулятор ставок</nav>
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/instrumenty/kalkulyator-stavok">Инструменты</a><span>/</span>Конвертер коэффициентов</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Инструмент ·</div>
-    <h1>Калькулятор ставок</h1>
-    <p class="muted" style="max-width:70ch;margin-top:10px">Введите сумму ставки и коэффициент — калькулятор мгновенно посчитает <strong style="color:var(--text)">выплату</strong> (сколько вернётся при выигрыше) и <strong style="color:var(--text)">чистую прибыль</strong> (выплата за вычетом ставки).</p>
+    <h1>Конвертер коэффициентов</h1>
+    <p class="muted" style="max-width:70ch;margin-top:10px">Один и тот же коэффициент записывают по-разному: десятичный (1.85), дробный (17/20), американский (−118). Введите значение в любом формате — калькулятор переведёт во все остальные и покажет <strong style="color:var(--text)">подразумеваемую вероятность</strong>.</p>
     <div class="tool" style="margin-top:18px">
-      <h3>Расчёт ставки</h3>
+      <h3>Перевод коэффициента</h3>
       <div class="tool-form">
-        <label class="field">Сумма ставки, ₽<input id="stake" type="number" value="1000" min="1" step="50" inputmode="decimal"></label>
-        <label class="field">Коэффициент<input id="odds" type="number" value="1.85" min="1.01" step="0.01" inputmode="decimal"></label>
+        <label class="field">Формат ввода<select id="cfmt">
+          <option value="decimal">Десятичный (напр. 1.85)</option>
+          <option value="american">Американский (напр. -118)</option>
+          <option value="fractional">Дробный (напр. 17/20)</option>
+        </select></label>
+        <label class="field">Значение<input id="cval" type="text" value="1.85" inputmode="decimal"></label>
       </div>
-      <div class="result">
-        <div><small>Выплата при выигрыше</small><b class="num" id="pay">—</b></div>
-        <div><small>Чистая прибыль</small><b class="num accent" id="profit">—</b></div>
+      <div class="result" style="grid-template-columns:repeat(auto-fit,minmax(130px,1fr))">
+        <div><small>Десятичный</small><b class="num" id="odec">—</b></div>
+        <div><small>Вероятность</small><b class="num accent" id="oprob">—</b></div>
+        <div><small>Дробный</small><b class="num" id="ofrac">—</b></div>
+        <div><small>Американский</small><b class="num" id="oam">—</b></div>
       </div>
-      <p class="small muted">Подразумеваемая вероятность исхода: <b class="num" id="prob" style="color:var(--text)">—</b>. Расчёт в браузере — суммы не сохраняются. Ставки связаны с риском, расчёт не гарантирует исход.</p>
+      <p class="small muted">Дробный формат вводите через дробь: <b>17/20</b>. Подразумеваемая вероятность включает маржу букмекера.</p>
     </div>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
     <h2>Как это считается</h2>
     <ul>
-      <li><strong>Выплата</strong> = сумма ставки × коэффициент.</li>
-      <li><strong>Чистая прибыль</strong> = выплата − сумма ставки.</li>
-      <li><strong>Подразумеваемая вероятность</strong> = 100 % ÷ коэффициент.</li>
+      <li><strong>Десятичный → вероятность:</strong> 100 % ÷ коэффициент. Пример: 2.00 → 50 %.</li>
+      <li><strong>Десятичный → дробный:</strong> (коэффициент − 1) несократимой дробью. Пример: 1.85 → 17/20.</li>
+      <li><strong>Десятичный → американский:</strong> при коэф. ≥ 2.0 это +(коэф−1)×100; при коэф. &lt; 2.0 это −100÷(коэф−1). Пример: 2.50 → +150; 1.85 → −118.</li>
+      <li><strong>Американский → десятичный:</strong> для +N это N/100+1; для −N это 100/N+1.</li>
     </ul>
-    <p>Пример: ставка 1 000 ₽ на коэффициент 1.85 → выплата 1 850 ₽, из них чистая прибыль 850 ₽, а «зашитая» в коэффициент вероятность ≈ 54,1 %.</p>
-    <div class="callout">Коэффициент уже включает маржу букмекера. Поэтому сумма подразумеваемых вероятностей по всем исходам события всегда больше 100 % — это и есть заработок конторы.</div>
+    <div class="callout">Десятичный формат (европейский) — основной у легальных БК России. Дробный чаще у британских контор, американский — в США.</div>
     <h2>Частые вопросы</h2>
-    <div class="faq"><details><summary>Чем выплата отличается от прибыли?</summary><p>Выплата — вся сумма при выигрыше, включая вашу ставку. Чистая прибыль — только заработок сверх вложенного.</p></details>
-<details><summary>Что такое подразумеваемая вероятность?</summary><p>Оценка вероятности исхода, «зашитая» в коэффициент: 100 % ÷ коэффициент. Для 1.85 это ≈ 54,1 %. В неё уже включена маржа букмекера.</p></details>
-<details><summary>Калькулятор учитывает налог на выигрыш?</summary><p>Нет, здесь чистый расчёт по коэффициенту. Для налога есть отдельный калькулятор НДФЛ.</p></details>
-<details><summary>Данные куда-то отправляются?</summary><p>Нет. Расчёт идёт прямо в браузере, суммы никуда не уходят и не сохраняются.</p></details></div>
+    <div class="faq"><details><summary>Какой формат используют российские БК?</summary><p>Десятичный (европейский): 1.85, 2.40 и т. д. Выплата = ставка × коэффициент. Дробный и американский — зарубежные форматы.</p></details>
+<details><summary>Что показывает вероятность?</summary><p>Подразумеваемую вероятность исхода, «зашитую» в коэффициент: 100 % ÷ коэффициент. В неё включена маржа букмекера.</p></details>
+<details><summary>Как ввести дробный коэффициент?</summary><p>Через дробь, например 17/20 или 3/2. Итоговый десятичный = числитель ÷ знаменатель + 1.</p></details>
+<details><summary>Почему американский бывает со знаком минус?</summary><p>Минус — для фаворитов (коэф. меньше 2.0): показывает, сколько нужно поставить, чтобы выиграть 100. Плюс — для андердогов.</p></details></div>
     <h2 style="margin-top:20px">Другие инструменты</h2>
     <div class="tiles">
+      <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставки</b><small>выплата и чистая прибыль по коэффициенту</small></a>
       <a class="tile" href="/instrumenty/kalkulyator-ekspressa"><b>Калькулятор экспресса</b><small>итоговый коэффициент по всем событиям</small></a>
-      <a class="tile" href="/instrumenty/konverter-koefficientov"><b>Конвертер коэффициентов</b><small>десятичные · дробные · американские</small></a>
       <a class="tile" href="/instrumenty/nalog-na-vyigrysh"><b>Налог на выигрыш</b><small>НДФЛ по правилам 2026 года</small></a>
       <a class="tile" href="/instrumenty/kalkulyator-vilok"><b>Калькулятор вилок</b><small>распределение ставок, прибыль в %</small></a>
       <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить все конторы из реестра</small></a>
@@ -321,14 +327,22 @@ function fmtPct(n){return isFinite(n)?n.toFixed(1).replace('.',',')+' %':'—';}
 function fmtDec(n){return isFinite(n)?n.toFixed(2).replace('.',','):'—';}
 
 
-  function calcStake(){
-    var s=parseFloat(byId('stake').value), o=parseFloat(byId('odds').value);
-    var r=SRCalc.parlay([o],s), p=SRCalc.impliedProb(o);
-    byId('pay').textContent = r?fmtRub(r.payout):'\u2014';
-    byId('profit').textContent = r?fmtRub(r.profit):'\u2014';
-    byId('prob').textContent = p!=null?fmtPct(p):'\u2014';
+  function calcConv(){
+    var fmt=byId('cfmt').value, raw=(byId('cval').value||'').trim().replace(',','.'), res=null;
+    if(fmt==='fractional'){ var m=raw.split('/'); res=SRCalc.convert({num:parseFloat(m[0]),den:parseFloat(m[1])},'fractional'); }
+    else res=SRCalc.convert(parseFloat(raw), fmt);
+    if(!res){ byId('odec').textContent='\u2014'; byId('oprob').textContent='\u2014'; byId('ofrac').textContent='\u2014'; byId('oam').textContent='\u2014'; return; }
+    byId('odec').textContent = fmtDec(res.decimal);
+    byId('oprob').textContent = fmtPct(res.prob);
+    byId('ofrac').textContent = res.fractional ? (res.fractional.num+'/'+res.fractional.den) : '\u2014';
+    byId('oam').textContent = res.american!=null ? (res.american>0?'+':'')+res.american : '\u2014';
   }
-  byId('stake').addEventListener('input',calcStake); byId('odds').addEventListener('input',calcStake); calcStake();
+  byId('cfmt').addEventListener('change',function(){
+    var ph={decimal:'1.85',american:'-118',fractional:'17/20'}[byId('cfmt').value];
+    byId('cval').value=ph; calcConv();
+  });
+  byId('cval').addEventListener('input',calcConv);
+  calcConv();
 
 </script>
 </main>
