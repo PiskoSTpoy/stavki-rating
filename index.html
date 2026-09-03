@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%23C8FF4D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpolygon points='36,8 17,36 29,36 26,56 47,27 35,27' fill='%2307090F'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
 <style>
   :root {
     --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
@@ -19,8 +19,8 @@
     --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
     --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
     --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
-    --font-display: "Unbounded", "Manrope", system-ui, sans-serif;
-    --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-display: "Oswald", "Inter", system-ui, sans-serif;
+    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
     --container: 1240px;
     color-scheme: dark;
   }
@@ -31,7 +31,7 @@
   a:hover { color: var(--volt); }
   img { max-width: 100%; display: block; }
   button { font: inherit; cursor: pointer; }
-  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.12; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
   h1 { font-size: clamp(23px, 2.8vw, 35px); }
   h2 { font-size: clamp(21px, 2.4vw, 28px); }
   h3 { font-size: 18px; font-weight: 500; }
@@ -483,7 +483,7 @@ requestAnimationFrame(()=>document.querySelectorAll('.ring-fg').forEach(c=>{ c.s
     // тиснёная монограмма
     if(flip>0.55){
       ctx.globalAlpha=(flip-0.55)/0.45;
-      ctx.font=`800 ${Math.round(h*0.32)}px "Unbounded", system-ui, sans-serif`;
+      ctx.font=`800 ${Math.round(h*0.32)}px "Inter", system-ui, sans-serif`;
       ctx.textAlign='center'; ctx.textBaseline='middle';
       ctx.fillStyle='rgba(0,0,0,.35)'; ctx.fillText(c.t,0,2);
       ctx.fillStyle='#fff'; ctx.fillText(c.t,0,0.5);
