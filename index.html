@@ -435,6 +435,7 @@ requestAnimationFrame(()=>document.querySelectorAll('.ring-fg').forEach(c=>{ c.s
   const DATA = [['#D8312B','ФБ'],['#FF6A13','WL'],['#F59E0B','ЛС'],['#8B5CF6','PA'],['#06B6D4','BB'],['#EAB308','LN'],['#E11D48','OL']];
   let W=0,H=0,dpr=Math.min(devicePixelRatio||1,2), coins=[], t0=0, mx=0,my=0,tx=0,ty=0, ring=null;
   function shade(hex){ const n=parseInt(hex.slice(1),16); return `rgb(${((n>>16&255)*.45)|0},${((n>>8&255)*.45)|0},${((n&255)*.45)|0})`; }
+  function lighten(hex){ const n=parseInt(hex.slice(1),16), f=(v)=>Math.min(255,(v*1.4+46)|0); return `rgb(${f(n>>16&255)},${f(n>>8&255)},${f(n&255)})`; }
   function lay(){ const r=scene.getBoundingClientRect(); W=r.width; H=r.height; cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
   function reset(){
     const cx=W*0.5, cy=H*0.47, base=H+30, sz=Math.min(78, W*0.12), n=DATA.length;
@@ -448,15 +449,46 @@ requestAnimationFrame(()=>document.querySelectorAll('.ring-fg').forEach(c=>{ c.s
     ring={r:0,a:1}; t0=performance.now();
   }
   function coin(c){
-    const flip=Math.abs(Math.cos(c.rot)), w=c.size*Math.max(0.16,flip), h=c.size;
+    const flip=Math.abs(Math.cos(c.rot)), w=c.size*Math.max(0.14,flip), h=c.size, r=w/2, R=h/2, spin=Math.sin(c.rot);
     ctx.save(); ctx.translate(c.x+tx, c.y+ty);
-    ctx.shadowColor=c.c; ctx.shadowBlur=22;
-    ctx.beginPath(); ctx.ellipse(0,0,w/2,h/2,0,0,7);
-    const g=ctx.createRadialGradient(-w*0.15,-h*0.2,1,0,0,h*0.62);
-    g.addColorStop(0,'#ffffff'); g.addColorStop(.28,c.c); g.addColorStop(1,shade(c.c));
-    ctx.fillStyle=g; ctx.fill(); ctx.shadowBlur=0;
-    ctx.lineWidth=Math.max(2,w*0.09); ctx.strokeStyle='rgba(245,197,66,.95)'; ctx.stroke();
-    if(flip>0.6){ ctx.globalAlpha=(flip-0.6)/0.4; ctx.fillStyle='#fff'; ctx.font=`700 ${Math.round(h*0.3)}px "Unbounded", system-ui, sans-serif`; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText(c.t,0,1); ctx.globalAlpha=1; }
+    // мягкое свечение в цвет БК
+    ctx.shadowColor=c.c; ctx.shadowBlur=26; ctx.shadowOffsetY=5;
+    // ребро монеты (толщина) — золотая полоса со сдвигом, видна при повороте
+    ctx.beginPath(); ctx.ellipse(spin*Math.max(2,w*0.16),0,r,R,0,0,7);
+    const ed=ctx.createLinearGradient(0,-R,0,R);
+    ed.addColorStop(0,'#7a5c18'); ed.addColorStop(.5,'#f3d074'); ed.addColorStop(1,'#5f470f');
+    ctx.fillStyle=ed; ctx.fill();
+    ctx.shadowBlur=0; ctx.shadowOffsetY=0;
+    // лицо монеты — металлический градиент в цвет БК
+    ctx.beginPath(); ctx.ellipse(0,0,r,R,0,0,7);
+    const g=ctx.createRadialGradient(-w*0.22,-h*0.24,1,0,0,h*0.66);
+    g.addColorStop(0,'#ffffff'); g.addColorStop(.16,lighten(c.c)); g.addColorStop(.55,c.c); g.addColorStop(1,shade(c.c));
+    ctx.fillStyle=g; ctx.fill();
+    // рифлёный золотой ободок
+    ctx.lineWidth=Math.max(2,w*0.11);
+    const rim=ctx.createLinearGradient(-r,-R,r,R);
+    rim.addColorStop(0,'#fff0be'); rim.addColorStop(.5,'#d9a441'); rim.addColorStop(1,'#7a5c18');
+    ctx.strokeStyle=rim; ctx.stroke();
+    // внутренний бортик (тиснение)
+    ctx.beginPath(); ctx.ellipse(0,0,r*0.80,R*0.80,0,0,7);
+    ctx.lineWidth=Math.max(1,w*0.03); ctx.strokeStyle='rgba(255,255,255,.30)'; ctx.stroke();
+    // глянцевый блик сверху-слева
+    if(flip>0.30){
+      ctx.save(); ctx.globalCompositeOperation='screen';
+      const hl=ctx.createRadialGradient(-w*0.16,-h*0.22,1,-w*0.16,-h*0.22,r*0.62);
+      hl.addColorStop(0,'rgba(255,255,255,.6)'); hl.addColorStop(1,'rgba(255,255,255,0)');
+      ctx.beginPath(); ctx.ellipse(-w*0.16,-h*0.22,r*0.5,R*0.34,-0.5,0,7); ctx.fillStyle=hl; ctx.fill();
+      ctx.restore();
+    }
+    // тиснёная монограмма
+    if(flip>0.55){
+      ctx.globalAlpha=(flip-0.55)/0.45;
+      ctx.font=`800 ${Math.round(h*0.32)}px "Unbounded", system-ui, sans-serif`;
+      ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.fillStyle='rgba(0,0,0,.35)'; ctx.fillText(c.t,0,2);
+      ctx.fillStyle='#fff'; ctx.fillText(c.t,0,0.5);
+      ctx.globalAlpha=1;
+    }
     ctx.restore();
   }
   function frame(now){
