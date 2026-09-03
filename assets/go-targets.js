@@ -22,7 +22,10 @@ window.GO_TARGETS = {
   },
   "betcity": {
     "official": "https://betcity.ru/",
-    "partner": null
+    "partner": {
+      "url": "https://betsxwin.pro/click?o=143&a=21332&tsource=1037&link_id=362",
+      "subParam": "subid"
+    }
   },
   "fonbet": {
     "official": "https://fon.bet/",
