@@ -29,7 +29,10 @@ window.GO_TARGETS = {
   },
   "fonbet": {
     "official": "https://fon.bet/",
-    "partner": null
+    "partner": {
+      "url": "https://clicks.af-bk6bba.com/click?offer_id=884&partner_id=34202&url=https%3a%2f%2ffon.bet%2f&utm_medium=affiliate",
+      "subParam": "sub_1"
+    }
   },
   "leon": {
     "official": "https://leon.ru/",
@@ -53,7 +56,10 @@ window.GO_TARGETS = {
   },
   "pari": {
     "official": "https://pari.ru/",
-    "partner": null
+    "partner": {
+      "url": "https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=34201&landing_id=68&utm_medium=affiliate",
+      "subParam": "sub_1"
+    }
   },
   "sportbet": {
     "official": "https://sportbet.ru/",
