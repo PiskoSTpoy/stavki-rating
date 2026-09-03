@@ -37,6 +37,10 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://stavki-rating.ru/instrumenty/kalkulyator-stavok</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://stavki-rating.ru/kak-proverit-licenziyu</loc>
     <priority>0.7</priority>
   </url>
