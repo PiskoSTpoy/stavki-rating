@@ -74,6 +74,9 @@ window.GO_TARGETS = {
   },
   "zenit": {
     "official": "https://zenit.win/",
-    "partner": null
+    "partner": {
+      "url": "https://zenit-partners.com/get/88fc0c49-1d2b-4fda-9adb-c28b7e21c832/13993/",
+      "subParam": "subid"
+    }
   }
 };
