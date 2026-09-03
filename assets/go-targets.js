@@ -44,7 +44,10 @@ window.GO_TARGETS = {
   },
   "marathonbet": {
     "official": "https://marathonbet.ru/",
-    "partner": null
+    "partner": {
+      "url": "https://mrthn.ru/dbolx6i6r",
+      "subParam": "subid"
+    }
   },
   "melbet": {
     "official": "https://melbet.ru/",
