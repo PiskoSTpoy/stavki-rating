@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Что такое система в ставках: расчёт и примеры</title>
+<meta name="description" content="Что такое система в ставках простыми словами: полный перебор экспрессов, сколько комбинаций, как считается выплата, примеры расчёта на 1000 рублей и когда она выгоднее ординара и экспресса.">
+<link rel="canonical" href="https://stavki-rating.ru/shkola/terminy/chto-takoe-sistema">
+<meta name="yandex-verification" content="4edbdcb14677aee3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%23C8FF4D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpolygon points='36,8 17,36 29,36 26,56 47,27 35,27' fill='%2307090F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Oswald", "Inter", system-ui, sans-serif;
+    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
+
+  /* Секции */
+  .section { padding: 30px 0; }
+  .section.tight { padding-top: 6px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Хлебные крошки */
+  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs span { color: var(--muted-2); }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .result .accent { color: var(--volt); }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Текстовый контент страницы */
+  .prose { max-width: 75ch; display: grid; gap: 14px; }
+  .prose h2 { margin-top: 14px; }
+  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  .prose p { color: var(--text); }
+  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
+  .prose li { line-height: 1.5; }
+  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--text); font-weight: 700; }
+  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .faq { display: grid; gap: 10px; }
+  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; float: right; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; }
+
+  /* Футер */
+  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Термины", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Что такое система в ставках", "item": "https://stavki-rating.ru/shkola/terminy/chto-takoe-sistema"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Что такое система в ставках", "description": "Что такое система в ставках простыми словами: полный перебор экспрессов, сколько комбинаций, как считается выплата, примеры расчёта на 1000 рублей и когда она выгоднее ординара и экспресса.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/terminy/chto-takoe-sistema", "datePublished": "2026-09-04", "dateModified": "2026-09-04", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Чем система отличается от экспресса?", "acceptedAnswer": {"@type": "Answer", "text": "Экспресс — это одна комбинация, где для выплаты должны зайти все события; один промах обнуляет ставку. Система — это сразу набор экспрессов одинаковой размерности из выбранных событий, поэтому часть комбинаций может выиграть даже при одном-двух не сыгравших прогнозах. Плата за такую страховку — меньшая выплата при полном попадании, ведь ставка делится на все комбинации."}}, {"@type": "Question", "name": "Как понять запись «2 из 3» или «3 из 4»?", "acceptedAnswer": {"@type": "Answer", "text": "Первое число — размер каждого экспресса, второе — сколько всего событий вы выбрали. «2 из 3»: из трёх событий собираются все двойные экспрессы (3 комбинации). «3 из 4»: из четырёх событий — все тройные (4 комбинации). Возврат появляется, когда угадано не меньше событий, чем первое число."}}, {"@type": "Question", "name": "Сколько комбинаций получится в системе?", "acceptedAnswer": {"@type": "Answer", "text": "Число комбинаций считается по формуле сочетаний C(n, k), где n — количество событий, k — размерность. Например: «2 из 3» — 3 комбинации, «3 из 4» — 4, «3 из 5» — 10, «3 из 6» — 20. На это же число делится сумма ставки."}}, {"@type": "Question", "name": "Можно ли остаться в плюсе, если не все события зашли?", "acceptedAnswer": {"@type": "Answer", "text": "Да, в этом главный смысл системы. В «2 из 3» достаточно угадать 2 события из 3, чтобы получить возврат, а нередко и прибыль. В «3 из 4» порог — 3 верных из 4. Но если верных прогнозов меньше размерности системы, не набирается ни один полный экспресс и ставка проигрывает целиком."}}, {"@type": "Question", "name": "Когда лучше поставить систему, а не экспресс?", "acceptedAnswer": {"@type": "Answer", "text": "Система рациональна, когда вы уверены в большинстве событий, но допускаете, что одно-два могут не сыграть, и хотите застраховать банк от единичного промаха. Если вы уверены во всех событиях, экспресс принесёт больше. Если не уверены почти ни в одном — деление ставки просто размажет проигрыш."}}]}</script>
+</head>
+<body>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav">
+    <a href="/#top3">Букмекеры</a>
+    <a href="/rating">Рейтинг</a>
+    <a href="/#compare">Сравнение</a>
+    <a href="/instrumenty/kalkulyator-stavok" class="active">Инструменты</a>
+    <a href="/kak-proverit-licenziyu">Школа</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main>
+
+  <section class="section tight"><div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Термины</a><span>/</span>Что такое система в ставках</nav>
+    <div class="eyebrow" style="margin:16px 0 8px">· Школа · Термины ·</div>
+    <h1>Что такое система в ставках</h1>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 04.09.2026</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">Система в ставках — это пари, которое автоматически составляет из выбранных событий полный набор экспрессов одинаковой размерности: например, «2 из 3» — это все возможные двойные экспрессы из трёх событий (три комбинации). Общая сумма ставки делится поровну между всеми комбинациями, а выплату приносит каждый экспресс, все события которого зашли. Главный смысл системы — получить прибыль или вернуть часть денег, даже если один или несколько прогнозов не сыграли.</p>
+  </div></section>
+
+  <section class="section" style="padding-top:6px"><div class="container prose">
+    <h2>Как устроена система: полный перебор экспрессов</h2>
+<p>Система задаётся двумя числами: <strong>размерностью</strong> и <strong>количеством событий</strong>. Запись «2 из 3» означает, что вы выбрали 3 события, а букмекер составит из них все возможные экспрессы по 2 события. «3 из 4» — четыре события, из которых собираются все тройные экспрессы, и так далее.</p><p>Каждая комбинация внутри системы — это обычный экспресс: чтобы она принесла выплату, должны зайти <strong>все</strong> входящие в неё события. Отличие от одиночного экспресса в том, что комбинаций несколько, и часть из них может выиграть, даже если отдельные прогнозы не сыграли. Поэтому система переживает промахи: в «2 из 3» вы остаётесь в плюсе или при своих, угадав всего 2 события из 3, а не обязательно все три.</p><p>Правило простое: система с размерностью k из n начинает приносить возврат, когда угадано не меньше k событий. Если верных прогнозов меньше k — не набирается ни один полный экспресс, и ставка проигрывает целиком.</p>
+<h2>Сколько комбинаций в системе</h2>
+<p>Число комбинаций считается по формуле сочетаний C(n, k) — «сколько способами можно выбрать k событий из n». Например, для «2 из 3»: C(3,2) = 3, для «3 из 4»: C(4,3) = 4, для «3 из 5»: C(5,3) = 10. Это число важно, потому что именно на столько равных частей делится ваша ставка.</p><table><thead><tr><th>Система</th><th>Событий (n)</th><th>Размер экспресса (k)</th><th>Комбинаций C(n,k)</th><th>Доля ставки 1000 ₽ на комбинацию</th></tr></thead><tbody><tr><td>2 из 3</td><td>3</td><td>2</td><td>3</td><td>333,33 ₽</td></tr><tr><td>2 из 4</td><td>4</td><td>2</td><td>6</td><td>166,67 ₽</td></tr><tr><td>3 из 4</td><td>4</td><td>3</td><td>4</td><td>250,00 ₽</td></tr><tr><td>3 из 5</td><td>5</td><td>3</td><td>10</td><td>100,00 ₽</td></tr><tr><td>4 из 5</td><td>5</td><td>4</td><td>5</td><td>200,00 ₽</td></tr><tr><td>3 из 6</td><td>6</td><td>3</td><td>20</td><td>50,00 ₽</td></tr></tbody></table><p>Чем больше комбинаций, тем сильнее «размазывается» ставка: при системе «3 из 6» на каждый из 20 экспрессов приходится всего 50 ₽ от тысячи, и одиночные попадания дают скромный возврат.</p>
+<h2>Как считается выплата</h2>
+<p>Механика расчёта состоит из трёх шагов:</p><ul><li><strong>Делим сумму.</strong> Общая ставка делится поровну на число комбинаций. При ставке 1000 ₽ в системе «2 из 3» каждая из 3 комбинаций получает 333,33 ₽.</li><li><strong>Считаем коэффициент каждого экспресса.</strong> Коэффициенты событий внутри комбинации перемножаются, как в обычном экспрессе.</li><li><strong>Суммируем выигравшие.</strong> Выплату приносят только те комбинации, в которых зашли все события. Доля ставки этой комбинации умножается на её коэффициент; результаты по всем выигравшим экспрессам складываются.</li></ul><p>Итоговая прибыль = сумма возвратов по выигравшим комбинациям − вся вложенная сумма (1000 ₽). Из-за деления ставки система при полном попадании всегда платит меньше, чем экспресс на те же события, — это плата за страховку от промаха.</p>
+<h2>Пример расчёта: система «2 из 3» на 1000 ₽</h2>
+<p>Возьмём три события с коэффициентами: <strong>A — 1.80</strong>, <strong>B — 2.00</strong>, <strong>C — 1.50</strong>. Система «2 из 3» даёт 3 комбинации по 333,33 ₽:</p><ul><li>A×B = 1.80 × 2.00 = <strong>3.60</strong></li><li>A×C = 1.80 × 1.50 = <strong>2.70</strong></li><li>B×C = 2.00 × 1.50 = <strong>3.00</strong></li></ul><table><thead><tr><th>Исход</th><th>Выигравшие комбинации</th><th>Возврат</th><th>Прибыль</th></tr></thead><tbody><tr><td>Зашли все 3 (A, B, C)</td><td>A×B, A×C, B×C</td><td>333,33×3.60 + 333,33×2.70 + 333,33×3.00 = 3100 ₽</td><td>+2100 ₽</td></tr><tr><td>Зашли 2 (A, B; C не сыграл)</td><td>только A×B</td><td>333,33 × 3.60 = 1200 ₽</td><td>+200 ₽</td></tr><tr><td>Зашли 2 (B, C; A не сыграл)</td><td>только B×C</td><td>333,33 × 3.00 = 1000 ₽</td><td>0 ₽ (возврат)</td></tr><tr><td>Зашло только 1 или 0</td><td>нет</td><td>0 ₽</td><td>−1000 ₽</td></tr></tbody></table><p>Обратите внимание: при двух угаданных событиях результат зависит от того, <strong>какая</strong> пара сыграла — комбинация из более высоких коэффициентов даёт больше. Для сравнения, одиночный экспресс из всех трёх (1.80×2.00×1.50 = 5.40) при полном попадании принёс бы с 1000 ₽ возврат 5400 ₽ (+4400), но при единственном промахе — полный проигрыш.</p>
+<h2>Пример «3 из 4» и порог срабатывания</h2>
+<p>События: <strong>A — 1.70</strong>, <strong>B — 1.90</strong>, <strong>C — 2.10</strong>, <strong>D — 1.60</strong>. Система «3 из 4» = 4 тройных экспресса по 250 ₽:</p><ul><li>A×B×C = 6.78 &nbsp;•&nbsp; A×B×D = 5.17 &nbsp;•&nbsp; A×C×D = 5.71 &nbsp;•&nbsp; B×C×D = 6.38</li></ul><table><thead><tr><th>Исход</th><th>Что выигрывает</th><th>Возврат</th><th>Прибыль</th></tr></thead><tbody><tr><td>Зашли все 4</td><td>все 4 комбинации</td><td>≈ 6012 ₽</td><td>≈ +5012 ₽</td></tr><tr><td>Зашли 3 (A, B, C; не сыграл D)</td><td>только A×B×C</td><td>250 × 6.78 = 1695 ₽</td><td>≈ +695 ₽</td></tr><tr><td>Зашли 3 (A, B, D; не сыграл C)</td><td>только A×B×D</td><td>250 × 5.17 = 1292 ₽</td><td>≈ +292 ₽</td></tr><tr><td>Зашли 2 или меньше</td><td>нет полной тройки</td><td>0 ₽</td><td>−1000 ₽</td></tr></tbody></table><p>Здесь порог — 3 верных прогноза из 4. Один промах ещё оставляет прибыль, но два промаха обнуляют ставку. Это иллюстрирует общее правило: система прощает ровно (n − k) ошибок.</p>
+<h2>Когда система выгоднее ординара и экспресса</h2>
+<p>У трёх форматов разный баланс риска и выплаты:</p><ul><li><strong>Ординар</strong> — минимальный риск и минимальная выплата: каждое событие отдельно, результаты не связаны. Подходит, когда вы уверены в одном прогнозе.</li><li><strong>Экспресс</strong> — максимальная выплата за счёт перемножения коэффициентов, но один промах убивает всю ставку. Высокая дисперсия, играется на серии из уверенных исходов.</li><li><strong>Система</strong> — компромисс: платит меньше экспресса при полном попадании, но переживает 1–2 промаха. Рациональна, когда вы уверены в <em>большинстве</em> событий, но допускаете, что одно-два могут не зайти, и хотите застраховать банк.</li></ul><p>Система невыгодна, если вы уверены во всех событиях (тогда экспресс даст больше) или не уверены почти ни в одном (тогда деление ставки просто размажет проигрыш). Её ниша — «уверен в основном, но подстраховываюсь».</p>
+<h2>На что смотреть и частые ошибки</h2>
+<ul><li><strong>Деление ставки.</strong> Заявленная сумма делится на все комбинации, а не ставится на каждую целиком. Новички переоценивают возможный выигрыш, забыв про это.</li><li><strong>Порог k.</strong> Возврат начинается только с k угаданных событий; меньше — полный проигрыш. «Система» не значит «гарантированный возврат».</li><li><strong>Зависимость выплаты от того, какие события зашли.</strong> При частичном попадании итог определяется коэффициентами именно выигравших комбинаций.</li><li><strong>Много комбинаций — мелкие возвраты.</strong> «3 из 6» даёт 20 экспрессов по 50 ₽; одиночные попадания почти не двигают банк.</li><li><strong>Проверяйте расчёт в купоне.</strong> Легальные букмекеры РФ показывают число комбинаций и потенциальную выплату до подтверждения — сверяйте с собственным подсчётом.</li></ul>
+    <h2>Частые вопросы</h2>
+    <div class="faq"><details><summary>Чем система отличается от экспресса?</summary><p>Экспресс — это одна комбинация, где для выплаты должны зайти все события; один промах обнуляет ставку. Система — это сразу набор экспрессов одинаковой размерности из выбранных событий, поэтому часть комбинаций может выиграть даже при одном-двух не сыгравших прогнозах. Плата за такую страховку — меньшая выплата при полном попадании, ведь ставка делится на все комбинации.</p></details>
+<details><summary>Как понять запись «2 из 3» или «3 из 4»?</summary><p>Первое число — размер каждого экспресса, второе — сколько всего событий вы выбрали. «2 из 3»: из трёх событий собираются все двойные экспрессы (3 комбинации). «3 из 4»: из четырёх событий — все тройные (4 комбинации). Возврат появляется, когда угадано не меньше событий, чем первое число.</p></details>
+<details><summary>Сколько комбинаций получится в системе?</summary><p>Число комбинаций считается по формуле сочетаний C(n, k), где n — количество событий, k — размерность. Например: «2 из 3» — 3 комбинации, «3 из 4» — 4, «3 из 5» — 10, «3 из 6» — 20. На это же число делится сумма ставки.</p></details>
+<details><summary>Можно ли остаться в плюсе, если не все события зашли?</summary><p>Да, в этом главный смысл системы. В «2 из 3» достаточно угадать 2 события из 3, чтобы получить возврат, а нередко и прибыль. В «3 из 4» порог — 3 верных из 4. Но если верных прогнозов меньше размерности системы, не набирается ни один полный экспресс и ставка проигрывает целиком.</p></details>
+<details><summary>Когда лучше поставить систему, а не экспресс?</summary><p>Система рациональна, когда вы уверены в большинстве событий, но допускаете, что одно-два могут не сыграть, и хотите застраховать банк от единичного промаха. Если вы уверены во всех событиях, экспресс принесёт больше. Если не уверены почти ни в одном — деление ставки просто размажет проигрыш.</p></details></div>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="tiles">
+      <a class="tile" href="/shkola/terminy/chto-takoe-fora"><b>Что такое фора в ставках: виды форы и расчёт возврата</b><small>Термины</small></a>
+      <a class="tile" href="/shkola/terminy/chto-takoe-total"><b>Что такое тотал в ставках</b><small>Термины</small></a>
+      <a class="tile" href="/shkola/kak-eto-rabotaet/vidy-stavok-na-sport"><b>Виды ставок на спорт: полный разбор форматов и рынков</b><small>Как это работает</small></a>
+      <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
+      <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — информация о легальных букмекерах России из реестра ЕЦУПС/ЕРАИ. Возрастная категория 18+. Данные на странице демонстрационные — для проверки дизайна и комплаенс-компонентов.</p>
+    </div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/#top3">Промокоды и фрибеты</a><a href="/#compare">Сравнение</a><a href="/instrumenty/kalkulyator-stavok">Инструменты</a></div>
+    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕЦУПС/ЕРАИ.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+</body>
+</html>

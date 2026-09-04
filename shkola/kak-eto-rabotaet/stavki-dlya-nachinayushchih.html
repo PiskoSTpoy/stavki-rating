@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ставки на спорт для начинающих: с чего начать</title>
+<meta name="description" content="Гид для новичка: как выбрать легальную БК из реестра ЕРАИ, какие бывают виды ставок, как считается выплата, банкролл-менеджмент, налог 2026 и самозапрет.">
+<link rel="canonical" href="https://stavki-rating.ru/shkola/kak-eto-rabotaet/stavki-dlya-nachinayushchih">
+<meta name="yandex-verification" content="4edbdcb14677aee3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%23C8FF4D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpolygon points='36,8 17,36 29,36 26,56 47,27 35,27' fill='%2307090F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Oswald", "Inter", system-ui, sans-serif;
+    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
+
+  /* Секции */
+  .section { padding: 30px 0; }
+  .section.tight { padding-top: 6px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Хлебные крошки */
+  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs span { color: var(--muted-2); }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .result .accent { color: var(--volt); }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Текстовый контент страницы */
+  .prose { max-width: 75ch; display: grid; gap: 14px; }
+  .prose h2 { margin-top: 14px; }
+  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  .prose p { color: var(--text); }
+  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
+  .prose li { line-height: 1.5; }
+  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--text); font-weight: 700; }
+  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .faq { display: grid; gap: 10px; }
+  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; float: right; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; }
+
+  /* Футер */
+  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Как это работает", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Ставки на спорт для начинающих: полный гид по первым шагам", "item": "https://stavki-rating.ru/shkola/kak-eto-rabotaet/stavki-dlya-nachinayushchih"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ставки на спорт для начинающих: полный гид по первым шагам", "description": "Гид для новичка: как выбрать легальную БК из реестра ЕРАИ, какие бывают виды ставок, как считается выплата, банкролл-менеджмент, налог 2026 и самозапрет.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/kak-eto-rabotaet/stavki-dlya-nachinayushchih", "datePublished": "2026-09-04", "dateModified": "2026-09-04", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "С какой суммы можно начинать делать ставки?", "acceptedAnswer": {"@type": "Answer", "text": "Технически минимальные депозиты в легальных БК начинаются от 50–100 рублей, но важна не сумма депозита, а размер банкролла. Одна ставка должна составлять 1–3% банка, поэтому ставка в 1000 рублей комфортна при банке от 30 000–50 000 рублей. Начинать лучше с небольшой суммы, которую не жалко потерять полностью, и с одиночных ставок."}}, {"@type": "Question", "name": "Как проверить, что букмекер легальный?", "acceptedAnswer": {"@type": "Answer", "text": "Зайдите на сайт регулятора erai.ru в раздел «Реестр лицензиатов» или в реестр разрешений на knd.gov.ru и найдите бренд по названию. Легальная БК обязана иметь лицензию ФНС, состоять в СРО и быть подключённой к Единому ЦУПИС — все пополнения и выводы идут через него. Если конторы в реестре нет, это нелегальный оператор."}}, {"@type": "Question", "name": "Нужно ли самому платить налог с выигрыша в 2026 году?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. С 1 января 2026 года налоговым агентом по всем выигрышам в БК стала сама букмекерская контора — она удерживает 13% с чистого выигрыша при выводе автоматически. Действует годовой необлагаемый минимум 4000 рублей. Самостоятельно подавать 3-НДФЛ по ставкам в легальной БК больше не требуется."}}, {"@type": "Question", "name": "Какие ставки лучше выбирать новичку?", "acceptedAnswer": {"@type": "Answer", "text": "Одиночные ставки (ординары) на понятные исходы — победа/ничья, тотал больше/меньше, фора — в спорте, который вы реально понимаете, с коэффициентами примерно 1.50–2.50. Длинные экспрессы дают большой множитель, но вероятность прохода купона падает с каждым добавленным событием, поэтому для старта они не подходят."}}, {"@type": "Question", "name": "Можно ли отменить самозапрет на азартные игры досрочно?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Самозапрет через Госуслуги или МФЦ оформляется на срок не менее 12 месяцев, и досрочно снять его нельзя — это заложено в закон намеренно, чтобы решение нельзя было отменить в момент срыва. После включения в перечень ЕРАИ (в течение примерно 12 часов) все легальные БК обязаны отказывать в приёме ставок и выплатах."}}]}</script>
+</head>
+<body>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav">
+    <a href="/#top3">Букмекеры</a>
+    <a href="/rating">Рейтинг</a>
+    <a href="/#compare">Сравнение</a>
+    <a href="/instrumenty/kalkulyator-stavok" class="active">Инструменты</a>
+    <a href="/kak-proverit-licenziyu">Школа</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main>
+
+  <section class="section tight"><div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Как это работает</a><span>/</span>Ставки на спорт для начинающих: полный гид по первым шагам</nav>
+    <div class="eyebrow" style="margin:16px 0 8px">· Школа · Как это работает ·</div>
+    <h1>Ставки на спорт для начинающих: полный гид по первым шагам</h1>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 04.09.2026</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">Начинать нужно с одного: играть только в легальной букмекерской конторе из реестра ЕРАИ (лицензия ФНС, подключение к Единому ЦУПИС). Дальше — понять, как читается коэффициент и считается выплата, освоить банкролл-менеджмент (ставить фиксированный небольшой процент банка), знать про налог, который с 2026 года удерживает сама БК, и заранее настроить инструменты ответственной игры вплоть до самозапрета через Госуслуги. Ниже — по шагам и с расчётами на ставку 1000 рублей.</p>
+  </div></section>
+
+  <section class="section" style="padding-top:6px"><div class="container prose">
+    <h2>Шаг 1. Только легальная БК: как проверить за 30 секунд</h2>
+<p>Первое и главное правило новичка — не путать легальную российскую букмекерскую контору с офшорным «зеркалом». Легальная БК в России обязана одновременно выполнять весь набор требований, а не какое-то одно:</p><ul><li><strong>Лицензия ФНС</strong> на приём интерактивных ставок и уставный капитал не менее 30 млн рублей.</li><li><strong>Членство в СРО</strong> (саморегулируемой организации букмекеров).</li><li><strong>Подключение к Единому ЦУПИС</strong> — через него проходит каждое пополнение и каждый вывод, это защищает деньги игрока и гарантирует выплату.</li><li><strong>Надзор ЕРАИ</strong> — Единого регулятора азартных игр, который контролирует работу БК в реальном времени.</li></ul><p>Проверить конкретный бренд можно самостоятельно: зайдите на сайт регулятора <strong>erai.ru</strong> в раздел «Реестр лицензиатов» либо в общий реестр разрешений на портале <strong>knd.gov.ru</strong>. Если конторы там нет — это нелегальный оператор, и туда деньги заносить нельзя: ни выплаты, ни защиты, ни возврата средств не будет. Идентификация в ЦУПИС (по паспорту, через Госуслуги или в пункте приёма ставок) — обязательный этап; анонимно легально играть в РФ невозможно, и это нормально.</p>
+<h2>Шаг 2. Виды ставок, с которых стоит начинать</h2>
+<p>Новичку не нужны экзотические рынки. Достаточно понимать базовые типы исходов и типы купонов.</p><p><strong>По исходу события:</strong></p><ul><li><strong>Победа (1X2)</strong> — исход матча: победа первой команды (1), ничья (X), победа второй (2).</li><li><strong>Тотал (больше/меньше)</strong> — сумма голов/очков больше или меньше заданного числа (например, тотал больше 2.5 в футболе).</li><li><strong>Фора (гандикап)</strong> — виртуальное преимущество или отставание команды в голах/очках.</li></ul><p><strong>По типу купона:</strong></p><ul><li><strong>Одиночная (ординар)</strong> — ставка на одно событие. Именно с неё стоит начинать: понятная, прогнозируемая, легко анализировать.</li><li><strong>Экспресс</strong> — несколько событий в одном купоне, коэффициенты перемножаются, но выигрыш будет только если <em>все</em> события зайдут. Высокий множитель обманчив: одна ошибка обнуляет весь купон.</li><li><strong>Система</strong> — набор экспрессов, страхующий часть ошибок; для новичка это уже продвинутый инструмент.</li></ul><p>Совет: первые месяцы держитесь одиночных ставок на спорт, который вы реально понимаете, и на коэффициенты в диапазоне примерно 1.50–2.50 — это зона, где исход не «монетка», но и не почти гарантированный фаворит с копеечной отдачей.</p>
+<h2>Шаг 3. Как читается коэффициент и считается выплата</h2>
+<p>Коэффициент — это множитель выплаты и одновременно оценка вероятности исхода букмекером. Ориентировочную вероятность можно прикинуть как <strong>1 / коэффициент</strong>: коэффициент 2.00 — это примерно 50%, 1.50 — около 67%, 4.00 — около 25% (в коэффициент ещё зашита маржа БК, поэтому это оценка «сверху»).</p><p>Выплата считается просто: <strong>сумма ставки × коэффициент</strong>. Чистый выигрыш — это выплата минус ваша ставка. Вот расчёт для ставки 1000 рублей:</p><table><thead><tr><th>Коэффициент</th><th>Ставка</th><th>Выплата</th><th>Чистый выигрыш</th><th>Оценка вероятности</th></tr></thead><tbody><tr><td>1.50</td><td>1000 ₽</td><td>1500 ₽</td><td>+500 ₽</td><td>~67%</td></tr><tr><td>1.85</td><td>1000 ₽</td><td>1850 ₽</td><td>+850 ₽</td><td>~54%</td></tr><tr><td>2.00</td><td>1000 ₽</td><td>2000 ₽</td><td>+1000 ₽</td><td>~50%</td></tr><tr><td>3.40</td><td>1000 ₽</td><td>3400 ₽</td><td>+2400 ₽</td><td>~29%</td></tr></tbody></table><p>Для экспресса из двух событий с коэффициентами 1.80 и 1.70 итоговый коэффициент = 1.80 × 1.70 = <strong>3.06</strong>. Ставка 1000 ₽ даёт выплату 3060 ₽ (чистыми +2060 ₽), но <em>только</em> если оба события выиграют. Если хотя бы одно проиграет — купон сгорает целиком.</p>
+<h2>Шаг 4. Банкролл-менеджмент — то, что отличает игрока от проигравшего</h2>
+<p>Банкролл — это сумма, которую вы <strong>заранее</strong> выделили на ставки и которую не жалко потерять полностью (не деньги на еду, аренду или кредит). Управление банкроллом важнее, чем удачный прогноз.</p><p>Базовый и самый безопасный метод для новичка — <strong>флэт (flat betting)</strong>: каждая ставка составляет фиксированный небольшой процент банка, обычно 1–3%. Пример: банк 20 000 ₽, флэт 2% — значит на одно событие вы ставите 400 ₽ независимо от того, насколько уверены. Это защищает от того, чтобы одна-две неудачи выбили весь депозит.</p><ul><li><strong>Одна ставка = 1–3% банка.</strong> Ставка 1000 ₽ разумна при банке от 30 000–50 000 ₽, а не при 3000 ₽.</li><li><strong>Никакого «отыгрыша».</strong> Удвоение ставок после проигрыша (мартингейл) на дистанции сжигает банк — коэффициенты и лимиты этого не прощают.</li><li><strong>Фиксируйте лимит на день/неделю</strong> и не пополняйте счёт сверх плана «на эмоциях».</li></ul><p>Реалистичная цель новичка — не «поднять денег», а научиться не терять банк слишком быстро и понять, есть ли у вас вообще устойчивый плюс на дистанции в сотни ставок.</p>
+<h2>Шаг 5. Налог на выигрыш в 2026 году</h2>
+<p>С 1 января 2026 года порядок упростился для игрока: <strong>налоговым агентом по всем выигрышам стала сама букмекерская контора</strong>. Раньше с выигрышей до 15 000 ₽ игрок отчитывался сам — теперь БК удерживает налог при выводе автоматически, самому подавать 3-НДФЛ по ставкам в БК не нужно.</p><ul><li>Ставка налога — <strong>13%</strong> (и 15% с части годового дохода свыше 5 млн рублей).</li><li>Налог берётся с <strong>чистого выигрыша</strong> (выплата за вычетом суммы вашей ставки), а не со всего оборота.</li><li>Действует <strong>годовой необлагаемый минимум 4000 ₽</strong>: первые 4000 ₽ чистого выигрыша за календарный год налогом не облагаются.</li></ul><p><strong>Пример.</strong> За год вы вывели выигрыши так, что чистый выигрыш составил 50 000 ₽. Вычитаем необлагаемые 4000 ₽ → налоговая база 46 000 ₽ → налог 46 000 × 13% = <strong>5980 ₽</strong>, которые удержит БК. На руки — 44 020 ₽. Стандартные, имущественные и социальные вычеты к выигрышам не применяются.</p>
+<h2>Шаг 6. Типичные ошибки новичка</h2>
+<ul><li><strong>Играть в офшоре ради «бонусов».</strong> Нелегальная контора может не выплатить выигрыш, а обещанные промокоды и «бездепы» из чужих рук часто недействующие или с невыполнимым отыгрышем (вейджером) и лимитом максимальной выплаты.</li><li><strong>Ставить весь банк на «верняк».</strong> Верняков не бывает: коэффициент 1.20 — это оценка ~83%, то есть примерно каждая шестая такая ставка проигрывает.</li><li><strong>Гнаться за длинными экспрессами.</strong> Множитель растёт, но вероятность прохода купона падает лавинообразно.</li><li><strong>Отыгрываться после проигрыша (тильт).</strong> Эмоциональное увеличение ставок — главная причина слитых депозитов.</li><li><strong>Ставить на любимую команду сердцем.</strong> Симпатия искажает оценку вероятности.</li><li><strong>Не вести учёт.</strong> Без записи ставок вы не поймёте, в плюсе вы или в минусе на самом деле.</li></ul>
+<h2>Шаг 7. Ответственная игра и самозапрет</h2>
+<p>Ставки — это развлечение с отрицательным матожиданием на дистанции, а не источник дохода. Признаки, что пора остановиться: вы играете на заёмные деньги, скрываете это от близких, пытаетесь отыграться, тратите больше запланированного. Легальные БК обязаны давать инструменты самоконтроля: лимиты на депозит, лимит времени, самоисключение на срок, отрезвляющие паузы.</p><p>Крайний и самый надёжный инструмент — <strong>государственный самозапрет</strong>. С 1 сентября 2026 года в России работает добровольный запрет на участие в азартных играх: заявление подаётся через <strong>Госуслуги</strong> (нужна подтверждённая учётная запись) или в любом <strong>МФЦ</strong>. Данные вносятся в перечень ЕРАИ в течение примерно 12 часов, после чего все легальные БК обязаны отказывать человеку в приёме ставок и выплатах. Срок — <strong>не менее 12 месяцев</strong>, и досрочно отозвать самозапрет нельзя: это сделано намеренно, чтобы решение нельзя было отменить в момент срыва. Если игра перестала быть игрой — это рабочий и бесплатный способ защитить себя. Помощь при игровой зависимости также оказывают профильные горячие линии и психологи.</p>
+    <h2>Частые вопросы</h2>
+    <div class="faq"><details><summary>С какой суммы можно начинать делать ставки?</summary><p>Технически минимальные депозиты в легальных БК начинаются от 50–100 рублей, но важна не сумма депозита, а размер банкролла. Одна ставка должна составлять 1–3% банка, поэтому ставка в 1000 рублей комфортна при банке от 30 000–50 000 рублей. Начинать лучше с небольшой суммы, которую не жалко потерять полностью, и с одиночных ставок.</p></details>
+<details><summary>Как проверить, что букмекер легальный?</summary><p>Зайдите на сайт регулятора erai.ru в раздел «Реестр лицензиатов» или в реестр разрешений на knd.gov.ru и найдите бренд по названию. Легальная БК обязана иметь лицензию ФНС, состоять в СРО и быть подключённой к Единому ЦУПИС — все пополнения и выводы идут через него. Если конторы в реестре нет, это нелегальный оператор.</p></details>
+<details><summary>Нужно ли самому платить налог с выигрыша в 2026 году?</summary><p>Нет. С 1 января 2026 года налоговым агентом по всем выигрышам в БК стала сама букмекерская контора — она удерживает 13% с чистого выигрыша при выводе автоматически. Действует годовой необлагаемый минимум 4000 рублей. Самостоятельно подавать 3-НДФЛ по ставкам в легальной БК больше не требуется.</p></details>
+<details><summary>Какие ставки лучше выбирать новичку?</summary><p>Одиночные ставки (ординары) на понятные исходы — победа/ничья, тотал больше/меньше, фора — в спорте, который вы реально понимаете, с коэффициентами примерно 1.50–2.50. Длинные экспрессы дают большой множитель, но вероятность прохода купона падает с каждым добавленным событием, поэтому для старта они не подходят.</p></details>
+<details><summary>Можно ли отменить самозапрет на азартные игры досрочно?</summary><p>Нет. Самозапрет через Госуслуги или МФЦ оформляется на срок не менее 12 месяцев, и досрочно снять его нельзя — это заложено в закон намеренно, чтобы решение нельзя было отменить в момент срыва. После включения в перечень ЕРАИ (в течение примерно 12 часов) все легальные БК обязаны отказывать в приёме ставок и выплатах.</p></details></div>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="tiles">
+      <a class="tile" href="/shkola/terminy/chto-takoe-fora"><b>Что такое фора в ставках: виды форы и расчёт возврата</b><small>Термины</small></a>
+      <a class="tile" href="/shkola/terminy/chto-takoe-total"><b>Что такое тотал в ставках</b><small>Термины</small></a>
+      <a class="tile" href="/shkola/kak-eto-rabotaet/vidy-stavok-na-sport"><b>Виды ставок на спорт: полный разбор форматов и рынков</b><small>Как это работает</small></a>
+      <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
+      <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — информация о легальных букмекерах России из реестра ЕЦУПС/ЕРАИ. Возрастная категория 18+. Данные на странице демонстрационные — для проверки дизайна и комплаенс-компонентов.</p>
+    </div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/#top3">Промокоды и фрибеты</a><a href="/#compare">Сравнение</a><a href="/instrumenty/kalkulyator-stavok">Инструменты</a></div>
+    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕЦУПС/ЕРАИ.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+</body>
+</html>

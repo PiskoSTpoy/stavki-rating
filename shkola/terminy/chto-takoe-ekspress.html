@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Что такое экспресс в ставках: расчёт и примеры</title>
+<meta name="description" content="Экспресс в ставках — это одна ставка на несколько событий, где коэффициенты перемножаются. Разбираем расчёт выплаты, отличие от ординара и системы, страховку.">
+<link rel="canonical" href="https://stavki-rating.ru/shkola/terminy/chto-takoe-ekspress">
+<meta name="yandex-verification" content="4edbdcb14677aee3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%23C8FF4D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpolygon points='36,8 17,36 29,36 26,56 47,27 35,27' fill='%2307090F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Oswald", "Inter", system-ui, sans-serif;
+    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
+
+  /* Секции */
+  .section { padding: 30px 0; }
+  .section.tight { padding-top: 6px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Хлебные крошки */
+  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs span { color: var(--muted-2); }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .result .accent { color: var(--volt); }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Текстовый контент страницы */
+  .prose { max-width: 75ch; display: grid; gap: 14px; }
+  .prose h2 { margin-top: 14px; }
+  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  .prose p { color: var(--text); }
+  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
+  .prose li { line-height: 1.5; }
+  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--text); font-weight: 700; }
+  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .faq { display: grid; gap: 10px; }
+  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; float: right; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; }
+
+  /* Футер */
+  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Термины", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Что такое экспресс в ставках на спорт", "item": "https://stavki-rating.ru/shkola/terminy/chto-takoe-ekspress"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Что такое экспресс в ставках на спорт", "description": "Экспресс в ставках — это одна ставка на несколько событий, где коэффициенты перемножаются. Разбираем расчёт выплаты, отличие от ординара и системы, страховку.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/terminy/chto-takoe-ekspress", "datePublished": "2026-09-04", "dateModified": "2026-09-04", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Как считается выплата по экспрессу?", "acceptedAnswer": {"@type": "Answer", "text": "Итоговый коэффициент экспресса равен произведению коэффициентов всех событий, а выплата — это сумма ставки, умноженная на этот итоговый коэффициент. Например, при ставке 1000 руб на три события с коэффициентами 1.80, 1.50 и 2.10 итоговый коэффициент равен 5.67, а выплата — 5670 руб. Чистая прибыль — это выплата минус сумма ставки, то есть 4670 руб."}}, {"@type": "Question", "name": "Чем экспресс отличается от системы?", "acceptedAnswer": {"@type": "Answer", "text": "Экспресс требует прохода абсолютно всех событий: одна осечка обнуляет купон. Система — это набор экспрессов меньшей размерности из выбранных событий, поэтому она остаётся частично выигрышной, даже если одно-два события не зашли. Плата за такую страховку — меньшая выплата по сравнению с экспрессом того же набора событий."}}, {"@type": "Question", "name": "Что происходит с экспрессом, если матч отменили?", "acceptedAnswer": {"@type": "Answer", "text": "Если событие рассчитывается возвратом, ему присваивается коэффициент 1.00, и оно перестаёт влиять на купон. Экспресс пересчитывается по оставшимся событиям с меньшим итоговым коэффициентом. Весь купон при этом не проигрывает из-за отменённого матча, но и потенциальная выплата снижается."}}, {"@type": "Question", "name": "Как работает страховка экспресса?", "acceptedAnswer": {"@type": "Answer", "text": "Страховка — это акция, при которой букмекер возвращает сумму ставки, если в экспрессе не зашёл ровно один исход. Если проиграли два и более события, компенсации нет. Возврат обычно поступает деньгами на баланс без отыгрыша, но действует при выполнении условий акции: минимальное число событий, минимальные коэффициенты и лимит возврата, которые нужно проверять в правилах конкретного оператора."}}, {"@type": "Question", "name": "Экспресс выгоднее ординара?", "acceptedAnswer": {"@type": "Answer", "text": "С точки зрения математического ожидания — как правило, нет. Маржа букмекера заложена в каждый коэффициент, и в экспрессе она перемножается, ухудшая ожидаемую отдачу по сравнению с серией отдельных ординаров. Экспресс даёт высокий потенциальный коэффициент при небольшой ставке, но и вероятность прохода падает с каждым добавленным событием, поэтому его чаще рассматривают как формат для развлечения, а не как основу стратегии."}}]}</script>
+</head>
+<body>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav">
+    <a href="/#top3">Букмекеры</a>
+    <a href="/rating">Рейтинг</a>
+    <a href="/#compare">Сравнение</a>
+    <a href="/instrumenty/kalkulyator-stavok" class="active">Инструменты</a>
+    <a href="/kak-proverit-licenziyu">Школа</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main>
+
+  <section class="section tight"><div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Термины</a><span>/</span>Что такое экспресс в ставках на спорт</nav>
+    <div class="eyebrow" style="margin:16px 0 8px">· Школа · Термины ·</div>
+    <h1>Что такое экспресс в ставках на спорт</h1>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 04.09.2026</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">Экспресс — это одна ставка, объединяющая несколько независимых событий, где итоговый коэффициент равен произведению коэффициентов всех исходов. Выигрыш возможен только при условии, что зайдут абсолютно все выбранные события: одна ошибка обнуляет весь купон. Именно перемножение коэффициентов делает экспресс потенциально прибыльным, но и резко снижает вероятность прохода.</p>
+  </div></section>
+
+  <section class="section" style="padding-top:6px"><div class="container prose">
+    <h2>Как считается экспресс: произведение коэффициентов</h2>
+<p>Механика экспресса проста арифметически, но именно она определяет всё поведение этого типа ставки. Итоговый коэффициент купона — это <strong>произведение коэффициентов всех входящих событий</strong>. Сумма выплаты при выигрыше рассчитывается по формуле:</p><p><strong>Выплата = Сумма ставки × (К1 × К2 × ... × Кn)</strong></p><p>Чистая прибыль — это выплата за вычетом суммы ставки. Возьмём экспресс из трёх событий со ставкой <strong>1000 руб</strong> и коэффициентами 1.80, 1.50 и 2.10. Итоговый коэффициент: 1.80 × 1.50 × 2.10 = <strong>5.67</strong>. Выплата: 1000 × 5.67 = <strong>5670 руб</strong>, из которых 4670 руб — чистая прибыль.</p><p>Важная деталь: если одно из событий рассчитывается с коэффициентом <strong>1.00</strong> (например, при возврате из-за отмены матча или переноса), оно не обнуляет весь купон, а просто «выпадает» из расчёта — экспресс пересчитывается по оставшимся событиям с меньшим итоговым коэффициентом. Так, отмена одного матча в примере выше превратила бы коэффициент в 1.80 × 1.50 = 2.70, а выплату — в 2700 руб.</p><table><thead><tr><th>Событие</th><th>Коэффициент</th><th>Накопленный коэффициент</th></tr></thead><tbody><tr><td>Матч 1 (П1)</td><td>1.80</td><td>1.80</td></tr><tr><td>Матч 2 (ТБ 2.5)</td><td>1.50</td><td>2.70</td></tr><tr><td>Матч 3 (П2)</td><td>2.10</td><td>5.67</td></tr><tr><td colspan="2"><strong>Выплата при ставке 1000 руб</strong></td><td><strong>5670 руб</strong></td></tr></tbody></table><p>Из таблицы видно эффект «снежного кома»: каждый добавленный исход умножает потенциальную выплату, но одновременно перемножаются и вероятности проигрыша.</p>
+<h2>Расчёт выплаты и вероятность прохода</h2>
+<p>Чтобы понять обратную сторону экспресса, полезно посмотреть на вероятность. Если каждое из событий имеет условную вероятность прохода около 55% (что примерно соответствует коэффициенту 1.80), то для экспресса из трёх таких событий совокупная вероятность составит 0.55 × 0.55 × 0.55 ≈ <strong>16.6%</strong>. Для экспресса из пяти событий — уже около 5%. Коэффициент растёт линейно-мультипликативно, а шанс на выигрыш падает столь же быстро.</p><p>Разберём расчёт на пяти событиях со ставкой <strong>1000 руб</strong> и коэффициентами 1.60, 1.70, 1.50, 1.90 и 2.00. Итоговый коэффициент: 1.60 × 1.70 × 1.50 × 1.90 × 2.00 = <strong>15.50</strong>. Выплата: 1000 × 15.50 = <strong>15 500 руб</strong>. Прибыль впечатляющая, но статистически такой купон проходит примерно один раз из двадцати попыток при равных условиях. Это ключевая причина, по которой аналитики предостерегают от «многоножек» — экспрессов из большого числа событий, где итоговый коэффициент выглядит заманчиво, а реальный шанс прохода стремится к нулю.</p>
+<h2>Чем экспресс отличается от ординара и системы</h2>
+<p>В букмекерских конторах есть три базовых типа ставок, и их важно не путать.</p><ul><li><strong>Ординар (одиночная)</strong> — ставка на одно событие. Коэффициент один, выплата = ставка × коэффициент. Это самый прозрачный и наименее рискованный формат: результат зависит от одного исхода.</li><li><strong>Экспресс</strong> — несколько событий в одном купоне, коэффициенты перемножаются. Выигрыш только при проходе всех событий без исключения. Высокий потенциальный коэффициент при высоком риске.</li><li><strong>Система</strong> — комбинация экспрессов фиксированной размерности из общего набора событий. Например, система «2 из 3» — это все возможные экспрессы по два события из трёх выбранных (три комбинации). В отличие от экспресса, система остаётся выигрышной, даже если часть событий не зашла, но и выплата будет ниже, чем у экспресса той же размерности.</li></ul><p>Проще говоря: ординар — «всё или ничего» на одном событии, экспресс — «всё или ничего» на группе событий, а система — компромисс, страхующий от одной-двух осечек ценой меньшей выплаты.</p>
+<h2>Плюсы и минусы экспресса</h2>
+<p><strong>Плюсы:</strong></p><ul><li><strong>Высокий итоговый коэффициент</strong> при небольшой сумме ставки — за счёт перемножения. Даже средние коэффициенты в связке дают крупную выплату.</li><li><strong>Одна ставка вместо нескольких</strong> — не нужно распределять банк по отдельным ординарам.</li><li>Психологический интерес: один купон объединяет целый игровой день.</li></ul><p><strong>Минусы:</strong></p><ul><li><strong>Мультипликативный риск</strong> — вероятность прохода падает с каждым событием. Одна ошибка обнуляет весь купон.</li><li><strong>Накопление маржи</strong> букмекера: комиссия «зашита» в каждый коэффициент, поэтому в экспрессе она перемножается, ухудшая математическое ожидание по сравнению с ординарами.</li><li>Соблазн добавлять «лишние» события ради красивого коэффициента, что статистически невыгодно.</li></ul><p>С точки зрения математики ожидания экспресс, как правило, менее выгоден, чем серия ординаров, именно из-за накопления маржи. Поэтому его чаще рассматривают как формат для развлечения и небольших сумм, а не как основу дисциплинированной стратегии.</p>
+<h2>Что такое страховка экспресса</h2>
+<p><strong>Страховка экспресса</strong> — это акционное предложение букмекера, при котором игроку возвращается сумма ставки, если в экспрессе не зашёл ровно <strong>один</strong> исход. Если все события сыграли, кроме одного, контора компенсирует потерю — обычно «живыми» деньгами на основной баланс, без требований по отыгрышу. Если же не проходят два и более события, купон считается проигранным без компенсации.</p><p>Пример механики: игрок ставит <strong>1000 руб</strong> экспрессом из пяти событий, подпадающим под акцию. Четыре события заходят, одно — нет. Без страховки купон проигран полностью. Со страховкой букмекер возвращает 1000 руб на баланс. Обратите внимание: возвращается именно сумма ставки, а не потенциальный выигрыш.</p><p>Условия таких акций всегда ограничены и различаются у разных операторов. Типичные требования, которые встречаются в правилах: минимальное <strong>количество событий</strong> в экспрессе (часто 5–6 и более), минимальный <strong>коэффициент каждого события</strong> (как правило, от 1.50–1.60), лимит на максимальную сумму возврата. Страховка обычно не активируется, если хотя бы один исход в купоне рассчитан возвратом (коэффициент 1.00) или был отменён. Конкретные параметры нужно проверять в правилах акции у самого букмекера перед ставкой — формулировки и лимиты меняются.</p>
+<h2>На что смотреть и частые ошибки</h2>
+<p>Несколько моментов, которые редакции и аналитики выделяют при работе с экспрессами:</p><ul><li><strong>Не гнаться за длиной купона.</strong> Экспресс из 10 событий с коэффициентом 200 выглядит заманчиво, но проходит крайне редко. Чем короче связка, тем выше шанс.</li><li><strong>Учитывать связанность событий.</strong> Многие конторы запрещают включать в один экспресс взаимозависимые исходы (например, «победа команды» и «тотал этого же матча»), так как это исказило бы расчёт.</li><li><strong>Читать правила расчёта при возврате.</strong> Отмена одного матча пересчитывает купон по коэффициенту 1.00 для этого события, а не обнуляет его — но детали лучше уточнять.</li><li><strong>Проверять условия страховки заранее</strong>, а не после проигрыша: минимальные коэффициенты, число событий, лимит возврата.</li></ul><p>Материал носит справочный характер и не является призывом делать ставки. Азартные игры связаны с риском потери средств; играть могут только совершеннолетние, а участвовать в ставках в России легально можно только у букмекеров из реестра ЕЦУПС с расчётами через ЦУПИС.</p>
+    <h2>Частые вопросы</h2>
+    <div class="faq"><details><summary>Как считается выплата по экспрессу?</summary><p>Итоговый коэффициент экспресса равен произведению коэффициентов всех событий, а выплата — это сумма ставки, умноженная на этот итоговый коэффициент. Например, при ставке 1000 руб на три события с коэффициентами 1.80, 1.50 и 2.10 итоговый коэффициент равен 5.67, а выплата — 5670 руб. Чистая прибыль — это выплата минус сумма ставки, то есть 4670 руб.</p></details>
+<details><summary>Чем экспресс отличается от системы?</summary><p>Экспресс требует прохода абсолютно всех событий: одна осечка обнуляет купон. Система — это набор экспрессов меньшей размерности из выбранных событий, поэтому она остаётся частично выигрышной, даже если одно-два события не зашли. Плата за такую страховку — меньшая выплата по сравнению с экспрессом того же набора событий.</p></details>
+<details><summary>Что происходит с экспрессом, если матч отменили?</summary><p>Если событие рассчитывается возвратом, ему присваивается коэффициент 1.00, и оно перестаёт влиять на купон. Экспресс пересчитывается по оставшимся событиям с меньшим итоговым коэффициентом. Весь купон при этом не проигрывает из-за отменённого матча, но и потенциальная выплата снижается.</p></details>
+<details><summary>Как работает страховка экспресса?</summary><p>Страховка — это акция, при которой букмекер возвращает сумму ставки, если в экспрессе не зашёл ровно один исход. Если проиграли два и более события, компенсации нет. Возврат обычно поступает деньгами на баланс без отыгрыша, но действует при выполнении условий акции: минимальное число событий, минимальные коэффициенты и лимит возврата, которые нужно проверять в правилах конкретного оператора.</p></details>
+<details><summary>Экспресс выгоднее ординара?</summary><p>С точки зрения математического ожидания — как правило, нет. Маржа букмекера заложена в каждый коэффициент, и в экспрессе она перемножается, ухудшая ожидаемую отдачу по сравнению с серией отдельных ординаров. Экспресс даёт высокий потенциальный коэффициент при небольшой ставке, но и вероятность прохода падает с каждым добавленным событием, поэтому его чаще рассматривают как формат для развлечения, а не как основу стратегии.</p></details></div>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="tiles">
+      <a class="tile" href="/shkola/terminy/chto-takoe-fora"><b>Что такое фора в ставках: виды форы и расчёт возврата</b><small>Термины</small></a>
+      <a class="tile" href="/shkola/terminy/chto-takoe-total"><b>Что такое тотал в ставках</b><small>Термины</small></a>
+      <a class="tile" href="/shkola/kak-eto-rabotaet/vidy-stavok-na-sport"><b>Виды ставок на спорт: полный разбор форматов и рынков</b><small>Как это работает</small></a>
+      <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
+      <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — информация о легальных букмекерах России из реестра ЕЦУПС/ЕРАИ. Возрастная категория 18+. Данные на странице демонстрационные — для проверки дизайна и комплаенс-компонентов.</p>
+    </div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/#top3">Промокоды и фрибеты</a><a href="/#compare">Сравнение</a><a href="/instrumenty/kalkulyator-stavok">Инструменты</a></div>
+    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕЦУПС/ЕРАИ.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+</body>
+</html>

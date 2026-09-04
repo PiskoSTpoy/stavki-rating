@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Промокоды букмекеров: что это и как работают</title>
+<meta name="description" content="Разбираем, что такое промокод букмекера, куда его вводить, чем он отличается от бонус-кода, дают ли коды реальную выгоду и какие риски у чужих и просроченных промокодов.">
+<link rel="canonical" href="https://stavki-rating.ru/promokody">
+<meta name="yandex-verification" content="4edbdcb14677aee3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%23C8FF4D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpolygon points='36,8 17,36 29,36 26,56 47,27 35,27' fill='%2307090F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Oswald", "Inter", system-ui, sans-serif;
+    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
+
+  /* Секции */
+  .section { padding: 30px 0; }
+  .section.tight { padding-top: 6px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Хлебные крошки */
+  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs span { color: var(--muted-2); }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .result .accent { color: var(--volt); }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Текстовый контент страницы */
+  .prose { max-width: 75ch; display: grid; gap: 14px; }
+  .prose h2 { margin-top: 14px; }
+  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  .prose p { color: var(--text); }
+  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
+  .prose li { line-height: 1.5; }
+  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--text); font-weight: 700; }
+  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .faq { display: grid; gap: 10px; }
+  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; float: right; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; }
+
+  /* Футер */
+  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Бонусы", "item": "https://stavki-rating.ru/bonusy"}, {"@type": "ListItem", "position": 3, "name": "Промокоды букмекеров: как работают, куда вводить и в чём подвох", "item": "https://stavki-rating.ru/promokody"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Промокоды букмекеров: как работают, куда вводить и в чём подвох", "description": "Разбираем, что такое промокод букмекера, куда его вводить, чем он отличается от бонус-кода, дают ли коды реальную выгоду и какие риски у чужих и просроченных промокодов.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/promokody", "datePublished": "2026-09-04", "dateModified": "2026-09-04", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Промокод букмекера — это то же самое, что бонус-код?", "acceptedAnswer": {"@type": "Answer", "text": "В большинстве случаев да: у многих БК это одно поле ввода. Формально промокод — это любой ключ доступа к акции, а бонус-код — его частный случай, который активирует именно бонус (фрибет, страховку, начисление). Ориентируйтесь не на название, а на условия акции, которые стоят за кодом."}}, {"@type": "Question", "name": "Даёт ли промокод реальную выгоду или это только реклама?", "acceptedAnswer": {"@type": "Answer", "text": "Выгода бывает, но она условная и почти всегда меньше рекламной цифры. Фрибет обычно возвращает только чистую прибыль без номинала, у бонуса на депозит есть вейджер, а у любого предложения — срок, минимальный коэффициент и лимит выплаты. Код не повышает шанс выигрыша, он лишь меняет стартовые условия."}}, {"@type": "Question", "name": "Почему чужой промокод из интернета может не сработать?", "acceptedAnswer": {"@type": "Answer", "text": "Промокоды временные: код из старой статьи или видео часто уже отключён. Кроме того, многие коды — партнёрские метки: иногда они дают тот же бонус, что и без кода, а иногда ухудшают условия. Актуальность стоит проверять только на официальном сайте букмекера."}}, {"@type": "Question", "name": "Что такое отыгрыш (вейджер) и как его посчитать?", "acceptedAnswer": {"@type": "Answer", "text": "Вейджер — это множитель обязательного оборота. При бонусе 1000 руб и вейджере x5 нужно сделать ставок на 5000 руб (обычно на коэффициент не ниже указанного в правилах), прежде чем бонус станет выводимыми деньгами. Пока условие не выполнено, снять бонус нельзя."}}, {"@type": "Question", "name": "На что смотреть в условиях промокода в первую очередь?", "acceptedAnswer": {"@type": "Answer", "text": "На срок действия кода и фрибета (часто 3–7 дней), минимальный коэффициент, разрешённые виды спорта и типы ставок, наличие вейджера и лимит максимальной выплаты. И обязательно — что БК есть в реестре ФНС и работает через ЕЦУПС, иначе выигрыш законом не защищён."}}]}</script>
+</head>
+<body>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav">
+    <a href="/#top3">Букмекеры</a>
+    <a href="/rating">Рейтинг</a>
+    <a href="/#compare">Сравнение</a>
+    <a href="/instrumenty/kalkulyator-stavok" class="active">Инструменты</a>
+    <a href="/kak-proverit-licenziyu">Школа</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main>
+
+  <section class="section tight"><div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bonusy">Бонусы</a><span>/</span>Промокоды букмекеров: как работают, куда вводить и в чём подвох</nav>
+    <div class="eyebrow" style="margin:16px 0 8px">· Бонусы ·</div>
+    <h1>Промокоды букмекеров: как работают, куда вводить и в чём подвох</h1>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 04.09.2026</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">Промокод букмекера — это набор букв и цифр, который вводят при регистрации или активации акции, чтобы подключить бонус (чаще всего фрибет) или улучшить его условия. Сам по себе код не даёт денег: он лишь открывает доступ к предложению, у которого есть срок, минимальный коэффициент и правила отыгрыша. Ниже — как это устроено у легальных БК из реестра ФНС/ЕЦУПС, чем промокод отличается от бонус-кода и почему чужие и «вечные» коды из интернета чаще вредят, чем помогают.</p>
+  </div></section>
+
+  <section class="section" style="padding-top:6px"><div class="container prose">
+    <h2>Что такое промокод букмекера и куда его вводить</h2>
+<p><strong>Промокод</strong> — это комбинация символов (например, из 6–12 букв и цифр), которую букмекер использует, чтобы привязать аккаунт к конкретной акции. Технически это «ключ»: он не начисляет деньги напрямую, а активирует правило — начислить фрибет, увеличить страховку первой ставки, изменить размер приветственного бонуса.</p><p>Поле для ввода находится в одном из трёх мест:</p><ul><li><strong>В форме регистрации</strong> — отдельное поле «Промокод» или «Есть промокод?». Это самый частый вариант для приветственных предложений.</li><li><strong>В личном кабинете</strong> — раздел «Бонусы», «Промокоды» или «Активировать код» уже после создания аккаунта.</li><li><strong>При пополнении</strong> — реже, когда код меняет условия бонуса на депозит.</li></ul><p>Важно: у легальных БК России бонус (в том числе фрибет) начисляется только после <strong>идентификации</strong> — привязки аккаунта к ЕЦУПС и подтверждения личности. Код, введённый до идентификации, обычно «ждёт» её завершения. Ставки у легальных операторов проходят через ЦУПИС, и никакой промокод этого не отменяет.</p>
+<h2>Промокод и бонус-код: в чём разница</h2>
+<p>На практике термины «промокод» и «бонус-код» часто используют как синонимы, и у большинства БК это одно и то же поле. Но если разделять по смыслу:</p><ul><li><strong>Промокод</strong> — маркетинговый ключ доступа к акции. Может вообще не давать бонуса сам по себе, а, например, повышать сумму приветственного фрибета с 1000 до 1500 руб при выполнении условий.</li><li><strong>Бонус-код</strong> — частный случай промокода, который активирует именно бонус (фрибет, страховку, начисление на счёт). Термин чаще встречается там, где код обязателен для получения подарка.</li></ul><p>Ключевой вывод для игрока: <strong>смотреть нужно не на слово, а на условия акции за кодом</strong>. Один и тот же код у разных партнёров может давать разные бонусы, а иногда — вообще ничего сверх стандартного предложения БК.</p>
+<h2>Виды промокодов и дают ли они реальную выгоду</h2>
+<p>За кодом обычно стоит один из типов предложений. Каждый имеет свою логику и «цену» в виде условий:</p><ul><li><strong>Фрибет при регистрации</strong> — бесплатная ставка на фиксированную сумму. Начисляется после регистрации и идентификации; часто размер зависит от первого депозита.</li><li><strong>Бездепозитный фрибет</strong> — выдаётся без пополнения, но для <strong>вывода</strong> выигрыша депозит и идентификация всё равно нужны.</li><li><strong>Бонус на первый депозит</strong> — начисление в процентах от пополнения (например, 100%), которое почти всегда нужно отыгрывать с вейджером.</li><li><strong>Страховка ставки</strong> — возврат части суммы при проигрыше, тоже нередко в виде фрибета, а не «живых» денег.</li></ul><p>Реальная выгода есть, но она условная и почти всегда меньше «рекламной» цифры. Причины: фрибет обычно выплачивает <strong>только чистую прибыль без возврата номинала</strong>, у бонуса на депозит есть вейджер, а у всего вместе — срок действия, минимальный коэффициент и лимит максимальной выплаты. Промокод не увеличивает вероятность выигрыша — он лишь меняет стартовые условия.</p>
+<h2>Как считается отыгрыш: расчёты со ставкой 1000 руб</h2>
+<p>Разберём механику на конкретных числах. Все примеры — иллюстрация правил, а не предложение конкретной БК.</p><p><strong>Пример 1. Фрибет 1000 руб, коэффициент 2.00.</strong> При выигрыше фрибет отдаёт чистую прибыль без номинала. Расчёт: 1000 × 2.00 = 2000, минус «тело» фрибета 1000 → на счёт зачислится <strong>1000 руб</strong>, а не 2000.</p><p><strong>Пример 2. Фрибет 1000 руб, коэффициент 1.50.</strong> 1000 × 1.50 = 1500, минус 1000 → в кошелёк попадёт всего <strong>500 руб</strong>. Чем ниже коэффициент, тем меньше смысла во фрибете.</p><p><strong>Пример 3. Бонус на депозит с вейджером x5.</strong> Бонус 1000 руб и вейджер x5 означают оборот 1000 × 5 = <strong>5000 руб</strong> ставок (обычно на коэффициент не ниже указанного в правилах, например 1.80), прежде чем бонус превратится в выводимые деньги.</p><p><strong>Пример 4. Лимит максимальной выплаты.</strong> Если в правилах фрибета стоит потолок выигрыша 5000 руб, то удачная ставка фрибетом 1000 руб на коэффициент 10.00 даст не 9000 руб чистыми, а только <strong>5000 руб</strong> — остальное срежется.</p><table><thead><tr><th>Тип бонуса</th><th>Номинал</th><th>Условие</th><th>Что реально получит игрок</th></tr></thead><tbody><tr><td>Фрибет, кэф 2.00</td><td>1000 руб</td><td>Выплата без номинала</td><td>1000 руб чистыми</td></tr><tr><td>Фрибет, кэф 1.50</td><td>1000 руб</td><td>Выплата без номинала</td><td>500 руб чистыми</td></tr><tr><td>Бонус на депозит</td><td>1000 руб</td><td>Вейджер x5 = оборот 5000 руб</td><td>Деньги только после отыгрыша</td></tr><tr><td>Фрибет с лимитом</td><td>1000 руб</td><td>Потолок выплаты 5000 руб</td><td>Не более 5000 руб</td></tr></tbody></table><p>Вывод из таблицы: «размер бонуса» и «сколько получишь на руки» — разные величины. Всегда считайте по правилам акции, а не по цифре в заголовке.</p>
+<h2>Риски чужих и недействующих промокодов</h2>
+<p>Основная опасность промокодов — не в них самих, а в том, откуда их берут. Типичные проблемы:</p><ul><li><strong>Недействующие и просроченные коды.</strong> Промокод — временный инструмент. Код из статьи прошлого года или из старого видео часто уже отключён, и после его ввода ничего не начисляется.</li><li><strong>Чужие «партнёрские» коды.</strong> Многие коды в сети — это метки конкретных площадок. Иногда они дают тот же бонус, что и без кода; иногда, наоборот, ухудшают условия по сравнению с прямым предложением БК.</li><li><strong>Обещания «эксклюзива» и завышенных сумм.</strong> Формулировки вроде «секретный код на 30 000 руб» — маркетинг. Реальные условия всегда прописаны в правилах акции у самого букмекера, а не в рекламном тексте.</li><li><strong>Мошеннические коды и фишинг.</strong> «Коды» с сайтов-двойников или из сообщений незнакомцев могут вести на поддельные страницы. Легальная БК никогда не просит за промокод оплату или данные карты «для активации».</li><li><strong>Один бонус на аккаунт.</strong> Приветственные предложения обычно даются один раз. Повторная попытка активировать код на том же человеке ничего не даст.</li></ul><p>Правило простое: код не создаёт выгоды, которой нет в официальных правилах акции. Если предложение звучит слишком щедро для набора символов из интернета — почти наверняка это или устаревшая, или маркетинговая, или мошенническая история.</p>
+<h2>Как проверить актуальность и условия промокода</h2>
+<p>Перед тем как вводить код, стоит потратить пару минут на проверку. На что смотреть:</p><ul><li><strong>Источник — только официальный сайт БК.</strong> Актуальные акции и их коды публикует сам букмекер в разделе «Акции» или «Бонусы». Это первичный источник; агрегаторы могут отставать.</li><li><strong>Полные правила акции.</strong> Ищите срок действия кода, минимальный коэффициент, разрешённые виды спорта и типы ставок (нередко отыгрыш только экспрессами), срок жизни фрибета (часто 3–7 дней) и лимит максимальной выплаты.</li><li><strong>Легальность оператора.</strong> Проверьте, что БК есть в реестре ФНС и работает через ЕЦУПС/ЦУПИС. У нелегальных сайтов выигрыш законом не защищён — там любые «промокоды» не имеют смысла.</li><li><strong>Дата публикации кода.</strong> Если код нашли на стороннем ресурсе, смотрите, к какому месяцу он относится. «Промокоды на сегодня» — маркер того, что они регулярно меняются.</li><li><strong>Требование идентификации.</strong> У легальных БК бонус реально становится вашим только после подтверждения личности и привязки к ЕЦУПС.</li></ul><p>И главный принцип оценки: сравните бонус <strong>с кодом и без кода</strong> в правилах самой БК. Если разницы нет, код не нужен; если код ухудшает условия — тем более. Промокод — вспомогательный инструмент, а не источник гарантированного дохода.</p>
+    <h2>Частые вопросы</h2>
+    <div class="faq"><details><summary>Промокод букмекера — это то же самое, что бонус-код?</summary><p>В большинстве случаев да: у многих БК это одно поле ввода. Формально промокод — это любой ключ доступа к акции, а бонус-код — его частный случай, который активирует именно бонус (фрибет, страховку, начисление). Ориентируйтесь не на название, а на условия акции, которые стоят за кодом.</p></details>
+<details><summary>Даёт ли промокод реальную выгоду или это только реклама?</summary><p>Выгода бывает, но она условная и почти всегда меньше рекламной цифры. Фрибет обычно возвращает только чистую прибыль без номинала, у бонуса на депозит есть вейджер, а у любого предложения — срок, минимальный коэффициент и лимит выплаты. Код не повышает шанс выигрыша, он лишь меняет стартовые условия.</p></details>
+<details><summary>Почему чужой промокод из интернета может не сработать?</summary><p>Промокоды временные: код из старой статьи или видео часто уже отключён. Кроме того, многие коды — партнёрские метки: иногда они дают тот же бонус, что и без кода, а иногда ухудшают условия. Актуальность стоит проверять только на официальном сайте букмекера.</p></details>
+<details><summary>Что такое отыгрыш (вейджер) и как его посчитать?</summary><p>Вейджер — это множитель обязательного оборота. При бонусе 1000 руб и вейджере x5 нужно сделать ставок на 5000 руб (обычно на коэффициент не ниже указанного в правилах), прежде чем бонус станет выводимыми деньгами. Пока условие не выполнено, снять бонус нельзя.</p></details>
+<details><summary>На что смотреть в условиях промокода в первую очередь?</summary><p>На срок действия кода и фрибета (часто 3–7 дней), минимальный коэффициент, разрешённые виды спорта и типы ставок, наличие вейджера и лимит максимальной выплаты. И обязательно — что БК есть в реестре ФНС и работает через ЕЦУПС, иначе выигрыш законом не защищён.</p></details></div>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="tiles">
+      <a class="tile" href="/shkola/terminy/chto-takoe-fora"><b>Что такое фора в ставках: виды форы и расчёт возврата</b><small>Термины</small></a>
+      <a class="tile" href="/shkola/terminy/chto-takoe-total"><b>Что такое тотал в ставках</b><small>Термины</small></a>
+      <a class="tile" href="/shkola/kak-eto-rabotaet/vidy-stavok-na-sport"><b>Виды ставок на спорт: полный разбор форматов и рынков</b><small>Как это работает</small></a>
+      <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
+      <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — информация о легальных букмекерах России из реестра ЕЦУПС/ЕРАИ. Возрастная категория 18+. Данные на странице демонстрационные — для проверки дизайна и комплаенс-компонентов.</p>
+    </div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/#top3">Промокоды и фрибеты</a><a href="/#compare">Сравнение</a><a href="/instrumenty/kalkulyator-stavok">Инструменты</a></div>
+    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕЦУПС/ЕРАИ.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+</body>
+</html>

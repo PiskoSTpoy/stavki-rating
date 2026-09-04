@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Фрибет за регистрацию: как получить и отыграть</title>
+<meta name="description" content="Что такое фрибет за регистрацию и без депозита: как начисляется, вернётся ли сумма ставки, как отыграть вейджер, налог 13% и подводные камни. Разбор с расчётами.">
+<link rel="canonical" href="https://stavki-rating.ru/bonusy/fribety-za-registraciyu">
+<meta name="yandex-verification" content="4edbdcb14677aee3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%23C8FF4D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpolygon points='36,8 17,36 29,36 26,56 47,27 35,27' fill='%2307090F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Oswald", "Inter", system-ui, sans-serif;
+    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
+
+  /* Секции */
+  .section { padding: 30px 0; }
+  .section.tight { padding-top: 6px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Хлебные крошки */
+  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs span { color: var(--muted-2); }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .result .accent { color: var(--volt); }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Текстовый контент страницы */
+  .prose { max-width: 75ch; display: grid; gap: 14px; }
+  .prose h2 { margin-top: 14px; }
+  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  .prose p { color: var(--text); }
+  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
+  .prose li { line-height: 1.5; }
+  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--text); font-weight: 700; }
+  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .faq { display: grid; gap: 10px; }
+  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; float: right; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; }
+
+  /* Футер */
+  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Бонусы", "item": "https://stavki-rating.ru/bonusy"}, {"@type": "ListItem", "position": 3, "name": "Фрибет за регистрацию: что это, как получить и отыграть", "item": "https://stavki-rating.ru/bonusy/fribety-za-registraciyu"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Фрибет за регистрацию: что это, как получить и отыграть", "description": "Что такое фрибет за регистрацию и без депозита: как начисляется, вернётся ли сумма ставки, как отыграть вейджер, налог 13% и подводные камни. Разбор с расчётами.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bonusy/fribety-za-registraciyu", "datePublished": "2026-09-04", "dateModified": "2026-09-04", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Вернётся ли сумма фрибета, если ставка сыграет?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. При выигрыше на счёт зачисляется только чистая прибыль по формуле (коэффициент − 1) × номинал. Сам номинал фрибета не возвращается ни при выигрыше, ни при проигрыше. Например, фрибет 1000 руб на коэффициент 2.5 принесёт 1500 руб чистыми, а не 2500 руб."}}, {"@type": "Question", "name": "Нужно ли отыгрывать фрибет с вейджером?", "acceptedAnswer": {"@type": "Answer", "text": "Чаще всего «классический» фрибет отыгрывать не нужно — он ставится один раз, и чистый выигрыш сразу зачисляется. Но встречаются акции, где под фрибетом понимается бонус с вейджером (множителем отыгрыша, например x5) и минимальным коэффициентом. Всегда проверяйте это в правилах: наличие множителя резко снижает реальную ценность."}}, {"@type": "Question", "name": "Можно ли сразу вывести выигрыш с бездепозитного фрибета?", "acceptedAnswer": {"@type": "Answer", "text": "Обычно нет. У многих легальных контор чистый выигрыш с фрибета за регистрацию блокируется до тех пор, пока вы не внесёте депозит (а иногда и не отыграете его). Конкретное условие вывода указано в правилах акции."}}, {"@type": "Question", "name": "Платится ли налог с выигрыша по фрибету?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Выигрыш облагается НДФЛ 13%. При разовой выплате от 15 000 руб налог удерживает сам букмекер как налоговый агент. От 4000 до 15 000 руб в год игрок декларирует и платит сам. Для бездепозитного фрибета налоговой базой считается весь чистый выигрыш, так как своих денег в ставке нет."}}, {"@type": "Question", "name": "Безопасны ли промокоды на фрибет из сторонних источников?", "acceptedAnswer": {"@type": "Answer", "text": "К ним стоит относиться осторожно. Обещания конкретных сумм и «секретные» коды из чужих источников часто оказываются недействующими или нарушают правила. Ориентируйтесь только на официальные условия акции на сайте букмекера, имеющего лицензию ФНС и подключение к ЦУПИС."}}]}</script>
+</head>
+<body>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav">
+    <a href="/#top3">Букмекеры</a>
+    <a href="/rating">Рейтинг</a>
+    <a href="/#compare">Сравнение</a>
+    <a href="/instrumenty/kalkulyator-stavok" class="active">Инструменты</a>
+    <a href="/kak-proverit-licenziyu">Школа</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main>
+
+  <section class="section tight"><div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bonusy">Бонусы</a><span>/</span>Фрибет за регистрацию: что это, как получить и отыграть</nav>
+    <div class="eyebrow" style="margin:16px 0 8px">· Бонусы ·</div>
+    <h1>Фрибет за регистрацию: что это, как получить и отыграть</h1>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 04.09.2026</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">Фрибет за регистрацию — это бесплатная ставка фиксированного номинала, которую легальная букмекерская контора начисляет новому пользователю после регистрации и верификации в ЦУПИС. Главное, что нужно понимать сразу: при выигрыше на счёт возвращается только чистая прибыль (коэффициент минус единица, умноженные на номинал), а сама сумма фрибета не возвращается. Ниже — как это устроено, чем фрибет отличается от бонуса на депозит, как его отыграть и какие условия скрывают реальную ценность подарка.</p>
+  </div></section>
+
+  <section class="section" style="padding-top:6px"><div class="container prose">
+    <h2>Что такое фрибет и чем он отличается от денег на счёте</h2>
+<p><strong>Фрибет (freebet, «бесплатная ставка»)</strong> — это право сделать одно пари на заранее заданную сумму без списания собственных средств. Букмекер выдаёт не деньги, а «купон» фиксированного номинала — например, 1000 руб. Этим номиналом нельзя расплатиться в кассе, вывести его напрямую или разбить на части (если иное прямо не указано в правилах акции).</p><p>Ключевое отличие от реальных денег на балансе — механика расчёта выигрыша:</p><ul><li><strong>Обычная ставка деньгами.</strong> Ставите 1000 руб на коэффициент 2.5, пари проходит — на счёт возвращается вся сумма выплаты: 1000 × 2.5 = 2500 руб (то есть ваша 1000 + 1500 руб прибыли).</li><li><strong>Ставка фрибетом.</strong> При том же номинале 1000 руб и коэффициенте 2.5 на счёт зачисляется <strong>только чистый выигрыш</strong>: (2.5 − 1) × 1000 = 1500 руб. Номинал фрибета (1000 руб) остаётся у букмекера.</li></ul><p>Формула чистого выигрыша по фрибету проста: <strong>(коэффициент − 1) × номинал</strong>. Поэтому при проигрыше вы не теряете ничего своего, но и «вернуть» фрибет в случае неудачи нельзя — он сгорает после единственного применения.</p>
+<h2>Фрибет за регистрацию и фрибет без депозита — в чём разница</h2>
+<p>Эти два понятия часто путают, но условия у них разные.</p><p><strong>Фрибет за регистрацию (бездепозитный)</strong> начисляется после создания аккаунта и прохождения идентификации, без внесения денег. Это самый «дешёвый» для игрока вариант входа, но и самый обвешанный ограничениями: как правило, небольшой номинал, минимальный коэффициент, короткий срок жизни и требование пополнить счёт перед выводом выигрыша.</p><p><strong>Фрибет за депозит (или за первую ставку)</strong> — это уже условно-бесплатная ставка: чтобы её получить, нужно пополнить счёт и/или сделать первое реальное пари на определённую сумму. Формально депозит вносится, поэтому такой фрибет обычно крупнее по номиналу.</p><table><thead><tr><th>Параметр</th><th>Фрибет за регистрацию (без депозита)</th><th>Фрибет за депозит</th></tr></thead><tbody><tr><td>Нужно пополнять счёт</td><td>Нет (для получения)</td><td>Да</td></tr><tr><td>Типичный номинал</td><td>Меньше</td><td>Больше</td></tr><tr><td>Возврат номинала при выигрыше</td><td>Нет</td><td>Нет</td></tr><tr><td>Условие вывода прибыли</td><td>Часто нужен депозит</td><td>Обычно депозит уже внесён</td></tr></tbody></table><p>В обоих случаях сумма самого фрибета на счёт не возвращается — вернуть можно только чистый выигрыш.</p>
+<h2>Как получить фрибет за регистрацию</h2>
+<p>У легального российского букмекера (с лицензией ФНС и подключением к единому ЦУПИС) порядок примерно одинаков:</p><ul><li><strong>Регистрация аккаунта.</strong> Указываются паспортные данные и контакты. Играть в легальных БК можно только с 18 лет.</li><li><strong>Идентификация в ЦУПИС.</strong> До первой ставки пользователь проходит верификацию — это обязательный финансовый посредник для всех легальных контор. Без пройденной идентификации фрибет обычно нельзя ни активировать, ни вывести с него прибыль.</li><li><strong>Активация бонуса.</strong> Фрибет либо начисляется автоматически, либо появляется в разделе «Бонусы» после выполнения условия (регистрация, первая ставка, пополнение).</li><li><strong>Ставка в срок.</strong> У фрибета есть срок действия — от нескольких дней до пары недель. После истечения он сгорает.</li></ul><p>Важно: условия конкретной акции всегда описаны в правилах на сайте букмекера. Ориентироваться нужно на официальный текст, а не на сторонние обещания «гарантированных сумм» или промокоды из чужих источников — недействующий или чужой код в лучшем случае не сработает, в худшем приведёт к блокировке за мультиаккаунт.</p>
+<h2>Как отыграть фрибет: вейджер, чистый выигрыш и вернётся ли сумма</h2>
+<p>Здесь три отдельных вопроса, которые важно не смешивать.</p><p><strong>1. Отыгрыш (вейджер).</strong> «Классический» фрибет чаще всего <em>не</em> требует отыгрыша — вы просто ставите его один раз, и чистый выигрыш зачисляется на счёт. Но иногда под словом «фрибет» скрывается бонус с вейджером: чтобы вывести полученные деньги, нужно прокрутить их несколько раз (например, x5) ставками с определённым минимальным коэффициентом. Всегда проверяйте, есть ли множитель отыгрыша.</p><p><strong>2. Чистый выигрыш.</strong> Возвращается только прибыль сверх номинала. Расчёт по фрибету 1000 руб при ставке на разные коэффициенты:</p><table><thead><tr><th>Коэффициент</th><th>Расчёт (K − 1) × 1000</th><th>Зачислится на счёт</th></tr></thead><tbody><tr><td>1.5</td><td>0.5 × 1000</td><td>500 руб</td></tr><tr><td>2.0</td><td>1.0 × 1000</td><td>1000 руб</td></tr><tr><td>2.5</td><td>1.5 × 1000</td><td>1500 руб</td></tr><tr><td>3.0</td><td>2.0 × 1000</td><td>2000 руб</td></tr></tbody></table><p>Отсюда практический вывод: ставить фрибет на низкий коэффициент невыгодно. При коэффициенте 1.5 «бесплатная» тысяча превращается всего в 500 руб. Многие акции к тому же задают <strong>минимальный коэффициент</strong> (часто 1.5–2.0) — ниже него фрибет просто не примут.</p><p><strong>3. Вернётся ли сумма фрибета.</strong> Нет. Ни при выигрыше, ни при проигрыше номинал не возвращается. При выигрыше вы получаете только чистую прибыль, при проигрыше — ничего. Кроме того, у многих контор чистый выигрыш «замораживается» до тех пор, пока вы не внесёте и не отыграете депозит.</p><p><strong>Максимальная выплата.</strong> Отдельно смотрите на потолок выигрыша по акции. Если правилами задан лимит, например 10 000 руб, то ставка фрибетом 1000 руб на коэффициент 15 даст не 14 000 руб чистыми, а только 10 000 руб — остальное срежется.</p>
+<h2>Налог на выигрыш с фрибета</h2>
+<p>Выигрыш в легальной БК облагается НДФЛ 13%. Порядок зависит от суммы разовой выплаты:</p><ul><li><strong>Выплата 15 000 руб и больше за раз.</strong> Налог удерживает сам букмекер как налоговый агент — деньги приходят уже за вычетом 13%.</li><li><strong>Выплата от 4000 до 15 000 руб в год.</strong> Букмекер налог не удерживает — игрок сам подаёт декларацию 3-НДФЛ и платит.</li><li><strong>До 4000 руб суммарно за год.</strong> Действует налоговый вычет — эта сумма налогом не облагается.</li></ul><p>Нюанс именно для бездепозитного фрибета: поскольку своих денег в ставку вы не вкладывали, «сумма ставки» равна нулю, и налоговой базой считается весь полученный чистый выигрыш, а не разница между выплатой и вложением. Это стоит учитывать при расчёте реальной ценности подарка.</p>
+<h2>Подводные камни и на что смотреть</h2>
+<p>Перед тем как рассчитывать на фрибет, проверьте по правилам акции следующие пункты — именно они определяют, сколько вы реально получите:</p><ul><li><strong>Возврат номинала.</strong> Его нет — считайте выгоду только по чистому выигрышу (K − 1) × номинал.</li><li><strong>Минимальный коэффициент.</strong> Ограничивает нижнюю границу; на низких котировках фрибет либо не примут, либо он почти ничего не даст.</li><li><strong>Максимальная выплата.</strong> Потолок, выше которого выигрыш срежут.</li><li><strong>Условие вывода.</strong> Часто прибыль нельзя вывести без депозита и его отыгрыша.</li><li><strong>Срок действия.</strong> Неиспользованный вовремя фрибет сгорает.</li><li><strong>Вейджер.</strong> Если он есть, «выигрыш» ещё нужно прокрутить.</li><li><strong>Один аккаунт на человека.</strong> Попытки завести несколько профилей ради повторных фрибетов ведут к блокировке и аннулированию средств.</li><li><strong>Чужие промокоды и «гарантии».</strong> Обещания конкретных сумм и «секретные» коды из сторонних источников — красный флаг: они бывают недействующими или нарушают правила.</li></ul><p>Фрибет — это не бесплатные деньги, а инструмент знакомства с площадкой с ограниченной и заранее просчитываемой ценностью. Реальную выгоду всегда считайте по формуле чистого выигрыша с учётом минимального коэффициента, потолка выплаты и налога.</p>
+    <h2>Частые вопросы</h2>
+    <div class="faq"><details><summary>Вернётся ли сумма фрибета, если ставка сыграет?</summary><p>Нет. При выигрыше на счёт зачисляется только чистая прибыль по формуле (коэффициент − 1) × номинал. Сам номинал фрибета не возвращается ни при выигрыше, ни при проигрыше. Например, фрибет 1000 руб на коэффициент 2.5 принесёт 1500 руб чистыми, а не 2500 руб.</p></details>
+<details><summary>Нужно ли отыгрывать фрибет с вейджером?</summary><p>Чаще всего «классический» фрибет отыгрывать не нужно — он ставится один раз, и чистый выигрыш сразу зачисляется. Но встречаются акции, где под фрибетом понимается бонус с вейджером (множителем отыгрыша, например x5) и минимальным коэффициентом. Всегда проверяйте это в правилах: наличие множителя резко снижает реальную ценность.</p></details>
+<details><summary>Можно ли сразу вывести выигрыш с бездепозитного фрибета?</summary><p>Обычно нет. У многих легальных контор чистый выигрыш с фрибета за регистрацию блокируется до тех пор, пока вы не внесёте депозит (а иногда и не отыграете его). Конкретное условие вывода указано в правилах акции.</p></details>
+<details><summary>Платится ли налог с выигрыша по фрибету?</summary><p>Да. Выигрыш облагается НДФЛ 13%. При разовой выплате от 15 000 руб налог удерживает сам букмекер как налоговый агент. От 4000 до 15 000 руб в год игрок декларирует и платит сам. Для бездепозитного фрибета налоговой базой считается весь чистый выигрыш, так как своих денег в ставке нет.</p></details>
+<details><summary>Безопасны ли промокоды на фрибет из сторонних источников?</summary><p>К ним стоит относиться осторожно. Обещания конкретных сумм и «секретные» коды из чужих источников часто оказываются недействующими или нарушают правила. Ориентируйтесь только на официальные условия акции на сайте букмекера, имеющего лицензию ФНС и подключение к ЦУПИС.</p></details></div>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="tiles">
+      <a class="tile" href="/shkola/terminy/chto-takoe-fora"><b>Что такое фора в ставках: виды форы и расчёт возврата</b><small>Термины</small></a>
+      <a class="tile" href="/shkola/terminy/chto-takoe-total"><b>Что такое тотал в ставках</b><small>Термины</small></a>
+      <a class="tile" href="/shkola/kak-eto-rabotaet/vidy-stavok-na-sport"><b>Виды ставок на спорт: полный разбор форматов и рынков</b><small>Как это работает</small></a>
+      <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
+      <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — информация о легальных букмекерах России из реестра ЕЦУПС/ЕРАИ. Возрастная категория 18+. Данные на странице демонстрационные — для проверки дизайна и комплаенс-компонентов.</p>
+    </div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/#top3">Промокоды и фрибеты</a><a href="/#compare">Сравнение</a><a href="/instrumenty/kalkulyator-stavok">Инструменты</a></div>
+    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕЦУПС/ЕРАИ.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+</body>
+</html>
