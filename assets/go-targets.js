@@ -51,7 +51,10 @@ window.GO_TARGETS = {
   },
   "melbet": {
     "official": "https://melbet.ru/",
-    "partner": null
+    "partner": {
+      "url": "https://pxl.leads.su/click/1dc58615d5d26f65bb2e0936afaa3d9b",
+      "subParam": "aff_sub1"
+    }
   },
   "olimpbet": {
     "official": "https://olimp.bet/",
