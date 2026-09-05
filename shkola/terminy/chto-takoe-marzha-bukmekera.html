@@ -118,6 +118,13 @@
   .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
   .prose strong { color: var(--text); font-weight: 700; }
   .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
+  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
+  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose tbody tr:last-child td { border-bottom: none; }
+  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
+  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
   .faq { display: grid; gap: 10px; }
   .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
   .faq summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; }
@@ -143,7 +150,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Термины", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Что такое маржа букмекера и как её рассчитать", "item": "https://stavki-rating.ru/shkola/terminy/chto-takoe-marzha-bukmekera"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Что такое маржа букмекера и как её рассчитать", "description": "Маржа букмекера — это заработок конторы, зашитый в коэффициенты. Разбираем формулу, примеры расчёта со ставкой 1000 руб и какая маржа низкая.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/terminy/chto-takoe-marzha-bukmekera", "datePublished": "2026-09-04", "dateModified": "2026-09-04", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Что такое маржа букмекера и как её рассчитать", "description": "Маржа букмекера — это заработок конторы, зашитый в коэффициенты. Разбираем формулу, примеры расчёта со ставкой 1000 руб и какая маржа низкая.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/terminy/chto-takoe-marzha-bukmekera", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что такое маржа букмекера простыми словами?", "acceptedAnswer": {"@type": "Answer", "text": "Это заработок конторы, заранее встроенный в коэффициенты. Букмекер немного занижает котировки относительно реальных шансов, и эта разница остаётся у него независимо от того, чья ставка сыграла. Явной комиссии за приём ставки при этом нет — вся плата спрятана в коэффициенте."}}, {"@type": "Question", "name": "Как рассчитать маржу по коэффициентам?", "acceptedAnswer": {"@type": "Answer", "text": "Сложите обратные величины (1/коэффициент) по всем исходам события, вычтите 1 и умножьте на 100%. Например, для футбольной тройки 1.66 / 3.75 / 4.33: (1/1.66 + 1/3.75 + 1/4.33 − 1) × 100% ≈ 9.8%. Чем меньше результат, тем выгоднее линия для игрока."}}, {"@type": "Question", "name": "Какая маржа считается низкой?", "acceptedAnswer": {"@type": "Answer", "text": "Ориентировочно 1–3% — это низкая маржа, обычно на топовые матчи. 4–6% — умеренная, 6–9% — средняя по рынку, а 9–15% и выше — высокая (второй эшелон, редкие виды спорта, дополнительные рынки). Точные значения различаются у разных контор."}}, {"@type": "Question", "name": "Как маржа влияет на выигрыш?", "acceptedAnswer": {"@type": "Answer", "text": "Чем выше маржа, тем ниже коэффициент и меньше выплата. На равновероятном исходе честный коэффициент 2.00 даёт с 1000 руб выплату 2000 руб, а при марже 12% коэффициент падает до 1.79 и выплата — до 1786 руб. На дистанции маржа стабильно удерживает часть оборота в пользу конторы."}}, {"@type": "Question", "name": "Почему на разные матчи разная маржа?", "acceptedAnswer": {"@type": "Answer", "text": "Она зависит от популярности события и объёма ставок. На топовые, легко просчитываемые матчи с большим оборотом конторы держат низкую маржу и конкурируют коэффициентами. На нишевых турнирах и мелких рынках оборот мал, а риск ошибиться в линии выше, поэтому наценку поднимают."}}]}</script>
 </head>
 <body>
@@ -154,11 +161,12 @@
     STAVKI RATING
   </a>
   <nav class="nav">
-    <a href="/#top3">Букмекеры</a>
     <a href="/rating">Рейтинг</a>
-    <a href="/#compare">Сравнение</a>
-    <a href="/instrumenty/kalkulyator-stavok" class="active">Инструменты</a>
-    <a href="/kak-proverit-licenziyu">Школа</a>
+    <a href="/rejting">По критериям</a>
+    <a href="/stavki">Виды спорта</a>
+    <a href="/instrumenty/kalkulyator-stavok">Инструменты</a>
+    <a href="/shkola">Школа</a>
+    <a href="/bonusy">Бонусы</a>
   </nav>
   <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
 </div></header>
@@ -169,7 +177,7 @@
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Термины</a><span>/</span>Что такое маржа букмекера и как её рассчитать</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Школа · Термины ·</div>
     <h1>Что такое маржа букмекера и как её рассчитать</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 04.09.2026</span></div>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 05.09.2026</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Маржа букмекера — это заработок конторы, заранее «зашитый» в коэффициенты на каждый исход. Из-за неё сумма вероятностей всех исходов события по котировкам БК всегда превышает 100%, а коэффициенты оказываются чуть ниже справедливых. Считается маржа по формуле (сумма 1/коэффициент по всем исходам − 1) × 100%: чем результат меньше, тем выгоднее линия для игрока.</p>
   </div></section>
 
@@ -195,7 +203,7 @@
     <div class="tiles">
       <a class="tile" href="/shkola/terminy/chto-takoe-fora"><b>Что такое фора в ставках: виды форы и расчёт возврата</b><small>Термины</small></a>
       <a class="tile" href="/shkola/terminy/chto-takoe-total"><b>Что такое тотал в ставках</b><small>Термины</small></a>
-      <a class="tile" href="/shkola/kak-eto-rabotaet/vidy-stavok-na-sport"><b>Виды ставок на спорт: полный разбор форматов и рынков</b><small>Как это работает</small></a>
+      <a class="tile" href="/shkola/terminy/chto-takoe-ekspress"><b>Что такое экспресс в ставках на спорт</b><small>Термины</small></a>
       <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
       <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
     </div>
@@ -207,14 +215,14 @@
   <div class="footer-grid">
     <div>
       <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
-      <p>stavki-rating.ru — информация о легальных букмекерах России из реестра ЕЦУПС/ЕРАИ. Возрастная категория 18+. Данные на странице демонстрационные — для проверки дизайна и комплаенс-компонентов.</p>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
     </div>
-    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/#top3">Промокоды и фрибеты</a><a href="/#compare">Сравнение</a><a href="/instrumenty/kalkulyator-stavok">Инструменты</a></div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty/kalkulyator-stavok">Инструменты</a></div>
     <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
     <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
   </div>
   <div class="legal-box">
-    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕЦУПС/ЕРАИ.</span>
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
     <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
   </div>
 </div></footer>

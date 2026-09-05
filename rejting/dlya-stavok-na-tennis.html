@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ставки на теннис: роспись и лайв</title>
+<meta name="description" content="Что реально смотреть при выборе букмекера для тенниса: роспись по сетам и геймам, правила при отказе игрока, маржа и лайв. Числовые примеры на ставке 1000 ₽.">
+<link rel="canonical" href="https://stavki-rating.ru/rejting/dlya-stavok-na-tennis">
+<meta name="yandex-verification" content="4edbdcb14677aee3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%23C8FF4D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpolygon points='36,8 17,36 29,36 26,56 47,27 35,27' fill='%2307090F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Oswald", "Inter", system-ui, sans-serif;
+    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
+
+  /* Секции */
+  .section { padding: 30px 0; }
+  .section.tight { padding-top: 6px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Хлебные крошки */
+  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs span { color: var(--muted-2); }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .result .accent { color: var(--volt); }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Текстовый контент страницы */
+  .prose { max-width: 75ch; display: grid; gap: 14px; }
+  .prose h2 { margin-top: 14px; }
+  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  .prose p { color: var(--text); }
+  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
+  .prose li { line-height: 1.5; }
+  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--text); font-weight: 700; }
+  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
+  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
+  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose tbody tr:last-child td { border-bottom: none; }
+  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
+  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
+  .faq { display: grid; gap: 10px; }
+  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; float: right; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; }
+
+  /* Футер */
+  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Рейтинги", "item": "https://stavki-rating.ru/rejting"}, {"@type": "ListItem", "position": 3, "name": "Букмекеры для ставок на теннис: роспись и лайв", "item": "https://stavki-rating.ru/rejting/dlya-stavok-na-tennis"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Букмекеры для ставок на теннис: роспись и лайв", "description": "Что реально смотреть при выборе букмекера для тенниса: роспись по сетам и геймам, правила при отказе игрока, маржа и лайв. Числовые примеры на ставке 1000 ₽.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/rejting/dlya-stavok-na-tennis", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Есть ли лучший букмекер для тенниса?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Единого лучшего оператора нет. На один матч выгоднее условия могут быть у одного легального букмекера, на другой — у иного. Сравнивайте не бренды, а параметры: маржу в коэффициентах, глубину росписи по сетам и геймам и правила расчёта при отказе игрока. Перечень легальных операторов из реестра ЕРАИ смотрите в <a href=\"/rating\">рейтинге</a>.</p>"}}, {"@type": "Question", "name": "Как рассчитывается ставка на теннис, если игрок снялся?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Зависит от правил оператора. Часто ставку возвращают с коэффициентом 1, если матч не доигран до определённого рубежа, но на отдельных рынках при уже определённом исходе возможен расчёт по факту. Правила отличаются у разных операторов и для разных рынков, поэтому раздел про снятие игрока стоит прочитать до ставки.</p>"}}, {"@type": "Question", "name": "Как оценить маржу букмекера на теннисный матч?", "acceptedAnswer": {"@type": "Answer", "text": "<p>На двухисходном рынке это просто: сложите обратные величины двух коэффициентов. Например, при 1,60 на фаворита и 2,35 на аутсайдера сумма равна 1,0505 — маржа около 5%. Чем ближе сумма к 100%, тем меньше комиссия оператора и выше потенциальная выплата. Подробнее — в материале <a href=\"/shkola/terminy/chto-takoe-marzha-bukmekera\">что такое маржа</a>.</p>"}}, {"@type": "Question", "name": "Насколько коэффициент влияет на выплату при ставке 1000 ₽?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Ощутимо. При коэффициенте 1,62 выигрышная ставка 1000 ₽ вернёт 1620 ₽, при 1,55 — 1550 ₽. Разница 70 ₽ на одной ставке на дистанции в 100 однотипных ставок превращается в 7000 ₽. Поэтому сравнение котировок важнее рекламных обещаний.</p>"}}, {"@type": "Question", "name": "Как проверить, что букмекер для тенниса легален?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Легальный оператор имеет лицензию ФНС и проводит операции через Единый ЦУПИС, а регистрация требует идентификации. Статус можно проверить по инструкции <a href=\"/kak-proverit-licenziyu\">как проверить лицензию</a>. Все операторы в нашем каталоге входят в официальный реестр ЕРАИ.</p>"}}]}</script>
+</head>
+<body>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav">
+    <a href="/rating">Рейтинг</a>
+    <a href="/rejting">По критериям</a>
+    <a href="/stavki">Виды спорта</a>
+    <a href="/instrumenty/kalkulyator-stavok">Инструменты</a>
+    <a href="/shkola">Школа</a>
+    <a href="/bonusy">Бонусы</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main>
+
+  <section class="section tight"><div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/rejting">Рейтинги</a><span>/</span>Букмекеры для ставок на теннис: роспись и лайв</nav>
+    <div class="eyebrow" style="margin:16px 0 8px">· Рейтинги ·</div>
+    <h1>Букмекеры для ставок на теннис: роспись и лайв</h1>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 05.09.2026</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">Для ставок на теннис важнее всего три параметра линии: глубина росписи (ставки на сеты, геймы, тай-брейки, а не только на победителя), правила расчёта при отказе или снятии игрока и размер маржи в коэффициентах. Все легальные операторы из реестра ЕРАИ принимают ставки на теннис, но роспись и котировки на один матч у них различаются. Ниже разберём, как эти параметры проверить и как они влияют на выплату при ставке 1000 ₽.</p>
+  </div></section>
+
+  <section class="section" style="padding-top:6px"><div class="container prose">
+    <h2>Что стоит за критерием «букмекер для тенниса»</h2>
+<p>«Букмекер для тенниса» — это не отдельная категория, а набор свойств линии, важных именно для этого вида спорта. Теннис удобен для ставок тем, что здесь два исхода (ничьей нет), а матч естественно делится на сеты и геймы. Из-за этого глубина росписи и правила расчёта играют особую роль.</p><p>Разложите критерий на проверяемые части:</p><ul><li><strong>Роспись по сетам и геймам.</strong> Победитель матча, <a href="/shkola/terminy/chto-takoe-fora">фора</a> по геймам или сетам, <a href="/shkola/terminy/chto-takoe-total">тотал</a> геймов, точный счёт по сетам, тай-брейки.</li><li><strong>Правила при отказе игрока.</strong> Ключевой момент: как рассчитываются ставки, если теннисист снялся из-за травмы. Условия у операторов различаются.</li><li><strong>Маржа.</strong> Комиссия в коэффициентах; на двухисходном рынке её особенно легко оценить.</li><li><strong>Лайв.</strong> Теннис — один из самых «лайвовых» видов: коэффициенты меняются после каждого гейма, поэтому скорость и глубина живой линии критичны.</li></ul><p>Понимание разницы между <a href="/shkola/terminy/liniya-i-rospis">линией и росписью</a> помогает сравнивать операторов предметно: линия — это список матчей и турниров, роспись — набор рынков внутри матча.</p>
+<h2>Отказ игрока: где прячется главный нюанс</h2>
+<p>Самый частый источник спорных ситуаций в теннисе — снятие или отказ игрока по ходу матча. У операторов бывают разные правила расчёта, и это нужно проверить заранее:</p><ul><li><strong>Возврат ставки (расчёт с коэффициентом 1), если сыграно недостаточно.</strong> Часто применяется, если матч не доигран до определённого рубежа (например, не завершён первый сет).</li><li><strong>Расчёт по фактическому результату.</strong> Некоторые рынки могут считаться выигранными или проигранными, если исход уже определён на момент отказа.</li><li><strong>Разные правила для разных рынков.</strong> Ставка на победителя матча и ставка на тотал геймов при отказе могут рассчитываться по-разному.</li></ul><p>Именно поэтому перед ставкой на теннис важно прочитать раздел правил про снятие игрока. Незнание этих условий — типичный подводный камень: два оператора при одинаковом сценарии отказа могут рассчитать вашу ставку совершенно по-разному. Как в целом оформляется пари, описано в материале <a href="/shkola/kak-eto-rabotaet/kak-sdelat-stavku">как сделать ставку</a>.</p><p>Второй нюанс — <a href="/shkola/terminy/chto-takoe-fora">фора по геймам</a>. В теннисе она популярна, потому что позволяет ставить на фаворита с более высоким коэффициентом за счёт гандикапа. Но её результат зависит от того, как оператор считает форму при неполном матче.</p>
+<h2>Как маржа влияет на выплату: расчёт на 1000 ₽</h2>
+<p>Двухисходный рынок тенниса удобен для оценки маржи: достаточно сложить обратные величины двух коэффициентов. Сумма выше 100% — перевес оператора. Механику подробно объясняет статья <a href="/shkola/terminy/chto-takoe-marzha-bukmekera">что такое маржа букмекера</a>.</p><p>Пример на победителе матча. Пусть два оператора дают такие коэффициенты на победу фаворита:</p><div class="table-wrap"><table><caption>Влияние коэффициента на выплату при ставке 1000 ₽ на победителя в теннисе</caption><thead><tr><th>Оператор</th><th>Коэффициент на фаворита</th><th>Выплата при выигрыше</th><th>Чистая прибыль</th></tr></thead><tbody><tr><td>A</td><td>1,62</td><td>1620 ₽</td><td>620 ₽</td></tr><tr><td>B</td><td>1,58</td><td>1580 ₽</td><td>580 ₽</td></tr><tr><td>C</td><td>1,55</td><td>1550 ₽</td><td>550 ₽</td></tr></tbody></table></div><p>Разница между оператором A и оператором C — 70 ₽ на одной ставке 1000 ₽. На дистанции в 100 таких ставок это 7000 ₽ только за счёт котировки, без изменения стратегии.</p><p>Посчитаем маржу. Если фаворит стоит 1,60, а аутсайдер — 2,35, то сумма обратных величин равна 1/1,60 + 1/2,35 = 0,6250 + 0,4255 = 1,0505, то есть маржа около 5%. Для сравнения, при коэффициентах 1,65 / 2,45 сумма составит примерно 1,0143 — маржа около 1,4%. При равных ставках второй вариант в среднем выгоднее игроку.</p><p>Третий пример — тотал геймов. На рынке «больше/меньше» с коэффициентами 1,90 / 1,90 сумма обратных величин равна 1,0526 — маржа около 5,3%. Проверить возможный итог по своей ставке удобно в <a href="/instrumenty/kalkulyator-stavok">калькуляторе ставок</a>, а посчитать маржу по нескольким рынкам помогает <a href="/instrumenty/konverter-koefficientov">конвертер коэффициентов</a>.</p>
+<h2>Маркетинговые уловки и подводные камни</h2>
+<p>Реклама вокруг теннисных ставок часто подменяет реальные условия яркими обещаниями. На что не стоит ориентироваться:</p><ul><li><strong>Повышенные коэффициенты на матч дня.</strong> Разовое промо не делает всю линию оператора выгоднее. Смотрите на маржу по линии в целом.</li><li><strong>«Много рынков на матч».</strong> Часть из них — дробления одного исхода. Важнее качество котировок на нужные вам рынки: победитель, форы, тоталы.</li><li><strong>Бонусы без учёта отыгрыша.</strong> Реальную ценность определяют <a href="/shkola/terminy/chto-takoe-otygrysh-bonusa">условия отыгрыша</a>, а не рекламный размер предложения.</li></ul><p>Подводные камни, которые стоит проверить в правилах до ставки: расчёт при отказе или снятии игрока, поведение форы и тотала при неполном матче, лимиты на отдельные рынки, а также глубина и скорость лайв-линии. В теннисе лайв особенно активен, поэтому медленная линия — существенный минус.</p><p>И обязательный шаг — проверка легальности. Убедиться, что оператор входит в реестр ЕРАИ и работает через <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">Единый ЦУПИС</a>, помогает инструкция <a href="/kak-proverit-licenziyu">как проверить лицензию</a>.</p>
+<h2>Как выбрать под свой стиль ставок</h2>
+<p>Под разные задачи в теннисе подходят разные операторы. Сопоставьте приоритеты с параметрами линии:</p><div class="table-wrap"><table><caption>Что важнее в зависимости от стиля ставок на теннис</caption><thead><tr><th>Ваш приоритет</th><th>На что смотреть в первую очередь</th></tr></thead><tbody><tr><td>Ставки на победителя матча</td><td>Маржа на двухисходном рынке, правила отказа</td></tr><tr><td>Форы и тоталы по геймам</td><td>Глубина росписи и расчёт при неполном матче</td></tr><tr><td>Лайв по ходу матча</td><td>Скорость линии и глубина живой росписи</td></tr><tr><td>Ставки на турниры вне топ-уровня</td><td>Покрытие турниров и полнота линии</td></tr></tbody></table></div><p>Начинающим полезно сначала освоить базу: <a href="/shkola/kak-eto-rabotaet/vidy-stavok-na-sport">виды ставок на спорт</a> и <a href="/shkola/kak-eto-rabotaet/kak-vybrat-bukmekera">как выбрать букмекера</a>. Дисциплину по размеру ставок задаёт <a href="/shkola/strategii/bankroll-menedzhment">банкролл-менеджмент</a>.</p><p>Сравнить действующих легальных операторов из реестра ЕРАИ удобнее в одном месте — полный перечень собран в <a href="/rating">общем рейтинге</a>. Профильные разделы: <a href="/rejting/s-live">операторы с лайвом</a> и <a href="/stavki/tennis">ставки на теннис</a>.</p>
+    <h2>Частые вопросы</h2>
+    <div class="faq"><details><summary>Есть ли лучший букмекер для тенниса?</summary><p><p>Единого лучшего оператора нет. На один матч выгоднее условия могут быть у одного легального букмекера, на другой — у иного. Сравнивайте не бренды, а параметры: маржу в коэффициентах, глубину росписи по сетам и геймам и правила расчёта при отказе игрока. Перечень легальных операторов из реестра ЕРАИ смотрите в <a href="/rating">рейтинге</a>.</p></p></details>
+<details><summary>Как рассчитывается ставка на теннис, если игрок снялся?</summary><p><p>Зависит от правил оператора. Часто ставку возвращают с коэффициентом 1, если матч не доигран до определённого рубежа, но на отдельных рынках при уже определённом исходе возможен расчёт по факту. Правила отличаются у разных операторов и для разных рынков, поэтому раздел про снятие игрока стоит прочитать до ставки.</p></p></details>
+<details><summary>Как оценить маржу букмекера на теннисный матч?</summary><p><p>На двухисходном рынке это просто: сложите обратные величины двух коэффициентов. Например, при 1,60 на фаворита и 2,35 на аутсайдера сумма равна 1,0505 — маржа около 5%. Чем ближе сумма к 100%, тем меньше комиссия оператора и выше потенциальная выплата. Подробнее — в материале <a href="/shkola/terminy/chto-takoe-marzha-bukmekera">что такое маржа</a>.</p></p></details>
+<details><summary>Насколько коэффициент влияет на выплату при ставке 1000 ₽?</summary><p><p>Ощутимо. При коэффициенте 1,62 выигрышная ставка 1000 ₽ вернёт 1620 ₽, при 1,55 — 1550 ₽. Разница 70 ₽ на одной ставке на дистанции в 100 однотипных ставок превращается в 7000 ₽. Поэтому сравнение котировок важнее рекламных обещаний.</p></p></details>
+<details><summary>Как проверить, что букмекер для тенниса легален?</summary><p><p>Легальный оператор имеет лицензию ФНС и проводит операции через Единый ЦУПИС, а регистрация требует идентификации. Статус можно проверить по инструкции <a href="/kak-proverit-licenziyu">как проверить лицензию</a>. Все операторы в нашем каталоге входят в официальный реестр ЕРАИ.</p></p></details></div>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="tiles">
+      <a class="tile" href="/rejting/s-fribetom"><b>Букмекеры с фрибетом за регистрацию: как выбрать</b><small>Рейтинги</small></a>
+      <a class="tile" href="/rejting/s-bonusom-za-registraciyu"><b>Бонус за регистрацию в БК: на что смотреть</b><small>Рейтинги</small></a>
+      <a class="tile" href="/rejting/s-bolshim-bonusom"><b>БК с самым большим бонусом: почему размер — не главное</b><small>Рейтинги</small></a>
+      <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
+      <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
+    </div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty/kalkulyator-stavok">Инструменты</a></div>
+    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+</body>
+</html>

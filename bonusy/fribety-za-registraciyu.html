@@ -118,6 +118,13 @@
   .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
   .prose strong { color: var(--text); font-weight: 700; }
   .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
+  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
+  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose tbody tr:last-child td { border-bottom: none; }
+  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
+  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
   .faq { display: grid; gap: 10px; }
   .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
   .faq summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; }
@@ -143,7 +150,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Бонусы", "item": "https://stavki-rating.ru/bonusy"}, {"@type": "ListItem", "position": 3, "name": "Фрибет за регистрацию: что это, как получить и отыграть", "item": "https://stavki-rating.ru/bonusy/fribety-za-registraciyu"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Фрибет за регистрацию: что это, как получить и отыграть", "description": "Что такое фрибет за регистрацию и без депозита: как начисляется, вернётся ли сумма ставки, как отыграть вейджер, налог 13% и подводные камни. Разбор с расчётами.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bonusy/fribety-za-registraciyu", "datePublished": "2026-09-04", "dateModified": "2026-09-04", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Фрибет за регистрацию: что это, как получить и отыграть", "description": "Что такое фрибет за регистрацию и без депозита: как начисляется, вернётся ли сумма ставки, как отыграть вейджер, налог 13% и подводные камни. Разбор с расчётами.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bonusy/fribety-za-registraciyu", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Вернётся ли сумма фрибета, если ставка сыграет?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. При выигрыше на счёт зачисляется только чистая прибыль по формуле (коэффициент − 1) × номинал. Сам номинал фрибета не возвращается ни при выигрыше, ни при проигрыше. Например, фрибет 1000 руб на коэффициент 2.5 принесёт 1500 руб чистыми, а не 2500 руб."}}, {"@type": "Question", "name": "Нужно ли отыгрывать фрибет с вейджером?", "acceptedAnswer": {"@type": "Answer", "text": "Чаще всего «классический» фрибет отыгрывать не нужно — он ставится один раз, и чистый выигрыш сразу зачисляется. Но встречаются акции, где под фрибетом понимается бонус с вейджером (множителем отыгрыша, например x5) и минимальным коэффициентом. Всегда проверяйте это в правилах: наличие множителя резко снижает реальную ценность."}}, {"@type": "Question", "name": "Можно ли сразу вывести выигрыш с бездепозитного фрибета?", "acceptedAnswer": {"@type": "Answer", "text": "Обычно нет. У многих легальных контор чистый выигрыш с фрибета за регистрацию блокируется до тех пор, пока вы не внесёте депозит (а иногда и не отыграете его). Конкретное условие вывода указано в правилах акции."}}, {"@type": "Question", "name": "Платится ли налог с выигрыша по фрибету?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Выигрыш облагается НДФЛ 13%. При разовой выплате от 15 000 руб налог удерживает сам букмекер как налоговый агент. От 4000 до 15 000 руб в год игрок декларирует и платит сам. Для бездепозитного фрибета налоговой базой считается весь чистый выигрыш, так как своих денег в ставке нет."}}, {"@type": "Question", "name": "Безопасны ли промокоды на фрибет из сторонних источников?", "acceptedAnswer": {"@type": "Answer", "text": "К ним стоит относиться осторожно. Обещания конкретных сумм и «секретные» коды из чужих источников часто оказываются недействующими или нарушают правила. Ориентируйтесь только на официальные условия акции на сайте букмекера, имеющего лицензию ФНС и подключение к ЦУПИС."}}]}</script>
 </head>
 <body>
@@ -154,11 +161,12 @@
     STAVKI RATING
   </a>
   <nav class="nav">
-    <a href="/#top3">Букмекеры</a>
     <a href="/rating">Рейтинг</a>
-    <a href="/#compare">Сравнение</a>
-    <a href="/instrumenty/kalkulyator-stavok" class="active">Инструменты</a>
-    <a href="/kak-proverit-licenziyu">Школа</a>
+    <a href="/rejting">По критериям</a>
+    <a href="/stavki">Виды спорта</a>
+    <a href="/instrumenty/kalkulyator-stavok">Инструменты</a>
+    <a href="/shkola">Школа</a>
+    <a href="/bonusy">Бонусы</a>
   </nav>
   <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
 </div></header>
@@ -169,7 +177,7 @@
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bonusy">Бонусы</a><span>/</span>Фрибет за регистрацию: что это, как получить и отыграть</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Бонусы ·</div>
     <h1>Фрибет за регистрацию: что это, как получить и отыграть</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 04.09.2026</span></div>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 05.09.2026</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Фрибет за регистрацию — это бесплатная ставка фиксированного номинала, которую легальная букмекерская контора начисляет новому пользователю после регистрации и верификации в ЦУПИС. Главное, что нужно понимать сразу: при выигрыше на счёт возвращается только чистая прибыль (коэффициент минус единица, умноженные на номинал), а сама сумма фрибета не возвращается. Ниже — как это устроено, чем фрибет отличается от бонуса на депозит, как его отыграть и какие условия скрывают реальную ценность подарка.</p>
   </div></section>
 
@@ -195,9 +203,9 @@
     <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <h2 style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
+      <a class="tile" href="/promokody"><b>Промокоды букмекеров: как работают, куда вводить и в чём подвох</b><small>Бонусы</small></a>
+      <a class="tile" href="/bonusy/za-registraciyu"><b>Бонус за регистрацию в БК: виды приветственных предложений и условия отыгрыша</b><small>Бонусы</small></a>
       <a class="tile" href="/shkola/terminy/chto-takoe-fora"><b>Что такое фора в ставках: виды форы и расчёт возврата</b><small>Термины</small></a>
-      <a class="tile" href="/shkola/terminy/chto-takoe-total"><b>Что такое тотал в ставках</b><small>Термины</small></a>
-      <a class="tile" href="/shkola/kak-eto-rabotaet/vidy-stavok-na-sport"><b>Виды ставок на спорт: полный разбор форматов и рынков</b><small>Как это работает</small></a>
       <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
       <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
     </div>
@@ -209,14 +217,14 @@
   <div class="footer-grid">
     <div>
       <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
-      <p>stavki-rating.ru — информация о легальных букмекерах России из реестра ЕЦУПС/ЕРАИ. Возрастная категория 18+. Данные на странице демонстрационные — для проверки дизайна и комплаенс-компонентов.</p>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
     </div>
-    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/#top3">Промокоды и фрибеты</a><a href="/#compare">Сравнение</a><a href="/instrumenty/kalkulyator-stavok">Инструменты</a></div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty/kalkulyator-stavok">Инструменты</a></div>
     <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
     <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
   </div>
   <div class="legal-box">
-    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕЦУПС/ЕРАИ.</span>
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
     <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
   </div>
 </div></footer>

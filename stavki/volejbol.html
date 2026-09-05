@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ставки на волейбол: сеты, тоталы и форы</title>
+<meta name="description" content="Гайд по ставкам на волейбол: исход матча, форы по сетам и очкам, тоталы, специальные рынки. Разбор особенностей вида спорта и примеры расчёта на 1000 ₽.">
+<link rel="canonical" href="https://stavki-rating.ru/stavki/volejbol">
+<meta name="yandex-verification" content="4edbdcb14677aee3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%23C8FF4D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpolygon points='36,8 17,36 29,36 26,56 47,27 35,27' fill='%2307090F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Oswald", "Inter", system-ui, sans-serif;
+    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
+
+  /* Секции */
+  .section { padding: 30px 0; }
+  .section.tight { padding-top: 6px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Хлебные крошки */
+  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs span { color: var(--muted-2); }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .result .accent { color: var(--volt); }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Текстовый контент страницы */
+  .prose { max-width: 75ch; display: grid; gap: 14px; }
+  .prose h2 { margin-top: 14px; }
+  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  .prose p { color: var(--text); }
+  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
+  .prose li { line-height: 1.5; }
+  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--text); font-weight: 700; }
+  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
+  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
+  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose tbody tr:last-child td { border-bottom: none; }
+  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
+  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
+  .faq { display: grid; gap: 10px; }
+  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; float: right; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; }
+
+  /* Футер */
+  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Ставки на спорт", "item": "https://stavki-rating.ru/stavki"}, {"@type": "ListItem", "position": 3, "name": "Ставки на волейбол: сеты, тоталы очков и форы", "item": "https://stavki-rating.ru/stavki/volejbol"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ставки на волейбол: сеты, тоталы очков и форы", "description": "Гайд по ставкам на волейбол: исход матча, форы по сетам и очкам, тоталы, специальные рынки. Разбор особенностей вида спорта и примеры расчёта на 1000 ₽.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/stavki/volejbol", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Бывает ли ничья в ставках на волейбол?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет. Волейбольный матч всегда заканчивается победой одной из команд — по правилам нужно взять три партии. Поэтому рынок исхода двухвариантный: П1 или П2, а ставки на ничью в волейболе не предлагаются.</p>"}}, {"@type": "Question", "name": "Что такое фора по сетам в волейболе?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Это гандикап в партиях. Например, Ф1(-1.5) выигрывает, если первая команда победит с разницей минимум в два сета — 3:0 или 3:1. Ф2(+1.5) проходит, если вторая команда выиграет матч или проиграет не крупнее, чем 2:3. Подробнее — в материале <a href=\"/shkola/terminy/chto-takoe-fora\">что такое фора</a>.</p>"}}, {"@type": "Question", "name": "Как считается тотал очков?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Тотал — это сумма очков, набранных обеими командами за матч. Ставка ТБ (больше) проходит, если фактическая сумма выше линии, ТМ (меньше) — если ниже. На пятисетовых матчах сумма выше, чем на матчах 3:0, что стоит учитывать при выборе линии.</p>"}}, {"@type": "Question", "name": "Можно ли ставить на отдельный сет?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Да. В росписи обычно есть рынок победителя конкретной партии и тотал очков в отдельном сете. Такие рынки чаще оценивают по ходу игры, когда виден баланс сил в матче.</p>"}}, {"@type": "Question", "name": "Влияет ли пятый сет на итоговый тотал?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Да. Пятый сет (тай-брейк) идёт до 15 очков, а не до 25, но всё равно добавляет к матчу заметное число очков. Матч из пяти партий почти всегда даёт большую сумму очков, чем матч 3:0, поэтому при ставке на тотал важно оценивать вероятность затяжной игры.</p>"}}]}</script>
+</head>
+<body>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav">
+    <a href="/rating">Рейтинг</a>
+    <a href="/rejting">По критериям</a>
+    <a href="/stavki">Виды спорта</a>
+    <a href="/instrumenty/kalkulyator-stavok">Инструменты</a>
+    <a href="/shkola">Школа</a>
+    <a href="/bonusy">Бонусы</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main>
+
+  <section class="section tight"><div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/stavki">Ставки на спорт</a><span>/</span>Ставки на волейбол: сеты, тоталы очков и форы</nav>
+    <div class="eyebrow" style="margin:16px 0 8px">· Ставки на спорт ·</div>
+    <h1>Ставки на волейбол: сеты, тоталы очков и форы</h1>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 05.09.2026</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">Ставки на волейбол — это прогнозы на исход матча и его статистику у легальных операторов из реестра ЕРАИ. Ничьих в волейболе не бывает, поэтому основной рынок — победа одной из команд (два исхода), а к нему добавляются форы по сетам и очкам, тоталы и ставки на отдельные партии. Ниже разбираем доступные рынки, особенности вида спорта и считаем несколько примеров со ставкой 1000 ₽.</p>
+  </div></section>
+
+  <section class="section" style="padding-top:6px"><div class="container prose">
+    <h2>Как устроен волейбольный матч и почему это важно для ставок</h2>
+<p>Волейбольный матч играется до трёх выигранных партий (сетов). Первые четыре сета идут до 25 очков с разницей минимум в два очка, а решающий пятый сет (тай-брейк) — до 15 очков, тоже с разницей в два. Побеждает команда, первой взявшая три сета, поэтому итог по партиям может быть 3:0, 3:1 или 3:2.</p><p>Ключевая для ставок особенность: в волейболе не бывает ничьих. Каждый розыгрыш приносит очко одной из команд (система «розыгрыш — очко»), а матч всегда заканчивается победой одной из сторон. Поэтому классический рынок исхода 1X2 здесь не применяется — вместо трёх вариантов есть только два: победа первой команды (П1) или второй (П2).</p><p>Из формата вытекает и разброс очков: короткий матч 3:0 может уложиться примерно в 130–150 очков, а затяжные пять сетов легко переваливают за 200. Это напрямую влияет на рынки тоталов, о которых ниже.</p>
+<h2>Основные рынки: исход, форы и тоталы</h2>
+<p>Базовый набор рынков схож у всех легальных операторов из реестра ЕРАИ. Разберём главные.</p><ul><li><strong>Исход матча (П1 / П2)</strong> — ставка на победу одной из команд. Два варианта, ничьей нет.</li><li><strong><a href="/shkola/terminy/chto-takoe-fora">Фора</a> по сетам</strong> — гандикап в партиях. Ф1(-1.5) требует победы 3:0 или 3:1 (разница минимум в два сета), а Ф2(+1.5) проходит, если вторая команда выиграет матч или проиграет не крупнее, чем 2:3.</li><li><strong>Фора по очкам</strong> — гандикап в суммарных очках матча, например Ф1(-4.5) или Ф2(+4.5).</li><li><strong><a href="/shkola/terminy/chto-takoe-total">Тотал</a> очков</strong> — ставка на сумму очков, набранных обеими командами: больше (ТБ) или меньше (ТМ) заданной линии.</li><li><strong>Индивидуальный тотал</strong> — очки только одной из команд.</li></ul><div class="table-wrap"><table><caption>Популярные рынки в ставках на волейбол</caption><thead><tr><th>Рынок</th><th>Что означает</th><th>Пример</th></tr></thead><tbody><tr><td>Исход (П1/П2)</td><td>Победа одной из команд</td><td>П1 — победа первой команды</td></tr><tr><td>Фора по сетам</td><td>Гандикап в партиях</td><td>Ф1(-1.5): победа 3:0 или 3:1</td></tr><tr><td>Фора по очкам</td><td>Гандикап в очках</td><td>Ф2(+4.5)</td></tr><tr><td>Тотал очков</td><td>Сумма очков матча</td><td>ТБ(185.5)</td></tr><tr><td>Индивидуальный тотал</td><td>Очки одной команды</td><td>ИТБ1(92.5)</td></tr><tr><td>Точный счёт по сетам</td><td>Итог в партиях</td><td>3:1</td></tr><tr><td>Тотал очков в сете</td><td>Сумма очков одной партии</td><td>ТМ(48.5)</td></tr></tbody></table></div>
+<h2>Специальные рынки волейбола</h2>
+<p>Помимо базовых, роспись волейбольного матча включает более узкие варианты. Они полезны, когда есть понимание конкретной пары команд.</p><ul><li><strong>Победитель отдельного сета</strong> — кто возьмёт конкретную партию.</li><li><strong>Точный счёт по сетам</strong> — 3:0, 3:1, 3:2 и зеркальные 0:3, 1:3, 2:3.</li><li><strong>Тотал очков в сете</strong> — сумма очков в отдельной партии.</li><li><strong>Чёт/нечёт</strong> — чётность суммы очков матча.</li><li><strong>Будет ли пятый сет</strong> — да или нет.</li></ul><p>Такие рынки нередко оценивают уже по ходу игры, когда виден настрой и физическое состояние команд. Важно помнить: чем уже рынок, тем внимательнее стоит читать правила расчёта у конкретного оператора.</p>
+<h2>Примеры расчёта ставок на 1000 ₽</h2>
+<p>Во всех примерах сумма ставки — 1000 ₽, а коэффициенты взяты условно, только для иллюстрации расчёта. Проверить свой расчёт можно в <a href="/instrumenty/kalkulyator-stavok">калькуляторе ставок</a>.</p><p><strong>Пример 1. Победа фаворита.</strong> Ставка на П1 с коэффициентом 1.45. Возможный возврат: 1000 × 1.45 = 1450 ₽, из них чистая прибыль 450 ₽.</p><p><strong>Пример 2. Фора по сетам.</strong> Ставка на Ф2(+1.5) с коэффициентом 1.80. Она проходит, если аутсайдер выиграет матч или проиграет не крупнее 2:3. Возврат: 1000 × 1.80 = 1800 ₽, прибыль 800 ₽.</p><p><strong>Пример 3. Тотал очков.</strong> Ставка на ТБ (185.5) с коэффициентом 1.90. Если команды в сумме наберут 186 очков и больше — возврат 1000 × 1.90 = 1900 ₽, прибыль 900 ₽. При 185 очках и меньше ставка проигрывает.</p><p><strong>Пример 4. Индивидуальный тотал.</strong> Ставка на ИТБ первой команды (92.5) с коэффициентом 1.95: если команда наберёт 93 очка и больше, возврат составит 1000 × 1.95 = 1950 ₽, прибыль 950 ₽.</p>
+<h2>Типичные ошибки новичка</h2>
+<ul><li>Ждать или искать ничью — в волейболе её не существует, исход всегда двухвариантный.</li><li>Путать фору по сетам и фору по очкам: это разные рынки с разной логикой расчёта.</li><li>Игнорировать пятый сет — тай-брейк до 15 очков заметно меняет итоговую сумму и влияет на тоталы.</li><li>Оценивать матч только по общему уровню команд, не учитывая формат турнира и мотивацию.</li><li>Ставить весь банк на один матч — базовый банкролл-менеджмент советует ограничивать долю средств на одну ставку.</li></ul>
+<h2>С чего начать</h2>
+<p>Перед ставкой убедитесь, что площадка легальна и работает через ЦУПИС. Сравнить операторов удобно в <a href="/rating">рейтинге букмекеров</a>, а разобраться с базовыми терминами помогут материалы Школы. Начните с понятий, которые чаще всего встречаются в волейбольной росписи: их логика одинакова для большинства видов спорта, поэтому один раз разобравшись, вы будете читать линию увереннее.</p>
+    <h2>Частые вопросы</h2>
+    <div class="faq"><details><summary>Бывает ли ничья в ставках на волейбол?</summary><p><p>Нет. Волейбольный матч всегда заканчивается победой одной из команд — по правилам нужно взять три партии. Поэтому рынок исхода двухвариантный: П1 или П2, а ставки на ничью в волейболе не предлагаются.</p></p></details>
+<details><summary>Что такое фора по сетам в волейболе?</summary><p><p>Это гандикап в партиях. Например, Ф1(-1.5) выигрывает, если первая команда победит с разницей минимум в два сета — 3:0 или 3:1. Ф2(+1.5) проходит, если вторая команда выиграет матч или проиграет не крупнее, чем 2:3. Подробнее — в материале <a href="/shkola/terminy/chto-takoe-fora">что такое фора</a>.</p></p></details>
+<details><summary>Как считается тотал очков?</summary><p><p>Тотал — это сумма очков, набранных обеими командами за матч. Ставка ТБ (больше) проходит, если фактическая сумма выше линии, ТМ (меньше) — если ниже. На пятисетовых матчах сумма выше, чем на матчах 3:0, что стоит учитывать при выборе линии.</p></p></details>
+<details><summary>Можно ли ставить на отдельный сет?</summary><p><p>Да. В росписи обычно есть рынок победителя конкретной партии и тотал очков в отдельном сете. Такие рынки чаще оценивают по ходу игры, когда виден баланс сил в матче.</p></p></details>
+<details><summary>Влияет ли пятый сет на итоговый тотал?</summary><p><p>Да. Пятый сет (тай-брейк) идёт до 15 очков, а не до 25, но всё равно добавляет к матчу заметное число очков. Матч из пяти партий почти всегда даёт большую сумму очков, чем матч 3:0, поэтому при ставке на тотал важно оценивать вероятность затяжной игры.</p></p></details></div>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="tiles">
+      <a class="tile" href="/stavki/futbol"><b>Ставки на футбол: рынки, роспись и типичные ошибки</b><small>Ставки на спорт</small></a>
+      <a class="tile" href="/stavki/hokkej"><b>Ставки на хоккей: тоталы, форы и особенности КХЛ и НХЛ</b><small>Ставки на спорт</small></a>
+      <a class="tile" href="/stavki/tennis"><b>Ставки на теннис: геймы, сеты и лайв</b><small>Ставки на спорт</small></a>
+      <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
+      <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
+    </div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty/kalkulyator-stavok">Инструменты</a></div>
+    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+</body>
+</html>

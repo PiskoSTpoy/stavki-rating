@@ -118,6 +118,13 @@
   .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
   .prose strong { color: var(--text); font-weight: 700; }
   .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
+  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
+  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose tbody tr:last-child td { border-bottom: none; }
+  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
+  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
   .faq { display: grid; gap: 10px; }
   .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
   .faq summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; }
@@ -143,7 +150,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Термины", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Что такое вилка в ставках: как работает surebet и почему это сложнее, чем кажется", "item": "https://stavki-rating.ru/shkola/terminy/chto-takoe-vilka"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Что такое вилка в ставках: как работает surebet и почему это сложнее, чем кажется", "description": "Что такое вилка (surebet) в ставках простыми словами: условие 1/o1+1/o2<1, формула распределения ставок, числовые примеры на 1000 руб и реальные риски.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/terminy/chto-takoe-vilka", "datePublished": "2026-09-04", "dateModified": "2026-09-04", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Что такое вилка в ставках: как работает surebet и почему это сложнее, чем кажется", "description": "Что такое вилка (surebet) в ставках простыми словами: условие 1/o1+1/o2<1, формула распределения ставок, числовые примеры на 1000 руб и реальные риски.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/terminy/chto-takoe-vilka", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Вилка в ставках — это законно?", "acceptedAnswer": {"@type": "Answer", "text": "Сам по себе арбитраж (ставки на все исходы у разных БК) законом РФ не запрещён. Но он прямо запрещён внутренними правилами почти всех букмекеров, поэтому счета вилочников урезают и блокируют. Незаконным становится обход этих ограничений через игру на чужих аккаунтах, зарегистрированных на других людей в ЦУПИС."}}, {"@type": "Question", "name": "Какое условие должно выполняться, чтобы вилка была прибыльной?", "acceptedAnswer": {"@type": "Answer", "text": "Для двух исходов сумма обратных коэффициентов должна быть меньше единицы: 1/o1 + 1/o2 < 1. Для трёх исходов — 1/o1 + 1/o2 + 1/o3 < 1. Прибыль в процентах равна (1 минус эта сумма) × 100%. Если сумма равна или больше 1, гарантированной прибыли нет."}}, {"@type": "Question", "name": "Как рассчитать, сколько ставить на каждый исход?", "acceptedAnswer": {"@type": "Answer", "text": "Ставка на исход = Общий банк × (1/коэффициент этого исхода) / (сумма обратных коэффициентов по всем исходам). Такое распределение выравнивает выплату: при любой развязке на счетах окажется примерно одинаковая сумма, превышающая вложенный банк."}}, {"@type": "Question", "name": "Почему большие вилки на 10–20% опасны?", "acceptedAnswer": {"@type": "Answer", "text": "На ликвидных рынках расхождение коэффициентов невелико, поэтому реальные вилки дают 0,5–3%. Крупный процент почти всегда означает ошибку в линии или устаревший коэффициент. Такую ставку букмекер аннулирует по правилу о явной ошибке, и вместо гарантированной прибыли остаётся одна незакрытая нога с полным риском."}}, {"@type": "Question", "name": "Можно ли стабильно зарабатывать на вилках в России?", "acceptedAnswer": {"@type": "Answer", "text": "Математически прибыль есть, но на практике легальные БК быстро выявляют вилочников по поведению и режут лимиты во всех конторах за недели. Добавьте аннуляции ошибочных коэффициентов, скорость их изменения, комиссии платёжных систем и НДФЛ с выигрышей — и тонкая маржа в 1–3% на дистанции легко превращается в ноль или минус."}}]}</script>
 </head>
 <body>
@@ -154,11 +161,12 @@
     STAVKI RATING
   </a>
   <nav class="nav">
-    <a href="/#top3">Букмекеры</a>
     <a href="/rating">Рейтинг</a>
-    <a href="/#compare">Сравнение</a>
-    <a href="/instrumenty/kalkulyator-stavok" class="active">Инструменты</a>
-    <a href="/kak-proverit-licenziyu">Школа</a>
+    <a href="/rejting">По критериям</a>
+    <a href="/stavki">Виды спорта</a>
+    <a href="/instrumenty/kalkulyator-stavok">Инструменты</a>
+    <a href="/shkola">Школа</a>
+    <a href="/bonusy">Бонусы</a>
   </nav>
   <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
 </div></header>
@@ -169,7 +177,7 @@
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Термины</a><span>/</span>Что такое вилка в ставках: как работает surebet и почему это сложнее, чем кажется</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Школа · Термины ·</div>
     <h1>Что такое вилка в ставках: как работает surebet и почему это сложнее, чем кажется</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 04.09.2026</span></div>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 05.09.2026</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Вилка (англ. surebet, arbitrage) — это набор ставок на все возможные исходы одного события в разных букмекерских конторах, при котором любая развязка приносит одинаковую прибыль независимо от результата. Возникает она из-за расхождения коэффициентов у разных БК, а работает только при выполнении математического условия: сумма обратных коэффициентов 1/o1 + 1/o2 < 1. Ниже — как это считается, разбор на числах и почему на практике легальные БК РФ активно борются с вилочниками.</p>
   </div></section>
 
@@ -197,7 +205,7 @@
     <div class="tiles">
       <a class="tile" href="/shkola/terminy/chto-takoe-fora"><b>Что такое фора в ставках: виды форы и расчёт возврата</b><small>Термины</small></a>
       <a class="tile" href="/shkola/terminy/chto-takoe-total"><b>Что такое тотал в ставках</b><small>Термины</small></a>
-      <a class="tile" href="/shkola/kak-eto-rabotaet/vidy-stavok-na-sport"><b>Виды ставок на спорт: полный разбор форматов и рынков</b><small>Как это работает</small></a>
+      <a class="tile" href="/shkola/terminy/chto-takoe-ekspress"><b>Что такое экспресс в ставках на спорт</b><small>Термины</small></a>
       <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
       <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
     </div>
@@ -209,14 +217,14 @@
   <div class="footer-grid">
     <div>
       <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
-      <p>stavki-rating.ru — информация о легальных букмекерах России из реестра ЕЦУПС/ЕРАИ. Возрастная категория 18+. Данные на странице демонстрационные — для проверки дизайна и комплаенс-компонентов.</p>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
     </div>
-    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/#top3">Промокоды и фрибеты</a><a href="/#compare">Сравнение</a><a href="/instrumenty/kalkulyator-stavok">Инструменты</a></div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty/kalkulyator-stavok">Инструменты</a></div>
     <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
     <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
   </div>
   <div class="legal-box">
-    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕЦУПС/ЕРАИ.</span>
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
     <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
   </div>
 </div></footer>

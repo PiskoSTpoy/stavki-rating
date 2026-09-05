@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Высокие коэффициенты и низкая маржа букмекера</title>
+<meta name="description" content="Разбираем, что такое маржа букмекера, как посчитать её по коэффициентам и как разница в марже влияет на банк при ставке 1000 ₽. Нейтральный разбор.">
+<link rel="canonical" href="https://stavki-rating.ru/rejting/po-koefficientam">
+<meta name="yandex-verification" content="4edbdcb14677aee3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%23C8FF4D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpolygon points='36,8 17,36 29,36 26,56 47,27 35,27' fill='%2307090F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Oswald", "Inter", system-ui, sans-serif;
+    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
+
+  /* Секции */
+  .section { padding: 30px 0; }
+  .section.tight { padding-top: 6px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Хлебные крошки */
+  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs span { color: var(--muted-2); }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .result .accent { color: var(--volt); }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Текстовый контент страницы */
+  .prose { max-width: 75ch; display: grid; gap: 14px; }
+  .prose h2 { margin-top: 14px; }
+  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  .prose p { color: var(--text); }
+  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
+  .prose li { line-height: 1.5; }
+  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--text); font-weight: 700; }
+  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
+  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
+  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose tbody tr:last-child td { border-bottom: none; }
+  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
+  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
+  .faq { display: grid; gap: 10px; }
+  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; float: right; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; }
+
+  /* Футер */
+  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Рейтинги", "item": "https://stavki-rating.ru/rejting"}, {"@type": "ListItem", "position": 3, "name": "Букмекеры с высокими коэффициентами и низкой маржой", "item": "https://stavki-rating.ru/rejting/po-koefficientam"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Букмекеры с высокими коэффициентами и низкой маржой", "description": "Разбираем, что такое маржа букмекера, как посчитать её по коэффициентам и как разница в марже влияет на банк при ставке 1000 ₽. Нейтральный разбор.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/rejting/po-koefficientam", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Как быстро оценить маржу букмекера по коэффициентам?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Сложите величины 1 / коэффициент по всем исходам события и вычтите 100%. Например, для пары 1.90 / 1.90 сумма равна 1.053, то есть маржа около 5.3%. Чем меньше это число, тем выше реальная выплата. Автоматизировать расчёт можно <a href=\"/instrumenty/konverter-koefficientov\">конвертером коэффициентов</a>.</p>"}}, {"@type": "Question", "name": "Правда ли, что чем выше коэффициенты, тем лучше?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Высокие коэффициенты выгодны только если они высокие системно, а не на одном витринном матче. Один щедрый исход при повышенной марже на остальной линии не делает оператора выгоднее. Оценивайте маржу по 5–10 событиям вашего вида спорта.</p>"}}, {"@type": "Question", "name": "На сколько разница в марже меняет мой результат?", "acceptedAnswer": {"@type": "Answer", "text": "<p>На одной ставке 1000 ₽ разница между маржой 2.6% и 9.3% — около 120 ₽ выплаты. На обороте 100 000 ₽ разница между 2.5% и 5% маржи — примерно 2500 ₽ встроенного удержания. На дистанции это перевешивает большинство бонусных обещаний.</p>"}}, {"@type": "Question", "name": "Отличается ли маржа в линии и в лайве?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Как правило, да: в игре коэффициенты могут пересчитываться чаще и с более широкой наценкой. Поэтому оценивать оператора стоит и по прематч-линии, и по лайву отдельно, а не по одному режиму.</p>"}}, {"@type": "Question", "name": "Где посмотреть список легальных операторов?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Полный перечень операторов из реестра ЕРАИ и тематические подборки собраны в общем <a href=\"/rating\">рейтинге</a>. Перед сравнением коэффициентов убедитесь, что оператор легален — см. <a href=\"/kak-proverit-licenziyu\">как проверить лицензию</a>.</p>"}}]}</script>
+</head>
+<body>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav">
+    <a href="/rating">Рейтинг</a>
+    <a href="/rejting">По критериям</a>
+    <a href="/stavki">Виды спорта</a>
+    <a href="/instrumenty/kalkulyator-stavok">Инструменты</a>
+    <a href="/shkola">Школа</a>
+    <a href="/bonusy">Бонусы</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main>
+
+  <section class="section tight"><div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/rejting">Рейтинги</a><span>/</span>Букмекеры с высокими коэффициентами и низкой маржой</nav>
+    <div class="eyebrow" style="margin:16px 0 8px">· Рейтинги ·</div>
+    <h1>Букмекеры с высокими коэффициентами и низкой маржой</h1>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 05.09.2026</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">«Высокие коэффициенты» — это следствие низкой маржи букмекера: чем меньше комиссия оператора заложена в линию, тем больше выплата при том же исходе. Сравнивать операторов по одному-двум красивым коэффициентам бессмысленно — смотреть нужно на маржу по рынку в целом, потому что именно она определяет вашу долгосрочную доходность. Ниже объясняем, как посчитать маржу самому по опубликованным коэффициентам и как разница в 2–3% сказывается на банке.</p>
+  </div></section>
+
+  <section class="section" style="padding-top:6px"><div class="container prose">
+    <h2>Что такое высокий коэффициент и при чём тут маржа</h2>
+<p>Коэффициент — это обратная величина от вероятности исхода плюс встроенная наценка оператора. Если бы букмекер работал в ноль, на два равновероятных исхода он выставил бы коэффициент <strong>2.00</strong> и <strong>2.00</strong>: сумма обратных величин (1 / 2.00 + 1 / 2.00) равна ровно 1, то есть 100%. Реальная линия всегда чуть ниже этой честной цены — разница и есть маржа, комиссия, которую оператор удерживает с оборота.</p><p>Поэтому «букмекер с высокими коэффициентами» — это на практике «букмекер с низкой маржой». Один яркий коэффициент на топ-матч ни о чём не говорит: его могли завысить в маркетинговых целях, а на соседних рынках заложить наценку побольше. Чтобы понять, кто действительно щедрее, нужно смотреть маржу системно — по десятку событий и по разным видам ставок. Как коэффициенты вообще складываются из вероятностей, подробно разобрано в материале <a href="/shkola/kak-eto-rabotaet/kak-chitat-koefficienty">как читать коэффициенты</a>, а само понятие — в термине <a href="/shkola/terminy/chto-takoe-marzha-bukmekera">что такое маржа букмекера</a>.</p>
+<h2>Как посчитать маржу букмекера самому</h2>
+<p>Формула простая. Для каждого исхода берём величину 1 / коэффициент — это подразумеваемая вероятность с наценкой. Складываем такие величины по всем исходам события и вычитаем 100%. Остаток и есть маржа.</p><p>Возьмём событие с двумя равными исходами (условно «команда А» и «команда Б», честная цена 2.00 / 2.00). Ниже — как меняется маржа и выплата с выигрышной ставки 1000 ₽ при разных коэффициентах пары.</p><div class="table-wrap"><table><caption>Маржа и выплата с 1000 ₽ для пары равных исходов</caption><thead><tr><th>Коэффициенты пары</th><th>Сумма вероятностей</th><th>Маржа</th><th>Выплата с 1000 ₽</th></tr></thead><tbody><tr><td>2.00 / 2.00</td><td>100.0%</td><td>0.0%</td><td>2000 ₽</td></tr><tr><td>1.95 / 1.95</td><td>102.6%</td><td>2.6%</td><td>1950 ₽</td></tr><tr><td>1.90 / 1.90</td><td>105.3%</td><td>5.3%</td><td>1900 ₽</td></tr><tr><td>1.85 / 1.85</td><td>108.1%</td><td>8.1%</td><td>1850 ₽</td></tr><tr><td>1.83 / 1.83</td><td>109.3%</td><td>9.3%</td><td>1830 ₽</td></tr></tbody></table></div><p>Видно, что при марже 2.6% выигрыш по ставке 1000 ₽ составляет 1950 ₽, а при марже 9.3% — только 1830 ₽. Разница в 120 ₽ на одном исходе не выглядит драматично, но она повторяется на каждой ставке. Считать сумму 1 / коэффициент вручную не обязательно — это делает <a href="/instrumenty/konverter-koefficientov">конвертер коэффициентов</a>, который заодно переводит десятичный формат в вероятность.</p>
+<h2>Как разница в марже влияет на банк</h2>
+<p>Маржа — это доля, которую оператор удерживает с оборота в среднем. Поэтому смотреть надо не на одну ставку, а на дистанцию. Предположим, за месяц вы сделали 100 ставок по 1000 ₽ — оборот 100 000 ₽.</p><ul><li>При марже <strong>5%</strong> заложенное удержание оператора с такого оборота — около <strong>5000 ₽</strong>.</li><li>При марже <strong>2.5%</strong> — около <strong>2500 ₽</strong>.</li><li>Разница только за счёт линии — <strong>2500 ₽</strong> в месяц при том же качестве прогнозов.</li></ul><p>Это не значит, что при низкой марже вы гарантированно в плюсе: маржа лишь уменьшает встроенный «налог» на ваши ставки, а исход по-прежнему зависит от результата события. Но на дистанции даже 2–3% разницы в марже перевешивают большинство «бонусных» обещаний. Именно поэтому в каталог-режиме мы не выделяем «победителя по коэффициентам»: у одного оператора линия острее на футбол, у другого — на теннис, и универсального лидера не существует. Управлять размером ставки на дистанции помогает <a href="/shkola/strategii/bankroll-menedzhment">банкролл-менеджмент</a>.</p>
+<h2>Маркетинговые уловки вокруг «высоких коэффициентов»</h2>
+<p>Формулировка «самые высокие коэффициенты» встречается в рекламе почти у всех, но за ней часто стоят приёмы, которые не увеличивают вашу реальную выплату:</p><ul><li><strong>Витринный коэффициент.</strong> Завышенная цена на один топ-матч или на исход, который редко проходит, при обычной или повышенной марже на остальной линии.</li><li><strong>Усечённая роспись.</strong> Красивые основные исходы, но мало дополнительных рынков — а именно на них наценка бывает выше всего.</li><li><strong>«Повышенные» коэффициенты по акции.</strong> Иногда это подарок в пределах небольшой суммы и с условиями отыгрыша, а не системно низкая маржа. Проверенных цифр по таким акциям у нас нет, поэтому конкретные проценты мы не приводим.</li><li><strong>Разная маржа прематч и лайв.</strong> В линии до матча коэффициенты могут быть щедрыми, а в игре — заметно урезанными.</li></ul><p>Вывод: сравнивайте маржу по нескольким событиям и рынкам, а не верьте одному числу с баннера.</p>
+<h2>На что реально смотреть при выборе</h2>
+<p>Практический чек-лист для оценки оператора по коэффициентам:</p><ol><li><strong>Средняя маржа по вашему виду спорта.</strong> Посчитайте её по 5–10 событиям того чемпионата, на который ставите чаще всего.</li><li><strong>Глубина росписи.</strong> Сколько дополнительных рынков и какова маржа на них, а не только на основной исход 1X2.</li><li><strong>Стабильность коэффициентов.</strong> Не режет ли оператор линию непосредственно перед приёмом ставки.</li><li><strong>Разница прематч и лайв.</strong> Насколько маржа в игре отличается от линии до матча.</li><li><strong>Лимиты.</strong> Высокие коэффициенты бесполезны, если на них стоит низкий максимум ставки.</li></ol><p>Все эти пункты вы проверяете сами по опубликованной линии — их не нужно принимать на веру из рекламы.</p>
+<h2>Как это проверить у легального оператора</h2>
+<p>Считать маржу и глубину линии имеет смысл только у операторов, которые работают в правовом поле РФ: они принимают ставки через ЦУПИС, обязаны публиковать реквизиты и подчиняются регулированию. Как отличить такого оператора, описано в разделе <a href="/kak-proverit-licenziyu">как проверить лицензию</a>. Полный перечень легальных операторов из реестра ЕРАИ и подборки по отдельным критериям собраны в общем <a href="/rating">рейтинге букмекеров</a> — оттуда удобно открыть линию каждого и сравнить маржу по описанной выше методике самостоятельно. Мы намеренно не расставляем места «по коэффициентам»: щедрость линии зависит от вида спорта, времени до матча и конкретного рынка, поэтому итоговый выбор всегда за вами.</p>
+    <h2>Частые вопросы</h2>
+    <div class="faq"><details><summary>Как быстро оценить маржу букмекера по коэффициентам?</summary><p><p>Сложите величины 1 / коэффициент по всем исходам события и вычтите 100%. Например, для пары 1.90 / 1.90 сумма равна 1.053, то есть маржа около 5.3%. Чем меньше это число, тем выше реальная выплата. Автоматизировать расчёт можно <a href="/instrumenty/konverter-koefficientov">конвертером коэффициентов</a>.</p></p></details>
+<details><summary>Правда ли, что чем выше коэффициенты, тем лучше?</summary><p><p>Высокие коэффициенты выгодны только если они высокие системно, а не на одном витринном матче. Один щедрый исход при повышенной марже на остальной линии не делает оператора выгоднее. Оценивайте маржу по 5–10 событиям вашего вида спорта.</p></p></details>
+<details><summary>На сколько разница в марже меняет мой результат?</summary><p><p>На одной ставке 1000 ₽ разница между маржой 2.6% и 9.3% — около 120 ₽ выплаты. На обороте 100 000 ₽ разница между 2.5% и 5% маржи — примерно 2500 ₽ встроенного удержания. На дистанции это перевешивает большинство бонусных обещаний.</p></p></details>
+<details><summary>Отличается ли маржа в линии и в лайве?</summary><p><p>Как правило, да: в игре коэффициенты могут пересчитываться чаще и с более широкой наценкой. Поэтому оценивать оператора стоит и по прематч-линии, и по лайву отдельно, а не по одному режиму.</p></p></details>
+<details><summary>Где посмотреть список легальных операторов?</summary><p><p>Полный перечень операторов из реестра ЕРАИ и тематические подборки собраны в общем <a href="/rating">рейтинге</a>. Перед сравнением коэффициентов убедитесь, что оператор легален — см. <a href="/kak-proverit-licenziyu">как проверить лицензию</a>.</p></p></details></div>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="tiles">
+      <a class="tile" href="/rejting/s-fribetom"><b>Букмекеры с фрибетом за регистрацию: как выбрать</b><small>Рейтинги</small></a>
+      <a class="tile" href="/rejting/s-bonusom-za-registraciyu"><b>Бонус за регистрацию в БК: на что смотреть</b><small>Рейтинги</small></a>
+      <a class="tile" href="/rejting/s-bolshim-bonusom"><b>БК с самым большим бонусом: почему размер — не главное</b><small>Рейтинги</small></a>
+      <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
+      <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
+    </div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty/kalkulyator-stavok">Инструменты</a></div>
+    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+</body>
+</html>
