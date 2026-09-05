@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ставки на футзал (мини-футбол): рынки и особенности</title>
+<meta name="description" content="Гид по ставкам на футзал и мини-футбол: рынки 1X2, тоталы, форы и особенности высокой результативности. Как читать линию, типичные ошибки и три примера расчёта на 1000 ₽.">
+<link rel="canonical" href="https://stavki-rating.ru/stavki/futzal">
+<meta name="yandex-verification" content="4edbdcb14677aee3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%23C8FF4D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpolygon points='36,8 17,36 29,36 26,56 47,27 35,27' fill='%2307090F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Oswald", "Inter", system-ui, sans-serif;
+    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
+
+  /* Секции */
+  .section { padding: 30px 0; }
+  .section.tight { padding-top: 6px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Хлебные крошки */
+  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs span { color: var(--muted-2); }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .result .accent { color: var(--volt); }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Текстовый контент страницы */
+  .prose { max-width: 75ch; display: grid; gap: 14px; }
+  .prose h2 { margin-top: 14px; }
+  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  .prose p { color: var(--text); }
+  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
+  .prose li { line-height: 1.5; }
+  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--text); font-weight: 700; }
+  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
+  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
+  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose tbody tr:last-child td { border-bottom: none; }
+  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
+  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
+  .faq { display: grid; gap: 10px; }
+  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; float: right; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; }
+
+  /* Футер */
+  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Ставки на спорт", "item": "https://stavki-rating.ru/stavki"}, {"@type": "ListItem", "position": 3, "name": "Ставки на футзал (мини-футбол): рынки и особенности", "item": "https://stavki-rating.ru/stavki/futzal"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ставки на футзал (мини-футбол): рынки и особенности", "description": "Гид по ставкам на футзал и мини-футбол: рынки 1X2, тоталы, форы и особенности высокой результативности. Как читать линию, типичные ошибки и три примера расчёта на 1000 ₽.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/stavki/futzal", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Сколько длится матч в футзале?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Матч состоит из двух таймов по 20 минут чистого времени с перерывом между ними. Секундомер останавливается при выходе мяча из игры и фолах, поэтому фактическая продолжительность встречи больше 40 минут. Это отличает футзал от большого футбола, где время идёт непрерывно.</p>"}}, {"@type": "Question", "name": "Почему тоталы в футзале выше, чем в футболе?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Площадка меньше, темп выше, а после накопления командных фолов назначается 10-метровый удар без «стенки». Всё это повышает результативность, поэтому линии тоталов в мини-футболе держатся выше — нередко около 6–7 голов за матч.</p>"}}, {"@type": "Question", "name": "Бывают ли ничьи в ставках на футзал?", "acceptedAnswer": {"@type": "Answer", "text": "<p>В регулярных матчах исход трёхзначный: победа, ничья или победа (рынок 1X2). В матчах плей-офф при равном счёте может назначаться дополнительное время, поэтому важно уточнять, на какой отрезок — основное время или весь матч — принимается конкретная ставка.</p>"}}, {"@type": "Question", "name": "Что такое снятие вратаря и как это влияет на ставку?", "acceptedAnswer": {"@type": "Answer", "text": "<p>При отставании команда может заменить вратаря пятым полевым игроком, усиливая атаку. Это резко повышает шансы забить и пропустить в концовке, влияя на тоталы и форы, особенно в лайве. Учитывайте этот фактор при ставках по ходу матча.</p>"}}, {"@type": "Question", "name": "С какого рынка начать новичку в футзале?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Наиболее понятны исход 1X2 и тотал голов в регулярных матчах. Форы с крупным шагом и лайв-ставки требуют больше опыта, поэтому к ним разумно переходить после того, как вы освоите базовую линию и привыкнете к высокой результативности вида спорта.</p>"}}]}</script>
+</head>
+<body>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav">
+    <a href="/rating">Рейтинг</a>
+    <a href="/rejting">По критериям</a>
+    <a href="/stavki">Виды спорта</a>
+    <a href="/instrumenty/kalkulyator-stavok">Инструменты</a>
+    <a href="/shkola">Школа</a>
+    <a href="/bonusy">Бонусы</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main>
+
+  <section class="section tight"><div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/stavki">Ставки на спорт</a><span>/</span>Ставки на футзал (мини-футбол): рынки и особенности</nav>
+    <div class="eyebrow" style="margin:16px 0 8px">· Ставки на спорт ·</div>
+    <h1>Ставки на футзал (мини-футбол): рынки и особенности</h1>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 05.09.2026</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">Ставки на футзал (мини-футбол) строятся на тех же базовых рынках, что и большой футбол: исход 1X2 (победа, ничья, победа), тоталы голов и форы. Ключевое отличие — высокая результативность: матч идёт два тайма по 20 минут чистого времени, голов забивают заметно больше, поэтому линии тоталов выше, а форы — с более крупным шагом. Ниже разбираем рынки, особенности вида спорта, типичные ошибки и приводим три примера расчёта со ставкой 1000 ₽. Материал носит справочный характер.</p>
+    
+  </div></section>
+
+  <section class="section" style="padding-top:6px"><div class="container prose">
+    <h2>Чем футзал отличается от большого футбола</h2>
+<p>Понимание правил мини-футбола помогает правильно читать линию.</p><ul><li><strong>Длительность матча.</strong> Два тайма по 20 минут <strong>чистого</strong> времени: секундомер останавливается при выходе мяча из игры и фолах. Это отличается от футбола, где время идёт непрерывно.</li><li><strong>Высокая результативность.</strong> Площадка небольшая, темп высокий, голов много. Поэтому тоталы в футзале выше футбольных — линии часто держатся около 6–7 голов.</li><li><strong>Ничья возможна.</strong> В регулярных матчах исход трёхзначный (1X2). В плей-офф при равном счёте может назначаться дополнительное время — это влияет на расчёт рынков основного времени.</li><li><strong>Аккумулированные фолы.</strong> После определённого числа командных фолов назначается 10-метровый удар без «стенки», что дополнительно повышает шансы на гол.</li></ul><p>Крупные турниры — FIFA Futsal World Cup, UEFA Futsal Champions League, чемпионат Европы по футзалу (UEFA Futsal EURO). Логику ставок частично можно перенести из <a href="/stavki/futbol">ставок на футбол</a>, но с поправкой на результативность.</p>
+<h2>Основные рынки: 1X2, тоталы и форы</h2>
+<p>Набор рынков у легальных операторов из реестра ЕРАИ близок к футбольному.</p><ul><li><strong>Исход 1X2.</strong> Победа команды А, ничья или победа команды Б в основное время.</li><li><strong>Тотал голов.</strong> Ставка на сумму мячей относительно линии — например, больше или меньше 6,5. Из-за высокой результативности линии выше футбольных. Механику разбирает материал «<a href="/shkola/terminy/chto-takoe-total">что такое тотал</a>».</li><li><strong>Фора (гандикап).</strong> Виртуальное преимущество одной из команд. Из-за большого числа голов шаг форы крупнее, чем в футболе. Подробнее — «<a href="/shkola/terminy/chto-takoe-fora">что такое фора</a>».</li><li><strong>Дополнительные рынки.</strong> Исход первого тайма, обе забьют, индивидуальные тоталы команды, двойной исход (HT/FT) — там, где оператор их выставляет.</li></ul><div class="table-wrap"><table><caption>Основные рынки на матч футзала (коэффициенты гипотетические)</caption><thead><tr><th>Рынок</th><th>Что означает</th><th>Пример коэффициента</th></tr></thead><tbody><tr><td>Победа команды А (1X2)</td><td>Команда А побеждает в осн. время</td><td>1.70</td></tr><tr><td>Ничья</td><td>Равный счёт в осн. время</td><td>3.60</td></tr><tr><td>Тотал больше 6,5</td><td>Суммарно 7 и более голов</td><td>1.85</td></tr><tr><td>Фора −1,5 на фаворита</td><td>Победа в 2+ гола</td><td>2.00</td></tr></tbody></table></div>
+<h2>Как читать линию и особенности вида спорта</h2>
+<p>Несколько нюансов, без которых легко ошибиться в оценке матча.</p><ul><li><strong>Чистое время меняет темп концовки.</strong> При отставании команда может снять вратаря и выпустить пятого полевого игрока (goalkeeper as outfield), что резко повышает результативность концовки — это влияет и на тотал, и на форы в лайве.</li><li><strong>Небольшие составы.</strong> В футзале ротация короче, чем в футболе; травмы и дисквалификации ключевых игроков заметнее сказываются на игре.</li><li><strong>Дисбаланс уровней.</strong> В национальных лигах и еврокубках разрыв в классе между командами бывает большим, что отражается в крупных форах.</li><li><strong>Основное время против дополнительного.</strong> Уточняйте, на какой отрезок принимается ставка, особенно в плей-офф.</li></ul><p>Лайв-ставки в футзале динамичны из-за частых голов; о механике — в материале «<a href="/shkola/terminy/chto-takoe-live-stavki">что такое лайв-ставки</a>».</p>
+<h2>Три примера расчёта со ставкой 1000 ₽</h2>
+<p>Коэффициенты условные, участники обобщённые. Формула: возврат = ставка × коэффициент, прибыль = возврат − ставка.</p><ol><li><strong>Победа команды А (1X2).</strong> Ставка 1000 ₽ на победу фаворита с коэффициентом 1.70. При победе в основное время возврат 1000 × 1.70 = 1700 ₽, прибыль 700 ₽. При ничьей или поражении ставка проигрывает.</li><li><strong>Тотал больше 6,5.</strong> Ставка 1000 ₽ с коэффициентом 1.85. Если команды суммарно забили 7 и более голов — возврат 1000 × 1.85 = 1850 ₽, прибыль 850 ₽. При 6 голах и меньше — проигрыш.</li><li><strong>Фора −1,5 на фаворита.</strong> Ставка 1000 ₽ с коэффициентом 2.00. Пари проходит, если фаворит побеждает минимум в два гола: возврат 1000 × 2.00 = 2000 ₽, прибыль 1000 ₽.</li></ol><p>Сравнить коэффициенты по одному матчу удобно в <a href="/rejting/s-live">рейтинге операторов с лайвом</a>, если вы планируете ставить по ходу игры.</p>
+<h2>Типичные ошибки и с чего начать</h2>
+<p>Ошибки в футзале часто связаны с переносом футбольной логики без поправок.</p><ul><li><strong>Заниженный тотал.</strong> Новички ставят «меньше» по футбольной привычке, недооценивая высокую результативность мини-футбола.</li><li><strong>Игнорирование снятия вратаря.</strong> В концовке при отставании счёт может измениться очень быстро.</li><li><strong>Мелкая фора на явного фаворита.</strong> В футзале крупные разрывы обычны, но и «валидол»-концовки случаются.</li><li><strong>Непрочитанные правила по основному/дополнительному времени.</strong> Особенно важно в плей-офф.</li></ul><p>Начать логично с рынка 1X2 и тотала в регулярных матчах. Условия легальных операторов из реестра ЕРАИ собраны в <a href="/rating">рейтинге букмекеров</a>. Придерживайтесь принципов <a href="/otvetstvennaya-igra">ответственной игры</a>: ставка не должна становиться способом заработка.</p>
+    <h2>Частые вопросы</h2>
+    <div class="faq"><details><summary>Сколько длится матч в футзале?</summary><p><p>Матч состоит из двух таймов по 20 минут чистого времени с перерывом между ними. Секундомер останавливается при выходе мяча из игры и фолах, поэтому фактическая продолжительность встречи больше 40 минут. Это отличает футзал от большого футбола, где время идёт непрерывно.</p></p></details>
+<details><summary>Почему тоталы в футзале выше, чем в футболе?</summary><p><p>Площадка меньше, темп выше, а после накопления командных фолов назначается 10-метровый удар без «стенки». Всё это повышает результативность, поэтому линии тоталов в мини-футболе держатся выше — нередко около 6–7 голов за матч.</p></p></details>
+<details><summary>Бывают ли ничьи в ставках на футзал?</summary><p><p>В регулярных матчах исход трёхзначный: победа, ничья или победа (рынок 1X2). В матчах плей-офф при равном счёте может назначаться дополнительное время, поэтому важно уточнять, на какой отрезок — основное время или весь матч — принимается конкретная ставка.</p></p></details>
+<details><summary>Что такое снятие вратаря и как это влияет на ставку?</summary><p><p>При отставании команда может заменить вратаря пятым полевым игроком, усиливая атаку. Это резко повышает шансы забить и пропустить в концовке, влияя на тоталы и форы, особенно в лайве. Учитывайте этот фактор при ставках по ходу матча.</p></p></details>
+<details><summary>С какого рынка начать новичку в футзале?</summary><p><p>Наиболее понятны исход 1X2 и тотал голов в регулярных матчах. Форы с крупным шагом и лайв-ставки требуют больше опыта, поэтому к ним разумно переходить после того, как вы освоите базовую линию и привыкнете к высокой результативности вида спорта.</p></p></details></div>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="tiles">
+      <a class="tile" href="/stavki/futbol"><b>Ставки на футбол: рынки, роспись и типичные ошибки</b><small>Ставки на спорт</small></a>
+      <a class="tile" href="/stavki/hokkej"><b>Ставки на хоккей: тоталы, форы и особенности КХЛ и НХЛ</b><small>Ставки на спорт</small></a>
+      <a class="tile" href="/stavki/tennis"><b>Ставки на теннис: геймы, сеты и лайв</b><small>Ставки на спорт</small></a>
+      <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
+      <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
+    </div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty/kalkulyator-stavok">Инструменты</a></div>
+    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+</body>
+</html>

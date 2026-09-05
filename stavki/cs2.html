@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ставки на CS2: карты, раунды и рынки</title>
+<meta name="description" content="Независимая редакция объясняет ставки на Counter-Strike 2: формат MR12 и карта до 13 раундов, рынки на карты, фору и тотал раундов, пистолетный раунд и примеры со ставкой 1000 ₽.">
+<link rel="canonical" href="https://stavki-rating.ru/stavki/cs2">
+<meta name="yandex-verification" content="4edbdcb14677aee3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%23C8FF4D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpolygon points='36,8 17,36 29,36 26,56 47,27 35,27' fill='%2307090F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Oswald", "Inter", system-ui, sans-serif;
+    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
+
+  /* Секции */
+  .section { padding: 30px 0; }
+  .section.tight { padding-top: 6px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Хлебные крошки */
+  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs span { color: var(--muted-2); }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .result .accent { color: var(--volt); }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Текстовый контент страницы */
+  .prose { max-width: 75ch; display: grid; gap: 14px; }
+  .prose h2 { margin-top: 14px; }
+  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  .prose p { color: var(--text); }
+  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
+  .prose li { line-height: 1.5; }
+  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--text); font-weight: 700; }
+  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
+  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
+  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose tbody tr:last-child td { border-bottom: none; }
+  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
+  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
+  .faq { display: grid; gap: 10px; }
+  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; float: right; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; }
+
+  /* Футер */
+  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Ставки на спорт", "item": "https://stavki-rating.ru/stavki"}, {"@type": "ListItem", "position": 3, "name": "Ставки на Counter-Strike 2 (CS2): карты и раунды", "item": "https://stavki-rating.ru/stavki/cs2"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ставки на Counter-Strike 2 (CS2): карты и раунды", "description": "Независимая редакция объясняет ставки на Counter-Strike 2: формат MR12 и карта до 13 раундов, рынки на карты, фору и тотал раундов, пистолетный раунд и примеры со ставкой 1000 ₽.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/stavki/cs2", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Сколько раундов в карте CS2?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Карта играется по формату MR12: два тайма по 12 раундов, до 13 побед в основное время, максимум 24 раунда. При счёте 12:12 назначается овертайм по формату MR3 — до 4 побед в дополнительной серии из шести раундов.</p>"}}, {"@type": "Question", "name": "Что такое пистолетный раунд и почему на него ставят?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Пистолетный раунд — это первый раунд каждого тайма (1-й и 13-й), когда команды играют с ограниченным бюджетом и стартовым оружием. Его исход влияет на экономику следующих раундов, но не гарантирует победу на карте, поэтому рынок оценивают отдельно.</p>"}}, {"@type": "Question", "name": "Чем отличается фора по картам от форы по раундам?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Фора по картам работает на уровне серии (например, −1.5 карты в Bo3 требует победы 2:0). Фора по раундам работает внутри одной карты и компенсирует разницу в счёте раундов, например −5.5 на фаворита.</p>"}}, {"@type": "Question", "name": "Какие турниры по CS2 расписывают операторы?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Легальные операторы из реестра ЕРАИ обычно расписывают Мейджоры и крупные международные лиги, а также региональные турниры. На топовых событиях линия и специальные рынки шире, чем на рядовых матчах.</p>"}}, {"@type": "Question", "name": "Как посчитать выплату по ставке 1000 ₽ на CS2?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Выплата равна ставке, умноженной на коэффициент. Например, 1000 ₽ при коэффициенте 1.85 дают 1850 ₽ выплаты и 850 ₽ прибыли. Проверить расчёт можно <a href=\"/instrumenty/kalkulyator-stavok\">калькулятором ставок</a>.</p>"}}]}</script>
+</head>
+<body>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav">
+    <a href="/rating">Рейтинг</a>
+    <a href="/rejting">По критериям</a>
+    <a href="/stavki">Виды спорта</a>
+    <a href="/instrumenty/kalkulyator-stavok">Инструменты</a>
+    <a href="/shkola">Школа</a>
+    <a href="/bonusy">Бонусы</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main>
+
+  <section class="section tight"><div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/stavki">Ставки на спорт</a><span>/</span>Ставки на Counter-Strike 2 (CS2): карты и раунды</nav>
+    <div class="eyebrow" style="margin:16px 0 8px">· Ставки на спорт ·</div>
+    <h1>Ставки на Counter-Strike 2 (CS2): карты и раунды</h1>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 05.09.2026</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">Ставки на Counter-Strike 2 — это прогнозы на исход матчей по командному шутеру от Valve. Матчи играются в форматах Bo1, Bo3 и Bo5, а каждая карта идёт по формату MR12: до 13 выигранных раундов, максимум 24 раунда в основное время и овертайм при счёте 12:12. Основные рынки — победитель матча, фора и тотал по картам и раундам, специальные — пистолетный раунд и первая кровь. Легальные операторы из реестра ЕРАИ принимают такие ставки в прематче и лайве. Ниже — структура матча, рынки и три примера расчёта со ставкой 1000 ₽.</p>
+    
+  </div></section>
+
+  <section class="section" style="padding-top:6px"><div class="container prose">
+    <h2>Структура матча: формат MR12 и серии</h2>
+<p>Каждая карта в CS2 играется по формату <strong>MR12</strong> (Max Rounds 12): два тайма по 12 раундов, стороны меняются после первого тайма. Чтобы выиграть карту в основное время, команде нужно первой набрать <strong>13 раундов</strong>, поэтому максимум в регламенте — 24 раунда. При счёте 12:12 назначается овертайм.</p><p>Овертайм идёт по формату <strong>MR3</strong>: по три раунда за сторону, побеждает первая команда, набравшая 4 раунда в дополнительной серии. Если овертайм заканчивается 3:3, играется следующий, и так до победителя.</p><p>Сам матч — это серия карт: <strong>Bo1</strong> (одна карта), <strong>Bo3</strong> (до двух побед) или <strong>Bo5</strong> (до трёх побед). Группы на турнирах часто идут в Bo1/Bo3, плей-офф — в Bo3, гранд-финалы — в Bo5. Карты выбираются из активного пула через процедуру пиков и банов.</p>
+<h2>Основные рынки: карты, фора и тотал раундов</h2>
+<p>Роспись CS2 строится вокруг двух уровней — серии и отдельной карты.</p><ul><li><strong>Победитель матча (П1/П2)</strong> — какая команда выиграет всю серию. Двухисходный рынок без ничьей.</li><li><strong>Фора по картам</strong> — в Bo3 фаворит с −1.5 обязан выиграть 2:0. О механике — в материале про <a href="/shkola/terminy/chto-takoe-fora">фору</a>.</li><li><strong>Фора по раундам</strong> — компенсация разницы в счёте на конкретной карте, например −5.5 раунда на фаворита.</li><li><strong>Тотал раундов на карте</strong> — больше/меньше заданного числа, часто около 21.5–24.5. Логику разбирает страница про <a href="/shkola/terminy/chto-takoe-total">тотал</a>.</li><li><strong>Победитель отдельной карты</strong> — исход первой, второй или третьей карты серии.</li></ul>
+<h2>Специальные рынки и роль пистолетного раунда</h2>
+<p>Внутри карты доступны рынки на отдельные события. Ключевую роль в CS2 играет <strong>пистолетный раунд</strong> — первый раунд каждого тайма (1-й и 13-й), когда у команд ограниченный бюджет и стартовые пистолеты.</p><div class="table-wrap"><table><caption>Специальные рынки на карту в CS2</caption><thead><tr><th>Рынок</th><th>Что прогнозируется</th></tr></thead><tbody><tr><td>Пистолетный раунд</td><td>Какая команда выиграет первый раунд тайма</td></tr><tr><td>Первая кровь</td><td>Кто совершит первое убийство в раунде или на карте</td></tr><tr><td>Чётное/нечётное число раундов</td><td>Итоговое количество раундов на карте</td></tr><tr><td>Победа обеих сторон</td><td>Выиграет ли команда и за атаку, и за защиту</td></tr><tr><td>Точный счёт карты</td><td>13:7, 13:11 и другие варианты</td></tr></tbody></table></div><p>Победа в пистолетном раунде часто задаёт экономику следующих раундов, но это не гарантирует победу на карте, поэтому такой рынок оценивают отдельно.</p>
+<h2>Три примера расчёта со ставкой 1000 ₽</h2>
+<p>Коэффициенты гипотетические и приведены для иллюстрации арифметики. Чтобы разобраться, как из коэффициента получается выплата, полезна страница <a href="/shkola/kak-eto-rabotaet/kak-chitat-koefficienty">как читать коэффициенты</a>.</p><ol><li><strong>Победитель матча.</strong> Ставка 1000 ₽ на фаворита (команду А) в Bo3 с коэффициентом 1.55. Выплата при проходе: 1000 × 1.55 = <strong>1550 ₽</strong>, прибыль 550 ₽.</li><li><strong>Фора по раундам.</strong> Ставка 1000 ₽ на фаворита с форой −5.5 раунда на карте и коэффициентом 1.90. Ставка заходит при разнице 6 раундов и больше, например 13:7. Выплата: 1000 × 1.90 = <strong>1900 ₽</strong>, прибыль 900 ₽.</li><li><strong>Тотал раундов.</strong> Ставка 1000 ₽ на тотал больше 21.5 раунда с коэффициентом 1.85. При 22 и более раундах на карте (например, счёт 13:9) выплата: 1000 × 1.85 = <strong>1850 ₽</strong>, прибыль 850 ₽; при 21 и меньше — проигрыш.</li></ol><p>Три ставки не объединялись в один купон: в <a href="/shkola/terminy/chto-takoe-ekspress">экспрессе</a> коэффициенты перемножаются, но одно неверное плечо обнуляет весь купон.</p>
+<h2>Турниры и типичные ошибки новичка</h2>
+<p>Вершина календаря CS2 — Мейджоры (Majors), которые проводятся при поддержке Valve, а также крупные лиги от независимых организаторов в течение года. На таких турнирах линия шире, а специальные рынки глубже, чем на рядовых матчах.</p><p>Частые ошибки начинающих:</p><ul><li>ставить на тотал раундов без учёта пула карт и стороны, за которую сильнее команда;</li><li>переоценивать значение пистолетного раунда для итога карты;</li><li>путать фору по картам и фору по раундам;</li><li>заходить в <a href="/shkola/terminy/chto-takoe-live-stavki">лайв</a> на эмоциях после одного эффектного раунда.</li></ul><p>Сравнить легальных операторов из реестра ЕРАИ по условиям приёма ставок помогают <a href="/rating">рейтинг</a> и профильная подборка <a href="/rejting/dlya-kibersporta">для киберспорта</a>. Ставки на киберспорт связаны с риском проигрыша и доступны только совершеннолетним.</p>
+    <h2>Частые вопросы</h2>
+    <div class="faq"><details><summary>Сколько раундов в карте CS2?</summary><p><p>Карта играется по формату MR12: два тайма по 12 раундов, до 13 побед в основное время, максимум 24 раунда. При счёте 12:12 назначается овертайм по формату MR3 — до 4 побед в дополнительной серии из шести раундов.</p></p></details>
+<details><summary>Что такое пистолетный раунд и почему на него ставят?</summary><p><p>Пистолетный раунд — это первый раунд каждого тайма (1-й и 13-й), когда команды играют с ограниченным бюджетом и стартовым оружием. Его исход влияет на экономику следующих раундов, но не гарантирует победу на карте, поэтому рынок оценивают отдельно.</p></p></details>
+<details><summary>Чем отличается фора по картам от форы по раундам?</summary><p><p>Фора по картам работает на уровне серии (например, −1.5 карты в Bo3 требует победы 2:0). Фора по раундам работает внутри одной карты и компенсирует разницу в счёте раундов, например −5.5 на фаворита.</p></p></details>
+<details><summary>Какие турниры по CS2 расписывают операторы?</summary><p><p>Легальные операторы из реестра ЕРАИ обычно расписывают Мейджоры и крупные международные лиги, а также региональные турниры. На топовых событиях линия и специальные рынки шире, чем на рядовых матчах.</p></p></details>
+<details><summary>Как посчитать выплату по ставке 1000 ₽ на CS2?</summary><p><p>Выплата равна ставке, умноженной на коэффициент. Например, 1000 ₽ при коэффициенте 1.85 дают 1850 ₽ выплаты и 850 ₽ прибыли. Проверить расчёт можно <a href="/instrumenty/kalkulyator-stavok">калькулятором ставок</a>.</p></p></details></div>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="tiles">
+      <a class="tile" href="/stavki/futbol"><b>Ставки на футбол: рынки, роспись и типичные ошибки</b><small>Ставки на спорт</small></a>
+      <a class="tile" href="/stavki/hokkej"><b>Ставки на хоккей: тоталы, форы и особенности КХЛ и НХЛ</b><small>Ставки на спорт</small></a>
+      <a class="tile" href="/stavki/tennis"><b>Ставки на теннис: геймы, сеты и лайв</b><small>Ставки на спорт</small></a>
+      <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
+      <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
+    </div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty/kalkulyator-stavok">Инструменты</a></div>
+    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+</body>
+</html>

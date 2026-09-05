@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ставки на гандбол: тоталы, форы и исходы</title>
+<meta name="description" content="Разбираем рынки ставок на гандбол: исход 1X2, форы в мячах, тоталы голов и индивидуальные тоталы. Как читать линию и три примера расчёта со ставкой 1000 ₽.">
+<link rel="canonical" href="https://stavki-rating.ru/stavki/gandbol">
+<meta name="yandex-verification" content="4edbdcb14677aee3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%23C8FF4D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpolygon points='36,8 17,36 29,36 26,56 47,27 35,27' fill='%2307090F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Oswald", "Inter", system-ui, sans-serif;
+    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
+
+  /* Секции */
+  .section { padding: 30px 0; }
+  .section.tight { padding-top: 6px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Хлебные крошки */
+  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs span { color: var(--muted-2); }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .result .accent { color: var(--volt); }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Текстовый контент страницы */
+  .prose { max-width: 75ch; display: grid; gap: 14px; }
+  .prose h2 { margin-top: 14px; }
+  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  .prose p { color: var(--text); }
+  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
+  .prose li { line-height: 1.5; }
+  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--text); font-weight: 700; }
+  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
+  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
+  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose tbody tr:last-child td { border-bottom: none; }
+  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
+  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
+  .faq { display: grid; gap: 10px; }
+  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; float: right; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; }
+
+  /* Футер */
+  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Ставки на спорт", "item": "https://stavki-rating.ru/stavki"}, {"@type": "ListItem", "position": 3, "name": "Ставки на гандбол: тоталы, форы и исходы", "item": "https://stavki-rating.ru/stavki/gandbol"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ставки на гандбол: тоталы, форы и исходы", "description": "Разбираем рынки ставок на гандбол: исход 1X2, форы в мячах, тоталы голов и индивидуальные тоталы. Как читать линию и три примера расчёта со ставкой 1000 ₽.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/stavki/gandbol", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Бывает ли в гандболе ничья и как её учитывать в ставке?", "acceptedAnswer": {"@type": "Answer", "text": "<p>В основное время матча ничья возможна, поэтому исход размечается как 1X2 — победа первой команды, ничья или победа второй. В плей-офф, где нужен победитель, назначается овертайм, но рынок «основное время» рассчитывается по счёту после 60 минут. Всегда проверяйте, включает ли выбранный рынок дополнительное время.</p>"}}, {"@type": "Question", "name": "Почему тоталы в гандболе такие высокие?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Гандбол — результативная игра: команды забрасывают в среднем 50-60 мячей за матч, поэтому линия тоталов в мужских лигах часто держится в диапазоне 55-65. Это не «завышение», а отражение реального темпа игры.</p>"}}, {"@type": "Question", "name": "Что такое фора в мячах и как она считается?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Фора — это виртуальная добавка или вычет мячей к счёту команды. При Ф1 (−4.5) к итогу фаворита прибавляется −4,5: если он выиграл с разницей 5 и более мячей, ставка проходит. Подробнее — в материале <a href=\"/shkola/terminy/chto-takoe-fora\">что такое фора</a>.</p>"}}, {"@type": "Question", "name": "Чем отличается индивидуальный тотал от общего?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Общий тотал — это сумма голов обеих команд. Индивидуальный тотал (ИТ) учитывает голы только одной выбранной команды. Например, ИТ1 Больше 30,5 сыграет, если первая команда забросит 31 мяч и более, независимо от результата соперника.</p>"}}, {"@type": "Question", "name": "Стоит ли ставить на гандбол в лайве?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Live даёт возможность реагировать на уже видимый темп матча — удаления, игру «6 в 5», концовки таймов. При этом коэффициенты пересчитываются мгновенно, а решения приходится принимать быстро. Начинающим разумнее сначала освоить прематч и небольшие ставки. Операторов с сильным лайвом можно сравнить в <a href=\"/rating\">рейтинге</a>.</p>"}}]}</script>
+</head>
+<body>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav">
+    <a href="/rating">Рейтинг</a>
+    <a href="/rejting">По критериям</a>
+    <a href="/stavki">Виды спорта</a>
+    <a href="/instrumenty/kalkulyator-stavok">Инструменты</a>
+    <a href="/shkola">Школа</a>
+    <a href="/bonusy">Бонусы</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main>
+
+  <section class="section tight"><div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/stavki">Ставки на спорт</a><span>/</span>Ставки на гандбол: тоталы, форы и исходы</nav>
+    <div class="eyebrow" style="margin:16px 0 8px">· Ставки на спорт ·</div>
+    <h1>Ставки на гандбол: тоталы, форы и исходы</h1>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 05.09.2026</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">Ставки на гандбол строятся на трёх базовых рынках: исход матча (1X2, ничья возможна), фора в заброшенных мячах и тотал голов. Матч длится два тайма по 30 минут, команды в среднем забрасывают 50-60 мячей, поэтому линия тоталов высокая и подвижная. Ниже разбираем, как устроены рынки у легальных операторов из реестра ЕРАИ, и показываем расчёт на примерах со ставкой 1000 ₽.</p>
+    
+  </div></section>
+
+  <section class="section" style="padding-top:6px"><div class="container prose">
+    <h2>Что важно знать о гандболе перед ставкой</h2>
+<p>Гандбол — быстрая и результативная игра: две команды по семь человек (шесть полевых и вратарь), два тайма по 30 минут, а в плей-офф возможны овертаймы. В отличие от футбола здесь редко бывают «низовые» матчи: даже осторожные команды набирают несколько десятков голов.</p><p>Ключевые следствия для ставок:</p><ul><li><strong>Ничья возможна</strong>, поэтому основной исход размечается как <strong>1X2</strong> (победа первой, ничья, победа второй). Многие операторы дают и рынок «двойной шанс».</li><li><strong>Фаворит чаще подтверждает статус</strong>: разрыв в классе команд виден по счёту сильнее, чем в низкорезультативных видах спорта.</li><li><strong>Женские и мужские лиги различаются по результативности</strong>: у мужчин линия тоталов обычно выше, у женщин — ниже.</li></ul><p>Перед ставкой смысл имеет посмотреть на темп конкретных команд, наличие ключевых игроков и вратаря, а также на календарь (плотный график снижает результативность). Базовые термины разобраны в разделе <a href="/shkola/terminy/chto-takoe-total">что такое тотал</a> и <a href="/shkola/terminy/chto-takoe-fora">что такое фора</a>.</p>
+<h2>Основные рынки: исход, фора и тотал</h2>
+<p>У легальных операторов из реестра ЕРАИ на топ-матчи гандбола обычно доступны несколько групп рынков. Вот как они устроены.</p><div class="table-wrap"><table><caption>Основные рынки в линии на гандбол</caption><thead><tr><th>Рынок</th><th>Что означает</th><th>Пример обозначения</th></tr></thead><tbody><tr><td>Исход 1X2</td><td>Победа первой команды, ничья или победа второй в основное время</td><td>П1 / X / П2</td></tr><tr><td>Двойной шанс</td><td>Ставка сразу на два из трёх исходов</td><td>1X, 12, X2</td></tr><tr><td>Фора (гандикап)</td><td>Виртуальная добавка/вычет мячей к итоговому счёту команды</td><td>Ф1 (-4.5), Ф2 (+4.5)</td></tr><tr><td>Тотал</td><td>Сумма голов обеих команд больше/меньше рубежа</td><td>ТБ 58.5 / ТМ 58.5</td></tr><tr><td>Индивидуальный тотал</td><td>Голы только одной команды</td><td>ИТ1 Б 30.5</td></tr><tr><td>Тайм / сегменты</td><td>Исход или тотал первого тайма</td><td>1-й тайм ТБ 28.5</td></tr></tbody></table></div><p>Дробные форы и тоталы (с «.5») удобны тем, что исключают возврат: результат всегда либо выигрыш, либо проигрыш. Целочисленные рубежи (например, фора −4) при точном совпадении дают возврат ставки.</p>
+<h2>Примеры расчёта со ставкой 1000 ₽</h2>
+<p>Коэффициенты в примерах гипотетические, участники обобщённые. Считаем возможный возврат по формуле «ставка × коэффициент».</p><p><strong>Пример 1. Исход П1.</strong> Фаворит (команда А) играет дома, коэффициент на его победу 1,60. Ставка 1000 ₽. Если команда А побеждает, возврат составит 1000 × 1,60 = <strong>1600 ₽</strong> (чистая прибыль 600 ₽).</p><p><strong>Пример 2. Фора фаворита Ф1 (−4.5).</strong> Коэффициент 1,85. Матч завершился 30:25 в пользу команды А. Вычитаем фору: 30 − 4,5 = 25,5, что больше 25 у соперника — ставка проходит. Возврат: 1000 × 1,85 = <strong>1850 ₽</strong>. Если бы разница была ровно 4 мяча (например, 28:24), фора −4,5 не сыграла бы.</p><p><strong>Пример 3. Тотал больше (ТБ 58.5).</strong> Коэффициент 1,90. Итоговый счёт 31:29, сумма 60 голов — это больше 58,5, ставка выигрывает. Возврат: 1000 × 1,90 = <strong>1900 ₽</strong>. При счёте 30:28 (сумма 58) ставка на «больше» проиграла бы.</p><p>Быстро прикинуть прибыль по любому коэффициенту помогает <a href="/instrumenty/kalkulyator-stavok">калькулятор ставок</a>.</p>
+<h2>Как читать линию и особенности лайва</h2>
+<p>Линия — это набор рынков с коэффициентами на конкретный матч. В прематче фора и тотал отражают ожидания оператора: чем ниже фора фаворита, тем более равной считается игра. В <a href="/shkola/terminy/chto-takoe-live-stavki">live-ставках</a> значения пересчитываются после каждой атаки, поэтому тотал и фора «плавают» в реальном времени.</p><p>Ситуативные моменты, влияющие на живую линию:</p><ul><li><strong>Игра «6 в 5»</strong> (полевой вместо вратаря) повышает вероятность серии голов — тотал «больше» на коротком отрезке становится актуальнее.</li><li><strong>Удаления на 2 минуты</strong> резко меняют темп: команда в большинстве часто уходит в отрыв.</li><li><strong>Таймауты и концовки таймов</strong> — периоды, когда счёт может двигаться рывками.</li></ul><p>Смысл live-подхода — не угадывать заранее, а реагировать на уже видимую динамику матча. Сравнить операторов с широкой линией и live можно в <a href="/rating">рейтинге</a> и в подборке <a href="/rejting/s-live">БК с лайвом</a>.</p>
+<h2>Типичные ошибки новичка</h2>
+<p>Разбор частых просчётов помогает не терять банк на ровном месте.</p><ol><li><strong>Игнорировать различие мужских и женских лиг.</strong> Один и тот же рубеж тотала (например, 58,5) для мужского матча может быть «низким», а для женского — «высоким».</li><li><strong>Брать крупную фору фаворита вслепую.</strong> Фора −7,5 требует уверенного разгрома; при равной концовке она не заходит даже при победе.</li><li><strong>Ставить весь банк на один матч.</strong> Результативность гандбола не отменяет дисперсии: контроль размера ставки важнее «верного» прогноза.</li><li><strong>Путать индивидуальный и общий тотал.</strong> ИТ1 относится только к одной команде, а не к сумме голов.</li></ol><p>Дисциплина и лимиты важнее любой стратегии — об этом раздел <a href="/otvetstvennaya-igra">ответственная игра</a>.</p>
+    <h2>Частые вопросы</h2>
+    <div class="faq"><details><summary>Бывает ли в гандболе ничья и как её учитывать в ставке?</summary><p><p>В основное время матча ничья возможна, поэтому исход размечается как 1X2 — победа первой команды, ничья или победа второй. В плей-офф, где нужен победитель, назначается овертайм, но рынок «основное время» рассчитывается по счёту после 60 минут. Всегда проверяйте, включает ли выбранный рынок дополнительное время.</p></p></details>
+<details><summary>Почему тоталы в гандболе такие высокие?</summary><p><p>Гандбол — результативная игра: команды забрасывают в среднем 50-60 мячей за матч, поэтому линия тоталов в мужских лигах часто держится в диапазоне 55-65. Это не «завышение», а отражение реального темпа игры.</p></p></details>
+<details><summary>Что такое фора в мячах и как она считается?</summary><p><p>Фора — это виртуальная добавка или вычет мячей к счёту команды. При Ф1 (−4.5) к итогу фаворита прибавляется −4,5: если он выиграл с разницей 5 и более мячей, ставка проходит. Подробнее — в материале <a href="/shkola/terminy/chto-takoe-fora">что такое фора</a>.</p></p></details>
+<details><summary>Чем отличается индивидуальный тотал от общего?</summary><p><p>Общий тотал — это сумма голов обеих команд. Индивидуальный тотал (ИТ) учитывает голы только одной выбранной команды. Например, ИТ1 Больше 30,5 сыграет, если первая команда забросит 31 мяч и более, независимо от результата соперника.</p></p></details>
+<details><summary>Стоит ли ставить на гандбол в лайве?</summary><p><p>Live даёт возможность реагировать на уже видимый темп матча — удаления, игру «6 в 5», концовки таймов. При этом коэффициенты пересчитываются мгновенно, а решения приходится принимать быстро. Начинающим разумнее сначала освоить прематч и небольшие ставки. Операторов с сильным лайвом можно сравнить в <a href="/rating">рейтинге</a>.</p></p></details></div>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="tiles">
+      <a class="tile" href="/stavki/futbol"><b>Ставки на футбол: рынки, роспись и типичные ошибки</b><small>Ставки на спорт</small></a>
+      <a class="tile" href="/stavki/hokkej"><b>Ставки на хоккей: тоталы, форы и особенности КХЛ и НХЛ</b><small>Ставки на спорт</small></a>
+      <a class="tile" href="/stavki/tennis"><b>Ставки на теннис: геймы, сеты и лайв</b><small>Ставки на спорт</small></a>
+      <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
+      <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
+    </div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty/kalkulyator-stavok">Инструменты</a></div>
+    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+</body>
+</html>
