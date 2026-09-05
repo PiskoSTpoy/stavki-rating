@@ -418,13 +418,13 @@ const logo = b => LOGOS.has(b.slug)
 function brandCard(b, best) {
   return `<div class="ad ${best?'best':''}" data-ad>
     <div class="ad-body">
-      <div class="brand-row">${logo(b)}<div class="brand-meta"><div class="brand-name">${esc(b.name)}</div><span class="badge ok">Легальная · ЕЦУПС</span></div>${ring(b.rating)}</div>
+      <div class="brand-row">${logo(b)}<div class="brand-meta"><div class="brand-name">${esc(b.name)}</div><span class="badge ok">Легальная · реестр ЕРАИ</span></div>${ring(b.rating)}</div>
       <div class="bonus-hero">
         <small>Бонус за регистрацию</small>
         <b class="bonus-amt">${esc(b.bonus)}</b>
       </div>
       <a class="btn btn-primary btn-block" href="/go/${b.slug}" rel="sponsored nofollow noopener" data-cta>Получить бонус</a>
-      <div class="ad-foot" style="justify-content:center"><a href="/${b.slug}-obzor">Обзор ${esc(b.name)} →</a></div>
+      <div class="ad-foot" style="justify-content:center"><a href="/bukmekery/${b.slug}">Обзор ${esc(b.name)} →</a></div>
     </div>
   </div>`;
 }
@@ -441,7 +441,7 @@ function calc(){
 /* ---------- Рендер ---------- */
 document.getElementById('top3cards').innerHTML = BRANDS.slice(0,3).map((b,i)=>brandCard(b, true)).join('');
 document.getElementById('compareRows').innerHTML = BRANDS.map((b,i)=>`<tr>
-  <td><span class="cell-brand">${logo(b)}<a href="/${b.slug}-obzor">${esc(b.name)}</a></span></td>
+  <td><span class="cell-brand">${logo(b)}<a href="/bukmekery/${b.slug}">${esc(b.name)}</a></span></td>
   <td class="num ${i===0?'best':''}">${b.rating.toFixed(1).replace('.',',')}</td>
   <td>${esc(b.bonus)}</td>
   <td class="num ${b.margin==='4,5 %'?'best':''}">${b.margin}</td>

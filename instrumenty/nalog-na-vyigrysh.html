@@ -218,6 +218,7 @@
       <a class="tile" href="/instrumenty/kalkulyator-ekspressa"><b>Калькулятор экспресса</b><small>итоговый коэффициент по всем событиям</small></a>
       <a class="tile" href="/instrumenty/konverter-koefficientov"><b>Конвертер коэффициентов</b><small>десятичные · дробные · американские</small></a>
       <a class="tile" href="/instrumenty/kalkulyator-vilok"><b>Калькулятор вилок</b><small>распределение ставок, прибыль в %</small></a>
+      <a class="tile" href="/instrumenty/kalkulyator-marzhi"><b>Калькулятор маржи</b><small>оверраунд букмекера и честные коэффициенты</small></a>
       <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить все конторы из реестра</small></a>
     </div>
   </div></section>
@@ -284,6 +285,19 @@
     return { S: S, exists: S < 1, stakeA: stakeA, stakeB: stakeB, ret: ret, profit: ret - budget, profitPct: (1 / S - 1) * 100 };
   }
 
+  /* ── Маржа букмекера (оверраунд) ─────────────────────────────────────
+     На роспись из N исходов: S = Σ 1/oddsᵢ (сумма подразумеваемых вероятностей).
+     Margin% = (S − 1) × 100. Честный коэффициент без маржи = oddsᵢ × S. */
+  function margin(oddsList) {
+    var valid = (oddsList || []).filter(function (o) { return isNum(o) && o > 1; });
+    if (valid.length < 2) return null;
+    var S = valid.reduce(function (a, o) { return a + 1 / o; }, 0);
+    return {
+      count: valid.length, sumInvProb: S, marginPct: (S - 1) * 100,
+      fairOdds: valid.map(function (o) { return round2(o * S); }),
+    };
+  }
+
   /* ── Налог на выигрыш (НДФЛ, РФ, ред. 2026) ─────────────────────────
      База = выплата − ставка (ст.214.7 п.1). С 01.01.2026 БК-агент удерживает с любой выплаты.
      Резидент: выигрыши в БК — ОТДЕЛЬНАЯ налоговая база: 13% до 5 млн ₽/год, 15% с превышения
@@ -316,6 +330,7 @@
     impliedProb: impliedProb, decimalToFractional: decimalToFractional, decimalToAmerican: decimalToAmerican,
     americanToDecimal: americanToDecimal, fractionalToDecimal: fractionalToDecimal, convert: convert,
     arb2: arb2,
+    margin: margin,
     progressiveTax: progressiveTax, winTax: winTax,
   };
   root.SRCalc = api;
