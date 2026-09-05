@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Критерий Келли: формула размера ставки</title>
+<meta name="description" content="Как работает критерий Келли для расчёта размера ставки: формула, примеры на 1000 ₽, дробный Келли и честные риски метода. Разбор от редакции stavki-rating.">
+<link rel="canonical" href="https://stavki-rating.ru/shkola/strategii/kriterij-kelli">
+<meta name="yandex-verification" content="4edbdcb14677aee3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%23C8FF4D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpolygon points='36,8 17,36 29,36 26,56 47,27 35,27' fill='%2307090F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Oswald", "Inter", system-ui, sans-serif;
+    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
+
+  /* Секции */
+  .section { padding: 30px 0; }
+  .section.tight { padding-top: 6px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Хлебные крошки */
+  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs span { color: var(--muted-2); }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .result .accent { color: var(--volt); }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Текстовый контент страницы */
+  .prose { max-width: 75ch; display: grid; gap: 14px; }
+  .prose h2 { margin-top: 14px; }
+  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  .prose p { color: var(--text); }
+  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
+  .prose li { line-height: 1.5; }
+  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--text); font-weight: 700; }
+  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
+  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
+  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose tbody tr:last-child td { border-bottom: none; }
+  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
+  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
+  .faq { display: grid; gap: 10px; }
+  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; float: right; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; }
+
+  /* Футер */
+  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Стратегии", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Критерий Келли: расчёт размера ставки", "item": "https://stavki-rating.ru/shkola/strategii/kriterij-kelli"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Критерий Келли: расчёт размера ставки", "description": "Как работает критерий Келли для расчёта размера ставки: формула, примеры на 1000 ₽, дробный Келли и честные риски метода. Разбор от редакции stavki-rating.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/strategii/kriterij-kelli", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Гарантирует ли критерий Келли прибыль?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет. Келли рассчитывает только размер ставки при заданном перевесе. Если реального перевеса нет или ваша оценка вероятности завышена, метод не создаёт прибыль и не обыгрывает маржу букмекера в долгосрочной перспективе.</p>"}}, {"@type": "Question", "name": "Почему рекомендуют дробный Келли, а не полный?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Полный Келли оптимален только при абсолютно точных вероятностях. Поскольку в реальности оценки всегда с ошибкой, полный Келли переставляет и даёт глубокие просадки. Половинный или четвертной Келли сохраняют большую часть роста при меньшем риске.</p>"}}, {"@type": "Question", "name": "Что подставлять в формулу вместо вероятности p?", "acceptedAnswer": {"@type": "Answer", "text": "<p>p — это ваша собственная обоснованная оценка вероятности исхода. Нельзя брать вероятность из коэффициента букмекера: в нём уже заложена маржа, поэтому преимущества там по определению нет.</p>"}}, {"@type": "Question", "name": "Что делать, если формула даёт отрицательное число?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Отрицательное f означает, что по вашей же оценке ставка не имеет ценности — коэффициент не покрывает риск. В этом случае ставку делать не следует.</p>"}}, {"@type": "Question", "name": "Подходит ли Келли новичку?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Метод требует навыка честной оценки вероятностей, которого у новичка обычно нет. Начинать разумнее с базового <a href=\"/shkola/strategii/bankroll-menedzhment\">банкролл-менеджмента</a> и фиксированной небольшой доли банка, а не с Келли.</p>"}}]}</script>
+</head>
+<body>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav">
+    <a href="/rating">Рейтинг</a>
+    <a href="/rejting">По критериям</a>
+    <a href="/stavki">Виды спорта</a>
+    <a href="/instrumenty/kalkulyator-stavok">Инструменты</a>
+    <a href="/shkola">Школа</a>
+    <a href="/bonusy">Бонусы</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main>
+
+  <section class="section tight"><div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Стратегии</a><span>/</span>Критерий Келли: расчёт размера ставки</nav>
+    <div class="eyebrow" style="margin:16px 0 8px">· Школа · Стратегии ·</div>
+    <h1>Критерий Келли: расчёт размера ставки</h1>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 05.09.2026</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">Критерий Келли — это математическая формула, которая рассчитывает долю банка для ставки, исходя из вашей оценки вероятности исхода и коэффициента букмекера. Формула: f = (b·p − q) / b, где b — это коэффициент минус единица, p — ваша оценка вероятности, q = 1 − p. Ключевая оговорка: Келли работает только при наличии реального перевеса, а точность зависит от вашей субъективной оценки вероятности, которая почти всегда завышена. Метод управляет размером ставки, но не создаёт прибыль и не обыгрывает маржу букмекера.</p>
+  </div></section>
+
+  <section class="section" style="padding-top:6px"><div class="container prose">
+    <h2>Что такое критерий Келли и откуда он взялся</h2>
+<p>Критерий Келли предложил математик Джон Келли в 1956 году для задач передачи информации; позже формулу адаптировали для управления капиталом. Идея в том, чтобы ставить не фиксированную сумму, а долю банка, пропорциональную математическому преимуществу над букмекером.</p><p>Формула для одиночной ставки выглядит так:</p><p><strong>f = (b · p − q) / b</strong></p><ul><li><strong>f</strong> — доля банка, которую предлагается поставить;</li><li><strong>b</strong> — чистый выигрыш на единицу ставки, то есть коэффициент минус 1 (при коэффициенте 2.00 значение b = 1);</li><li><strong>p</strong> — <em>ваша</em> оценка вероятности выигрыша (от 0 до 1);</li><li><strong>q</strong> — вероятность проигрыша, q = 1 − p.</li></ul><p>Если формула даёт отрицательное число, ставки нет: по вашей же оценке ценности в ней не заложено. Чтобы понять, откуда берётся вероятность и как коэффициент связан с ней, полезно разобрать <a href="/shkola/kak-eto-rabotaet/kak-chitat-koefficienty">чтение коэффициентов</a> и <a href="/shkola/terminy/chto-takoe-marzha-bukmekera">маржу букмекера</a>.</p>
+<h2>Как считать: три примера с банком 10 000 ₽</h2>
+<p>Возьмём условный банк 10 000 ₽. Во всех примерах вероятность p — это ваша субъективная оценка, а не факт. Келли задаёт <em>долю</em> банка, а сумма в рублях — производная от неё: при том же проценте, но другом банке ставка в рублях изменится.</p><p><strong>Пример 1.</strong> Коэффициент на фаворита 2.00, значит b = 1.00. Вы оцениваете вероятность победы в 55% (p = 0.55, q = 0.45). Тогда f = (1·0.55 − 0.45) / 1 = 0.10. Полный Келли предлагает 10% банка — при банке 10 000 ₽ это ставка 1000 ₽.</p><p><strong>Пример 2.</strong> Коэффициент 3.00, b = 2.00. Ваша оценка вероятности — 40% (p = 0.40, q = 0.60). f = (2·0.40 − 0.60) / 2 = (0.80 − 0.60) / 2 = 0.10. Снова 10% банка, то есть та же ставка 1000 ₽, хотя коэффициент выше: абсолютная сумма зависит от доли, а не от величины коэффициента.</p><p><strong>Пример 3.</strong> Коэффициент 2.00, b = 1.00. Вы считаете вероятность равной 60% (p = 0.60, q = 0.40). f = (1·0.60 − 0.40) / 1 = 0.20. Полный Келли предлагает 20% банка, то есть 2000 ₽ — но большинство практиков возьмут половинный Келли и поставят те же 1000 ₽ (почему так — в следующем разделе).</p><p>А теперь встречный случай: при коэффициенте 1.50 (b = 0.50) и вашей оценке 60% f = (0.50·0.60 − 0.40) / 0.50 = (0.30 − 0.40) / 0.50 = −0.20. Значение отрицательное — Келли говорит не ставить: по вашей оценке коэффициент не покрывает риск. По мере роста или падения банка та же доля даёт другую сумму в рублях, поэтому ставку пересчитывают перед каждым пари.</p>
+<h2>Дробный Келли и почему полный опасен</h2>
+<p>Полный Келли максимизирует темп роста банка <em>только</em> при абсолютно точных вероятностях. В реальности оценка p всегда с ошибкой, поэтому полный Келли систематически переставляет и ведёт к резким просадкам. Практики используют дробный Келли — половину или четверть от расчётной доли.</p><div class="table-wrap"><table><caption>Сравнение полного и дробного Келли при f = 20% и банке 10 000 ₽</caption><thead><tr><th>Вариант</th><th>Доля банка</th><th>Ставка, ₽</th><th>Поведение</th></tr></thead><tbody><tr><td>Полный Келли</td><td>20%</td><td>2000</td><td>Максимальный рост, но глубокие просадки</td></tr><tr><td>Половинный (½)</td><td>10%</td><td>1000</td><td>Заметно мягче колебания банка</td></tr><tr><td>Четвертной (¼)</td><td>5%</td><td>500</td><td>Медленный рост, минимальная волатильность</td></tr></tbody></table></div><p>Половинный Келли сохраняет большую часть темпа роста при существенно меньшем риске разорения — поэтому его выбирают чаще полного. Именно так ставка из примера 3 (полный Келли 2000 ₽) превращается в осторожные 1000 ₽. Управление размером ставки тесно связано с <a href="/shkola/strategii/bankroll-menedzhment">банкролл-менеджментом</a> и <a href="/shkola/dengi-i-nalogi/limity-i-samokontrol">лимитами</a>.</p>
+<h2>Типичные ошибки</h2>
+<ul><li><strong>Завышенная оценка вероятности.</strong> Главная ошибка. Если вы систематически переоцениваете p хотя бы на несколько процентов, Келли превращается из защиты в ускоритель потерь.</li><li><strong>Применение полного Келли.</strong> На реальных, неточных вероятностях полный Келли почти всегда слишком агрессивен.</li><li><strong>Использование коэффициента вместо своей вероятности.</strong> В формулу подставляют p из коэффициента букмекера — но там уже заложена маржа, и преимущества не возникает по определению.</li><li><strong>Игнорирование пересчёта банка.</strong> Ставить фиксированную сумму вместо доли — значит отказаться от сути метода.</li><li><strong>Ставки без реального перевеса.</strong> Келли не создаёт ценность. Нет обоснованного перевеса — нет и корректной ставки.</li></ul>
+<h2>Честно о рисках</h2>
+<p>Критерий Келли — это инструмент управления размером ставки, а не способ выигрывать. Он не отменяет маржу букмекера и в долгую не превращает игру с отрицательным математическим ожиданием в прибыльную. Если вашего перевеса нет или он мнимый, любая формула лишь распределяет неизбежные потери.</p><p>Даже при корректном применении дробного Келли просадки банка неизбежны, а завышенная самооценка вероятностей — самая частая причина, по которой метод работает против игрока. Относитесь к ставкам как к расходу на развлечение, а не как к источнику дохода. Установите бюджет заранее, применяйте <a href="/shkola/dengi-i-nalogi/limity-i-samokontrol">лимиты</a> и при первых признаках потери контроля используйте инструменты <a href="/otvetstvennaya-igra">ответственной игры</a>, включая самозапрет через Госуслуги.</p>
+    <h2>Частые вопросы</h2>
+    <div class="faq"><details><summary>Гарантирует ли критерий Келли прибыль?</summary><p><p>Нет. Келли рассчитывает только размер ставки при заданном перевесе. Если реального перевеса нет или ваша оценка вероятности завышена, метод не создаёт прибыль и не обыгрывает маржу букмекера в долгосрочной перспективе.</p></p></details>
+<details><summary>Почему рекомендуют дробный Келли, а не полный?</summary><p><p>Полный Келли оптимален только при абсолютно точных вероятностях. Поскольку в реальности оценки всегда с ошибкой, полный Келли переставляет и даёт глубокие просадки. Половинный или четвертной Келли сохраняют большую часть роста при меньшем риске.</p></p></details>
+<details><summary>Что подставлять в формулу вместо вероятности p?</summary><p><p>p — это ваша собственная обоснованная оценка вероятности исхода. Нельзя брать вероятность из коэффициента букмекера: в нём уже заложена маржа, поэтому преимущества там по определению нет.</p></p></details>
+<details><summary>Что делать, если формула даёт отрицательное число?</summary><p><p>Отрицательное f означает, что по вашей же оценке ставка не имеет ценности — коэффициент не покрывает риск. В этом случае ставку делать не следует.</p></p></details>
+<details><summary>Подходит ли Келли новичку?</summary><p><p>Метод требует навыка честной оценки вероятностей, которого у новичка обычно нет. Начинать разумнее с базового <a href="/shkola/strategii/bankroll-menedzhment">банкролл-менеджмента</a> и фиксированной небольшой доли банка, а не с Келли.</p></p></details></div>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="tiles">
+      <a class="tile" href="/shkola/strategii/bankroll-menedzhment"><b>Банкролл-менеджмент в ставках: как управлять банком</b><small>Стратегии</small></a>
+      <a class="tile" href="/shkola/strategii/strategiya-flet"><b>Стратегия флэт в ставках: механика, виды и примеры расчёта</b><small>Стратегии</small></a>
+      <a class="tile" href="/shkola/strategii/strategiya-dogon"><b>Стратегия догон (Мартингейл): как работает и чем опасна</b><small>Стратегии</small></a>
+      <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
+      <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
+    </div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty/kalkulyator-stavok">Инструменты</a></div>
+    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+</body>
+</html>
