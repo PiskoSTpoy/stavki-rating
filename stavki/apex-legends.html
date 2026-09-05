@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ставки на Apex Legends: очки, плейсмент, киллы</title>
+<meta name="description" content="Гайд по ставкам на Apex Legends: как работает система очков по месту и киллам, рынки battle royale, аутрайты и очные дуэли, три примера со ставкой 1000 ₽.">
+<link rel="canonical" href="https://stavki-rating.ru/stavki/apex-legends">
+<meta name="yandex-verification" content="4edbdcb14677aee3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%23C8FF4D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpolygon points='36,8 17,36 29,36 26,56 47,27 35,27' fill='%2307090F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Oswald", "Inter", system-ui, sans-serif;
+    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
+
+  /* Секции */
+  .section { padding: 30px 0; }
+  .section.tight { padding-top: 6px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Хлебные крошки */
+  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs span { color: var(--muted-2); }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .result .accent { color: var(--volt); }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Текстовый контент страницы */
+  .prose { max-width: 75ch; display: grid; gap: 14px; }
+  .prose h2 { margin-top: 14px; }
+  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  .prose p { color: var(--text); }
+  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
+  .prose li { line-height: 1.5; }
+  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--text); font-weight: 700; }
+  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
+  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
+  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose tbody tr:last-child td { border-bottom: none; }
+  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
+  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
+  .faq { display: grid; gap: 10px; }
+  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; float: right; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; }
+
+  /* Футер */
+  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Ставки на спорт", "item": "https://stavki-rating.ru/stavki"}, {"@type": "ListItem", "position": 3, "name": "Ставки на Apex Legends: очки, плейсмент и киллы", "item": "https://stavki-rating.ru/stavki/apex-legends"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ставки на Apex Legends: очки, плейсмент и киллы", "description": "Гайд по ставкам на Apex Legends: как работает система очков по месту и киллам, рынки battle royale, аутрайты и очные дуэли, три примера со ставкой 1000 ₽.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/stavki/apex-legends", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Почему в Apex Legends нельзя поставить на «победителя матча»?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Потому что это battle royale: в лобби играют 20 команд одновременно, а не две. Прямого рынка «команда А против команды B на весь матч» нет — вместо него доступны аутрайт на победителя турнира, очные дуэли по месту и тоталы фрагов.</p>"}}, {"@type": "Question", "name": "Как начисляются очки в ALGS?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Итог команды складывается из очков за место (плейсмент) и очков за убийства. За более высокое финишное место дают больше очков по убывающей шкале, а каждое устранение добавляет к сумме. Победитель дня или турнира определяется по накопленным очкам, а в финалах — по формату Match Point.</p>"}}, {"@type": "Question", "name": "Что такое очная дуэль (head-to-head)?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Это рынок с двумя исходами: какая из двух заданных команд займёт более высокое место в конкретной карте или по итогам дня. Он не зависит от того, кто выиграет всё лобби, поэтому коэффициенты обычно близки к равным.</p>"}}, {"@type": "Question", "name": "Почему у аутрайта такие высокие коэффициенты?", "acceptedAnswer": {"@type": "Answer", "text": "<p>В лобби 20 команд, и шанс каждой стать чемпионом невелик, поэтому котировки на победу турнира заметно выше, чем в дуэльных дисциплинах. Высокая выплата уравновешивается низкой вероятностью захода.</p>"}}, {"@type": "Question", "name": "Где сравнивать коэффициенты и искать операторов?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Котировки различаются между легальными БК из реестра ЕРАИ. Для сравнения используйте <a href=\"/rejting/po-koefficientam\">рейтинг по коэффициентам</a>, а операторов с широкой киберспортивной росписью — <a href=\"/rejting/dlya-kibersporta\">рейтинг для киберспорта</a>.</p>"}}]}</script>
+</head>
+<body>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav">
+    <a href="/rating">Рейтинг</a>
+    <a href="/rejting">По критериям</a>
+    <a href="/stavki">Виды спорта</a>
+    <a href="/instrumenty/kalkulyator-stavok">Инструменты</a>
+    <a href="/shkola">Школа</a>
+    <a href="/bonusy">Бонусы</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main>
+
+  <section class="section tight"><div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/stavki">Ставки на спорт</a><span>/</span>Ставки на Apex Legends: очки, плейсмент и киллы</nav>
+    <div class="eyebrow" style="margin:16px 0 8px">· Ставки на спорт ·</div>
+    <h1>Ставки на Apex Legends: очки, плейсмент и киллы</h1>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 05.09.2026</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">Ставки на Apex Legends отличаются от командных дисциплин: это battle royale, где в одном лобби бьются несколько команд, а исход определяется суммой очков за место (плейсмент) и убийства. Поэтому линия строится не на «кто победит матч один на один», а на итоговом месте команды в турнире, очных дуэлях и тоталах фрагов. Ниже — как устроена система очков ALGS, какие рынки предлагают легальные операторы из реестра ЕРАИ и три расчёта со ставкой 1000 ₽.</p>
+    
+  </div></section>
+
+  <section class="section" style="padding-top:6px"><div class="container prose">
+    <h2>Как устроен киберспортивный Apex Legends</h2>
+<p>Apex Legends — командный battle royale. В профессиональной сцене команды состоят из трёх игроков (трио), а в одном соревновательном лобби играют 20 команд, то есть 60 игроков. Турнирный день — это не один матч, а серия карт (игр): в каждой команда набирает очки, и в зачёт идёт их сумма.</p><p>Главная лига дисциплины — Apex Legends Global Series (ALGS) от издателя игры. Сезон делится на сплиты с Pro League, плей-офф и финалом года — ALGS Championship. В финальной стадии применяется формат Match Point: чтобы стать чемпионом, команде нужно сначала набрать пороговое число очков, а затем выиграть отдельную карту.</p><p>Очки начисляются по двум составляющим:</p><ul><li><strong>Плейсмент (место)</strong> — очки за финишную позицию в карте по убывающей: победа лобби даёт максимум, дальше — меньше.</li><li><strong>Убийства</strong> — каждое устранение (фраг) добавляет очки к результату команды.</li></ul><p>Именно поэтому команда может не выиграть ни одной карты по месту, но подняться в таблице за счёт агрессивной игры на фраги — и наоборот.</p>
+<h2>Какие рынки доступны в battle royale</h2>
+<p>В BR-дисциплинах роспись тоньше, чем в командных шутерах с прямыми дуэлями: здесь нет классического «победителя матча» между двумя командами. У легальных операторов чаще встречаются такие рынки.</p><ul><li><strong>Победитель турнира или сплита (аутрайт)</strong> — ставка на команду-чемпиона до старта событий; коэффициенты высокие из-за большого числа участников.</li><li><strong>Очная дуэль (head-to-head)</strong> — какая из двух заданных команд займёт более высокое место в карте или по итогам дня. Это аналог рынка «1 на 1» с двумя исходами.</li><li><strong>Тотал устранений команды</strong> — больше или меньше заданного числа фрагов за карту или серию. См. <a href="/shkola/terminy/chto-takoe-total">что такое тотал</a>.</li><li><strong>Победитель отдельной карты</strong> — какая команда возьмёт конкретную игру.</li></ul><p>Глубина линии зависит от статуса турнира: у финалов ALGS роспись шире, чем у рядовых квалификаций. Сравнить котировки удобно через <a href="/rejting/po-koefficientam">рейтинг по коэффициентам</a>.</p>
+<h2>Три примера расчёта со ставкой 1000 ₽</h2>
+<p>Коэффициенты условные и приведены только для иллюстрации механики. Аутрайт-ставки в BR почти всегда идут с высокими котировками из-за большого числа команд в лобби.</p><div class="table-wrap"><table><caption>Расчёт трёх ставок по 1000 ₽ на Apex Legends (коэффициенты гипотетические)</caption><thead><tr><th>Рынок</th><th>Ставка</th><th>Коэффициент</th><th>Итог при заходе</th></tr></thead><tbody><tr><td>Победитель турнира — команда А (аутрайт)</td><td>1000 ₽</td><td>9.00</td><td>9000 ₽ (прибыль 8000 ₽)</td></tr><tr><td>Очная дуэль: команда А выше команды B в карте</td><td>1000 ₽</td><td>1.90</td><td>1900 ₽ (прибыль 900 ₽)</td></tr><tr><td>Тотал фрагов команды А больше 12.5 за карту</td><td>1000 ₽</td><td>1.85</td><td>1850 ₽ (прибыль 850 ₽)</td></tr></tbody></table></div><p>Обратите внимание на разброс: аутрайт даёт крупную выплату, но и вероятность его невелика — в лобби 20 команд. Очные дуэли и тоталы фрагов ближе к «монетке» и потому платят скромнее. Прикинуть выплату до купона поможет <a href="/instrumenty/kalkulyator-stavok">калькулятор ставок</a>.</p>
+<h2>На что смотреть перед ставкой</h2>
+<p>Специфика battle royale требует иного подхода, чем командные шутеры.</p><ul><li><strong>Стиль команды.</strong> Одни коллективы играют «на край» и копят очки за место, другие — агрессивно фармят фраги. Это напрямую влияет на рынок тотала устранений.</li><li><strong>Карта и ротации.</strong> Пул карт и зоны высадки меняют распределение боёв; сильная точка высадки повышает и место, и число фрагов.</li><li><strong>Формат и Match Point.</strong> В финалах ALGS важен не только сильный день, но и способность выиграть решающую карту после набора пороговых очков.</li><li><strong>Дисперсия.</strong> В BR случайность выше, чем в матчах 1 на 1: одна неудачная зона может обнулить хороший день. Не переносите логику ставок из футбола или командных шутеров напрямую.</li></ul>
+<h2>Турниры и где следить за линией</h2>
+<p>Ядро киберспортивного Apex — Apex Legends Global Series (ALGS): региональные Pro League, плей-офф сплитов и ежегодный ALGS Championship, где сходятся сильнейшие трио мира. Вокруг этих событий и строится основная роспись у легальных операторов, тогда как мелкие онлайн-кубки бывают в линии реже.</p><p>Актуальные события ищите в разделе <a href="/stavki/kibersport">ставки на киберспорт</a>, операторов с развитой киберспортивной линией — в <a href="/rejting/dlya-kibersporta">рейтинге для киберспорта</a>, а полный каталог легальных БК из реестра ЕРАИ — в <a href="/rating">рейтинге букмекеров</a>. Значения коэффициентов и вероятностей разбираем в материале <a href="/shkola/kak-eto-rabotaet/kak-chitat-koefficienty">как читать коэффициенты</a>.</p>
+    <h2>Частые вопросы</h2>
+    <div class="faq"><details><summary>Почему в Apex Legends нельзя поставить на «победителя матча»?</summary><p><p>Потому что это battle royale: в лобби играют 20 команд одновременно, а не две. Прямого рынка «команда А против команды B на весь матч» нет — вместо него доступны аутрайт на победителя турнира, очные дуэли по месту и тоталы фрагов.</p></p></details>
+<details><summary>Как начисляются очки в ALGS?</summary><p><p>Итог команды складывается из очков за место (плейсмент) и очков за убийства. За более высокое финишное место дают больше очков по убывающей шкале, а каждое устранение добавляет к сумме. Победитель дня или турнира определяется по накопленным очкам, а в финалах — по формату Match Point.</p></p></details>
+<details><summary>Что такое очная дуэль (head-to-head)?</summary><p><p>Это рынок с двумя исходами: какая из двух заданных команд займёт более высокое место в конкретной карте или по итогам дня. Он не зависит от того, кто выиграет всё лобби, поэтому коэффициенты обычно близки к равным.</p></p></details>
+<details><summary>Почему у аутрайта такие высокие коэффициенты?</summary><p><p>В лобби 20 команд, и шанс каждой стать чемпионом невелик, поэтому котировки на победу турнира заметно выше, чем в дуэльных дисциплинах. Высокая выплата уравновешивается низкой вероятностью захода.</p></p></details>
+<details><summary>Где сравнивать коэффициенты и искать операторов?</summary><p><p>Котировки различаются между легальными БК из реестра ЕРАИ. Для сравнения используйте <a href="/rejting/po-koefficientam">рейтинг по коэффициентам</a>, а операторов с широкой киберспортивной росписью — <a href="/rejting/dlya-kibersporta">рейтинг для киберспорта</a>.</p></p></details></div>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="tiles">
+      <a class="tile" href="/stavki/futbol"><b>Ставки на футбол: рынки, роспись и типичные ошибки</b><small>Ставки на спорт</small></a>
+      <a class="tile" href="/stavki/hokkej"><b>Ставки на хоккей: тоталы, форы и особенности КХЛ и НХЛ</b><small>Ставки на спорт</small></a>
+      <a class="tile" href="/stavki/tennis"><b>Ставки на теннис: геймы, сеты и лайв</b><small>Ставки на спорт</small></a>
+      <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
+      <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
+    </div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty/kalkulyator-stavok">Инструменты</a></div>
+    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+</body>
+</html>
