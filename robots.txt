@@ -2,4 +2,30 @@ User-agent: *
 Disallow: /go/
 Allow: /
 
+# ИИ-краулеры — разрешены явно (GEO/AEO: без доступа нечего цитировать)
+User-agent: OAI-SearchBot
+Disallow: /go/
+Allow: /
+User-agent: ChatGPT-User
+Disallow: /go/
+Allow: /
+User-agent: GPTBot
+Disallow: /go/
+Allow: /
+User-agent: PerplexityBot
+Disallow: /go/
+Allow: /
+User-agent: Claude-SearchBot
+Disallow: /go/
+Allow: /
+User-agent: ClaudeBot
+Disallow: /go/
+Allow: /
+User-agent: Google-Extended
+Disallow: /go/
+Allow: /
+User-agent: YandexAdditional
+Disallow: /go/
+Allow: /
+
 Sitemap: https://stavki-rating.ru/sitemap.xml
