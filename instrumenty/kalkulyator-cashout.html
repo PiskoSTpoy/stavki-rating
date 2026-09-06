@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Конвертер коэффициентов — форматы и вероятность онлайн</title>
-<meta name="description" content="Конвертер коэффициентов между форматами: десятичный, дробный (британский), американский (мани-лайн) и подразумеваемая вероятность. Считает в браузере. 18+.">
-<link rel="canonical" href="https://stavki-rating.ru/instrumenty/konverter-koefficientov">
+<title>Калькулятор кэшаута — честная стоимость продажи ставки</title>
+<meta name="description" content="Калькулятор кэшаута: сколько стоит продать ставку до окончания события по текущему коэффициенту, с учётом комиссии букмекера. Считает в браузере. 18+.">
+<link rel="canonical" href="https://stavki-rating.ru/instrumenty/kalkulyator-cashout">
 <meta name="yandex-verification" content="4edbdcb14677aee3">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%23C8FF4D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpolygon points='36,8 17,36 29,36 26,56 47,27 35,27' fill='%2307090F'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -149,8 +149,8 @@
   .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Инструменты", "item": "https://stavki-rating.ru/instrumenty/kalkulyator-stavok"}, {"@type": "ListItem", "position": 3, "name": "Конвертер коэффициентов", "item": "https://stavki-rating.ru/instrumenty/konverter-koefficientov"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Какой формат используют российские БК?", "acceptedAnswer": {"@type": "Answer", "text": "Десятичный (европейский): 1.85, 2.40 и т. д. Выплата = ставка × коэффициент. Дробный и американский — зарубежные форматы."}}, {"@type": "Question", "name": "Что показывает вероятность?", "acceptedAnswer": {"@type": "Answer", "text": "Подразумеваемую вероятность исхода, «зашитую» в коэффициент: 100 % ÷ коэффициент. В неё включена маржа букмекера."}}, {"@type": "Question", "name": "Как ввести дробный коэффициент?", "acceptedAnswer": {"@type": "Answer", "text": "Через дробь, например 17/20 или 3/2. Итоговый десятичный = числитель ÷ знаменатель + 1."}}, {"@type": "Question", "name": "Почему американский бывает со знаком минус?", "acceptedAnswer": {"@type": "Answer", "text": "Минус — для фаворитов (коэф. меньше 2.0): показывает, сколько нужно поставить, чтобы выиграть 100. Плюс — для андердогов."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Инструменты", "item": "https://stavki-rating.ru/instrumenty/kalkulyator-stavok"}, {"@type": "ListItem", "position": 3, "name": "Калькулятор кэшаута", "item": "https://stavki-rating.ru/instrumenty/kalkulyator-cashout"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что такое кэшаут простыми словами?", "acceptedAnswer": {"@type": "Answer", "text": "Возможность продать ставку букмекеру до завершения события — забрать часть суммы сейчас, не дожидаясь итога, по коэффициенту, который действует на рынке в этот момент."}}, {"@type": "Question", "name": "Кэшаут всегда выгоден?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Если ситуация складывается в вашу пользу — кэшаут фиксирует прибыль раньше срока. Если не в вашу пользу — кэшаут вернёт меньше ставки, ограничивая убыток, но обычно на менее выгодных для вас условиях, чем игра до конца."}}, {"@type": "Question", "name": "Почему кэшаут меньше «честной» стоимости?", "acceptedAnswer": {"@type": "Answer", "text": "Букмекер закладывает комиссию (обычно 5-10 %) — так же, как маржа заложена в исходный коэффициент. Это плата за возможность выйти из ставки досрочно."}}, {"@type": "Question", "name": "Кэшаут доступен всегда?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, зависит от события, рынка и оператора — на часть событий и рынков (особенно в конце матча) кэшаут может быть недоступен или предлагаться с ограничениями."}}]}</script>
 </head>
 <body>
 
@@ -173,52 +173,49 @@
 <main>
 
   <section class="section tight"><div class="container">
-    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/instrumenty/kalkulyator-stavok">Инструменты</a><span>/</span>Конвертер коэффициентов</nav>
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/instrumenty/kalkulyator-stavok">Инструменты</a><span>/</span>Калькулятор кэшаута</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Инструмент ·</div>
-    <h1>Конвертер коэффициентов</h1>
-    <p class="muted" style="max-width:70ch;margin-top:10px">Один и тот же коэффициент записывают по-разному: десятичный (1.85), дробный (17/20), американский (−118). Введите значение в любом формате — калькулятор переведёт во все остальные и покажет <strong style="color:var(--text)">подразумеваемую вероятность</strong>.</p>
+    <h1>Калькулятор кэшаута</h1>
+    <p class="muted" style="max-width:70ch;margin-top:10px">Кэшаут — продажа ставки букмекеру до завершения события по текущему коэффициенту на тот же исход. Введите исходную ставку, коэффициент на момент заключения пари и коэффициент прямо сейчас — калькулятор покажет <strong style="color:var(--text)">честную стоимость</strong> и сумму с учётом комиссии букмекера.</p>
     <div class="tool" style="margin-top:18px">
-      <h3>Перевод коэффициента</h3>
+      <h3>Расчёт кэшаута</h3>
       <div class="tool-form">
-        <label class="field">Формат ввода<select id="cfmt">
-          <option value="decimal">Десятичный (напр. 1.85)</option>
-          <option value="american">Американский (напр. -118)</option>
-          <option value="fractional">Дробный (напр. 17/20)</option>
-        </select></label>
-        <label class="field">Значение<input id="cval" type="text" value="1.85" inputmode="decimal"></label>
+        <label class="field">Сумма ставки, ₽<input id="cstake" type="number" value="1000" min="1" step="50" inputmode="decimal"></label>
+        <label class="field">Коэффициент при заключении<input id="codds0" type="number" value="3.00" min="1.01" step="0.01" inputmode="decimal"></label>
+        <label class="field">Текущий коэффициент на исход<input id="codds1" type="number" value="1.50" min="1.01" step="0.01" inputmode="decimal"></label>
+        <label class="field">Комиссия букмекера, %<input id="cmargin" type="number" value="5" min="0" max="99" step="1" inputmode="decimal"></label>
       </div>
-      <div class="result" style="grid-template-columns:repeat(auto-fit,minmax(130px,1fr))">
-        <div><small>Десятичный</small><b class="num" id="odec">—</b></div>
-        <div><small>Вероятность</small><b class="num accent" id="oprob">—</b></div>
-        <div><small>Дробный</small><b class="num" id="ofrac">—</b></div>
-        <div><small>Американский</small><b class="num" id="oam">—</b></div>
+      <div class="result" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
+        <div><small>Потенциальная выплата</small><b class="num" id="cpay">—</b></div>
+        <div><small>Честная стоимость (без комиссии)</small><b class="num" id="cfair">—</b></div>
+        <div><small>Кэшаут (с комиссией)</small><b class="num accent" id="cactual">—</b></div>
       </div>
-      <p class="small muted">Дробный формат вводите через дробь: <b>17/20</b>. Подразумеваемая вероятность включает маржу букмекера.</p>
+      <p class="small muted" id="cstatus">—</p>
     </div>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
     <h2>Как это считается</h2>
     <ul>
-      <li><strong>Десятичный → вероятность:</strong> 100 % ÷ коэффициент. Пример: 2.00 → 50 %.</li>
-      <li><strong>Десятичный → дробный:</strong> (коэффициент − 1) несократимой дробью. Пример: 1.85 → 17/20.</li>
-      <li><strong>Десятичный → американский:</strong> при коэф. ≥ 2.0 это +(коэф−1)×100; при коэф. &lt; 2.0 это −100÷(коэф−1). Пример: 2.50 → +150; 1.85 → −118.</li>
-      <li><strong>Американский → десятичный:</strong> для +N это N/100+1; для −N это 100/N+1.</li>
+      <li><strong>Потенциальная выплата</strong> = сумма ставки × исходный коэффициент — сколько получите, если досмотреть событие и выиграть.</li>
+      <li><strong>Честная стоимость</strong> = потенциальная выплата ÷ текущий коэффициент на тот же исход — пересчёт по актуальной вероятности.</li>
+      <li><strong>Кэшаут</strong> = честная стоимость минус комиссия букмекера (обычно 5-10 %, у каждого оператора своя).</li>
     </ul>
-    <div class="callout">Десятичный формат (европейский) — основной у легальных БК России. Дробный чаще у британских контор, американский — в США.</div>
+    <p>Пример: ставка 1000 ₽ на коэффициент 3.00, событие складывается удачно — коэффициент на тот же исход упал до 1.50. Честная стоимость = 1000 × 3.00 ÷ 1.50 = 2000 ₽. С комиссией 5 % кэшаут составит около 1900 ₽ — прибыль фиксируется заранее, не дожидаясь финального свистка.</p>
+    <div class="callout">Если событие складывается НЕ в вашу пользу, текущий коэффициент растёт — кэшаут в этом случае вернёт МЕНЬШЕ суммы ставки. Это способ ограничить убыток, а не гарантия прибыли.</div>
     <h2>Частые вопросы</h2>
-    <div class="faq"><details><summary>Какой формат используют российские БК?</summary><p>Десятичный (европейский): 1.85, 2.40 и т. д. Выплата = ставка × коэффициент. Дробный и американский — зарубежные форматы.</p></details>
-<details><summary>Что показывает вероятность?</summary><p>Подразумеваемую вероятность исхода, «зашитую» в коэффициент: 100 % ÷ коэффициент. В неё включена маржа букмекера.</p></details>
-<details><summary>Как ввести дробный коэффициент?</summary><p>Через дробь, например 17/20 или 3/2. Итоговый десятичный = числитель ÷ знаменатель + 1.</p></details>
-<details><summary>Почему американский бывает со знаком минус?</summary><p>Минус — для фаворитов (коэф. меньше 2.0): показывает, сколько нужно поставить, чтобы выиграть 100. Плюс — для андердогов.</p></details></div>
+    <div class="faq"><details><summary>Что такое кэшаут простыми словами?</summary><p>Возможность продать ставку букмекеру до завершения события — забрать часть суммы сейчас, не дожидаясь итога, по коэффициенту, который действует на рынке в этот момент.</p></details>
+<details><summary>Кэшаут всегда выгоден?</summary><p>Нет. Если ситуация складывается в вашу пользу — кэшаут фиксирует прибыль раньше срока. Если не в вашу пользу — кэшаут вернёт меньше ставки, ограничивая убыток, но обычно на менее выгодных для вас условиях, чем игра до конца.</p></details>
+<details><summary>Почему кэшаут меньше «честной» стоимости?</summary><p>Букмекер закладывает комиссию (обычно 5-10 %) — так же, как маржа заложена в исходный коэффициент. Это плата за возможность выйти из ставки досрочно.</p></details>
+<details><summary>Кэшаут доступен всегда?</summary><p>Нет, зависит от события, рынка и оператора — на часть событий и рынков (особенно в конце матча) кэшаут может быть недоступен или предлагаться с ограничениями.</p></details></div>
     <h2 style="margin-top:20px">Другие инструменты</h2>
     <div class="tiles">
       <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставки</b><small>выплата и чистая прибыль по коэффициенту</small></a>
       <a class="tile" href="/instrumenty/kalkulyator-ekspressa"><b>Калькулятор экспресса</b><small>итоговый коэффициент по всем событиям</small></a>
+      <a class="tile" href="/instrumenty/konverter-koefficientov"><b>Конвертер коэффициентов</b><small>десятичные · дробные · американские</small></a>
       <a class="tile" href="/instrumenty/nalog-na-vyigrysh"><b>Налог на выигрыш</b><small>НДФЛ по правилам 2026 года</small></a>
       <a class="tile" href="/instrumenty/kalkulyator-vilok"><b>Калькулятор вилок</b><small>распределение ставок, прибыль в %</small></a>
       <a class="tile" href="/instrumenty/kalkulyator-marzhi"><b>Калькулятор маржи</b><small>оверраунд букмекера и честные коэффициенты</small></a>
-      <a class="tile" href="/instrumenty/kalkulyator-cashout"><b>Калькулятор кэшаута</b><small>честная стоимость продажи ставки до финиша</small></a>
       <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить все конторы из реестра</small></a>
     </div>
   </div></section>
@@ -360,22 +357,19 @@ function fmtPct(n){return isFinite(n)?n.toFixed(1).replace('.',',')+' %':'—';}
 function fmtDec(n){return isFinite(n)?n.toFixed(2).replace('.',','):'—';}
 
 
-  function calcConv(){
-    var fmt=byId('cfmt').value, raw=(byId('cval').value||'').trim().replace(',','.'), res=null;
-    if(fmt==='fractional'){ var m=raw.split('/'); res=SRCalc.convert({num:parseFloat(m[0]),den:parseFloat(m[1])},'fractional'); }
-    else res=SRCalc.convert(parseFloat(raw), fmt);
-    if(!res){ byId('odec').textContent='\u2014'; byId('oprob').textContent='\u2014'; byId('ofrac').textContent='\u2014'; byId('oam').textContent='\u2014'; return; }
-    byId('odec').textContent = fmtDec(res.decimal);
-    byId('oprob').textContent = fmtPct(res.prob);
-    byId('ofrac').textContent = res.fractional ? (res.fractional.num+'/'+res.fractional.den) : '\u2014';
-    byId('oam').textContent = res.american!=null ? (res.american>0?'+':'')+res.american : '\u2014';
+  function calcCashout(){
+    var s=parseFloat(byId('cstake').value), o0=parseFloat(byId('codds0').value), o1=parseFloat(byId('codds1').value), m=parseFloat(byId('cmargin').value);
+    var r=SRCalc.cashout(s,o0,o1,m), st=byId('cstatus');
+    if(!r){ byId('cpay').textContent='\u2014'; byId('cfair').textContent='\u2014'; byId('cactual').textContent='\u2014'; st.textContent='Введите корректные значения (коэффициенты > 1, комиссия 0-99%).'; st.style.color='var(--muted)'; return; }
+    byId('cpay').textContent=fmtRub(r.potentialPayout);
+    byId('cfair').textContent=fmtRub(r.fairValue);
+    byId('cactual').textContent=fmtRub(r.actual);
+    if(r.profit>=0){ st.textContent='Кэшаут выше ставки на '+fmtRub(r.profit)+' — фиксация прибыли до завершения события.'; st.style.color='var(--success)'; }
+    else { st.textContent='Кэшаут ниже ставки на '+fmtRub(Math.abs(r.profit))+' — досрочный выход с частичным убытком.'; st.style.color='var(--warning)'; }
   }
-  byId('cfmt').addEventListener('change',function(){
-    var ph={decimal:'1.85',american:'-118',fractional:'17/20'}[byId('cfmt').value];
-    byId('cval').value=ph; calcConv();
-  });
-  byId('cval').addEventListener('input',calcConv);
-  calcConv();
+  byId('cstake').addEventListener('input',calcCashout); byId('codds0').addEventListener('input',calcCashout);
+  byId('codds1').addEventListener('input',calcCashout); byId('cmargin').addEventListener('input',calcCashout);
+  calcCashout();
 
 </script>
 </main>
