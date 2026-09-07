@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Что такое догон (мартингейл) в ставках</title>
+<meta name="description" content="Что такое догон (мартингейл) в ставках на спорт: как работает удвоение ставки после проигрыша, расчёт на 5-6 проигрышах подряд и почему это не безопасная стратегия.">
+<link rel="canonical" href="https://stavki-rating.ru/shkola/terminy/chto-takoe-dogon">
+<meta name="yandex-verification" content="4edbdcb14677aee3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%23C8FF4D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpolygon points='36,8 17,36 29,36 26,56 47,27 35,27' fill='%2307090F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Oswald", "Inter", system-ui, sans-serif;
+    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
+
+  /* Секции */
+  .section { padding: 30px 0; }
+  .section.tight { padding-top: 6px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Хлебные крошки */
+  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs span { color: var(--muted-2); }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .result .accent { color: var(--volt); }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Текстовый контент страницы */
+  .prose { max-width: 75ch; display: grid; gap: 14px; }
+  .prose h2 { margin-top: 14px; }
+  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  .prose p { color: var(--text); }
+  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
+  .prose li { line-height: 1.5; }
+  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--text); font-weight: 700; }
+  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
+  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
+  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose tbody tr:last-child td { border-bottom: none; }
+  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
+  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
+  .faq { display: grid; gap: 10px; }
+  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; float: right; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; }
+
+  /* Футер */
+  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Термины", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Что такое догон (мартингейл) в ставках на спорт", "item": "https://stavki-rating.ru/shkola/terminy/chto-takoe-dogon"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Что такое догон (мартингейл) в ставках на спорт", "description": "Что такое догон (мартингейл) в ставках на спорт: как работает удвоение ставки после проигрыша, расчёт на 5-6 проигрышах подряд и почему это не безопасная стратегия.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/terminy/chto-takoe-dogon", "datePublished": "2026-09-07", "dateModified": "2026-09-07", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Мартингейл и догон — это одно и то же?", "acceptedAnswer": {"@type": "Answer", "text": "Да, в ставках на спорт эти термины обычно используют как синонимы: и «догон», и «мартингейл» описывают одну и ту же схему — удвоение ставки после проигрыша, чтобы отбить накопленные потери одной победой. Название «мартингейл» пришло из азартных игр (изначально из рулетки), «догон» — более разговорный русский вариант того же принципа."}}, {"@type": "Question", "name": "Можно ли ставить по системе догона и не слить банк?", "acceptedAnswer": {"@type": "Answer", "text": "Полностью исключить риск нельзя: вероятность 5-6 проигрышей подряд — около 1,6% на каждую отдельную серию из шести ставок — не так мала, как кажется, а такая серия способна забрать банк целиком при любом размере базовой ставки. Меньшая база лишь уменьшает абсолютную сумму разового убытка, но не саму вероятность серии — это вопрос масштаба потерь, а не их исключения, и безопасной или гарантированной стратегией догон от этого не становится."}}, {"@type": "Question", "name": "Почему букмекеры не запрещают догон, если он невыгоден игроку?", "acceptedAnswer": {"@type": "Answer", "text": "Потому что догон не угрожает букмекеру: маржа заложена в каждый коэффициент независимо от того, как игрок распределяет ставки, а лимиты на сумму ставки и выплату по событию и так ограничивают потенциальный убыток конторы. Догон лишь меняет распределение выигрышей и проигрышей самого игрока во времени, а не отменяет комиссию букмекера."}}]}</script>
+</head>
+<body>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav">
+    <a href="/rating">Рейтинг</a>
+    <a href="/rejting">По критериям</a>
+    <a href="/stavki">Виды спорта</a>
+    <a href="/instrumenty/kalkulyator-stavok">Инструменты</a>
+    <a href="/shkola">Школа</a>
+    <a href="/bonusy">Бонусы</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main>
+
+  <section class="section tight"><div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Термины</a><span>/</span>Что такое догон (мартингейл) в ставках на спорт</nav>
+    <div class="eyebrow" style="margin:16px 0 8px">· Школа · Термины ·</div>
+    <h1>Что такое догон (мартингейл) в ставках на спорт</h1>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 07.09.2026</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">Догон (в обиходе его также называют мартингейлом) — это стратегия ставок, при которой после каждого проигрыша сумму следующей ставки увеличивают, чаще всего удваивают, чтобы одной победой сразу отбить все предыдущие потери и получить прибыль в размере первой ставки. Схема работает только до первой длинной серии неудач подряд: ставка растёт по геометрической прогрессии, быстро упирается в лимиты букмекера на конкретное событие и способна слить весь банк за один вечер. Ниже — расчёт на конкретных цифрах и объяснение, почему это не безопасная и не гарантированная стратегия.</p>
+    
+  </div></section>
+
+  <section class="section" style="padding-top:6px"><div class="container prose">
+    <h2>Как работает догон: удвоение ставки после проигрыша</h2>
+<p>Механика простая: выбираете базовую (стартовую) ставку и событие с коэффициентом около 2,00 — например, исход, фору или тотал с примерно равными шансами. Если ставка проигрывает, следующую ставку удваивают, чтобы при выигрыше сразу перекрыть все предыдущие потери и получить прибыль, равную самой первой ставке. Как только серия прерывается победой, прогрессию начинают заново с базовой суммы.</p><p>Формула ставки после N проигрышей подряд: <strong>базовая сумма × 2 в степени N</strong>. Уже на пятом-шестом шаге сумма перестаёт быть «мелкой»: она растёт не линейно, а по экспоненте — каждый следующий проигрыш требует не «немного больше», а вдвое больше предыдущей ставки.</p><p>Пример на базовой ставке 1000 ₽ и коэффициенте около 2,00:</p><div class="table-wrap"><table><caption>Прогрессия догона при 6 проигрышах подряд, база 1000 ₽</caption><thead><tr><th>Шаг</th><th>Размер ставки</th><th>Проиграно нарастающим итогом</th></tr></thead><tbody><tr><td>1</td><td>1000 ₽</td><td>1000 ₽</td></tr><tr><td>2</td><td>2000 ₽</td><td>3000 ₽</td></tr><tr><td>3</td><td>4000 ₽</td><td>7000 ₽</td></tr><tr><td>4</td><td>8000 ₽</td><td>15000 ₽</td></tr><tr><td>5</td><td>16000 ₽</td><td>31000 ₽</td></tr><tr><td>6</td><td>32000 ₽</td><td>63000 ₽</td></tr></tbody></table></div><p>Если шестая ставка заходит, прогрессия закрывается: все потери отбиты, плюс 1000 ₽ прибыли — столько же, сколько принесла бы одна-единственная выигранная ставка. Но если проигрывают все шесть подряд, банк недосчитывается 63 000 ₽ при стартовой ставке всего в 1000 ₽. Это в 63 раза больше базы, потерянных из-за одной неудачной серии.</p>
+<h2>Почему банк кончается быстрее, чем кажется, и в чём ограничения</h2>
+<p>Серия из 5-6 проигрышей подряд выглядит маловероятной, но это не редкость. При условно честных 50% на исход вероятность проиграть 6 раз подряд — 0,5 в шестой степени ≈ 1,6%, то есть примерно 1 случай из 64 серий. Если ставить регулярно, десятки таких серий по 6 шагов набегают за несколько месяцев — и рано или поздно догон в одной из них упирается в полный проигрыш.</p><p>На практике всё хуже, чем в примере с коэффициентом 2,00. Букмекер закладывает <a href="/shkola/terminy/chto-takoe-marzha-bukmekera">маржу</a>, поэтому реальный коэффициент на близкое к равновероятному событие обычно 1,90–1,95, а не 2,00. Из-за этого удвоение ставки не полностью перекрывает накопленный проигрыш, и прогрессию приходится наращивать ещё агрессивнее, чем в упрощённых расчётах.</p><p>Второе, отдельное ограничение — лимиты самого букмекера. На большинстве рынков, особенно в лайве, действует максимальная сумма ставки или максимальная выплата по событию. Если лимит на конкретный матч, например, 25 000 ₽, шестая ставка в 32 000 ₽ из примера выше физически невозможна — контора её просто не примет, и догнать серию прогрессией не получится, даже если денег на счёте формально хватает.</p><p>Отсюда главный вывод: догон не убирает маржу букмекера и не создаёт математического перевеса — он лишь переносит риск во времени. Вместо частых небольших проигрышей вы получаете частые небольшие выигрыши и редкую, но разорительную серию, которая перекрывает всю накопленную прибыль. Это не безопасная и не гарантированная стратегия ни при какой базовой сумме. Более подробный разбор с дополнительными расчётами и типичными ошибками — в статье <a href="/shkola/strategii/strategiya-dogon">«Стратегия догон (мартингейл)»</a>.</p><p>Если ловите себя на желании отыграться любой ценой и раз за разом увеличиваете ставку после проигрыша — это как раз тот сигнал, при котором стоит сделать паузу и посмотреть раздел <a href="/otvetstvennaya-igra">ответственной игры</a>: там есть про лимиты, самоконтроль и самозапрет через Госуслуги.</p>
+    <h2>Частые вопросы</h2>
+    <div class="faq"><details><summary>Мартингейл и догон — это одно и то же?</summary><p>Да, в ставках на спорт эти термины обычно используют как синонимы: и «догон», и «мартингейл» описывают одну и ту же схему — удвоение ставки после проигрыша, чтобы отбить накопленные потери одной победой. Название «мартингейл» пришло из азартных игр (изначально из рулетки), «догон» — более разговорный русский вариант того же принципа.</p></details>
+<details><summary>Можно ли ставить по системе догона и не слить банк?</summary><p>Полностью исключить риск нельзя: вероятность 5-6 проигрышей подряд — около 1,6% на каждую отдельную серию из шести ставок — не так мала, как кажется, а такая серия способна забрать банк целиком при любом размере базовой ставки. Меньшая база лишь уменьшает абсолютную сумму разового убытка, но не саму вероятность серии — это вопрос масштаба потерь, а не их исключения, и безопасной или гарантированной стратегией догон от этого не становится.</p></details>
+<details><summary>Почему букмекеры не запрещают догон, если он невыгоден игроку?</summary><p>Потому что догон не угрожает букмекеру: маржа заложена в каждый коэффициент независимо от того, как игрок распределяет ставки, а лимиты на сумму ставки и выплату по событию и так ограничивают потенциальный убыток конторы. Догон лишь меняет распределение выигрышей и проигрышей самого игрока во времени, а не отменяет комиссию букмекера.</p></details></div>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="tiles">
+      <a class="tile" href="/shkola/terminy/chto-takoe-fora"><b>Что такое фора в ставках: виды форы и расчёт возврата</b><small>Термины</small></a>
+      <a class="tile" href="/shkola/terminy/chto-takoe-total"><b>Что такое тотал в ставках</b><small>Термины</small></a>
+      <a class="tile" href="/shkola/terminy/chto-takoe-ekspress"><b>Что такое экспресс в ставках на спорт</b><small>Термины</small></a>
+      <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
+      <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
+    </div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty/kalkulyator-stavok">Инструменты</a></div>
+    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+</body>
+</html>
