@@ -368,9 +368,9 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
       <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
       <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Возрастная категория 18+. Размеры бонусов, рейтинги и другие показатели носят ориентировочный характер и могут меняться — точные и актуальные условия смотрите на официальных сайтах букмекеров.</p>
     </div>
-    <div><h4>Букмекеры</h4><a href="#top3">Рейтинг легальных БК</a><a href="#top3">Промокоды и фрибеты</a><a href="#compare">Сравнение</a><a href="#top3">Приложения</a></div>
-    <div><h4>Редакция</h4><a href="#top">О проекте и редакция</a><a href="#compare">Методика рейтинга</a><a href="#top">Реклама на сайте</a><a href="#top">Политика конфиденциальности</a></div>
-    <div><h4>Ответственная игра</h4><a href="#top">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="#top">Лимиты и самоконтроль</a></div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/bonusy">Промокоды и фрибеты</a><a href="#compare">Сравнение</a><a href="#top3">Приложения</a></div>
+    <div><h4>Редакция</h4><a href="/contacts">О проекте и редакция</a><a href="#compare">Методика рейтинга</a><a href="#top">Реклама на сайте</a><a href="#top">Политика конфиденциальности</a></div>
+    <div><h4>Ответственная игра</h4><a href="/shkola/otvetstvennaya-igra/priznaki-ludomanii">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/shkola/dengi-i-nalogi/limity-i-samokontrol">Лимиты и самоконтроль</a></div>
   </div>
   <div class="legal-box">
     <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
@@ -405,9 +405,9 @@ const BRANDS = [
   { slug:'bet-m',       name:'Бет-М',       dom:'bet-m.ru',       color:'#4F46E5', rating:3.6, bonus:'Бонус новым', payout:'до 24 часов', margin:'6,3 %' },
 ];
 const RATINGS = [
-  ['С фрибетом за регистрацию','7 БК'], ['С высокими коэффициентами','по марже'], ['С быстрым выводом','до 1 часа'],
-  ['Для киберспорта','CS2, Dota 2'], ['Приложения на Android','12 БК'], ['Для новичков','простой старт'],
-  ['С кэшбэком','возврат части'], ['Новые букмекеры 2026','Бет-М, 24bet'],
+  ['С фрибетом за регистрацию','7 БК','/rejting/s-fribetom'], ['С высокими коэффициентами','по марже','/rejting/po-koefficientam'], ['С быстрым выводом','до 1 часа','/rejting/s-bystrym-vyvodom'],
+  ['Для киберспорта','CS2, Dota 2','/rejting/dlya-kibersporta'], ['Приложения на Android','12 БК','/rejting/na-android'], ['Для новичков','простой старт','/rejting/dlya-novichkov'],
+  ['С кэшбэком','возврат части','/rejting/s-keshbekom'], ['Новые букмекеры 2026','Бет-М, 24bet','/rejting/novye'],
 ];
 const TOOL_TILES = [
   ['Калькулятор экспресса','до 20 событий, итоговый коэффициент','/instrumenty/kalkulyator-ekspressa'],
@@ -466,7 +466,7 @@ document.getElementById('compareRows').innerHTML = BRANDS.map((b,i)=>`<tr>
   <td>iOS · Android</td>
   <td><a class="btn btn-primary btn-sm" href="/go/${b.slug}" rel="sponsored nofollow noopener">Бонус</a></td>
 </tr>`).join('');
-document.getElementById('tiles').innerHTML = RATINGS.map(r=>`<a class="tile" href="#top3"><b>${esc(r[0])}</b><small>${esc(r[1])}</small></a>`).join('');
+document.getElementById('tiles').innerHTML = RATINGS.map(r=>`<a class="tile" href="${r[2]}"><b>${esc(r[0])}</b><small>${esc(r[1])}</small></a>`).join('');
 document.getElementById('toolTiles').innerHTML = TOOL_TILES.map(t=>`<a class="tile" href="${t[2]}"><b>${esc(t[0])}</b><small>${esc(t[1])}</small></a>`).join('')
   + '<a class="tile" href="/instrumenty"><b>Все инструменты →</b><small>7 калькуляторов в одном месте</small></a>';
 requestAnimationFrame(()=>document.querySelectorAll('.ring-fg').forEach(c=>{ c.style.strokeDashoffset=c.dataset.off; }));
