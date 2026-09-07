@@ -120,6 +120,8 @@
     <loc>https://stavki-rating.ru/zenit-obzor</loc>
     <priority>0.7</priority>
   </url>
+  <url><loc>https://stavki-rating.ru/instrumenty/kalkulyator-marzhi</loc></url>
+  <url><loc>https://stavki-rating.ru/instrumenty/kalkulyator-cashout</loc></url>
   <url><loc>https://stavki-rating.ru/shkola/terminy/chto-takoe-fora</loc></url>
   <url><loc>https://stavki-rating.ru/shkola/terminy/chto-takoe-total</loc></url>
   <url><loc>https://stavki-rating.ru/shkola/kak-eto-rabotaet/vidy-stavok-na-sport</loc></url>
