@@ -410,10 +410,12 @@ const RATINGS = [
   ['С кэшбэком','возврат части'], ['Новые букмекеры 2026','Бет-М, 24bet'],
 ];
 const TOOL_TILES = [
-  ['Калькулятор экспресса','до 20 событий, итоговый коэффициент'],
-  ['Конвертер коэффициентов','десятичные · дробные · американские'],
-  ['Налог на выигрыш','правила НДФЛ на 2026 год'],
-  ['Калькулятор вилок','распределение сумм, прибыль в %'],
+  ['Калькулятор экспресса','до 20 событий, итоговый коэффициент','/instrumenty/kalkulyator-ekspressa'],
+  ['Конвертер коэффициентов','десятичные · дробные · американские','/instrumenty/konverter-koefficientov'],
+  ['Налог на выигрыш','правила НДФЛ на 2026 год','/instrumenty/nalog-na-vyigrysh'],
+  ['Калькулятор вилок','распределение сумм, прибыль в %','/instrumenty/kalkulyator-vilok'],
+  ['Калькулятор маржи','оверраунд букмекера и честные кэфы','/instrumenty/kalkulyator-marzhi'],
+  ['Калькулятор кэшаута','честная стоимость продажи ставки','/instrumenty/kalkulyator-cashout'],
 ];
 const WARN = 'Участие в азартных играх может привести к возникновению игровой зависимости.';
 const ADVERTISER = 'ООО «[Рекламодатель]», ИНН [ИНН], erid: [токен ОРД]';
@@ -465,7 +467,8 @@ document.getElementById('compareRows').innerHTML = BRANDS.map((b,i)=>`<tr>
   <td><a class="btn btn-primary btn-sm" href="/go/${b.slug}" rel="sponsored nofollow noopener">Бонус</a></td>
 </tr>`).join('');
 document.getElementById('tiles').innerHTML = RATINGS.map(r=>`<a class="tile" href="#top3"><b>${esc(r[0])}</b><small>${esc(r[1])}</small></a>`).join('');
-document.getElementById('toolTiles').innerHTML = TOOL_TILES.map(t=>`<a class="tile" href="#tools"><b>${esc(t[0])}</b><small>${esc(t[1])}</small></a>`).join('');
+document.getElementById('toolTiles').innerHTML = TOOL_TILES.map(t=>`<a class="tile" href="${t[2]}"><b>${esc(t[0])}</b><small>${esc(t[1])}</small></a>`).join('')
+  + '<a class="tile" href="/instrumenty"><b>Все инструменты →</b><small>7 калькуляторов в одном месте</small></a>';
 requestAnimationFrame(()=>document.querySelectorAll('.ring-fg').forEach(c=>{ c.style.strokeDashoffset=c.dataset.off; }));
 
 /* ---------- Герой: монеты БК взлетают и кружатся («удар по столу») ---------- */
