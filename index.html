@@ -385,24 +385,30 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <div class="toast" id="toast">Скопировано</div>
 
 <script>
-/* ---------- Данные (реквизиты БК — проверены 02.09.2026; бонусы/оценки/маржа — ДЕМО) ---------- */
+/* ---------- Данные (реквизиты БК — проверены 02.09.2026; бонусы/маржа/скорость вывода — ДЕМО, не измерены) ----------
+   Порядок и rating (08.09.2026) отражают реальные партнёрские условия, не независимую экспертную оценку:
+   - 4.8-5.0: БК, где у нас есть реальная монетизированная ссылка (см. go.json, партнёрские условия — [[stavki-rating-offer-terms]] в памяти проекта).
+     Внутри тира — по убыванию заявленной ставки партнёрки: Марафон RevShare 30% > PARI CPA 5500₽ > Зенит RevShare 25%
+     > Мелбет CPA 3750₽ > Фонбет RevShare 15% = Бетсити RevShare 15%. RevShare (% от дохода) и CPA (фикс. сумма за
+     конверсию) не считаются напрямую в одну шкалу без данных по LTV игрока — это эвристика по номиналу, не финрасчёт.
+   - 4.0-4.7: БК без партнёрской ссылки (0 ₽ с любого трафика) — порядок внутри тира не имеет критерия. */
 const BRANDS = [
+  { slug:'marathonbet', name:'Марафон',     dom:'marathonbet.ru', color:'#16A34A', rating:5.0, bonus:'Бонус до 3 300 ₽', payout:'до 6 часов', margin:'5,2 %' },
+  { slug:'pari',        name:'PARI',        dom:'pari.ru',        color:'#8B5CF6', rating:4.9, bonus:'5 фрибетов по 1 000 ₽', payout:'до 1 часа', margin:'5,0 %' },
+  { slug:'zenit',       name:'Зенит',       dom:'zenit.win',      color:'#1D4ED8', rating:4.9, bonus:'Бонус до 5 000 ₽', payout:'до 12 часов', margin:'5,7 %' },
+  { slug:'melbet',      name:'Мелбет',      dom:'melbet.ru',      color:'#F97316', rating:4.8, bonus:'100% на депозит до 15 000 ₽', payout:'до 24 часов', margin:'5,9 %' },
   { slug:'fonbet',      name:'Фонбет',      dom:'fon.bet',        color:'#D8312B', rating:4.8, bonus:'Фрибет до 15 000 ₽', payout:'до 15 мин', margin:'4,5 %' },
-  { slug:'pari',        name:'PARI',        dom:'pari.ru',        color:'#8B5CF6', rating:4.5, bonus:'5 фрибетов по 1 000 ₽', payout:'до 1 часа', margin:'5,0 %' },
-  { slug:'melbet',      name:'Мелбет',      dom:'melbet.ru',      color:'#F97316', rating:4.1, bonus:'100% на депозит до 15 000 ₽', payout:'до 24 часов', margin:'5,9 %' },
-  { slug:'betcity',     name:'Бетсити',     dom:'betcity.ru',     color:'#2563EB', rating:4.1, bonus:'Фрибет до 3 000 ₽', payout:'до 2 часов', margin:'5,5 %' },
-  { slug:'marathonbet', name:'Марафон',     dom:'marathonbet.ru', color:'#16A34A', rating:4.0, bonus:'Бонус до 3 300 ₽', payout:'до 6 часов', margin:'5,2 %' },
-  { slug:'zenit',       name:'Зенит',       dom:'zenit.win',      color:'#1D4ED8', rating:3.9, bonus:'Бонус до 5 000 ₽', payout:'до 12 часов', margin:'5,7 %' },
+  { slug:'betcity',     name:'Бетсити',     dom:'betcity.ru',     color:'#2563EB', rating:4.8, bonus:'Фрибет до 3 000 ₽', payout:'до 2 часов', margin:'5,5 %' },
   { slug:'winline',     name:'Winline',     dom:'winline.ru',     color:'#FF6A13', rating:4.7, bonus:'Фрибет 3 000 ₽ новым', payout:'до 30 мин', margin:'5,1 %' },
   { slug:'ligastavok',  name:'Лига Ставок', dom:'ligastavok.ru',  color:'#F59E0B', rating:4.6, bonus:'Фрибет 1 500 ₽', payout:'до 1 часа', margin:'5,4 %' },
   { slug:'betboom',     name:'BetBoom',     dom:'betboom.ru',     color:'#06B6D4', rating:4.5, bonus:'Фрибет 2 000 ₽', payout:'до 2 часов', margin:'5,3 %' },
-  { slug:'olimpbet',    name:'OLIMPBET',    dom:'olimp.bet',      color:'#E11D48', rating:4.3, bonus:'Фрибет 1 000 ₽', payout:'до 3 часов', margin:'5,6 %' },
-  { slug:'leon',        name:'Leon',        dom:'leon.ru',        color:'#EAB308', rating:4.2, bonus:'Приветственный фрибет', payout:'до 24 часов', margin:'5,8 %' },
-  { slug:'baltbet',     name:'Балтбет',     dom:'baltbet.ru',     color:'#0EA5E9', rating:3.9, bonus:'Фрибет 500 ₽', payout:'до 24 часов', margin:'6,0 %' },
-  { slug:'sportbet',    name:'Спортбет',    dom:'sportbet.ru',    color:'#DC2626', rating:3.8, bonus:'Бонус за регистрацию', payout:'до 24 часов', margin:'6,1 %' },
-  { slug:'24bet',       name:'24bet',       dom:'24bet.ru',       color:'#7C3AED', rating:3.7, bonus:'Бонус новым', payout:'до 24 часов', margin:'6,2 %' },
-  { slug:'bettery',     name:'Bettery',     dom:'bettery.ru',     color:'#0891B2', rating:3.7, bonus:'Бонус новым', payout:'до 24 часов', margin:'6,0 %' },
-  { slug:'bet-m',       name:'Бет-М',       dom:'bet-m.ru',       color:'#4F46E5', rating:3.6, bonus:'Бонус новым', payout:'до 24 часов', margin:'6,3 %' },
+  { slug:'olimpbet',    name:'OLIMPBET',    dom:'olimp.bet',      color:'#E11D48', rating:4.4, bonus:'Фрибет 1 000 ₽', payout:'до 3 часов', margin:'5,6 %' },
+  { slug:'leon',        name:'Leon',        dom:'leon.ru',        color:'#EAB308', rating:4.3, bonus:'Приветственный фрибет', payout:'до 24 часов', margin:'5,8 %' },
+  { slug:'baltbet',     name:'Балтбет',     dom:'baltbet.ru',     color:'#0EA5E9', rating:4.2, bonus:'Фрибет 500 ₽', payout:'до 24 часов', margin:'6,0 %' },
+  { slug:'sportbet',    name:'Спортбет',    dom:'sportbet.ru',    color:'#DC2626', rating:4.1, bonus:'Бонус за регистрацию', payout:'до 24 часов', margin:'6,1 %' },
+  { slug:'24bet',       name:'24bet',       dom:'24bet.ru',       color:'#7C3AED', rating:4.0, bonus:'Бонус новым', payout:'до 24 часов', margin:'6,2 %' },
+  { slug:'bettery',     name:'Bettery',     dom:'bettery.ru',     color:'#0891B2', rating:4.0, bonus:'Бонус новым', payout:'до 24 часов', margin:'6,0 %' },
+  { slug:'bet-m',       name:'Бет-М',       dom:'bet-m.ru',       color:'#4F46E5', rating:4.0, bonus:'Бонус новым', payout:'до 24 часов', margin:'6,3 %' },
 ];
 const RATINGS = [
   ['С фрибетом за регистрацию','7 БК','/rejting/s-fribetom'], ['С высокими коэффициентами','по марже','/rejting/po-koefficientam'], ['С быстрым выводом','до 1 часа','/rejting/s-bystrym-vyvodom'],
@@ -457,12 +463,17 @@ function calc(){
 
 /* ---------- Рендер ---------- */
 document.getElementById('top3cards').innerHTML = BRANDS.slice(0,3).map((b,i)=>brandCard(b, true)).join('');
+const parseMargin = m => parseFloat(String(m).replace(',', '.'));
+const parsePayoutMin = p => { const n = parseFloat(p); if (/мин/.test(p)) return n; if (/час/.test(p)) return n*60; return Infinity; };
+const bestRating = Math.max(...BRANDS.map(b=>b.rating));
+const bestMargin = Math.min(...BRANDS.map(b=>parseMargin(b.margin)));
+const bestPayout = Math.min(...BRANDS.map(b=>parsePayoutMin(b.payout)));
 document.getElementById('compareRows').innerHTML = BRANDS.map((b,i)=>`<tr>
   <td><span class="cell-brand">${logo(b)}<a href="/bukmekery/${b.slug}">${esc(b.name)}</a></span></td>
-  <td class="num ${i===0?'best':''}">${b.rating.toFixed(1).replace('.',',')}</td>
+  <td class="num ${b.rating===bestRating?'best':''}">${b.rating.toFixed(1).replace('.',',')}</td>
   <td>${esc(b.bonus)}</td>
-  <td class="num ${b.margin==='4,5 %'?'best':''}">${b.margin}</td>
-  <td class="num ${b.payout==='до 15 мин'?'best':''}">${b.payout}</td>
+  <td class="num ${parseMargin(b.margin)===bestMargin?'best':''}">${b.margin}</td>
+  <td class="num ${parsePayoutMin(b.payout)===bestPayout?'best':''}">${b.payout}</td>
   <td>iOS · Android</td>
   <td><a class="btn btn-primary btn-sm" href="/go/${b.slug}" rel="sponsored nofollow noopener">Бонус</a></td>
 </tr>`).join('');
