@@ -1,6 +1,9 @@
 User-agent: *
 Disallow: /go/
 Allow: /
+# Яндекс: параметры, не меняющие контент (utm/клики/антикэш) — не плодить дубли страниц
+# (самопроверка Вебмастера «дубли приклеены к основным страницам», 11.09.2026)
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&ysclid&gclid&fbclid&nocache&nc&_from
 
 # ИИ-краулеры — разрешены явно (GEO/AEO: без доступа нечего цитировать)
 User-agent: OAI-SearchBot

@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Реестр легальных букмекеров России 2026 — живой список</title>
+<meta name="description" content="Все букмекеры с лицензией ФНС: юрлицо, ИНН, номер лицензии, официальный сайт, присутствие в Едином ЦУПИС и статус приёма ставок. Ежедневная сверка, история изменений, JSON и RSS.">
+<link rel="canonical" href="https://stavki-rating.ru/reestr">
+<meta name="yandex-verification" content="4edbdcb14677aee3">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://stavki-rating.ru/reestr">
+<meta property="og:title" content="Реестр легальных букмекеров России 2026 — живой список">
+<meta property="og:description" content="Все букмекеры с лицензией ФНС: юрлицо, ИНН, номер лицензии, официальный сайт, присутствие в Едином ЦУПИС и статус приёма ставок. Ежедневная сверка, история изменений, JSON и RSS.">
+<meta property="og:image" content="https://stavki-rating.ru/media/hero.jpg">
+<meta property="og:image:width" content="1376">
+<meta property="og:image:height" content="768">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Реестр легальных букмекеров России 2026 — живой список">
+<meta name="twitter:description" content="Все букмекеры с лицензией ФНС: юрлицо, ИНН, номер лицензии, официальный сайт, присутствие в Едином ЦУПИС и статус приёма ставок. Ежедневная сверка, история изменений, JSON и RSS.">
+<meta name="twitter:image" content="https://stavki-rating.ru/media/hero.jpg">
+<!-- физические файлы дублируют SVG-иконку выше - Яндекс и другие боты явно ищут ссылку на
+     обычный файл, инлайновый data-URI не засчитывают как валидный favicon (FAVICON_PROBLEM).
+     09.09.2026: Вебмастер отдельно попросил SVG-файл или 120x120 PNG (не устраивает ни
+     data-URI, ни .ico) - добавлены оба варианта. -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="120x120" href="/favicon-120.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Oswald", "Inter", system-ui, sans-serif;
+    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
+
+  /* Секции */
+  .section { padding: 30px 0; }
+  .section.tight { padding-top: 6px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Хлебные крошки */
+  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs span { color: var(--muted-2); }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .result .accent { color: var(--volt); }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Текстовый контент страницы */
+  .prose { max-width: 75ch; display: grid; gap: 14px; }
+  .prose h2 { margin-top: 14px; }
+  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  .prose p { color: var(--text); }
+  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
+  .prose li { line-height: 1.5; }
+  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--text); font-weight: 700; }
+  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
+  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
+  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose tbody tr:last-child td { border-bottom: none; }
+  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
+  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
+  .faq { display: grid; gap: 10px; }
+  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 24px 12px 0; list-style: none; position: relative; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: 0; top: 12px; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; }
+
+  /* Футер */
+  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Реестр легальных букмекеров", "item": "https://stavki-rating.ru/reestr"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "Реестр легальных букмекеров России (лицензия ФНС + Единый ЦУПИС)", "description": "Список букмекеров с лицензией ФНС, их юрлица, ИНН, номера лицензий, официальные домены, статус приёма ставок и присутствие в списке партнёров Единого ЦУПИС. Ежедневная автоматическая сверка.", "url": "https://stavki-rating.ru/reestr", "inLanguage": "ru-RU", "dateModified": "2026-09-11", "isAccessibleForFree": true, "license": "https://creativecommons.org/licenses/by/4.0/", "creator": {"@type": "Organization", "name": "STAVKI RATING", "url": "https://stavki-rating.ru"}, "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://stavki-rating.ru/reestr.json"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://stavki-rating.ru/reestr.csv"}, {"@type": "DataDownload", "encodingFormat": "application/rss+xml", "contentUrl": "https://stavki-rating.ru/reestr-changes.xml"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "Легальные букмекеры России", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "24bet", "url": "https://stavki-rating.ru/bukmekery/24bet"}, {"@type": "ListItem", "position": 2, "name": "BetBoom", "url": "https://stavki-rating.ru/bukmekery/betboom"}, {"@type": "ListItem", "position": 3, "name": "Bettery", "url": "https://stavki-rating.ru/bukmekery/bettery"}, {"@type": "ListItem", "position": 4, "name": "Leon", "url": "https://stavki-rating.ru/bukmekery/leon"}, {"@type": "ListItem", "position": 5, "name": "OLIMPBET", "url": "https://stavki-rating.ru/bukmekery/olimpbet"}, {"@type": "ListItem", "position": 6, "name": "PARI", "url": "https://stavki-rating.ru/bukmekery/pari"}, {"@type": "ListItem", "position": 7, "name": "Winline", "url": "https://stavki-rating.ru/bukmekery/winline"}, {"@type": "ListItem", "position": 8, "name": "Балтбет", "url": "https://stavki-rating.ru/bukmekery/baltbet"}, {"@type": "ListItem", "position": 9, "name": "Бет-М", "url": "https://stavki-rating.ru/bukmekery/bet-m"}, {"@type": "ListItem", "position": 10, "name": "Бетсити", "url": "https://stavki-rating.ru/bukmekery/betcity"}, {"@type": "ListItem", "position": 11, "name": "Зенит", "url": "https://stavki-rating.ru/bukmekery/zenit"}, {"@type": "ListItem", "position": 12, "name": "Лига Ставок", "url": "https://stavki-rating.ru/bukmekery/ligastavok"}, {"@type": "ListItem", "position": 13, "name": "Марафон", "url": "https://stavki-rating.ru/bukmekery/marathonbet"}, {"@type": "ListItem", "position": 14, "name": "Мелбет", "url": "https://stavki-rating.ru/bukmekery/melbet"}, {"@type": "ListItem", "position": 15, "name": "Спортбет", "url": "https://stavki-rating.ru/bukmekery/sportbet"}, {"@type": "ListItem", "position": 16, "name": "Фонбет", "url": "https://stavki-rating.ru/bukmekery/fonbet"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Сколько легальных букмекеров в России сейчас?", "acceptedAnswer": {"@type": "Answer", "text": "На 11.09.2026 в таблице 16 брендов со статусом «принимает ставки», из них 16 подтверждены в списке партнёров Единого ЦУПИС на дату проверки. Ещё 2 — с лицензией ФНС, но без приёма ставок (приостановили работу или закрылись). Число меняется: лицензии продаются, бренды объединяются, поэтому страница пересобирается автоматически."}}, {"@type": "Question", "name": "Что значит «в списке ЦУПИС» и почему это важно?", "acceptedAnswer": {"@type": "Answer", "text": "Единый ЦУПИС — центр учёта переводов интерактивных ставок: через него проходят все онлайн-платежи легальных букмекеров и идентификация игроков. Если бренда нет в списке партнёров на 1cupis.ru, онлайн-ставки у него не принимаются легально, даже если лицензия ФНС формально числится действующей. Мы сверяем список каждый день."}}, {"@type": "Question", "name": "Бывает, что лицензия есть, а ставок нет?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Пример — «Голден Бет»: лицензия числилась действующей, но с октября 2022 года приём ставок прекращён и бренд выпал из списка ЦУПИС. Другой пример — Tennisi, который остановил приём ставок 1 сентября 2026 года и дал клиентам срок на вывод средств до 30 сентября. Поэтому смотреть нужно на три источника сразу: лицензия, ЦУПИС, живой официальный сайт."}}, {"@type": "Question", "name": "Как часто обновляется этот реестр?", "acceptedAnswer": {"@type": "Answer", "text": "Автоматическая сверка со списком партнёров ЦУПИС и доступностью официальных сайтов — раз в сутки; любое расхождение попадает в историю изменений и в RSS-ленту. Реквизиты лицензий (номер, юрлицо, ИНН) обновляются вручную по перечню ФНС и реестру на knd.gov.ru, дата последней ручной сверки указана в источниках данных."}}]}</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){
+    m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112360025', 'ym');
+
+ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/112360025" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</head>
+<body>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav">
+    <a href="/rating">Рейтинг</a>
+    <a href="/rejting">По критериям</a>
+    <a href="/stavki">Виды спорта</a>
+    <a href="/instrumenty">Инструменты</a>
+    <a href="/shkola">Школа</a>
+    <a href="/bonusy">Бонусы</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main>
+
+  <section class="section tight"><div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span>Реестр легальных букмекеров</nav>
+    <div class="eyebrow" style="margin:16px 0 8px">· Реестр · обновляется ежедневно ·</div>
+    <h1>Реестр легальных букмекеров России: живой список и история изменений</h1>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>проверено 11.09.2026</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">На 11.09.2026 в России 16 букмекерских брендов с лицензией ФНС принимают ставки (все 16 подтверждены в списке партнёров Единого ЦУПИС); ещё 2 имеют лицензию, но ставки не принимают. Таблица ниже сверяется автоматически каждый день со списком партнёров Единого ЦУПИС и официальными сайтами, история изменений — под таблицей. Реквизиты лицензий — по перечню ФНС и реестру на knd.gov.ru (ручная сверка: 02.09.2026 — перечень ФНС (от 24.11.2025), 1cupis.ru, сайт БК).</p>
+  </div></section>
+
+  <section class="section" style="padding-top:6px"><div class="container prose">
+    <h2>Кто принимает ставки легально: таблица на 11.09.2026</h2>
+    <div class="table-wrap"><table><caption>Данные: перечень ФНС/ЕРАИ, список партнёров Единого ЦУПИС (1cupis.ru), официальные сайты. Сверка автоматическая, ежедневно.</caption><thead><tr><th>Бренд</th><th>Юрлицо</th><th>ИНН</th><th>Лицензия ФНС</th><th>Официальный сайт</th><th>Единый ЦУПИС</th><th>Статус</th></tr></thead><tbody>
+<tr><td><a href="/bukmekery/24bet">24bet</a></td><td>ООО «Ф.О.Н.»</td><td>9715010229</td><td>Л027-00108-77/00395480 (до 01.06.2022 — № 4) от 26.06.2009</td><td>24bet.ru</td><td>в списке</td><td>Принимает ставки</td></tr>
+<tr><td><a href="/bukmekery/betboom">BetBoom</a></td><td>ООО Фирма «СТОМ»</td><td>7705005321</td><td>Л027-00108-77/00395486 (до 01.06.2022 — № 15) от 15.07.2010</td><td>betboom.ru</td><td>в списке</td><td>Принимает ставки</td></tr>
+<tr><td><a href="/bukmekery/bettery">Bettery</a></td><td>ООО «Атлантис»</td><td>7709424267</td><td>Л027-00108-77/00396457 (до 01.06.2022 — № 11) от 10.09.2009</td><td>bettery.ru</td><td>в списке</td><td>Принимает ставки</td></tr>
+<tr><td><a href="/bukmekery/leon">Leon</a></td><td>ООО «Леон»</td><td>7707760834</td><td>Л027-00108-77/00395488 (до 01.06.2022 — № 20) от 16.12.2011</td><td>leon.ru</td><td>в списке</td><td>Принимает ставки</td></tr>
+<tr><td><a href="/bukmekery/olimpbet">OLIMPBET</a></td><td>ООО «БК «Олимп»</td><td>7726705980</td><td>Л027-00108-77/00395492 (до 01.06.2022 — № 26) от 25.12.2012</td><td>olimp.bet</td><td>в списке</td><td>Принимает ставки</td></tr>
+<tr><td><a href="/bukmekery/pari">PARI</a></td><td>ООО «Букмекерская контора «ПАРИ»</td><td>7703365167</td><td>Л027-00108-77/00395483 (до 01.06.2022 — № 9) от 14.08.2009</td><td>pari.ru</td><td>в списке</td><td>Принимает ставки</td></tr>
+<tr><td><a href="/bukmekery/winline">Winline</a></td><td>ООО «Управляющая компания НКС»</td><td>7714707736</td><td>Л027-00108-77/00395482 (до 01.06.2022 — № 7) от 09.07.2009</td><td>winline.ru</td><td>в списке</td><td>Принимает ставки</td></tr>
+<tr><td><a href="/bukmekery/baltbet">Балтбет</a></td><td>ООО «Санторин»</td><td>4703069532</td><td>Л027-00108-78/00396459 (до 01.06.2022 — № 16) от 01.10.2010</td><td>baltbet.ru</td><td>в списке</td><td>Принимает ставки</td></tr>
+<tr><td><a href="/bukmekery/bet-m">Бет-М</a></td><td>ООО «Бет М»</td><td>2540247493</td><td>Л027-00108-77/00396463 (до 01.06.2022 — № 33) от 13.02.2020</td><td>bet-m.ru</td><td>в списке</td><td>Принимает ставки</td></tr>
+<tr><td><a href="/bukmekery/betcity">Бетсити</a></td><td>ООО «Фортуна»</td><td>6164205110</td><td>Л027-00108-61/00395481 (до 01.06.2022 — № 5) от 30.06.2009</td><td>betcity.ru</td><td>в списке</td><td>Принимает ставки</td></tr>
+<tr><td><a href="/bukmekery/zenit">Зенит</a></td><td>ООО «Инвест Гарант»</td><td>7701353624</td><td>Л027-00108-77/00396461 (до 01.06.2022 — № 18) от 08.10.2010</td><td>zenit.win</td><td>в списке</td><td>Принимает ставки</td></tr>
+<tr><td><a href="/bukmekery/ligastavok">Лига Ставок</a></td><td>ООО «ПМБК» (Первая международная букмекерская компания)</td><td>7729607406</td><td>Л027-00108-77/00396456 (до 01.06.2022 — № 6) от 08.07.2009</td><td>ligastavok.ru</td><td>в списке</td><td>Принимает ставки</td></tr>
+<tr><td><a href="/bukmekery/marathonbet">Марафон</a></td><td>ООО «Букмекерская контора «Марафон»</td><td>7701180668</td><td>Л027-00108-77/00395485 (до 01.06.2022 — № 14) от 12.03.2010</td><td>marathonbet.ru</td><td>в списке</td><td>Принимает ставки</td></tr>
+<tr><td><a href="/bukmekery/melbet">Мелбет</a></td><td>ООО «Мелофон»</td><td>2540179758</td><td>Л027-00108-77/00395491 (до 01.06.2022 — № 25) от 07.11.2012; вторая лицензия Л027-00108-77/00395496 (№ 34) от 03.08.2021</td><td>melbet.ru</td><td>в списке</td><td>Принимает ставки</td></tr>
+<tr><td><a href="/bukmekery/sportbet">Спортбет</a></td><td>АО «СпортБет»</td><td>7710310850</td><td>Л027-00108-77/00395478 (до 01.06.2022 — № 1) от 06.04.2009</td><td>sportbet.ru</td><td>в списке</td><td>Принимает ставки</td></tr>
+<tr><td><a href="/bukmekery/fonbet">Фонбет</a></td><td>ООО «Фонкор»</td><td>7726752148</td><td>Л027-00108-77/00395494 (до 01.06.2022 — № 28) от 10.10.2014</td><td>fon.bet</td><td>в списке</td><td>Принимает ставки</td></tr>
+<tr><td><a href="/bukmekery/tennisi">Tennisi</a></td><td>ООО «Рус-Телетот»</td><td>7714156454</td><td>Л027-00108-77/00396458 (до 01.06.2022 — № 13) от 17.12.2009</td><td>tennisi.bet</td><td>нет в списке</td><td>Приём ставок остановлен</td></tr>
+<tr><td>Alfabet</td><td>ООО «Панорама»</td><td>7724774040</td><td>Л027-00108-77/00395487 (до 01.06.2022 — № 19) от 28.07.2011</td><td>abet.ru</td><td>нет в списке</td><td>Не подтверждён</td></tr>
+<tr><td>Голден Бет</td><td>ООО «Голден Бет»</td><td>7721414931</td><td>Л027-00108-23/00396462 (до 01.06.2022 — № 32) от 05.07.2018</td><td>—</td><td>нет в списке</td><td>Не работает</td></tr>
+</tbody></table></div>
+    <p class="small muted">«Единый ЦУПИС — в списке» означает, что логотип бренда есть среди партнёров на 1cupis.ru на момент последней автоматической проверки. «Статус» — по перечню ФНС и официальному сайту.</p>
+
+    <h2>История изменений реестра</h2>
+    <ul class="history"><li><b>11.09.2026</b> · мониторинг запущен<br>Запущен ежедневный автоматический мониторинг: список партнёров Единого ЦУПИС и доступность официальных сайтов <span class="muted">Источник: stavki-rating.ru</span></li><li><b>01.09.2026</b> · Tennisi — прекратил приём ставок<br>Tennisi прекратил приём ставок (сайт, приложение, ППС); вывод средств клиентам — до 30 сентября 2026; лицензия выставлена на продажу <span class="muted">Источник: sports.ru, 01.09.2026; bookmakers.json</span></li><li><b>08.02.2024</b> · Bettery — смена юрлица<br>Юрлицо Bettery переименовано: ООО «Атлантик-М» → ООО «Атлантис» <span class="muted">Источник: Перечень ФНС (проверка 02.09.2026)</span></li><li><b>01.10.2022</b> · Голден Бет — прекратил приём ставок<br>«Голден Бет» прекратил приём ставок и выпал из списка партнёров Единого ЦУПИС; лицензия формально действует, сайт не работает <span class="muted">Источник: 1cupis.ru / перечень ФНС (проверка 02.09.2026)</span></li><li><b>30.03.2022</b> · Спортбет — смена бренда<br>Бренд «Мостбет» (АО «СпортБет») переименован в «Спортбет»; в 2023–2025 онлайн-приём ставок был ограничен <span class="muted">Источник: Перечень ФНС / сайт sportbet.ru (проверка 02.09.2026)</span></li></ul>
+
+    <h2>Как проверить букмекера самому за три минуты</h2>
+    <ol>
+      <li><b>Лицензия.</b> Откройте реестр лицензий на knd.gov.ru (раздел «Реестры и перечни» → лицензии на деятельность по организации и проведению азартных игр в букмекерских конторах) и найдите компанию по ИНН из таблицы выше. Статус должен быть «действует».</li>
+      <li><b>ЦУПИС.</b> На главной 1cupis.ru должен быть логотип бренда в списке партнёров. Нет логотипа — онлайн-ставки у него не принимаются легально.</li>
+      <li><b>Домен.</b> Адрес сайта должен точно совпадать с колонкой «Официальный сайт». Похожие адреса с лишними буквами — зеркала, которые не имеют отношения к лицензии.</li>
+    </ol>
+    <p>Подробнее — в инструкции <a href="/kak-proverit-licenziyu">как проверить лицензию букмекера</a>. Что делать, если ваш букмекер вышел из реестра, — в статье <a href="/shkola/kak-eto-rabotaet/bk-ushla-s-rynka-chto-s-dengami">«БК ушла с рынка: что с деньгами»</a>.</p>
+
+    <h2>Данные для ИИ-ассистентов, СМИ и разработчиков</h2>
+    <p>Тот же реестр в машиночитаемом виде: <a href="/reestr.json">reestr.json</a>, <a href="/reestr.csv">reestr.csv</a>, лента изменений <a href="/reestr-changes.xml">reestr-changes.xml</a> (RSS). Данные можно свободно использовать с указанием источника «stavki-rating.ru/reestr». Открытый набор данных ФНС по лицензиям букмекеров не обновляется с марта 2022 года, поэтому мы ведём сверку сами.</p>
+
+    <h2>Частые вопросы</h2>
+    <div class="faq"><details><summary>Сколько легальных букмекеров в России сейчас?</summary><p>На 11.09.2026 в таблице 16 брендов со статусом «принимает ставки», из них 16 подтверждены в списке партнёров Единого ЦУПИС на дату проверки. Ещё 2 — с лицензией ФНС, но без приёма ставок (приостановили работу или закрылись). Число меняется: лицензии продаются, бренды объединяются, поэтому страница пересобирается автоматически.</p></details>
+<details><summary>Что значит «в списке ЦУПИС» и почему это важно?</summary><p>Единый ЦУПИС — центр учёта переводов интерактивных ставок: через него проходят все онлайн-платежи легальных букмекеров и идентификация игроков. Если бренда нет в списке партнёров на 1cupis.ru, онлайн-ставки у него не принимаются легально, даже если лицензия ФНС формально числится действующей. Мы сверяем список каждый день.</p></details>
+<details><summary>Бывает, что лицензия есть, а ставок нет?</summary><p>Да. Пример — «Голден Бет»: лицензия числилась действующей, но с октября 2022 года приём ставок прекращён и бренд выпал из списка ЦУПИС. Другой пример — Tennisi, который остановил приём ставок 1 сентября 2026 года и дал клиентам срок на вывод средств до 30 сентября. Поэтому смотреть нужно на три источника сразу: лицензия, ЦУПИС, живой официальный сайт.</p></details>
+<details><summary>Как часто обновляется этот реестр?</summary><p>Автоматическая сверка со списком партнёров ЦУПИС и доступностью официальных сайтов — раз в сутки; любое расхождение попадает в историю изменений и в RSS-ленту. Реквизиты лицензий (номер, юрлицо, ИНН) обновляются вручную по перечню ФНС и реестру на knd.gov.ru, дата последней ручной сверки указана в источниках данных.</p></details></div>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="tiles">
+      <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
+      <a class="tile" href="/kak-proverit-licenziyu"><b>Как проверить лицензию</b><small>пошаговая инструкция</small></a>
+      <a class="tile" href="/otvetstvennaya-igra"><b>Ответственная игра</b><small>самозапрет и лимиты</small></a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
+    </div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty">Инструменты</a></div>
+    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/eksperty">Эксперты и партнёры</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+</body>
+</html>
