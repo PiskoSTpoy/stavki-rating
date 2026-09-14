@@ -3,27 +3,27 @@ window.GO_TARGETS = {
   "24bet": {
     "official": "https://24bet.ru/",
     "partner": null,
-    "recommend": "ligastavok"
+    "recommend": "pari"
   },
   "baltbet": {
     "official": "https://baltbet.ru/",
     "partner": null,
-    "recommend": "pari"
+    "recommend": "zenit"
   },
   "bet-m": {
     "official": "https://bet-m.ru/",
     "partner": null,
-    "recommend": "pari"
+    "recommend": "fonbet"
   },
   "bettery": {
     "official": "https://bettery.ru/",
     "partner": null,
-    "recommend": "ligastavok"
+    "recommend": "pari"
   },
   "betboom": {
     "official": "https://betboom.ru/",
     "partner": null,
-    "recommend": "ligastavok"
+    "recommend": "winline"
   },
   "betcity": {
     "official": "https://betcity.ru/",
@@ -42,7 +42,7 @@ window.GO_TARGETS = {
   "leon": {
     "official": "https://leon.ru/",
     "partner": null,
-    "recommend": "winline"
+    "recommend": "fonbet"
   },
   "ligastavok": {
     "official": "https://ligastavok.ru/",
@@ -68,7 +68,7 @@ window.GO_TARGETS = {
   "olimpbet": {
     "official": "https://olimp.bet/",
     "partner": null,
-    "recommend": "pari"
+    "recommend": "fonbet"
   },
   "pari": {
     "official": "https://pari.ru/",
@@ -80,7 +80,7 @@ window.GO_TARGETS = {
   "sportbet": {
     "official": "https://sportbet.ru/",
     "partner": null,
-    "recommend": "winline"
+    "recommend": "fonbet"
   },
   "winline": {
     "official": "https://winline.ru/",
