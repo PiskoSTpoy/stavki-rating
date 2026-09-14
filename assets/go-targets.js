@@ -73,7 +73,10 @@ window.GO_TARGETS = {
   },
   "winline": {
     "official": "https://winline.ru/",
-    "partner": null
+    "partner": {
+      "url": "https://betsxwin.pro/click?o=5&a=21332&tsource=1037",
+      "subParam": "subid"
+    }
   },
   "zenit": {
     "official": "https://zenit.win/",
