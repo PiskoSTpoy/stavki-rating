@@ -40,7 +40,10 @@ window.GO_TARGETS = {
   },
   "ligastavok": {
     "official": "https://ligastavok.ru/",
-    "partner": null
+    "partner": {
+      "url": "https://click.lp-link.ru/cpGDrsSA?landing=2&sub_id4=seo",
+      "subParam": "sub_id"
+    }
   },
   "marathonbet": {
     "official": "https://marathonbet.ru/",
