@@ -24,6 +24,6 @@
     } catch (e) { dest = t.official; }
   }
 
-  // give the warning a moment to be seen, then go
-  setTimeout(function () { location.replace(dest); }, 700);
+  // сразу на партнёрскую ссылку (по требованию владельца 14.09.2026) — без задержки
+  location.replace(dest);
 })();
