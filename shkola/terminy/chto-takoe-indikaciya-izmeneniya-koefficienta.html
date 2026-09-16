@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Что такое индикация изменения коэффициента в ставках</title>
+<meta name="description" content="Индикация изменения коэффициента — стрелка или цвет, показывающие, что цена исхода сдвинулась. Принятую ставку это не меняет, новый коэффициент можно не принимать.">
+<link rel="canonical" href="https://stavki-rating.ru/shkola/terminy/chto-takoe-indikaciya-izmeneniya-koefficienta">
+<meta name="yandex-verification" content="4edbdcb14677aee3">
+  <meta name="zen-verification" content="5nDNKfHEF7aU3VHKwj53tV6xxX6MeqopSvcIdNycit0Ck6o07VtBqMxgRmHydsNc">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://stavki-rating.ru/shkola/terminy/chto-takoe-indikaciya-izmeneniya-koefficienta">
+<meta property="og:title" content="Что такое индикация изменения коэффициента в ставках">
+<meta property="og:description" content="Индикация изменения коэффициента — стрелка или цвет, показывающие, что цена исхода сдвинулась. Принятую ставку это не меняет, новый коэффициент можно не принимать.">
+<meta property="og:image" content="https://stavki-rating.ru/media/hero.jpg">
+<meta property="og:image:width" content="1376">
+<meta property="og:image:height" content="768">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Что такое индикация изменения коэффициента в ставках">
+<meta name="twitter:description" content="Индикация изменения коэффициента — стрелка или цвет, показывающие, что цена исхода сдвинулась. Принятую ставку это не меняет, новый коэффициент можно не принимать.">
+<meta name="twitter:image" content="https://stavki-rating.ru/media/hero.jpg">
+<!-- физические файлы дублируют SVG-иконку выше - Яндекс и другие боты явно ищут ссылку на
+     обычный файл, инлайновый data-URI не засчитывают как валидный favicon (FAVICON_PROBLEM).
+     09.09.2026: Вебмастер отдельно попросил SVG-файл или 120x120 PNG (не устраивает ни
+     data-URI, ни .ico) - добавлены оба варианта. -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="120x120" href="/favicon-120.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Oswald", "Inter", system-ui, sans-serif;
+    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
+
+  /* Секции */
+  .section { padding: 30px 0; }
+  .section.tight { padding-top: 6px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Хлебные крошки */
+  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs span { color: var(--muted-2); }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .result .accent { color: var(--volt); }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Текстовый контент страницы */
+  .prose { max-width: 75ch; display: grid; gap: 14px; }
+  .prose h2 { margin-top: 14px; }
+  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  .prose p { color: var(--text); }
+  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
+  .prose li { line-height: 1.5; }
+  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--text); font-weight: 700; }
+  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
+  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
+  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose tbody tr:last-child td { border-bottom: none; }
+  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
+  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
+  .faq { display: grid; gap: 10px; }
+  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 24px 12px 0; list-style: none; position: relative; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: 0; top: 12px; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; }
+
+  /* Футер */
+  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Термины", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Индикация изменения коэффициента: что значит и нужно ли соглашаться на новый коэффициент", "item": "https://stavki-rating.ru/shkola/terminy/chto-takoe-indikaciya-izmeneniya-koefficienta"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Индикация изменения коэффициента: что значит и нужно ли соглашаться на новый коэффициент", "description": "Индикация изменения коэффициента — стрелка или цвет, показывающие, что цена исхода сдвинулась. Принятую ставку это не меняет, новый коэффициент можно не принимать.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/terminy/chto-takoe-indikaciya-izmeneniya-koefficienta", "datePublished": "2026-09-16", "dateModified": "2026-09-16", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что такое индикация изменения коэффициента?", "acceptedAnswer": {"@type": "Answer", "text": "Это визуальная подсказка в линии или купоне, что цена исхода только что изменилась: стрелка вверх или вниз, подсветка цветом, мигание цифры или текстовое сообщение. Она показывает направление движения рынка и просит заново подтвердить ставку, если исход уже в купоне. На принятые пари индикация не влияет."}}, {"@type": "Question", "name": "Когда в Лиге Ставок пишут, что коэффициент изменился в низшую сторону, его обязательно принимать?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Пока вы не подтвердили ставку по новой цене, пари не заключено. Можно согласиться на сниженный коэффициент, удалить исход из купона или подождать. Если в настройках включено автоматическое принятие любых изменений, ставка пройдёт без вопроса — это стоит проверить заранее."}}, {"@type": "Question", "name": "Изменится ли коэффициент у ставки, которую уже приняли?", "acceptedAnswer": {"@type": "Answer", "text": "Как правило, нет: подтверждённое пари рассчитывается по принятому коэффициенту, даже если в момент фиксирования изменился счёт. Исключения — ошибки в линии: перепутанные или явно неверные коэффициенты, неактуальная цена, ставка менее чем за 3 секунды до результата. Тогда контора вправе пересчитать пари по рыночному значению."}}, {"@type": "Question", "name": "Что значит стрелка вверх или вниз возле коэффициента?", "acceptedAnswer": {"@type": "Answer", "text": "Стрелка вверх означает, что коэффициент вырос и букмекер оценивает исход как менее вероятный, стрелка вниз — что коэффициент снизился и исход кажется ему более вероятным. Конкретные цвета и значки зависят от приложения. Это информация о движении цены, а не подсказка, на что ставить."}}, {"@type": "Question", "name": "Почему коэффициент меняется, если матч ещё не начался?", "acceptedAnswer": {"@type": "Answer", "text": "До матча линию двигают новости и деньги: объявленные составы, травмы, погода, крупные ставки на один исход. Букмекер пересчитывает цену, чтобы она отражала новую информацию и баланс ставок. Поэтому индикация изменений бывает и в прематче, хотя в live она появляется заметно чаще."}}]}</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){
+    m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112360025', 'ym');
+
+ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/112360025" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</head>
+<body>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav">
+    <a href="/rating">Рейтинг</a>
+    <a href="/rejting">По критериям</a>
+    <a href="/stavki">Виды спорта</a>
+    <a href="/instrumenty">Инструменты</a>
+    <a href="/shkola">Школа</a>
+    <a href="/bonusy">Бонусы</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main>
+
+  <section class="section tight"><div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Термины</a><span>/</span>Индикация изменения коэффициента: что значит и нужно ли соглашаться на новый коэффициент</nav>
+    <div class="eyebrow" style="margin:16px 0 8px">· Школа · Термины ·</div>
+    <h1>Индикация изменения коэффициента: что значит и нужно ли соглашаться на новый коэффициент</h1>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>проверено 16.09.2026</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">Индикация изменения коэффициента — это подсказка в линии или купоне о том, что цена исхода только что сдвинулась: чаще всего стрелка вверх или вниз, смена цвета или мигание цифры. Уже принятую ставку она не затрагивает — пари рассчитывается по коэффициенту на момент принятия. Если сообщение об изменении появилось до подтверждения ставки, соглашаться не обязательно: можно принять новую цену, убрать исход из купона или подождать.</p>
+    
+  </div></section>
+
+  <section class="section" style="padding-top:6px"><div class="container prose">
+    <h2>Как выглядит индикация и что она сообщает</h2>
+<p>Внешний вид зависит от приложения конкретной конторы, но логика одна. Рядом с коэффициентом на короткое время появляется знак направления: стрелка вверх — цена выросла, стрелка вниз — снизилась. Часто это дублируется цветом: рост и падение подсвечиваются разными оттенками, а цифра несколько секунд мигает. Если исход уже лежит в купоне, приложение обычно показывает текстовое предупреждение о том, что коэффициент изменился, и просит подтвердить ставку заново.</p><p>Что стоит за стрелкой. Коэффициент — это цена исхода, и через неё можно оценить вероятность, которую закладывает букмекер: примерно 1, делённая на коэффициент. Рост с 1,80 до 2,00 означает, что оценка вероятности упала примерно с 55,6% до 50%. Падение — наоборот, исход стал выглядеть более вероятным. К этой оценке ещё примешана маржа, поэтому точного процента из коэффициента не получить — подробнее в статьях <a href="/shkola/kak-eto-rabotaet/kak-chitat-koefficienty">как читать коэффициенты</a> и <a href="/shkola/terminy/chto-takoe-marzha-bukmekera">маржа букмекера</a>.</p><p>Важно: индикация — это информация о рынке, а не рекомендация. Стрелка вниз не значит, что исход «точно зайдёт», а стрелка вверх — что нужно срочно ставить, пока цена высокая.</p>
+<h2>Почему коэффициенты двигаются</h2>
+<p>До начала матча линию сдвигают новости и деньги: объявленные составы, травмы, погода, перекос ставок в одну сторону. В live причин больше и они чаще: гол, удаление, опасный момент, просто течение времени. В правилах Winline это описано прямо: в live коэффициент может меняться ежесекундно, и он может повыситься или понизиться в период между оформлением прогноза и его принятием, что влияет на величину выигрыша.</p><p>Отсюда и частые сообщения об изменении в live. Пока вы выбираете сумму и нажимаете кнопку, заявка уходит на сервер конторы и проверяется. Если за эти секунды цена успела сдвинуться, система не может принять пари по старой цифре и показывает индикацию. Разбор типичной ситуации — в статье <a href="/shkola/kak-eto-rabotaet/koefficient-izmenilsya-pered-stavkoj">коэффициент изменился перед ставкой</a>.</p><p>В той же логике устроены и правила Лиги Ставок: коэффициенты в линии меняются, а если в момент фиксирования пари изменились счёт или игровая ситуация и из-за этого сдвинулись коэффициенты, уже подтверждённое пари остаётся в силе и рассчитывается по принятому коэффициенту (п. 10.5.4 правил в редакции с 1 сентября 2026 года).</p>
+<h2>Лига Ставок пишет, что коэффициент изменился в низшую сторону: принимать обязательно?</h2>
+<p>Нет. Пока вы не подтвердили ставку по новой цене, пари не заключено, и никакой обязанности соглашаться нет. По правилам Лиги Ставок для заключения пари клиент выбирает исходы, добавляет их в корзину, указывает сумму и вид пари и подтверждает своё решение (п. 3.3.3). Сообщение о снижении коэффициента — это запрос нового подтверждения, а не свершившийся факт.</p><p>У вас три варианта:</p><ol><li><b>Принять новый коэффициент</b>, если исход вам по-прежнему интересен и по сниженной цене. Потенциальная выплата станет меньше.</li><li><b>Удалить исход из купона</b>, если ставка имела смысл только по прежней цене. Деньги со счёта при этом не списываются.</li><li><b>Подождать.</b> Цена может вернуться или уйти ещё ниже — гарантий нет в обе стороны.</li></ol><p>Чтобы не отвечать на такие запросы каждый раз, у многих легальных контор есть настройка принятия изменений коэффициента: принимать любые, только повышение или не принимать без подтверждения. Где она находится в приложении конкретной конторы, лучше уточнить в её справке. Если выбрано автоматическое принятие любых изменений, ставка может пройти по сниженной цене без дополнительного вопроса — проверьте эту настройку, прежде чем ставить в live.</p>
+<h2>Пример: сколько стоит согласие на пониженный коэффициент</h2>
+<p>Ставка 1000 ₽. В купоне был коэффициент 2,10, затем пришли индикации о снижении до 1,95 и до 1,85. Налог 13% легальный букмекер удерживает с разницы между выплатой и ставкой.</p><div class="table-wrap"><table><caption>Одна ставка 1000 ₽ при разных коэффициентах</caption><thead><tr><th>Коэффициент</th><th>Оценка вероятности (1/k)</th><th>Выплата</th><th>НДФЛ 13%</th><th>На руки</th></tr></thead><tbody><tr><td>2,10</td><td>≈47,6%</td><td>2100 ₽</td><td>143 ₽</td><td>1957 ₽</td></tr><tr><td>1,95</td><td>≈51,3%</td><td>1950 ₽</td><td>123,5 ₽</td><td>1826,5 ₽</td></tr><tr><td>1,85</td><td>≈54,1%</td><td>1850 ₽</td><td>110,5 ₽</td><td>1739,5 ₽</td></tr></tbody></table></div><p>Согласие на снижение с 2,10 до 1,85 стоит 217,5 ₽ чистого выигрыша на каждой тысяче. На одной ставке это немного, но при регулярной игре в live с автоматическим принятием любых изменений такие потери накапливаются незаметно. Как считается налог в других ситуациях — в статье <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">налог на выигрыш</a>.</p>
+<h2>Изменение коэффициента в пункте приёма ставок</h2>
+<p>Офлайн механика та же, только подтверждение идёт через кассира. В правилах Winline сказано: если при приёме прогноза в пункте приёма ставок коэффициент изменился, кассир уведомит клиента, и тот сможет либо сделать прогноз с новым коэффициентом, либо отменить его.</p><p>В правилах Лиги Ставок порядок в пункте приёма расписан по шагам: сотрудник озвучивает пари, показывает распечатанный черновик или черновик на мониторе, клиент проверяет информацию и устно подтверждает согласие. После того как чек распечатан, отменить или отредактировать пари уже нельзя (п. 3.2.3–3.2.5). Практический вывод: сверяйте коэффициент в черновике до подтверждения, а не в чеке после.</p>
+<h2>Когда коэффициент могут пересчитать уже после принятия</h2>
+<p>Обычно принятый коэффициент не меняется. Но в правилах предусмотрены исключения — чаще всего это ошибки в линии. Лига Ставок оставляет за собой право отменить позицию в пари или пересчитать коэффициенты по рыночным значениям, в том числе когда (п. 6.3):</p><ul><li>пари заключено менее чем за 3 секунды до наступления результата события;</li><li>предлагались неактуальные коэффициенты, которые своевременно не обновились;</li><li>коэффициенты на победу участников или на «больше» и «меньше» перепутаны местами;</li><li>в линии очевидная ошибка — например, вместо «1,85» отображалось «18,5» или «185».</li></ul><p>Поэтому яркая индикация роста до необычно высокого коэффициента — не повод радоваться. Если цена выглядит явно ошибочной, пари по ней с высокой вероятностью пересчитают. Сравнить, у каких легальных контор линия в среднем выше, можно в <a href="/rejting/po-koefficientam">рейтинге по коэффициентам</a>.</p><div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2>Частые вопросы</h2>
+    <div class="faq"><details><summary>Что такое индикация изменения коэффициента?</summary><p>Это визуальная подсказка в линии или купоне, что цена исхода только что изменилась: стрелка вверх или вниз, подсветка цветом, мигание цифры или текстовое сообщение. Она показывает направление движения рынка и просит заново подтвердить ставку, если исход уже в купоне. На принятые пари индикация не влияет.</p></details>
+<details><summary>Когда в Лиге Ставок пишут, что коэффициент изменился в низшую сторону, его обязательно принимать?</summary><p>Нет. Пока вы не подтвердили ставку по новой цене, пари не заключено. Можно согласиться на сниженный коэффициент, удалить исход из купона или подождать. Если в настройках включено автоматическое принятие любых изменений, ставка пройдёт без вопроса — это стоит проверить заранее.</p></details>
+<details><summary>Изменится ли коэффициент у ставки, которую уже приняли?</summary><p>Как правило, нет: подтверждённое пари рассчитывается по принятому коэффициенту, даже если в момент фиксирования изменился счёт. Исключения — ошибки в линии: перепутанные или явно неверные коэффициенты, неактуальная цена, ставка менее чем за 3 секунды до результата. Тогда контора вправе пересчитать пари по рыночному значению.</p></details>
+<details><summary>Что значит стрелка вверх или вниз возле коэффициента?</summary><p>Стрелка вверх означает, что коэффициент вырос и букмекер оценивает исход как менее вероятный, стрелка вниз — что коэффициент снизился и исход кажется ему более вероятным. Конкретные цвета и значки зависят от приложения. Это информация о движении цены, а не подсказка, на что ставить.</p></details>
+<details><summary>Почему коэффициент меняется, если матч ещё не начался?</summary><p>До матча линию двигают новости и деньги: объявленные составы, травмы, погода, крупные ставки на один исход. Букмекер пересчитывает цену, чтобы она отражала новую информацию и баланс ставок. Поэтому индикация изменений бывает и в прематче, хотя в live она появляется заметно чаще.</p></details></div>
+    <h2>Источники · проверено 16.09.2026</h2>
+<ul class="sources"><li><a href="https://www.ligastavok.ru/files/document/442/pmbk_rules.pdf" rel="noopener" target="_blank">Правила приёма ставок и выплаты выигрышей Лиги Ставок (ООО «ПМБК»), редакция с 01.09.2026: п. 3.2, 3.3.3, 6.3, 10.5.4</a></li><li><a href="https://winline.ru/resources/images/cupis/pravila-priema-stavok-i-vyplaty-vyigryshey.pdf" rel="noopener" target="_blank">Правила приёма ставок и выплаты выигрышей Winline: п. 1.6 «Приём прогнозов», раздел 4 «Прогнозы Live»</a></li></ul>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/fonbet">Фонбет</a>, <a href="/bukmekery/melbet">Мелбет</a>, <a href="/bukmekery/zenit">Зенит</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
+    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="tiles">
+      <a class="tile" href="/shkola/terminy/chto-takoe-fora"><b>Что такое фора в ставках: виды форы и расчёт возврата</b><small>Термины</small></a>
+      <a class="tile" href="/shkola/terminy/chto-takoe-total"><b>Что такое тотал в ставках</b><small>Термины</small></a>
+      <a class="tile" href="/shkola/terminy/chto-takoe-ekspress"><b>Что такое экспресс в ставках на спорт</b><small>Термины</small></a>
+      <a class="tile" href="/instrumenty/konverter-koefficientov"><b>Конвертер коэффициентов</b><small>десятичные/дробные/американские</small></a>
+      <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
+      <a class="tile" href="/reestr"><b>Реестр: кто легален сегодня</b><small>ежедневная сверка ЦУПИС и лицензий</small></a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
+    </div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty">Инструменты</a></div>
+    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/eksperty">Эксперты и партнёры</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+</body>
+</html>
