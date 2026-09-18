@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Фора по картам −1,5 в CS2: когда заходит ставка</title>
+<meta name="description" content="Фора −1,5 по картам в CS2 проходит только при 2:0 в Bo3, а фора +5,5 по раундам на карте — если команда проиграла не больше чем в 5 раундов.">
+<link rel="canonical" href="https://stavki-rating.ru/shkola/terminy/fora-po-kartam-1-5-ks-go">
+<meta name="yandex-verification" content="4edbdcb14677aee3">
+  <meta name="zen-verification" content="5nDNKfHEF7aU3VHKwj53tV6xxX6MeqopSvcIdNycit0Ck6o07VtBqMxgRmHydsNc">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://stavki-rating.ru/shkola/terminy/fora-po-kartam-1-5-ks-go">
+<meta property="og:title" content="Фора по картам −1,5 в CS2: когда заходит ставка">
+<meta property="og:description" content="Фора −1,5 по картам в CS2 проходит только при 2:0 в Bo3, а фора +5,5 по раундам на карте — если команда проиграла не больше чем в 5 раундов.">
+<meta property="og:image" content="https://stavki-rating.ru/media/hero.jpg">
+<meta property="og:image:width" content="1376">
+<meta property="og:image:height" content="768">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Фора по картам −1,5 в CS2: когда заходит ставка">
+<meta name="twitter:description" content="Фора −1,5 по картам в CS2 проходит только при 2:0 в Bo3, а фора +5,5 по раундам на карте — если команда проиграла не больше чем в 5 раундов.">
+<meta name="twitter:image" content="https://stavki-rating.ru/media/hero.jpg">
+<!-- физические файлы дублируют SVG-иконку выше - Яндекс и другие боты явно ищут ссылку на
+     обычный файл, инлайновый data-URI не засчитывают как валидный favicon (FAVICON_PROBLEM).
+     09.09.2026: Вебмастер отдельно попросил SVG-файл или 120x120 PNG (не устраивает ни
+     data-URI, ни .ico) - добавлены оба варианта. -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="120x120" href="/favicon-120.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Oswald", "Inter", system-ui, sans-serif;
+    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
+
+  /* Секции */
+  .section { padding: 30px 0; }
+  .section.tight { padding-top: 6px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Хлебные крошки */
+  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs span { color: var(--muted-2); }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .result .accent { color: var(--volt); }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Текстовый контент страницы */
+  .prose { max-width: 75ch; display: grid; gap: 14px; }
+  .prose h2 { margin-top: 14px; }
+  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  .prose p { color: var(--text); }
+  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
+  .prose li { line-height: 1.5; }
+  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--text); font-weight: 700; }
+  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
+  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
+  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose tbody tr:last-child td { border-bottom: none; }
+  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
+  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
+  .faq { display: grid; gap: 10px; }
+  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 24px 12px 0; list-style: none; position: relative; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: 0; top: 12px; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; }
+
+  /* Футер */
+  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Термины", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Фора по картам −1,5 в CS2 и фора по раундам: как они считаются", "item": "https://stavki-rating.ru/shkola/terminy/fora-po-kartam-1-5-ks-go"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Фора по картам −1,5 в CS2 и фора по раундам: как они считаются", "description": "Фора −1,5 по картам в CS2 проходит только при 2:0 в Bo3, а фора +5,5 по раундам на карте — если команда проиграла не больше чем в 5 раундов.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/terminy/fora-po-kartam-1-5-ks-go", "datePublished": "2026-09-18", "dateModified": "2026-09-18", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что значит фора по картам −1,5 в CS2?", "acceptedAnswer": {"@type": "Answer", "text": "Команда должна выиграть серию с запасом минимум в две карты. В Bo3 подходит только счёт 2:0: при 2:1 к результату применяется база −1,5, получается 0,5 против одной карты соперника, и пари проигрывает. В Bo5 фора проходит при 3:0 и 3:1."}}, {"@type": "Question", "name": "Чем фора по картам отличается от форы по раундам?", "acceptedAnswer": {"@type": "Answer", "text": "Единицей счёта. Фора по картам считает выигранные карты во всей серии, фора по раундам — выигранные раунды внутри одной карты. Поэтому −1,5 по картам требует сухой победы в Bo3, а −1,5 по раундам закрывается любой победой на карте с разницей от двух раундов, например 13:11."}}, {"@type": "Question", "name": "Когда проходит фора +5,5 по раундам на карте?", "acceptedAnswer": {"@type": "Answer", "text": "Если команда выиграла карту или проиграла не больше чем в пять раундов. Счёт 13:8 даёт ровно пятираундовый разрыв и выигрыш, 13:7 — шестираундовый и проигрыш. Победа андердога перекрывает базу автоматически."}}, {"@type": "Question", "name": "Бывает ли возврат по форе в CS2?", "acceptedAnswer": {"@type": "Answer", "text": "Только на целых базах. Фора −1 по картам при итоге 2:1 даёт равенство и расчёт с коэффициентом «1». На дробных базах вроде 1,5 или 5,5 равенства не получится, поэтому возврата не бывает — пари всегда либо выигрывает, либо проигрывает."}}, {"@type": "Question", "name": "Учитывается ли овертайм в форе по раундам?", "acceptedAnswer": {"@type": "Answer", "text": "Зависит от подписи рынка. По правилам приёма ставок пари на карту без пометки считаются по основным раундам, а рынки с пометкой «вкл. ОТ» — с учётом дополнительных. Овертайм играется до четырёх побед в дополнительной серии, поэтому итоговый разрыв в счёте обычно небольшой."}}, {"@type": "Question", "name": "Что будет с форой, если команде дали техническое поражение?", "acceptedAnswer": {"@type": "Answer", "text": "По правилам рассчитываются пари, исход которых определён без этой карты, а неопределённые пари на матч и на саму карту возвращаются с коэффициентом «1». Если отказ или дисквалификация произошли до начала матча, возвращаются все ставки, кроме пари на итог турнира и выход в следующий раунд."}}]}</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){
+    m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112360025', 'ym');
+
+ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/112360025" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</head>
+<body>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav">
+    <a href="/rating">Рейтинг</a>
+    <a href="/rejting">По критериям</a>
+    <a href="/stavki">Виды спорта</a>
+    <a href="/instrumenty">Инструменты</a>
+    <a href="/shkola">Школа</a>
+    <a href="/bonusy">Бонусы</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main>
+
+  <section class="section tight"><div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Термины</a><span>/</span>Фора по картам −1,5 в CS2 и фора по раундам: как они считаются</nav>
+    <div class="eyebrow" style="margin:16px 0 8px">· Школа · Термины ·</div>
+    <h1>Фора по картам −1,5 в CS2 и фора по раундам: как они считаются</h1>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>проверено 18.09.2026</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">Фора −1,5 по картам в CS2 требует победы с запасом в две карты: в серии до двух побед подходит только счёт 2:0, в серии до трёх побед — 3:0 и 3:1. Рядом в росписи стоит другой рынок с похожим названием — фора по раундам внутри одной карты: там единица счёта не карта, а раунд, и база вроде +5,5 означает разницу в раундах. Ниже — как отличить эти рынки, таблицы проходных счетов и расчёты по правилам приёма ставок.</p>
+    
+  </div></section>
+
+  <section class="section" style="padding-top:6px"><div class="container prose">
+    <h2>Карты и раунды: две разные единицы счёта</h2>
+<p>Определение форы в правилах приёма ставок Лиги Ставок (п. 10.3.10) звучит одинаково для всех дисциплин: база форы — количество очков, голов или иных единиц счёта, прибавляемое к фактическому результату выбранной команды. Стал итог в её пользу — пари выиграло, оказался хуже — проиграло, вышло поровну — расчёт с коэффициентом «1», то есть возврат.</p><p>Вся разница между двумя похожими рынками CS2 сводится к тому, что принимается за единицу счёта:</p><ul><li><b>по картам</b> — рынок охватывает серию целиком, итог выглядит как 2:0, 2:1, 3:2;</li><li><b>по раундам</b> — рынок живёт внутри одной карты, счёт выглядит как 13:7 или 13:10.</li></ul><p>Поэтому запись «Ф1 (−1,5)» сама по себе ничего не говорит: рядом с базой в росписи обязательно стоит название рынка — «Фора по картам» либо «Карта 1. Фора по раундам». Перепутать их легко, а требования у них отличаются радикально. Устройство дисциплины и турниров описано в гайде <a href="/stavki/cs2">ставки на CS2</a>, общая теория рынка — в статье <a href="/shkola/terminy/chto-takoe-fora">что такое фора</a>.</p>
+<h2>Фора −1,5 по картам: какие счета проходят</h2>
+<p>Серия Bo3 идёт до двух побед, Bo5 — до трёх. Полуторная отрицательная база требует запаса ровно в две карты, и в короткой серии это максимально жёсткое требование: подходит единственный итог — сухая победа.</p><div class="table-wrap"><table><caption>Фора по картам: проходные итоги серии</caption><thead><tr><th>Формат</th><th>База на фаворита</th><th>Выигрывает</th><th>Проигрывает</th></tr></thead><tbody><tr><td>Bo3</td><td>−1,5</td><td>2:0</td><td>2:1 и любое поражение</td></tr><tr><td>Bo5</td><td>−1,5</td><td>3:0, 3:1</td><td>3:2 и любое поражение</td></tr><tr><td>Bo5</td><td>−2,5</td><td>3:0</td><td>остальные исходы</td></tr><tr><td>Bo1</td><td>рынок не предлагается</td><td>—</td><td>—</td></tr></tbody></table></div><p>Зеркальная база +1,5 на соперника закрывает ровно противоположное множество исходов: она нужна тем, кто ждёт от андердога хотя бы одной отыгранной карты. Возврат на дробных базах невозможен в принципе — равенство не получается арифметически. А вот целые базы его допускают: Ф1 (−1) в Bo3 при итоге 2:1 превращается в равенство 1:1 и рассчитывается с коэффициентом «1» (п. 10.7.5). Аналогичная механика в соседней дисциплине разобрана в материале <a href="/shkola/terminy/gandikap-starkraft-2">гандикап в StarCraft 2</a>.</p>
+<h2>Почему пик карт меняет смысл базы</h2>
+<p>Серия начинается с процедуры вето: соперники поочерёдно вычёркивают и выбирают площадки, а последняя остаётся решающей. Из-за этого первая карта достаётся одной команде по её выбору, вторая — сопернику, а третья часто оказывается компромиссной.</p><p>Для полуторной форы это принципиально. Фавориту, чтобы закрыть −1,5 в Bo3, нужно забрать чужой пик — площадку, которую соперник выбирал под свои наработки, распределение позиций и любимые связки гаджетов. Именно поэтому коэффициент на такую базу заметно выше, чем на чистую победу в серии: сухой счёт требует не только класса, но и удачного пула площадок.</p><p>Обратная сторона — андердог с сильным собственным пиком регулярно отыгрывает одну карту даже в безнадёжном на бумаге противостоянии. Отсюда и популярность базы +1,5 у тех, кто следит за статистикой команд по конкретным площадкам, а не только за рейтингом.</p>
+<h2>Фора по раундам: откуда берётся база +5,5</h2>
+<p>Внутри карты счёт идёт по раундам. Формат MR12 означает две половины по двенадцать раундов, победа достаётся команде, первой набравшей тринадцать; при 12:12 назначается овертайм. Отсюда правило: разрыв на выигранной карте — это тринадцать минус раунды проигравшего.</p><p>Разберём линию на андердога — Ф2 (+5,5):</p><ul><li><b>13:7</b> — 7 + 5,5 = 12,5 против тринадцати, пари проиграло: отставание в шесть розыгрышей больше базы;</li><li><b>13:8</b> — 8 + 5,5 = 13,5, пари выиграло: отставание ровно пять;</li><li><b>11:13 в пользу андердога</b> — победа перекрывает базу автоматически.</li></ul><p>Короткая формулировка: плюсовая база проходит, если команда победила либо уступила не больше чем на её целую часть. Зеркальная Ф1 (−5,5) требует преимущества от шести розыгрышей, то есть счёта 13:7 и суше. Сумма раундов вместо разницы — уже другой рынок, он разобран в статье <a href="/shkola/terminy/esli-total-raundov-22-5-menshe-stoit-v-ks-skolko-maksimum">тотал раундов меньше 22.5</a>.</p><div class="table-wrap"><table><caption>Плюсовая фора по раундам: граница прохода</caption><thead><tr><th>База</th><th>Пограничный счёт (проход)</th><th>Первый проигрышный счёт</th></tr></thead><tbody><tr><td>+3,5</td><td>13:10</td><td>13:9</td></tr><tr><td>+5,5</td><td>13:8</td><td>13:7</td></tr><tr><td>+7,5</td><td>13:6</td><td>13:5</td></tr></tbody></table></div><p>Овертайм базу не отменяет, а сжимает: дополнительные розыгрыши ведутся до четырёх побед в серии MR3, итог вроде 16:14 даёт преимущество всего в два очка, и крупные плюсовые базы в затяжной карте почти всегда закрываются. Подпись рынка при этом читать обязательно: пари на карту с пометкой «вкл. ОТ» считаются с учётом дополнительных розыгрышей, без пометки — только по основным (п. 11.11.1 и 11.11.2).</p>
+<h2>Пример расчёта со ставкой 1000 ₽</h2>
+<p>Серия Bo3, две независимые ставки по 1000 ₽: Ф1 (−1,5) по картам на фаворита при условном коэффициенте 2,05 и Ф2 (+5,5) по раундам на первой карте при 1,85. Цифры котировок взяты для иллюстрации; НДФЛ 13% легальный оператор удерживает сам с разницы между выплатой и суммой пари.</p><p><b>Сценарий первый: карта закончилась 13:6, серия 2:0.</b> Ставка на карты приносит 2050 ₽ до налога и 1913,5 ₽ после; ставка на раунды сгорает — отставание в семь розыгрышей перекрывает базу.</p><p><b>Сценарий второй: карта закончилась 13:9, серия всё равно 2:0.</b> Теперь заходят обе: по картам те же 1913,5 ₽ на руки, по раундам — 1850 ₽ выплаты, 110,5 ₽ налога и 1739,5 ₽ итогом.</p><p><b>Сценарий третий: карта 13:9, но серия растянулась до 2:1.</b> Рынок раундов ведёт себя точно так же, как во втором случае, а вот полуторная база по картам сгорает: фавориту требовалась исключительно сухая победа.</p><p>Сравнение второго и третьего сценариев показывает главное свойство этих рынков: первая карта может полностью закрыть фору по розыгрышам и при этом ничего не решить для форы по картам, где важен итог всей серии. Пересчитать собственный купон удобно в <a href="/instrumenty/kalkulyator-stavok">калькуляторе ставок</a>, порядок удержания НДФЛ описан в материале <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">налог на выигрыш</a>.</p>
+<h2>Техническое поражение, регейм и смена формата</h2>
+<p>Нестандартные развязки описаны в разделе 11.11 «Компьютерный спорт». Ниже — формулировки Лиги Ставок; у других легальных операторов нумерация своя, детали иногда отличаются.</p><ul><li><b>Техническое поражение на карте (п. 11.11.4).</b> Считаются пари, исход которых состоялся либо определён однозначно без неё; неопределённые, включая «Весь матч. Победитель», возвращаются по коэффициенту «1».</li><li><b>Карту начали заново (п. 11.11.13).</b> На прерванной площадке рассчитываются только однозначные исходы, прочие — возврат; переигранная считается по официальному протоколу.</li><li><b>Rehost — откат ситуации (п. 11.11.11).</b> Даже с изменением счёта не отменяет состоявшиеся исходы.</li><li><b>Дисконнект, DDoS, помехи (п. 11.11.12).</b> Не основание для отмены, исключение — неопределённый итог встречи.</li><li><b>Изменённый формат (п. 11.11.6).</b> Победитель считается по фактическому итогу, а зависящие от формата исходы — а фора относится именно к ним — только при корректных котировках и базе.</li><li><b>Отказ до старта (п. 11.11.3).</b> Возврат по всем пари, кроме результата в турнире и выхода в следующую стадию.</li></ul><p>Особняком стоит старт серии с преимуществом в карту по регламенту: согласно п. 11.11.5, первой в линии значится первая фактически сыгранная площадка. Бонусная карта в рынок не попадает, поэтому проходные счета сдвигаются относительно привычной таблицы.</p>
+<h2>Частые ошибки при чтении форы в CS2</h2>
+<ul><li><b>Смешивают площадки и розыгрыши.</b> База −1,5 по картам требует безупречной серии, та же цифра по раундам довольствуется счётом 13:11.</li><li><b>Игнорируют длину серии.</b> Bo5 прощает фавориту одну осечку, Bo3 — ни одной.</li><li><b>Берут рынок на матч, думая, что ставят на карту.</b> Без пометки «Карта 1» база относится ко всей встрече.</li><li><b>Недооценивают овертайм.</b> Затяжная развязка сжимает преимущество до пары розыгрышей.</li><li><b>Принимают целую базу за дробную.</b> Ф1 (−1) при 2:1 — возврат, а не прибыль.</li></ul><p>Фора не снижает риск, а перераспределяет его, и цена такой перестановки зашита в котировку — механика объяснена в статье <a href="/shkola/terminy/chto-takoe-marzha-bukmekera">маржа букмекера</a>. Операторов с киберспортивной росписью можно сравнить в подборке <a href="/rejting/dlya-kibersporta">букмекеры для киберспорта</a>, а их статус — сверить в <a href="/reestr">реестре</a>.</p><div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2>Частые вопросы</h2>
+    <div class="faq"><details><summary>Что значит фора по картам −1,5 в CS2?</summary><p>Команда должна выиграть серию с запасом минимум в две карты. В Bo3 подходит только счёт 2:0: при 2:1 к результату применяется база −1,5, получается 0,5 против одной карты соперника, и пари проигрывает. В Bo5 фора проходит при 3:0 и 3:1.</p></details>
+<details><summary>Чем фора по картам отличается от форы по раундам?</summary><p>Единицей счёта. Фора по картам считает выигранные карты во всей серии, фора по раундам — выигранные раунды внутри одной карты. Поэтому −1,5 по картам требует сухой победы в Bo3, а −1,5 по раундам закрывается любой победой на карте с разницей от двух раундов, например 13:11.</p></details>
+<details><summary>Когда проходит фора +5,5 по раундам на карте?</summary><p>Если команда выиграла карту или проиграла не больше чем в пять раундов. Счёт 13:8 даёт ровно пятираундовый разрыв и выигрыш, 13:7 — шестираундовый и проигрыш. Победа андердога перекрывает базу автоматически.</p></details>
+<details><summary>Бывает ли возврат по форе в CS2?</summary><p>Только на целых базах. Фора −1 по картам при итоге 2:1 даёт равенство и расчёт с коэффициентом «1». На дробных базах вроде 1,5 или 5,5 равенства не получится, поэтому возврата не бывает — пари всегда либо выигрывает, либо проигрывает.</p></details>
+<details><summary>Учитывается ли овертайм в форе по раундам?</summary><p>Зависит от подписи рынка. По правилам приёма ставок пари на карту без пометки считаются по основным раундам, а рынки с пометкой «вкл. ОТ» — с учётом дополнительных. Овертайм играется до четырёх побед в дополнительной серии, поэтому итоговый разрыв в счёте обычно небольшой.</p></details>
+<details><summary>Что будет с форой, если команде дали техническое поражение?</summary><p>По правилам рассчитываются пари, исход которых определён без этой карты, а неопределённые пари на матч и на саму карту возвращаются с коэффициентом «1». Если отказ или дисквалификация произошли до начала матча, возвращаются все ставки, кроме пари на итог турнира и выход в следующий раунд.</p></details></div>
+    <h2>Источники · проверено 18.09.2026</h2>
+<ul class="sources"><li><a href="https://www.ligastavok.ru/files/document/442/pmbk_rules.pdf" rel="noopener" target="_blank">Правила приёма ставок БК «Лига Ставок», ред. с 01.09.2026: п. 10.3.10 «Фора», п. 10.7.5, раздел 11.11 «Компьютерный спорт»</a></li><li>Регламент матчей CS2: формат MR12 — карта до 13 выигранных раундов, овертайм при 12:12</li></ul>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/fonbet">Фонбет</a>, <a href="/bukmekery/zenit">Зенит</a>, <a href="/bukmekery/pari">PARI</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
+    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="tiles">
+      <a class="tile" href="/shkola/terminy/chto-takoe-fora"><b>Что такое фора в ставках: виды форы и расчёт возврата</b><small>Термины</small></a>
+      <a class="tile" href="/shkola/terminy/chto-takoe-total"><b>Что такое тотал в ставках</b><small>Термины</small></a>
+      <a class="tile" href="/shkola/terminy/chto-takoe-ekspress"><b>Что такое экспресс в ставках на спорт</b><small>Термины</small></a>
+      <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
+      <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
+      <a class="tile" href="/reestr"><b>Реестр: кто легален сегодня</b><small>ежедневная сверка ЦУПИС и лицензий</small></a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
+    </div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty">Инструменты</a></div>
+    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/eksperty">Эксперты и партнёры</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+</body>
+</html>
