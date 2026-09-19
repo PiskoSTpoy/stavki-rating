@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Как вести дневник ставок и зачем он нужен</title>
+<meta name="description" content="Что записывать в дневник ставок, как считать оборот и ROI с поправкой на удержанный НДФЛ и почему история операций пригодится в споре с букмекером.">
+<link rel="canonical" href="https://stavki-rating.ru/shkola/strategii/dnevnik-stavok-zachem">
+<meta name="yandex-verification" content="4edbdcb14677aee3">
+  <meta name="zen-verification" content="5nDNKfHEF7aU3VHKwj53tV6xxX6MeqopSvcIdNycit0Ck6o07VtBqMxgRmHydsNc">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://stavki-rating.ru/shkola/strategii/dnevnik-stavok-zachem">
+<meta property="og:title" content="Как вести дневник ставок и зачем он нужен">
+<meta property="og:description" content="Что записывать в дневник ставок, как считать оборот и ROI с поправкой на удержанный НДФЛ и почему история операций пригодится в споре с букмекером.">
+<meta property="og:image" content="https://stavki-rating.ru/media/hero.jpg">
+<meta property="og:image:width" content="1376">
+<meta property="og:image:height" content="768">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Как вести дневник ставок и зачем он нужен">
+<meta name="twitter:description" content="Что записывать в дневник ставок, как считать оборот и ROI с поправкой на удержанный НДФЛ и почему история операций пригодится в споре с букмекером.">
+<meta name="twitter:image" content="https://stavki-rating.ru/media/hero.jpg">
+<!-- физические файлы дублируют SVG-иконку выше - Яндекс и другие боты явно ищут ссылку на
+     обычный файл, инлайновый data-URI не засчитывают как валидный favicon (FAVICON_PROBLEM).
+     09.09.2026: Вебмастер отдельно попросил SVG-файл или 120x120 PNG (не устраивает ни
+     data-URI, ни .ico) - добавлены оба варианта. -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="120x120" href="/favicon-120.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Oswald", "Inter", system-ui, sans-serif;
+    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
+
+  /* Секции */
+  .section { padding: 30px 0; }
+  .section.tight { padding-top: 6px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Хлебные крошки */
+  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs span { color: var(--muted-2); }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .result .accent { color: var(--volt); }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Текстовый контент страницы */
+  .prose { max-width: 75ch; display: grid; gap: 14px; }
+  .prose h2 { margin-top: 14px; }
+  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
+     задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
+  .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
+  .prose p { color: var(--text); }
+  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
+  .prose li { line-height: 1.5; }
+  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--text); font-weight: 700; }
+  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
+  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
+  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose tbody tr:last-child td { border-bottom: none; }
+  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
+  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
+  .faq { display: grid; gap: 10px; }
+  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 24px 12px 0; list-style: none; position: relative; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: 0; top: 12px; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; }
+
+  /* Футер */
+  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Стратегии", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Дневник ставок: что в нём писать, как считать результат и зачем это нужно", "item": "https://stavki-rating.ru/shkola/strategii/dnevnik-stavok-zachem"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Дневник ставок: что в нём писать, как считать результат и зачем это нужно", "description": "Что записывать в дневник ставок, как считать оборот и ROI с поправкой на удержанный НДФЛ и почему история операций пригодится в споре с букмекером.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/strategii/dnevnik-stavok-zachem", "datePublished": "2026-09-19", "dateModified": "2026-09-19", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что обязательно записывать в дневник ставок?", "acceptedAnswer": {"@type": "Answer", "text": "Дату и время, контору, событие и точную подпись рынка, коэффициент, сумму ставки, итог (выигрыш, проигрыш или возврат), сумму выплаты с удержанным налогом и короткий комментарий о причине пари. Этого набора достаточно, чтобы посчитать оборот, прибыль и ROI."}}, {"@type": "Question", "name": "Как посчитать ROI по дневнику?", "acceptedAnswer": {"@type": "Answer", "text": "Разделите чистую прибыль за период на оборот, то есть на сумму всех сделанных ставок. Прибыль считайте после удержанного налога, иначе показатель будет завышен: налог берут с разницы между выплатой и суммой ставки по каждой выплате отдельно."}}, {"@type": "Question", "name": "Сколько записей нужно, чтобы выводы имели смысл?", "acceptedAnswer": {"@type": "Answer", "text": "Несколько десятков пари — это статистический шум, по ним нельзя судить ни о рынке, ни о собственной точности. Осмысленные наблюдения начинаются на сотнях записей, и даже тогда они остаются оценкой прошлого, а не прогнозом на будущее."}}, {"@type": "Question", "name": "Зачем дневник, если история ставок есть в личном кабинете?", "acceptedAnswer": {"@type": "Answer", "text": "История операций первична и именно на неё опирается букмекер, но она не хранит вашу причину пари и не считает результат по вашим правилам. Дневник добавляет комментарий и сводный расчёт, а ещё помогает быстро найти нужную строку, когда сроки обращения измеряются днями."}}, {"@type": "Question", "name": "Помогает ли дневник в споре с букмекером?", "acceptedAnswer": {"@type": "Answer", "text": "Косвенно: он даёт точную дату, коэффициент и подпись рынка, чтобы быстро составить обращение. Сроки при этом жёсткие — обращения по инциденту принимаются в течение трёх дней с его завершения, а ответ даётся в течение 30 календарных дней."}}]}</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){
+    m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112360025', 'ym');
+
+ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/112360025" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</head>
+<body>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav">
+    <a href="/rating">Рейтинг</a>
+    <a href="/rejting">По критериям</a>
+    <a href="/stavki">Виды спорта</a>
+    <a href="/instrumenty">Инструменты</a>
+    <a href="/shkola">Школа</a>
+    <a href="/bonusy">Бонусы</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main>
+
+  <section class="section tight"><div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Стратегии</a><span>/</span>Дневник ставок: что в нём писать, как считать результат и зачем это нужно</nav>
+    <div class="eyebrow" style="margin:16px 0 8px">· Школа · Стратегии ·</div>
+    <h1>Дневник ставок: что в нём писать, как считать результат и зачем это нужно</h1>
+    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>проверено 19.09.2026</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">Дневник ставок — это таблица, в которую вы заносите каждое пари: дату, событие, рынок, коэффициент, сумму и итог. Нужен он для двух совершенно разных вещей. Первая — честный счёт: память переоценивает выигрыши и стирает проигрыши, а таблица показывает реальный результат дистанции с поправкой на удержанный налог. Вторая — спор: если понадобится обращаться в поддержку, у вас на руках будут дата, сумма и коэффициент, а не воспоминания.</p>
+    
+    
+  </div></section>
+
+  <section class="section" style="padding-top:6px"><div class="container prose">
+    <h2>Минимальный набор полей</h2>
+<p>Дневник не должен быть сложным — сложные бросают через неделю. Достаточно одной таблицы в любом редакторе с такими колонками.</p><div class="table-wrap"><table><caption>Поля, без которых дневник бесполезен</caption><thead><tr><th>Поле</th><th>Зачем оно</th></tr></thead><tbody><tr><td>Дата и время пари</td><td>Привязка к событию и к истории операций в кабинете</td></tr><tr><td>Контора</td><td>Условия, лимиты и сроки выплат у операторов разные</td></tr><tr><td>Событие и рынок</td><td>Без точной подписи рынка нельзя понять, на чём вы в плюсе</td></tr><tr><td>Коэффициент</td><td>Основа всех расчётов доходности</td></tr><tr><td>Сумма ставки</td><td>Показывает, держите ли вы размер ставки ровным</td></tr><tr><td>Итог: выигрыш / проигрыш / возврат</td><td>Возврат считается отдельно, он не выигрыш и не проигрыш</td></tr><tr><td>Выплата и удержанный налог</td><td>Реальные деньги, а не «сырой» коэффициент</td></tr><tr><td>Короткий комментарий</td><td>Почему вы поставили — самое ценное поле на дистанции</td></tr></tbody></table></div><p>Комментарий кажется лишним, пока не наберётся пара сотен строк. Потом именно он показывает, что половина убытка пришла на пари с пометками «отыграться» и «поздно ночью», а не на выбранный рынок.</p>
+<h2>Как считать результат: оборот, прибыль, ROI</h2>
+<p>Три величины, которые дневник даёт автоматически.</p><ul><li><b>Оборот</b> — сумма всех ставок за период. Не путайте с вложенными деньгами: банк 10 000 ₽ при ставке 500 ₽ даёт оборот 10 000 ₽ уже после двадцати пари.</li><li><b>Прибыль</b> — сумма всех выплат минус сумма всех ставок за тот же период, с учётом удержанного налога.</li><li><b>ROI</b> — прибыль, делённая на оборот. Подробный разбор показателя — в статье <a href="/shkola/terminy/chto-takoe-roi">что такое ROI в ставках</a>.</li></ul><p>Разберём на цифрах. Пусть за месяц сделано 40 пари по 500 ₽ — оборот 20 000 ₽. Выиграли 15 пари со средним коэффициентом 2,40: выплата 15 × 500 × 2,40 = 18 000 ₽. Проиграли 25 пари: минус 12 500 ₽. Сырой результат: 18 000 − 20 000 = −2000 ₽, ROI = −10%.</p><p>Теперь тот же расчёт, но с плюсовым исходом: выиграли 18 пари со средним коэффициентом 2,40, выплата 21 600 ₽, результат до налога +1600 ₽. Налог удерживается с разницы между выплатой и суммой ставки по каждой выплате: база 18 × (1200 − 500) = 12 600 ₽, НДФЛ 13% — 1638 ₽. Чистый результат: 1600 − 1638 = −38 ₽. Месяц, который выглядел прибыльным, в действительности вышел в ноль. Именно это и есть главная причина вести дневник.</p>
+<h2>Чего дневник не делает</h2>
+<p>У таблицы есть границы применимости, и их полезно обозначить сразу.</p><ol><li><b>Не предсказывает.</b> Дневник описывает прошлое. Хорошая серия в нём не означает, что следующий месяц будет таким же.</li><li><b>Не делает выборку значимой.</b> Тридцать пари — это шум. Выводы о рынке или дисциплине начинают что-то значить на сотнях записей, и даже тогда остаются оценкой, а не доказательством.</li><li><b>Не заменяет управление банком.</b> Учёт показывает результат, а ограничивает риск другое — фиксированный размер ставки и правила входа, о которых речь в материале <a href="/shkola/strategii/bankroll-menedzhment">банкролл-менеджмент</a>.</li><li><b>Не спасает от азарта.</b> Если записи делаются задним числом и выборочно, дневник превращается в витрину удачных пари. Работает только сплошной учёт.</li></ol><p>И ещё одно: ни один дневник не превращает ставки в источник дохода. Он превращает их в измеримое развлечение — это разные вещи.</p>
+<h2>Дневник как доказательство в споре</h2>
+<p>Вторая функция дневника — прикладная. Когда пари рассчитано не так, как вы ожидали, спор упирается в сроки и в конкретику.</p><ul><li><b>Сроки короткие.</b> Письменные обращения по результатам событий и иным инцидентам букмекер принимает к рассмотрению в течение трёх дней с момента завершения события или инцидента (п. 9.5 правил Лиги Ставок). Если вы заметили расхождение через неделю, обсуждать будет уже нечего.</li><li><b>Ответ не мгновенный.</b> Срок ответа на письменное обращение — 30 календарных дней с момента его получения компанией (п. 9.7).</li><li><b>Дальше — претензионный порядок.</b> Досудебная претензия предъявляется в течение 30 календарных дней со дня, когда лицо узнало о нарушении своего права, и рассматривается не позднее 30 календарных дней с даты получения (п. 9.8).</li></ul><p>Дневник здесь помогает тем, что у вас есть точная дата и время пари, подпись рынка и коэффициент на момент заключения. Сверять всё это нужно с историей операций в личном кабинете — она первична, дневник лишь помогает быстро найти нужную строку. Отдельный случай — возврат ставки: он не образует дохода и не должен попадать в отчёт как выигрыш, подробности в статье <a href="/shkola/dengi-i-nalogi/nalog-s-vozvrata-stavki">налог с возврата ставки</a>.</p>
+<h2>Как начать и не бросить</h2>
+<p>Практический порядок, который выдерживают дольше месяца.</p><ol><li><b>Заведите одну таблицу</b> — в любом редакторе, который открывается с телефона. Разные файлы по конторам сведут учёт на нет.</li><li><b>Заполняйте сразу после пари</b>, а не в конце недели. Коэффициент на момент заключения потом не восстановить.</li><li><b>Записывайте всё</b>, включая ставки, о которых неприятно вспоминать. Выборочный учёт хуже, чем никакого: он создаёт ложную картину.</li><li><b>Раз в месяц считайте три числа</b> — оборот, чистую прибыль после налога, ROI. Остальная аналитика по желанию.</li><li><b>Сравните с лимитами.</b> Если месячный оборот заметно выше того, что вы планировали, это сигнал, а не достижение; инструменты самоограничения описаны в материале <a href="/shkola/dengi-i-nalogi/limity-i-samokontrol">лимиты и самоконтроль</a>.</li></ol><p>Отдельно предупреждение: предложения «вести за вас статистику», «подключить к закрытой таблице с проходимостью» и подобные чаще всего являются схемой — признаки разобраны в статье <a href="/shkola/otvetstvennaya-igra/moshennicheskie-prognozy">как распознать мошеннические прогнозы</a>. Дневник — это ваша личная таблица, и никому её отдавать не нужно.</p><div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2>Частые вопросы</h2>
+    <div class="faq"><details><summary>Что обязательно записывать в дневник ставок?</summary><p>Дату и время, контору, событие и точную подпись рынка, коэффициент, сумму ставки, итог (выигрыш, проигрыш или возврат), сумму выплаты с удержанным налогом и короткий комментарий о причине пари. Этого набора достаточно, чтобы посчитать оборот, прибыль и ROI.</p></details>
+<details><summary>Как посчитать ROI по дневнику?</summary><p>Разделите чистую прибыль за период на оборот, то есть на сумму всех сделанных ставок. Прибыль считайте после удержанного налога, иначе показатель будет завышен: налог берут с разницы между выплатой и суммой ставки по каждой выплате отдельно.</p></details>
+<details><summary>Сколько записей нужно, чтобы выводы имели смысл?</summary><p>Несколько десятков пари — это статистический шум, по ним нельзя судить ни о рынке, ни о собственной точности. Осмысленные наблюдения начинаются на сотнях записей, и даже тогда они остаются оценкой прошлого, а не прогнозом на будущее.</p></details>
+<details><summary>Зачем дневник, если история ставок есть в личном кабинете?</summary><p>История операций первична и именно на неё опирается букмекер, но она не хранит вашу причину пари и не считает результат по вашим правилам. Дневник добавляет комментарий и сводный расчёт, а ещё помогает быстро найти нужную строку, когда сроки обращения измеряются днями.</p></details>
+<details><summary>Помогает ли дневник в споре с букмекером?</summary><p>Косвенно: он даёт точную дату, коэффициент и подпись рынка, чтобы быстро составить обращение. Сроки при этом жёсткие — обращения по инциденту принимаются в течение трёх дней с его завершения, а ответ даётся в течение 30 календарных дней.</p></details></div>
+    <h2>Источники · проверено 19.09.2026</h2>
+<ul class="sources"><li><a href="https://www.ligastavok.ru/files/document/442/pmbk_rules.pdf" rel="noopener" target="_blank">Правила приёма ставок БК «Лига Ставок», ред. с 01.09.2026: пп. 3.3.5, 3.3.6, 3.3.8–3.3.10, 6.4, 6.6.2, 6.7, 9.5, 9.7</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/" rel="noopener" target="_blank">Налоговый кодекс РФ, ст. 214.7: налоговая база по доходам от участия в азартных играх</a></li></ul>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/ligastavok">Лига Ставок</a>, <a href="/bukmekery/zenit">Зенит</a>, <a href="/bukmekery/marathonbet">Марафон</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
+    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="tiles">
+      <a class="tile" href="/shkola/strategii/bankroll-menedzhment"><b>Банкролл-менеджмент в ставках: как управлять банком</b><small>Стратегии</small></a>
+      <a class="tile" href="/shkola/strategii/strategiya-flet"><b>Стратегия флэт в ставках: механика, виды и примеры расчёта</b><small>Стратегии</small></a>
+      <a class="tile" href="/shkola/strategii/strategiya-dogon"><b>Стратегия догон (Мартингейл): как работает и чем опасна</b><small>Стратегии</small></a>
+      <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
+      <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
+      <a class="tile" href="/reestr"><b>Реестр: кто легален сегодня</b><small>ежедневная сверка ЦУПИС и лицензий</small></a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
+    </div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty">Инструменты</a></div>
+    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/eksperty">Эксперты и партнёры</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+</body>
+</html>
