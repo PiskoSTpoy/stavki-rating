@@ -130,6 +130,9 @@
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
+     задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
+  .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
   .prose p { color: var(--text); }
   .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
   .prose li { line-height: 1.5; }
@@ -227,10 +230,10 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <h2>Что делать, если приложение не устанавливается или не запускается</h2>
 <p>Если система блокирует установку apk даже после включения нужного разрешения, стоит проверить, не мешает ли этому антивирус или встроенная защита производителя смартфона — у некоторых брендов Android есть собственный слой предупреждений для файлов не из магазина приложений. Если приложение установилось, но не запускается или не заходит в аккаунт, разумно переустановить его заново именно с официального источника, а не искать «исправленную» версию на сторонних сайтах.</p>
     <h2>Частые вопросы</h2>
-    <div class="faq"><details><summary>Почему нельзя скачать Bettery из Google Play?</summary><p><p>Магазин не размещает приложения с реальными ставками на деньги для российской аудитории — это касается всех легальных операторов, не только Bettery.</p></p></details>
-<details><summary>apk с официального сайта — это безопасно?</summary><p><p>Да, если файл скачан именно с официального домена bettery.ru, а не с сайта-агрегатора или из рекламной ссылки в мессенджере.</p></p></details>
-<details><summary>Нужно ли что-то менять в настройках телефона перед установкой apk?</summary><p><p>Обычно система попросит разрешить установку приложений из внешнего источника — это стандартный запрос при установке apk не из магазина приложений.</p></p></details>
-<details><summary>Приложение и сайт — это один и тот же аккаунт?</summary><p><p>Да, вход в приложении и на сайте ведёт в один и тот же личный кабинет — регистрация не создаётся заново под каждый канал.</p></p></details></div>
+    <div class="faq"><details><summary>Почему нельзя скачать Bettery из Google Play?</summary><p>Магазин не размещает приложения с реальными ставками на деньги для российской аудитории — это касается всех легальных операторов, не только Bettery.</p></details>
+<details><summary>apk с официального сайта — это безопасно?</summary><p>Да, если файл скачан именно с официального домена bettery.ru, а не с сайта-агрегатора или из рекламной ссылки в мессенджере.</p></details>
+<details><summary>Нужно ли что-то менять в настройках телефона перед установкой apk?</summary><p>Обычно система попросит разрешить установку приложений из внешнего источника — это стандартный запрос при установке apk не из магазина приложений.</p></details>
+<details><summary>Приложение и сайт — это один и тот же аккаунт?</summary><p>Да, вход в приложении и на сайте ведёт в один и тот же личный кабинет — регистрация не создаётся заново под каждый канал.</p></details></div>
     
     <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/bettery/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/melbet?p=bukmekery/bettery/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>, <a href="/go/betcity?p=bukmekery/bettery/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>, <a href="/go/ligastavok?p=bukmekery/bettery/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>

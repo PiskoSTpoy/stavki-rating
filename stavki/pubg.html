@@ -130,6 +130,9 @@
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
+     задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
+  .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
   .prose p { color: var(--text); }
   .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
   .prose li { line-height: 1.5; }
@@ -227,11 +230,11 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <h2>Типичные ошибки новичка</h2>
 <p>Частые ошибки:</p><ul><li><strong>Ставка на WWCD одного матча как на «верняк».</strong> В лобби 16 команд, случайность высокая.</li><li><strong>Игнорирование точек высадки и стиля игры</strong> — агрессивные команды набирают больше убийств, но чаще рано выбывают.</li><li><strong>Погоня за большими тоталами убийств</strong> без учёта карты и метагейма.</li><li><strong>Отсутствие дисциплины в банкролле.</strong> Ставьте фиксированную долю банка и играйте ответственно.</li></ul>
     <h2>Частые вопросы</h2>
-    <div class="faq"><details><summary>Как считаются очки в PUBG?</summary><p><p>За место в матче начисляются очки по таблице турнира плюс по очку за каждое убийство. Итог турнира — сумма очков за все сыгранные матчи. Точная таблица зависит от регламента.</p></p></details>
-<details><summary>Что такое WWCD?</summary><p><p>Winner Winner Chicken Dinner — победа в отдельном матче (1-е место). Рынок «победитель матча» ставит именно на WWCD.</p></p></details>
-<details><summary>Почему ставка на WWCD в одном матче рискованна?</summary><p><p>В лобби 16 команд и высокая доля случайности: даже фаворит выигрывает конкретный матч далеко не всегда. Итог турнира по сумме матчей предсказуем лучше, чем отдельная игра.</p></p></details>
-<details><summary>Что такое очная дуэль команд?</summary><p><p>Рынок «кто выше по таблице» между двумя командами по итогам матча или игрового дня, без привязки к первому месту.</p></p></details>
-<details><summary>Какие турниры основные в PUBG?</summary><p><p>PUBG Global Series (PGS), PUBG Global Championship (PGC), PUBG Nations Cup и Esports World Cup.</p></p></details></div>
+    <div class="faq"><details><summary>Как считаются очки в PUBG?</summary><p>За место в матче начисляются очки по таблице турнира плюс по очку за каждое убийство. Итог турнира — сумма очков за все сыгранные матчи. Точная таблица зависит от регламента.</p></details>
+<details><summary>Что такое WWCD?</summary><p>Winner Winner Chicken Dinner — победа в отдельном матче (1-е место). Рынок «победитель матча» ставит именно на WWCD.</p></details>
+<details><summary>Почему ставка на WWCD в одном матче рискованна?</summary><p>В лобби 16 команд и высокая доля случайности: даже фаворит выигрывает конкретный матч далеко не всегда. Итог турнира по сумме матчей предсказуем лучше, чем отдельная игра.</p></details>
+<details><summary>Что такое очная дуэль команд?</summary><p>Рынок «кто выше по таблице» между двумя командами по итогам матча или игрового дня, без привязки к первому месту.</p></details>
+<details><summary>Какие турниры основные в PUBG?</summary><p>PUBG Global Series (PGS), PUBG Global Championship (PGC), PUBG Nations Cup и Esports World Cup.</p></details></div>
     
     <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/betcity">Бетсити</a>, <a href="/bukmekery/melbet">Мелбет</a>, <a href="/bukmekery/ligastavok">Лига Ставок</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>

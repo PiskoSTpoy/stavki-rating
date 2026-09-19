@@ -130,6 +130,9 @@
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
+     задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
+  .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
   .prose p { color: var(--text); }
   .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
   .prose li { line-height: 1.5; }
@@ -229,10 +232,10 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <h2>Как отличить официальное приложение от подделки</h2>
 <div class="table-wrap"><table><caption>Официальный источник против фейка</caption><thead><tr><th>Канал</th><th>Статус</th></tr></thead><tbody><tr><td>RuStore, официальный сайт bettery.ru</td><td>Официальные каналы</td></tr><tr><td>Сторонние сайты с «прямой ссылкой на apk»</td><td>Риск подмены файла и утечки данных</td></tr><tr><td>Ссылки из рекламы в мессенджерах</td><td>Не проверяемый источник, не рекомендуется</td></tr></tbody></table></div><p>Перед установкой стоит убедиться, что оператор легален и включён в реестр — это можно сделать через <a href="/kak-proverit-licenziyu">проверку лицензии букмекера</a>.</p>
     <h2>Частые вопросы</h2>
-    <div class="faq"><details><summary>Bettery есть в Google Play?</summary><p><p>Нет — это общая политика Google Play в отношении приложений с реальными ставками на деньги, она касается всех легальных букмекеров РФ, а не только Bettery.</p></p></details>
-<details><summary>Где тогда официально скачать приложение на Android?</summary><p><p>Через каталог RuStore или прямой файл apk с официального сайта bettery.ru — подробности на странице про установку на Android.</p></p></details>
-<details><summary>А для iPhone приложение есть?</summary><p><p>На данный момент отдельного полнофункционального приложения в App Store у Bettery нет — используется мобильная версия сайта, о ней рассказано на странице про iOS.</p></p></details>
-<details><summary>Безопасно ли скачивать apk с незнакомых сайтов?</summary><p><p>Нет, устанавливать стоит только файлы из официальных источников — риск получить изменённый файл с вредоносным кодом на сторонних сайтах существует всегда.</p></p></details></div>
+    <div class="faq"><details><summary>Bettery есть в Google Play?</summary><p>Нет — это общая политика Google Play в отношении приложений с реальными ставками на деньги, она касается всех легальных букмекеров РФ, а не только Bettery.</p></details>
+<details><summary>Где тогда официально скачать приложение на Android?</summary><p>Через каталог RuStore или прямой файл apk с официального сайта bettery.ru — подробности на странице про установку на Android.</p></details>
+<details><summary>А для iPhone приложение есть?</summary><p>На данный момент отдельного полнофункционального приложения в App Store у Bettery нет — используется мобильная версия сайта, о ней рассказано на странице про iOS.</p></details>
+<details><summary>Безопасно ли скачивать apk с незнакомых сайтов?</summary><p>Нет, устанавливать стоит только файлы из официальных источников — риск получить изменённый файл с вредоносным кодом на сторонних сайтах существует всегда.</p></details></div>
     
     <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/bettery/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/zenit?p=bukmekery/bettery/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/marathonbet?p=bukmekery/bettery/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>, <a href="/go/fonbet?p=bukmekery/bettery/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>

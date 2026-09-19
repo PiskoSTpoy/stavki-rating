@@ -130,6 +130,9 @@
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
+     задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
+  .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
   .prose p { color: var(--text); }
   .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
   .prose li { line-height: 1.5; }

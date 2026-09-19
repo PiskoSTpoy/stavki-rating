@@ -130,6 +130,9 @@
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
+     задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
+  .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
   .prose p { color: var(--text); }
   .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
   .prose li { line-height: 1.5; }
@@ -229,10 +232,10 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <h2>Как не попасть на фейковое приложение</h2>
 <ul><li>Не скачивайте apk-файлы с форумов, файлообменников и сторонних «зеркал» — там могут быть модифицированные версии с вредоносным кодом.</li><li>Проверяйте, что ссылка на загрузку ведёт на pari.ru или в RuStore, а не на посторонний домен.</li><li>Не вводите пароль или данные карты в приложении, скачанном не из официального источника.</li></ul><p>Прежде чем ставить приложение, стоит убедиться, что вы имеете дело с легальным оператором — см. <a href="/kak-proverit-licenziyu">как проверить лицензию БК</a>.</p>
     <h2>Частые вопросы</h2>
-    <div class="faq"><details><summary>Есть ли приложение PARI в Google Play?</summary><p><p>Как правило, нет: Google Play не допускает публикацию приложений с реальными ставками для российской аудитории. Это общее ограничение площадки, актуальное для всех легальных букмекеров, а не только для PARI.</p></p></details>
-<details><summary>Где точно можно скачать официальное приложение?</summary><p><p>Через RuStore или прямую ссылку с официального сайта pari.ru для Android; для iOS — актуальный канал уточняйте на официальном сайте оператора.</p></p></details>
-<details><summary>Опасно ли скачивать apk с других сайтов?</summary><p><p>Да. Apk-файлы, полученные не с официального сайта или из RuStore, могут быть подделаны и содержать вредоносный код или фишинговые формы входа.</p></p></details>
-<details><summary>Что делать, если приложения нет для моей платформы?</summary><p><p>Можно пользоваться мобильной версией сайта pari.ru через браузер — функциональность там обычно сопоставима с приложением.</p></p></details></div>
+    <div class="faq"><details><summary>Есть ли приложение PARI в Google Play?</summary><p>Как правило, нет: Google Play не допускает публикацию приложений с реальными ставками для российской аудитории. Это общее ограничение площадки, актуальное для всех легальных букмекеров, а не только для PARI.</p></details>
+<details><summary>Где точно можно скачать официальное приложение?</summary><p>Через RuStore или прямую ссылку с официального сайта pari.ru для Android; для iOS — актуальный канал уточняйте на официальном сайте оператора.</p></details>
+<details><summary>Опасно ли скачивать apk с других сайтов?</summary><p>Да. Apk-файлы, полученные не с официального сайта или из RuStore, могут быть подделаны и содержать вредоносный код или фишинговые формы входа.</p></details>
+<details><summary>Что делать, если приложения нет для моей платформы?</summary><p>Можно пользоваться мобильной версией сайта pari.ru через браузер — функциональность там обычно сопоставима с приложением.</p></details></div>
     
     <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/pari/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/zenit?p=bukmekery/pari/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/fonbet?p=bukmekery/pari/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/betcity?p=bukmekery/pari/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
