@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -171,7 +181,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Как это работает", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Друзья позвали ставить впервые вместе на матч", "item": "https://stavki-rating.ru/shkola/kak-eto-rabotaet/druzya-pozvali-stavit-vmeste"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Друзья позвали ставить впервые вместе на матч", "description": "Что делать, если компания скидывается на ставку, а вам неловко сказать, что вы за меньшую сумму или вообще не хотите — честно про давление суммы и что проверить перед первым разом.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/kak-eto-rabotaet/druzya-pozvali-stavit-vmeste", "datePublished": "2026-09-07", "dateModified": "2026-09-07", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Друзья позвали ставить впервые вместе на матч", "description": "Что делать, если компания скидывается на ставку, а вам неловко сказать, что вы за меньшую сумму или вообще не хотите — честно про давление суммы и что проверить перед первым разом.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/kak-eto-rabotaet/druzya-pozvali-stavit-vmeste", "datePublished": "2026-09-07", "dateModified": "2026-09-07", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Не будет ли неловко, если я поставлю меньше, чем все?", "acceptedAnswer": {"@type": "Answer", "text": "На практике почти никто не сверяет суммы после матча — внимание обычно на игре, а не на том, кто сколько внёс. «Я по чуть-чуть» — нормальная фраза, которая ничего не портит и не требует дальнейших объяснений."}}, {"@type": "Question", "name": "Можно ли просто посмотреть матч с друзьями и не ставить вообще?", "acceptedAnswer": {"@type": "Answer", "text": "Да, это совершенно рабочий вариант. Компанию и общий вечер держит совместный просмотр матча, а не то, что у всех открыт счёт в одной конторе — участие в ставке вовсе не обязательное условие, чтобы остаться своим."}}, {"@type": "Question", "name": "Как быстро проверить, что контора, в которой регистрируются друзья, легальная?", "acceptedAnswer": {"@type": "Answer", "text": "Название оператора сверяется со списком в реестре ЕРАИ — актуальный перечень легальных букмекеров есть в рейтинге на этом сайте (/rating). Если оператора там нет, лучше не регистрироваться, даже если все вокруг уже это сделали."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -211,25 +221,26 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Как это работает</a><span>/</span>Друзья позвали ставить впервые вместе на матч</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Школа · Как это работает ·</div>
     <h1>Друзья позвали ставить впервые вместе на матч</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 07.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-07">07.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Если компания зовёт поставить вместе на матч — это самый обычный вариант первого знакомства со ставками, никакой особой ошибки в этом сценарии нет сам по себе. Проблема обычно не в том, что вы ставите с друзьями, а в моменте, когда кто-то первым называет сумму вслух, остальные кивают — и вам вдруг кажется, что сказать «а я, пожалуй, поменьше» будет выглядеть жалко. Не будет. На самом деле выбор всегда шире, чем «ставить как все или вообще не идти»: можно зайти на символическую сумму, можно вообще не открывать счёт в конторе и просто быть в компании, которая смотрит матч и болеет, — и это не менее нормальный вариант, чем поставить со всеми.</p>
     
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#vse-po-5000-eto-ne-vhodnoj-bilet-v-kompaniyu">«Все по 5000» — это не входной билет в компанию</a></li><li><a href="#na-chto-smotret-pered-pervoj-stavkoj-ne-tolko-na-koefficient">На что смотреть перед первой ставкой — не только на коэффициент</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>«Все по 5000» — это не входной билет в компанию</h2>
+    <h2 id="vse-po-5000-eto-ne-vhodnoj-bilet-v-kompaniyu">«Все по 5000» — это не входной билет в компанию</h2>
 <p>Первая названная сумма в такой компании почти всегда работает как якорь: кто-то бросил цифру, и дальше всем остальным кажется, что это и есть норма для вечера. На деле это просто цифра одного конкретного человека — часто того, кому комфортно рискнуть больше, или того, кто громче говорит. На практике после матча почти никто не сверяет, кто поставил 5000, а кто 300: обычно все заняты самой игрой, а не бухгалтерией друг друга.</p><p>Если сумма компании вам великовата, нормально сказать это прямо, без извинений в голосе — «я на этот раз по чуть-чуть» звучит спокойно и не требует объяснений. Ещё один рабочий вариант — вообще не заводить счёт и не ставить в этот раз, а просто смотреть матч и болеть за компанию: сам вечер с друзьями от этого не портится, потому что держит его совместный просмотр, а не то, у кого какая ставка стоит.</p>
-<h2>На что смотреть перед первой ставкой — не только на коэффициент</h2>
+<h2 id="na-chto-smotret-pered-pervoj-stavkoj-ne-tolko-na-koefficient">На что смотреть перед первой ставкой — не только на коэффициент</h2>
 <p>Если решили присоединиться хотя бы символической суммой, стоит потратить минуту не на выбор исхода, а на то, что букмекер, в котором регистрируется компания, — легальный оператор из реестра ЕРАИ, а не сайт с похожим названием без лицензии. Список актуальных легальных операторов есть в <a href="/rating">рейтинге на этом сайте</a> — если конторы там нет, это повод не спешить, даже если приложение уже открыто на чужом телефоне рядом.</p><p>Регистрация и идентификация личности через Единый ЦУПИС требуют паспортных данных и занимают некоторое время — это не то, что стоит делать за две минуты до свистка под общий гул «давай быстрее». Если времени нет, символическая ставка спокойно подождёт до следующего матча: компания никуда не денется, а решение открыть счёт под спешку — не то же самое, что решение, принятое спокойно.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Не будет ли неловко, если я поставлю меньше, чем все?</summary><p>На практике почти никто не сверяет суммы после матча — внимание обычно на игре, а не на том, кто сколько внёс. «Я по чуть-чуть» — нормальная фраза, которая ничего не портит и не требует дальнейших объяснений.</p></details>
 <details><summary>Можно ли просто посмотреть матч с друзьями и не ставить вообще?</summary><p>Да, это совершенно рабочий вариант. Компанию и общий вечер держит совместный просмотр матча, а не то, что у всех открыт счёт в одной конторе — участие в ставке вовсе не обязательное условие, чтобы остаться своим.</p></details>
 <details><summary>Как быстро проверить, что контора, в которой регистрируются друзья, легальная?</summary><p>Название оператора сверяется со списком в реестре ЕРАИ — актуальный перечень легальных букмекеров есть в рейтинге на этом сайте (/rating). Если оператора там нет, лучше не регистрироваться, даже если все вокруг уже это сделали.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/fonbet">Фонбет</a>, <a href="/bukmekery/marathonbet">Марафон</a>, <a href="/bukmekery/melbet">Мелбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/shkola/kak-eto-rabotaet/vidy-stavok-na-sport"><b>Виды ставок на спорт: полный разбор форматов и рынков</b><small>Как это работает</small></a>
       <a class="tile" href="/shkola/kak-eto-rabotaet/kak-chitat-koefficienty"><b>Как читать коэффициенты букмекера</b><small>Как это работает</small></a>

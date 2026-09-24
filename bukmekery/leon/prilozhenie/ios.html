@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Leon", "item": "https://stavki-rating.ru/bukmekery/leon"}, {"@type": "ListItem", "position": 4, "name": "Как установить приложение Leon на iPhone", "item": "https://stavki-rating.ru/bukmekery/leon/prilozhenie/ios"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как установить приложение Leon на iPhone", "description": "Как установить приложение Leon на iPhone через App Store и какая есть альтернатива, если приложение недоступно.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/leon/prilozhenie/ios", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как установить приложение Leon на iPhone", "description": "Как установить приложение Leon на iPhone через App Store и какая есть альтернатива, если приложение недоступно.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/leon/prilozhenie/ios", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Есть ли приложение Leon в App Store?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Да, для iOS оператор распространяет приложение через официальный App Store.</p>"}}, {"@type": "Question", "name": "Что делать, если приложение не находится в App Store?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Не устанавливайте сторонние ipa-файлы с посторонних сайтов — это риск для безопасности устройства. Используйте мобильную версию официального сайта в браузере.</p>"}}, {"@type": "Question", "name": "Отличается ли функционал приложения от сайта на iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет, базовые функции — ставки, личный кабинет, пополнение и вывод средств — совпадают.</p>"}}, {"@type": "Question", "name": "Где почитать про установку на Android?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Отдельный материал — «Как скачать приложение Leon на Android».</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/leon">Leon</a><span>/</span>Как установить приложение Leon на iPhone</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Leon ·</div>
     <h1>Как установить приложение Leon на iPhone</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>2 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Приложение Leon для iOS распространяется через официальный App Store — в отличие от Android, где такого магазинного варианта нет. Если по какой-то причине приложение временно недоступно в App Store в конкретном регионе, рабочей альтернативой остаётся мобильная версия официального сайта в браузере Safari — она открывает тот же функционал без установки.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/leon?p=leon&amp;pl=subpage-top">Сайт букмекера Leon →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#ustanovka-cherez-app-store">Установка через App Store</a></li><li><a href="#esli-prilozhenie-ne-nahoditsya-v-app-store">Если приложение не находится в App Store</a></li><li><a href="#alternativa-bez-ustanovki-mobilnyj-sajt">Альтернатива без установки: мобильный сайт</a></li><li><a href="#kak-proverit-chto-skachivaete-oficialnuyu-versiyu">Как проверить, что скачиваете официальную версию</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Установка через App Store</h2>
+    <h2 id="ustanovka-cherez-app-store">Установка через App Store</h2>
 <p>В общих чертах процесс выглядит так:</p><ol><li>Открыть App Store на iPhone</li><li>Найти приложение оператора по названию через поиск</li><li>Установить и войти в том же порядке, что описан на официальном сайте — с той же учётной записью</li></ol><p>Как проходит сама регистрация в аккаунте — описано в <a href="/bukmekery/leon/registraciya">материале про регистрацию в Leon</a>.</p>
-<h2>Если приложение не находится в App Store</h2>
+<h2 id="esli-prilozhenie-ne-nahoditsya-v-app-store">Если приложение не находится в App Store</h2>
 <p>Доступность конкретного приложения в App Store может зависеть от региона учётной записи Apple ID и версии магазина. Если приложение не находится, не стоит искать сторонние «ipa-файлы» на посторонних сайтах — установка приложений на iPhone вне App Store требует нестандартных манипуляций с устройством и несёт риски для его безопасности.</p>
-<h2>Альтернатива без установки: мобильный сайт</h2>
+<h2 id="alternativa-bez-ustanovki-mobilnyj-sajt">Альтернатива без установки: мобильный сайт</h2>
 <p>Мобильная версия официального сайта в браузере Safari дублирует функциональность приложения: линия, роспись, личный кабинет, пополнение и вывод средств. Это надёжный вариант, если по какой-то причине приложение временно недоступно именно на вашем устройстве.</p>
-<h2>Как проверить, что скачиваете официальную версию</h2>
+<h2 id="kak-proverit-chto-skachivaete-oficialnuyu-versiyu">Как проверить, что скачиваете официальную версию</h2>
 <p>Перед установкой стоит свериться с названием разработчика в карточке приложения в App Store и убедиться, что ссылка на установку получена с официального сайта оператора, а не из рекламного объявления в соцсетях или мессенджере.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Есть ли приложение Leon в App Store?</summary><p>Да, для iOS оператор распространяет приложение через официальный App Store.</p></details>
 <details><summary>Что делать, если приложение не находится в App Store?</summary><p>Не устанавливайте сторонние ipa-файлы с посторонних сайтов — это риск для безопасности устройства. Используйте мобильную версию официального сайта в браузере.</p></details>
 <details><summary>Отличается ли функционал приложения от сайта на iPhone?</summary><p>Нет, базовые функции — ставки, личный кабинет, пополнение и вывод средств — совпадают.</p></details>
 <details><summary>Где почитать про установку на Android?</summary><p>Отдельный материал — «Как скачать приложение Leon на Android».</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/leon/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/pari?p=bukmekery/leon/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>, <a href="/go/melbet?p=bukmekery/leon/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>, <a href="/go/zenit?p=bukmekery/leon/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/leon"><b>Leon: обзор легального букмекера в России</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/leon/promokod"><b>Промокод Leon: как это работает и где искать актуальный код</b><small>Промокод</small></a>

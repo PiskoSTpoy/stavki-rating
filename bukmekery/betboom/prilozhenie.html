@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "BetBoom", "item": "https://stavki-rating.ru/bukmekery/betboom"}, {"@type": "ListItem", "position": 4, "name": "Приложение BetBoom: официальные способы установки на телефон", "item": "https://stavki-rating.ru/bukmekery/betboom/prilozhenie"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Приложение BetBoom: официальные способы установки на телефон", "description": "Где официально скачать приложение BetBoom для Android и iOS, почему ставочных приложений нет в Google Play и как избежать фейковых APK-файлов.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/betboom/prilozhenie", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Приложение BetBoom: официальные способы установки на телефон", "description": "Где официально скачать приложение BetBoom для Android и iOS, почему ставочных приложений нет в Google Play и как избежать фейковых APK-файлов.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/betboom/prilozhenie", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Почему приложения BetBoom нет в Google Play?", "acceptedAnswer": {"@type": "Answer", "text": "Google Play ограничивает публикацию приложений с реальными денежными ставками для российской аудитории — это правило магазина, а не признак проблем у оператора. Официальные каналы для Android — RuStore и сайт БК."}}, {"@type": "Question", "name": "Где скачать приложение BetBoom официально?", "acceptedAnswer": {"@type": "Answer", "text": "На Android — через RuStore или прямую ссылку с сайта betboom.ru, на iPhone — проверить наличие в App Store через официальный сайт. Подробности для каждой платформы — на отдельных страницах по Android и iOS."}}, {"@type": "Question", "name": "Опасно ли скачивать APK BetBoom со стороннего сайта?", "acceptedAnswer": {"@type": "Answer", "text": "Да, файл может быть подделан и вести на фишинговую страницу или содержать вредоносный код. Устанавливать приложение стоит только из RuStore или по ссылке с официального сайта."}}, {"@type": "Question", "name": "Что делать, если приложения нет на моей платформе?", "acceptedAnswer": {"@type": "Answer", "text": "Использовать мобильную версию официального сайта в браузере смартфона — она доступна без установки и работает по тем же правилам легального оператора."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/betboom">BetBoom</a><span>/</span>Приложение BetBoom: официальные способы установки на телефон</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · BetBoom ·</div>
     <h1>Приложение BetBoom: официальные способы установки на телефон</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>2 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Легальные букмекеры в России, включая BetBoom, распространяют мобильные приложения только через собственные официальные каналы — сайт оператора и RuStore, а не через Google Play. Ниже — где именно искать приложение BetBoom, почему магазин Google его не публикует и как не наткнуться на фейковую копию.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/betboom?p=betboom&amp;pl=subpage-top">Сайт букмекера BetBoom →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#oficialnye-kanaly-dlya-android">Официальные каналы для Android</a></li><li><a href="#situaciya-s-ios">Ситуация с iOS</a></li><li><a href="#risk-storonnih-apk-i-sajtov">Риск сторонних APK и сайтов</a></li><li><a href="#alternativa-mobilnaya-versiya-sajta">Альтернатива — мобильная версия сайта</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Официальные каналы для Android</h2>
+    <h2 id="oficialnye-kanaly-dlya-android">Официальные каналы для Android</h2>
 <p>Приложения букмекеров с реальными денежными ставками не публикуются в Google Play для российской аудитории — это ограничение политики самого магазина, а не показатель нелегальности оператора. Поэтому официальный способ получить приложение BetBoom на Android — каталог RuStore либо прямая ссылка на APK-файл с официального сайта betboom.ru.</p><p>Подробный разбор шагов установки на Android — на отдельной странице <a href="/bukmekery/betboom/prilozhenie/android">«BetBoom для Android»</a>.</p>
-<h2>Ситуация с iOS</h2>
+<h2 id="situaciya-s-ios">Ситуация с iOS</h2>
 <p>Для iPhone доступность приложений букмекерских контор в App Store определяется правилами самого магазина Apple и может отличаться от ситуации с Android. Актуальное наличие приложения BetBoom в App Store стоит проверять непосредственно в магазине или на официальном сайте — там же обычно указана рабочая альтернатива, если приложения нет.</p><p>Детали для iPhone — на странице <a href="/bukmekery/betboom/prilozhenie/ios">«BetBoom для iOS»</a>.</p>
-<h2>Риск сторонних APK и сайтов</h2>
+<h2 id="risk-storonnih-apk-i-sajtov">Риск сторонних APK и сайтов</h2>
 <p>В поиске по запросу «BetBoom приложение скачать» часто попадаются сторонние файлообменники и сайты-подделки. Установка APK не с официального сайта или не из RuStore создаёт риски:</p><ul><li>файл может быть модифицирован и содержать вредоносный код;</li><li>такое приложение может вести не на реальный сервер BetBoom, а на фишинговую копию личного кабинета;</li><li>потерянные при этом данные карты или аккаунта не восстанавливаются.</li></ul><p>Ориентир по легальности самого оператора — карточка <a href="/bukmekery/betboom">BetBoom в каталоге stavki-rating.ru</a>.</p>
-<h2>Альтернатива — мобильная версия сайта</h2>
+<h2 id="alternativa-mobilnaya-versiya-sajta">Альтернатива — мобильная версия сайта</h2>
 <p>Если установка приложения по какой-то причине неудобна, полноценной альтернативой остаётся мобильная версия официального сайта betboom.ru — она открывается в браузере смартфона без установки дополнительных файлов и работает по тем же правилам легального оператора, работающего по лицензии ФНС и подключённого к Единому ЦУПИС.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Почему приложения BetBoom нет в Google Play?</summary><p>Google Play ограничивает публикацию приложений с реальными денежными ставками для российской аудитории — это правило магазина, а не признак проблем у оператора. Официальные каналы для Android — RuStore и сайт БК.</p></details>
 <details><summary>Где скачать приложение BetBoom официально?</summary><p>На Android — через RuStore или прямую ссылку с сайта betboom.ru, на iPhone — проверить наличие в App Store через официальный сайт. Подробности для каждой платформы — на отдельных страницах по Android и iOS.</p></details>
 <details><summary>Опасно ли скачивать APK BetBoom со стороннего сайта?</summary><p>Да, файл может быть подделан и вести на фишинговую страницу или содержать вредоносный код. Устанавливать приложение стоит только из RuStore или по ссылке с официального сайта.</p></details>
 <details><summary>Что делать, если приложения нет на моей платформе?</summary><p>Использовать мобильную версию официального сайта в браузере смартфона — она доступна без установки и работает по тем же правилам легального оператора.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/betboom/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/marathonbet?p=bukmekery/betboom/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>, <a href="/go/ligastavok?p=bukmekery/betboom/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>, <a href="/go/zenit?p=bukmekery/betboom/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/betboom"><b>BetBoom: обзор легального букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/betboom/promokod"><b>Промокод BetBoom: где искать и как использовать</b><small>Промокод</small></a>

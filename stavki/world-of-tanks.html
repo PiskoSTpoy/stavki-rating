@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Ставки на спорт", "item": "https://stavki-rating.ru/stavki"}, {"@type": "ListItem", "position": 3, "name": "Ставки на World of Tanks: форматы и рынки", "item": "https://stavki-rating.ru/stavki/world-of-tanks"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ставки на World of Tanks: форматы и рынки", "description": "Как ставят на киберспорт World of Tanks: формат 7 на 7, режим Штурм, рынки победитель серии, фора и тотал по картам и примеры со ставкой 1000 ₽.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/stavki/world-of-tanks", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ставки на World of Tanks: форматы и рынки", "description": "Как ставят на киберспорт World of Tanks: формат 7 на 7, режим Штурм, рынки победитель серии, фора и тотал по картам и примеры со ставкой 1000 ₽.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/stavki/world-of-tanks", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "В каком формате играют матчи World of Tanks в киберспорте?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Команды играют 7 на 7 в режиме «Штурм» (атака/оборона). Составы собираются по правилу «7/68»: семь танков суммарным весом до 68 очков по уровням. Серии проводятся до нужного числа побед — например, Bo5 или Bo7.</p>"}}, {"@type": "Question", "name": "Какие рынки доступны на World of Tanks?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Чаще всего это победитель серии, фора по картам, тотал сыгранных карт, победитель отдельной карты и точный счёт серии. Набор компактнее, чем в футболе.</p>"}}, {"@type": "Question", "name": "Почему на World of Tanks мало матчей в линии?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Соревновательная сцена дисциплины нестабильна, крупные турниры проходят не постоянно. Линия появляется в основном во время активных событий, между ними роспись может отсутствовать.</p>"}}, {"@type": "Question", "name": "Что означает счёт 3:0 в серии Bo5?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Bo5 играется до 3 побед. Счёт 3:0 значит «сухую» победу без отданных карт. Это важно для рынков: при 3:0 «тотал меньше 3.5» проходит, а фора −1.5 на победителя выигрывает.</p>"}}, {"@type": "Question", "name": "Есть ли ничья в матче World of Tanks?", "acceptedAnswer": {"@type": "Answer", "text": "<p>В серии на победителя ничьи нет — кто-то первым набирает нужное число выигранных карт. Поэтому рынок «победитель матча» двухисходный.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,33 +222,34 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/stavki">Ставки на спорт</a><span>/</span>Ставки на World of Tanks: форматы и рынки</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Ставки на спорт ·</div>
     <h1>Ставки на World of Tanks: форматы и рынки</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>4 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Прямой ответ: ставки на World of Tanks — это ставки на матчи командного киберспорта в формате 7 на 7 (режим «Штурм»/Attack-Defense) в рамках Wargaming.net League и региональных турниров. Основные рынки — победитель серии, фора и тотал по картам-раундам. Важно: соревновательная сцена дисциплины сейчас нестабильна, поэтому линия появляется в основном во время активных турниров и бывает неглубокой. Ниже — формат матча, реальные рынки и три примера расчёта со ставкой 1000 ₽.</p>
     
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#format-matcha-v-world-of-tanks">Формат матча в World of Tanks</a></li><li><a href="#realnye-rynki-na-world-of-tanks">Реальные рынки на World of Tanks</a></li><li><a href="#tri-primera-rascheta-so-stavkoj-1000">Три примера расчёта со ставкой 1000 ₽</a></li><li><a href="#turniry-i-likvidnost-rynka">Турниры и ликвидность рынка</a></li><li><a href="#tipichnye-oshibki-novichka">Типичные ошибки новичка</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Формат матча в World of Tanks</h2>
+    <h2 id="format-matcha-v-world-of-tanks">Формат матча в World of Tanks</h2>
 <p><strong>World of Tanks</strong> — командная игра про танковые бои. В киберспорте команды играют в формате <strong>7 на 7</strong>. Историческая основа соревнований — <strong>Wargaming.net League (WGL)</strong> и её региональные турниры.</p><p>Классический соревновательный режим — «Штурм» (Attack/Defense): у атакующей команды около 10 минут, чтобы захватить базу или уничтожить все машины соперника, а обороняющаяся команда старается не пустить их и выиграть по истечении времени. Составы собираются по правилу «7/68»: семь танков, суммарный «вес» которых по уровням не превышает 68 очков, — это ограничение мешает выставить набор из одних топовых машин.</p><p>Встречи играются сериями до определённого числа побед — например, Bo5 (до 3 выигранных карт-раундов) или Bo7 (до 4). Побеждает команда, первой набравшая нужное число выигранных раундов.</p>
-<h2>Реальные рынки на World of Tanks</h2>
+<h2 id="realnye-rynki-na-world-of-tanks">Реальные рынки на World of Tanks</h2>
 <p>Набор рынков на World of Tanks компактнее, чем в футболе, и во многом похож на линию других командных дисциплин.</p><div class="table-wrap"><table><caption>Типовые рынки на матчи World of Tanks</caption><thead><tr><th>Рынок</th><th>Что означает</th></tr></thead><tbody><tr><td>Победитель матча</td><td>Какая команда выиграет серию (двухисходный рынок)</td></tr><tr><td>Фора по картам/раундам</td><td>Гандикап к счёту серии, например Ф1 (−1.5)</td></tr><tr><td>Тотал сыгранных карт</td><td>Больше или меньше линии (например, 3.5 в Bo5)</td></tr><tr><td>Победитель карты</td><td>Кто выиграет конкретный раунд серии</td></tr><tr><td>Точный счёт серии</td><td>Итоговый счёт по картам, например 3:1</td></tr></tbody></table></div><p>Что такое гандикап и как он двигает счёт, подробно разобрано в материале <a href="/shkola/terminy/chto-takoe-fora">что такое фора</a>.</p>
-<h2>Три примера расчёта со ставкой 1000 ₽</h2>
+<h2 id="tri-primera-rascheta-so-stavkoj-1000">Три примера расчёта со ставкой 1000 ₽</h2>
 <p>Коэффициенты в примерах гипотетические.</p><p><strong>Пример 1. Победитель серии.</strong> Ставка 1000 ₽ на фаворита в серии Bo5 за коэффициент 1.70. При победе выплата — 1000 × 1.70 = 1700 ₽, прибыль — 700 ₽.</p><p><strong>Пример 2. Тотал карт.</strong> Ставка 1000 ₽ на «тотал карт меньше 3.5» за 1.95. Ставка проходит, если серия заканчивается всухую 3:0. Выплата — 1000 × 1.95 = 1950 ₽, прибыль — 950 ₽. Если счёт станет 3:1 или 3:2, ставка проиграет.</p><p><strong>Пример 3. Фора по картам.</strong> Ставка 1000 ₽ на Ф1 (−1.5) на фаворита за 2.00. Для прохода фавориту нужно победить с разницей минимум в 2 карты (например, 3:1 или 3:0). Выплата — 1000 × 2.00 = 2000 ₽, прибыль — 1000 ₽.</p>
-<h2>Турниры и ликвидность рынка</h2>
+<h2 id="turniry-i-likvidnost-rynka">Турниры и ликвидность рынка</h2>
 <p>Соревновательная сцена World of Tanks сегодня нестабильна: масштаб турниров и активность региональных лиг менялись, а глобальная WGL в прежнем виде проводится не всегда. Практический вывод для ставок:</p><ul><li>Линия появляется преимущественно во время активных турниров, а между ними роспись может отсутствовать.</li><li>Глубина рынков и лимиты обычно ниже, чем в топ-дисциплинах; лайв встречается не всегда.</li><li>Коэффициенты на нишевых событиях часто идут с повышенной маржой — это стоит учитывать при расчёте.</li></ul><p>Перед ставкой убедитесь, что событие реально в календаре оператора, и не переносите на него ожидания по ликвидности из футбола или тенниса. Работу с рынками в реальном времени разбираем в статье про <a href="/shkola/terminy/chto-takoe-live-stavki">live-ставки</a>.</p>
-<h2>Типичные ошибки новичка</h2>
+<h2 id="tipichnye-oshibki-novichka">Типичные ошибки новичка</h2>
 <p>Ошибки, характерные для ставок на World of Tanks:</p><ul><li><strong>Ставка на «мёртвую» линию.</strong> Вне активных турниров событий почти нет; не стоит искать матчи там, где сцена сейчас неактивна.</li><li><strong>Недооценка маржи.</strong> На нишевых дисциплинах заклад в коэффициент выше, и длинные экспрессы теряют ценность быстрее.</li><li><strong>Перенос логики других командных игр.</strong> Режим «Штурм» асимметричен: роли атаки и обороны и подбор из «7/68» сильно влияют на исход карты.</li><li><strong>Игра без анализа составов.</strong> В командном киберспорте важны актуальный ростер и форма, а не только имя организации.</li></ul><p>Сравнить операторов из реестра ЕРАИ по росписи на киберспорт удобно в <a href="/rejting/dlya-kibersporta">рейтинге БК для киберспорта</a>, а по общим условиям — в основном <a href="/rating">рейтинге букмекеров</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>В каком формате играют матчи World of Tanks в киберспорте?</summary><p>Команды играют 7 на 7 в режиме «Штурм» (атака/оборона). Составы собираются по правилу «7/68»: семь танков суммарным весом до 68 очков по уровням. Серии проводятся до нужного числа побед — например, Bo5 или Bo7.</p></details>
 <details><summary>Какие рынки доступны на World of Tanks?</summary><p>Чаще всего это победитель серии, фора по картам, тотал сыгранных карт, победитель отдельной карты и точный счёт серии. Набор компактнее, чем в футболе.</p></details>
 <details><summary>Почему на World of Tanks мало матчей в линии?</summary><p>Соревновательная сцена дисциплины нестабильна, крупные турниры проходят не постоянно. Линия появляется в основном во время активных событий, между ними роспись может отсутствовать.</p></details>
 <details><summary>Что означает счёт 3:0 в серии Bo5?</summary><p>Bo5 играется до 3 побед. Счёт 3:0 значит «сухую» победу без отданных карт. Это важно для рынков: при 3:0 «тотал меньше 3.5» проходит, а фора −1.5 на победителя выигрывает.</p></details>
 <details><summary>Есть ли ничья в матче World of Tanks?</summary><p>В серии на победителя ничьи нет — кто-то первым набирает нужное число выигранных карт. Поэтому рынок «победитель матча» двухисходный.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/fonbet">Фонбет</a>, <a href="/bukmekery/marathonbet">Марафон</a>, <a href="/bukmekery/betcity">Бетсити</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/stavki/futbol"><b>Ставки на футбол: рынки, роспись и типичные ошибки</b><small>Ставки на спорт</small></a>
       <a class="tile" href="/stavki/hokkej"><b>Ставки на хоккей: тоталы, форы и особенности КХЛ и НХЛ</b><small>Ставки на спорт</small></a>

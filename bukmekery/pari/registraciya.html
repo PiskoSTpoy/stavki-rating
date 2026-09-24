@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "PARI", "item": "https://stavki-rating.ru/bukmekery/pari"}, {"@type": "ListItem", "position": 4, "name": "Регистрация в PARI: как пройти все шаги", "item": "https://stavki-rating.ru/bukmekery/pari/registraciya"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Регистрация в PARI: как пройти все шаги", "description": "Как зарегистрироваться у легального букмекера в России: номер телефона, идентификация через Единый ЦУПИС и первый депозит от 100 рублей. Пошагово.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/pari/registraciya", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Регистрация в PARI: как пройти все шаги", "description": "Как зарегистрироваться у легального букмекера в России: номер телефона, идентификация через Единый ЦУПИС и первый депозит от 100 рублей. Пошагово.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/pari/registraciya", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Сколько времени занимает регистрация у PARI?", "acceptedAnswer": {"@type": "Answer", "text": "Сам процесс заполнения формы и подтверждения телефона занимает несколько минут. Дольше может занять идентификация через ЦУПИС, если она проходит не через Госуслуги, а, например, лично в пункте приёма ставок."}}, {"@type": "Question", "name": "Можно ли зарегистрироваться без идентификации через ЦУПИС?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, для легальных букмекеров в России это обязательный этап — без него ставки и вывод средств недоступны."}}, {"@type": "Question", "name": "Какая минимальная сумма пополнения при регистрации?", "acceptedAnswer": {"@type": "Answer", "text": "У PARI минимальная сумма первого пополнения счёта — от 100 ₽. Способы пополнения зависят от того, что доступно через ЦУПИС на момент регистрации."}}, {"@type": "Question", "name": "Что делать, если идентификация через Госуслуги не проходит?", "acceptedAnswer": {"@type": "Answer", "text": "В этом случае можно попробовать альтернативный способ — например, личное посещение пункта приёма ставок оператора. Актуальные варианты идентификации уточняйте у ЦУПИС или на сайте pari.ru."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/pari">PARI</a><span>/</span>Регистрация в PARI: как пройти все шаги</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · PARI ·</div>
     <h1>Регистрация в PARI: как пройти все шаги</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Регистрация у любого легального букмекера в России, включая PARI, устроена по единому принципу: указание номера телефона, подтверждение личности через Единый ЦУПИС и первое пополнение счёта. Разбираем общий порядок действий шаг за шагом.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/pari?p=pari&amp;pl=subpage-top">Сайт букмекера PARI →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#chto-nuzhno-dlya-registracii">Что нужно для регистрации</a></li><li><a href="#poshagovyj-process">Пошаговый процесс</a></li><li><a href="#identifikaciya-cherez-edinyj-cupis">Идентификация через Единый ЦУПИС</a></li><li><a href="#posle-registracii-prilozhenie-i-dostup-k-akkauntu">После регистрации: приложение и доступ к аккаунту</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Что нужно для регистрации</h2>
+    <h2 id="chto-nuzhno-dlya-registracii">Что нужно для регистрации</h2>
 <p>Для создания аккаунта у легального букмекера понадобится действующий номер телефона и доступ к нему для подтверждения кодом. Дальше потребуется пройти идентификацию через Единый центр учёта переводов интерактивных ставок (ЦУПИС) — это обязательный этап для всех операторов из реестра ЕРАИ, включая PARI.</p><p>Дополнительно может потребоваться указать адрес электронной почты для уведомлений и подтвердить согласие с правилами оператора и политикой обработки персональных данных — это стандартная практика для всех легальных букмекеров, работающих в России.</p>
-<h2>Пошаговый процесс</h2>
+<h2 id="poshagovyj-process">Пошаговый процесс</h2>
 <div class="table-wrap"><table><caption>Общий порядок регистрации у легального букмекера</caption><thead><tr><th>Шаг</th><th>Что нужно сделать</th></tr></thead><tbody><tr><td>1</td><td>Указать номер телефона и подтвердить его кодом из SMS</td></tr><tr><td>2</td><td>Придумать пароль и заполнить базовые данные аккаунта</td></tr><tr><td>3</td><td>Пройти идентификацию через Единый ЦУПИС — через Госуслуги, лично в пункте приёма ставок или другим предусмотренным способом</td></tr><tr><td>4</td><td>Пополнить счёт — минимальная сумма у PARI составляет от 100 ₽</td></tr><tr><td>5</td><td>Перейти к выбору событий и оформлению ставок</td></tr></tbody></table></div><p>Подробнее о том, как устроена идентификация через ЦУПИС, — в материале <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">регистрация и ЦУПИС</a>.</p><p>После завершения всех шагов аккаунт становится полностью функциональным: доступны ставки, история операций и личный кабинет с настройками профиля. Если на каком-то из этапов возникает ошибка, разумно сначала проверить корректность введённых данных и только затем обращаться в поддержку.</p>
-<h2>Идентификация через Единый ЦУПИС</h2>
+<h2 id="identifikaciya-cherez-edinyj-cupis">Идентификация через Единый ЦУПИС</h2>
 <p>Без прохождения идентификации через ЦУПИС ставки в легальной букмекерской конторе недоступны — это требование закона, а не отдельная особенность PARI. Обычно подтвердить личность можно через учётную запись на Госуслугах, лично при посещении пункта приёма ставок или иным способом, который предлагает ЦУПИС.</p><p>Перед регистрацией стоит убедиться, что выбранный букмекер действительно находится в реестре легальных операторов — как это проверить самостоятельно, описано в материале <a href="/kak-proverit-licenziyu">как проверить лицензию букмекера</a>.</p><p>Этот механизм защищает не только государство и оператора от нелегальных операций, но и самого игрока — например, при споре о начислении выигрыша подтверждённая идентификация упрощает разбирательство. Именно поэтому пропустить этот шаг невозможно ни у одного легального букмекера.</p>
-<h2>После регистрации: приложение и доступ к аккаунту</h2>
+<h2 id="posle-registracii-prilozhenie-i-dostup-k-akkauntu">После регистрации: приложение и доступ к аккаунту</h2>
 <p>После создания аккаунта у PARI, как и у других легальных операторов, доступен вход через сайт или мобильное приложение. Об установке и особенностях приложения — в материале о <a href="/bukmekery/pari/prilozhenie">приложении PARI</a>.</p><p>Если возникают проблемы со входом на основной сайт, обычно у легальных букмекеров есть альтернативные способы доступа — актуальную информацию лучше проверять на официальных ресурсах бренда.</p><p>Стоит также сохранить учётные данные в надёжном месте и включить дополнительные способы защиты аккаунта, если оператор их предлагает — например, подтверждение входа по коду. Это снижает риск несанкционированного доступа к счёту после завершения регистрации.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Сколько времени занимает регистрация у PARI?</summary><p>Сам процесс заполнения формы и подтверждения телефона занимает несколько минут. Дольше может занять идентификация через ЦУПИС, если она проходит не через Госуслуги, а, например, лично в пункте приёма ставок.</p></details>
 <details><summary>Можно ли зарегистрироваться без идентификации через ЦУПИС?</summary><p>Нет, для легальных букмекеров в России это обязательный этап — без него ставки и вывод средств недоступны.</p></details>
 <details><summary>Какая минимальная сумма пополнения при регистрации?</summary><p>У PARI минимальная сумма первого пополнения счёта — от 100 ₽. Способы пополнения зависят от того, что доступно через ЦУПИС на момент регистрации.</p></details>
 <details><summary>Что делать, если идентификация через Госуслуги не проходит?</summary><p>В этом случае можно попробовать альтернативный способ — например, личное посещение пункта приёма ставок оператора. Актуальные варианты идентификации уточняйте у ЦУПИС или на сайте pari.ru.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/pari/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/melbet?p=bukmekery/pari/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>, <a href="/go/pari?p=bukmekery/pari/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>, <a href="/go/zenit?p=bukmekery/pari/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/pari"><b>PARI: что нужно знать о букмекере</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/pari/promokod"><b>Промокод PARI: где искать и как использовать</b><small>Промокод</small></a>

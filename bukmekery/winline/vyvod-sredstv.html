@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Winline", "item": "https://stavki-rating.ru/bukmekery/winline"}, {"@type": "ListItem", "position": 4, "name": "Как устроен вывод средств у букмекера Winline", "item": "https://stavki-rating.ru/bukmekery/winline/vyvod-sredstv"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как устроен вывод средств у букмекера Winline", "description": "Механика вывода средств у легального букмекера Winline: роль ЦУПИС, идентификация перед выводом и удержание НДФЛ — без придуманных сроков и лимитов.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/winline/vyvod-sredstv", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как устроен вывод средств у букмекера Winline", "description": "Механика вывода средств у легального букмекера Winline: роль ЦУПИС, идентификация перед выводом и удержание НДФЛ — без придуманных сроков и лимитов.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/winline/vyvod-sredstv", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Почему вывод у легального букмекера идёт через ЦУПИС, а не напрямую?", "acceptedAnswer": {"@type": "Answer", "text": "Это требование к операторам из реестра ЕРАИ: расчёты по ставкам проходят через единый центр учёта, а не напрямую между игроком и букмекером."}}, {"@type": "Question", "name": "Можно ли вывести деньги без идентификации?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, идентификация личности обязательна перед выводом средств у любого легального оператора — это требование законодательства, а не внутреннее правило Winline."}}, {"@type": "Question", "name": "Кто платит налог с выигрыша — я сам или букмекер?", "acceptedAnswer": {"@type": "Answer", "text": "С 2026 года НДФЛ с выигрыша удерживает и перечисляет в бюджет сам букмекер как налоговый агент, поэтому дополнительно декларировать эту сумму самостоятельно не требуется."}}, {"@type": "Question", "name": "На какой способ оплаты выводятся деньги?", "acceptedAnswer": {"@type": "Answer", "text": "Как правило, вывод возможен на тот же способ, с которого проводилось пополнение, и только на данные, привязанные к идентифицированному аккаунту."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/winline">Winline</a><span>/</span>Как устроен вывод средств у букмекера Winline</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Winline ·</div>
     <h1>Как устроен вывод средств у букмекера Winline</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>2 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Вывод денег у легального оператора вроде Winline устроен не так, как у обычного интернет-магазина: деньги проходят через единую систему учёта интерактивных ставок, а сам букмекер выступает налоговым агентом. Разберём общий механизм, а не конкретные суммы и сроки — они меняются, и актуальные цифры стоит смотреть на официальном сайте winline.ru.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/winline?p=winline&amp;pl=subpage-top">Сайт букмекера Winline →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#cherez-kakuyu-sistemu-prohodit-vyvod">Через какую систему проходит вывод</a></li><li><a href="#identifikaciya-obyazatelnoe-uslovie">Идентификация — обязательное условие</a></li><li><a href="#nalog-na-vyigrysh-uderzhivaet-bukmeker">Налог на выигрыш удерживает букмекер</a></li><li><a href="#chto-vliyaet-na-skorost-i-limity-vyvoda">Что влияет на скорость и лимиты вывода</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Через какую систему проходит вывод</h2>
+    <h2 id="cherez-kakuyu-sistemu-prohodit-vyvod">Через какую систему проходит вывод</h2>
 <p>Все расчёты легальных букмекеров в России, включая Winline, проходят через Единый центр учёта переводов интерактивных ставок (ЦУПИС). Именно ЦУПИС технически обрабатывает пополнение и вывод средств, а не букмекер напрямую — это требование к любому оператору из реестра ЕРАИ. Подробно принцип работы этой системы описан в статье <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">«Регистрация и ЦУПИС»</a>.</p>
-<h2>Идентификация — обязательное условие</h2>
+<h2 id="identifikaciya-obyazatelnoe-uslovie">Идентификация — обязательное условие</h2>
 <p>Перед выводом средств игрок должен пройти идентификацию личности — это требование законодательства для всех легальных операторов, а не особенность отдельного бренда. Обычно вывод возможен только на тот способ оплаты (карту, счёт), с которого проводилось пополнение, и на данные, совпадающие с указанными при регистрации.</p><p>Общий порядок вывода денег у легальных букмекеров разобран в статье <a href="/shkola/dengi-i-nalogi/kak-vyvesti-dengi">«Как вывести деньги»</a>.</p>
-<h2>Налог на выигрыш удерживает букмекер</h2>
+<h2 id="nalog-na-vyigrysh-uderzhivaet-bukmeker">Налог на выигрыш удерживает букмекер</h2>
 <div class="table-wrap"><table><caption>Общая схема пути денег при выводе</caption><thead><tr><th>Шаг</th><th>Что происходит</th></tr></thead><tbody><tr><td>1. Заявка на вывод</td><td>Игрок запрашивает вывод в личном кабинете на сумму доступного баланса</td></tr><tr><td>2. Проверка ЦУПИС</td><td>Операция проходит через единую систему учёта интерактивных ставок</td></tr><tr><td>3. Расчёт НДФЛ</td><td>С 2026 года НДФЛ с выигрыша удерживает и уплачивает букмекер как налоговый агент</td></tr><tr><td>4. Перечисление</td><td>Оставшаяся сумма поступает на способ оплаты, привязанный к идентифицированному аккаунту</td></tr></tbody></table></div><p>Порядок расчёта налога на выигрыш и то, какие суммы им облагаются, разобраны в статье <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">«Налог на выигрыш»</a>, а прикидочный расчёт можно сделать в <a href="/instrumenty/nalog-na-vyigrysh">калькуляторе налога на выигрыш</a>.</p>
-<h2>Что влияет на скорость и лимиты вывода</h2>
+<h2 id="chto-vliyaet-na-skorost-i-limity-vyvoda">Что влияет на скорость и лимиты вывода</h2>
 <p>Точные сроки обработки заявки и лимиты по сумме у Winline зависят от выбранного способа выплаты и текущих правил оператора — эти параметры меняются, поэтому мы не приводим здесь конкретные цифры. Актуальные условия по способам и срокам вывода нужно смотреть непосредственно в личном кабинете на winline.ru перед тем, как оформлять заявку.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Почему вывод у легального букмекера идёт через ЦУПИС, а не напрямую?</summary><p>Это требование к операторам из реестра ЕРАИ: расчёты по ставкам проходят через единый центр учёта, а не напрямую между игроком и букмекером.</p></details>
 <details><summary>Можно ли вывести деньги без идентификации?</summary><p>Нет, идентификация личности обязательна перед выводом средств у любого легального оператора — это требование законодательства, а не внутреннее правило Winline.</p></details>
 <details><summary>Кто платит налог с выигрыша — я сам или букмекер?</summary><p>С 2026 года НДФЛ с выигрыша удерживает и перечисляет в бюджет сам букмекер как налоговый агент, поэтому дополнительно декларировать эту сумму самостоятельно не требуется.</p></details>
 <details><summary>На какой способ оплаты выводятся деньги?</summary><p>Как правило, вывод возможен на тот же способ, с которого проводилось пополнение, и только на данные, привязанные к идентифицированному аккаунту.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/winline/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/fonbet?p=bukmekery/winline/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/zenit?p=bukmekery/winline/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/melbet?p=bukmekery/winline/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/winline"><b>Winline — обзор букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/winline/promokod"><b>Промокод Winline: как найти и использовать</b><small>Промокод</small></a>

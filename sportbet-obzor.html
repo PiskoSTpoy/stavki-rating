@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -210,7 +220,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span>Спортбет — карточка</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Карточка ·</div>
     <h1>Спортбет — легальная букмекерская контора</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>обновлено 24.09.2026</span></div>
+    <div class="small muted meta-row"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>статус проверен <time datetime="2026-09-25">25.09.2026</time></span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Спортбет входит в перечень организаторов азартных игр ФНС, работает по лицензии на букмекерскую деятельность и принимает интерактивные ставки через Единый ЦУПИС. Официальный сайт легальной российской версии — <strong style="color:var(--text)">sportbet.ru</strong>. Другие адреса с похожим названием (в том числе в зоне .com) к легальной конторе не относятся.</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
       <a class="btn btn-official" rel="sponsored nofollow" href="/go/sportbet?p=sportbet-obzor&amp;pl=cta">Сайт букмекера →</a><a class="btn btn-glass" href="/bukmekery/sportbet">Подробный обзор, промокоды, приложение →</a>
@@ -218,7 +228,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Статус и реквизиты</h2>
+    <h2 id="status">Спортбет: статус и реквизиты</h2>
     <div class="table-wrap"><table><tbody>
 <tr><td>Юридическое лицо</td><td>АО «СпортБет»</td></tr>
 <tr><td>ИНН</td><td>7710310850</td></tr>
@@ -228,8 +238,8 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <tr><td>Статус</td><td>Легальная · реестр ЕРАИ</td></tr>
 </tbody></table></div>
     <p class="muted small" style="margin-top:8px">Проверено 02.09.2026: перечень ФНС, 1cupis.ru, живая линия/регистрация на sportbet.ru. До 30.03.2022 бренд назывался «Мостбет»; в 2023–2025 онлайн-приём был ограничен.</p>
-    <p>Реквизиты сверены с перечнем организаторов азартных игр ФНС и списком партнёров Единого ЦУПИС. Как самому найти контору в реестре — в <a href="/kak-proverit-licenziyu">инструкции по проверке лицензии</a>.</p>
-    <h2>Другие легальные БК</h2>
+    <p>Реквизиты Спортбет сверены с перечнем организаторов азартных игр ФНС и списком партнёров Единого ЦУПИС. Как самому найти контору в реестре — в <a href="/kak-proverit-licenziyu">инструкции по проверке лицензии</a>.</p>
+    <h2 id="drugie">Другие легальные БК</h2>
     <p>Все конторы из реестра ЕРАИ — в <a href="/rating">каталоге</a>. Порядок алфавитный, оценок и рекомендаций нет.</p>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=sportbet-obzor&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/melbet?p=sportbet-obzor&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>, <a href="/go/fonbet?p=sportbet-obzor&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/zenit?p=sportbet-obzor&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
     <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>

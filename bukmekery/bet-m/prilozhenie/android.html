@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Бет-М", "item": "https://stavki-rating.ru/bukmekery/bet-m"}, {"@type": "ListItem", "position": 4, "name": "Как скачать и установить Бет-М на Android", "item": "https://stavki-rating.ru/bukmekery/bet-m/prilozhenie/android"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как скачать и установить Бет-М на Android", "description": "Как скачать и установить приложение Бет-М на Android: официальный источник загрузки, порядок установки и почему такие приложения не попадают в Google Play.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/bet-m/prilozhenie/android", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как скачать и установить Бет-М на Android", "description": "Как скачать и установить приложение Бет-М на Android: официальный источник загрузки, порядок установки и почему такие приложения не попадают в Google Play.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/bet-m/prilozhenie/android", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Можно ли скачать Бет-М из Google Play?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, для российской аудитории Google Play не размещает приложения для ставок на реальные деньги. Официальные каналы для Android — RuStore или прямая загрузка с сайта bet-m.ru."}}, {"@type": "Question", "name": "Безопасно ли устанавливать apk-файл вручную?", "acceptedAnswer": {"@type": "Answer", "text": "Безопасно, если файл скачан именно с официального домена оператора. Файлы с посторонних сайтов и файлообменников проверить невозможно, и устанавливать их мы не рекомендуем."}}, {"@type": "Question", "name": "Нужно ли что-то менять в настройках телефона?", "acceptedAnswer": {"@type": "Answer", "text": "Для установки файла не из магазина приложений система может попросить разрешить установку из конкретного источника — это стандартный запрос Android, разрешение стоит давать только для проверенного официального файла."}}, {"@type": "Question", "name": "Что делать, если приложение не устанавливается?", "acceptedAnswer": {"@type": "Answer", "text": "Проверьте свободное место на устройстве и версию операционной системы, а также убедитесь, что скачиваете актуальную версию файла именно с официального сайта."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/bet-m">Бет-М</a><span>/</span>Как скачать и установить Бет-М на Android</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Бет-М ·</div>
     <h1>Как скачать и установить Бет-М на Android</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>2 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Приложения легальных букмекеров для ставок на реальные деньги не размещаются в Google Play для российских пользователей, поэтому для Android-устройств Бет-М распространяет приложение через другие официальные каналы — обычно это каталог RuStore или файл установки с собственного сайта. Ниже — общий порядок действий и на что обратить внимание.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/bet-m?p=bet-m&amp;pl=subpage-top">Сайт букмекера Бет-М →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#pochemu-ne-cherez-google-play">Почему не через Google Play</a></li><li><a href="#poryadok-ustanovki">Порядок установки</a></li><li><a href="#kak-ne-ustanovit-poddelku">Как не установить подделку</a></li><li><a href="#chto-dalshe">Что дальше</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Почему не через Google Play</h2>
+    <h2 id="pochemu-ne-cherez-google-play">Почему не через Google Play</h2>
 <p>Это ограничение самой платформы Google Play, а не решение отдельного оператора: сервис не публикует в российском регионе приложения для ставок на реальные деньги. Поэтому легальные букмекеры используют RuStore либо прямую установку apk-файла, подписанного и размещённого на официальном домене.</p>
-<h2>Порядок установки</h2>
+<h2 id="poryadok-ustanovki">Порядок установки</h2>
 <ol><li>Откройте официальный сайт bet-m.ru или каталог RuStore и найдите раздел загрузки приложения.</li><li>Скачайте файл установки именно с официального источника — не с форумов и не по ссылкам из рекламы.</li><li>Если система запросит подтверждение установки приложений из неизвестных источников (для файла с сайта, не из RuStore), разрешение нужно давать точечно и только для этого конкретного файла.</li><li>После установки войдите в приложение с теми же данными, что используете на сайте, либо пройдите регистрацию.</li></ol><p>Порядок регистрации и подтверждения личности при первом входе описан в материале <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">о регистрации и ЦУПИС</a>.</p>
-<h2>Как не установить подделку</h2>
+<h2 id="kak-ne-ustanovit-poddelku">Как не установить подделку</h2>
 <ul><li>Проверяйте, что домен, с которого скачивается файл, совпадает с официальным адресом bet-m.ru.</li><li>Не доверяйте apk-файлам с сомнительных каталогов приложений и файлообменников — среди них встречаются вредоносные копии.</li><li>После установки сверьте, что интерфейс и функциональность соответствуют официальному сайту оператора, а не выглядят как грубая имитация.</li></ul>
-<h2>Что дальше</h2>
+<h2 id="chto-dalshe">Что дальше</h2>
 <p>Общая информация об официальных каналах загрузки для всех платформ собрана на <a href="/bukmekery/bet-m/prilozhenie">странице о приложении Бет-М</a>, а версия для iPhone разобрана отдельно на <a href="/bukmekery/bet-m/prilozhenie/ios">странице об установке на iOS</a>. Сравнение условий у разных легальных операторов доступно в <a href="/rating">рейтинге букмекеров</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Можно ли скачать Бет-М из Google Play?</summary><p>Нет, для российской аудитории Google Play не размещает приложения для ставок на реальные деньги. Официальные каналы для Android — RuStore или прямая загрузка с сайта bet-m.ru.</p></details>
 <details><summary>Безопасно ли устанавливать apk-файл вручную?</summary><p>Безопасно, если файл скачан именно с официального домена оператора. Файлы с посторонних сайтов и файлообменников проверить невозможно, и устанавливать их мы не рекомендуем.</p></details>
 <details><summary>Нужно ли что-то менять в настройках телефона?</summary><p>Для установки файла не из магазина приложений система может попросить разрешить установку из конкретного источника — это стандартный запрос Android, разрешение стоит давать только для проверенного официального файла.</p></details>
 <details><summary>Что делать, если приложение не устанавливается?</summary><p>Проверьте свободное место на устройстве и версию операционной системы, а также убедитесь, что скачиваете актуальную версию файла именно с официального сайта.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/bet-m/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/marathonbet?p=bukmekery/bet-m/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>, <a href="/go/betcity?p=bukmekery/bet-m/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>, <a href="/go/pari?p=bukmekery/bet-m/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/bet-m"><b>Бет-М: обзор легального букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/bet-m/promokod"><b>Промокод Бет-М: как это работает</b><small>Промокод</small></a>

@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Фонбет", "item": "https://stavki-rating.ru/bukmekery/fonbet"}, {"@type": "ListItem", "position": 4, "name": "Фонбет на Android: как скачать и установить приложение официально", "item": "https://stavki-rating.ru/bukmekery/fonbet/prilozhenie/android"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Фонбет на Android: как скачать и установить приложение официально", "description": "Как установить приложение Фонбет на Android через RuStore или официальный сайт, почему его нет в Google Play и как не попасть на фейковый APK с посторонних ресурсов.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/fonbet/prilozhenie/android", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Фонбет на Android: как скачать и установить приложение официально", "description": "Как установить приложение Фонбет на Android через RuStore или официальный сайт, почему его нет в Google Play и как не попасть на фейковый APK с посторонних ресурсов.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/fonbet/prilozhenie/android", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Почему приложение Фонбет нельзя найти в Google Play?", "acceptedAnswer": {"@type": "Answer", "text": "Google Play не размещает приложения для ставок на деньги для российской аудитории — правило действует для всех букмекеров, а не только для Фонбет."}}, {"@type": "Question", "name": "Где точно скачать APK для Android?", "acceptedAnswer": {"@type": "Answer", "text": "Только с официального сайта fon.bet или из RuStore и других официальных каталогов приложений — это единственные проверенные источники."}}, {"@type": "Question", "name": "Нужно ли разрешать установку из «неизвестных источников»?", "acceptedAnswer": {"@type": "Answer", "text": "Такой запрос система показывает при установке apk напрямую с сайта, а не через каталог приложений. Подтверждать его стоит только для файла, скачанного из официального источника."}}, {"@type": "Question", "name": "Что делать, если скачанный файл просит слишком много разрешений?", "acceptedAnswer": {"@type": "Answer", "text": "Это повод насторожиться и не продолжать установку — вероятно, файл получен не из официального источника."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/fonbet">Фонбет</a><span>/</span>Фонбет на Android: как скачать и установить приложение официально</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Фонбет ·</div>
     <h1>Фонбет на Android: как скачать и установить приложение официально</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Запрос «Фонбет скачать на андроид» приводит многих сразу в Google Play — и там приложения не находится. Это не ошибка и не признак блокировки конкретного оператора: у ставочных приложений в России другой путь на телефон. Разбираемся, где скачать файл официально и как пройти установку без риска получить подделку.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/fonbet?p=fonbet&amp;pl=subpage-top">Сайт букмекера Фонбет →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#pochemu-ustanovka-otlichaetsya-ot-privychnoj-cherez-google-p">Почему установка отличается от привычной через Google Play</a></li><li><a href="#shagi-ustanovki-v-obschih-chertah">Шаги установки в общих чертах</a></li><li><a href="#kak-ne-popast-na-fejkovuyu-kopiyu">Как не попасть на фейковую копию</a></li><li><a href="#chto-delat-esli-ustanovka-ne-prohodit">Что делать, если установка не проходит</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Почему установка отличается от привычной через Google Play</h2>
+    <h2 id="pochemu-ustanovka-otlichaetsya-ot-privychnoj-cherez-google-p">Почему установка отличается от привычной через Google Play</h2>
 <p>Google Play не размещает приложения для ставок на реальные деньги для российской аудитории — это правило самого магазина, применяемое ко всем букмекерам одинаково. Поэтому для Android-версии Фонбет используется другой путь: официальный сайт fon.bet или альтернативные каталоги приложений, например RuStore. Итоговый функционал приложения от этого не меняется, меняется только источник загрузки. На устройствах Huawei и Samsung такое же приложение иногда можно найти в собственных магазинах производителя — AppGallery и Galaxy Store соответственно, но правило остаётся тем же: источник должен быть официальным.</p>
-<h2>Шаги установки в общих чертах</h2>
+<h2 id="shagi-ustanovki-v-obschih-chertah">Шаги установки в общих чертах</h2>
 <p>Порядок действий похож независимо от того, какой официальный источник вы выбрали.</p><ol><li>Открыть официальный сайт fon.bet или страницу приложения в RuStore.</li><li>Скачать файл или запустить установку через каталог приложений.</li><li>Если система запрашивает разрешение на установку приложений из дополнительного источника — подтвердить его только для этого конкретного файла.</li><li>Запустить приложение и пройти вход или регистрацию с идентификацией через ЦУПИС.</li></ol><p><a href="/bukmekery/fonbet/registraciya">Регистрация и вход</a> в приложении работают так же, как в браузерной версии личного кабинета. Первый запуск после установки может занять чуть больше времени, чем обычно, — это связано с загрузкой формы идентификации, а не с ошибкой файла.</p>
-<h2>Как не попасть на фейковую копию</h2>
+<h2 id="kak-ne-popast-na-fejkovuyu-kopiyu">Как не попасть на фейковую копию</h2>
 <p>Поддельные apk-файлы часто распространяются под видом «улучшенной» версии с несуществующими бонусами. Отличить подделку от официального файла помогают несколько признаков.</p><div class="table-wrap"><table><caption>Официальный файл против подделки</caption><thead><tr><th>Признак</th><th>Официальный источник</th><th>Подозрительный источник</th></tr></thead><tbody><tr><td>Где размещён</td><td>fon.bet, RuStore</td><td>файлообменник, сторонний телеграм-канал</td></tr><tr><td>Обещания в описании</td><td>стандартный функционал ставок</td><td>«эксклюзивный» бонус за установку именно этого файла</td></tr><tr><td>Запрашиваемые разрешения</td><td>соответствуют функциям приложения</td><td>избыточные, включая доступ к смс без явной причины</td></tr><tr><td>Название разработчика</td><td>официальное юридическое название оператора</td><td>не указано или не совпадает</td></tr></tbody></table></div>
-<h2>Что делать, если установка не проходит</h2>
+<h2 id="chto-delat-esli-ustanovka-ne-prohodit">Что делать, если установка не проходит</h2>
 <p>Если система блокирует установку или файл не запускается, стоит проверить, что он получен именно с официального сайта или из RuStore, а не пересохранён третьим лицом. Общий обзор официальных каналов распространения приложения — на <a href="/bukmekery/fonbet/prilozhenie">странице о приложении Фонбет</a>. После установки выигрыш можно будет вывести — <a href="/bukmekery/fonbet/vyvod-sredstv">механика вывода средств</a> разобрана отдельно. Если разрешение на установку из дополнительного источника не появляется или система блокирует файл без объяснений, стоит заново скачать файл именно с официального сайта — иногда проблема связана с повреждённой копией файла, а не с настройками телефона.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Почему приложение Фонбет нельзя найти в Google Play?</summary><p>Google Play не размещает приложения для ставок на деньги для российской аудитории — правило действует для всех букмекеров, а не только для Фонбет.</p></details>
 <details><summary>Где точно скачать APK для Android?</summary><p>Только с официального сайта fon.bet или из RuStore и других официальных каталогов приложений — это единственные проверенные источники.</p></details>
 <details><summary>Нужно ли разрешать установку из «неизвестных источников»?</summary><p>Такой запрос система показывает при установке apk напрямую с сайта, а не через каталог приложений. Подтверждать его стоит только для файла, скачанного из официального источника.</p></details>
 <details><summary>Что делать, если скачанный файл просит слишком много разрешений?</summary><p>Это повод насторожиться и не продолжать установку — вероятно, файл получен не из официального источника.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/fonbet/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/zenit?p=bukmekery/fonbet/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/fonbet?p=bukmekery/fonbet/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/ligastavok?p=bukmekery/fonbet/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/fonbet"><b>Фонбет: обзор букмекера, легальный статус и как начать</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/fonbet/promokod"><b>Промокод Фонбет: как это работает</b><small>Промокод</small></a>

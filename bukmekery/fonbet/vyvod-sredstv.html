@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Фонбет", "item": "https://stavki-rating.ru/bukmekery/fonbet"}, {"@type": "ListItem", "position": 4, "name": "Вывод средств в Фонбет: как устроена механика вывода выигрыша", "item": "https://stavki-rating.ru/bukmekery/fonbet/vyvod-sredstv"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Вывод средств в Фонбет: как устроена механика вывода выигрыша", "description": "Разбираем механику вывода денег у легального букмекера: роль ЕЦУПИС и СБП, обязательная идентификация и удержание НДФЛ букмекером как налоговым агентом.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/fonbet/vyvod-sredstv", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Вывод средств в Фонбет: как устроена механика вывода выигрыша", "description": "Разбираем механику вывода денег у легального букмекера: роль ЕЦУПИС и СБП, обязательная идентификация и удержание НДФЛ букмекером как налоговым агентом.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/fonbet/vyvod-sredstv", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Можно ли вывести деньги без идентификации счёта?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, идентификация через ЦУПИС — обязательное условие для вывода средств у любого легального букмекера, независимо от суммы выигрыша."}}, {"@type": "Question", "name": "Кто платит налог с выигрыша — я сам или букмекер?", "acceptedAnswer": {"@type": "Answer", "text": "С 2026 года налог удерживает букмекер как налоговый агент до вывода средств пользователю. Это отличается от порядка, при котором игрок декларировал доход самостоятельно."}}, {"@type": "Question", "name": "Куда именно приходят выведенные деньги?", "acceptedAnswer": {"@type": "Answer", "text": "На банковскую карту или счёт, привязанные к личному кабинету через систему ЦУПИС — напрямую с внутреннего счёта оператора деньги не переводятся."}}, {"@type": "Question", "name": "Одинаковые ли сроки и лимиты вывода у всех легальных букмекеров?", "acceptedAnswer": {"@type": "Answer", "text": "Общая механика (ЦУПИС, идентификация, удержание налога) регулируется законом и одинакова для всех. Конкретные сроки обработки и лимиты по способам вывода нужно уточнять в личном кабинете оператора."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/fonbet">Фонбет</a><span>/</span>Вывод средств в Фонбет: как устроена механика вывода выигрыша</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Фонбет ·</div>
     <h1>Вывод средств в Фонбет: как устроена механика вывода выигрыша</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Вопрос «Фонбет вывод средств» обычно возникает уже после выигрыша, когда хочется понять, куда и как деньги придут. У легальных букмекеров в России этот процесс устроен одинаково по закону: через Единый ЦУПИС, с обязательной идентификацией и удержанием налога букмекером как налоговым агентом. Разбираем механику, без обещаний по конкретным срокам и лимитам.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/fonbet?p=fonbet&amp;pl=subpage-top">Сайт букмекера Фонбет →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#rol-edinogo-cupis-v-vyvode-deneg">Роль Единого ЦУПИС в выводе денег</a></li><li><a href="#identifikaciya-kak-obyazatelnoe-uslovie">Идентификация как обязательное условие</a></li><li><a href="#kak-obychno-vyvodyatsya-dengi">Как обычно выводятся деньги</a></li><li><a href="#nalog-na-vyigrysh-i-rol-bukmekera">Налог на выигрыш и роль букмекера</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Роль Единого ЦУПИС в выводе денег</h2>
+    <h2 id="rol-edinogo-cupis-v-vyvode-deneg">Роль Единого ЦУПИС в выводе денег</h2>
 <p>Единый центр учёта переводов интерактивных ставок (ЦУПИС) — обязательное звено между счётом игрока у легального букмекера и его банковским счётом. Любой вывод выигрыша проходит через эту систему, а не напрямую с внутреннего счёта оператора на карту. Это часть регулирования отрасли, а не особенность конкретного бренда — так работает вывод у каждого легального оператора из реестра ЕРАИ.</p><p>Пополнение счёта устроено по похожему принципу, что подробно разобрано в материале <a href="/shkola/dengi-i-nalogi/kak-popolnit-schet">как пополнить счёт у букмекера</a>. Оба процесса — пополнение и вывод — проходят через одну и ту же инфраструктуру ЦУПИС, поэтому реквизиты, которые прошли идентификацию при пополнении, обычно доступны и для вывода средств.</p>
-<h2>Идентификация как обязательное условие</h2>
+<h2 id="identifikaciya-kak-obyazatelnoe-uslovie">Идентификация как обязательное условие</h2>
 <p>Перед первым выводом средств счёт должен пройти идентификацию — подтверждение личности пользователя в соответствии с требованиями к букмекерской деятельности. Без завершённой идентификации вывод выигрыша технически невозможен, независимо от суммы. Подробно о том, как проходит <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">регистрация и идентификация через ЦУПИС</a>, можно почитать в отдельном разборе.</p>
-<h2>Как обычно выводятся деньги</h2>
+<h2 id="kak-obychno-vyvodyatsya-dengi">Как обычно выводятся деньги</h2>
 <p>Технически вывод происходит через способы, привязанные к системе ЦУПИС.</p><div class="table-wrap"><table><caption>Общие способы вывода у легальных букмекеров</caption><thead><tr><th>Способ</th><th>Как работает</th></tr></thead><tbody><tr><td>Банковская карта</td><td>Перевод на карту, привязанную к счёту через ЦУПИС</td></tr><tr><td>СБП (Система быстрых платежей)</td><td>Перевод по номеру телефона на счёт в банке-участнике СБП</td></tr></tbody></table></div><p>Точные доступные способы, лимиты и сроки обработки конкретных заявок нужно уточнять в личном кабинете оператора — они могут отличаться в зависимости от суммы, способа и текущих правил площадки. На скорость обработки заявки может влиять и загрузка самой системы ЦУПИС — это общая инфраструктура для всех легальных операторов, а не что-то, что зависит только от конкретного букмекера.</p>
-<h2>Налог на выигрыш и роль букмекера</h2>
+<h2 id="nalog-na-vyigrysh-i-rol-bukmekera">Налог на выигрыш и роль букмекера</h2>
 <p>С 2026 года легальный букмекер выступает налоговым агентом по НДФЛ с выигрышей: налог удерживается оператором до того, как деньги поступают на счёт пользователя, а не рассчитывается и уплачивается игроком самостоятельно после вывода. Это меняет саму механику получения денег на руки по сравнению с более старым порядком, когда декларировать доход нужно было отдельно.</p><p>Как именно рассчитывается налоговая база и в каких случаях действуют исключения, разобрано в материале <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">налог на выигрыш у букмекера</a>. Прикинуть сумму удержания по своей ставке можно в <a href="/instrumenty/nalog-na-vyigrysh">калькуляторе налога на выигрыш</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Можно ли вывести деньги без идентификации счёта?</summary><p>Нет, идентификация через ЦУПИС — обязательное условие для вывода средств у любого легального букмекера, независимо от суммы выигрыша.</p></details>
 <details><summary>Кто платит налог с выигрыша — я сам или букмекер?</summary><p>С 2026 года налог удерживает букмекер как налоговый агент до вывода средств пользователю. Это отличается от порядка, при котором игрок декларировал доход самостоятельно.</p></details>
 <details><summary>Куда именно приходят выведенные деньги?</summary><p>На банковскую карту или счёт, привязанные к личному кабинету через систему ЦУПИС — напрямую с внутреннего счёта оператора деньги не переводятся.</p></details>
 <details><summary>Одинаковые ли сроки и лимиты вывода у всех легальных букмекеров?</summary><p>Общая механика (ЦУПИС, идентификация, удержание налога) регулируется законом и одинакова для всех. Конкретные сроки обработки и лимиты по способам вывода нужно уточнять в личном кабинете оператора.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/fonbet/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/fonbet?p=bukmekery/fonbet/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/betcity?p=bukmekery/fonbet/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>, <a href="/go/zenit?p=bukmekery/fonbet/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/fonbet"><b>Фонбет: обзор букмекера, легальный статус и как начать</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/fonbet/promokod"><b>Промокод Фонбет: как это работает</b><small>Промокод</small></a>

@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Бет-М", "item": "https://stavki-rating.ru/bukmekery/bet-m"}, {"@type": "ListItem", "position": 4, "name": "Фрибет Бет-М: механика бесплатной ставки", "item": "https://stavki-rating.ru/bukmekery/bet-m/fribet"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Фрибет Бет-М: механика бесплатной ставки", "description": "Что такое фрибет и как он работает у легальных букмекеров, включая Бет-М: механика начисления, минимальный коэффициент, срок действия и вывод выигрыша.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/bet-m/fribet", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Фрибет Бет-М: механика бесплатной ставки", "description": "Что такое фрибет и как он работает у легальных букмекеров, включая Бет-М: механика начисления, минимальный коэффициент, срок действия и вывод выигрыша.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/bet-m/fribet", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Можно ли вывести фрибет сразу как деньги?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет, фрибет — это бонусная ставка, а не денежные средства. Вывести можно только чистый выигрыш от ставки, сделанной с использованием фрибета, и то после выполнения условий акции.</p>"}}, {"@type": "Question", "name": "Какой размер фрибета дают в Бет-М?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Размер и условия фрибета зависят от конкретной действующей акции и могут меняться. Актуальную информацию смотрите в разделе бонусов на официальном сайте bet-m.ru.</p>"}}, {"@type": "Question", "name": "Сгорает ли фрибет, если его не использовать?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Как правило, у легальных букмекеров фрибет имеет ограниченный срок действия, после которого сгорает. Точный срок для конкретной акции указывается в её правилах на сайте оператора.</p>"}}, {"@type": "Question", "name": "Можно ли поставить фрибетом на экспресс?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Обычно правила требуют использовать фрибет на одиночную ставку (ординар), но точные условия зависят от конкретной акции — их нужно проверять в правилах на официальном сайте перед использованием.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,34 +222,35 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/bet-m">Бет-М</a><span>/</span>Фрибет Бет-М: механика бесплатной ставки</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Бет-М ·</div>
     <h1>Фрибет Бет-М: механика бесплатной ставки</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Фрибет — это бесплатная ставка, которую букмекер начисляет игроку вместо денег: её можно использовать для пари, но нельзя сразу вывести на карту. Разберём общий принцип работы фрибета у легальных операторов и то, на какие условия стоит смотреть у Бет-М. Точный размер и срок действия фрибета этого оператора уточняйте на официальном сайте bet-m.ru — мы не приводим конкретные цифры, чтобы не давать неактуальную информацию.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/bet-m?p=bet-m&amp;pl=subpage-top">Сайт букмекера Бет-М →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#chto-takoe-fribet">Что такое фрибет</a></li><li><a href="#kak-fribet-obychno-nachislyaetsya">Как фрибет обычно начисляется</a></li><li><a href="#fribet-i-keshbek-chem-otlichayutsya">Фрибет и кэшбэк: чем отличаются</a></li><li><a href="#tipichnye-usloviya-ispolzovaniya-fribeta">Типичные условия использования фрибета</a></li><li><a href="#kak-ne-poteryat-fribet-vpustuyu">Как не потерять фрибет впустую</a></li><li><a href="#riski-i-na-chto-obratit-vnimanie">Риски и на что обратить внимание</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Что такое фрибет</h2>
+    <h2 id="chto-takoe-fribet">Что такое фрибет</h2>
 <p>Фрибет — это бонусная ставка, номинал которой засчитывается в игру, но не может быть выведен как обычные деньги до выполнения условий. Если ставка с фрибетом выигрывает, на счёт обычно зачисляется чистый выигрыш — то есть сумма без номинала самого фрибета. Подробное определение термина — в материале <a href="/shkola/terminy/chto-takoe-fribet">что такое фрибет</a>.</p>
-<h2>Как фрибет обычно начисляется</h2>
+<h2 id="kak-fribet-obychno-nachislyaetsya">Как фрибет обычно начисляется</h2>
 <ul><li>За регистрацию и подтверждение аккаунта у нового игрока.</li><li>По промокоду в рамках конкретной акции — подробнее в материале <a href="/bukmekery/bet-m/promokod">о промокодах Бет-М</a>.</li><li>Как элемент программы лояльности для действующих клиентов.</li><li>За выполнение определённого условия, например пополнение счёта.</li></ul><p>Конкретные механики начисления фрибета у Бет-М и их актуальность нужно смотреть на официальном сайте оператора.</p>
-<h2>Фрибет и кэшбэк: чем отличаются</h2>
+<h2 id="fribet-i-keshbek-chem-otlichayutsya">Фрибет и кэшбэк: чем отличаются</h2>
 <p>Фрибет и кэшбэк — разные форматы бонусов, которые новички иногда путают между собой. Фрибет выдаётся заранее и используется как самостоятельная ставка, а кэшбэк — это частичный возврат уже проигранных средств по итогам определённого периода. Кэшбэк может поступить на счёт как реальные деньги или как ещё один фрибет — конкретный формат определяет оператор в правилах своей акции.</p>
-<h2>Типичные условия использования фрибета</h2>
+<h2 id="tipichnye-usloviya-ispolzovaniya-fribeta">Типичные условия использования фрибета</h2>
 <p>У большинства легальных букмекеров фрибет имеет схожий набор условий:</p><ul><li>Минимальный коэффициент события, на который можно поставить фрибет.</li><li>Ограниченный срок действия — если не использовать фрибет вовремя, он сгорает.</li><li>Ставка обычно должна быть одиночной (ординар), без экспресса.</li><li>Выигрыш засчитывается без номинала самого фрибета.</li></ul><p>Перед использованием фрибета важно прочитать правила конкретной акции на сайте оператора — там указаны точные цифры и сроки.</p>
-<h2>Как не потерять фрибет впустую</h2>
+<h2 id="kak-ne-poteryat-fribet-vpustuyu">Как не потерять фрибет впустую</h2>
 <ul><li>Проверить срок действия сразу после начисления, чтобы не забыть использовать его вовремя.</li><li>Убедиться, что выбранное событие соответствует минимальному коэффициенту из правил акции.</li><li>Сделать ставку одним ординаром, если правила не разрешают экспресс.</li><li>Прочитать, распространяется ли на выигрыш с фрибета дополнительное требование отыгрыша перед выводом.</li></ul>
-<h2>Риски и на что обратить внимание</h2>
+<h2 id="riski-i-na-chto-obratit-vnimanie">Риски и на что обратить внимание</h2>
 <p>Фрибет не является гарантированным доходом: если ставка проигрывает, номинал фрибета просто пропадает, как и обычная проигранная ставка. Стоит также обращать внимание на то, распространяется ли на выигрыш с фрибета требование отыгрыша перед выводом — это часто указано отдельно в правилах акции. Общие принципы отыгрыша бонусов разобраны в статье <a href="/shkola/terminy/chto-takoe-otygrysh-bonusa">что такое отыгрыш бонуса</a>, а рассчитать потенциальный выигрыш поможет <a href="/instrumenty/kalkulyator-stavok">калькулятор ставок</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Можно ли вывести фрибет сразу как деньги?</summary><p>Нет, фрибет — это бонусная ставка, а не денежные средства. Вывести можно только чистый выигрыш от ставки, сделанной с использованием фрибета, и то после выполнения условий акции.</p></details>
 <details><summary>Какой размер фрибета дают в Бет-М?</summary><p>Размер и условия фрибета зависят от конкретной действующей акции и могут меняться. Актуальную информацию смотрите в разделе бонусов на официальном сайте bet-m.ru.</p></details>
 <details><summary>Сгорает ли фрибет, если его не использовать?</summary><p>Как правило, у легальных букмекеров фрибет имеет ограниченный срок действия, после которого сгорает. Точный срок для конкретной акции указывается в её правилах на сайте оператора.</p></details>
 <details><summary>Можно ли поставить фрибетом на экспресс?</summary><p>Обычно правила требуют использовать фрибет на одиночную ставку (ординар), но точные условия зависят от конкретной акции — их нужно проверять в правилах на официальном сайте перед использованием.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/bet-m/fribet&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/pari?p=bukmekery/bet-m/fribet&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>, <a href="/go/zenit?p=bukmekery/bet-m/fribet&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/ligastavok?p=bukmekery/bet-m/fribet&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/bet-m"><b>Бет-М: обзор легального букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/bet-m/promokod"><b>Промокод Бет-М: как это работает</b><small>Промокод</small></a>

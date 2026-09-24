@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -171,7 +181,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Деньги и налоги", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Налоговая реформа букмекеров 2026: что изменилось", "item": "https://stavki-rating.ru/shkola/dengi-i-nalogi/nalogovaya-reforma-bukmekerov-2026"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Налоговая реформа букмекеров 2026: что изменилось", "description": "С 1 января 2026 налоговая нагрузка на букмекеров в России выросла в разы: 7% с разницы ставок и выигрышей, налог на прибыль 25%, отчисления на спорт до 2,5%. Разбираем цифры и последствия.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/dengi-i-nalogi/nalogovaya-reforma-bukmekerov-2026", "datePublished": "2026-09-08", "dateModified": "2026-09-08", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Налоговая реформа букмекеров 2026: что изменилось", "description": "С 1 января 2026 налоговая нагрузка на букмекеров в России выросла в разы: 7% с разницы ставок и выигрышей, налог на прибыль 25%, отчисления на спорт до 2,5%. Разбираем цифры и последствия.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/dengi-i-nalogi/nalogovaya-reforma-bukmekerov-2026", "datePublished": "2026-09-08", "dateModified": "2026-09-08", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Когда вступила в силу новая налоговая реформа для букмекеров?", "acceptedAnswer": {"@type": "Answer", "text": "Закон подписан президентом 28 ноября 2025 года, действует с 1 января 2026 года."}}, {"@type": "Question", "name": "Сколько теперь платят букмекеры налогов?", "acceptedAnswer": {"@type": "Answer", "text": "7% с разницы между принятыми ставками и выплаченными выигрышами (GGR) плюс налог на прибыль 25%. Совокупная налоговая нагрузка на отрасль выросла, по оценкам, примерно в 60 раз."}}, {"@type": "Question", "name": "Влияет ли эта реформа на налог с выигрыша обычного игрока?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Реформа касается налогов самого оператора как компании. Налог физлица с выигрыша — отдельный механизм (НДФЛ с прибыли при выводе), не изменился в рамках этой реформы."}}, {"@type": "Question", "name": "Сколько дополнительных денег получит бюджет?", "acceptedAnswer": {"@type": "Answer", "text": "По оценкам, дополнительные доходы бюджета от новой налоговой нагрузки на букмекеров превысят 60 млрд рублей в год против примерно 1 млрд рублей до реформы."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -211,30 +221,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Деньги и налоги</a><span>/</span>Налоговая реформа букмекеров 2026: что изменилось</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Школа · Деньги и налоги ·</div>
     <h1>Налоговая реформа букмекеров 2026: что изменилось</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 08.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-08">08.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">28 ноября 2025 года президент подписал закон, который с 1 января 2026 года резко повысил налоговую нагрузку на легальных букмекеров России: 7% с разницы между принятыми ставками и выплаченными выигрышами (GGR), налог на прибыль 25% и увеличенные отчисления на развитие спорта. По оценкам, совокупная нагрузка на индустрию выросла примерно в 60 раз. Это не касается ставок и выигрышей игрока напрямую — налог платит оператор, но реформа уже отражается на рынке.</p>
     
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#chto-imenno-izmenilos-s-1-yanvarya-2026">Что именно изменилось с 1 января 2026</a></li><li><a href="#otchisleniya-na-razvitie-sporta-vyrosli-otdelno">Отчисления на развитие спорта выросли отдельно</a></li><li><a href="#kak-reforma-otrazhaetsya-na-rynke">Как реформа отражается на рынке</a></li><li><a href="#kasaetsya-li-eto-igroka-napryamuyu">Касается ли это игрока напрямую</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Что именно изменилось с 1 января 2026</h2>
+    <h2 id="chto-imenno-izmenilos-s-1-yanvarya-2026">Что именно изменилось с 1 января 2026</h2>
 <p>Новая налоговая конструкция для букмекеров и тотализаторов состоит из двух частей:</p><ul><li><strong>7% с GGR</strong> — с разницы между суммой принятых ставок и суммой выплаченных выигрышей (это ключевой показатель дохода оператора, а не выручка целиком).</li><li><strong>Налог на прибыль 25%</strong> — начисляется дополнительно, после GGR-налога.</li></ul><p>Раньше налоговая нагрузка на букмекерскую отрасль была существенно ниже — по оценкам аналитиков, рост составил примерно <strong>в 60 раз</strong>. Прогнозируемые дополнительные доходы бюджета от этой реформы — свыше <strong>60 млрд рублей</strong> в год против примерно 1 млрд рублей до реформы.</p>
-<h2>Отчисления на развитие спорта выросли отдельно</h2>
+<h2 id="otchisleniya-na-razvitie-sporta-vyrosli-otdelno">Отчисления на развитие спорта выросли отдельно</h2>
 <p>Помимо налогов, у легальных букмекеров есть отдельная обязанность — целевые отчисления на развитие физической культуры и спорта в России. Ставка отчислений увеличена:</p><table><thead><tr><th>Период</th><th>Ставка отчислений на спорт</th></tr></thead><tbody><tr><td>До 2026</td><td>2%</td></tr><tr><td>С 2026 года</td><td>2,25%</td></tr><tr><td>С 2028 года</td><td>2,5%</td></tr></tbody></table><p>Эти отчисления идут отдельно от налогов в бюджет — исторически именно они частично финансируют профессиональный спорт в России, включая нижние лиги и отдельные клубы, которые получали поддержку от партнёрства с букмекерами.</p>
-<h2>Как реформа отражается на рынке</h2>
+<h2 id="kak-reforma-otrazhaetsya-na-rynke">Как реформа отражается на рынке</h2>
 <p>Рост налоговой нагрузки уже влияет на индустрию за пределами самих букмекеров. По сообщениям спортивных СМИ, ужесточение уже сказалось на бюджетах отдельных объектов спонсорства в медиафутболе — операторы сокращают маркетинговые и спонсорские расходы, чтобы компенсировать возросшие налоговые отчисления.</p><p>Для крупных легальных операторов (Фонбет, Winline, BetBoom и другие из топ-4 рынка) рост налога — управляемая, хотя и заметная нагрузка на прибыль. Именно на этом фоне некоторые аналитики предупреждают, что часть операторов может занижать декларируемую прибыль — регулятору предстоит следить за корректностью расчётов.</p>
-<h2>Касается ли это игрока напрямую</h2>
+<h2 id="kasaetsya-li-eto-igroka-napryamuyu">Касается ли это игрока напрямую</h2>
 <p>Нет — этот налог платит оператор со своего дохода (GGR и прибыли), а не игрок с выигрыша. Налог на выигрыш физлица — отдельный механизм (НДФЛ 13%/15% с разницы между выводом и депозитом, который автоматически удерживает букмекер, см. материал о выводе средств). Реформа 2026 года касается только финансов самой букмекерской компании как бизнеса.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Когда вступила в силу новая налоговая реформа для букмекеров?</summary><p>Закон подписан президентом 28 ноября 2025 года, действует с 1 января 2026 года.</p></details>
 <details><summary>Сколько теперь платят букмекеры налогов?</summary><p>7% с разницы между принятыми ставками и выплаченными выигрышами (GGR) плюс налог на прибыль 25%. Совокупная налоговая нагрузка на отрасль выросла, по оценкам, примерно в 60 раз.</p></details>
 <details><summary>Влияет ли эта реформа на налог с выигрыша обычного игрока?</summary><p>Нет. Реформа касается налогов самого оператора как компании. Налог физлица с выигрыша — отдельный механизм (НДФЛ с прибыли при выводе), не изменился в рамках этой реформы.</p></details>
 <details><summary>Сколько дополнительных денег получит бюджет?</summary><p>По оценкам, дополнительные доходы бюджета от новой налоговой нагрузки на букмекеров превысят 60 млрд рублей в год против примерно 1 млрд рублей до реформы.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/fonbet">Фонбет</a>, <a href="/bukmekery/melbet">Мелбет</a>, <a href="/bukmekery/betcity">Бетсити</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/shkola/dengi-i-nalogi/kak-vyvesti-dengi"><b>Как вывести деньги из букмекерской конторы</b><small>Деньги и налоги</small></a>
       <a class="tile" href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh"><b>Налог на выигрыш в ставках: сколько платить в 2026</b><small>Деньги и налоги</small></a>

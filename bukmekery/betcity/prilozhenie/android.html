@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Бетсити", "item": "https://stavki-rating.ru/bukmekery/betcity"}, {"@type": "ListItem", "position": 4, "name": "Бетсити на Android: официальная установка приложения", "item": "https://stavki-rating.ru/bukmekery/betcity/prilozhenie/android"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бетсити на Android: официальная установка приложения", "description": "Официальные способы установить приложение Бетсити на Android: RuStore и APK с сайта БК, почему нет версии в Google Play и как избежать подделок.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/betcity/prilozhenie/android", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бетсити на Android: официальная установка приложения", "description": "Официальные способы установить приложение Бетсити на Android: RuStore и APK с сайта БК, почему нет версии в Google Play и как избежать подделок.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/betcity/prilozhenie/android", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Можно ли скачать Бетсити из Google Play?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, для российских пользователей Google Play не размещает приложения со ставками на реальные деньги. Официальные варианты для Android — RuStore и APK с сайта оператора."}}, {"@type": "Question", "name": "Нужно ли включать «установку из неизвестных источников»?", "acceptedAnswer": {"@type": "Answer", "text": "Для установки APK напрямую с сайта — да, потребуется разрешить установку вне магазина приложений в настройках устройства. При установке через RuStore это не требуется."}}, {"@type": "Question", "name": "Как проверить, что APK-файл настоящий?", "acceptedAnswer": {"@type": "Answer", "text": "Скачивайте файл только со страницы, указанной на официальном сайте оператора, и сверяйте разработчика приложения. Файлы со сторонних каталогов и форумов — источник риска."}}, {"@type": "Question", "name": "Работает ли аккаунт из браузера в приложении?", "acceptedAnswer": {"@type": "Answer", "text": "Да, вход в приложение выполняется тем же логином и паролем, что и на сайте — отдельная регистрация не нужна."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,32 +222,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/betcity">Бетсити</a><span>/</span>Бетсити на Android: официальная установка приложения</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Бетсити ·</div>
     <h1>Бетсити на Android: официальная установка приложения</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>2 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">По запросу «Бетсити скачать на андроид» важно попасть именно на официальный источник, а не на сторонний файл с непонятного сайта. У Android-пользователей два легальных пути получить приложение букмекера: магазин RuStore и прямая загрузка APK с официального сайта. Разбираем оба варианта и типичные риски подделок.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/betcity?p=betcity&amp;pl=subpage-top">Сайт букмекера Бетсити →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#sposob-1-ustanovka-cherez-rustore">Способ 1: установка через RuStore</a></li><li><a href="#sposob-2-apk-s-oficialnogo-sajta">Способ 2: APK с официального сайта</a></li><li><a href="#pochemu-net-versii-v-google-play">Почему нет версии в Google Play</a></li><li><a href="#kak-otlichit-poddelku">Как отличить подделку</a></li><li><a href="#posle-ustanovki">После установки</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Способ 1: установка через RuStore</h2>
+    <h2 id="sposob-1-ustanovka-cherez-rustore">Способ 1: установка через RuStore</h2>
 <p>RuStore — российский магазин приложений, где размещено официальное приложение Бетсити для Android. Это самый простой способ: приложение устанавливается и обновляется автоматически, как из любого магазина приложений.</p><div class="table-wrap"><table><caption>Установка через RuStore — общий порядок действий</caption><thead><tr><th>Шаг</th><th>Действие</th></tr></thead><tbody><tr><td>1</td><td>Открыть RuStore на устройстве</td></tr><tr><td>2</td><td>Найти приложение по названию «Бетсити»</td></tr><tr><td>3</td><td>Сверить разработчика и логотип с официальным сайтом</td></tr><tr><td>4</td><td>Установить и войти в существующий аккаунт или пройти регистрацию</td></tr></tbody></table></div>
-<h2>Способ 2: APK с официального сайта</h2>
+<h2 id="sposob-2-apk-s-oficialnogo-sajta">Способ 2: APK с официального сайта</h2>
 <p>Альтернатива — прямая загрузка установочного файла (APK) с официального сайта оператора. Перед установкой на смартфоне может потребоваться разрешить установку из внешних источников в настройках безопасности — это стандартный шаг для APK, полученных не из магазина приложений. Важно скачивать файл именно с домена, указанного на <a href="/bukmekery/betcity">странице БК Бетсити</a>, а не с файловых хостингов и сторонних каталогов.</p>
-<h2>Почему нет версии в Google Play</h2>
+<h2 id="pochemu-net-versii-v-google-play">Почему нет версии в Google Play</h2>
 <p>Google Play не допускает к размещению приложения с приёмом ставок на реальные деньги для российских пользователей — это ограничение политики самого магазина, а не показатель нелегальности оператора. Поэтому официальные каналы для Android — только RuStore и сайт букмекера.</p>
-<h2>Как отличить подделку</h2>
+<h2 id="kak-otlichit-poddelku">Как отличить подделку</h2>
 <p>Перед установкой стоит проверить: совпадает ли имя разработчика в карточке приложения с названием оператора, ведёт ли ссылка на скачивание на официальный домен, не запрашивает ли приложение подозрительно много разрешений при установке. Если что-то вызывает сомнение — лучше свериться со <a href="/kak-proverit-licenziyu">статьёй о проверке лицензии букмекера</a> и официальной карточкой в каталоге.</p>
-<h2>После установки</h2>
+<h2 id="posle-ustanovki">После установки</h2>
 <p>Первый вход в приложение выполняется теми же данными, что и на сайте — отдельная регистрация не требуется. Если аккаунта ещё нет, оформить его можно прямо в приложении, но сама процедура регистрации всё равно проходит через идентификацию ЦУПИС, как и на сайте. Обновления приложения при установке через RuStore приходят автоматически, а при установке APK-файлом нужно будет время от времени вручную скачивать новую версию с официального сайта.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Можно ли скачать Бетсити из Google Play?</summary><p>Нет, для российских пользователей Google Play не размещает приложения со ставками на реальные деньги. Официальные варианты для Android — RuStore и APK с сайта оператора.</p></details>
 <details><summary>Нужно ли включать «установку из неизвестных источников»?</summary><p>Для установки APK напрямую с сайта — да, потребуется разрешить установку вне магазина приложений в настройках устройства. При установке через RuStore это не требуется.</p></details>
 <details><summary>Как проверить, что APK-файл настоящий?</summary><p>Скачивайте файл только со страницы, указанной на официальном сайте оператора, и сверяйте разработчика приложения. Файлы со сторонних каталогов и форумов — источник риска.</p></details>
 <details><summary>Работает ли аккаунт из браузера в приложении?</summary><p>Да, вход в приложение выполняется тем же логином и паролем, что и на сайте — отдельная регистрация не нужна.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/betcity/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/melbet?p=bukmekery/betcity/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>, <a href="/go/zenit?p=bukmekery/betcity/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/pari?p=bukmekery/betcity/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/betcity"><b>Бетсити: обзор букмекерской конторы</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/betcity/promokod"><b>Промокод Бетсити: как это работает</b><small>Промокод</small></a>

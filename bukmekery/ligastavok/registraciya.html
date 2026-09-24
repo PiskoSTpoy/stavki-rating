@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Лига Ставок", "item": "https://stavki-rating.ru/bukmekery/ligastavok"}, {"@type": "ListItem", "position": 4, "name": "Регистрация в Лиге Ставок: как пройти идентификацию через ЦУПИС", "item": "https://stavki-rating.ru/bukmekery/ligastavok/registraciya"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Регистрация в Лиге Ставок: как пройти идентификацию через ЦУПИС", "description": "Как зарегистрироваться у легального букмекера Лига Ставок: номер телефона, идентификация через Единый ЦУПИС, подтверждение личности. Пошаговый разбор.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/ligastavok/registraciya", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Регистрация в Лиге Ставок: как пройти идентификацию через ЦУПИС", "description": "Как зарегистрироваться у легального букмекера Лига Ставок: номер телефона, идентификация через Единый ЦУПИС, подтверждение личности. Пошаговый разбор.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/ligastavok/registraciya", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Сколько времени занимает регистрация в Лиге Ставок?", "acceptedAnswer": {"@type": "Answer", "text": "Сама анкета заполняется за несколько минут, но полный доступ к выводу средств появляется только после идентификации через Единый ЦУПИС, которая может занять от нескольких минут до одного рабочего дня в зависимости от способа подтверждения."}}, {"@type": "Question", "name": "Можно ли зарегистрироваться без паспорта?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, идентификация личности через Единый ЦУПИС обязательна для всех легальных букмекеров в России, и без неё вывод выигрыша будет недоступен."}}, {"@type": "Question", "name": "Можно ли иметь несколько аккаунтов у одного букмекера?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, правила легальных букмекеров, как правило, разрешают только один аккаунт на одного человека, привязанный к его подтверждённым данным в ЦУПИС."}}, {"@type": "Question", "name": "С какого возраста можно регистрироваться?", "acceptedAnswer": {"@type": "Answer", "text": "Регистрация и ставки на спорт у легальных букмекеров в России доступны только лицам старше 18 лет."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/ligastavok">Лига Ставок</a><span>/</span>Регистрация в Лиге Ставок: как пройти идентификацию через ЦУПИС</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Лига Ставок ·</div>
     <h1>Регистрация в Лиге Ставок: как пройти идентификацию через ЦУПИС</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Регистрация у легального букмекера в России, включая Лигу Ставок, устроена по единой для всех операторов схеме: указание телефона, заполнение анкеты и обязательная идентификация через Единый ЦУПИС. Ниже — как выглядит этот процесс по шагам и что нужно подготовить заранее, чтобы завершить его без задержек.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/ligastavok?p=ligastavok&amp;pl=subpage-top">Сайт букмекера Лига Ставок →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#chto-nuzhno-pered-nachalom-registracii">Что нужно перед началом регистрации</a></li><li><a href="#shagi-registracii">Шаги регистрации</a></li><li><a href="#chto-takoe-edinyj-cupis-i-pochemu-eto-obyazatelno">Что такое Единый ЦУПИС и почему это обязательно</a></li><li><a href="#chastye-slozhnosti-pri-registracii">Частые сложности при регистрации</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Что нужно перед началом регистрации</h2>
+    <h2 id="chto-nuzhno-pered-nachalom-registracii">Что нужно перед началом регистрации</h2>
 <p>Перед регистрацией у любого легального букмекера полезно подготовить несколько вещей: рабочий номер мобильного телефона (на него придёт код подтверждения), доступ к порталу Госуслуг или паспорт для личной идентификации, а также понимание, что игра доступна только лицам старше 18 лет.</p><p>Также стоит заранее решить, каким способом будет проходить идентификация: через Госуслуги — самый быстрый вариант при уже подтверждённой учётной записи, лично в пункте приёма ставок — если нет доступа к порталу, или через электронный кошелёк ЦУПИС, если он уже был открыт ранее у другого легального оператора.</p><p>Полезно заранее убедиться, что выбранный оператор действительно легален — см. <a href="/kak-proverit-licenziyu">как проверить лицензию букмекера</a>.</p>
-<h2>Шаги регистрации</h2>
+<h2 id="shagi-registracii">Шаги регистрации</h2>
 <div class="table-wrap"><table><caption>Общий порядок регистрации у легального букмекера</caption><thead><tr><th>Шаг</th><th>Что происходит</th></tr></thead><tbody><tr><td>1. Переход на сайт или в приложение</td><td>Открывается официальный сайт букмекера или <a href="/bukmekery/ligastavok/prilozhenie">мобильное приложение</a></td></tr><tr><td>2. Указание номера телефона</td><td>На номер приходит код подтверждения по SMS</td></tr><tr><td>3. Заполнение анкеты</td><td>ФИО, дата рождения и другие обязательные данные</td></tr><tr><td>4. Идентификация через Единый ЦУПИС</td><td>Через Госуслуги, лично в пункте приёма ставок или через электронный кошелёк ЦУПИС</td></tr><tr><td>5. Подтверждение личности</td><td>После успешной идентификации открывается доступ к полноценной игре и выводу средств</td></tr></tbody></table></div>
-<h2>Что такое Единый ЦУПИС и почему это обязательно</h2>
+<h2 id="chto-takoe-edinyj-cupis-i-pochemu-eto-obyazatelno">Что такое Единый ЦУПИС и почему это обязательно</h2>
 <p>Единый центр учёта переводов интерактивных ставок (ЦУПИС) — обязательное звено для всех легальных букмекеров в России. Он подтверждает личность игрока и проводит расчёты, отделяя игровые деньги от обычных банковских операций. Без прохождения идентификации через ЦУПИС игрок не сможет вывести выигранные средства ни у Лиги Ставок, ни у любого другого легального оператора.</p><p>Подробный разбор того, как работает эта система, — в материале Школы <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">регистрация и ЦУПИС</a>.</p>
-<h2>Частые сложности при регистрации</h2>
+<h2 id="chastye-slozhnosti-pri-registracii">Частые сложности при регистрации</h2>
 <p>Чаще всего задержки при регистрации связаны не с самим букмекером, а с этапом идентификации: неверно указанные паспортные данные, несовпадение ФИО с данными Госуслуг или технические сбои на стороне ЦУПИС. В таких случаях стоит проверить корректность введённых данных и, при необходимости, обратиться в поддержку букмекера через официальный сайт.</p><p>Ещё одна частая причина отказа — попытка зарегистрировать второй аккаунт на уже подтверждённые в ЦУПИС данные: система распознаёт совпадение и блокирует повторную регистрацию, поскольку у легальных букмекеров действует правило «один игрок — один аккаунт».</p><p>После завершения регистрации полезно ознакомиться с общей карточкой бренда — <a href="/bukmekery/ligastavok">обзор Лиги Ставок</a> — и с принципами ответственной игры.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Сколько времени занимает регистрация в Лиге Ставок?</summary><p>Сама анкета заполняется за несколько минут, но полный доступ к выводу средств появляется только после идентификации через Единый ЦУПИС, которая может занять от нескольких минут до одного рабочего дня в зависимости от способа подтверждения.</p></details>
 <details><summary>Можно ли зарегистрироваться без паспорта?</summary><p>Нет, идентификация личности через Единый ЦУПИС обязательна для всех легальных букмекеров в России, и без неё вывод выигрыша будет недоступен.</p></details>
 <details><summary>Можно ли иметь несколько аккаунтов у одного букмекера?</summary><p>Нет, правила легальных букмекеров, как правило, разрешают только один аккаунт на одного человека, привязанный к его подтверждённым данным в ЦУПИС.</p></details>
 <details><summary>С какого возраста можно регистрироваться?</summary><p>Регистрация и ставки на спорт у легальных букмекеров в России доступны только лицам старше 18 лет.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/ligastavok/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/ligastavok?p=bukmekery/ligastavok/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>, <a href="/go/melbet?p=bukmekery/ligastavok/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>, <a href="/go/fonbet?p=bukmekery/ligastavok/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/ligastavok"><b>Лига Ставок: обзор букмекера, легальный статус и что важно знать новичку</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/ligastavok/promokod"><b>Промокод Лиги Ставок: как это устроено и где искать актуальный код</b><small>Промокод</small></a>

@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Бетсити", "item": "https://stavki-rating.ru/bukmekery/betcity"}, {"@type": "ListItem", "position": 4, "name": "Бетсити на iPhone: установка приложения и мобильная версия сайта", "item": "https://stavki-rating.ru/bukmekery/betcity/prilozhenie/ios"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бетсити на iPhone: установка приложения и мобильная версия сайта", "description": "Как установить приложение Бетсити на iPhone через App Store, что делать, если приложение недоступно, и как в этом случае помогает мобильная версия сайта.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/betcity/prilozhenie/ios", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бетсити на iPhone: установка приложения и мобильная версия сайта", "description": "Как установить приложение Бетсити на iPhone через App Store, что делать, если приложение недоступно, и как в этом случае помогает мобильная версия сайта.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/betcity/prilozhenie/ios", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Есть ли официальное приложение Бетсити для iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "Да, приложение может быть доступно в российском App Store — ищите его по названию оператора и проверяйте разработчика в карточке приложения."}}, {"@type": "Question", "name": "Что делать, если приложение не находится в App Store?", "acceptedAnswer": {"@type": "Answer", "text": "Используйте мобильную версию официального сайта в браузере Safari — она доступна по тому же адресу и не требует установки."}}, {"@type": "Question", "name": "Можно ли поставить приложение Бетсити на iPhone не через App Store?", "acceptedAnswer": {"@type": "Answer", "text": "Для iOS это не предусмотрено официальными каналами легальных операторов — сторонние установщики и профили не рекомендуются из соображений безопасности."}}, {"@type": "Question", "name": "Нужен ли отдельный аккаунт для приложения на iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, используется тот же аккаунт, что и на сайте, — данные для входа единые после регистрации через ЦУПИС."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,32 +222,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/betcity">Бетсити</a><span>/</span>Бетсити на iPhone: установка приложения и мобильная версия сайта</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Бетсити ·</div>
     <h1>Бетсити на iPhone: установка приложения и мобильная версия сайта</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>2 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">По запросу «Бетсити скачать на айфон» пользователи ищут приложение в App Store — у легальных букмекеров, включая Бетсити, приложение может быть представлено в российском App Store. Ниже — как найти официальную карточку, что делать, если приложение временно недоступно, и чем в этом случае может помочь мобильная версия сайта.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/betcity?p=betcity&amp;pl=subpage-top">Сайт букмекера Бетсити →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#ustanovka-cherez-app-store">Установка через App Store</a></li><li><a href="#esli-prilozhenie-ne-otobrazhaetsya-v-poiske">Если приложение не отображается в поиске</a></li><li><a href="#mobilnaya-versiya-sajta-kak-alternativa">Мобильная версия сайта как альтернатива</a></li><li><a href="#riski-neoficialnyh-fajlov-i-profilej">Риски неофициальных файлов и профилей</a></li><li><a href="#chto-delat-posle-ustanovki">Что делать после установки</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Установка через App Store</h2>
+    <h2 id="ustanovka-cherez-app-store">Установка через App Store</h2>
 <p>Официальное приложение ищется через встроенный поиск App Store по названию «Бетсити» или «Betcity». В карточке приложения стоит сверить имя разработчика и логотип с данными на <a href="/bukmekery/betcity">странице БК Бетсити</a> в нашем каталоге — это исключает риск установить одноимённый сторонний клон.</p><ol><li>открыть App Store на iPhone;</li><li>ввести в поиске «Бетсити»;</li><li>проверить разработчика и рейтинг приложения;</li><li>нажать «Загрузить» и войти в аккаунт или пройти регистрацию.</li></ol>
-<h2>Если приложение не отображается в поиске</h2>
+<h2 id="esli-prilozhenie-ne-otobrazhaetsya-v-poiske">Если приложение не отображается в поиске</h2>
 <p>Наличие и видимость приложений в App Store может меняться из-за политики магазина по отдельным категориям и регионам. Если карточка временно не находится, это не означает блокировку самого оператора — актуальную ссылку на приложение или альтернативный способ входа стоит уточнить на официальном сайте букмекера.</p>
-<h2>Мобильная версия сайта как альтернатива</h2>
+<h2 id="mobilnaya-versiya-sajta-kak-alternativa">Мобильная версия сайта как альтернатива</h2>
 <p>Помимо приложения, у оператора есть мобильная версия сайта, адаптированная под экран смартфона — она открывается в браузере Safari по тому же адресу, что и десктопная версия, и не требует установки. Это рабочий вариант, если приложение временно недоступно или устройство не поддерживает нужную версию iOS. Как убедиться, что открыт именно официальный адрес, — в материале <a href="/bukmekery/betcity/kak-zajti">«Как зайти на официальный сайт Бетсити»</a>.</p>
-<h2>Риски неофициальных файлов и профилей</h2>
+<h2 id="riski-neoficialnyh-fajlov-i-profilej">Риски неофициальных файлов и профилей</h2>
 <p>Для iOS не существует легального способа установить приложение букмекера «сбоку», минуя App Store — предложения скачать APK-подобный файл или установить сторонний конфигурационный профиль для iPhone не относятся к официальным каналам легальных операторов и создают риск для устройства и личных данных.</p>
-<h2>Что делать после установки</h2>
+<h2 id="chto-delat-posle-ustanovki">Что делать после установки</h2>
 <p>После загрузки приложения из App Store вход выполняется тем же логином, что и на сайте, — учётные записи в приложении и в браузере не различаются. Если аккаунта ещё нет, регистрация доступна прямо из приложения, но проходит она по общим правилам с идентификацией через ЦУПИС, как и на десктопной версии сайта. Обновления приложения приходят автоматически через App Store, отдельно скачивать новые версии не нужно.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Есть ли официальное приложение Бетсити для iPhone?</summary><p>Да, приложение может быть доступно в российском App Store — ищите его по названию оператора и проверяйте разработчика в карточке приложения.</p></details>
 <details><summary>Что делать, если приложение не находится в App Store?</summary><p>Используйте мобильную версию официального сайта в браузере Safari — она доступна по тому же адресу и не требует установки.</p></details>
 <details><summary>Можно ли поставить приложение Бетсити на iPhone не через App Store?</summary><p>Для iOS это не предусмотрено официальными каналами легальных операторов — сторонние установщики и профили не рекомендуются из соображений безопасности.</p></details>
 <details><summary>Нужен ли отдельный аккаунт для приложения на iPhone?</summary><p>Нет, используется тот же аккаунт, что и на сайте, — данные для входа единые после регистрации через ЦУПИС.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/betcity/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/zenit?p=bukmekery/betcity/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/fonbet?p=bukmekery/betcity/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/pari?p=bukmekery/betcity/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/betcity"><b>Бетсити: обзор букмекерской конторы</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/betcity/promokod"><b>Промокод Бетсити: как это работает</b><small>Промокод</small></a>

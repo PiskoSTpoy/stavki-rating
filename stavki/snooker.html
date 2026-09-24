@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Ставки на спорт", "item": "https://stavki-rating.ru/stavki"}, {"@type": "ListItem", "position": 3, "name": "Ставки на снукер: фреймы, тоталы и брейки", "item": "https://stavki-rating.ru/stavki/snooker"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ставки на снукер: фреймы, тоталы и брейки", "description": "Как ставить на снукер: что такое фрейм и брейк, рынки победитель, фора и тотал фреймов, ставки на сенчури и максимум 147, турниры и примеры со ставкой 1000 ₽.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/stavki/snooker", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ставки на снукер: фреймы, тоталы и брейки", "description": "Как ставить на снукер: что такое фрейм и брейк, рынки победитель, фора и тотал фреймов, ставки на сенчури и максимум 147, турниры и примеры со ставкой 1000 ₽.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/stavki/snooker", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что такое фрейм в снукере?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Фрейм — отдельная партия матча. Его выигрывает игрок, набравший больше очков за счёт забитых шаров. Матч играется до победы в большинстве фреймов по формату «best of».</p>"}}, {"@type": "Question", "name": "Как работает фора по фреймам?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Фора добавляет или вычитает фреймы к итоговому счёту. Например, при форе +3.5 и поражении 10:8 расчётный счёт становится 11.5:10, и ставка на аутсайдера проходит.</p>"}}, {"@type": "Question", "name": "Что такое сенчури и максимум 147?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Сенчури — серия в 100 и более очков за один подход. Максимум 147 — наибольший возможный брейк во фрейме. На оба события есть отдельные рынки, но 147 выпадает очень редко.</p>"}}, {"@type": "Question", "name": "Почему матчи на Чемпионате мира такие длинные?", "acceptedAnswer": {"@type": "Answer", "text": "<p>На главном турнире дистанция растёт: полуфиналы играют «best of 33», а финал — «best of 35», до 18 выигранных фреймов. Длинные матчи разбиваются на сессии и вознаграждают стабильность.</p>"}}, {"@type": "Question", "name": "Какие рынки в снукере самые ходовые?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Победитель матча, фора по фреймам и тотал фреймов. Спецрынки — самый высокий брейк, число сенчури и «147 в матче» — популярны, но требуют анализа статистики.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,33 +222,34 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/stavki">Ставки на спорт</a><span>/</span>Ставки на снукер: фреймы, тоталы и брейки</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Ставки на спорт ·</div>
     <h1>Ставки на снукер: фреймы, тоталы и брейки</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>4 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Прямой ответ: в снукере ставят на победителя матча, фору по фреймам и тотал фреймов, а также на специальные рынки — самый высокий брейк, точный счёт и «сенчури» (сотенные серии). Матч играется до победы в большинстве фреймов (формат «best of»), а фрейм выигрывает тот, кто набрал больше очков. Ниже — как устроен матч, реальные рынки, крупные турниры и три примера расчёта со ставкой 1000 ₽.</p>
     
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#frejm-brejk-i-format-matcha">Фрейм, брейк и формат матча</a></li><li><a href="#realnye-rynki-na-snuker">Реальные рынки на снукер</a></li><li><a href="#tri-primera-rascheta-so-stavkoj-1000">Три примера расчёта со ставкой 1000 ₽</a></li><li><a href="#krupnye-turniry-i-rol-sessij">Крупные турниры и роль сессий</a></li><li><a href="#tipichnye-oshibki-novichka">Типичные ошибки новичка</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Фрейм, брейк и формат матча</h2>
+    <h2 id="frejm-brejk-i-format-matcha">Фрейм, брейк и формат матча</h2>
 <p>В снукере матч состоит из <strong>фреймов</strong> — отдельных партий. Фрейм выигрывает игрок, набравший больше очков за счёт забитых шаров. Матч играется до победы в большинстве фреймов — формат «best of»: например, «best of 7» означает игру до 4 выигранных фреймов.</p><p><strong>Брейк</strong> — это серия очков, набранная за один подход к столу. Серия в 100 и более очков называется «сенчури» (century). Максимально возможный брейк в одном фрейме — <strong>147</strong> очков; это редкое достижение, сравнимое с «9 дротиками» в дартсе.</p><p>Дистанция растёт к финалу крупных турниров. На Чемпионате мира ранние круги играются короче, полуфиналы — в формате «best of 33», а финал — «best of 35» (до 18 выигранных фреймов). Чем длиннее матч, тем сильнее он вознаграждает стабильность фаворита.</p>
-<h2>Реальные рынки на снукер</h2>
+<h2 id="realnye-rynki-na-snuker">Реальные рынки на снукер</h2>
 <p>Линия в снукере сочетает исходные рынки и статистические спецрынки на брейки.</p><div class="table-wrap"><table><caption>Рынки на матчи по снукеру</caption><thead><tr><th>Рынок</th><th>Что означает</th></tr></thead><tbody><tr><td>Победитель матча</td><td>Кто выиграет встречу (двухисходный рынок)</td></tr><tr><td>Фора по фреймам</td><td>Гандикап к счёту, например +3.5 фрейма аутсайдеру</td></tr><tr><td>Тотал фреймов</td><td>Больше или меньше линии по числу сыгранных фреймов</td></tr><tr><td>Точный счёт</td><td>Итоговый счёт по фреймам</td></tr><tr><td>Самый высокий брейк</td><td>У кого из игроков будет наибольшая серия за подход</td></tr><tr><td>Сенчури в матче</td><td>Будет ли серия 100+; также «первый сенчури» и «число сенчури»</td></tr><tr><td>Максимум 147</td><td>Будет ли максимальный брейк в матче — да/нет</td></tr></tbody></table></div><p>Как считаются гандикап и тотальная линия, разобрано в материалах <a href="/shkola/terminy/chto-takoe-fora">что такое фора</a> и <a href="/shkola/terminy/chto-takoe-total">что такое тотал</a>.</p>
-<h2>Три примера расчёта со ставкой 1000 ₽</h2>
+<h2 id="tri-primera-rascheta-so-stavkoj-1000">Три примера расчёта со ставкой 1000 ₽</h2>
 <p>Коэффициенты в примерах гипотетические.</p><p><strong>Пример 1. Победитель матча.</strong> Ставка 1000 ₽ на фаворита за 1.75. Выплата — 1000 × 1.75 = 1750 ₽, прибыль — 750 ₽.</p><p><strong>Пример 2. Тотал фреймов.</strong> В матче формата «best of 19» (до 10 побед) ставка 1000 ₽ на «тотал больше 16.5» за 1.90 — расчёт на равную, затяжную игру ближе к решающим фреймам. Выплата при проходе — 1000 × 1.90 = 1900 ₽, прибыль — 900 ₽.</p><p><strong>Пример 3. Фора по фреймам.</strong> Ставка 1000 ₽ на аутсайдера с форой +3.5 за 1.95. Если он проигрывает, например, 10:8, фора добавляет ему 3.5 фрейма — расчётный счёт становится 11.5:10, и ставка проходит. Выплата — 1000 × 1.95 = 1950 ₽, прибыль — 950 ₽.</p>
-<h2>Крупные турниры и роль сессий</h2>
+<h2 id="krupnye-turniry-i-rol-sessij">Крупные турниры и роль сессий</h2>
 <p>Крупнейшие турниры формируют «Тройную корону» снукера:</p><ul><li><strong>Чемпионат мира</strong> (театр «Крусибл», Шеффилд) — самый длинный по дистанции турнир, финал «best of 35».</li><li><strong>UK Championship</strong> — второй по значимости рейтинговый турнир.</li><li><strong>The Masters</strong> — приглашательный турнир сильнейших игроков.</li></ul><p>Длинные матчи разбиваются на <strong>сессии</strong> с перерывами. Между сессиями игрок может перестроиться, поэтому промежуточный счёт не всегда отражает финальный расклад — это важно и для лайва, и для рынков «тотал фреймов».</p>
-<h2>Типичные ошибки новичка</h2>
+<h2 id="tipichnye-oshibki-novichka">Типичные ошибки новичка</h2>
 <p>Ошибки, которые часто допускают в ставках на снукер:</p><ul><li><strong>Ставка на 147 как на реальное событие.</strong> Максимальный брейк выпадает крайне редко, и высокий коэффициент это отражает.</li><li><strong>Недооценка дистанции.</strong> В коротких матчах («best of 7») выше роль случайности, в длинных сильнее проявляется класс фаворита.</li><li><strong>Игнорирование фактора сессий и усталости.</strong> На «best of 35» физическая и психологическая устойчивость важнее, чем в спринтерских форматах.</li><li><strong>Ставка на брейк-рынки без статистики.</strong> «Самый высокий брейк» и «число сенчури» требуют анализа результативности, а не только имени игрока.</li></ul><p>Сравнить условия легальных операторов из реестра ЕРАИ можно в <a href="/rating">рейтинге букмекеров</a>. Близкая по духу дисциплина со ставками по партиям — <a href="/stavki/darts">ставки на дартс</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Что такое фрейм в снукере?</summary><p>Фрейм — отдельная партия матча. Его выигрывает игрок, набравший больше очков за счёт забитых шаров. Матч играется до победы в большинстве фреймов по формату «best of».</p></details>
 <details><summary>Как работает фора по фреймам?</summary><p>Фора добавляет или вычитает фреймы к итоговому счёту. Например, при форе +3.5 и поражении 10:8 расчётный счёт становится 11.5:10, и ставка на аутсайдера проходит.</p></details>
 <details><summary>Что такое сенчури и максимум 147?</summary><p>Сенчури — серия в 100 и более очков за один подход. Максимум 147 — наибольший возможный брейк во фрейме. На оба события есть отдельные рынки, но 147 выпадает очень редко.</p></details>
 <details><summary>Почему матчи на Чемпионате мира такие длинные?</summary><p>На главном турнире дистанция растёт: полуфиналы играют «best of 33», а финал — «best of 35», до 18 выигранных фреймов. Длинные матчи разбиваются на сессии и вознаграждают стабильность.</p></details>
 <details><summary>Какие рынки в снукере самые ходовые?</summary><p>Победитель матча, фора по фреймам и тотал фреймов. Спецрынки — самый высокий брейк, число сенчури и «147 в матче» — популярны, но требуют анализа статистики.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/betcity">Бетсити</a>, <a href="/bukmekery/ligastavok">Лига Ставок</a>, <a href="/bukmekery/pari">PARI</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/stavki/futbol"><b>Ставки на футбол: рынки, роспись и типичные ошибки</b><small>Ставки на спорт</small></a>
       <a class="tile" href="/stavki/hokkej"><b>Ставки на хоккей: тоталы, форы и особенности КХЛ и НХЛ</b><small>Ставки на спорт</small></a>

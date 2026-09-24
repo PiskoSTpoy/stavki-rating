@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -210,11 +220,13 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span>Ставки на спорт по видам</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Ставки на спорт ·</div>
     <h1>Ставки на спорт по видам</h1>
+<div class="small muted meta-row" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;opacity:.85"><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>обновлено <time datetime="2026-09-19">19.09.2026</time></span></div>
     <p class="muted" style="max-width:75ch;margin-top:10px">Разбираем ставки по видам спорта: доступные рынки, особенности линии и типичные ошибки новичка — от футбола и хоккея до киберспорта и ММА. Только справочная информация.</p>
   </div></section>
   <section class="section" style="padding-top:6px"><div class="container">
     
-    <h2 id="sravnenie" style="margin:8px 0 10px">Сводная таблица: чем различаются ставки по видам спорта</h2>
+    <nav class="toc" aria-label="Содержание" style="margin:16px 0 4px;padding:12px 14px;border:1px solid rgba(128,128,128,.35);border-radius:12px;max-width:75ch;font-size:14px"><b style="display:block;margin-bottom:6px">Содержание</b><ol style="margin:0;padding-left:20px"><li><a href="#sravnenie">Сводная таблица: чем различаются ставки по видам спорта</a></li><li><a href="#традиционные-виды-спорта">Традиционные виды спорта (35)</a></li><li><a href="#киберспорт">Киберспорт (17)</a></li><li><a href="#chastye-voprosy">Частые вопросы</a></li></ol></nav>
+<h2 id="sravnenie" style="margin:8px 0 10px">Сводная таблица: чем различаются ставки по видам спорта</h2>
     <p class="muted" style="max-width:75ch">Главное, что меняется от вида к виду, — есть ли в исходе ничья и в чём считаются фора и тотал.
     Из 52 разобранных дисциплин ничья в исходе возможна в 12, два исхода — в 25, ещё в 15 ставят на места
     в гонке или турнире, а не на исход матча. Подробный разбор рынков и примеры расчёта — в гайде по каждому виду.</p>
@@ -335,7 +347,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
       <a class="tile" href="/stavki/apex-legends"><b>Ставки на Apex Legends: очки, плейсмент и киллы</b><small>Ставки на спорт</small></a>
       <a class="tile" href="/stavki/fortnite"><b>Ставки на Fortnite: турниры и рынки</b><small>Ставки на спорт</small></a>
     </div>
-    <h2 style="margin:28px 0 12px">Частые вопросы</h2>
+    <h2 id="chastye-voprosy" style="margin:28px 0 12px">Частые вопросы</h2>
 <div class="faq"><details><summary>В каких видах спорта в ставке на исход возможна ничья?</summary><p>Трёхисходный рынок (1X2 или отдельный вариант ничьей) встречается в таких видах, как футбол, хоккей, ММА и UFC, бокс, шахматы, футзал (мини-футбол), гандбол, хоккей с мячом (бенди), водное поло, регби, крикет, EA Sports FC (FIFA). Где-то ничья частая (футбол, шахматы), где-то редкая или зависит от стадии турнира.</p></details>
 <details><summary>В каких видах спорта ничьей в ставке на исход нет?</summary><p>Двухисходный рынок (победа одного из соперников) — это теннис, баскетбол, волейбол, настольный теннис, бадминтон, пляжный волейбол, дзюдо, американский футбол (NFL), австралийский футбол (AFL), бейсбол (MLB), дартс, снукер, кёрлинг, киберспорт, Counter-Strike 2 (CS2), Dota 2, League of Legends, Valorant, Rainbow Six Siege, Mobile Legends, StarCraft II, Overwatch 2, Call of Duty (CDL), World of Tanks, Rocket League. Равенство там снимается овертаймом, дополнительным эндом или форматом серии.</p></details>
 <details><summary>На что ставят в гонках и турнирах, где нет матча двух соперников?</summary><p>В дисциплинах, где соревнуются сразу многие участники (гольф, Формула-1, MotoGP, велоспорт, лёгкая атлетика, биатлон, лыжные гонки, горные лыжи, прыжки с трамплина, фигурное катание, PUBG, PUBG Mobile, Free Fire, Apex Legends, Fortnite), линия строится на местах: победитель, подиум или топ-N, очные дуэли, а в батл-роялях — ещё и тотал убийств.</p></details></div>

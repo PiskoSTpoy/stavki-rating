@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -209,11 +219,13 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span>Рейтинги букмекеров по критериям</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Рейтинги ·</div>
     <h1>Рейтинги букмекеров по критериям</h1>
+<div class="small muted meta-row" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;opacity:.85"><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>обновлено <time datetime="2026-09-19">19.09.2026</time></span></div>
     <p class="muted" style="max-width:75ch;margin-top:10px">Собрали легальных букмекеров России по практическим критериям: от фрибетов и коэффициентов до скорости вывода и приложений. Каждая подборка объясняет, на что смотреть при выборе, — без рекламных обещаний.</p>
   </div></section>
   <section class="section" style="padding-top:6px"><div class="container">
     
-    <h2 id="общие-рейтинги" style="margin:28px 0 12px">Общие рейтинги <span class="muted" style="font-weight:400;font-size:14px">(4)</span></h2>
+    <nav class="toc" aria-label="Содержание" style="margin:16px 0 4px;padding:12px 14px;border:1px solid rgba(128,128,128,.35);border-radius:12px;max-width:75ch;font-size:14px"><b style="display:block;margin-bottom:6px">Содержание</b><ol style="margin:0;padding-left:20px"><li><a href="#общие-рейтинги">Общие рейтинги (4)</a></li><li><a href="#бонусы">Бонусы (4)</a></li><li><a href="#функции-и-условия">Функции и условия (11)</a></li><li><a href="#по-видам-спорта">По видам спорта (6)</a></li></ol></nav>
+<h2 id="общие-рейтинги" style="margin:28px 0 12px">Общие рейтинги <span class="muted" style="font-weight:400;font-size:14px">(4)</span></h2>
 <div class="tiles">
       <a class="tile" href="/rejting/dlya-novichkov"><b>Букмекер для новичка: какие критерии реально важны</b><small>Рейтинги</small></a>
       <a class="tile" href="/rejting/novye"><b>Новые букмекеры 2026: чем рискован выбор новичка рынка</b><small>Рейтинги</small></a>

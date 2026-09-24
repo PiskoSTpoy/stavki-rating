@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -171,7 +181,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "OLIMPBET", "item": "https://stavki-rating.ru/bukmekery/olimpbet"}, {"@type": "ListItem", "position": 4, "name": "Как зайти на официальный сайт OLIMPBET и не попасть на фишинг", "item": "https://stavki-rating.ru/bukmekery/olimpbet/kak-zajti"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как зайти на официальный сайт OLIMPBET и не попасть на фишинг", "description": "Как найти официальный сайт OLIMPBET, отличить его от фишинговых сайтов-«зеркал» и проверить легальность букмекера через официальный реестр ЕРАИ.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/olimpbet/kak-zajti", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как зайти на официальный сайт OLIMPBET и не попасть на фишинг", "description": "Как найти официальный сайт OLIMPBET, отличить его от фишинговых сайтов-«зеркал» и проверить легальность букмекера через официальный реестр ЕРАИ.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/olimpbet/kak-zajti", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Существует ли официальное «зеркало» OLIMPBET?", "acceptedAnswer": {"@type": "Answer", "text": "Официальный домен у оператора один — olimp.bet. Ресурсы, которые называют себя «зеркалом», как правило, создаются третьими лицами и не имеют официального статуса, поэтому вводить на них платёжные данные не стоит."}}, {"@type": "Question", "name": "Как понять, что сайт фишинговый?", "acceptedAnswer": {"@type": "Answer", "text": "Обратите внимание на адрес домена, наличие лишних символов и отсутствие сайта в официальном реестре ЕРАИ — это частые признаки поддельных копий."}}, {"@type": "Question", "name": "Можно ли использовать VPN для доступа к сайту БК?", "acceptedAnswer": {"@type": "Answer", "text": "Мы не рекомендуем сторонние VPN-сервисы и расширения для обхода блокировок — они не связаны с оператором и создают дополнительный риск для ваших данных и устройства."}}, {"@type": "Question", "name": "Что безопаснее — сайт или приложение?", "acceptedAnswer": {"@type": "Answer", "text": "Официальное приложение из проверенного источника обычно удобнее в моменты недоступности сайта, так как обновляется напрямую разработчиком и не привязано к конкретному домену."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -211,30 +221,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/olimpbet">OLIMPBET</a><span>/</span>Как зайти на официальный сайт OLIMPBET и не попасть на фишинг</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · OLIMPBET ·</div>
     <h1>Как зайти на официальный сайт OLIMPBET и не попасть на фишинг</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Официальный сайт легального оператора OLIMPBET — olimp.bet. Слово «зеркало» в поиске часто ведёт не на резервный адрес букмекера, а на стороннюю копию, созданную мошенниками. Разбираемся, почему основной сайт иногда недоступен и как отличить настоящий домен от подделки, не используя сомнительные обходные сервисы.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/olimpbet?p=olimpbet&amp;pl=subpage-top">Сайт букмекера OLIMPBET →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#pochemu-sajt-olimpbet-inogda-ne-otkryvaetsya">Почему сайт OLIMPBET иногда не открывается</a></li><li><a href="#chem-opasny-storonnie-zerkala">Чем опасны сторонние «зеркала»</a></li><li><a href="#kak-proverit-chto-pered-vami-oficialnyj-sajt">Как проверить, что перед вами официальный сайт</a></li><li><a href="#chto-delat-esli-osnovnoj-sajt-nedostupen">Что делать, если основной сайт недоступен</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Почему сайт OLIMPBET иногда не открывается</h2>
+    <h2 id="pochemu-sajt-olimpbet-inogda-ne-otkryvaetsya">Почему сайт OLIMPBET иногда не открывается</h2>
 <p>Доступ к сайтам букмекеров, работающих легально в России, может периодически ограничиваться на уровне интернет-провайдера или мобильного оператора — это техническая особенность работы с доменной блокировкой, а не признак проблем у самого оператора. Причиной может быть смена IP-адреса, работы на стороне провайдера или временный сбой.</p><p>В такие моменты в поисковой выдаче и рекламе появляется множество сайтов, предлагающих «рабочее зеркало». Далеко не все из них имеют отношение к официальному оператору.</p>
-<h2>Чем опасны сторонние «зеркала»</h2>
+<h2 id="chem-opasny-storonnie-zerkala">Чем опасны сторонние «зеркала»</h2>
 <p>Под видом зеркала часто маскируется фишинговая копия: внешне сайт похож на оригинал, но регистрация или пополнение счёта на нём ведут не к букмекеру, а напрямую мошенникам. Типичные риски таких копий:</p><ul><li>форма пополнения счёта уводит данные карты третьим лицам;</li><li>«личный кабинет» существует только визуально и не связан с реальным счётом в БК;</li><li>домен меняется каждые несколько дней, что затрудняет любые претензии;</li><li>сайт не имеет никакого отношения к лицензированному оператору и реестру ЕРАИ.</li></ul><p>Мы не рекомендуем переходить по ссылкам на «зеркала» из рекламы, мессенджеров или сомнительных агрегаторов, а также использовать сторонние VPN-сервисы и расширения, предлагающие «обход блокировки» — это дополнительная точка риска для ваших данных.</p>
-<h2>Как проверить, что перед вами официальный сайт</h2>
+<h2 id="kak-proverit-chto-pered-vami-oficialnyj-sajt">Как проверить, что перед вами официальный сайт</h2>
 <p>Прежде чем вводить данные или пополнять счёт, стоит убедиться в подлинности адреса.</p><div class="table-wrap"><table><caption>Быстрая проверка домена</caption><thead><tr><th>Что проверить</th><th>На что смотреть</th></tr></thead><tbody><tr><td>Адрес сайта</td><td>Соответствует ли домен официальному, без лишних символов и подмен букв</td></tr><tr><td>Соединение</td><td>Есть ли защищённое соединение (https) без предупреждений браузера</td></tr><tr><td>Реестр ЕРАИ</td><td>Указан ли оператор в едином реестре — проверить можно на странице «<a href="/kak-proverit-licenziyu">Как проверить лицензию</a>»</td></tr><tr><td>Способ перехода</td><td>Введён ли адрес вручную или через официальную карточку оператора на нашем сайте — <a href="/bukmekery/olimpbet">страница OLIMPBET</a></td></tr></tbody></table></div>
-<h2>Что делать, если основной сайт недоступен</h2>
+<h2 id="chto-delat-esli-osnovnoj-sajt-nedostupen">Что делать, если основной сайт недоступен</h2>
 <p>Самый безопасный вариант — не искать сторонние зеркала, а воспользоваться официальным мобильным приложением, которое обновляется напрямую разработчиком и не зависит от блокировки конкретного домена в браузере. Подробнее о том, где его скачать, — на странице «<a href="/bukmekery/olimpbet/prilozhenie">Приложение OLIMPBET</a>».</p><p>Если приложение недоступно и сайт не открывается, разумно обратиться в официальную поддержку оператора и уточнить актуальный адрес, а не доверять первой ссылке из поиска.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Существует ли официальное «зеркало» OLIMPBET?</summary><p>Официальный домен у оператора один — olimp.bet. Ресурсы, которые называют себя «зеркалом», как правило, создаются третьими лицами и не имеют официального статуса, поэтому вводить на них платёжные данные не стоит.</p></details>
 <details><summary>Как понять, что сайт фишинговый?</summary><p>Обратите внимание на адрес домена, наличие лишних символов и отсутствие сайта в официальном реестре ЕРАИ — это частые признаки поддельных копий.</p></details>
 <details><summary>Можно ли использовать VPN для доступа к сайту БК?</summary><p>Мы не рекомендуем сторонние VPN-сервисы и расширения для обхода блокировок — они не связаны с оператором и создают дополнительный риск для ваших данных и устройства.</p></details>
 <details><summary>Что безопаснее — сайт или приложение?</summary><p>Официальное приложение из проверенного источника обычно удобнее в моменты недоступности сайта, так как обновляется напрямую разработчиком и не привязано к конкретному домену.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/olimpbet/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/marathonbet?p=bukmekery/olimpbet/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>, <a href="/go/pari?p=bukmekery/olimpbet/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>, <a href="/go/zenit?p=bukmekery/olimpbet/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/olimpbet"><b>OLIMPBET: обзор букмекерской конторы</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/olimpbet/promokod"><b>Промокод OLIMPBET: как искать и применять</b><small>Промокод</small></a>

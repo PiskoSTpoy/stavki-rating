@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "24bet", "item": "https://stavki-rating.ru/bukmekery/24bet"}, {"@type": "ListItem", "position": 4, "name": "Регистрация в 24bet: инструкция по шагам", "item": "https://stavki-rating.ru/bukmekery/24bet/registraciya"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Регистрация в 24bet: инструкция по шагам", "description": "Как зарегистрироваться у легального букмекера в России: номер телефона, идентификация через Единый ЦУПИС и что нужно, чтобы завершить регистрацию в 24bet.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/24bet/registraciya", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Регистрация в 24bet: инструкция по шагам", "description": "Как зарегистрироваться у легального букмекера в России: номер телефона, идентификация через Единый ЦУПИС и что нужно, чтобы завершить регистрацию в 24bet.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/24bet/registraciya", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Сколько времени занимает регистрация в 24bet?", "acceptedAnswer": {"@type": "Answer", "text": "Заполнение формы регистрации и подтверждение номера телефона обычно занимает несколько минут. Идентификация через Единый ЦУПИС может занять больше времени в зависимости от выбранного способа подтверждения личности."}}, {"@type": "Question", "name": "Можно ли зарегистрироваться без идентификации через ЦУПИС?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, идентификация через Единый ЦУПИС обязательна для всех легальных букмекеров в России и является условием для полноценного использования счёта."}}, {"@type": "Question", "name": "Нужен ли промокод при регистрации в 24bet?", "acceptedAnswer": {"@type": "Answer", "text": "Промокод не обязателен для самой регистрации, но может понадобиться, если вы хотите активировать конкретное бонусное предложение. Подробнее — на странице о промокодах 24bet."}}, {"@type": "Question", "name": "Можно ли иметь несколько счетов в 24bet?", "acceptedAnswer": {"@type": "Answer", "text": "Как и у всех легальных операторов, правила обычно допускают только один счёт на одного человека — это связано с требованиями идентификации через Единый ЦУПИС."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,32 +222,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/24bet">24bet</a><span>/</span>Регистрация в 24bet: инструкция по шагам</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · 24bet ·</div>
     <h1>Регистрация в 24bet: инструкция по шагам</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Процесс регистрации у легальных букмекеров в России построен по общей схеме, обязательной для всех операторов: номер телефона, подтверждение личности через Единый ЦУПИС и создание учётной записи. Разбираем, как этот процесс выглядит по шагам, применительно к 24bet — общий порядок одинаков у всех легальных БК, а специфические детали интерфейса уточняйте на официальном сайте.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/24bet?p=24bet&amp;pl=subpage-top">Сайт букмекера 24bet →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#chto-nuzhno-dlya-registracii">Что нужно для регистрации</a></li><li><a href="#poshagovyj-process-registracii">Пошаговый процесс регистрации</a></li><li><a href="#identifikaciya-cherez-edinyj-cupis">Идентификация через Единый ЦУПИС</a></li><li><a href="#posle-registracii-chto-dostupno-dalshe">После регистрации: что доступно дальше</a></li><li><a href="#bezopasnost-akkaunta-posle-registracii">Безопасность аккаунта после регистрации</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Что нужно для регистрации</h2>
+    <h2 id="chto-nuzhno-dlya-registracii">Что нужно для регистрации</h2>
 <p>Для создания счёта у легального букмекера, включая 24bet, потребуются номер мобильного телефона, доступ к нему для получения кода подтверждения, а также данные для последующей идентификации через Единый ЦУПИС. Без прохождения идентификации полноценно пользоваться счётом — пополнять его и выводить средства — не получится.</p><p>Помимо номера телефона, обычно запрашивают действующий адрес электронной почты: на него приходят уведомления о статусе счёта и, при необходимости, связь с поддержкой. Указывать почту, доступ к которой утрачен, не стоит — восстановление доступа к личному кабинету, как правило, завязано именно на подтверждённые телефон и почту.</p>
-<h2>Пошаговый процесс регистрации</h2>
+<h2 id="poshagovyj-process-registracii">Пошаговый процесс регистрации</h2>
 <div class="table-wrap"><table><caption>Общие шаги регистрации у легального букмекера</caption><thead><tr><th>Шаг</th><th>Что происходит</th></tr></thead><tbody><tr><td>1. Форма регистрации</td><td>Указывается номер телефона и создаётся пароль</td></tr><tr><td>2. Подтверждение номера</td><td>На телефон приходит код, который нужно ввести на сайте</td></tr><tr><td>3. Идентификация через ЦУПИС</td><td>Подтверждение личности через Госуслуги, лично или другим доступным способом</td></tr><tr><td>4. Активация счёта</td><td>После идентификации счёт становится доступен для пополнения и ставок</td></tr></tbody></table></div><p>Точный набор полей формы и порядок отдельных шагов может немного отличаться в зависимости от того, регистрируется ли пользователь через сайт или через мобильное приложение, но итоговый результат — активный счёт, привязанный к Единому ЦУПИС, — одинаков в обоих случаях.</p>
-<h2>Идентификация через Единый ЦУПИС</h2>
+<h2 id="identifikaciya-cherez-edinyj-cupis">Идентификация через Единый ЦУПИС</h2>
 <p>Идентификация через Единый центр учёта переводов интерактивных ставок — обязательный этап у всех легальных букмекеров в России, а не особенность конкретного бренда. Обычно подтвердить личность можно через учётную запись на Госуслугах, при личном визите в пункт приёма ставок или иным способом, который предлагает оператор. Подробно о том, как устроен этот процесс, рассказано в материале <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">регистрация и ЦУПИС</a>.</p>
-<h2>После регистрации: что доступно дальше</h2>
+<h2 id="posle-registracii-chto-dostupno-dalshe">После регистрации: что доступно дальше</h2>
 <p>После завершения идентификации счёт в 24bet становится полностью рабочим: можно пополнить баланс, делать ставки на сайте или в <a href="/bukmekery/24bet/prilozhenie">мобильном приложении</a>, а также выводить средства по правилам, установленным оператором. Перед первым депозитом стоит ещё раз убедиться, что вы находитесь на официальном ресурсе — это можно сделать, ориентируясь на общие рекомендации из материала <a href="/kak-proverit-licenziyu">как проверить лицензию букмекера</a>.</p><p>Общий обзор бренда 24bet и ссылки на остальные разделы о нём собраны на <a href="/bukmekery/24bet">странице обзора</a>.</p>
-<h2>Безопасность аккаунта после регистрации</h2>
+<h2 id="bezopasnost-akkaunta-posle-registracii">Безопасность аккаунта после регистрации</h2>
 <p>После завершения регистрации стоит сразу задать пароль, не совпадающий с паролями от других сервисов, и по возможности включить дополнительное подтверждение входа, если оператор его предлагает. Логин и пароль от личного кабинета нужно вводить только на официальном сайте или в официальном приложении: ресурсы, обещающие «упрощённую» регистрацию или обход идентификации, не имеют отношения к легальному букмекеру и не дают тех же гарантий защиты счёта.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Сколько времени занимает регистрация в 24bet?</summary><p>Заполнение формы регистрации и подтверждение номера телефона обычно занимает несколько минут. Идентификация через Единый ЦУПИС может занять больше времени в зависимости от выбранного способа подтверждения личности.</p></details>
 <details><summary>Можно ли зарегистрироваться без идентификации через ЦУПИС?</summary><p>Нет, идентификация через Единый ЦУПИС обязательна для всех легальных букмекеров в России и является условием для полноценного использования счёта.</p></details>
 <details><summary>Нужен ли промокод при регистрации в 24bet?</summary><p>Промокод не обязателен для самой регистрации, но может понадобиться, если вы хотите активировать конкретное бонусное предложение. Подробнее — на странице о промокодах 24bet.</p></details>
 <details><summary>Можно ли иметь несколько счетов в 24bet?</summary><p>Как и у всех легальных операторов, правила обычно допускают только один счёт на одного человека — это связано с требованиями идентификации через Единый ЦУПИС.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/24bet/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/betcity?p=bukmekery/24bet/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>, <a href="/go/ligastavok?p=bukmekery/24bet/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>, <a href="/go/melbet?p=bukmekery/24bet/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/24bet"><b>24bet: обзор букмекерской конторы</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/24bet/promokod"><b>Промокод 24bet: как это работает</b><small>Промокод</small></a>

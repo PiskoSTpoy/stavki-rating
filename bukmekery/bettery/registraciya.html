@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Bettery", "item": "https://stavki-rating.ru/bukmekery/bettery"}, {"@type": "ListItem", "position": 4, "name": "Регистрация Bettery: как создать аккаунт", "item": "https://stavki-rating.ru/bukmekery/bettery/registraciya"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Регистрация Bettery: как создать аккаунт", "description": "Пошаговая инструкция регистрации у легального букмекера: номер телефона, анкета, идентификация через Единый ЦУПИС и что нужно для завершения.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/bettery/registraciya", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Регистрация Bettery: как создать аккаунт", "description": "Пошаговая инструкция регистрации у легального букмекера: номер телефона, анкета, идентификация через Единый ЦУПИС и что нужно для завершения.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/bettery/registraciya", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Сколько занимает регистрация у Bettery?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Сама форма регистрации заполняется за несколько минут, но полное завершение процесса зависит от скорости идентификации через ЦУПИС — она может занять от нескольких минут до одного рабочего дня в зависимости от выбранного способа.</p>"}}, {"@type": "Question", "name": "Можно ли зарегистрироваться без идентификации через ЦУПИС?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет, для легальных букмекеров в России идентификация через Единый ЦУПИС обязательна — без неё счёт не может быть пополнен и не принимает ставки в полном объёме.</p>"}}, {"@type": "Question", "name": "Нужен ли паспорт для регистрации?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Документ, удостоверяющий личность, потребуется на этапе идентификации через ЦУПИС — конкретный набор данных зависит от выбранного способа подтверждения.</p>"}}, {"@type": "Question", "name": "Что если номер телефона уже использовался у другого букмекера?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Единый ЦУПИС привязывает идентификацию к человеку, а не к отдельному букмекеру, поэтому один номер и один профиль ЦУПИС могут использоваться при регистрации в разных легальных конторах.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,32 +222,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/bettery">Bettery</a><span>/</span>Регистрация Bettery: как создать аккаунт</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Bettery ·</div>
     <h1>Регистрация Bettery: как создать аккаунт</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Регистрация у любого легального букмекера в России, включая Bettery, построена по единому принципу: номер телефона, короткая анкета и обязательная идентификация через Единый ЦУПИС. Разбираем общий порядок действий и что нужно подготовить заранее, чтобы завершить регистрацию без задержек.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/bettery?p=bettery&amp;pl=subpage-top">Сайт букмекера Bettery →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#chto-nuzhno-dlya-registracii">Что нужно для регистрации</a></li><li><a href="#poshagovyj-poryadok-registracii">Пошаговый порядок регистрации</a></li><li><a href="#sposoby-identifikacii-cherez-cupis">Способы идентификации через ЦУПИС</a></li><li><a href="#chastye-prichiny-zaderzhki-identifikacii">Частые причины задержки идентификации</a></li><li><a href="#chto-delat-posle-registracii">Что делать после регистрации</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Что нужно для регистрации</h2>
+    <h2 id="chto-nuzhno-dlya-registracii">Что нужно для регистрации</h2>
 <p>Для создания аккаунта у легального букмекера обычно нужны: действующий номер телефона, доступ к нему для получения кода подтверждения, а также документ, удостоверяющий личность, — он потребуется на этапе идентификации через ЦУПИС.</p><p>Дополнительное общее требование у всех легальных букмекеров — совершеннолетие: регистрация и участие в ставках доступны только пользователям старше 18 лет, это проверяется в процессе идентификации через ЦУПИС.</p><p>Все эти данные проверяются один раз на уровне ЦУПИС, а не отдельно у каждого букмекера — поэтому при регистрации в новой конторе процесс идентификации может пройти быстрее, если профиль в ЦУПИС уже подтверждён ранее.</p><p>Общий принцип работы идентификации в единой системе разобран в материале <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">регистрация и ЦУПИС</a>.</p>
-<h2>Пошаговый порядок регистрации</h2>
+<h2 id="poshagovyj-poryadok-registracii">Пошаговый порядок регистрации</h2>
 <ol><li>Перейти на официальный сайт или в мобильное приложение букмекера.</li><li>Указать номер телефона и подтвердить его кодом из SMS.</li><li>Заполнить короткую анкету: как правило, ФИО и дату рождения.</li><li>Пройти идентификацию через Единый ЦУПИС одним из доступных способов.</li><li>Дождаться подтверждения и завершить регистрацию.</li></ol>
-<h2>Способы идентификации через ЦУПИС</h2>
+<h2 id="sposoby-identifikacii-cherez-cupis">Способы идентификации через ЦУПИС</h2>
 <div class="table-wrap"><table><caption>Способы идентификации у легальных букмекеров</caption><thead><tr><th>Способ</th><th>Что нужно</th><th>Где происходит</th></tr></thead><tbody><tr><td>Через Госуслуги</td><td>Подтверждённая учётная запись</td><td>Онлайн, дистанционно</td></tr><tr><td>Лично</td><td>Документ, удостоверяющий личность</td><td>В пункте приёма ставок оператора</td></tr><tr><td>Через банк-партнёр ЦУПИС</td><td>Действующий счёт в банке-партнёре</td><td>Онлайн через приложение банка</td></tr></tbody></table></div><p>Конкретный набор доступных способов идентификации у Bettery уточняйте на официальном сайте bettery.ru — он может отличаться в зависимости от банков-партнёров на момент регистрации.</p>
-<h2>Частые причины задержки идентификации</h2>
+<h2 id="chastye-prichiny-zaderzhki-identifikacii">Частые причины задержки идентификации</h2>
 <ul><li>Несовпадение данных анкеты с документом, удостоверяющим личность.</li><li>Неполный набор данных, если выбранный способ идентификации требует дополнительного подтверждения.</li><li>Технический сбой на стороне банка-партнёра или портала Госуслуг в момент подтверждения.</li><li>Использование одного документа сразу для нескольких аккаунтов у разных операторов — это может потребовать дополнительной проверки.</li></ul>
-<h2>Что делать после регистрации</h2>
+<h2 id="chto-delat-posle-registracii">Что делать после регистрации</h2>
 <p>После завершения идентификации счёт становится доступен для пополнения и ставок. Способ входа в личный кабинет при возможных ограничениях разобран на странице <a href="/bukmekery/bettery/kak-zajti">как зайти на Bettery</a>, а мобильные приложения — на странице <a href="/bukmekery/bettery/prilozhenie">приложение Bettery</a>.</p><p>Если при регистрации использовался промокод, дальнейшие условия по бонусу разобраны в материале <a href="/bukmekery/bettery/bonus">бонусы Bettery</a>.</p><p>Начинающим игрокам стоит заранее ознакомиться с инструментами самоограничения, которые обязаны предоставлять легальные операторы, — подробнее в материале <a href="/otvetstvennaya-igra">ответственная игра</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Сколько занимает регистрация у Bettery?</summary><p>Сама форма регистрации заполняется за несколько минут, но полное завершение процесса зависит от скорости идентификации через ЦУПИС — она может занять от нескольких минут до одного рабочего дня в зависимости от выбранного способа.</p></details>
 <details><summary>Можно ли зарегистрироваться без идентификации через ЦУПИС?</summary><p>Нет, для легальных букмекеров в России идентификация через Единый ЦУПИС обязательна — без неё счёт не может быть пополнен и не принимает ставки в полном объёме.</p></details>
 <details><summary>Нужен ли паспорт для регистрации?</summary><p>Документ, удостоверяющий личность, потребуется на этапе идентификации через ЦУПИС — конкретный набор данных зависит от выбранного способа подтверждения.</p></details>
 <details><summary>Что если номер телефона уже использовался у другого букмекера?</summary><p>Единый ЦУПИС привязывает идентификацию к человеку, а не к отдельному букмекеру, поэтому один номер и один профиль ЦУПИС могут использоваться при регистрации в разных легальных конторах.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/bettery/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/fonbet?p=bukmekery/bettery/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/pari?p=bukmekery/bettery/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>, <a href="/go/melbet?p=bukmekery/bettery/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/bettery"><b>Bettery: обзор букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/bettery/promokod"><b>Промокод Bettery: как это устроено</b><small>Промокод</small></a>

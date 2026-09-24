@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Спортбет", "item": "https://stavki-rating.ru/bukmekery/sportbet"}, {"@type": "ListItem", "position": 4, "name": "Как скачать и установить приложение Спортбет на Android", "item": "https://stavki-rating.ru/bukmekery/sportbet/prilozhenie/android"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как скачать и установить приложение Спортбет на Android", "description": "Как официально скачать и установить приложение Спортбет на Android: RuStore, установочный файл с сайта, шаги и защита от подделок.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/sportbet/prilozhenie/android", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как скачать и установить приложение Спортбет на Android", "description": "Как официально скачать и установить приложение Спортбет на Android: RuStore, установочный файл с сайта, шаги и защита от подделок.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/sportbet/prilozhenie/android", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Как скачать приложение Спортбет на Android?", "acceptedAnswer": {"@type": "Answer", "text": "Через каталог RuStore или прямую загрузку установочного файла с официального сайта sportbet.ru. Оба способа — официальные."}}, {"@type": "Question", "name": "Можно ли найти приложение Спортбет в Google Play?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, приложения с реальными ставками не публикуются в Google Play для пользователей из России — это ограничение самого магазина."}}, {"@type": "Question", "name": "Безопасно ли устанавливать APK не из RuStore?", "acceptedAnswer": {"@type": "Answer", "text": "Безопасно только если файл загружен напрямую с официального сайта оператора. APK со сторонних файлообменников устанавливать не рекомендуется."}}, {"@type": "Question", "name": "Нужна ли регистрация после установки приложения?", "acceptedAnswer": {"@type": "Answer", "text": "Да, для ставок нужен личный кабинет — пройти регистрацию можно прямо в приложении, порядок такой же, как на сайте."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,32 +222,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/sportbet">Спортбет</a><span>/</span>Как скачать и установить приложение Спортбет на Android</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Спортбет ·</div>
     <h1>Как скачать и установить приложение Спортбет на Android</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Для запроса «Спортбет скачать на андроид» важно сразу отделить официальный путь установки от сомнительных сайтов-агрегаторов. Ниже — официальные источники приложения для Android, причины, по которым оно не публикуется в Google Play, и общий порядок установки.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/sportbet?p=sportbet&amp;pl=subpage-top">Сайт букмекера Спортбет →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#oficialnyj-istochnik-dlya-android">Официальный источник для Android</a></li><li><a href="#pochemu-ne-google-play">Почему не Google Play</a></li><li><a href="#poryadok-ustanovki-v-obschih-chertah">Порядок установки в общих чертах</a></li><li><a href="#na-chto-obratit-vnimanie-pri-ustanovke">На что обратить внимание при установке</a></li><li><a href="#kak-otlichit-fejkovuyu-kopiyu">Как отличить фейковую копию</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Официальный источник для Android</h2>
+    <h2 id="oficialnyj-istochnik-dlya-android">Официальный источник для Android</h2>
 <p>Для Android приложения легальных букмекерских контор распространяются через каталог RuStore либо через прямую загрузку установочного файла (APK) с официального сайта оператора. Перед загрузкой стоит убедиться, что вы находитесь именно на официальном домене — как это проверить, разобрано на странице <a href="/bukmekery/sportbet/kak-zajti">как зайти на официальный сайт Спортбет</a>.</p>
-<h2>Почему не Google Play</h2>
+<h2 id="pochemu-ne-google-play">Почему не Google Play</h2>
 <p>Google Play не допускает публикацию приложений с реальными денежными ставками для пользователей из России — это общая политика магазина, а не решение отдельного оператора. Поэтому для Android легальные букмекеры используют RuStore или собственный сайт как основной канал распространения приложения.</p>
-<h2>Порядок установки в общих чертах</h2>
+<h2 id="poryadok-ustanovki-v-obschih-chertah">Порядок установки в общих чертах</h2>
 <ol><li>Открыть официальный сайт оператора или каталог RuStore.</li><li>Перейти в раздел загрузки приложения для Android.</li><li>Скачать установочный файл и разрешить установку приложений из данного источника в настройках телефона (если файл загружается напрямую, а не через RuStore).</li><li>Установить приложение и войти в личный кабинет или пройти регистрацию.</li></ol><p>Порядок регистрации в личном кабинете описан на странице <a href="/bukmekery/sportbet/registraciya">регистрация в Спортбет</a>.</p>
-<h2>На что обратить внимание при установке</h2>
+<h2 id="na-chto-obratit-vnimanie-pri-ustanovke">На что обратить внимание при установке</h2>
 <p>При включении разрешения на установку приложений из неизвестных источников современные версии Android дополнительно предупреждают о рисках — это стандартное системное сообщение, а не признак проблемы с конкретным файлом. После установки стоит обратить внимание, какие разрешения запрашивает приложение при первом запуске: для букмекерского приложения типично обращение к интернету и уведомлениям, но не к списку контактов или SMS без явного объяснения причины.</p><p>Рекомендуется также держать включённой встроенную проверку приложений Android (Google Play Protect) — она работает независимо от того, откуда установлено приложение, и может предупредить о потенциально опасном файле.</p><p>После установки стоит своевременно обновлять приложение — новые версии закрывают уязвимости безопасности и поддерживают корректную работу личного кабинета. Если приложение установлено напрямую с сайта, а не через RuStore, обновления обычно нужно скачивать так же — вручную с официального источника.</p>
-<h2>Как отличить фейковую копию</h2>
+<h2 id="kak-otlichit-fejkovuyu-kopiyu">Как отличить фейковую копию</h2>
 <p>Приложения с названием «Спортбет», размещённые на сторонних файлообменниках или сайтах-подборках «скачать БК апк», не гарантируют безопасность. Признаки, что источник не официальный:</p><ul><li>Ссылка на скачивание ведёт не на официальный домен оператора и не в RuStore.</li><li>Сайт с загрузкой перегружен рекламой других сервисов и БК.</li><li>Отсутствует явное указание оператора и его юридического лица.</li><li>Размер установочного файла заметно отличается от размера, указанного на официальном сайте.</li></ul>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Как скачать приложение Спортбет на Android?</summary><p>Через каталог RuStore или прямую загрузку установочного файла с официального сайта sportbet.ru. Оба способа — официальные.</p></details>
 <details><summary>Можно ли найти приложение Спортбет в Google Play?</summary><p>Нет, приложения с реальными ставками не публикуются в Google Play для пользователей из России — это ограничение самого магазина.</p></details>
 <details><summary>Безопасно ли устанавливать APK не из RuStore?</summary><p>Безопасно только если файл загружен напрямую с официального сайта оператора. APK со сторонних файлообменников устанавливать не рекомендуется.</p></details>
 <details><summary>Нужна ли регистрация после установки приложения?</summary><p>Да, для ставок нужен личный кабинет — пройти регистрацию можно прямо в приложении, порядок такой же, как на сайте.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/sportbet/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/ligastavok?p=bukmekery/sportbet/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>, <a href="/go/zenit?p=bukmekery/sportbet/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/marathonbet?p=bukmekery/sportbet/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/sportbet"><b>Спортбет: обзор букмекерской конторы</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/sportbet/promokod"><b>Промокод Спортбет: как это работает</b><small>Промокод</small></a>

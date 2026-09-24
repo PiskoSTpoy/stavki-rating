@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Зенит", "item": "https://stavki-rating.ru/bukmekery/zenit"}, {"@type": "ListItem", "position": 4, "name": "Как устроен вывод средств в БК «Зенит»", "item": "https://stavki-rating.ru/bukmekery/zenit/vyvod-sredstv"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как устроен вывод средств в БК «Зенит»", "description": "Как устроен вывод средств у легального букмекера «Зенит»: идентификация через ЕЦУПИС, способы вывода и удержание НДФЛ оператором как налоговым агентом.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/zenit/vyvod-sredstv", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как устроен вывод средств в БК «Зенит»", "description": "Как устроен вывод средств у легального букмекера «Зенит»: идентификация через ЕЦУПИС, способы вывода и удержание НДФЛ оператором как налоговым агентом.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/zenit/vyvod-sredstv", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Нужно ли проходить идентификацию перед выводом денег?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Да, это обязательное требование для всех легальных букмекеров, работающих через ЕЦУПИС, а не особенность конкретного оператора.</p>"}}, {"@type": "Question", "name": "Кто платит налог с выигрыша — я сам или букмекер?", "acceptedAnswer": {"@type": "Answer", "text": "<p>С 2026 года налог удерживает сам букмекер как налоговый агент при выводе средств (13%, а свыше 5 млн рублей дохода за год — 15% с превышения); дополнительно подавать декларацию самостоятельно, как правило, не требуется.</p>"}}, {"@type": "Question", "name": "Какими способами можно вывести деньги из БК «Зенит»?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Как правило, это СБП, банковская карта или счёт ЕЦУПИС — точный список актуальных способов и лимитов уточняйте на официальном сайте оператора.</p>"}}, {"@type": "Question", "name": "Сколько времени занимает вывод средств?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Точные сроки зависят от способа вывода и внутренних процедур оператора — их лучше уточнять напрямую на официальном сайте или в поддержке БК «Зенит», не ориентируясь на чужой опыт.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,34 +222,35 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/zenit">Зенит</a><span>/</span>Как устроен вывод средств в БК «Зенит»</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Зенит ·</div>
     <h1>Как устроен вывод средств в БК «Зенит»</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Вывод денег у легальных букмекеров, включая «Зенит», устроен по общим для рынка правилам: через Единый ЦУПИС или систему быстрых платежей, после прохождения идентификации. Ниже — как это работает в общих чертах и что с 2026 года изменилось в части налога на выигрыш.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/zenit?p=zenit&amp;pl=subpage-top">Сайт букмекера Зенит →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#obschij-princip-ecupis-i-sbp">Общий принцип: ЕЦУПИС и СБП</a></li><li><a href="#identifikaciya-pered-vyvodom">Идентификация перед выводом</a></li><li><a href="#nalog-na-vyigrysh-kto-ego-uderzhivaet">Налог на выигрыш: кто его удерживает</a></li><li><a href="#sposoby-vyvoda">Способы вывода</a></li><li><a href="#chto-vliyaet-na-skorost-vyvoda">Что влияет на скорость вывода</a></li><li><a href="#chto-delat-esli-vyvod-zaderzhivaetsya">Что делать, если вывод задерживается</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Общий принцип: ЕЦУПИС и СБП</h2>
+    <h2 id="obschij-princip-ecupis-i-sbp">Общий принцип: ЕЦУПИС и СБП</h2>
 <p>Легальные букмекерские конторы в России работают через Единый центр учёта переводов интерактивных ставок (ЕЦУПИС) — все расчёты игрока, включая пополнение и вывод, проходят через эту систему или напрямую через систему быстрых платежей (СБП), привязанную к банковскому счёту игрока.</p><p>Это отличает легальных операторов, включённых в реестр ЕРАИ, от нелегальных сайтов, где такой прозрачной схемы расчётов нет. Проверить статус оператора можно на странице <a href="/kak-proverit-licenziyu">как проверить лицензию букмекера</a>. Прозрачная схема расчётов через ЕЦУПИС также снижает риск споров о сумме выигрыша или необоснованного отказа в выводе: все операции фиксируются в системе оператора расчётов, а не только в личном кабинете букмекера.</p>
-<h2>Идентификация перед выводом</h2>
+<h2 id="identifikaciya-pered-vyvodom">Идентификация перед выводом</h2>
 <p>Перед первым выводом средств у легального букмекера требуется пройти идентификацию личности — это обязательное требование к оператору ЕЦУПИС, а не особенность конкретного сайта. Как правило, это привязка счёта через Госуслуги или через банковскую карту, оформленную на имя игрока.</p><p>Подробно порядок регистрации и привязки счёта разобран на странице <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">регистрация и ЦУПИС</a>.</p>
-<h2>Налог на выигрыш: кто его удерживает</h2>
+<h2 id="nalog-na-vyigrysh-kto-ego-uderzhivaet">Налог на выигрыш: кто его удерживает</h2>
 <p>С выигрышей у легальных букмекеров удерживается НДФЛ. С 2026 года функция налогового агента по этому налогу закреплена за самим букмекером: оператор удерживает налог при выводе средств и передаёт данные в налоговую, поэтому дополнительно декларировать эти суммы самостоятельно, как правило, не требуется. Базовая ставка налога — 13% для налоговых резидентов; для дохода, превышающего 5 млн рублей за год у одного налогового агента, к сумме превышения применяется повышенная ставка 15%. Рассчитать сумму для своей ситуации можно на странице <a href="/instrumenty/nalog-na-vyigrysh">калькулятор налога на выигрыш</a>.</p><p>Как именно считается налог и от какой суммы, разобрано на странице <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">налог на выигрыш</a>.</p>
-<h2>Способы вывода</h2>
+<h2 id="sposoby-vyvoda">Способы вывода</h2>
 <div class="table-wrap"><table><caption>Общие способы вывода средств у легальных букмекеров</caption><thead><tr><th>Способ</th><th>Как работает</th></tr></thead><tbody><tr><td>СБП</td><td>Вывод на банковский счёт по номеру телефона, привязанному к банку</td></tr><tr><td>Банковская карта</td><td>Вывод на карту, оформленную на имя игрока, прошедшего идентификацию</td></tr><tr><td>Счёт ЕЦУПИС</td><td>Промежуточный счёт, через который проходят все расчёты игрока</td></tr></tbody></table></div><p>Точный перечень способов, актуальных для конкретного оператора, и любые ограничения по суммам — смотрите на официальном сайте zenit.win. Общий разбор темы — на странице <a href="/shkola/dengi-i-nalogi/kak-vyvesti-dengi">как вывести деньги из букмекерской конторы</a>.</p>
-<h2>Что влияет на скорость вывода</h2>
+<h2 id="chto-vliyaet-na-skorost-vyvoda">Что влияет на скорость вывода</h2>
 <p>На практике на скорость обработки вывода влияет несколько факторов: способ платежа (СБП обычно быстрее банковской карты), время суток и день обращения, а также то, пройдена ли идентификация личности заранее. Если данные аккаунта подтверждены до момента вывода, заявка, как правило, обрабатывается быстрее.</p><p>Ставки стоит рассматривать как развлечение, а не как способ заработка или источник финансового риска — базовые принципы разумного подхода собраны на странице <a href="/otvetstvennaya-igra">ответственная игра</a>.</p>
-<h2>Что делать, если вывод задерживается</h2>
+<h2 id="chto-delat-esli-vyvod-zaderzhivaetsya">Что делать, если вывод задерживается</h2>
 <p>Сроки обработки вывода зависят от способа платежа и внутренних процедур проверки конкретного оператора — точные цифры лучше уточнять на официальном сайте или в поддержке БК «Зенит», а не ориентироваться на чужой опыт.</p><p>Если вывод задерживается дольше заявленного оператором срока, стоит проверить корректность указанных реквизитов, статус идентификации личности и обратиться в поддержку букмекера напрямую.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Нужно ли проходить идентификацию перед выводом денег?</summary><p>Да, это обязательное требование для всех легальных букмекеров, работающих через ЕЦУПИС, а не особенность конкретного оператора.</p></details>
 <details><summary>Кто платит налог с выигрыша — я сам или букмекер?</summary><p>С 2026 года налог удерживает сам букмекер как налоговый агент при выводе средств (13%, а свыше 5 млн рублей дохода за год — 15% с превышения); дополнительно подавать декларацию самостоятельно, как правило, не требуется.</p></details>
 <details><summary>Какими способами можно вывести деньги из БК «Зенит»?</summary><p>Как правило, это СБП, банковская карта или счёт ЕЦУПИС — точный список актуальных способов и лимитов уточняйте на официальном сайте оператора.</p></details>
 <details><summary>Сколько времени занимает вывод средств?</summary><p>Точные сроки зависят от способа вывода и внутренних процедур оператора — их лучше уточнять напрямую на официальном сайте или в поддержке БК «Зенит», не ориентируясь на чужой опыт.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/zenit/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/fonbet?p=bukmekery/zenit/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/marathonbet?p=bukmekery/zenit/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>, <a href="/go/ligastavok?p=bukmekery/zenit/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/zenit"><b>Зенит: обзор легального букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/zenit/promokod"><b>Промокод Зенит: как найти и использовать</b><small>Промокод</small></a>

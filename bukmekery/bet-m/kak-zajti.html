@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -171,7 +181,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Бет-М", "item": "https://stavki-rating.ru/bukmekery/bet-m"}, {"@type": "ListItem", "position": 4, "name": "Бет-М зеркало: как попасть на официальный сайт БК", "item": "https://stavki-rating.ru/bukmekery/bet-m/kak-zajti"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бет-М зеркало: как попасть на официальный сайт БК", "description": "Разбираемся, что значит «зеркало Бет-М»: почему возникают проблемы с доступом на официальный сайт, как отличить настоящий домен от фишинга и куда обращаться.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/bet-m/kak-zajti", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бет-М зеркало: как попасть на официальный сайт БК", "description": "Разбираемся, что значит «зеркало Бет-М»: почему возникают проблемы с доступом на официальный сайт, как отличить настоящий домен от фишинга и куда обращаться.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/bet-m/kak-zajti", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Есть ли у Бет-М официальные «зеркала»?", "acceptedAnswer": {"@type": "Answer", "text": "У легального оператора есть один официальный сайт. Ресурсы, которые называют себя «зеркалами бренда», не подтверждены оператором и могут быть фишинговыми копиями — переходить на них не стоит."}}, {"@type": "Question", "name": "Почему сайт Бет-М иногда не открывается?", "acceptedAnswer": {"@type": "Answer", "text": "Причиной может быть временная техническая проблема на стороне сайта, особенности маршрутизации у интернет-провайдера или сбой на устройстве пользователя. Это не означает автоматически блокировку конкретно этого домена."}}, {"@type": "Question", "name": "Как проверить, что домен настоящий?", "acceptedAnswer": {"@type": "Answer", "text": "Сверьте адрес в адресной строке с официальным доменом бренда, не переходите по рекламным ссылкам на «зеркала» и при сомнениях проверьте оператора в реестре — см. инструкцию по проверке лицензии."}}, {"@type": "Question", "name": "Безопасно ли использовать сервисы обхода блокировок для входа?", "acceptedAnswer": {"@type": "Answer", "text": "Мы не рекомендуем сторонние VPN и сервисы обхода неизвестного происхождения для входа в личный кабинет — риск попасть на фишинговый сайт или скомпрометировать данные аккаунта существует и нередко выше, чем неудобство временной недоступности сайта."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -211,30 +221,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/bet-m">Бет-М</a><span>/</span>Бет-М зеркало: как попасть на официальный сайт БК</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Бет-М ·</div>
     <h1>Бет-М зеркало: как попасть на официальный сайт БК</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Запрос «Бет-М зеркало» обычно означает, что у пользователя не открывается привычный адрес букмекера. У легального оператора есть один официальный домен, и задача не в поиске обходных «зеркал», а в том, чтобы убедиться, что вы находитесь именно на нём. Разбираем, почему доступ иногда прерывается и как проверить сайт перед тем, как вводить логин и пароль.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/bet-m?p=bet-m&amp;pl=subpage-top">Сайт букмекера Бет-М →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#pochemu-poyavlyaetsya-slovo-zerkalo">Почему появляется слово «зеркало»</a></li><li><a href="#kak-otlichit-oficialnyj-domen-ot-poddelki">Как отличить официальный домен от подделки</a></li><li><a href="#chto-delat-esli-sajt-ne-otkryvaetsya">Что делать, если сайт не открывается</a></li><li><a href="#registraciya-i-vhod-posle-proverki-domena">Регистрация и вход после проверки домена</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Почему появляется слово «зеркало»</h2>
+    <h2 id="pochemu-poyavlyaetsya-slovo-zerkalo">Почему появляется слово «зеркало»</h2>
 <p>Слово «зеркало» в поиске обычно возникает по одной из двух причин: временные проблемы с доступом к сайту (нагрузка, технические работы, особенности сети провайдера) или попытка недобросовестных ресурсов встать в выдачу под похожим на бренд названием. У Бет-М как у легального оператора, входящего в реестр ЕРАИ, нет сети неофициальных «зеркал» — это термин, которым чаще пользуются создатели нелегальных копий сайта.</p><p>Если официальный сайт не открывается, разумные шаги — обновить страницу, попробовать другую сеть или устройство, проверить статус сайта через поисковик. Специально искать сторонние «рабочие зеркала» или сервисы обхода блокировок мы не рекомендуем.</p>
-<h2>Как отличить официальный домен от подделки</h2>
+<h2 id="kak-otlichit-oficialnyj-domen-ot-poddelki">Как отличить официальный домен от подделки</h2>
 <ul><li>Сверяйте адрес в адресной строке буква за буквой — фишинговые сайты часто используют похожие символы или дополнительные слова в домене.</li><li>Проверяйте, что соединение защищено (значок замка в браузере), хотя это не гарантия легальности, а только шифрования канала.</li><li>Не переходите по ссылкам на «зеркало» из рекламы в мессенджерах, соцсетях и на сторонних форумах — это частый канал фишинга.</li><li>Легальность оператора и его включение в реестр можно проверить самостоятельно — см. <a href="/kak-proverit-licenziyu">инструкцию, как проверить лицензию букмекера</a>.</li></ul>
-<h2>Что делать, если сайт не открывается</h2>
+<h2 id="chto-delat-esli-sajt-ne-otkryvaetsya">Что делать, если сайт не открывается</h2>
 <p>Если официальный сайт временно недоступен, самый безопасный вариант — подождать и попробовать позже или обратиться в поддержку через официальные контакты, указанные на сайте bet-m.ru. Использование сторонних «зеркал», VPN-сервисов неизвестного происхождения или ссылок из рекламы повышает риск попасть на фишинговую копию, где могут запросить данные карты или аккаунта.</p><p>Общую информацию о самом бренде, его разделах и продуктах можно посмотреть на <a href="/bukmekery/bet-m">странице Бет-М в каталоге</a>, а сравнить оператора с другими легальными БК — в <a href="/rating">рейтинге букмекеров</a>.</p>
-<h2>Регистрация и вход после проверки домена</h2>
+<h2 id="registraciya-i-vhod-posle-proverki-domena">Регистрация и вход после проверки домена</h2>
 <p>Убедившись, что вы на официальном домене, дальнейшие шаги стандартны для любого легального оператора: регистрация с подтверждением через Единую систему идентификации, привязка счёта и вход по логину и паролю. Подробный порядок описан в материале <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">о регистрации и ЦУПИС</a>, а конкретные шаги для Бет-М — на <a href="/bukmekery/bet-m/registraciya">странице регистрации Бет-М</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Есть ли у Бет-М официальные «зеркала»?</summary><p>У легального оператора есть один официальный сайт. Ресурсы, которые называют себя «зеркалами бренда», не подтверждены оператором и могут быть фишинговыми копиями — переходить на них не стоит.</p></details>
 <details><summary>Почему сайт Бет-М иногда не открывается?</summary><p>Причиной может быть временная техническая проблема на стороне сайта, особенности маршрутизации у интернет-провайдера или сбой на устройстве пользователя. Это не означает автоматически блокировку конкретно этого домена.</p></details>
 <details><summary>Как проверить, что домен настоящий?</summary><p>Сверьте адрес в адресной строке с официальным доменом бренда, не переходите по рекламным ссылкам на «зеркала» и при сомнениях проверьте оператора в реестре — см. инструкцию по проверке лицензии.</p></details>
 <details><summary>Безопасно ли использовать сервисы обхода блокировок для входа?</summary><p>Мы не рекомендуем сторонние VPN и сервисы обхода неизвестного происхождения для входа в личный кабинет — риск попасть на фишинговый сайт или скомпрометировать данные аккаунта существует и нередко выше, чем неудобство временной недоступности сайта.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/bet-m/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/fonbet?p=bukmekery/bet-m/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/marathonbet?p=bukmekery/bet-m/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>, <a href="/go/zenit?p=bukmekery/bet-m/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/bet-m"><b>Бет-М: обзор легального букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/bet-m/promokod"><b>Промокод Бет-М: как это работает</b><small>Промокод</small></a>

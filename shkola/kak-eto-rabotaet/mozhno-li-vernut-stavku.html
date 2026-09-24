@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -171,7 +181,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Как это работает", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Можно ли вернуть или отменить уже сделанную ставку", "item": "https://stavki-rating.ru/shkola/kak-eto-rabotaet/mozhno-li-vernut-stavku"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Можно ли вернуть или отменить уже сделанную ставку", "description": "Разбираем, можно ли отменить уже сделанную ставку в легальной букмекерской конторе, чем это отличается от кэшаута и возврата (void).", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/kak-eto-rabotaet/mozhno-li-vernut-stavku", "datePublished": "2026-09-07", "dateModified": "2026-09-07", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Можно ли вернуть или отменить уже сделанную ставку", "description": "Разбираем, можно ли отменить уже сделанную ставку в легальной букмекерской конторе, чем это отличается от кэшаута и возврата (void).", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/kak-eto-rabotaet/mozhno-li-vernut-stavku", "datePublished": "2026-09-07", "dateModified": "2026-09-07", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Можно ли вернуть или отменить уже сделанную ставку", "acceptedAnswer": {"@type": "Answer", "text": "Нет, отменить ставку по собственному желанию после подтверждения купона нельзя ни в одной легальной БК — деньги списаны, пари зафиксировано в линии. Досрочно выйти из ставки можно только через кэшаут, если он доступен по этому событию, и то не по номиналу, а по текущей расчётной цене."}}, {"@type": "Question", "name": "Чем возврат ставки (void) отличается от кэшаута", "acceptedAnswer": {"@type": "Answer", "text": "Void — это автоматический возврат по правилам конкретного рынка (например, отмена матча), деньги приходят полностью и без вашего участия. Кэшаут — это ваше собственное решение закрыть ставку раньше времени, и сумма возврата плавающая, привязанная к текущим котировкам, а не к тому, что вы ставили изначально."}}, {"@type": "Question", "name": "Поставил не туда или ошибся суммой — вообще никак не откатить", "acceptedAnswer": {"@type": "Answer", "text": "После подтверждения купона — никак, отмены задним числом не бывает. Единственная защита — внимательно проверять исход, коэффициент и сумму прямо перед нажатием кнопки подтверждения. Если ставка уже прошла и по ней доступен кэшаут, можно закрыть её досрочно, но это будет продажа по рыночной цене, а не отмена ошибки."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -211,25 +221,26 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Как это работает</a><span>/</span>Можно ли вернуть или отменить уже сделанную ставку</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Школа · Как это работает ·</div>
     <h1>Можно ли вернуть или отменить уже сделанную ставку</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 07.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-07">07.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Нет — в подавляющем большинстве легальных букмекерских контор России отменить ставку просто потому, что передумал, нельзя. Как только купон подтверждён, деньги списаны со счёта и пари зафиксировано в линии — кнопки «отменить заказ», как в интернет-магазине, здесь нет. Единственный штатный способ выйти из ставки раньше её исхода — кэшаут (если он открыт по конкретному событию), но это не отмена, а продажа ставки букмекеру по текущей расчётной стоимости, которая почти всегда отличается от суммы, на которую вы поставили.</p>
     
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#pochemu-stavku-nelzya-prosto-otmenit">Почему ставку нельзя просто отменить</a></li><li><a href="#kogda-stavka-vozvraschaetsya-sama-eto-drugoj-mehanizm-void">Когда ставка возвращается сама — это другой механизм (void)</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Почему ставку нельзя просто отменить</h2>
+    <h2 id="pochemu-stavku-nelzya-prosto-otmenit">Почему ставку нельзя просто отменить</h2>
 <p>Ставка — это заключённое пари: вы согласились на коэффициент, который был в линии на момент подтверждения купона, и сумма списалась со счёта сразу. Букмекер учитывает этот кэф в своих расчётах риска по всей линии, поэтому одностороннего отзыва «я передумал» механика не предусматривает — ни в личном кабинете, ни через поддержку.</p><p>Единственная легальная лазейка — <strong>кэшаут</strong>. Он есть не на всех событиях и не у всех БК, а там, где есть — это фактически предложение выкупить вашу ставку раньше времени по текущей котировке рынка. Сумма может быть и больше, и меньше первоначальной — зависит от того, как складывается матч. Условия и доступность кэшаута отличаются от конторы к конторе, актуальный список лицензированных букмекеров РФ — в <a href="/rating">рейтинге на sтавки-rating.ru</a>.</p><p>Отдельная история — техническая ошибка при вводе купона (не тот исход, не та сумма). Здесь тоже нет отмены задним числом: единственная защита — проверять купон до нажатия кнопки подтверждения, пока ставка ещё не принята.</p>
-<h2>Когда ставка возвращается сама — это другой механизм (void)</h2>
+<h2 id="kogda-stavka-vozvraschaetsya-sama-eto-drugoj-mehanizm-void">Когда ставка возвращается сама — это другой механизм (void)</h2>
 <p>Иногда деньги за ставку действительно возвращаются на счёт в полном объёме — но это не отмена по инициативе игрока, а автоматический <strong>возврат ставки (void)</strong>, который применяет сам букмекер по правилам конкретного рынка. Типичные причины: матч отменён или перенесён, событие не состоялось в заявленном виде, в маркете участвовал не тот состав, или сработало иное регламентное условие (например, при некоторых рынках «до начала матча»).</p><p>Отличие от кэшаута принципиальное: void — это решение букмекера по правилам конкретного маркета, деньги возвращаются по номиналу ставки; кэшаут — это ваш выбор закрыть ставку досрочно по текущей рыночной цене, которая может быть выше или ниже исходной. Спутать их легко, но механизмы разные и запускаются разными сторонами.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Можно ли вернуть или отменить уже сделанную ставку</summary><p>Нет, отменить ставку по собственному желанию после подтверждения купона нельзя ни в одной легальной БК — деньги списаны, пари зафиксировано в линии. Досрочно выйти из ставки можно только через кэшаут, если он доступен по этому событию, и то не по номиналу, а по текущей расчётной цене.</p></details>
 <details><summary>Чем возврат ставки (void) отличается от кэшаута</summary><p>Void — это автоматический возврат по правилам конкретного рынка (например, отмена матча), деньги приходят полностью и без вашего участия. Кэшаут — это ваше собственное решение закрыть ставку раньше времени, и сумма возврата плавающая, привязанная к текущим котировкам, а не к тому, что вы ставили изначально.</p></details>
 <details><summary>Поставил не туда или ошибся суммой — вообще никак не откатить</summary><p>После подтверждения купона — никак, отмены задним числом не бывает. Единственная защита — внимательно проверять исход, коэффициент и сумму прямо перед нажатием кнопки подтверждения. Если ставка уже прошла и по ней доступен кэшаут, можно закрыть её досрочно, но это будет продажа по рыночной цене, а не отмена ошибки.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/pari">PARI</a>, <a href="/bukmekery/melbet">Мелбет</a>, <a href="/bukmekery/ligastavok">Лига Ставок</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/shkola/kak-eto-rabotaet/vidy-stavok-na-sport"><b>Виды ставок на спорт: полный разбор форматов и рынков</b><small>Как это работает</small></a>
       <a class="tile" href="/shkola/kak-eto-rabotaet/kak-chitat-koefficienty"><b>Как читать коэффициенты букмекера</b><small>Как это работает</small></a>

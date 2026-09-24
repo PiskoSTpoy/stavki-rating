@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Winline", "item": "https://stavki-rating.ru/bukmekery/winline"}, {"@type": "ListItem", "position": 4, "name": "Фрибет Winline: как устроена бесплатная ставка", "item": "https://stavki-rating.ru/bukmekery/winline/fribet"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Фрибет Winline: как устроена бесплатная ставка", "description": "Механика фрибета у легальных букмекеров: что это, типичные условия использования и что происходит с выигрышем — без выдуманных сумм для Winline.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/winline/fribet", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Фрибет Winline: как устроена бесплатная ставка", "description": "Механика фрибета у легальных букмекеров: что это, типичные условия использования и что происходит с выигрышем — без выдуманных сумм для Winline.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/winline/fribet", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Можно ли вывести фрибет как деньги?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет, сам номинал фрибета вывести нельзя — он используется только для размещения ставки. Выводу подлежит чистый выигрыш после расчёта такой ставки, если условия акции выполнены.</p>"}}, {"@type": "Question", "name": "Сгорает ли фрибет, если его не использовать?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Как правило, да — у фрибетов обычно есть ограниченный срок действия, после которого они аннулируются. Точный срок для конкретного предложения указан в правилах акции на официальном сайте.</p>"}}, {"@type": "Question", "name": "Какой размер фрибета дают в Winline сейчас?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Размер и условия действующих предложений меняются, поэтому актуальную сумму и правила нужно смотреть непосредственно на официальном сайте winline.ru.</p>"}}, {"@type": "Question", "name": "Можно ли поставить фрибет на любой коэффициент?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Обычно нет — у большинства фрибетов установлен минимальный коэффициент, ниже которого ставка не засчитывается для получения выигрыша. Ограничение устанавливается индивидуально для каждой акции.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/winline">Winline</a><span>/</span>Фрибет Winline: как устроена бесплатная ставка</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Winline ·</div>
     <h1>Фрибет Winline: как устроена бесплатная ставка</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Фрибет — это бесплатная ставка, которую букмекер начисляет вместо живых денег на счёт клиента. Конкретный размер и условия фрибета у Winline устанавливает сам оператор и они могут меняться — точные актуальные цифры нужно смотреть на официальном сайте winline.ru, здесь разбирается общий принцип работы такого бонуса.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/winline?p=winline&amp;pl=subpage-top">Сайт букмекера Winline →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#chto-takoe-fribet">Что такое фрибет</a></li><li><a href="#kak-obychno-nachislyaetsya-fribet">Как обычно начисляется фрибет</a></li><li><a href="#tipichnye-usloviya-ispolzovaniya-fribeta">Типичные условия использования фрибета</a></li><li><a href="#chto-proishodit-s-vyigryshem-po-fribetu">Что происходит с выигрышем по фрибету</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Что такое фрибет</h2>
+    <h2 id="chto-takoe-fribet">Что такое фрибет</h2>
 <p>Фрибет — это своего рода купон на ставку определённого номинала, который нельзя вывести напрямую как деньги, но можно использовать для размещения ставки на выбранное событие. Подробное определение термина есть в материале Школы <a href="/shkola/terminy/chto-takoe-fribet">«Что такое фрибет»</a>.</p><p>Фрибет отличается от обычного бонуса на баланс тем, что его нельзя разбить на несколько мелких ставок — он используется целиком, за один раз.</p>
-<h2>Как обычно начисляется фрибет</h2>
+<h2 id="kak-obychno-nachislyaetsya-fribet">Как обычно начисляется фрибет</h2>
 <p>У легальных букмекеров фрибет чаще всего выдаётся: за регистрацию и выполнение первых условий на счёте, за активность (например, определённое число ставок за расчётный период), в рамках сезонных акций к крупным турнирам или по промокоду в рамках отдельного предложения. Условия и сам факт начисления фрибета всегда определяет оператор — актуальный перечень действующих предложений Winline нужно смотреть на официальном сайте, а не по устаревшим публикациям.</p><p>Иногда фрибет выдаётся не автоматически, а требует отдельной активации в личном кабинете или в приложении — например, нужно нажать кнопку «получить» или выполнить конкретное условие в установленный срок. Пропуск такого шага может означать, что бонус, формально доступный по условиям акции, так и не попадёт на счёт.</p>
-<h2>Типичные условия использования фрибета</h2>
+<h2 id="tipichnye-usloviya-ispolzovaniya-fribeta">Типичные условия использования фрибета</h2>
 <ul><li>Минимальный коэффициент, на который можно поставить фрибет (обычно устанавливается отдельно для каждой акции)</li><li>Ограниченный срок действия — фрибет, как правило, сгорает, если не использован вовремя</li><li>Фрибет нельзя использовать частично — он играет полной суммой номинала на одну ставку</li><li>Иногда действуют ограничения по видам спорта или типам рынка, на которые можно поставить фрибет</li></ul><p>Проверить, насколько выгодна ставка по фрибету при конкретном коэффициенте, можно с помощью <a href="/instrumenty/kalkulyator-stavok">калькулятора ставок</a>.</p>
-<h2>Что происходит с выигрышем по фрибету</h2>
+<h2 id="chto-proishodit-s-vyigryshem-po-fribetu">Что происходит с выигрышем по фрибету</h2>
 <p>Правило, общее для большинства легальных букмекеров: если ставка по фрибету выигрывает, номинал самого фрибета обычно не засчитывается в сумму выплаты — выплачивается только чистая прибыль (выигрыш минус номинал фрибета). Это стандартная механика, но точную формулировку правил по конкретной акции нужно смотреть в официальных условиях на winline.ru, так как отдельные предложения могут иметь свои нюансы расчёта.</p><p>Если ставка по фрибету проигрывает, средства с основного баланса счёта не списываются — теряется только сам фрибет, что делает такой инструмент относительно безопасным способом попробовать ставку без затрат собственных денег.</p><p>Выигрыш по фрибету, как и любой другой доход от ставок у легального оператора, может подпадать под правила налогообложения — общий порядок расчёта разобран в материале <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">«Налог на выигрыш»</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Можно ли вывести фрибет как деньги?</summary><p>Нет, сам номинал фрибета вывести нельзя — он используется только для размещения ставки. Выводу подлежит чистый выигрыш после расчёта такой ставки, если условия акции выполнены.</p></details>
 <details><summary>Сгорает ли фрибет, если его не использовать?</summary><p>Как правило, да — у фрибетов обычно есть ограниченный срок действия, после которого они аннулируются. Точный срок для конкретного предложения указан в правилах акции на официальном сайте.</p></details>
 <details><summary>Какой размер фрибета дают в Winline сейчас?</summary><p>Размер и условия действующих предложений меняются, поэтому актуальную сумму и правила нужно смотреть непосредственно на официальном сайте winline.ru.</p></details>
 <details><summary>Можно ли поставить фрибет на любой коэффициент?</summary><p>Обычно нет — у большинства фрибетов установлен минимальный коэффициент, ниже которого ставка не засчитывается для получения выигрыша. Ограничение устанавливается индивидуально для каждой акции.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/winline/fribet&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/pari?p=bukmekery/winline/fribet&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>, <a href="/go/marathonbet?p=bukmekery/winline/fribet&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>, <a href="/go/ligastavok?p=bukmekery/winline/fribet&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/winline"><b>Winline — обзор букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/winline/promokod"><b>Промокод Winline: как найти и использовать</b><small>Промокод</small></a>

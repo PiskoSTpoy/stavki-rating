@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -171,7 +181,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Winline", "item": "https://stavki-rating.ru/bukmekery/winline"}, {"@type": "ListItem", "position": 4, "name": "Как зайти на официальный сайт Winline, а не на подделку", "item": "https://stavki-rating.ru/bukmekery/winline/kak-zajti"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как зайти на официальный сайт Winline, а не на подделку", "description": "Официальный домен Winline, почему сайт иногда недоступен и как отличить настоящий адрес от фишинговых «зеркал» — без советов обходить блокировки.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/winline/kak-zajti", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как зайти на официальный сайт Winline, а не на подделку", "description": "Официальный домен Winline, почему сайт иногда недоступен и как отличить настоящий адрес от фишинговых «зеркал» — без советов обходить блокировки.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/winline/kak-zajti", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Зеркало Winline — это то же самое, что официальный сайт?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Официальный оператор работает через один домен и связанные с ним официальные каналы (приложение, ЦУПИС). Сайты, называющие себя «зеркалом», в большинстве случаев не имеют отношения к Winline и не гарантируют сохранность данных или средств."}}, {"@type": "Question", "name": "Почему не открывается сайт winline.ru?", "acceptedAnswer": {"@type": "Answer", "text": "Чаще всего это блокировка на уровне провайдера, а не действия самого оператора. В такой ситуации безопаснее воспользоваться официальным мобильным приложением, а не сторонними ссылками."}}, {"@type": "Question", "name": "Как проверить, что букмекер легальный?", "acceptedAnswer": {"@type": "Answer", "text": "Свериться со списком операторов в реестре ЕРАИ — подробный порядок проверки описан на странице «Как проверить лицензию»."}}, {"@type": "Question", "name": "Нужен ли VPN для входа в личный кабинет Winline?", "acceptedAnswer": {"@type": "Answer", "text": "Мы не рекомендуем использовать сторонние VPN-сервисы и «обходные» ссылки для доступа к сайту букмекера — это не официальные каналы, и ответственность за их безопасность оператор не несёт."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -211,30 +221,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/winline">Winline</a><span>/</span>Как зайти на официальный сайт Winline, а не на подделку</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Winline ·</div>
     <h1>Как зайти на официальный сайт Winline, а не на подделку</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Официальный сайт Winline — winline.ru. Если он не открывается напрямую, это обычно блокировка на уровне интернет-провайдера, а не проблема у самого оператора. Переходить по рекламным ссылкам на «зеркала» рискованно: под вывеской известного бренда часто маскируются фишинговые копии. Ниже — как отличить настоящий адрес и что делать, если сайт недоступен.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/winline?p=winline&amp;pl=subpage-top">Сайт букмекера Winline →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#pochemu-oficialnyj-sajt-inogda-nedostupen">Почему официальный сайт иногда недоступен</a></li><li><a href="#chem-opasny-storonnie-zerkala">Чем опасны сторонние «зеркала»</a></li><li><a href="#kak-proverit-chto-pered-vami-nastoyaschij-winline">Как проверить, что перед вами настоящий Winline</a></li><li><a href="#chto-delat-esli-sajt-ne-otkryvaetsya">Что делать, если сайт не открывается</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Почему официальный сайт иногда недоступен</h2>
+    <h2 id="pochemu-oficialnyj-sajt-inogda-nedostupen">Почему официальный сайт иногда недоступен</h2>
 <p>Доступ к сайтам букмекеров периодически ограничивают отдельные интернет-провайдеры — это техническая практика фильтрации, которая может касаться и легальных операторов, входящих в реестр <a href="/kak-proverit-licenziyu">ЕРАИ</a>. Сам факт недоступности сайта с одного провайдера не означает, что у оператора отозвана лицензия или он прекратил работу.</p><p>Winline — легальный оператор, входящий в реестр ЕРАИ, поэтому у него есть официальные каналы связи с игроками помимо основного домена: мобильное приложение, работа через ЦУПИС и официальные соцсети.</p>
-<h2>Чем опасны сторонние «зеркала»</h2>
+<h2 id="chem-opasny-storonnie-zerkala">Чем опасны сторонние «зеркала»</h2>
 <p>Под запрос «зеркало Winline» в поиске и рекламе часто попадают домены, не имеющие отношения к оператору. Схема стандартная: сайт визуально копирует официальный, просит войти под своим логином и паролем или сразу «пополнить счёт» — и данные уходят мошенникам.</p><ul><li>Такой сайт не связан с ЦУПИС и реестром ЕРАИ, а значит, гарантий вывода денег и защиты депозита нет.</li><li>Логин и пароль от настоящего аккаунта Winline на фишинговой копии вводить нельзя ни при каких обстоятельствах.</li><li>Мы не рекомендуем пользоваться сторонними «зеркалами» и VPN-сервисами, которые предлагают обход блокировок за отдельную плату или регистрацию — это не официальные каналы букмекера.</li></ul>
-<h2>Как проверить, что перед вами настоящий Winline</h2>
+<h2 id="kak-proverit-chto-pered-vami-nastoyaschij-winline">Как проверить, что перед вами настоящий Winline</h2>
 <div class="table-wrap"><table><caption>Официальный сайт против подделки</caption><thead><tr><th>Признак</th><th>Официальный сайт</th><th>Подозрительная копия</th></tr></thead><tbody><tr><td>Домен</td><td>Совпадает с адресом на актуальных официальных каналах оператора</td><td>Похожий, но не идентичный адрес, странные окончания</td></tr><tr><td>Реестр ЕРАИ</td><td>Оператор присутствует в списке легальных букмекеров</td><td>Проверить принадлежность к реестру невозможно</td></tr><tr><td>Вход в аккаунт</td><td>Через ЦУПИС, единый для легальных операторов</td><td>Отдельная форма без привязки к ЦУПИС</td></tr><tr><td>Просьбы при регистрации</td><td>Стандартная идентификация по правилам ЦУПИС</td><td>Запрос данных карты «для проверки» на первом шаге</td></tr></tbody></table></div><p>Базовая проверка — свериться со <a href="/kak-proverit-licenziyu">списком легальных букмекеров и реестром ЕРАИ</a>, прежде чем вводить любые данные на незнакомом домене.</p>
-<h2>Что делать, если сайт не открывается</h2>
+<h2 id="chto-delat-esli-sajt-ne-otkryvaetsya">Что делать, если сайт не открывается</h2>
 <p>Самый надёжный вариант — использовать официальное <a href="/bukmekery/winline/prilozhenie">мобильное приложение Winline</a>: оно ведёт к тому же аккаунту через ЦУПИС и не зависит от доступности конкретного веб-адреса. Учётная запись у оператора одна и та же независимо от канала входа — регистрироваться повторно не нужно, подробности процесса описаны на странице <a href="/bukmekery/winline/registraciya">регистрации Winline</a>.</p><p>Если ни сайт, ни приложение не открываются, стоит обратиться в официальную поддержку через указанные на winline.ru контакты, а не искать альтернативные ссылки в поисковой выдаче или рекламе.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Зеркало Winline — это то же самое, что официальный сайт?</summary><p>Нет. Официальный оператор работает через один домен и связанные с ним официальные каналы (приложение, ЦУПИС). Сайты, называющие себя «зеркалом», в большинстве случаев не имеют отношения к Winline и не гарантируют сохранность данных или средств.</p></details>
 <details><summary>Почему не открывается сайт winline.ru?</summary><p>Чаще всего это блокировка на уровне провайдера, а не действия самого оператора. В такой ситуации безопаснее воспользоваться официальным мобильным приложением, а не сторонними ссылками.</p></details>
 <details><summary>Как проверить, что букмекер легальный?</summary><p>Свериться со списком операторов в реестре ЕРАИ — подробный порядок проверки описан на странице «Как проверить лицензию».</p></details>
 <details><summary>Нужен ли VPN для входа в личный кабинет Winline?</summary><p>Мы не рекомендуем использовать сторонние VPN-сервисы и «обходные» ссылки для доступа к сайту букмекера — это не официальные каналы, и ответственность за их безопасность оператор не несёт.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/winline/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/fonbet?p=bukmekery/winline/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/ligastavok?p=bukmekery/winline/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>, <a href="/go/marathonbet?p=bukmekery/winline/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/winline"><b>Winline — обзор букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/winline/promokod"><b>Промокод Winline: как найти и использовать</b><small>Промокод</small></a>

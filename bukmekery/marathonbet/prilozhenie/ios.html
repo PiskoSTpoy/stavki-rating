@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Марафон", "item": "https://stavki-rating.ru/bukmekery/marathonbet"}, {"@type": "ListItem", "position": 4, "name": "Марафон на iPhone: приложение и мобильная версия сайта", "item": "https://stavki-rating.ru/bukmekery/marathonbet/prilozhenie/ios"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Марафон на iPhone: приложение и мобильная версия сайта", "description": "Есть ли приложение БК Марафон в App Store, как играть через мобильную версию сайта на iPhone и какие шаги нужны для доступа к ставкам с iOS-устройства.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/marathonbet/prilozhenie/ios", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Марафон на iPhone: приложение и мобильная версия сайта", "description": "Есть ли приложение БК Марафон в App Store, как играть через мобильную версию сайта на iPhone и какие шаги нужны для доступа к ставкам с iOS-устройства.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/marathonbet/prilozhenie/ios", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Есть ли официальное приложение Марафон в App Store?", "acceptedAnswer": {"@type": "Answer", "text": "Для легальных российских букмекеров это, как правило, не так — App Store ограничивает размещение приложений для ставок на реальные деньги в большинстве регионов. Точный текущий статус лучше уточнять непосредственно на официальном сайте оператора."}}, {"@type": "Question", "name": "Как тогда делать ставки с iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "Через мобильную версию официального сайта в браузере Safari — её можно добавить на главный экран устройства для удобства, и по функциональности она обычно не уступает отдельному приложению."}}, {"@type": "Question", "name": "Безопасно ли добавлять сайт на главный экран iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "Да, это стандартная функция Safari, которая просто создаёт ярлык на сайт — важно лишь убедиться, что ярлык ведёт на официальный домен оператора."}}, {"@type": "Question", "name": "Можно ли найти в App Store сторонние приложения Марафон?", "acceptedAnswer": {"@type": "Answer", "text": "Если приложение не размещено самим оператором, доверять ему не стоит — используйте только ссылки с официального сайта или мобильную версию в браузере."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,32 +222,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/marathonbet">Марафон</a><span>/</span>Марафон на iPhone: приложение и мобильная версия сайта</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Марафон ·</div>
     <h1>Марафон на iPhone: приложение и мобильная версия сайта</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Для владельцев iPhone доступ к ставкам у легальных российских букмекеров, включая Марафон, чаще всего организован не через отдельное приложение из App Store, а через мобильную версию официального сайта — Apple, как и Google, ограничивает размещение приложений для ставок на реальные деньги в большинстве регионов. Расскажем, как в таком случае удобно пользоваться сервисом с iPhone.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/marathonbet?p=marathonbet&amp;pl=subpage-top">Сайт букмекера Марафон →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#pochemu-app-store-ne-osnovnoj-kanal">Почему App Store — не основной канал</a></li><li><a href="#kak-polzovatsya-mobilnoj-versiej-sajta">Как пользоваться мобильной версией сайта</a></li><li><a href="#na-chto-obratit-vnimanie-pri-rabote-s-sajtom">На что обратить внимание при работе с сайтом</a></li><li><a href="#push-uvedomleniya-i-ogranicheniya-brauzernoj-versii">Push-уведомления и ограничения браузерной версии</a></li><li><a href="#esli-nuzhen-imenno-variant-s-android">Если нужен именно вариант с Android</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Почему App Store — не основной канал</h2>
+    <h2 id="pochemu-app-store-ne-osnovnoj-kanal">Почему App Store — не основной канал</h2>
 <p>Политика App Store в большинстве стран, включая Россию, ограничивает размещение приложений для ставок на реальные деньги. Это общее правило площадки, применимое к легальным букмекерам РФ в целом, а не особенность конкретного оператора. Поэтому для iPhone основным способом доступа обычно служит мобильная версия сайта, а не установка отдельного приложения.</p>
-<h2>Как пользоваться мобильной версией сайта</h2>
+<h2 id="kak-polzovatsya-mobilnoj-versiej-sajta">Как пользоваться мобильной версией сайта</h2>
 <ol><li>Открыть официальный сайт оператора в браузере Safari — как безопасно найти правильный адрес, если сайт не открывается напрямую, описано на странице <a href="/bukmekery/marathonbet/kak-zajti">как зайти на сайт Марафон</a>.</li><li>Войти в личный кабинет или пройти регистрацию.</li><li>При желании — добавить страницу на главный экран через меню «Поделиться» → «На экран “Домой”», чтобы открывать сайт как обычное приложение, одним нажатием.</li></ol><p>Если после добавления сайта на главный экран возникают проблемы со входом, стоит проверить в настройках Safari, что разрешены cookies и всплывающие окна для этого сайта — без них авторизация и сохранение сессии могут работать нестабильно.</p>
-<h2>На что обратить внимание при работе с сайтом</h2>
+<h2 id="na-chto-obratit-vnimanie-pri-rabote-s-sajtom">На что обратить внимание при работе с сайтом</h2>
 <p>Мобильная версия сайта обычно повторяет функциональность десктопной: ставки, пополнение и вывод средств, история операций. Важно убедиться, что вы находитесь именно на официальном домене оператора, а не на стороннем ресурсе, имитирующем интерфейс Марафон — подробнее о проверке подлинности сайта рассказано на странице <a href="/kak-proverit-licenziyu">как проверить лицензию букмекера</a>.</p>
-<h2>Push-уведомления и ограничения браузерной версии</h2>
+<h2 id="push-uvedomleniya-i-ogranicheniya-brauzernoj-versii">Push-уведомления и ограничения браузерной версии</h2>
 <p>Из-за того, что на iPhone используется браузерная версия сайта, а не отдельное приложение из App Store, некоторые функции, привычные для нативных приложений — например push-уведомления о live-событиях, — могут работать иначе или быть недоступны вовсе. Добавлять сайт на главный экран рекомендуется именно из браузера Safari: он даёт наиболее стабильное отображение ярлыка в виде отдельного приложения. Если push-уведомления важны, стоит проверить в настройках браузера и самого сайта, поддерживается ли эта функция для веб-версии — состав доступных возможностей может со временем меняться.</p>
-<h2>Если нужен именно вариант с Android</h2>
+<h2 id="esli-nuzhen-imenno-variant-s-android">Если нужен именно вариант с Android</h2>
 <p>Если у вас есть также устройство на Android, вариант с отдельным приложением там обычно доступен — порядок установки описан на странице <a href="/bukmekery/marathonbet/prilozhenie/android">приложение Марафон на Android</a>. Общий обзор способов доступа к сервисам оператора с мобильных устройств — на странице <a href="/bukmekery/marathonbet/prilozhenie">приложение Марафон</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Есть ли официальное приложение Марафон в App Store?</summary><p>Для легальных российских букмекеров это, как правило, не так — App Store ограничивает размещение приложений для ставок на реальные деньги в большинстве регионов. Точный текущий статус лучше уточнять непосредственно на официальном сайте оператора.</p></details>
 <details><summary>Как тогда делать ставки с iPhone?</summary><p>Через мобильную версию официального сайта в браузере Safari — её можно добавить на главный экран устройства для удобства, и по функциональности она обычно не уступает отдельному приложению.</p></details>
 <details><summary>Безопасно ли добавлять сайт на главный экран iPhone?</summary><p>Да, это стандартная функция Safari, которая просто создаёт ярлык на сайт — важно лишь убедиться, что ярлык ведёт на официальный домен оператора.</p></details>
 <details><summary>Можно ли найти в App Store сторонние приложения Марафон?</summary><p>Если приложение не размещено самим оператором, доверять ему не стоит — используйте только ссылки с официального сайта или мобильную версию в браузере.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/marathonbet/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/melbet?p=bukmekery/marathonbet/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>, <a href="/go/zenit?p=bukmekery/marathonbet/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/pari?p=bukmekery/marathonbet/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/marathonbet"><b>Марафон: обзор букмекерской конторы</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/marathonbet/promokod"><b>Промокод «Марафон»: как это работает</b><small>Промокод</small></a>

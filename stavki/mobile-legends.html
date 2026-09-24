@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Ставки на спорт", "item": "https://stavki-rating.ru/stavki"}, {"@type": "ListItem", "position": 3, "name": "Ставки на Mobile Legends: Bang Bang", "item": "https://stavki-rating.ru/stavki/mobile-legends"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ставки на Mobile Legends: Bang Bang", "description": "Ставки на Mobile Legends: победитель серии и карты, фора и тотал карт, спецрынки «первая кровь» и «первая башня», турниры MPL и примеры со ставкой 1000 ₽.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/stavki/mobile-legends", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ставки на Mobile Legends: Bang Bang", "description": "Ставки на Mobile Legends: победитель серии и карты, фора и тотал карт, спецрынки «первая кровь» и «первая башня», турниры MPL и примеры со ставкой 1000 ₽.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/stavki/mobile-legends", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "В каком формате играются матчи Mobile Legends?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Обычно Bo3 в группах и ранних раундах, Bo5 в плей-офф и Bo7 в гранд-финале крупных турниров.</p>"}}, {"@type": "Question", "name": "Что такое «первая черепаха» и «первая башня»?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Спецрынки на то, какая команда первой заберёт Черепаху (объект на 2-й минуте) или разрушит первую башню соперника. Это отдельные исходы внутри карты.</p>"}}, {"@type": "Question", "name": "Что даёт Лорд?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Лорд появляется на 8-й минуте и, будучи убитым, идёт с командой пушить линию, усиливая давление на башни. Контроль Лорда часто решает поздние карты.</p>"}}, {"@type": "Question", "name": "Как работает фора по картам в Bo3?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Фора −1.5 карты требует победы 2:0. Фора +1.5 проходит, если команда возьмёт хотя бы одну карту.</p>"}}, {"@type": "Question", "name": "Легальны ли такие ставки в России?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Да, у операторов из реестра ЕРАИ, с 18 лет. Ставьте ответственно и в пределах бюджета.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,35 +222,36 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/stavki">Ставки на спорт</a><span>/</span>Ставки на Mobile Legends: Bang Bang</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Ставки на спорт ·</div>
     <h1>Ставки на Mobile Legends: Bang Bang</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>4 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Ставки на Mobile Legends: Bang Bang — прогнозы на матчи мобильной MOBA 5×5 на карте Land of Dawn. Основные рынки — победитель серии и отдельной карты, фора по картам, тотал карт, а также спецрынки: «первая кровь», «первая черепаха», «первая башня». Серии играются в форматах Bo3, Bo5 и Bo7. Ниже — структура матча, реальные рынки, турниры и примеры расчёта со ставкой 1000 ₽.</p>
     
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#kak-ustroen-match-v-mobile-legends">Как устроен матч в Mobile Legends</a></li><li><a href="#formaty-serij">Форматы серий</a></li><li><a href="#osnovnye-i-specialnye-rynki">Основные и специальные рынки</a></li><li><a href="#primery-rascheta-so-stavkoj-1000">Примеры расчёта со ставкой 1000 ₽</a></li><li><a href="#krupnye-turniry">Крупные турниры</a></li><li><a href="#tipichnye-oshibki-novichka">Типичные ошибки новичка</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Как устроен матч в Mobile Legends</h2>
+    <h2 id="kak-ustroen-match-v-mobile-legends">Как устроен матч в Mobile Legends</h2>
 <p>Mobile Legends: Bang Bang — мобильная MOBA в формате <strong>5×5</strong> на карте <strong>Land of Dawn</strong>. На карте три линии — <strong>Золотая</strong> (нижняя), <strong>Средняя</strong> и <strong>Опытная</strong> (верхняя), между ними лес с баффами. Цель — разрушить главную базу соперника.</p><p>Ключевые объекты в реке: <strong>Черепаха</strong> (появляется на 2-й минуте, даёт золото и опыт команде) и <strong>Лорд</strong> (появляется на 8-й минуте; убитый, идёт с командой пушить линию и давить башни). Контроль этих объектов и башен часто решает исход карты. Перед каждой картой команды проходят фазу <strong>пиков и банов</strong> героев, что во многом определяет баланс сил.</p>
-<h2>Форматы серий</h2>
+<h2 id="formaty-serij">Форматы серий</h2>
 <p>Формат серии влияет на набор рынков:</p><div class="table-wrap"><table><thead><tr><th>Формат</th><th>Карт для победы</th><th>Где встречается</th></tr></thead><tbody><tr><td>Bo3</td><td>2 из 3</td><td>группы, ранние раунды</td></tr><tr><td>Bo5</td><td>3 из 5</td><td>плей-офф</td></tr><tr><td>Bo7</td><td>4 из 7</td><td>гранд-финалы крупных турниров</td></tr></tbody></table></div><p>В Bo3 тотал карт больше/меньше 2.5 спрашивает, дойдёт ли серия до третьей карты. В Bo5 аналогичный ориентир — тотал 3.5 карты.</p>
-<h2>Основные и специальные рынки</h2>
+<h2 id="osnovnye-i-specialnye-rynki">Основные и специальные рынки</h2>
 <p>Рынки на матч Mobile Legends делятся на базовые и специальные:</p><ul><li><strong>Победитель серии</strong> — выбор из двух команд, ничьих нет.</li><li><strong>Победитель карты</strong> — исход конкретной игры серии.</li><li><strong>Фора по картам</strong> — например, −1.5 требует победы 2:0 в Bo3. См. <a href="/shkola/terminy/chto-takoe-fora">что такое фора</a>.</li><li><strong>Тотал карт</strong> — больше/меньше 2.5 в Bo3. См. <a href="/shkola/terminy/chto-takoe-total">что такое тотал</a>.</li><li><strong>Первая кровь</strong> — какая команда сделает первое убийство на карте.</li><li><strong>Первая черепаха / первая башня / первый Лорд</strong> — кто первым заберёт объект или разрушит башню.</li><li><strong>Тотал убийств на карте</strong> — больше/меньше заданного числа.</li></ul><div class="table-wrap"><table><caption>Как читаются рынки в Bo3</caption><thead><tr><th>Рынок</th><th>Условие прохода</th></tr></thead><tbody><tr><td>Фора А −1.5 карты</td><td>А побеждает 2:0</td></tr><tr><td>Тотал карт меньше 2.5</td><td>серия заканчивается 2:0</td></tr><tr><td>Первая кровь — А</td><td>А делает первое убийство на карте</td></tr></tbody></table></div>
-<h2>Примеры расчёта со ставкой 1000 ₽</h2>
+<h2 id="primery-rascheta-so-stavkoj-1000">Примеры расчёта со ставкой 1000 ₽</h2>
 <p>Коэффициенты гипотетические.</p><ol><li><strong>Фора по картам.</strong> Ставка 1000 ₽ на фору команды А −1.5 карты в Bo3 при коэффициенте 2.20. Проходит при счёте 2:0 в пользу А: возврат 1000 × 2.20 = <strong>2200 ₽</strong>.</li><li><strong>Тотал карт меньше 2.5.</strong> Ставка 1000 ₽ при коэффициенте 1.70 — заходит, если серия завершится 2:0 (в пользу любой из команд): возврат 1000 × 1.70 = <strong>1700 ₽</strong>.</li><li><strong>Первая кровь.</strong> Ставка 1000 ₽ на первое убийство команды А на карте при коэффициенте 1.90: возврат 1000 × 1.90 = <strong>1900 ₽</strong>.</li></ol>
-<h2>Крупные турниры</h2>
+<h2 id="krupnye-turniry">Крупные турниры</h2>
 <p>Основа сцены — региональные лиги <strong>MPL</strong> (Mobile Legends Professional League), межсезонный <strong>MSC</strong> (Mid-Season Cup) и главный турнир года — <strong>M-Series World Championship</strong> (M6 прошёл в 2024-м, M7 — в 2025-м). На топ-турнирах плей-офф идёт в Bo5, а гранд-финал — в Bo7.</p><p>Линию на матчи предлагают легальные операторы из реестра ЕРАИ; сравнить условия можно в <a href="/rating">рейтинге букмекеров</a> и <a href="/rejting/dlya-kibersporta">рейтинге для киберспорта</a>.</p>
-<h2>Типичные ошибки новичка</h2>
+<h2 id="tipichnye-oshibki-novichka">Типичные ошибки новичка</h2>
 <p>Частые ошибки:</p><ul><li><strong>Игнорирование драфта.</strong> Фаза пиков и банов сильно влияет на баланс, а её результат виден до старта карты.</li><li><strong>Ставка только на фаворита серии</strong> без учёта формы на отдельных картах.</li><li><strong>Спецрынки «наугад».</strong> «Первая кровь» и «первая башня» зависят от стиля команд, а не только от общего класса.</li><li><strong>Отсутствие банкролл-менеджмента</strong> и игра на эмоциях. Ставьте ответственно.</li></ul>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>В каком формате играются матчи Mobile Legends?</summary><p>Обычно Bo3 в группах и ранних раундах, Bo5 в плей-офф и Bo7 в гранд-финале крупных турниров.</p></details>
 <details><summary>Что такое «первая черепаха» и «первая башня»?</summary><p>Спецрынки на то, какая команда первой заберёт Черепаху (объект на 2-й минуте) или разрушит первую башню соперника. Это отдельные исходы внутри карты.</p></details>
 <details><summary>Что даёт Лорд?</summary><p>Лорд появляется на 8-й минуте и, будучи убитым, идёт с командой пушить линию, усиливая давление на башни. Контроль Лорда часто решает поздние карты.</p></details>
 <details><summary>Как работает фора по картам в Bo3?</summary><p>Фора −1.5 карты требует победы 2:0. Фора +1.5 проходит, если команда возьмёт хотя бы одну карту.</p></details>
 <details><summary>Легальны ли такие ставки в России?</summary><p>Да, у операторов из реестра ЕРАИ, с 18 лет. Ставьте ответственно и в пределах бюджета.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/melbet">Мелбет</a>, <a href="/bukmekery/pari">PARI</a>, <a href="/bukmekery/betcity">Бетсити</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/stavki/futbol"><b>Ставки на футбол: рынки, роспись и типичные ошибки</b><small>Ставки на спорт</small></a>
       <a class="tile" href="/stavki/hokkej"><b>Ставки на хоккей: тоталы, форы и особенности КХЛ и НХЛ</b><small>Ставки на спорт</small></a>

@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "PARI", "item": "https://stavki-rating.ru/bukmekery/pari"}, {"@type": "ListItem", "position": 4, "name": "Как скачать и установить приложение PARI на Android", "item": "https://stavki-rating.ru/bukmekery/pari/prilozhenie/android"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как скачать и установить приложение PARI на Android", "description": "Как установить приложение PARI на Android через официальный канал, почему его не найти в Google Play и на что обратить внимание при загрузке.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/pari/prilozhenie/android", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как скачать и установить приложение PARI на Android", "description": "Как установить приложение PARI на Android через официальный канал, почему его не найти в Google Play и на что обратить внимание при загрузке.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/pari/prilozhenie/android", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Почему приложения PARI нет в Google Play?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Google Play не допускает приложения с реальными денежными ставками для российской аудитории — это общее правило площадки, а не блокировка конкретного оператора.</p>"}}, {"@type": "Question", "name": "Безопасно ли устанавливать apk-файл вручную?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Безопасно, если файл скачан именно с официального сайта pari.ru. Apk с посторонних сайтов может быть подделан.</p>"}}, {"@type": "Question", "name": "Нужно ли включать «Установку из неизвестных источников»?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Да, для установки apk-файла напрямую (не через RuStore) Android попросит разрешить установку из конкретного источника — это стандартный шаг, не признак опасности при условии, что файл официальный.</p>"}}, {"@type": "Question", "name": "Что делать, если установка не удалась?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Проверьте, скачан ли файл полностью и с официального домена, и что версия Android поддерживается. При проблемах логичнее обратиться в поддержку через официальный сайт, а не искать альтернативные версии на сторонних ресурсах.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,34 +222,35 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/pari">PARI</a><span>/</span>Как скачать и установить приложение PARI на Android</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · PARI ·</div>
     <h1>Как скачать и установить приложение PARI на Android</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Скачать приложение PARI на Android можно только через официальные каналы оператора — каталог RuStore или прямую ссылку с сайта pari.ru. В Google Play приложений с реальными ставками для российской аудитории обычно нет — это ограничение самой площадки, а не особенность PARI. Ниже — общий порядок установки и на что обратить внимание, чтобы не попасть на фейковую копию.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/pari?p=pari&amp;pl=subpage-top">Сайт букмекера PARI →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#pochemu-ne-google-play">Почему не Google Play</a></li><li><a href="#oficialnye-sposoby-ustanovki">Официальные способы установки</a></li><li><a href="#sistemnye-trebovaniya">Системные требования</a></li><li><a href="#poryadok-ustanovki-v-obschih-chertah">Порядок установки в общих чертах</a></li><li><a href="#obnovlenie-i-povtornaya-ustanovka">Обновление и повторная установка</a></li><li><a href="#kak-izbezhat-fejkovoj-kopii">Как избежать фейковой копии</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Почему не Google Play</h2>
+    <h2 id="pochemu-ne-google-play">Почему не Google Play</h2>
 <p>Google Play ограничивает публикацию приложений для ставок на деньги в российском регионе. Из-за этого официальные приложения легальных букмекеров, включая PARI, распространяются напрямую — через RuStore или apk-файл с собственного сайта, минуя Google Play.</p>
-<h2>Официальные способы установки</h2>
+<h2 id="oficialnye-sposoby-ustanovki">Официальные способы установки</h2>
 <div class="table-wrap"><table><caption>Каналы загрузки на Android</caption><thead><tr><th>Способ</th><th>Где искать</th></tr></thead><tbody><tr><td>Каталог RuStore</td><td>Поиск «PARI» внутри приложения RuStore</td></tr><tr><td>Прямая загрузка apk</td><td>Ссылка на скачивание на официальном сайте pari.ru</td></tr></tbody></table></div><p>Перед установкой стоит убедиться, что вы находитесь именно на официальном домене — см. <a href="/bukmekery/pari/kak-zajti">как зайти на официальный сайт PARI</a>.</p>
-<h2>Системные требования</h2>
+<h2 id="sistemnye-trebovaniya">Системные требования</h2>
 <p>Для работы приложения обычно достаточно современной версии Android с доступом в интернет и небольшим объёмом свободного места в памяти телефона — конкретные требования к версии системы указываются на странице скачивания на официальном сайте или в описании приложения в RuStore. Если версия Android на телефоне устарела, разумно сначала обновить систему, а затем переходить к установке. Стабильное интернет-соединение важно не только для загрузки самого файла, но и для дальнейшей работы: нестабильная сеть может мешать входу в личный кабинет и обновлению линии ставок внутри приложения.</p>
-<h2>Порядок установки в общих чертах</h2>
+<h2 id="poryadok-ustanovki-v-obschih-chertah">Порядок установки в общих чертах</h2>
 <ol><li>Открыть официальный сайт pari.ru или RuStore.</li><li>Найти актуальную ссылку на приложение для Android.</li><li>Если это apk-файл — разрешить установку из внешнего источника только для этого конкретного файла и только на время установки.</li><li>Запустить установку и войти в приложение с данными своей учётной записи или пройти регистрацию — см. <a href="/bukmekery/pari/registraciya">регистрацию в PARI</a>.</li></ol>
-<h2>Обновление и повторная установка</h2>
+<h2 id="obnovlenie-i-povtornaya-ustanovka">Обновление и повторная установка</h2>
 <p>Приложение, установленное через RuStore, магазин обычно обновляет автоматически или по запросу в настройках телефона. Если приложение установлено через apk-файл с сайта pari.ru, для обновления нужно скачать новую версию файла тем же способом и установить её поверх старой — данные учётной записи при этом сохраняются, так как они привязаны к аккаунту, а не к конкретной версии приложения.</p>
-<h2>Как избежать фейковой копии</h2>
+<h2 id="kak-izbezhat-fejkovoj-kopii">Как избежать фейковой копии</h2>
 <ul><li>Скачивайте apk только с официального сайта pari.ru, а не с файлообменников, форумов или рекламных объявлений.</li><li>Сверяйте название и издателя приложения в RuStore перед установкой.</li><li>Не устанавливайте приложение, если ссылка на него пришла в сообщении от незнакомого источника.</li></ul>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Почему приложения PARI нет в Google Play?</summary><p>Google Play не допускает приложения с реальными денежными ставками для российской аудитории — это общее правило площадки, а не блокировка конкретного оператора.</p></details>
 <details><summary>Безопасно ли устанавливать apk-файл вручную?</summary><p>Безопасно, если файл скачан именно с официального сайта pari.ru. Apk с посторонних сайтов может быть подделан.</p></details>
 <details><summary>Нужно ли включать «Установку из неизвестных источников»?</summary><p>Да, для установки apk-файла напрямую (не через RuStore) Android попросит разрешить установку из конкретного источника — это стандартный шаг, не признак опасности при условии, что файл официальный.</p></details>
 <details><summary>Что делать, если установка не удалась?</summary><p>Проверьте, скачан ли файл полностью и с официального домена, и что версия Android поддерживается. При проблемах логичнее обратиться в поддержку через официальный сайт, а не искать альтернативные версии на сторонних ресурсах.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/pari/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/marathonbet?p=bukmekery/pari/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>, <a href="/go/zenit?p=bukmekery/pari/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/betcity?p=bukmekery/pari/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/pari"><b>PARI: что нужно знать о букмекере</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/pari/promokod"><b>Промокод PARI: где искать и как использовать</b><small>Промокод</small></a>

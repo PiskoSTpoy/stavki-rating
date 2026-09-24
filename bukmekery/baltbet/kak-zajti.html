@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -171,7 +181,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Балтбет", "item": "https://stavki-rating.ru/bukmekery/baltbet"}, {"@type": "ListItem", "position": 4, "name": "Балтбет: зеркало, официальный сайт и как не попасть на фишинг", "item": "https://stavki-rating.ru/bukmekery/baltbet/kak-zajti"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Балтбет: зеркало, официальный сайт и как не попасть на фишинг", "description": "Разбираем, почему у Балтбет ищут «зеркало», где искать официальный домен baltbet.ru и как проверить, что сайт не фишинговая подделка под легального оператора.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/baltbet/kak-zajti", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Балтбет: зеркало, официальный сайт и как не попасть на фишинг", "description": "Разбираем, почему у Балтбет ищут «зеркало», где искать официальный домен baltbet.ru и как проверить, что сайт не фишинговая подделка под легального оператора.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/baltbet/kak-zajti", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что значит «зеркало» Балтбет?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Обычно это альтернативный адрес того же официального сайта, который используют, когда основной домен временно заблокирован оператором связи. Это не отдельная компания и не «специальная» версия сайта с иными условиями.</p>"}}, {"@type": "Question", "name": "Официальный сайт и «зеркало» — это одна компания?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Да, если речь о настоящем зеркале легального оператора. Но под похожим названием часто работают фишинговые копии, не связанные с Балтбет — поэтому важно проверять домен, а не доверять первой ссылке.</p>"}}, {"@type": "Question", "name": "Как убедиться, что Балтбет — легальный оператор?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Свериться с реестром ЕРАИ и данными ФНС по юридическому лицу оператора. Алгоритм проверки описан на странице <a href=\"/kak-proverit-licenziyu\">как проверить лицензию букмекера</a>.</p>"}}, {"@type": "Question", "name": "Стоит ли использовать VPN или сторонние сервисы для обхода блокировки?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Мы не рекомендуем сторонние сервисы и незнакомые расширения для доступа к сайту БК — они создают дополнительный риск утечки данных, не связанный с самим оператором. Более безопасный вариант — официальное приложение или ожидание восстановления доступа к домену.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -211,30 +221,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/baltbet">Балтбет</a><span>/</span>Балтбет: зеркало, официальный сайт и как не попасть на фишинг</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Балтбет ·</div>
     <h1>Балтбет: зеркало, официальный сайт и как не попасть на фишинг</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Запрос «Балтбет зеркало» чаще всего означает, что официальный сайт baltbet.ru не открылся с привычного адреса — с легальными букмекерами в России это случается из-за периодических блокировок. Правильный ответ — не хватать первую ссылку из выдачи или рекламы, а убедиться, что перед вами домен оператора, который действительно входит в реестр ЕРАИ. Разбираем, почему так происходит и как отличить настоящий сайт от подделки.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/baltbet?p=baltbet&amp;pl=subpage-top">Сайт букмекера Балтбет →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#pochemu-oficialnyj-sajt-inogda-ne-otkryvaetsya">Почему официальный сайт иногда не открывается</a></li><li><a href="#pochemu-nelzya-doveryat-sluchajnym-zerkalam">Почему нельзя доверять случайным «зеркалам»</a></li><li><a href="#kak-proverit-chto-pered-vami-oficialnyj-sajt">Как проверить, что перед вами официальный сайт</a></li><li><a href="#chto-delat-esli-sajt-vse-zhe-ne-otkryvaetsya">Что делать, если сайт всё же не открывается</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Почему официальный сайт иногда не открывается</h2>
+    <h2 id="pochemu-oficialnyj-sajt-inogda-ne-otkryvaetsya">Почему официальный сайт иногда не открывается</h2>
 <p>Роскомнадзор периодически ограничивает доступ к доменам букмекеров — это техническая мера, а не признак того, что компания перестала работать или потеряла лицензию. Такие блокировки затрагивают многих легальных операторов, входящих в реестр ЕРАИ, и обычно не связаны с их правовым статусом.</p><p>Из-за этого в поиске появляется запрос «зеркало» — пользователи ищут альтернативный адрес, чтобы попасть на тот же сайт. Проблема в том, что под видом «зеркал» часто маскируются фишинговые копии, не имеющие отношения к оператору.</p>
-<h2>Почему нельзя доверять случайным «зеркалам»</h2>
+<h2 id="pochemu-nelzya-doveryat-sluchajnym-zerkalam">Почему нельзя доверять случайным «зеркалам»</h2>
 <ul><li>Сайты с похожим названием и доменом, отличающимся на одну букву или окончание, могут быть созданы мошенниками для кражи логина, пароля и данных карты.</li><li>Реклама в поиске и соцсетях с обещанием «рабочего зеркала» не гарантирует, что ссылка ведёт на официальный ресурс оператора.</li><li>Сторонние расширения и сервисы, предлагающие «разблокировать» сайт БК, могут запрашивать доступ к данным браузера — это отдельный риск, не связанный с самим букмекером.</li></ul><p>Правило простое: любой адрес, который вы не нашли через проверенный источник, стоит считать потенциально опасным, пока не убедитесь в обратном.</p>
-<h2>Как проверить, что перед вами официальный сайт</h2>
+<h2 id="kak-proverit-chto-pered-vami-oficialnyj-sajt">Как проверить, что перед вами официальный сайт</h2>
 <p>Прежде чем вводить данные аккаунта, стоит свериться с независимыми источниками, а не только с адресной строкой.</p><div class="table-wrap"><table><caption>Как отличить официальный сайт от подделки</caption><thead><tr><th>Проверка</th><th>Что смотреть</th></tr></thead><tbody><tr><td>Реестр операторов</td><td>Домен и юрлицо совпадают с записью в реестре ЕРАИ и данными ФНС</td></tr><tr><td>Каталог рейтинга</td><td>Ссылка на страницу оператора в независимом каталоге совпадает с адресом, который вы открыли</td></tr><tr><td>Запрос данных</td><td>Официальный сайт не просит пароль от почты, коды из СМС банка или данные карты вне формы пополнения</td></tr></tbody></table></div><p>Подробный алгоритм проверки лицензии и статуса оператора описан в отдельном материале: <a href="/kak-proverit-licenziyu">как проверить лицензию букмекера</a>.</p>
-<h2>Что делать, если сайт всё же не открывается</h2>
+<h2 id="chto-delat-esli-sajt-vse-zhe-ne-otkryvaetsya">Что делать, если сайт всё же не открывается</h2>
 <p>Если основной домен недоступен, не стоит искать «обходные» зеркала через рекламу или сторонние агрегаторы. Более надёжный путь — воспользоваться официальным мобильным приложением оператора, если оно установлено: подробнее о каналах его получения — на странице <a href="/bukmekery/baltbet/prilozhenie">приложение Балтбет</a>. Общие сведения об операторе можно свериться на странице <a href="/bukmekery/baltbet">Балтбет в рейтинге</a>.</p><p>Если сомневаетесь в подлинности найденной ссылки — не вводите на ней данные аккаунта и не совершайте платежи.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Что значит «зеркало» Балтбет?</summary><p>Обычно это альтернативный адрес того же официального сайта, который используют, когда основной домен временно заблокирован оператором связи. Это не отдельная компания и не «специальная» версия сайта с иными условиями.</p></details>
 <details><summary>Официальный сайт и «зеркало» — это одна компания?</summary><p>Да, если речь о настоящем зеркале легального оператора. Но под похожим названием часто работают фишинговые копии, не связанные с Балтбет — поэтому важно проверять домен, а не доверять первой ссылке.</p></details>
 <details><summary>Как убедиться, что Балтбет — легальный оператор?</summary><p>Свериться с реестром ЕРАИ и данными ФНС по юридическому лицу оператора. Алгоритм проверки описан на странице <a href="/kak-proverit-licenziyu">как проверить лицензию букмекера</a>.</p></details>
 <details><summary>Стоит ли использовать VPN или сторонние сервисы для обхода блокировки?</summary><p>Мы не рекомендуем сторонние сервисы и незнакомые расширения для доступа к сайту БК — они создают дополнительный риск утечки данных, не связанный с самим оператором. Более безопасный вариант — официальное приложение или ожидание восстановления доступа к домену.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/baltbet/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/ligastavok?p=bukmekery/baltbet/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>, <a href="/go/pari?p=bukmekery/baltbet/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>, <a href="/go/zenit?p=bukmekery/baltbet/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/baltbet"><b>Балтбет: обзор букмекерской конторы</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/baltbet/promokod"><b>Промокод Балтбет: как это работает</b><small>Промокод</small></a>

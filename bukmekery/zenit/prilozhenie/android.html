@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Зенит", "item": "https://stavki-rating.ru/bukmekery/zenit"}, {"@type": "ListItem", "position": 4, "name": "Как скачать приложение «Зенит» на Android", "item": "https://stavki-rating.ru/bukmekery/zenit/prilozhenie/android"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как скачать приложение «Зенит» на Android", "description": "Как скачать и установить приложение БК «Зенит» на Android: RuStore или сайт оператора, почему нет в Google Play и как отличить APK от подделки.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/zenit/prilozhenie/android", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как скачать приложение «Зенит» на Android", "description": "Как скачать и установить приложение БК «Зенит» на Android: RuStore или сайт оператора, почему нет в Google Play и как отличить APK от подделки.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/zenit/prilozhenie/android", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Можно ли скачать приложение БК «Зенит» из Google Play?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет, для российских пользователей Google Play не размещает приложения с реальными ставками на спорт. Используйте RuStore или официальный сайт оператора.</p>"}}, {"@type": "Question", "name": "Нужно ли включать «Установку из неизвестных источников»?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Это может потребоваться при прямой загрузке APK-файла с сайта оператора, а не через магазин приложений. Включайте разрешение только для проверенного источника и отключайте после установки.</p>"}}, {"@type": "Question", "name": "Как проверить, что APK-файл официальный?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Скачивайте файл только по ссылке с официального сайта zenit.win и сверяйте домен, а при сомнениях проверьте статус оператора на странице <a href=\"/kak-proverit-licenziyu\">проверки лицензии</a>.</p>"}}, {"@type": "Question", "name": "Что делать, если после установки приложение просит данные карты сразу при открытии?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Это повод насторожиться: легитимное приложение запрашивает платёжные данные в разделе пополнения счёта после входа в аккаунт, а не на стартовом экране. Прекратите ввод данных и сверьтесь с официальным сайтом.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,32 +222,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/zenit">Зенит</a><span>/</span>Как скачать приложение «Зенит» на Android</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Зенит ·</div>
     <h1>Как скачать приложение «Зенит» на Android</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>2 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Приложение БК «Зенит» для Android устанавливается не через Google Play, а через RuStore или прямую загрузку APK с официального сайта оператора. Ниже — общий порядок установки и на что обратить внимание, чтобы не поставить поддельную копию.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/zenit?p=zenit&amp;pl=subpage-top">Сайт букмекера Зенит →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#oficialnyj-istochnik-dlya-android">Официальный источник для Android</a></li><li><a href="#pochemu-ne-google-play">Почему не Google Play</a></li><li><a href="#poryadok-ustanovki">Порядок установки</a></li><li><a href="#obnovleniya-i-razresheniya-prilozheniya">Обновления и разрешения приложения</a></li><li><a href="#kak-ne-postavit-poddelnoe-prilozhenie">Как не поставить поддельное приложение</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Официальный источник для Android</h2>
+    <h2 id="oficialnyj-istochnik-dlya-android">Официальный источник для Android</h2>
 <p>Для смартфонов на Android приложение БК «Зенит» распространяется через магазин RuStore или в виде APK-файла для прямой загрузки с официального сайта zenit.win. Актуальную ссылку стоит брать непосредственно с сайта оператора или со страницы <a href="/bukmekery/zenit">«Зенит» в каталоге</a>, а не из сторонних подборок «топ приложений».</p>
-<h2>Почему не Google Play</h2>
+<h2 id="pochemu-ne-google-play">Почему не Google Play</h2>
 <p>Google Play не размещает для российских пользователей приложения букмекерских контор с реальными ставками на спорт — это ограничение самой площадки, а не признак проблем у оператора. Поэтому у легальных букмекеров основной канал для Android — RuStore или прямой APK с собственного сайта.</p>
-<h2>Порядок установки</h2>
+<h2 id="poryadok-ustanovki">Порядок установки</h2>
 <ol><li>Перейти на официальный сайт zenit.win или открыть страницу приложения в RuStore</li><li>Загрузить APK-файл или начать установку через RuStore</li><li>Если файл загружен напрямую — разрешить установку приложений из этого источника в настройках телефона</li><li>Запустить установку и дождаться её завершения</li><li>Войти в существующий аккаунт или пройти регистрацию, если аккаунта ещё нет — см. <a href="/bukmekery/zenit/registraciya">регистрацию в БК «Зенит»</a></li></ol>
-<h2>Обновления и разрешения приложения</h2>
+<h2 id="obnovleniya-i-razresheniya-prilozheniya">Обновления и разрешения приложения</h2>
 <p>После установки стоит проверять обновления приложения непосредственно в RuStore или на официальном сайте оператора — так вы получаете актуальную версию с исправлениями, а не устаревшую или изменённую копию со стороннего ресурса.</p><p>Для работы приложению обычно достаточно стандартных разрешений: доступ к интернету и, при желании включить push-уведомления, разрешение на уведомления. Запрос доступа к контактам, SMS-сообщениям или файлам без явной необходимости — повод насторожиться и заново сверить источник загрузки с официальным доменом zenit.win.</p>
-<h2>Как не поставить поддельное приложение</h2>
+<h2 id="kak-ne-postavit-poddelnoe-prilozhenie">Как не поставить поддельное приложение</h2>
 <p>Опасность в том, что APK-файлы с названием букмекера легко скопировать и разместить на стороннем сайте, добавив вредоносный код или форму для кражи данных карты.</p><ul><li>Скачивайте APK только с официального сайта оператора, а не с форумов и файлообменников</li><li>Сверяйте домен источника загрузки с официальным доменом БК</li><li>Проверяйте статус оператора на странице <a href="/kak-proverit-licenziyu">как проверить лицензию букмекера</a> перед вводом данных аккаунта</li></ul>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Можно ли скачать приложение БК «Зенит» из Google Play?</summary><p>Нет, для российских пользователей Google Play не размещает приложения с реальными ставками на спорт. Используйте RuStore или официальный сайт оператора.</p></details>
 <details><summary>Нужно ли включать «Установку из неизвестных источников»?</summary><p>Это может потребоваться при прямой загрузке APK-файла с сайта оператора, а не через магазин приложений. Включайте разрешение только для проверенного источника и отключайте после установки.</p></details>
 <details><summary>Как проверить, что APK-файл официальный?</summary><p>Скачивайте файл только по ссылке с официального сайта zenit.win и сверяйте домен, а при сомнениях проверьте статус оператора на странице <a href="/kak-proverit-licenziyu">проверки лицензии</a>.</p></details>
 <details><summary>Что делать, если после установки приложение просит данные карты сразу при открытии?</summary><p>Это повод насторожиться: легитимное приложение запрашивает платёжные данные в разделе пополнения счёта после входа в аккаунт, а не на стартовом экране. Прекратите ввод данных и сверьтесь с официальным сайтом.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/zenit/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/melbet?p=bukmekery/zenit/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>, <a href="/go/zenit?p=bukmekery/zenit/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/marathonbet?p=bukmekery/zenit/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/zenit"><b>Зенит: обзор легального букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/zenit/promokod"><b>Промокод Зенит: как найти и использовать</b><small>Промокод</small></a>

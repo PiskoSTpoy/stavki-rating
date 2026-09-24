@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Мелбет", "item": "https://stavki-rating.ru/bukmekery/melbet"}, {"@type": "ListItem", "position": 4, "name": "Бонусы Мелбет: виды и условия", "item": "https://stavki-rating.ru/bukmekery/melbet/bonus"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонусы Мелбет: виды и условия", "description": "Виды бонусов у легальных букмекеров — приветственный, фрибет, кэшбэк — и честные условия отыгрыша: на что обращать внимание перед активацией.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/melbet/bonus", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонусы Мелбет: виды и условия", "description": "Виды бонусов у легальных букмекеров — приветственный, фрибет, кэшбэк — и честные условия отыгрыша: на что обращать внимание перед активацией.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/melbet/bonus", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Какие виды бонусов бывают у Мелбет?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Как и у большинства легальных букмекеров, встречаются приветственный бонус, фрибет и кэшбэк. Точный набор действующих предложений нужно смотреть на официальном сайте melbet.ru.</p>"}}, {"@type": "Question", "name": "Нужно ли отыгрывать бонус, чтобы вывести его?", "acceptedAnswer": {"@type": "Answer", "text": "<p>В большинстве случаев да — бонусные средства становятся доступны для вывода только после выполнения условий отыгрыша, включая минимальный коэффициент ставок.</p>"}}, {"@type": "Question", "name": "Можно ли получить бонус повторно на второй аккаунт?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет, легальные букмекеры ограничивают приветственные бонусы одним на игрока. Регистрация нескольких аккаунтов ради повторного бонуса нарушает правила площадки.</p>"}}, {"@type": "Question", "name": "Где узнать точные условия текущих бонусов?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Актуальные условия, сроки и размеры бонусов необходимо проверять непосредственно на официальном сайте melbet.ru, так как они периодически обновляются.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/melbet">Мелбет</a><span>/</span>Бонусы Мелбет: виды и условия</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Мелбет ·</div>
     <h1>Бонусы Мелбет: виды и условия</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">У легальных букмекеров, включая Мелбет, встречается несколько типовых видов бонусов: приветственный бонус, фрибет и кэшбэк. Разбираем механику каждого вида, как они обычно активируются и на какие условия отыгрыша стоит смотреть — без конкретных цифр, которые меняются со временем.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/melbet?p=melbet&amp;pl=subpage-top">Сайт букмекера Мелбет →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#privetstvennyj-bonus">Приветственный бонус</a></li><li><a href="#fribet">Фрибет</a></li><li><a href="#keshbek">Кэшбэк</a></li><li><a href="#obschie-usloviya-otygrysha-i-na-chto-smotret">Общие условия отыгрыша и на что смотреть</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Приветственный бонус</h2>
+    <h2 id="privetstvennyj-bonus">Приветственный бонус</h2>
 <p>Приветственный бонус начисляется новому игроку после регистрации и, как правило, после первого пополнения счёта. Такой бонус почти всегда требует отыгрыша — то есть сделать ставки на определённую сумму с заданным минимальным коэффициентом, прежде чем бонусные средства станут доступны для вывода.</p><p>Активировать такой бонус часто нужно с помощью промокода, введённого на этапе регистрации, — как это устроено, разобрано на странице <a href="/bukmekery/melbet/promokod">промокод Мелбет</a>.</p><p>Точный размер и условия приветственного предложения у Мелбет актуальны на официальном сайте melbet.ru на момент регистрации.</p>
-<h2>Фрибет</h2>
+<h2 id="fribet">Фрибет</h2>
 <p>Фрибет — бесплатная ставка вместо денежного начисления. Обычно он выдаётся либо как часть приветственного предложения новому игроку, либо как элемент программы лояльности для действующих клиентов — конкретный формат зависит от акции, действующей на момент активации.</p><p>Подробная механика этого вида бонуса и типичные условия использования разобраны отдельно: <a href="/bukmekery/melbet/fribet">фрибет Мелбет</a>.</p>
-<h2>Кэшбэк</h2>
+<h2 id="keshbek">Кэшбэк</h2>
 <p>Кэшбэк — это частичный возврат части проигранных средств за определённый период, обычно в виде бонусного счёта или фрибета. У разных букмекеров условия кэшбэка отличаются по периодичности начисления и по тому, какие ставки в него засчитываются.</p><p>Иногда кэшбэк начисляется не деньгами напрямую на баланс, а именно в виде фрибета, который потребуется дополнительно использовать по общим правилам фрибетов.</p><p>Иногда кэшбэк действует не постоянно, а как разовая акция для определённой группы игроков или в определённый период — например, во время крупного турнира. Это ещё одна причина, по которой стоит проверять актуальность условия перед тем, как на него рассчитывать.</p><p>Как и с другими бонусами, точные условия программы кэшбэка нужно уточнять на официальном сайте — здесь они не приводятся, чтобы не вводить в заблуждение устаревшими цифрами.</p>
-<h2>Общие условия отыгрыша и на что смотреть</h2>
+<h2 id="obschie-usloviya-otygrysha-i-na-chto-smotret">Общие условия отыгрыша и на что смотреть</h2>
 <div class="table-wrap"><table><caption>Что стоит проверить перед активацией любого бонуса</caption><thead><tr><th>Пункт</th><th>Почему важно</th></tr></thead><tbody><tr><td>Срок отыгрыша</td><td>Не выполненные вовремя условия обычно аннулируют бонус</td></tr><tr><td>Минимальный коэффициент</td><td>Ставки с низким коэффициентом часто не засчитываются в отыгрыш</td></tr><tr><td>Ограничения по видам спорта</td><td>Некоторые бонусы действуют только на определённые дисциплины</td></tr><tr><td>Лимит на один бонус на игрока</td><td>Повторная регистрация ради второго бонуса нарушает правила и рискует блокировкой счёта</td></tr></tbody></table></div><p>Подробнее о термине отыгрыша: <a href="/shkola/terminy/chto-takoe-otygrysh-bonusa">что такое отыгрыш бонуса</a>. Выигрыш, полученный за счёт ставок с использованием бонусных средств, облагается налогом на общих основаниях — подробнее на странице <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">налог на выигрыш</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Какие виды бонусов бывают у Мелбет?</summary><p>Как и у большинства легальных букмекеров, встречаются приветственный бонус, фрибет и кэшбэк. Точный набор действующих предложений нужно смотреть на официальном сайте melbet.ru.</p></details>
 <details><summary>Нужно ли отыгрывать бонус, чтобы вывести его?</summary><p>В большинстве случаев да — бонусные средства становятся доступны для вывода только после выполнения условий отыгрыша, включая минимальный коэффициент ставок.</p></details>
 <details><summary>Можно ли получить бонус повторно на второй аккаунт?</summary><p>Нет, легальные букмекеры ограничивают приветственные бонусы одним на игрока. Регистрация нескольких аккаунтов ради повторного бонуса нарушает правила площадки.</p></details>
 <details><summary>Где узнать точные условия текущих бонусов?</summary><p>Актуальные условия, сроки и размеры бонусов необходимо проверять непосредственно на официальном сайте melbet.ru, так как они периодически обновляются.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/melbet/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/zenit?p=bukmekery/melbet/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/fonbet?p=bukmekery/melbet/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/betcity?p=bukmekery/melbet/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/melbet"><b>Мелбет: обзор букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/melbet/promokod"><b>Промокод Мелбет: как это работает</b><small>Промокод</small></a>

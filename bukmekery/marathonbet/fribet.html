@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Марафон", "item": "https://stavki-rating.ru/bukmekery/marathonbet"}, {"@type": "ListItem", "position": 4, "name": "Фрибет «Марафон»: как устроена бесплатная ставка", "item": "https://stavki-rating.ru/bukmekery/marathonbet/fribet"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Фрибет «Марафон»: как устроена бесплатная ставка", "description": "Как устроен фрибет у легального букмекера «Марафон»: механика бесплатной ставки, типичные условия по коэффициенту и срокам, что происходит с выигрышем.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/marathonbet/fribet", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Фрибет «Марафон»: как устроена бесплатная ставка", "description": "Как устроен фрибет у легального букмекера «Марафон»: механика бесплатной ставки, типичные условия по коэффициенту и срокам, что происходит с выигрышем.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/marathonbet/fribet", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Фрибет можно вывести сразу как деньги?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет, фрибетом нужно сделать ставку — вывести его номинал напрямую нельзя. Деньгами становится только результат ставки, и то по правилам конкретной акции.</p>"}}, {"@type": "Question", "name": "Что будет, если ставка фрибетом не сыграла?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Если ставка проиграла, фрибет просто сгорает без дополнительных последствий для баланса игрока — собственные средства при этом не тратятся.</p>"}}, {"@type": "Question", "name": "Какой размер фрибета у Марафон?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Размер и условия фрибета по конкретным акциям «Марафон» устанавливает сам оператор и может меняться — точное значение указано на официальном сайте marathonbet.ru.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,29 +222,30 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/marathonbet">Марафон</a><span>/</span>Фрибет «Марафон»: как устроена бесплатная ставка</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Марафон ·</div>
     <h1>Фрибет «Марафон»: как устроена бесплатная ставка</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Фрибет — один из самых распространённых видов бонуса у легальных букмекеров, включая «Марафон». Разбираем механику: как фрибет начисляется, какие условия обычно применяются к его использованию и что происходит с выигрышем по такой ставке.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/marathonbet?p=marathonbet&amp;pl=subpage-top">Сайт букмекера Марафон →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#chto-takoe-fribet">Что такое фрибет</a></li><li><a href="#tipichnye-usloviya-ispolzovaniya-fribeta">Типичные условия использования фрибета</a></li><li><a href="#chto-proishodit-s-vyigryshem-po-fribetu">Что происходит с выигрышем по фрибету</a></li><li><a href="#kak-ne-poteryat-fribet-po-nevnimatelnosti">Как не потерять фрибет по невнимательности</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Что такое фрибет</h2>
+    <h2 id="chto-takoe-fribet">Что такое фрибет</h2>
 <p>Фрибет — это бесплатная ставка на фиксированную сумму, которую оператор начисляет игроку вместо денег (например, за регистрацию, выполнение условий акции или в качестве компенсации). Фрибетом делается обычная ставка, но собственные средства игрока при этом не расходуются.</p><p>От денежного бонуса фрибет отличается тем, что его нельзя разделить на несколько ставок или вывести напрямую — по сути, это разовое право сделать ставку без риска потери личных денег. Подробное определение термина — в материале <a href="/shkola/terminy/chto-takoe-fribet">школы «Что такое фрибет»</a>.</p>
-<h2>Типичные условия использования фрибета</h2>
+<h2 id="tipichnye-usloviya-ispolzovaniya-fribeta">Типичные условия использования фрибета</h2>
 <p>Прежде чем использовать фрибет, стоит заранее ознакомиться с условиями конкретного предложения — они закреплены в правилах акции и могут заметно отличаться от одной акции к другой. Чаще всего встречаются такие ограничения:</p><ul><li><strong>Минимальный коэффициент.</strong> Часто фрибет можно поставить только на событие с коэффициентом не ниже установленного минимума.</li><li><strong>Срок действия.</strong> У фрибета обычно есть ограниченный период, в течение которого его нужно использовать — после истечения срока он сгорает.</li><li><strong>Ограничение по видам спорта.</strong> Некоторые фрибеты можно использовать только на определённых рынках или видах спорта.</li><li><strong>Один фрибет — одна ставка.</strong> Как правило, фрибет расходуется полностью за одну ставку независимо от её результата.</li></ul><p>Эти правила стоит перечитывать перед каждой новой акцией — условия могут отличаться даже у одного и того же оператора в разное время.</p>
-<h2>Что происходит с выигрышем по фрибету</h2>
+<h2 id="chto-proishodit-s-vyigryshem-po-fribetu">Что происходит с выигрышем по фрибету</h2>
 <p>Правила начисления выигрыша по фрибету у разных операторов отличаются. Есть два основных варианта:</p><ul><li>выплачивается полная сумма выигрыша, включая номинал фрибета;</li><li>выплачивается только чистый выигрыш — сумма фрибета не включается в выплату.</li></ul><p>Оценить потенциальный размер выигрыша по конкретной ставке помогает <a href="/instrumenty/kalkulyator-stavok">калькулятор ставок</a>, а если фрибет используется в экспрессе — <a href="/instrumenty/kalkulyator-ekspressa">калькулятор экспресса</a>. Кроме того, выигрыш по фрибету может подлежать дополнительному отыгрышу перед выводом — это зависит от конкретной акции. Точные правила фрибета «Марафон» нужно смотреть в условиях текущего предложения на официальном сайте.</p>
-<h2>Как не потерять фрибет по невнимательности</h2>
+<h2 id="kak-ne-poteryat-fribet-po-nevnimatelnosti">Как не потерять фрибет по невнимательности</h2>
 <p>Чаще всего фрибет теряют из-за нарушения формальных условий, а не из-за проигрыша ставки. Стоит заранее проверить:</p><ul><li>минимальный коэффициент, разрешённый для фрибета;</li><li>срок, в течение которого фрибет нужно использовать;</li><li>правило начисления выигрыша — с номиналом фрибета или без;</li><li>требования к отыгрышу выигрыша, если они предусмотрены.</li></ul><p>Общая информация о бонусной политике оператора — в обзоре <a href="/bukmekery/marathonbet/bonus">бонусов «Марафон»</a>, а базовые сведения о самом букмекере — в <a href="/bukmekery/marathonbet">общем обзоре «Марафон»</a>. Если фрибет получен по промокоду, условия его использования стоит уточнить в материале <a href="/bukmekery/marathonbet/promokod">о промокодах «Марафон»</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Фрибет можно вывести сразу как деньги?</summary><p>Нет, фрибетом нужно сделать ставку — вывести его номинал напрямую нельзя. Деньгами становится только результат ставки, и то по правилам конкретной акции.</p></details>
 <details><summary>Что будет, если ставка фрибетом не сыграла?</summary><p>Если ставка проиграла, фрибет просто сгорает без дополнительных последствий для баланса игрока — собственные средства при этом не тратятся.</p></details>
 <details><summary>Какой размер фрибета у Марафон?</summary><p>Размер и условия фрибета по конкретным акциям «Марафон» устанавливает сам оператор и может меняться — точное значение указано на официальном сайте marathonbet.ru.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/marathonbet/fribet&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/melbet?p=bukmekery/marathonbet/fribet&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>, <a href="/go/pari?p=bukmekery/marathonbet/fribet&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>, <a href="/go/fonbet?p=bukmekery/marathonbet/fribet&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/marathonbet"><b>Марафон: обзор букмекерской конторы</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/marathonbet/promokod"><b>Промокод «Марафон»: как это работает</b><small>Промокод</small></a>

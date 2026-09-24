@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Leon", "item": "https://stavki-rating.ru/bukmekery/leon"}, {"@type": "ListItem", "position": 4, "name": "Бонусы Leon: обзор типов и условий отыгрыша", "item": "https://stavki-rating.ru/bukmekery/leon/bonus"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонусы Leon: обзор типов и условий отыгрыша", "description": "Обзор типов бонусов у легальных букмекеров и Leon — приветственный бонус, фрибет, кэшбэк — и честные условия отыгрыша без завышенных обещаний.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/leon/bonus", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонусы Leon: обзор типов и условий отыгрыша", "description": "Обзор типов бонусов у легальных букмекеров и Leon — приветственный бонус, фрибет, кэшбэк — и честные условия отыгрыша без завышенных обещаний.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/leon/bonus", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Бонусы Leon можно вывести сразу после начисления?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Как правило нет — сначала нужно выполнить условия отыгрыша, установленные для конкретного бонуса.</p>"}}, {"@type": "Question", "name": "Что такое отыгрыш бонуса простыми словами?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Это требование сделать определённый объём ставок с минимальным коэффициентом за установленный срок, прежде чем бонусные средства станут доступны к выводу.</p>"}}, {"@type": "Question", "name": "Кэшбэк у Leon — это гарантированная выплата?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет, наличие и размер кэшбэка зависят от условий конкретной программы и могут меняться — гарантии здесь не даёт ни один легальный оператор.</p>"}}, {"@type": "Question", "name": "Где посмотреть точные условия текущих бонусов Leon?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Только на официальном сайте leon.ru или в личном кабинете — там отображаются актуальные для конкретного счёта предложения.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/leon">Leon</a><span>/</span>Бонусы Leon: обзор типов и условий отыгрыша</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Leon ·</div>
     <h1>Бонусы Leon: обзор типов и условий отыгрыша</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>2 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">У легальных букмекеров, включая Leon, бонусная программа обычно строится из нескольких типовых блоков: приветственного бонуса, фрибетов и иногда кэшбэка. Их размер и точные условия меняются чаще, чем выходят обзоры, поэтому здесь разбирается механика, а не конкретные цифры. Актуальные суммы и сроки — всегда на leon.ru.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/leon?p=leon&amp;pl=subpage-top">Сайт букмекера Leon →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#privetstvennyj-bonus">Приветственный бонус</a></li><li><a href="#fribety">Фрибеты</a></li><li><a href="#keshbek">Кэшбэк</a></li><li><a href="#kak-chitat-usloviya-otygrysha-chtoby-ne-poteryat-bonus">Как читать условия отыгрыша, чтобы не потерять бонус</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Приветственный бонус</h2>
+    <h2 id="privetstvennyj-bonus">Приветственный бонус</h2>
 <p>Приветственный бонус — предложение для новых игроков, привязанное к первой регистрации и часто к первому пополнению счёта. Обычно он не выдаётся сразу деньгами: сумма зачисляется на бонусный счёт и становится доступной для вывода только после выполнения условий отыгрыша.</p><p>Условия отыгрыша задаёт сам букмекер: это может быть требование сделать серию ставок на определённую сумму с минимальным коэффициентом в установленный срок.</p>
-<h2>Фрибеты</h2>
+<h2 id="fribety">Фрибеты</h2>
 <p>Фрибет — это бесплатная ставка вместо денежного бонуса: игрок использует её один раз, а выигрыш (полностью или за вычетом номинала фрибета) становится реальными деньгами. Подробный разбор механики — в материале <a href="/bukmekery/leon/fribet">о фрибете Leon</a>.</p>
-<h2>Кэшбэк</h2>
+<h2 id="keshbek">Кэшбэк</h2>
 <p>Кэшбэк — это частичный возврат части проигранных средств за определённый период, обычно в виде бонусных средств или фрибета, а не живых денег напрямую. Такой механизм снижает потери игрока, но не отменяет их и, как и другие бонусы, обычно требует выполнения условий, прежде чем сумму можно вывести.</p><p>Наличие, размер и периодичность кэшбэка у конкретного оператора могут меняться — актуальные условия проверяйте в личном кабинете на leon.ru.</p>
-<h2>Как читать условия отыгрыша, чтобы не потерять бонус</h2>
+<h2 id="kak-chitat-usloviya-otygrysha-chtoby-ne-poteryat-bonus">Как читать условия отыгрыша, чтобы не потерять бонус</h2>
 <ul><li>Смотрите минимальный коэффициент ставки — если он высокий, отыграть бонус сложнее.</li><li>Проверяйте срок действия бонуса — просроченный бонус сгорает вместе с невыполненным отыгрышем.</li><li>Уточняйте, можно ли вывести бонусные средства напрямую или только выигрыш, полученный с их помощью.</li></ul><p>Подробное объяснение термина «отыгрыш бонуса» — в статье <a href="/shkola/terminy/chto-takoe-otygrysh-bonusa">что такое отыгрыш бонуса</a>. Как найти действующий промокод, привязанный к одному из бонусов, — в материале <a href="/bukmekery/leon/promokod">о промокодах Leon</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Бонусы Leon можно вывести сразу после начисления?</summary><p>Как правило нет — сначала нужно выполнить условия отыгрыша, установленные для конкретного бонуса.</p></details>
 <details><summary>Что такое отыгрыш бонуса простыми словами?</summary><p>Это требование сделать определённый объём ставок с минимальным коэффициентом за установленный срок, прежде чем бонусные средства станут доступны к выводу.</p></details>
 <details><summary>Кэшбэк у Leon — это гарантированная выплата?</summary><p>Нет, наличие и размер кэшбэка зависят от условий конкретной программы и могут меняться — гарантии здесь не даёт ни один легальный оператор.</p></details>
 <details><summary>Где посмотреть точные условия текущих бонусов Leon?</summary><p>Только на официальном сайте leon.ru или в личном кабинете — там отображаются актуальные для конкретного счёта предложения.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/leon/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/pari?p=bukmekery/leon/bonus&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>, <a href="/go/melbet?p=bukmekery/leon/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>, <a href="/go/fonbet?p=bukmekery/leon/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/leon"><b>Leon: обзор легального букмекера в России</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/leon/promokod"><b>Промокод Leon: как это работает и где искать актуальный код</b><small>Промокод</small></a>

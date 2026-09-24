@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Лига Ставок", "item": "https://stavki-rating.ru/bukmekery/ligastavok"}, {"@type": "ListItem", "position": 4, "name": "Фрибет в Лиге Ставок: как работает бесплатная ставка", "item": "https://stavki-rating.ru/bukmekery/ligastavok/fribet"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Фрибет в Лиге Ставок: как работает бесплатная ставка", "description": "Что такое фрибет у легального букмекера Лига Ставок: как начисляется, какие условия отыгрыша и минимальный коэффициент. Разбор механики без рекламных цифр.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/ligastavok/fribet", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Фрибет в Лиге Ставок: как работает бесплатная ставка", "description": "Что такое фрибет у легального букмекера Лига Ставок: как начисляется, какие условия отыгрыша и минимальный коэффициент. Разбор механики без рекламных цифр.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/ligastavok/fribet", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Можно ли вывести фрибет сразу как деньги?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, фрибет — это бесплатная ставка, а не сумма на балансе. Вывести можно только выигрыш по этой ставке, и только после выполнения условий отыгрыша."}}, {"@type": "Question", "name": "Что будет, если ставка по фрибету не пройдёт?", "acceptedAnswer": {"@type": "Answer", "text": "Фрибет просто сгорает, дополнительных списаний с реального счёта игрока при этом не происходит."}}, {"@type": "Question", "name": "Есть ли минимальный коэффициент для фрибета?", "acceptedAnswer": {"@type": "Answer", "text": "У большинства легальных букмекеров такое условие предусмотрено, но точное значение для конкретной акции Лиги Ставок нужно смотреть на официальном сайте ligastavok.ru."}}, {"@type": "Question", "name": "Сгорает ли фрибет, если его не использовать?", "acceptedAnswer": {"@type": "Answer", "text": "Как правило, да — у фрибета есть ограниченный срок действия, после которого он аннулируется, точный срок устанавливает букмекер в условиях конкретной акции."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/ligastavok">Лига Ставок</a><span>/</span>Фрибет в Лиге Ставок: как работает бесплатная ставка</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Лига Ставок ·</div>
     <h1>Фрибет в Лиге Ставок: как работает бесплатная ставка</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Фрибет — это бесплатная ставка, которую букмекер начисляет вместо живых денег на баланс. Точный размер фрибета, который может предложить Лига Ставок, здесь не указываем — эта цифра меняется и приводится только на официальном сайте ligastavok.ru. Ниже разбираем саму механику: как фрибет отличается от денежного бонуса и какие условия у него обычно бывают.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/ligastavok?p=ligastavok&amp;pl=subpage-top">Сайт букмекера Лига Ставок →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#chem-fribet-otlichaetsya-ot-deneg-na-schete">Чем фрибет отличается от денег на счёте</a></li><li><a href="#tipichnye-usloviya-ispolzovaniya-fribeta">Типичные условия использования фрибета</a></li><li><a href="#kak-ocenit-realnuyu-vygodu-fribeta">Как оценить реальную выгоду фрибета</a></li><li><a href="#fribet-i-drugie-bonusy-brenda">Фрибет и другие бонусы бренда</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Чем фрибет отличается от денег на счёте</h2>
+    <h2 id="chem-fribet-otlichaetsya-ot-deneg-na-schete">Чем фрибет отличается от денег на счёте</h2>
 <p>Фрибет нельзя вывести напрямую — это ставка, а не сумма на балансе. Игрок использует фрибет для одной ставки на выбранное событие, и если она проходит, выигрыш (как правило, за вычетом суммы самого фрибета) становится доступен для вывода после выполнения условий отыгрыша. Если ставка не проходит, фрибет просто сгорает без дополнительных потерь для игрока — деньги с реального счёта при этом не списываются.</p><p>Такая механика принципиально отличает фрибет от кэшбэка или обычного денежного бонуса: фрибетом нельзя распорядиться свободно, его нельзя разделить на несколько ставок или частично вывести — это одна ставка целиком на выбранных условиях.</p><p>Подробное определение термина — в материале <a href="/shkola/terminy/chto-takoe-fribet">что такое фрибет</a> в разделе Школы справочника.</p>
-<h2>Типичные условия использования фрибета</h2>
+<h2 id="tipichnye-usloviya-ispolzovaniya-fribeta">Типичные условия использования фрибета</h2>
 <p>У большинства легальных букмекеров условия фрибета строятся по схожей схеме, и Лига Ставок здесь не исключение — конкретные цифры нужно уточнять на официальном сайте, но сама логика обычно такая:</p><ul><li>Минимальный коэффициент ставки, ниже которого фрибет использовать нельзя.</li><li>Ограниченный срок действия — если не использовать фрибет вовремя, он аннулируется.</li><li>Выигрыш по фрибету может выводиться не сразу, а после дополнительного отыгрыша.</li><li>Фрибет часто выдаётся за конкретное действие — например, за первое пополнение счёта или выполнение условий акции.</li></ul>
-<h2>Как оценить реальную выгоду фрибета</h2>
+<h2 id="kak-ocenit-realnuyu-vygodu-fribeta">Как оценить реальную выгоду фрибета</h2>
 <p>Поскольку сумма самого фрибета обычно не выводится, а вычитается из потенциального выигрыша, ценность бесплатной ставки зависит от выбранного коэффициента. Чем выше коэффициент события, тем больше потенциальная выгода от фрибета — но и риск, что ставка не пройдёт, тоже растёт.</p><p>Есть смысл не гнаться за максимальным коэффициентом, а выбирать событие, в котором игрок действительно уверен: фрибет всё равно даёт только одну попытку, и если ставка проиграет, бонус будет потрачен без результата. Разумный подход — сопоставить вероятность исхода с предложенным коэффициентом, а не ставить наугад на самый высокий множитель.</p><p>Перед использованием фрибета полезно прикинуть возможный результат с помощью <a href="/instrumenty/kalkulyator-stavok">калькулятора ставок</a> — это помогает понимать, на что реально рассчитывать при разных коэффициентах.</p>
-<h2>Фрибет и другие бонусы бренда</h2>
+<h2 id="fribet-i-drugie-bonusy-brenda">Фрибет и другие бонусы бренда</h2>
 <p>Фрибет — лишь один из форматов поощрений у легальных букмекеров, рядом с денежными бонусами и кэшбэком. Общий обзор того, какие типы бонусов в принципе встречаются у операторов вроде Лиги Ставок, разобран отдельно в материале <a href="/bukmekery/ligastavok/bonus">о бонусах Лиги Ставок</a>, а общая карточка бренда — на странице <a href="/bukmekery/ligastavok">обзора Лиги Ставок</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Можно ли вывести фрибет сразу как деньги?</summary><p>Нет, фрибет — это бесплатная ставка, а не сумма на балансе. Вывести можно только выигрыш по этой ставке, и только после выполнения условий отыгрыша.</p></details>
 <details><summary>Что будет, если ставка по фрибету не пройдёт?</summary><p>Фрибет просто сгорает, дополнительных списаний с реального счёта игрока при этом не происходит.</p></details>
 <details><summary>Есть ли минимальный коэффициент для фрибета?</summary><p>У большинства легальных букмекеров такое условие предусмотрено, но точное значение для конкретной акции Лиги Ставок нужно смотреть на официальном сайте ligastavok.ru.</p></details>
 <details><summary>Сгорает ли фрибет, если его не использовать?</summary><p>Как правило, да — у фрибета есть ограниченный срок действия, после которого он аннулируется, точный срок устанавливает букмекер в условиях конкретной акции.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/ligastavok/fribet&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/zenit?p=bukmekery/ligastavok/fribet&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/betcity?p=bukmekery/ligastavok/fribet&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>, <a href="/go/marathonbet?p=bukmekery/ligastavok/fribet&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/ligastavok"><b>Лига Ставок: обзор букмекера, легальный статус и что важно знать новичку</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/ligastavok/promokod"><b>Промокод Лиги Ставок: как это устроено и где искать актуальный код</b><small>Промокод</small></a>

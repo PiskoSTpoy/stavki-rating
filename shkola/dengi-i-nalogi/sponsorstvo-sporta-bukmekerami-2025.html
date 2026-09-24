@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -171,7 +181,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Деньги и налоги", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Спонсорство спорта букмекерами 2025: сколько и куда идут деньги", "item": "https://stavki-rating.ru/shkola/dengi-i-nalogi/sponsorstvo-sporta-bukmekerami-2025"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Спонсорство спорта букмекерами 2025: сколько и куда идут деньги", "description": "Букмекеры потратили на спонсорство спорта в России 22,6 млрд рублей в 2025 году. Разбираем, куда идут деньги: РПЛ, КХЛ, конкретные клубы — и что изменится из-за роста налогов.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/dengi-i-nalogi/sponsorstvo-sporta-bukmekerami-2025", "datePublished": "2026-09-09", "dateModified": "2026-09-09", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Спонсорство спорта букмекерами 2025: сколько и куда идут деньги", "description": "Букмекеры потратили на спонсорство спорта в России 22,6 млрд рублей в 2025 году. Разбираем, куда идут деньги: РПЛ, КХЛ, конкретные клубы — и что изменится из-за роста налогов.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/dengi-i-nalogi/sponsorstvo-sporta-bukmekerami-2025", "datePublished": "2026-09-09", "dateModified": "2026-09-09", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Сколько букмекеры потратили на спонсорство спорта в 2025 году?", "acceptedAnswer": {"@type": "Answer", "text": "22,6 млрд рублей — на 5 млрд больше, чем в 2024 году. Около 70% этой суммы приходится на два оператора — Фонбет и Winline."}}, {"@type": "Question", "name": "Какие лиги получают больше всего денег от букмекеров?", "acceptedAnswer": {"@type": "Answer", "text": "РПЛ (футбол) — титульный партнёр Winline, и КХЛ (хоккей) — партнёр Фонбет. В сезоне 2025/26 клубы РПЛ получат от букмекеров более 7,3 млрд рублей, причём четыре клуба — по 1 млрд рублей в год каждый."}}, {"@type": "Question", "name": "Повлияет ли рост налогов на спонсорство спорта?", "acceptedAnswer": {"@type": "Answer", "text": "По оценкам отраслевых СМИ — да. Рост налоговой нагрузки с 2026 года (7% с GGR + 25% на прибыль) сокращает свободную прибыль операторов, из которой финансируется спонсорство, и уже заставляет некоторых операторов пересматривать бюджеты."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -211,27 +221,28 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Деньги и налоги</a><span>/</span>Спонсорство спорта букмекерами 2025: сколько и куда идут деньги</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Школа · Деньги и налоги ·</div>
     <h1>Спонсорство спорта букмекерами 2025: сколько и куда идут деньги</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 09.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-09">09.09.2026</time></span><span>·</span><span>2 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">В 2025 году легальные букмекеры потратили на спонсорские контракты с российским спортом 22,6 млрд рублей — на 5 млрд больше, чем годом ранее. Около 70% этой суммы приходится всего на два бренда — Фонбет и Winline. Разбираем, куда идут эти деньги и почему налоговая реформа 2026 года может изменить картину.</p>
     
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#skolko-vsego-potratili-v-2025-godu">Сколько всего потратили в 2025 году</a></li><li><a href="#kuda-idut-dengi-rpl-i-khl">Куда идут деньги: РПЛ и КХЛ</a></li><li><a href="#chto-izmenit-nalogovaya-reforma-2026-goda">Что изменит налоговая реформа 2026 года</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Сколько всего потратили в 2025 году</h2>
+    <h2 id="skolko-vsego-potratili-v-2025-godu">Сколько всего потратили в 2025 году</h2>
 <p>Совокупные спонсорские расходы букмекерских компаний на российский спорт в 2025 году составили <strong>22,6 млрд рублей</strong> — рост примерно на 5 млрд рублей год к году. Это делает букмекеров одним из крупнейших источников внебюджетного финансирования спорта в стране.</p><p>Расходы сконцентрированы: примерно <strong>70% всей суммы</strong> приходится на два оператора — Фонбет и Winline.</p>
-<h2>Куда идут деньги: РПЛ и КХЛ</h2>
+<h2 id="kuda-idut-dengi-rpl-i-khl">Куда идут деньги: РПЛ и КХЛ</h2>
 <p>Основные спонсорские контракты завязаны на две ключевые лиги:</p><ul><li><strong>Winline</strong> — титульный партнёр Российской премьер-лиги (РПЛ) по футболу.</li><li><strong>Фонбет</strong> — партнёр Континентальной хоккейной лиги (КХЛ).</li></ul><p>В сезоне 2025/26 букмекеры потратят на контракты именно с клубами РПЛ более <strong>7,3 млрд рублей</strong> — при этом четыре клуба получают по <strong>1 млрд рублей в год</strong> каждый напрямую от букмекерских спонсоров.</p>
-<h2>Что изменит налоговая реформа 2026 года</h2>
+<h2 id="chto-izmenit-nalogovaya-reforma-2026-goda">Что изменит налоговая реформа 2026 года</h2>
 <p>С 1 января 2026 года налоговая нагрузка на букмекеров выросла резко (7% с GGR плюс налог на прибыль 25% — подробный разбор в материале о налоговой реформе). Отраслевые аналитики и спортивные СМИ уже отмечают: рост налогов заставляет операторов пересматривать маркетинговые и спонсорские бюджеты, поскольку и то и другое финансируется из той же прибыли, которая теперь облагается более высоким налогом.</p><p>Для клубов и лиг, зависящих от спонсорских денег букмекеров, это создаёт реальный финансовый риск — часть контрактов может быть пересмотрена или сокращена в следующих сезонах.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Сколько букмекеры потратили на спонсорство спорта в 2025 году?</summary><p>22,6 млрд рублей — на 5 млрд больше, чем в 2024 году. Около 70% этой суммы приходится на два оператора — Фонбет и Winline.</p></details>
 <details><summary>Какие лиги получают больше всего денег от букмекеров?</summary><p>РПЛ (футбол) — титульный партнёр Winline, и КХЛ (хоккей) — партнёр Фонбет. В сезоне 2025/26 клубы РПЛ получат от букмекеров более 7,3 млрд рублей, причём четыре клуба — по 1 млрд рублей в год каждый.</p></details>
 <details><summary>Повлияет ли рост налогов на спонсорство спорта?</summary><p>По оценкам отраслевых СМИ — да. Рост налоговой нагрузки с 2026 года (7% с GGR + 25% на прибыль) сокращает свободную прибыль операторов, из которой финансируется спонсорство, и уже заставляет некоторых операторов пересматривать бюджеты.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/melbet">Мелбет</a>, <a href="/bukmekery/ligastavok">Лига Ставок</a>, <a href="/bukmekery/fonbet">Фонбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/shkola/dengi-i-nalogi/kak-vyvesti-dengi"><b>Как вывести деньги из букмекерской конторы</b><small>Деньги и налоги</small></a>
       <a class="tile" href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh"><b>Налог на выигрыш в ставках: сколько платить в 2026</b><small>Деньги и налоги</small></a>

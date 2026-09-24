@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Winline", "item": "https://stavki-rating.ru/bukmekery/winline"}, {"@type": "ListItem", "position": 4, "name": "Приложение Winline: официальные каналы для Android и iOS", "item": "https://stavki-rating.ru/bukmekery/winline/prilozhenie"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Приложение Winline: официальные каналы для Android и iOS", "description": "Где на самом деле можно скачать приложение Winline для Android и iOS, почему его нет в Google Play и как не попасть на фейковый apk.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/winline/prilozhenie", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Приложение Winline: официальные каналы для Android и iOS", "description": "Где на самом деле можно скачать приложение Winline для Android и iOS, почему его нет в Google Play и как не попасть на фейковый apk.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/winline/prilozhenie", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Есть ли приложение Winline в Google Play?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, и это общее правило для приложений ставок на реальные деньги в российском регионе Google Play, а не особенность конкретного оператора."}}, {"@type": "Question", "name": "Можно ли скачать apk Winline не с официального сайта?", "acceptedAnswer": {"@type": "Answer", "text": "Не рекомендуется: файлы с посторонних ресурсов не проходят проверку оператора и могут быть подделкой или содержать вредоносный код."}}, {"@type": "Question", "name": "Приложение Winline одинаковое на Android и iOS?", "acceptedAnswer": {"@type": "Answer", "text": "Функциональность близка, но способы получения различаются: для Android — официальные магазины и сайт, для iOS — App Store."}}, {"@type": "Question", "name": "Нужна отдельная регистрация для входа в приложение?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, используется тот же аккаунт, что и на сайте — вход происходит через единую систему ЦУПИС."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/winline">Winline</a><span>/</span>Приложение Winline: официальные каналы для Android и iOS</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Winline ·</div>
     <h1>Приложение Winline: официальные каналы для Android и iOS</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>2 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">У Winline есть официальное мобильное приложение для ставок, но получить его можно не через любой магазин приложений. Ниже — какие каналы действительно официальные для Android и iOS, и почему стоит держаться подальше от файлов apk со сторонних сайтов.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/winline?p=winline&amp;pl=subpage-top">Сайт букмекера Winline →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#gde-iskat-prilozhenie-oficialno">Где искать приложение официально</a></li><li><a href="#pochemu-prilozheniya-net-v-google-play">Почему приложения нет в Google Play</a></li><li><a href="#svodka-po-platformam">Сводка по платформам</a></li><li><a href="#chem-riskovan-apk-s-drugih-sajtov">Чем рискован apk с других сайтов</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Где искать приложение официально</h2>
+    <h2 id="gde-iskat-prilozhenie-oficialno">Где искать приложение официально</h2>
 <p>Для Android приложение Winline распространяется через магазины RuStore, AppGallery, GalaxyStore и напрямую с официального сайта winline.ru — подробный порядок описан на странице <a href="/bukmekery/winline/prilozhenie/android">установки на Android</a>. Для iPhone приложение доступно в App Store при выставленном регионе учётной записи «Россия» — детали на странице <a href="/bukmekery/winline/prilozhenie/ios">установки на iOS</a>.</p>
-<h2>Почему приложения нет в Google Play</h2>
+<h2 id="pochemu-prilozheniya-net-v-google-play">Почему приложения нет в Google Play</h2>
 <p>Отсутствие приложения Winline в Google Play — не признак нелегальности оператора. Google Play не размещает в российском регионе приложения для ставок на реальные деньги независимо от того, легален букмекер в России или нет: это общая политика магазина в отношении гемблинга, а не решение конкретного оператора.</p><p>Поэтому для Android легальные российские букмекеры используют альтернативные официальные магазины и прямую установку apk с собственного сайта — это стандартная практика, а не признак подделки.</p>
-<h2>Сводка по платформам</h2>
+<h2 id="svodka-po-platformam">Сводка по платформам</h2>
 <div class="table-wrap"><table><caption>Официальные каналы установки</caption><thead><tr><th>Платформа</th><th>Где скачать</th><th>Особенность</th></tr></thead><tbody><tr><td>Android</td><td>RuStore, AppGallery, GalaxyStore, официальный сайт</td><td>Google Play не используется — общее правило для ставочных приложений в РФ</td></tr><tr><td>iOS</td><td>App Store</td><td>Требуется регион учётной записи Apple ID «Россия»</td></tr></tbody></table></div><p>Независимо от платформы вход происходит в один и тот же аккаунт через систему ЦУПИС, поэтому выбор канала загрузки не влияет на условия ставок.</p>
-<h2>Чем рискован apk с других сайтов</h2>
+<h2 id="chem-riskovan-apk-s-drugih-sajtov">Чем рискован apk с других сайтов</h2>
 <p>В поиске и рекламе встречаются файлы apk «Winline» на сторонних файлообменниках и форумах. Такие файлы могут не проходить проверку безопасности, содержать вредоносный код или вести на форму ввода данных карты, не связанную с настоящим оператором.</p><ul><li>Скачивать приложение стоит только с winline.ru или из официальных магазинов, перечисленных выше.</li><li>Перед установкой стоит сверить, что вы находитесь именно на официальном домене — это можно проверить через <a href="/kak-proverit-licenziyu">реестр легальных букмекеров</a>.</li></ul>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Есть ли приложение Winline в Google Play?</summary><p>Нет, и это общее правило для приложений ставок на реальные деньги в российском регионе Google Play, а не особенность конкретного оператора.</p></details>
 <details><summary>Можно ли скачать apk Winline не с официального сайта?</summary><p>Не рекомендуется: файлы с посторонних ресурсов не проходят проверку оператора и могут быть подделкой или содержать вредоносный код.</p></details>
 <details><summary>Приложение Winline одинаковое на Android и iOS?</summary><p>Функциональность близка, но способы получения различаются: для Android — официальные магазины и сайт, для iOS — App Store.</p></details>
 <details><summary>Нужна отдельная регистрация для входа в приложение?</summary><p>Нет, используется тот же аккаунт, что и на сайте — вход происходит через единую систему ЦУПИС.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/winline/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/marathonbet?p=bukmekery/winline/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>, <a href="/go/zenit?p=bukmekery/winline/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/fonbet?p=bukmekery/winline/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/winline"><b>Winline — обзор букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/winline/promokod"><b>Промокод Winline: как найти и использовать</b><small>Промокод</small></a>

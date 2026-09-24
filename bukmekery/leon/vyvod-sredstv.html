@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Leon", "item": "https://stavki-rating.ru/bukmekery/leon"}, {"@type": "ListItem", "position": 4, "name": "Как устроен вывод средств у легального букмекера Leon", "item": "https://stavki-rating.ru/bukmekery/leon/vyvod-sredstv"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как устроен вывод средств у легального букмекера Leon", "description": "Общая механика вывода денег у легальных букмекеров: идентификация, Единый ЦУПИС, СБП и удержание НДФЛ — без выдуманных сроков и лимитов.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/leon/vyvod-sredstv", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как устроен вывод средств у легального букмекера Leon", "description": "Общая механика вывода денег у легальных букмекеров: идентификация, Единый ЦУПИС, СБП и удержание НДФЛ — без выдуманных сроков и лимитов.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/leon/vyvod-sredstv", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Нужно ли проходить идентификацию перед выводом денег?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Да, это обязательное требование для всех легальных операторов, включая Leon, — без подтверждения личности вывод средств невозможен.</p>"}}, {"@type": "Question", "name": "Через что проходят деньги при выводе у Leon?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Через Единый ЦУПИС — расчётный центр, обязательный для всех операторов с лицензией на букмекерскую деятельность в России.</p>"}}, {"@type": "Question", "name": "Кто платит налог с выигрыша — я сам или букмекер?", "acceptedAnswer": {"@type": "Answer", "text": "<p>С 2026 года НДФЛ, как правило, удерживает сам букмекер как налоговый агент, до того как деньги поступят игроку.</p>"}}, {"@type": "Question", "name": "Где узнать точные сроки и лимиты вывода у Leon?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Актуальные условия и точные лимиты по способам вывода нужно смотреть непосредственно на официальном сайте leon.ru — они могут меняться.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/leon">Leon</a><span>/</span>Как устроен вывод средств у легального букмекера Leon</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Leon ·</div>
     <h1>Как устроен вывод средств у легального букмекера Leon</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>2 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Вывод денег у любого легального российского букмекера, включая Leon, проходит через один и тот же контур — Единый центр учёта переводов интерактивных ставок (ЦУПИС) и банковские механизмы вроде СБП. Прежде чем деньги можно будет вывести, требуется пройти идентификацию личности, а с суммы выигрыша букмекер как налоговый агент удерживает НДФЛ ещё до того, как средства попадут на счёт игрока.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/leon?p=leon&amp;pl=subpage-top">Сайт букмекера Leon →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#identifikaciya-obyazatelnyj-shag-pered-vyvodom">Идентификация — обязательный шаг перед выводом</a></li><li><a href="#rol-edinogo-cupis-v-perevode-deneg">Роль Единого ЦУПИС в переводе денег</a></li><li><a href="#sposoby-vyvoda-karta-i-sbp">Способы вывода: карта и СБП</a></li><li><a href="#nalog-na-vyigrysh-chto-vazhno-znat">Налог на выигрыш: что важно знать</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Идентификация — обязательный шаг перед выводом</h2>
+    <h2 id="identifikaciya-obyazatelnyj-shag-pered-vyvodom">Идентификация — обязательный шаг перед выводом</h2>
 <p>Любой легальный оператор обязан идентифицировать игрока, прежде чем разрешить вывод средств — это требование законодательства о ставках, а не индивидуальная политика конкретного букмекера. Как правило, идентификация связана с этапом регистрации через Единую систему идентификации и аутентификации — подробнее в материале <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">«Регистрация и ЦУПИС»</a>.</p>
-<h2>Роль Единого ЦУПИС в переводе денег</h2>
+<h2 id="rol-edinogo-cupis-v-perevode-deneg">Роль Единого ЦУПИС в переводе денег</h2>
 <p>Деньги при ставках у легальных операторов в России движутся не прямо на счёт букмекера, а через Единый ЦУПИС — расчётный центр, обязательный для всех операторов с лицензией. Это касается и пополнения счёта, и вывода выигрыша. Общий принцип пополнения счёта разобран в материале <a href="/shkola/dengi-i-nalogi/kak-popolnit-schet">«Как пополнить счёт»</a>, а вывод — в материале <a href="/shkola/dengi-i-nalogi/kak-vyvesti-dengi">«Как вывести деньги»</a>.</p>
-<h2>Способы вывода: карта и СБП</h2>
+<h2 id="sposoby-vyvoda-karta-i-sbp">Способы вывода: карта и СБП</h2>
 <div class="table-wrap"><table><caption>Общая механика вывода у легальных операторов</caption><thead><tr><th>Шаг</th><th>Что происходит</th></tr></thead><tbody><tr><td>1. Идентификация</td><td>Подтверждение личности игрока, обычно на этапе регистрации через ЕСИА</td></tr><tr><td>2. Заявка на вывод</td><td>Игрок указывает сумму и способ — банковская карта или СБП</td></tr><tr><td>3. Проверка через ЦУПИС</td><td>Перевод проходит через расчётный центр, обязательный для легальных операторов</td></tr><tr><td>4. Удержание налога</td><td>Букмекер как налоговый агент удерживает НДФЛ с налогооблагаемой части выигрыша</td></tr><tr><td>5. Поступление средств</td><td>Оставшаяся сумма переводится игроку выбранным способом</td></tr></tbody></table></div><p>Точные сроки поступления и лимиты по конкретным способам вывода нужно уточнять непосредственно на официальном сайте leon.ru, в разделе с условиями по счёту.</p>
-<h2>Налог на выигрыш: что важно знать</h2>
+<h2 id="nalog-na-vyigrysh-chto-vazhno-znat">Налог на выигрыш: что важно знать</h2>
 <p>С 2026 года НДФЛ с выигрышей у букмекеров, как правило, удерживает сам оператор как налоговый агент — то есть на счёт игрока поступает сумма уже за вычетом налога, и подавать декларацию самостоятельно в большинстве случаев не нужно. Общий порядок расчёта и ставки разобран в материале <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">«Налог на выигрыш»</a>, а прикинуть сумму заранее можно через <a href="/instrumenty/nalog-na-vyigrysh">калькулятор налога на выигрыш</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Нужно ли проходить идентификацию перед выводом денег?</summary><p>Да, это обязательное требование для всех легальных операторов, включая Leon, — без подтверждения личности вывод средств невозможен.</p></details>
 <details><summary>Через что проходят деньги при выводе у Leon?</summary><p>Через Единый ЦУПИС — расчётный центр, обязательный для всех операторов с лицензией на букмекерскую деятельность в России.</p></details>
 <details><summary>Кто платит налог с выигрыша — я сам или букмекер?</summary><p>С 2026 года НДФЛ, как правило, удерживает сам букмекер как налоговый агент, до того как деньги поступят игроку.</p></details>
 <details><summary>Где узнать точные сроки и лимиты вывода у Leon?</summary><p>Актуальные условия и точные лимиты по способам вывода нужно смотреть непосредственно на официальном сайте leon.ru — они могут меняться.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/leon/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/zenit?p=bukmekery/leon/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/betcity?p=bukmekery/leon/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>, <a href="/go/marathonbet?p=bukmekery/leon/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/leon"><b>Leon: обзор легального букмекера в России</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/leon/promokod"><b>Промокод Leon: как это работает и где искать актуальный код</b><small>Промокод</small></a>

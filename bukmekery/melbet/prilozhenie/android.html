@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Мелбет", "item": "https://stavki-rating.ru/bukmekery/melbet"}, {"@type": "ListItem", "position": 4, "name": "Как скачать приложение Мелбет на Android", "item": "https://stavki-rating.ru/bukmekery/melbet/prilozhenie/android"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как скачать приложение Мелбет на Android", "description": "Инструкция по установке приложения Мелбет на Android: официальные источники — RuStore и сайт оператора, шаги установки и предупреждение о фейковых APK.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/melbet/prilozhenie/android", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как скачать приложение Мелбет на Android", "description": "Инструкция по установке приложения Мелбет на Android: официальные источники — RuStore и сайт оператора, шаги установки и предупреждение о фейковых APK.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/melbet/prilozhenie/android", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Почему приложение Мелбет нельзя найти в Google Play?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Google Play не размещает приложения для ставок на спорт с реальными деньгами для российских пользователей. Это ограничение магазина, а не показатель легальности оператора.</p>"}}, {"@type": "Question", "name": "Что делать, если телефон блокирует установку APK?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нужно разрешить установку приложений из неизвестных источников в настройках безопасности Android — но только если файл загружен с официального сайта melbet.ru.</p>"}}, {"@type": "Question", "name": "Можно ли доверять APK-файлам с других сайтов?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет, скачивать приложение стоит только с melbet.ru или из RuStore. Файлы со сторонних ресурсов не гарантируют безопасность и подлинность.</p>"}}, {"@type": "Question", "name": "Нужна ли регистрация после установки приложения?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Да, если аккаунта ещё нет, потребуется пройти регистрацию — это можно сделать прямо в приложении или на сайте оператора.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/melbet">Мелбет</a><span>/</span>Как скачать приложение Мелбет на Android</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Мелбет ·</div>
     <h1>Как скачать приложение Мелбет на Android</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Установить приложение Мелбет на Android можно двумя официальными способами: через магазин RuStore или прямой загрузкой APK-файла с сайта оператора melbet.ru. Google Play для этого не подходит — ниже объясняется, почему, и как пройти установку без риска попасть на подделку.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/melbet?p=melbet&amp;pl=subpage-top">Сайт букмекера Мелбет →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#oficialnye-istochniki-dlya-android">Официальные источники для Android</a></li><li><a href="#pochemu-net-v-google-play">Почему нет в Google Play</a></li><li><a href="#shagi-ustanovki">Шаги установки</a></li><li><a href="#ostorozhno-fejkovye-kopii-prilozheniya">Осторожно: фейковые копии приложения</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Официальные источники для Android</h2>
+    <h2 id="oficialnye-istochniki-dlya-android">Официальные источники для Android</h2>
 <p>Для Android-устройств у Мелбет два официальных канала распространения: каталог RuStore и прямая ссылка на APK-файл на сайте melbet.ru. Оба варианта ведут к одному и тому же приложению — разница только в способе установки.</p><p>В RuStore карточка приложения оформлена как у обычного каталожного продукта: там указан разработчик, версия и отзывы пользователей. Перед установкой стоит сверить название разработчика с официальным брендом, чтобы не спутать карточку с посторонним приложением, использующим похожее название.</p>
-<h2>Почему нет в Google Play</h2>
+<h2 id="pochemu-net-v-google-play">Почему нет в Google Play</h2>
 <p>Google Play исключает из каталога приложения для ставок на спорт с реальными деньгами, ориентированные на российских пользователей — это правило магазина, а не следствие проблем конкретного оператора. По этой причине поиск Мелбет в Google Play не даёт результата, и это нормально для всех легальных букмекеров в России.</p><p>Это ограничение действует на уровне политики магазина приложений и не связано с наличием лицензии или статусом оператора в реестре ЕРАИ — легальность БК определяется совсем другими критериями, а не тем, в каких магазинах приложений она представлена.</p>
-<h2>Шаги установки</h2>
+<h2 id="shagi-ustanovki">Шаги установки</h2>
 <p>Порядок установки в общих чертах одинаков для обоих официальных источников:</p><ol><li>Открыть RuStore или сайт melbet.ru с мобильного устройства.</li><li>Найти раздел с приложением для Android и запустить скачивание.</li><li>Если файл загружен с сайта напрямую, разрешить установку приложений из этого источника в настройках безопасности телефона.</li><li>Запустить установленный файл и подтвердить установку.</li><li>Войти в личный кабинет с уже существующими данными или пройти <a href="/bukmekery/melbet/registraciya">регистрацию</a>.</li></ol>
-<h2>Осторожно: фейковые копии приложения</h2>
+<h2 id="ostorozhno-fejkovye-kopii-prilozheniya">Осторожно: фейковые копии приложения</h2>
 <p>На сторонних сайтах, форумах и в файлообменниках можно встретить APK-файлы, выдаваемые за приложение Мелбет, но не имеющие отношения к официальному источнику. Устанавливать такие файлы небезопасно — они могут запрашивать лишние разрешения или подменять форму входа для перехвата данных аккаунта.</p><p>Признаком подделки часто служит слишком маленький размер файла, отсутствие карточки разработчика или требование ввести данные банковской карты сразу при установке, до входа в личный кабинет. Официальное приложение запрашивает платёжные данные только внутри раздела пополнения счёта, как и на сайте.</p><p>Общая информация о доступных способах получить приложение собрана на <a href="/bukmekery/melbet/prilozhenie">странице о приложении Мелбет</a>, а профиль оператора — на <a href="/bukmekery/melbet">странице Мелбет в каталоге</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Почему приложение Мелбет нельзя найти в Google Play?</summary><p>Google Play не размещает приложения для ставок на спорт с реальными деньгами для российских пользователей. Это ограничение магазина, а не показатель легальности оператора.</p></details>
 <details><summary>Что делать, если телефон блокирует установку APK?</summary><p>Нужно разрешить установку приложений из неизвестных источников в настройках безопасности Android — но только если файл загружен с официального сайта melbet.ru.</p></details>
 <details><summary>Можно ли доверять APK-файлам с других сайтов?</summary><p>Нет, скачивать приложение стоит только с melbet.ru или из RuStore. Файлы со сторонних ресурсов не гарантируют безопасность и подлинность.</p></details>
 <details><summary>Нужна ли регистрация после установки приложения?</summary><p>Да, если аккаунта ещё нет, потребуется пройти регистрацию — это можно сделать прямо в приложении или на сайте оператора.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/melbet/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/fonbet?p=bukmekery/melbet/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/pari?p=bukmekery/melbet/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>, <a href="/go/marathonbet?p=bukmekery/melbet/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/melbet"><b>Мелбет: обзор букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/melbet/promokod"><b>Промокод Мелбет: как это работает</b><small>Промокод</small></a>

@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Лига Ставок", "item": "https://stavki-rating.ru/bukmekery/ligastavok"}, {"@type": "ListItem", "position": 4, "name": "Как устроен вывод средств у «Лиги Ставок»", "item": "https://stavki-rating.ru/bukmekery/ligastavok/vyvod-sredstv"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как устроен вывод средств у «Лиги Ставок»", "description": "Как устроен вывод денег у легального букмекера «Лига Ставок»: Единый ЦУПИС, идентификация и налог с выигрыша — общая механика без вымышленных цифр.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/ligastavok/vyvod-sredstv", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как устроен вывод средств у «Лиги Ставок»", "description": "Как устроен вывод денег у легального букмекера «Лига Ставок»: Единый ЦУПИС, идентификация и налог с выигрыша — общая механика без вымышленных цифр.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/ligastavok/vyvod-sredstv", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Почему деньги выводятся не напрямую от букмекера?", "acceptedAnswer": {"@type": "Answer", "text": "Все переводы легальных операторов идут через Единый ЦУПИС — обязательную посредническую структуру для расчётов между букмекером и игроком, установленную для всех участников реестра ЕРАИ."}}, {"@type": "Question", "name": "Можно ли вывести деньги без идентификации?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, вывод выигрыша доступен только после подтверждения личности в системе ЦУПИС. Это требование закона, а не индивидуальное условие конкретного букмекера."}}, {"@type": "Question", "name": "Удерживается ли налог с выигрыша автоматически?", "acceptedAnswer": {"@type": "Answer", "text": "Да, с 2026 года НДФЛ с выигрыша у легальных букмекеров удерживает сам оператор как налоговый агент, поэтому на счёт при выводе поступает сумма уже за вычетом налога."}}, {"@type": "Question", "name": "Где узнать точные сроки и лимиты вывода у «Лиги Ставок»?", "acceptedAnswer": {"@type": "Answer", "text": "Актуальные сроки обработки заявок и лимиты по способам вывода нужно проверять на официальном сайте ligastavok.ru — они могут отличаться от общих правил и меняться со временем."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,32 +222,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/ligastavok">Лига Ставок</a><span>/</span>Как устроен вывод средств у «Лиги Ставок»</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Лига Ставок ·</div>
     <h1>Как устроен вывод средств у «Лиги Ставок»</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Вывод денег у легального букмекера «Лига Ставок» устроен так же, как у любого оператора из реестра ЕРАИ: через Единый ЦУПИС, после обязательной идентификации личности, с удержанием НДФЛ букмекером как налоговым агентом. Разбираем общую механику вывода — точные сроки и лимиты нужно уточнять на официальном сайте.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/ligastavok?p=ligastavok&amp;pl=subpage-top">Сайт букмекера Лига Ставок →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#cherez-chto-prohodit-vyvod-edinyj-cupis">Через что проходит вывод: Единый ЦУПИС</a></li><li><a href="#identifikaciya-obyazatelnyj-shag-pered-vyvodom">Идентификация — обязательный шаг перед выводом</a></li><li><a href="#sposoby-vyvoda">Способы вывода</a></li><li><a href="#sroki-obrabotki-zayavki-na-vyvod">Сроки обработки заявки на вывод</a></li><li><a href="#nalog-s-vyigrysha">Налог с выигрыша</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Через что проходит вывод: Единый ЦУПИС</h2>
+    <h2 id="cherez-chto-prohodit-vyvod-edinyj-cupis">Через что проходит вывод: Единый ЦУПИС</h2>
 <p>Все расчёты легальных букмекеров с игроками в России проходят через Единый центр учёта переводов интерактивных ставок (ЦУПИС) — обязательную посредническую структуру для всех операторов из реестра ЕРАИ, включая «Лигу Ставок». Через ЦУПИС деньги поступают на игровой счёт и возвращаются обратно при выводе, а не напрямую от букмекера на карту.</p>
-<h2>Идентификация — обязательный шаг перед выводом</h2>
+<h2 id="identifikaciya-obyazatelnyj-shag-pered-vyvodom">Идентификация — обязательный шаг перед выводом</h2>
 <p>Вывести выигранные средства можно только после прохождения идентификации личности — подтверждения данных в системе ЦУПИС. Без этого шага деньги можно завести на счёт и делать ставки, но забрать выигрыш не получится: это требование закона, а не внутреннее правило конкретного букмекера. Порядок регистрации и идентификации подробно описан в материале <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">о регистрации и ЦУПИС</a>.</p>
-<h2>Способы вывода</h2>
+<h2 id="sposoby-vyvoda">Способы вывода</h2>
 <div class="table-wrap"><table><caption>Общая механика вывода у легальных букмекеров</caption><thead><tr><th>Способ</th><th>Особенность</th></tr></thead><tbody><tr><td>Банковская карта</td><td>Вывод обычно на карту, привязанную к идентифицированному счёту в ЦУПИС</td></tr><tr><td>СБП (Система быстрых платежей)</td><td>Перевод по номеру телефона на счёт того же физлица</td></tr></tbody></table></div><p>Точный список доступных способов, лимиты и сроки обработки заявки на конкретный момент нужно смотреть на официальном сайте ligastavok.ru — они могут отличаться от общих правил и меняться со временем. Общий порядок пополнения и вывода разобран в материалах <a href="/shkola/dengi-i-nalogi/kak-popolnit-schet">о пополнении счёта</a> и <a href="/shkola/dengi-i-nalogi/kak-vyvesti-dengi">о выводе денег</a>.</p>
-<h2>Сроки обработки заявки на вывод</h2>
+<h2 id="sroki-obrabotki-zayavki-na-vyvod">Сроки обработки заявки на вывод</h2>
 <p>Скорость поступления денег после подачи заявки на вывод зависит от выбранного способа и от того, требуется ли по операции дополнительная проверка. Часть операций проводится практически моментально, другие могут занять больше времени — например, если реквизиты получателя проверяются дополнительно или способ вывода отличается от способа, которым счёт пополнялся.</p><p>Если заявка на вывод отклонена или задерживается дольше ожидаемого, стоит в первую очередь проверить, совпадают ли данные получателя — ФИО, номер карты или телефона — с данными, указанными при идентификации личности в ЦУПИС. Несовпадение реквизитов — одна из частых причин задержки, а не технический сбой на стороне букмекера.</p>
-<h2>Налог с выигрыша</h2>
+<h2 id="nalog-s-vyigrysha">Налог с выигрыша</h2>
 <p>С 2026 года налог на доходы физических лиц (НДФЛ) с выигрышей у легальных букмекеров удерживает сам оператор как налоговый агент — на игровой счёт при выводе поступает сумма уже за вычетом налога, и отдельно декларировать такой выигрыш не требуется. Подробнее о порядке налогообложения выигрышей — в материале <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">про налог на выигрыш</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Почему деньги выводятся не напрямую от букмекера?</summary><p>Все переводы легальных операторов идут через Единый ЦУПИС — обязательную посредническую структуру для расчётов между букмекером и игроком, установленную для всех участников реестра ЕРАИ.</p></details>
 <details><summary>Можно ли вывести деньги без идентификации?</summary><p>Нет, вывод выигрыша доступен только после подтверждения личности в системе ЦУПИС. Это требование закона, а не индивидуальное условие конкретного букмекера.</p></details>
 <details><summary>Удерживается ли налог с выигрыша автоматически?</summary><p>Да, с 2026 года НДФЛ с выигрыша у легальных букмекеров удерживает сам оператор как налоговый агент, поэтому на счёт при выводе поступает сумма уже за вычетом налога.</p></details>
 <details><summary>Где узнать точные сроки и лимиты вывода у «Лиги Ставок»?</summary><p>Актуальные сроки обработки заявок и лимиты по способам вывода нужно проверять на официальном сайте ligastavok.ru — они могут отличаться от общих правил и меняться со временем.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/ligastavok/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/betcity?p=bukmekery/ligastavok/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>, <a href="/go/melbet?p=bukmekery/ligastavok/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>, <a href="/go/marathonbet?p=bukmekery/ligastavok/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/ligastavok"><b>Лига Ставок: обзор букмекера, легальный статус и что важно знать новичку</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/ligastavok/promokod"><b>Промокод Лиги Ставок: как это устроено и где искать актуальный код</b><small>Промокод</small></a>

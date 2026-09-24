@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Фонбет", "item": "https://stavki-rating.ru/bukmekery/fonbet"}, {"@type": "ListItem", "position": 4, "name": "Бонусы Фонбет: типы и условия отыгрыша", "item": "https://stavki-rating.ru/bukmekery/fonbet/bonus"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонусы Фонбет: типы и условия отыгрыша", "description": "Обзор типов бонусов у легальных букмекеров: приветственный бонус, фрибет, кэшбэк. Честные условия отыгрыша, сроки и риски — без рекламных обещаний.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/fonbet/bonus", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонусы Фонбет: типы и условия отыгрыша", "description": "Обзор типов бонусов у легальных букмекеров: приветственный бонус, фрибет, кэшбэк. Честные условия отыгрыша, сроки и риски — без рекламных обещаний.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/fonbet/bonus", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Какие виды бонусов бывают у Фонбета?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Как и у других легальных букмекеров, встречаются приветственные бонусы, фрибеты и кэшбэк-программы. Точный набор действующих предложений уточняйте на официальном сайте.</p>"}}, {"@type": "Question", "name": "Нужно ли отыгрывать любой бонус?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Почти всегда — да, за исключением отдельных безусловных кэшбэк-начислений. Условия отыгрыша указываются в правилах конкретной акции.</p>"}}, {"@type": "Question", "name": "Что случится, если не выполнить условия отыгрыша в срок?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Обычно бонус и связанный с ним выигрыш аннулируются, а на счёте остаются только собственные средства игрока.</p>"}}, {"@type": "Question", "name": "Можно ли сразу вывести бонусные средства?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет, до выполнения условий отыгрыша бонусные средства недоступны для вывода — вывести можно только средства, полученные после полного отыгрыша.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,32 +222,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/fonbet">Фонбет</a><span>/</span>Бонусы Фонбет: типы и условия отыгрыша</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Фонбет ·</div>
     <h1>Бонусы Фонбет: типы и условия отыгрыша</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">У легальных букмекерских контор, включая Фонбет, бонусные программы обычно строятся из нескольких типовых механик: приветственного предложения, фрибета и кэшбэка. Ниже разбираем, как работает каждый вид и какие условия отыгрыша встречаются на практике — конкретные суммы и проценты для действующих акций уточняйте на официальном сайте fon.bet.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/fonbet?p=fonbet&amp;pl=subpage-top">Сайт букмекера Фонбет →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#osnovnye-tipy-bonusov-u-legalnyh-bukmekerov">Основные типы бонусов у легальных букмекеров</a></li><li><a href="#privetstvennyj-bonus-kak-obychno-ustroen">Приветственный бонус: как обычно устроен</a></li><li><a href="#keshbek-kak-eto-obychno-ustroeno">Кэшбэк: как это обычно устроено</a></li><li><a href="#usloviya-otygrysha-na-chto-smotret-vnimatelno">Условия отыгрыша: на что смотреть внимательно</a></li><li><a href="#riski-i-na-chto-obratit-vnimanie">Риски и на что обратить внимание</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Основные типы бонусов у легальных букмекеров</h2>
+    <h2 id="osnovnye-tipy-bonusov-u-legalnyh-bukmekerov">Основные типы бонусов у легальных букмекеров</h2>
 <div class="table-wrap"><table><caption>Типы бонусов и их механика</caption><thead><tr><th>Тип бонуса</th><th>Как работает</th></tr></thead><tbody><tr><td>Приветственный бонус</td><td>Начисляется новому игроку после регистрации и/или первого депозита, часто с условием отыгрыша</td></tr><tr><td>Фрибет</td><td>Бесплатная ставка фиксированного номинала вместо денег, выигрыш зачисляется за вычетом номинала</td></tr><tr><td>Кэшбэк</td><td>Частичный возврат части проигранных средств за период, обычно с ограничением по сумме</td></tr></tbody></table></div>
-<h2>Приветственный бонус: как обычно устроен</h2>
+<h2 id="privetstvennyj-bonus-kak-obychno-ustroen">Приветственный бонус: как обычно устроен</h2>
 <p>Приветственный бонус чаще всего привязан к первому пополнению счёта и активируется автоматически или через промокод. Он может быть оформлен как денежное начисление, как фрибет или как их комбинация — конкретный формат зависит от текущей акции оператора.</p><p>Подробнее о том, как искать и применять промокоды у Фонбета, — в материале <a href="/bukmekery/fonbet/promokod">промокод Фонбет</a>.</p>
-<h2>Кэшбэк: как это обычно устроено</h2>
+<h2 id="keshbek-kak-eto-obychno-ustroeno">Кэшбэк: как это обычно устроено</h2>
 <p>Кэшбэк у легальных букмекеров, как правило, начисляется по итогам расчётного периода и рассчитывается от суммы проигранных ставок за это время. В отличие от фрибета и приветственного бонуса, кэшбэк чаще всего не требует отдельного отыгрыша — начисленные средства сразу доступны к ставкам или, в отдельных случаях, к выводу.</p><p>Точный процент, периодичность начисления и ограничение по максимальной сумме кэшбэка отличаются от акции к акции, поэтому актуальные условия нужно смотреть в правилах на официальном сайте fon.bet.</p>
-<h2>Условия отыгрыша: на что смотреть внимательно</h2>
+<h2 id="usloviya-otygrysha-na-chto-smotret-vnimatelno">Условия отыгрыша: на что смотреть внимательно</h2>
 <p>Практически любой бонус, кроме простого кэшбэка без условий, требует отыгрыша — выполнения серии ставок с определённым минимальным коэффициентом в отведённый срок. Если условия не выполнены полностью, бонус и часто выигрыш по нему аннулируются.</p><p>Подробный разбор механики отыгрыша — в отдельной статье: <a href="/shkola/terminy/chto-takoe-otygrysh-bonusa">что такое отыгрыш бонуса</a>. Отдельно о механике бесплатных ставок — на странице <a href="/bukmekery/fonbet/fribet">фрибет Фонбет</a>.</p>
-<h2>Риски и на что обратить внимание</h2>
+<h2 id="riski-i-na-chto-obratit-vnimanie">Риски и на что обратить внимание</h2>
 <p>Бонус выгоден только тогда, когда его условия реально выполнимы для вашего стиля игры — например, если минимальный коэффициент отыгрыша заметно выше тех ставок, которые вы обычно делаете, отыграть бонус будет сложно. Не стоит гнаться за бонусом в ущерб взвешенному подходу к ставкам: погоня за отыгрышем часто приводит к увеличению рисковых ставок, а не к дополнительной прибыли.</p><p>Перед тем как активировать любое предложение, полностью прочитайте его правила в личном кабинете — там указаны точные сроки, минимальный коэффициент и порядок расчёта. Актуальный перечень бонусных предложений у разных легальных операторов — в разделе <a href="/bonusy">бонусы букмекеров</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Какие виды бонусов бывают у Фонбета?</summary><p>Как и у других легальных букмекеров, встречаются приветственные бонусы, фрибеты и кэшбэк-программы. Точный набор действующих предложений уточняйте на официальном сайте.</p></details>
 <details><summary>Нужно ли отыгрывать любой бонус?</summary><p>Почти всегда — да, за исключением отдельных безусловных кэшбэк-начислений. Условия отыгрыша указываются в правилах конкретной акции.</p></details>
 <details><summary>Что случится, если не выполнить условия отыгрыша в срок?</summary><p>Обычно бонус и связанный с ним выигрыш аннулируются, а на счёте остаются только собственные средства игрока.</p></details>
 <details><summary>Можно ли сразу вывести бонусные средства?</summary><p>Нет, до выполнения условий отыгрыша бонусные средства недоступны для вывода — вывести можно только средства, полученные после полного отыгрыша.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/fonbet/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/fonbet?p=bukmekery/fonbet/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/ligastavok?p=bukmekery/fonbet/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>, <a href="/go/melbet?p=bukmekery/fonbet/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/fonbet"><b>Фонбет: обзор букмекера, легальный статус и как начать</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/fonbet/promokod"><b>Промокод Фонбет: как это работает</b><small>Промокод</small></a>

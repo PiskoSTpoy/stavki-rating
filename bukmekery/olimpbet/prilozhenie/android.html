@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "OLIMPBET", "item": "https://stavki-rating.ru/bukmekery/olimpbet"}, {"@type": "ListItem", "position": 4, "name": "Как скачать приложение OLIMPBET на Android", "item": "https://stavki-rating.ru/bukmekery/olimpbet/prilozhenie/android"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как скачать приложение OLIMPBET на Android", "description": "Пошаговая инструкция, как официально установить приложение OLIMPBET на Android через RuStore или сайт, и почему стоит избегать сторонних APK.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/olimpbet/prilozhenie/android", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как скачать приложение OLIMPBET на Android", "description": "Пошаговая инструкция, как официально установить приложение OLIMPBET на Android через RuStore или сайт, и почему стоит избегать сторонних APK.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/olimpbet/prilozhenie/android", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Можно ли скачать OLIMPBET из Google Play?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, Google Play не размещает букмекерские приложения для ставок на реальные деньги для пользователей из России — это ограничение магазина, а не оператора."}}, {"@type": "Question", "name": "Какой способ установки на Android безопаснее?", "acceptedAnswer": {"@type": "Answer", "text": "Оба официальных варианта — RuStore и файл с сайта olimp.bet — безопасны при условии, что источник действительно официальный. Сторонние сайты с «зеркальными» ссылками использовать не стоит."}}, {"@type": "Question", "name": "Нужно ли разрешать установку из неизвестных источников?", "acceptedAnswer": {"@type": "Answer", "text": "Да, при установке файла напрямую с сайта система Android покажет такой запрос — это стандартное предупреждение, не связанное с безопасностью самого приложения оператора."}}, {"@type": "Question", "name": "Как проверить, что скачал не подделку?", "acceptedAnswer": {"@type": "Answer", "text": "Сверьте домен, с которого скачан файл, и имя разработчика в карточке приложения — они должны соответствовать официальному оператору OLIMPBET."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/olimpbet">OLIMPBET</a><span>/</span>Как скачать приложение OLIMPBET на Android</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · OLIMPBET ·</div>
     <h1>Как скачать приложение OLIMPBET на Android</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>2 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">На Android приложение OLIMPBET устанавливается не из Google Play, а через каталог RuStore или установочный файл с официального сайта — так распространяются все легальные букмекерские приложения в России. Ниже — как это сделать без риска установить подделку.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/olimpbet?p=olimpbet&amp;pl=subpage-top">Сайт букмекера OLIMPBET →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#pochemu-ne-google-play">Почему не Google Play</a></li><li><a href="#sposob-1-cherez-rustore">Способ 1: через RuStore</a></li><li><a href="#sposob-2-fajl-s-oficialnogo-sajta">Способ 2: файл с официального сайта</a></li><li><a href="#na-chto-obratit-vnimanie">На что обратить внимание</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Почему не Google Play</h2>
+    <h2 id="pochemu-ne-google-play">Почему не Google Play</h2>
 <p>Google Play не допускает в магазин приложения для ставок на реальные деньги, ориентированные на пользователей из России, — это правило действует для всех операторов, включая легальных, а не только для OLIMPBET. Поэтому отсутствие приложения в Google Play не говорит ничего плохого о самом букмекере.</p>
-<h2>Способ 1: через RuStore</h2>
+<h2 id="sposob-1-cherez-rustore">Способ 1: через RuStore</h2>
 <p>RuStore — российский каталог приложений, в котором размещена официальная карточка разработчика OlimpBet. Это самый простой способ получить приложение с автоматическими обновлениями.</p><div class="table-wrap"><table><caption>Установка через RuStore</caption><thead><tr><th>Шаг</th><th>Действие</th></tr></thead><tbody><tr><td>1</td><td>Установите RuStore, если его нет на устройстве</td></tr><tr><td>2</td><td>Найдите в каталоге официальную карточку разработчика OlimpBet</td></tr><tr><td>3</td><td>Проверьте название и разработчика перед установкой</td></tr><tr><td>4</td><td>Установите приложение и войдите в существующий аккаунт или зарегистрируйтесь</td></tr></tbody></table></div>
-<h2>Способ 2: файл с официального сайта</h2>
+<h2 id="sposob-2-fajl-s-oficialnogo-sajta">Способ 2: файл с официального сайта</h2>
 <p>Альтернативный вариант — скачать установочный файл напрямую с официального сайта оператора. Перед установкой из файла Android может запросить разрешение на установку из «неизвестных источников» — это стандартное системное предупреждение, которое исчезает после подтверждения. Ключевое условие безопасности — файл должен быть скачан именно с сайта olimp.bet, а не со сторонних агрегаторов.</p>
-<h2>На что обратить внимание</h2>
+<h2 id="na-chto-obratit-vnimanie">На что обратить внимание</h2>
 <p>Перед установкой любого варианта стоит сверить домен источника, имя разработчика в карточке приложения и не переходить по ссылкам на «скачать OLIMPBET» из рекламы в мессенджерах. Общую информацию о доступе к сайту оператора можно посмотреть на странице «<a href="/bukmekery/olimpbet/kak-zajti">как зайти на сайт OLIMPBET</a>», а про версию для iPhone — в материале «<a href="/bukmekery/olimpbet/prilozhenie/ios">приложение на iPhone</a>». Общий обзор оператора — на странице «<a href="/bukmekery/olimpbet">OLIMPBET</a>».</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Можно ли скачать OLIMPBET из Google Play?</summary><p>Нет, Google Play не размещает букмекерские приложения для ставок на реальные деньги для пользователей из России — это ограничение магазина, а не оператора.</p></details>
 <details><summary>Какой способ установки на Android безопаснее?</summary><p>Оба официальных варианта — RuStore и файл с сайта olimp.bet — безопасны при условии, что источник действительно официальный. Сторонние сайты с «зеркальными» ссылками использовать не стоит.</p></details>
 <details><summary>Нужно ли разрешать установку из неизвестных источников?</summary><p>Да, при установке файла напрямую с сайта система Android покажет такой запрос — это стандартное предупреждение, не связанное с безопасностью самого приложения оператора.</p></details>
 <details><summary>Как проверить, что скачал не подделку?</summary><p>Сверьте домен, с которого скачан файл, и имя разработчика в карточке приложения — они должны соответствовать официальному оператору OLIMPBET.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/olimpbet/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/betcity?p=bukmekery/olimpbet/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>, <a href="/go/ligastavok?p=bukmekery/olimpbet/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>, <a href="/go/fonbet?p=bukmekery/olimpbet/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/olimpbet"><b>OLIMPBET: обзор букмекерской конторы</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/olimpbet/promokod"><b>Промокод OLIMPBET: как искать и применять</b><small>Промокод</small></a>

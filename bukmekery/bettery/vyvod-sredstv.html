@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Bettery", "item": "https://stavki-rating.ru/bukmekery/bettery"}, {"@type": "ListItem", "position": 4, "name": "Как устроен вывод средств у легального букмекера Bettery", "item": "https://stavki-rating.ru/bukmekery/bettery/vyvod-sredstv"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как устроен вывод средств у легального букмекера Bettery", "description": "Как в принципе выводят деньги в легальных букмекерских конторах: идентификация, Единый ЦУПИС и СБП, налог на выигрыш с 2026 года и что влияет на сроки.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/bettery/vyvod-sredstv", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как устроен вывод средств у легального букмекера Bettery", "description": "Как в принципе выводят деньги в легальных букмекерских конторах: идентификация, Единый ЦУПИС и СБП, налог на выигрыш с 2026 года и что влияет на сроки.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/bettery/vyvod-sredstv", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Можно ли вывести деньги без идентификации?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет, у легальных букмекеров вывод средств без подтверждения личности не проводится — это требование закона, а не ограничение конкретного оператора.</p>"}}, {"@type": "Question", "name": "Почему на счёт приходит сумма меньше, чем сумма выигрыша?", "acceptedAnswer": {"@type": "Answer", "text": "<p>С 2026 года букмекер удерживает НДФЛ с выигрыша как налоговый агент до перевода средств игроку, поэтому итоговая сумма выплаты уже уменьшена на налог.</p>"}}, {"@type": "Question", "name": "Обязательно выводить деньги на ту же карту, с которой пополнял счёт?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Как правило, легальные операторы привязывают вывод к тому же платёжному средству, которое использовалось для пополнения — это часть антифрод-процедуры, а не прихоть конкретного букмекера.</p>"}}, {"@type": "Question", "name": "Где узнать точные сроки и лимиты вывода у Bettery?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Актуальные условия по срокам, лимитам и доступным способам вывода нужно смотреть непосредственно на официальном сайте bettery.ru — эти параметры меняются и не фиксируются в сторонних обзорах.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,32 +222,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/bettery">Bettery</a><span>/</span>Как устроен вывод средств у легального букмекера Bettery</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Bettery ·</div>
     <h1>Как устроен вывод средств у легального букмекера Bettery</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Вывод денег у легальных букмекеров РФ, включая Bettery, устроен не как перевод «на карту в один клик», а как процедура через легальную платёжную инфраструктуру ставок с обязательной идентификацией игрока. Разбираем общую механику: от привязки платёжного средства до налога с выигрыша, без выдумывания конкретных сроков и лимитов, которых мы не проверяли на актуальность.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/bettery?p=bettery&amp;pl=subpage-top">Сайт букмекера Bettery →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#obschij-princip-edinyj-cupis-i-sbp">Общий принцип: Единый ЦУПИС и СБП</a></li><li><a href="#identifikaciya-pered-vyvodom">Идентификация перед выводом</a></li><li><a href="#nalog-s-vyigrysha">Налог с выигрыша</a></li><li><a href="#chto-vliyaet-na-sposob-i-skorost-vyvoda">Что влияет на способ и скорость вывода</a></li><li><a href="#esli-summa-vyvoda-kazhetsya-vazhnym-resheniem">Если сумма вывода кажется важным решением</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Общий принцип: Единый ЦУПИС и СБП</h2>
+    <h2 id="obschij-princip-edinyj-cupis-i-sbp">Общий принцип: Единый ЦУПИС и СБП</h2>
 <p>Деньги игроков у легальных букмекеров РФ проходят через Единый центр учёта переводов интерактивных ставок (ЦУПИС) — это отдельная расчётная инфраструктура, обязательная для всех операторов с лицензией. Пополнение и вывод чаще всего идут через привязанную банковскую карту или Систему быстрых платежей (СБП), а не напрямую «от букмекера на карту». Такая схема создаёт дополнительный буфер между счётом игрока и счётом оператора.</p><p>Как это устроено на уровне регистрации и первого пополнения, подробно разобрано в материале о <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">регистрации и ЦУПИС</a>.</p>
-<h2>Идентификация перед выводом</h2>
+<h2 id="identifikaciya-pered-vyvodom">Идентификация перед выводом</h2>
 <p>Перед первым выводом легальный оператор обязан подтвердить личность игрока — это требование закона, а не внутренняя политика конкретного букмекера. Обычно это связано с привязкой платёжного средства и подтверждением данных через Госуслуги или банк, выпустивший карту.</p><p>Без пройденной идентификации вывод средств технически не проводится ни у одного легального оператора, включая Bettery. Это же требование объясняет, почему вывод обычно возможен только на то платёжное средство, с которого ранее было пополнение — так систему проще связать с одним и тем же человеком.</p>
-<h2>Налог с выигрыша</h2>
+<h2 id="nalog-s-vyigrysha">Налог с выигрыша</h2>
 <p>С 2026 года действует порядок, при котором налог на доходы физических лиц с выигрыша удерживает сам букмекер как налоговый агент — то есть на счёт игрока поступает сумма уже за вычетом налога, а не полная сумма выигрыша. Игроку не нужно самостоятельно подавать декларацию по этой части дохода.</p><p>Подробный разбор механики налога, включая случаи с разными ставками, — в отдельном материале о <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">налоге на выигрыш</a>.</p>
-<h2>Что влияет на способ и скорость вывода</h2>
+<h2 id="chto-vliyaet-na-sposob-i-skorost-vyvoda">Что влияет на способ и скорость вывода</h2>
 <div class="table-wrap"><table><caption>Типичные способы вывода у легальных букмекеров</caption><thead><tr><th>Способ</th><th>Особенность</th></tr></thead><tbody><tr><td>Банковская карта</td><td>Как правило, та же карта, что использовалась для пополнения</td></tr><tr><td>СБП</td><td>Перевод по номеру телефона через привязанный банк</td></tr></tbody></table></div><p>На практике скорость поступления денег зависит не только от оператора, но и от банка получателя, времени суток и того, пройдена ли идентификация заранее. Точные сроки поступления средств, лимиты на вывод и перечень доступных способов у Bettery меняются и уточняются оператором — актуальные условия нужно смотреть на официальном сайте bettery.ru, а не в сторонних обзорах.</p>
-<h2>Если сумма вывода кажется важным решением</h2>
+<h2 id="esli-summa-vyvoda-kazhetsya-vazhnym-resheniem">Если сумма вывода кажется важным решением</h2>
 <p>Если вывод средств или частота ставок стали занимать заметно больше внимания, чем раньше, стоит воспользоваться инструментами самоограничения, которые предоставляют легальные операторы, — лимитами на депозит или временной самоблокировкой счёта. Подробнее о том, как это работает и куда обращаться, — в материале об <a href="/otvetstvennaya-igra">ответственной игре</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Можно ли вывести деньги без идентификации?</summary><p>Нет, у легальных букмекеров вывод средств без подтверждения личности не проводится — это требование закона, а не ограничение конкретного оператора.</p></details>
 <details><summary>Почему на счёт приходит сумма меньше, чем сумма выигрыша?</summary><p>С 2026 года букмекер удерживает НДФЛ с выигрыша как налоговый агент до перевода средств игроку, поэтому итоговая сумма выплаты уже уменьшена на налог.</p></details>
 <details><summary>Обязательно выводить деньги на ту же карту, с которой пополнял счёт?</summary><p>Как правило, легальные операторы привязывают вывод к тому же платёжному средству, которое использовалось для пополнения — это часть антифрод-процедуры, а не прихоть конкретного букмекера.</p></details>
 <details><summary>Где узнать точные сроки и лимиты вывода у Bettery?</summary><p>Актуальные условия по срокам, лимитам и доступным способам вывода нужно смотреть непосредственно на официальном сайте bettery.ru — эти параметры меняются и не фиксируются в сторонних обзорах.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/bettery/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/pari?p=bukmekery/bettery/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>, <a href="/go/ligastavok?p=bukmekery/bettery/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>, <a href="/go/melbet?p=bukmekery/bettery/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/bettery"><b>Bettery: обзор букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/bettery/promokod"><b>Промокод Bettery: как это устроено</b><small>Промокод</small></a>

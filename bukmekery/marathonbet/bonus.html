@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Марафон", "item": "https://stavki-rating.ru/bukmekery/marathonbet"}, {"@type": "ListItem", "position": 4, "name": "Бонусы «Марафон»: виды и условия отыгрыша", "item": "https://stavki-rating.ru/bukmekery/marathonbet/bonus"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонусы «Марафон»: виды и условия отыгрыша", "description": "Какие типы бонусов бывают у легального букмекера «Марафон»: приветственный бонус, фрибет, кэшбэк — механика начисления и честные условия отыгрыша.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/marathonbet/bonus", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонусы «Марафон»: виды и условия отыгрыша", "description": "Какие типы бонусов бывают у легального букмекера «Марафон»: приветственный бонус, фрибет, кэшбэк — механика начисления и честные условия отыгрыша.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/marathonbet/bonus", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Какой бонус выгоднее — деньги или фрибет?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Это зависит от условий конкретной акции: у денежного бонуса и фрибета разные требования к отыгрышу и минимальному коэффициенту. Сравнивать стоит не сам факт бонуса, а итоговые условия его отыгрыша.</p>"}}, {"@type": "Question", "name": "Можно ли получить сразу несколько бонусов?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Обычно правила букмекеров ограничивают участие одного игрока в приветственной акции — она доступна один раз при регистрации. Другие акции (например, кэшбэк) могут действовать параллельно, если это отдельно не запрещено правилами.</p>"}}, {"@type": "Question", "name": "Что будет, если не выполнить условия отыгрыша в срок?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Если отыгрыш не завершён в установленный срок, бонусные средства и незавершённый отыгрыш, как правило, аннулируются — это стандартное правило у большинства легальных букмекеров.</p>"}}, {"@type": "Question", "name": "Где посмотреть точный размер бонуса у Марафон?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Точный размер, срок действия и условия отыгрыша текущих бонусов указаны на официальном сайте marathonbet.ru в разделе акций.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,32 +222,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/marathonbet">Марафон</a><span>/</span>Бонусы «Марафон»: виды и условия отыгрыша</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Марафон ·</div>
     <h1>Бонусы «Марафон»: виды и условия отыгрыша</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">У легальных букмекеров, включая «Марафон», действует несколько типовых видов бонусов — приветственный бонус для новых игроков, фрибет и кэшбэк. Разбираем механику каждого из них и на какие условия отыгрыша стоит обращать внимание, чтобы бонус действительно принёс пользу.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/marathonbet?p=marathonbet&amp;pl=subpage-top">Сайт букмекера Марафон →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#privetstvennyj-bonus">Приветственный бонус</a></li><li><a href="#fribet">Фрибет</a></li><li><a href="#keshbek">Кэшбэк</a></li><li><a href="#kak-pravilno-ocenivat-usloviya-otygrysha">Как правильно оценивать условия отыгрыша</a></li><li><a href="#gde-iskat-aktualnye-usloviya-po-bonusam-marafon">Где искать актуальные условия по бонусам Марафон</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Приветственный бонус</h2>
+    <h2 id="privetstvennyj-bonus">Приветственный бонус</h2>
 <p>Приветственный бонус начисляется новым игрокам после регистрации и, как правило, первого пополнения счёта. Форма бонуса может быть разной — доплата к депозиту, фрибет или их комбинация. Размер и точные условия приветственного предложения устанавливает сам оператор и периодически их меняет, поэтому ориентироваться нужно на действующие правила акции, а не на устаревшие обзоры сторонних сайтов. Иногда для получения бонуса требуется выполнить дополнительное условие — например, подтвердить номер телефона или пройти идентификацию до первого пополнения; это стандартная практика у легальных операторов, а не особенность конкретного бренда.</p>
-<h2>Фрибет</h2>
+<h2 id="fribet">Фрибет</h2>
 <p>Фрибет — это бесплатная ставка фиксированного номинала, которую можно использовать вместо собственных денег. У фрибета обычно есть минимальный коэффициент, срок действия и правило начисления выигрыша. Подробный разбор механики — в материале <a href="/bukmekery/marathonbet/fribet">о фрибете «Марафон»</a>.</p>
-<h2>Кэшбэк</h2>
+<h2 id="keshbek">Кэшбэк</h2>
 <p>Кэшбэк — это частичный возврат части проигранных средств за определённый период (например, за неделю). Возврат может приходить деньгами или бонусными средствами с собственными условиями отыгрыша. Наличие и параметры кэшбэка у конкретного оператора нужно проверять в действующих правилах акций — эта опция не гарантирована всем игрокам постоянно и может периодически включаться и отключаться оператором. У некоторых операторов кэшбэк начисляется автоматически, у других — только после активации в личном кабинете или по заявке в поддержку, поэтому механику начисления стоит уточнять индивидуально.</p>
-<h2>Как правильно оценивать условия отыгрыша</h2>
+<h2 id="kak-pravilno-ocenivat-usloviya-otygrysha">Как правильно оценивать условия отыгрыша</h2>
 <p>Прежде чем участвовать в любой бонусной акции, стоит проверить несколько параметров:</p><ul><li><strong>Вейджер (множитель отыгрыша)</strong> — сколько раз нужно «прокрутить» сумму бонуса ставками, прежде чем её можно вывести.</li><li><strong>Минимальный коэффициент</strong> ставок, которые засчитываются в отыгрыш.</li><li><strong>Срок отыгрыша</strong> — сколько дней даётся на выполнение условий.</li><li><strong>Лимиты на вывод</strong> — есть ли максимальная сумма, которую можно получить с бонуса.</li></ul><p>Термин «отыгрыш бонуса» и его расчёт подробно разобраны в материале <a href="/shkola/terminy/chto-takoe-otygrysh-bonusa">школы ставок</a>. Реальная выгода от бонуса определяется именно этими условиями, а не заявленным размером самого предложения.</p>
-<h2>Где искать актуальные условия по бонусам Марафон</h2>
+<h2 id="gde-iskat-aktualnye-usloviya-po-bonusam-marafon">Где искать актуальные условия по бонусам Марафон</h2>
 <p>Действующие бонусные предложения, их размер и правила отыгрыша всегда указаны на официальном сайте marathonbet.ru — именно там нужно проверять актуальную информацию перед участием в акции. Общий обзор бонусной политики легальных букмекеров собран в разделе <a href="/bonusy">бонусы</a>, а сравнение промокодов разных операторов — в разделе <a href="/promokody">промокоды</a>. Базовые сведения о самом букмекере — в материале <a href="/bukmekery/marathonbet">о «Марафон»</a>, а как получить и активировать промокод — в материале <a href="/bukmekery/marathonbet/promokod">о промокодах «Марафон»</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Какой бонус выгоднее — деньги или фрибет?</summary><p>Это зависит от условий конкретной акции: у денежного бонуса и фрибета разные требования к отыгрышу и минимальному коэффициенту. Сравнивать стоит не сам факт бонуса, а итоговые условия его отыгрыша.</p></details>
 <details><summary>Можно ли получить сразу несколько бонусов?</summary><p>Обычно правила букмекеров ограничивают участие одного игрока в приветственной акции — она доступна один раз при регистрации. Другие акции (например, кэшбэк) могут действовать параллельно, если это отдельно не запрещено правилами.</p></details>
 <details><summary>Что будет, если не выполнить условия отыгрыша в срок?</summary><p>Если отыгрыш не завершён в установленный срок, бонусные средства и незавершённый отыгрыш, как правило, аннулируются — это стандартное правило у большинства легальных букмекеров.</p></details>
 <details><summary>Где посмотреть точный размер бонуса у Марафон?</summary><p>Точный размер, срок действия и условия отыгрыша текущих бонусов указаны на официальном сайте marathonbet.ru в разделе акций.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/marathonbet/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/melbet?p=bukmekery/marathonbet/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>, <a href="/go/zenit?p=bukmekery/marathonbet/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/pari?p=bukmekery/marathonbet/bonus&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/marathonbet"><b>Марафон: обзор букмекерской конторы</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/marathonbet/promokod"><b>Промокод «Марафон»: как это работает</b><small>Промокод</small></a>

@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Спортбет", "item": "https://stavki-rating.ru/bukmekery/sportbet"}, {"@type": "ListItem", "position": 4, "name": "Спортбет на iPhone: приложение и рабочие альтернативы", "item": "https://stavki-rating.ru/bukmekery/sportbet/prilozhenie/ios"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Спортбет на iPhone: приложение и рабочие альтернативы", "description": "Как получить доступ к Спортбет на iPhone: наличие приложения в App Store, мобильная версия сайта как альтернатива, шаги установки.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/sportbet/prilozhenie/ios", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Спортбет на iPhone: приложение и рабочие альтернативы", "description": "Как получить доступ к Спортбет на iPhone: наличие приложения в App Store, мобильная версия сайта как альтернатива, шаги установки.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/sportbet/prilozhenie/ios", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Есть ли приложение Спортбет для iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "Наличие приложения в App Store для конкретного оператора может меняться, поэтому актуальный статус лучше проверить прямо в App Store или на официальном сайте."}}, {"@type": "Question", "name": "Почему приложения Спортбет нет в Google Play?", "acceptedAnswer": {"@type": "Answer", "text": "Это общая политика Google Play: магазин не публикует в РФ приложения с реальными денежными ставками. Это касается всех легальных букмекерских контор, а не только Спортбет."}}, {"@type": "Question", "name": "Опасно ли скачивать APK-файл со сторонних сайтов?", "acceptedAnswer": {"@type": "Answer", "text": "Да, это рискованно: сторонние APK могут быть изменены и содержать вредоносный код для кражи данных. Скачивайте установочный файл только с официального сайта или из RuStore."}}, {"@type": "Question", "name": "Нужна ли регистрация после установки приложения?", "acceptedAnswer": {"@type": "Answer", "text": "Да, для ставок нужен личный кабинет — пройти регистрацию можно прямо в приложении, порядок такой же, как на сайте."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,32 +222,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/sportbet">Спортбет</a><span>/</span>Спортбет на iPhone: приложение и рабочие альтернативы</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Спортбет ·</div>
     <h1>Спортбет на iPhone: приложение и рабочие альтернативы</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">По запросу «Спортбет скачать на айфон» пользователи ищут способ поставить приложение на iOS. Ситуация с публикацией букмекерских приложений в App Store периодически меняется, поэтому наряду с самим приложением стоит знать надёжную альтернативу — мобильную версию официального сайта.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/sportbet?p=sportbet&amp;pl=subpage-top">Сайт букмекера Спортбет →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#nalichie-prilozheniya-v-app-store">Наличие приложения в App Store</a></li><li><a href="#pochemu-situaciya-s-app-store-otlichaetsya-ot-google-play">Почему ситуация с App Store отличается от Google Play</a></li><li><a href="#mobilnaya-versiya-sajta-kak-alternativa">Мобильная версия сайта как альтернатива</a></li><li><a href="#poryadok-dejstvij-v-obschih-chertah">Порядок действий в общих чертах</a></li><li><a href="#bezopasnost-i-proverka-istochnika">Безопасность и проверка источника</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Наличие приложения в App Store</h2>
+    <h2 id="nalichie-prilozheniya-v-app-store">Наличие приложения в App Store</h2>
 <p>Доступность приложений букмекерских контор в российском App Store зависит от текущей политики Apple и может меняться. Актуальный статус приложения Спортбет проще всего проверить прямо в App Store по названию оператора или уточнить на официальном сайте sportbet.ru в разделе, посвящённом мобильным приложениям.</p>
-<h2>Почему ситуация с App Store отличается от Google Play</h2>
+<h2 id="pochemu-situaciya-s-app-store-otlichaetsya-ot-google-play">Почему ситуация с App Store отличается от Google Play</h2>
 <p>В отличие от Google Play, который не публикует в России приложения с реальными денежными ставками, подход App Store на практике мягче: Apple, как правило, не блокирует размещение приложений легальных российских букмекерских контор с действующей лицензией. Это не гарантия на будущее — правила магазинов приложений могут меняться в любую сторону, — но на сегодняшний день для пользователей iPhone официальное приложение в App Store встречается чаще, чем аналогичное приложение для Android в Google Play.</p>
-<h2>Мобильная версия сайта как альтернатива</h2>
+<h2 id="mobilnaya-versiya-sajta-kak-alternativa">Мобильная версия сайта как альтернатива</h2>
 <p>Если приложение в App Store на данный момент недоступно, рабочей и полностью официальной альтернативой остаётся мобильная версия сайта — она открывается в браузере Safari на iPhone без установки и даёт доступ ко всем основным функциям личного кабинета. Мобильная версия использует тот же аккаунт, что и десктопный сайт, поэтому история ставок и настройки профиля сохраняются в обоих случаях.</p><p>Как попасть на официальный сайт, если возникают проблемы с доступом, описано на странице <a href="/bukmekery/sportbet/kak-zajti">как зайти на сайт Спортбет</a>.</p>
-<h2>Порядок действий в общих чертах</h2>
+<h2 id="poryadok-dejstvij-v-obschih-chertah">Порядок действий в общих чертах</h2>
 <ol><li>Проверить в App Store наличие официального приложения оператора.</li><li>Если приложение найдено — установить его стандартным способом через App Store.</li><li>Если приложения нет — открыть официальный сайт в Safari и, при необходимости, добавить страницу на главный экран для удобного доступа.</li><li>Войти в личный кабинет или пройти регистрацию.</li></ol>
-<h2>Безопасность и проверка источника</h2>
+<h2 id="bezopasnost-i-proverka-istochnika">Безопасность и проверка источника</h2>
 <p>Устанавливайте приложение только через официальный App Store, привязанный к вашему Apple ID, и не переходите по ссылкам на «установку» приложения с посторонних сайтов — на iOS такие ссылки чаще всего ведут либо на фишинговые страницы, либо не работают вовсе, поскольку установка приложений вне App Store на iPhone штатно ограничена. Обратите внимание и на разработчика, указанного в карточке приложения в App Store, — он должен соответствовать юридическому лицу оператора Спортбет.</p><p>Дополнительный плюс App Store — все приложения проходят проверку модерации Apple перед публикацией, что снижает (хотя и не исключает полностью) риск встретить вредоносный код внутри самого приложения, в отличие от произвольных файлов, скачанных со сторонних сайтов.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Есть ли приложение Спортбет для iPhone?</summary><p>Наличие приложения в App Store для конкретного оператора может меняться, поэтому актуальный статус лучше проверить прямо в App Store или на официальном сайте.</p></details>
 <details><summary>Почему приложения Спортбет нет в Google Play?</summary><p>Это общая политика Google Play: магазин не публикует в РФ приложения с реальными денежными ставками. Это касается всех легальных букмекерских контор, а не только Спортбет.</p></details>
 <details><summary>Опасно ли скачивать APK-файл со сторонних сайтов?</summary><p>Да, это рискованно: сторонние APK могут быть изменены и содержать вредоносный код для кражи данных. Скачивайте установочный файл только с официального сайта или из RuStore.</p></details>
 <details><summary>Нужна ли регистрация после установки приложения?</summary><p>Да, для ставок нужен личный кабинет — пройти регистрацию можно прямо в приложении, порядок такой же, как на сайте.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/sportbet/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/betcity?p=bukmekery/sportbet/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>, <a href="/go/marathonbet?p=bukmekery/sportbet/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>, <a href="/go/zenit?p=bukmekery/sportbet/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/sportbet"><b>Спортбет: обзор букмекерской конторы</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/sportbet/promokod"><b>Промокод Спортбет: как это работает</b><small>Промокод</small></a>

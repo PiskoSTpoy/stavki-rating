@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Спортбет", "item": "https://stavki-rating.ru/bukmekery/sportbet"}, {"@type": "ListItem", "position": 4, "name": "Как устроен вывод денег у легального оператора Спортбет", "item": "https://stavki-rating.ru/bukmekery/sportbet/vyvod-sredstv"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как устроен вывод денег у легального оператора Спортбет", "description": "Как в целом работает вывод денег у легальных букмекеров: роль Единого ЦУПИС и СБП, идентификация и налог, который удерживает оператор.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/sportbet/vyvod-sredstv", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как устроен вывод денег у легального оператора Спортбет", "description": "Как в целом работает вывод денег у легальных букмекеров: роль Единого ЦУПИС и СБП, идентификация и налог, который удерживает оператор.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/sportbet/vyvod-sredstv", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Почему для вывода средств нужна идентификация?", "acceptedAnswer": {"@type": "Answer", "text": "Это требование законодательства для всех легальных букмекерских контор в России: без подтверждения личности через ЦУПИС вывод средств технически невозможен, независимо от суммы."}}, {"@type": "Question", "name": "Удерживает ли Спортбет налог с выигрыша сам?", "acceptedAnswer": {"@type": "Answer", "text": "С 2026 года легальные букмекеры выступают налоговыми агентами по НДФЛ и удерживают налог на этапе вывода средств. Точный порядок расчёта уточняйте на официальном сайте оператора."}}, {"@type": "Question", "name": "Какие способы вывода средств доступны у легальных букмекеров?", "acceptedAnswer": {"@type": "Answer", "text": "Основные — банковская карта и система быстрых платежей через Единый ЦУПИС; наличие электронных кошельков зависит от конкретного оператора."}}, {"@type": "Question", "name": "Где узнать точные сроки и минимальную сумму вывода у Спортбет?", "acceptedAnswer": {"@type": "Answer", "text": "Эти параметры устанавливает сам оператор и они могут меняться, поэтому актуальные значения нужно смотреть на официальном сайте sportbet.ru."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,32 +222,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/sportbet">Спортбет</a><span>/</span>Как устроен вывод денег у легального оператора Спортбет</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Спортбет ·</div>
     <h1>Как устроен вывод денег у легального оператора Спортбет</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Запрос «Спортбет вывод средств» касается не столько конкретных сроков и лимитов, сколько общего механизма: у легальных российских букмекеров вывод денег регулируется через Единый ЦУПИС, обязательную идентификацию и налоговое законодательство. Разбираем, как это работает в целом, без точных цифр, которые оператор устанавливает самостоятельно.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/sportbet?p=sportbet&amp;pl=subpage-top">Сайт букмекера Спортбет →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#rol-edinogo-cupis-i-sbp">Роль Единого ЦУПИС и СБП</a></li><li><a href="#identifikaciya-pered-vyvodom">Идентификация перед выводом</a></li><li><a href="#nalog-na-vyigrysh-i-rol-bukmekera-kak-nalogovogo-agenta">Налог на выигрыш и роль букмекера как налогового агента</a></li><li><a href="#chto-vliyaet-na-skorost-obrabotki-zayavki">Что влияет на скорость обработки заявки</a></li><li><a href="#tipovye-sposoby-vyvoda-sredstv">Типовые способы вывода средств</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Роль Единого ЦУПИС и СБП</h2>
+    <h2 id="rol-edinogo-cupis-i-sbp">Роль Единого ЦУПИС и СБП</h2>
 <p>У легальных букмекерских контор в России расчёты с игроками проходят через Единый центр учёта переводов интерактивных ставок (ЦУПИС) — это обязательное звено между счётом игрока и банковским счётом оператора. Пополнение и вывод чаще всего идут через систему быстрых платежей (СБП) или банковскую карту, привязанную к профилю в ЦУПИС.</p><p>Общий принцип работы этой системы описан в материале <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">регистрация и ЦУПИС: как это работает</a>.</p>
-<h2>Идентификация перед выводом</h2>
+<h2 id="identifikaciya-pered-vyvodom">Идентификация перед выводом</h2>
 <p>Перед первым выводом средств легальный оператор обязан подтвердить личность игрока — это требование законодательства, а не индивидуальная политика конкретной букмекерской конторы. Без пройденной идентификации вывод средств технически невозможен, независимо от суммы.</p><p>Как правило, для идентификации требуется совпадение реквизитов карты или счёта, на который выводятся средства, с данными, указанными при регистрации личного кабинета: вывод на карту или счёт третьего лица у легальных операторов не допускается.</p><p>Подробнее о том, как проходит пополнение счёта на практике, — в материале <a href="/shkola/dengi-i-nalogi/kak-popolnit-schet">как пополнить счёт у букмекера</a>.</p>
-<h2>Налог на выигрыш и роль букмекера как налогового агента</h2>
+<h2 id="nalog-na-vyigrysh-i-rol-bukmekera-kak-nalogovogo-agenta">Налог на выигрыш и роль букмекера как налогового агента</h2>
 <p>С 2026 года легальные букмекерские конторы в России выступают налоговыми агентами по НДФЛ с выигрышей — это означает, что налог удерживается оператором на этапе вывода средств, а не рассчитывается игроком самостоятельно при подаче декларации. Общий порядок налогообложения выигрышей у букмекеров разобран в материале <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">налог на выигрыш у букмекера</a>.</p><p>Точный порядок удержания, пороги и формулы расчёта для конкретных случаев уточняйте на официальном сайте sportbet.ru — это зависит от суммы и типа операции.</p>
-<h2>Что влияет на скорость обработки заявки</h2>
+<h2 id="chto-vliyaet-na-skorost-obrabotki-zayavki">Что влияет на скорость обработки заявки</h2>
 <p>Итоговое время обработки заявки на вывод зависит от нескольких факторов: выбранного способа (карта или СБП обычно обрабатываются иначе, чем некоторые альтернативные варианты), корректности реквизитов, указанных при идентификации, а также внутренних регламентов оператора и банка-получателя. Сроки, которые указывает сам оператор на официальном сайте, обычно являются ориентировочными, а не гарантированными — итоговое время может отличаться в обе стороны в зависимости от конкретной ситуации.</p>
-<h2>Типовые способы вывода средств</h2>
+<h2 id="tipovye-sposoby-vyvoda-sredstv">Типовые способы вывода средств</h2>
 <div class="table-wrap"><table><caption>Общая механика способов вывода у легальных операторов</caption><thead><tr><th>Способ</th><th>Что важно знать</th></tr></thead><tbody><tr><td>Банковская карта через ЦУПИС</td><td>Карта должна быть привязана к идентифицированному профилю игрока</td></tr><tr><td>Система быстрых платежей (СБП)</td><td>Перевод идёт через реквизиты, указанные при идентификации</td></tr><tr><td>Электронный кошелёк (если поддерживается оператором)</td><td>Доступность зависит от конкретного оператора — уточняйте на официальном сайте</td></tr></tbody></table></div><p>Конкретные сроки обработки заявок и минимальные суммы вывода у Спортбет не унифицированы законом и зависят от способа — актуальные условия смотрите на официальном сайте sportbet.ru.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Почему для вывода средств нужна идентификация?</summary><p>Это требование законодательства для всех легальных букмекерских контор в России: без подтверждения личности через ЦУПИС вывод средств технически невозможен, независимо от суммы.</p></details>
 <details><summary>Удерживает ли Спортбет налог с выигрыша сам?</summary><p>С 2026 года легальные букмекеры выступают налоговыми агентами по НДФЛ и удерживают налог на этапе вывода средств. Точный порядок расчёта уточняйте на официальном сайте оператора.</p></details>
 <details><summary>Какие способы вывода средств доступны у легальных букмекеров?</summary><p>Основные — банковская карта и система быстрых платежей через Единый ЦУПИС; наличие электронных кошельков зависит от конкретного оператора.</p></details>
 <details><summary>Где узнать точные сроки и минимальную сумму вывода у Спортбет?</summary><p>Эти параметры устанавливает сам оператор и они могут меняться, поэтому актуальные значения нужно смотреть на официальном сайте sportbet.ru.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/sportbet/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/ligastavok?p=bukmekery/sportbet/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>, <a href="/go/betcity?p=bukmekery/sportbet/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>, <a href="/go/marathonbet?p=bukmekery/sportbet/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/sportbet"><b>Спортбет: обзор букмекерской конторы</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/sportbet/promokod"><b>Промокод Спортбет: как это работает</b><small>Промокод</small></a>

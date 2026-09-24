@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -210,6 +220,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/instrumenty">Инструменты</a><span>/</span>Калькулятор ставок</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Инструмент ·</div>
     <h1>Калькулятор ставок</h1>
+<div class="small muted meta-row" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;opacity:.85"><span>опубликовано <time datetime="2026-09-03">03.09.2026</time></span><span>·</span><span>обновлено <time datetime="2026-09-19">19.09.2026</time></span></div>
     <p class="muted" style="max-width:70ch;margin-top:10px">Введите сумму ставки и коэффициент — калькулятор мгновенно посчитает <strong style="color:var(--text)">выплату</strong> (сколько вернётся при выигрыше) и <strong style="color:var(--text)">чистую прибыль</strong> (выплата за вычетом ставки).</p>
     <div class="tool" style="margin-top:18px">
       <h3>Расчёт ставки</h3>
@@ -226,7 +237,8 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Как это считается</h2>
+    <nav class="toc" aria-label="Содержание" style="margin:16px 0 4px;padding:12px 14px;border:1px solid rgba(128,128,128,.35);border-radius:12px;max-width:75ch;font-size:14px"><b style="display:block;margin-bottom:6px">Содержание</b><ol style="margin:0;padding-left:20px"><li><a href="#kak-eto-schitaetsya">Как это считается</a></li><li><a href="#chastye-voprosy">Частые вопросы</a></li><li><a href="#drugie-instrumenty">Другие инструменты</a></li></ol></nav>
+<h2 id="kak-eto-schitaetsya">Как это считается</h2>
     <ul>
       <li><strong>Выплата</strong> = сумма ставки × коэффициент.</li>
       <li><strong>Чистая прибыль</strong> = выплата − сумма ставки.</li>
@@ -235,12 +247,12 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <p>Пример: ставка 1 000 ₽ на коэффициент 1.85 → выплата 1 850 ₽, из них чистая прибыль 850 ₽, а «зашитая» в коэффициент вероятность ≈ 54,1 %.</p>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=instrumenty/kalkulyator-stavok&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/zenit?p=instrumenty/kalkulyator-stavok&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/fonbet?p=instrumenty/kalkulyator-stavok&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/marathonbet?p=instrumenty/kalkulyator-stavok&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
     <div class="callout">Коэффициент уже включает маржу букмекера. Поэтому сумма подразумеваемых вероятностей по всем исходам события всегда больше 100 % — это и есть заработок конторы.</div>
-    <h2>Частые вопросы</h2>
+    <h2 id="chastye-voprosy">Частые вопросы</h2>
     <div class="faq"><details><summary>Чем выплата отличается от прибыли?</summary><p>Выплата — вся сумма при выигрыше, включая вашу ставку. Чистая прибыль — только заработок сверх вложенного.</p></details>
 <details><summary>Что такое подразумеваемая вероятность?</summary><p>Оценка вероятности исхода, «зашитая» в коэффициент: 100 % ÷ коэффициент. Для 1.85 это ≈ 54,1 %. В неё уже включена маржа букмекера.</p></details>
 <details><summary>Калькулятор учитывает налог на выигрыш?</summary><p>Нет, здесь чистый расчёт по коэффициенту. Для налога есть отдельный калькулятор НДФЛ.</p></details>
 <details><summary>Данные куда-то отправляются?</summary><p>Нет. Расчёт идёт прямо в браузере, суммы никуда не уходят и не сохраняются.</p></details></div>
-    <h2 style="margin-top:20px">Другие инструменты</h2>
+    <h2 id="drugie-instrumenty" style="margin-top:20px">Другие инструменты</h2>
     <div class="tiles">
       <a class="tile" href="/instrumenty/kalkulyator-ekspressa"><b>Калькулятор экспресса</b><small>итоговый коэффициент по всем событиям</small></a>
       <a class="tile" href="/instrumenty/konverter-koefficientov"><b>Конвертер коэффициентов</b><small>десятичные · дробные · американские</small></a>

@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Зенит", "item": "https://stavki-rating.ru/bukmekery/zenit"}, {"@type": "ListItem", "position": 4, "name": "Как установить приложение «Зенит» на iPhone", "item": "https://stavki-rating.ru/bukmekery/zenit/prilozhenie/ios"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как установить приложение «Зенит» на iPhone", "description": "Как установить приложение БК «Зенит» на iPhone: наличие в App Store, мобильная версия сайта как альтернатива и на что обратить внимание при загрузке.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/zenit/prilozhenie/ios", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как установить приложение «Зенит» на iPhone", "description": "Как установить приложение БК «Зенит» на iPhone: наличие в App Store, мобильная версия сайта как альтернатива и на что обратить внимание при загрузке.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/zenit/prilozhenie/ios", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Есть ли приложение БК «Зенит» в App Store?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Наличие и актуальную версию приложения лучше проверять непосредственно в App Store по названию оператора — доступность может меняться.</p>"}}, {"@type": "Question", "name": "Что делать, если приложения нет в App Store?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Используйте мобильную версию официального сайта в браузере — она обычно повторяет функциональность приложения: ставки, пополнение, вывод средств.</p>"}}, {"@type": "Question", "name": "Безопасно ли устанавливать приложение БК не из App Store на iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Мы не рекомендуем сторонние способы установки на iPhone вне App Store: это нестандартный путь, который повышает риск столкнуться с поддельным приложением или сайтом.</p>"}}, {"@type": "Question", "name": "Как отличить официальную мобильную версию сайта от фишинговой копии?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Проверяйте точный адрес домена и статус оператора — подробный разбор есть на странице <a href=\"/bukmekery/zenit/kak-zajti\">как зайти на официальный сайт «Зенит»</a>.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,34 +222,35 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/zenit">Зенит</a><span>/</span>Как установить приложение «Зенит» на iPhone</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Зенит ·</div>
     <h1>Как установить приложение «Зенит» на iPhone</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Для iPhone приложение БК «Зенит» ищут через App Store — это основной официальный канал для iOS-устройств у легальных букмекеров. Если приложения временно нет в выдаче магазина, полноценной альтернативой служит мобильная версия официального сайта в браузере Safari.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/zenit?p=zenit&amp;pl=subpage-top">Сайт букмекера Зенит →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#app-store-kak-oficialnyj-kanal">App Store как официальный канал</a></li><li><a href="#esli-prilozheniya-net-v-vydache">Если приложения нет в выдаче</a></li><li><a href="#poryadok-ustanovki-iz-app-store">Порядок установки из App Store</a></li><li><a href="#funkcional-i-identifikaciya-v-prilozhenii">Функционал и идентификация в приложении</a></li><li><a href="#mobilnaya-versiya-sajta-kak-alternativa">Мобильная версия сайта как альтернатива</a></li><li><a href="#na-chto-obratit-vnimanie-pri-zagruzke">На что обратить внимание при загрузке</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>App Store как официальный канал</h2>
+    <h2 id="app-store-kak-oficialnyj-kanal">App Store как официальный канал</h2>
 <p>У легальных букмекерских контор приложения для iOS, в отличие от Android, чаще встречаются непосредственно в App Store — политика Apple в этой части отличается от политики Google Play. Проверить наличие и актуальность приложения стоит через поиск по названию оператора прямо в App Store на устройстве.</p><p>Общую информацию об операторе и ссылку на официальный сайт можно посмотреть на странице <a href="/bukmekery/zenit">«Зенит» в каталоге</a>.</p>
-<h2>Если приложения нет в выдаче</h2>
+<h2 id="esli-prilozheniya-net-v-vydache">Если приложения нет в выдаче</h2>
 <p>Доступность конкретного приложения в App Store может меняться. Если найти его не удаётся, полноценной заменой служит мобильная версия официального сайта zenit.win — она открывается в Safari или любом другом браузере и, как правило, повторяет основной функционал: регистрацию, вход, ставки, пополнение и вывод средств.</p>
-<h2>Порядок установки из App Store</h2>
+<h2 id="poryadok-ustanovki-iz-app-store">Порядок установки из App Store</h2>
 <ol><li>Открыть App Store на iPhone</li><li>Ввести в поиске точное название букмекера «Зенит»</li><li>Сверить разработчика и описание приложения с данными официального сайта</li><li>Установить приложение и войти в существующий аккаунт или зарегистрироваться</li></ol>
-<h2>Функционал и идентификация в приложении</h2>
+<h2 id="funkcional-i-identifikaciya-v-prilozhenii">Функционал и идентификация в приложении</h2>
 <p>Функционал приложения на iPhone обычно совпадает с сайтом: ставки на линию и live, пополнение счёта, история операций и вывод средств. Как и при работе через браузер, для полноценного использования аккаунта потребуется пройти идентификацию личности через Единый ЦУПИС — это обязательный этап для всех легальных букмекеров, а не особенность конкретного приложения.</p><p>Иногда приложение временно отсутствует в выдаче App Store по техническим причинам на стороне самого магазина. В этом случае стоит повторить поиск позднее, а до тех пор пользоваться мобильной версией официального сайта — она не требует установки и обновляется автоматически, без участия пользователя.</p>
-<h2>Мобильная версия сайта как альтернатива</h2>
+<h2 id="mobilnaya-versiya-sajta-kak-alternativa">Мобильная версия сайта как альтернатива</h2>
 <p>Если устанавливать приложение не хочется или оно временно недоступно, можно сохранить ссылку на мобильную версию официального сайта на экран «Домой» — это даст быстрый доступ, похожий на работу с приложением, без установки из магазина. Как попасть на сам официальный сайт и не спутать его с подделкой — на странице <a href="/bukmekery/zenit/kak-zajti">как зайти на официальный сайт «Зенит»</a>.</p>
-<h2>На что обратить внимание при загрузке</h2>
+<h2 id="na-chto-obratit-vnimanie-pri-zagruzke">На что обратить внимание при загрузке</h2>
 <ul><li>Устанавливайте приложение только из App Store, а не по ссылкам на «прямую установку» с посторонних сайтов</li><li>Сверяйте имя разработчика в App Store с названием оператора</li><li>При сомнениях в статусе оператора проверьте его на странице <a href="/kak-proverit-licenziyu">как проверить лицензию букмекера</a></li></ul><p>Обращайте внимание также на количество отзывов, дату последнего обновления приложения и имя разработчика в карточке App Store — если карточка выглядит заброшенной, почти без отзывов, а название лишь похоже на «Зенит», это повод лишний раз свериться с официальным сайтом перед установкой.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Есть ли приложение БК «Зенит» в App Store?</summary><p>Наличие и актуальную версию приложения лучше проверять непосредственно в App Store по названию оператора — доступность может меняться.</p></details>
 <details><summary>Что делать, если приложения нет в App Store?</summary><p>Используйте мобильную версию официального сайта в браузере — она обычно повторяет функциональность приложения: ставки, пополнение, вывод средств.</p></details>
 <details><summary>Безопасно ли устанавливать приложение БК не из App Store на iPhone?</summary><p>Мы не рекомендуем сторонние способы установки на iPhone вне App Store: это нестандартный путь, который повышает риск столкнуться с поддельным приложением или сайтом.</p></details>
 <details><summary>Как отличить официальную мобильную версию сайта от фишинговой копии?</summary><p>Проверяйте точный адрес домена и статус оператора — подробный разбор есть на странице <a href="/bukmekery/zenit/kak-zajti">как зайти на официальный сайт «Зенит»</a>.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/zenit/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/fonbet?p=bukmekery/zenit/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/zenit?p=bukmekery/zenit/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/betcity?p=bukmekery/zenit/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/zenit"><b>Зенит: обзор легального букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/zenit/promokod"><b>Промокод Зенит: как найти и использовать</b><small>Промокод</small></a>

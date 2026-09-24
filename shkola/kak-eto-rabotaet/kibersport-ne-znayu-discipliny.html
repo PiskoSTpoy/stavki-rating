@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -171,7 +181,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Как это работает", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Хочу ставить на киберспорт, но не разбираюсь в дисциплинах — с чего начать", "item": "https://stavki-rating.ru/shkola/kak-eto-rabotaet/kibersport-ne-znayu-discipliny"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Хочу ставить на киберспорт, но не разбираюсь в дисциплинах — с чего начать", "description": "Не разбираетесь в CS2, Dota 2 или League of Legends? Разбираем, чем дисциплины отличаются для ставок, с чего начать и где смотреть легальную роспись.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/kak-eto-rabotaet/kibersport-ne-znayu-discipliny", "datePublished": "2026-09-11", "dateModified": "2026-09-11", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Хочу ставить на киберспорт, но не разбираюсь в дисциплинах — с чего начать", "description": "Не разбираетесь в CS2, Dota 2 или League of Legends? Разбираем, чем дисциплины отличаются для ставок, с чего начать и где смотреть легальную роспись.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/kak-eto-rabotaet/kibersport-ne-znayu-discipliny", "datePublished": "2026-09-11", "dateModified": "2026-09-11", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Обязательно ли разбираться в игре, чтобы ставить на киберспорт?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, но это помогает читать рынки точнее. Для первой ставки достаточно понимать формат серии (Bo1/Bo3/Bo5) и на какой рынок вы ставите — победителя матча, карты, тотал или фору."}}, {"@type": "Question", "name": "С какой дисциплины проще начать новичку?", "acceptedAnswer": {"@type": "Answer", "text": "Универсального ответа нет — у CS2, Dota 2 и League of Legends разные рынки и темп игры. Разумнее выбрать дисциплину, за которой интересно наблюдать, посмотреть несколько матчей без ставки и только потом открывать роспись."}}, {"@type": "Question", "name": "Где легально ставить на киберспорт?", "acceptedAnswer": {"@type": "Answer", "text": "Только у оператора с лицензией из реестра ЕРАИ, после идентификации через ЦУПИС — независимо от дисциплины. Сравнить операторов можно на странице рейтинга."}}, {"@type": "Question", "name": "Чем формат Bo1 отличается от Bo3 для ставок?", "acceptedAnswer": {"@type": "Answer", "text": "В Bo1 один слабый день команды решает исход всей серии без права на реванш, поэтому случайности в нём больше. Bo3 и Bo5 сглаживают этот эффект — исход зависит от нескольких карт подряд."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -211,30 +221,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Как это работает</a><span>/</span>Хочу ставить на киберспорт, но не разбираюсь в дисциплинах — с чего начать</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Школа · Как это работает ·</div>
     <h1>Хочу ставить на киберспорт, но не разбираюсь в дисциплинах — с чего начать</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 11.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-11">11.09.2026</time></span><span>·</span><span>4 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Желание поставить на киберспорт часто утыкается в одно и то же: открываешь линию и видишь десяток незнакомых аббревиатур — CS2, Dota 2, League of Legends — и рынки, которые совсем не похожи на привычный футбольный П1/Х/П2. Разбираться в самой дисциплине для первой ставки не обязательно, но полезно понимать, чем они отличаются друг от друга и что вообще означает роспись на конкретный матч. Начать стоит с легального входа — оператор из реестра ЕРАИ и идентификация через ЦУПИС, — а дальше уже разбираться в дисциплинах постепенно, а не пытаться выучить всё сразу.</p>
     
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#s-chego-nachat-esli-discipliny-neznakomy">С чего начать, если дисциплины незнакомы</a></li><li><a href="#chem-cs2-dota-2-i-league-of-legends-otlichayutsya-dlya-stavo">Чем CS2, Dota 2 и League of Legends отличаются для ставок</a></li><li><a href="#gde-smotret-rospis-i-kak-chitat-koefficienty">Где смотреть роспись и как читать коэффициенты</a></li><li><a href="#ne-obyazatelno-razbiratsya-vo-vsem-srazu">Не обязательно разбираться во всём сразу</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>С чего начать, если дисциплины незнакомы</h2>
+    <h2 id="s-chego-nachat-esli-discipliny-neznakomy">С чего начать, если дисциплины незнакомы</h2>
 <p>Первый шаг не связан со спортом вообще — это выбор легального оператора. Ставить можно только у букмекера с лицензией, включённого в реестр Единого регулятора азартных игр (ЕРАИ) — сравнить условия операторов можно на <a href="/rating">странице рейтинга</a> или в подборке <a href="/rejting/dlya-kibersporta">операторов для киберспорта</a>. Перед первой ставкой обязательна идентификация личности через Единый ЦУПИС — это требование закона для любой легальной БК, без него не откроются ни ставки, ни пополнение счёта, ни вывод. Пошагово процесс разобран в статье <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">«Регистрация и идентификация через ЦУПИС»</a>.</p><p>Дальше — не пытаться сразу разобраться во всех дисциплинах одновременно. Разумнее выбрать одну игру, посмотреть несколько матчей без ставки, разобраться в её базовой логике — и только потом открывать роспись на реальное событие.</p>
-<h2>Чем CS2, Dota 2 и League of Legends отличаются для ставок</h2>
+<h2 id="chem-cs2-dota-2-i-league-of-legends-otlichayutsya-dlya-stavo">Чем CS2, Dota 2 и League of Legends отличаются для ставок</h2>
 <p>Дисциплины похожи по формату серий (Bo1/Bo3/Bo5), но рынки внутри матча устроены по-разному:</p><ul><li><strong>CS2</strong> — счёт идёт по раундам внутри карты, поэтому кроме победителя матча и карты есть рынки на тотал раундов и победителя половины карты.</li><li><strong>Dota 2</strong> — матч длиннее и завязан на развитие команд по золоту и опыту, отсюда рынки на первую кровь и общее время игры.</li><li><strong>League of Legends</strong> — логика похожа на Dota 2 по объектам карты (драконы, бароны, башни), но темп и типичная длительность матчей отличаются.</li></ul><p>Знание конкретной меты и ростеров команд помогает точнее читать линию, но для первой ставки достаточно понимать, на какой рынок вы ставите и что означает исход — подробный разбор рынков карт и тоталов есть в статье <a href="/stavki/kibersport">«Ставки на киберспорт»</a>, а по отдельным дисциплинам — в материалах про <a href="/stavki/cs2">CS2</a> и <a href="/stavki/dota-2">Dota 2</a>.</p>
-<h2>Где смотреть роспись и как читать коэффициенты</h2>
+<h2 id="gde-smotret-rospis-i-kak-chitat-koefficienty">Где смотреть роспись и как читать коэффициенты</h2>
 <p>Роспись на киберспортивные матчи открывается в разделе «Киберспорт» у легального букмекера — там перечислены доступные рынки на конкретную встречу и коэффициент на каждый исход. Коэффициент — это оценка вероятности события по модели букмекера, а не гарантия результата: чем он выше, тем менее вероятным контора считает исход. Прежде чем ставить, полезно прикинуть возможную выплату заранее через <a href="/instrumenty/kalkulyator-stavok">калькулятор ставок</a>, а не считать это постфактум.</p><p>Короткие форматы серий вроде Bo1 делают исход более случайным, чем Bo3 или Bo5: один слабый день команды решает исход без права на реванш в текущем матче. Это стоит учитывать, даже если в самой дисциплине разбираешься не очень глубоко.</p>
-<h2>Не обязательно разбираться во всём сразу</h2>
+<h2 id="ne-obyazatelno-razbiratsya-vo-vsem-srazu">Не обязательно разбираться во всём сразу</h2>
 <p>Незнание конкретной дисциплины — не повод отказываться от идеи, но и не повод сразу ставить на серьёзные суммы. Разумный вариант — начать с минимальной ставки, посмотреть, как расписан рынок и что происходит с коэффициентом по ходу матча, и только по мере знакомства с дисциплиной наращивать вовлечённость. Ставки — это риск, а не способ гарантированно заработать, и это касается киберспорта так же, как и любого другого вида спорта. 18+.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Обязательно ли разбираться в игре, чтобы ставить на киберспорт?</summary><p>Нет, но это помогает читать рынки точнее. Для первой ставки достаточно понимать формат серии (Bo1/Bo3/Bo5) и на какой рынок вы ставите — победителя матча, карты, тотал или фору.</p></details>
 <details><summary>С какой дисциплины проще начать новичку?</summary><p>Универсального ответа нет — у CS2, Dota 2 и League of Legends разные рынки и темп игры. Разумнее выбрать дисциплину, за которой интересно наблюдать, посмотреть несколько матчей без ставки и только потом открывать роспись.</p></details>
 <details><summary>Где легально ставить на киберспорт?</summary><p>Только у оператора с лицензией из реестра ЕРАИ, после идентификации через ЦУПИС — независимо от дисциплины. Сравнить операторов можно на странице рейтинга.</p></details>
 <details><summary>Чем формат Bo1 отличается от Bo3 для ставок?</summary><p>В Bo1 один слабый день команды решает исход всей серии без права на реванш, поэтому случайности в нём больше. Bo3 и Bo5 сглаживают этот эффект — исход зависит от нескольких карт подряд.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/ligastavok">Лига Ставок</a>, <a href="/bukmekery/fonbet">Фонбет</a>, <a href="/bukmekery/zenit">Зенит</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/shkola/kak-eto-rabotaet/vidy-stavok-na-sport"><b>Виды ставок на спорт: полный разбор форматов и рынков</b><small>Как это работает</small></a>
       <a class="tile" href="/shkola/kak-eto-rabotaet/kak-chitat-koefficienty"><b>Как читать коэффициенты букмекера</b><small>Как это работает</small></a>

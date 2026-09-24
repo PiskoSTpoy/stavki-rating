@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Ставки на спорт", "item": "https://stavki-rating.ru/stavki"}, {"@type": "ListItem", "position": 3, "name": "Ставки на Rainbow Six Siege: карты и раунды", "item": "https://stavki-rating.ru/stavki/rainbow-six-siege"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ставки на Rainbow Six Siege: карты и раунды", "description": "Разбираем ставки на Rainbow Six Siege: формат Bo3 и Bo5, карты до 7 раундов, фора и тотал раундов, крупные турниры и примеры расчёта со ставкой 1000 ₽.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/stavki/rainbow-six-siege", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ставки на Rainbow Six Siege: карты и раунды", "description": "Разбираем ставки на Rainbow Six Siege: формат Bo3 и Bo5, карты до 7 раундов, фора и тотал раундов, крупные турниры и примеры расчёта со ставкой 1000 ₽.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/stavki/rainbow-six-siege", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Сколько раундов в одной карте Rainbow Six Siege?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Карта играется до 7 побед в раундах; после 6 раундов команды меняются сторонами. При счёте 6:6 назначается овертайм, и карту забирает команда, первой набравшая 8 побед в раундах.</p>"}}, {"@type": "Question", "name": "Что значит фора по картам в Bo3?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Фора −1.5 карты требует победы 2:0. Фора +1.5 проходит, если команда выиграет хотя бы одну карту, то есть матч не закончится 0:2.</p>"}}, {"@type": "Question", "name": "Чем Bo1 опаснее для ставок, чем Bo5?", "acceptedAnswer": {"@type": "Answer", "text": "<p>В одной карте выше роль случайности и отдельных удачных раундов, поэтому апсеты происходят чаще. В Bo5 у сильнейшей команды больше времени выправить серию.</p>"}}, {"@type": "Question", "name": "Какие турниры считаются главными?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Six Invitational, два международных мейджора, Esports World Cup и региональные лиги. Линию на них дают легальные операторы из реестра ЕРАИ.</p>"}}, {"@type": "Question", "name": "Легальны ли ставки на киберспорт в России?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Да, если это легальный оператор из реестра ЕРАИ. Играть можно с 18 лет и в меру; помните об ответственной игре.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,35 +222,36 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/stavki">Ставки на спорт</a><span>/</span>Ставки на Rainbow Six Siege: карты и раунды</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Ставки на спорт ·</div>
     <h1>Ставки на Rainbow Six Siege: карты и раунды</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>4 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Ставки на Rainbow Six Siege — это прогнозы на матчи тактического шутера 5×5, где команды по очереди атакуют и обороняют точку. Базовые рынки — победитель матча и отдельной карты, фора по картам и раундам, тотал карт и раундов. Матчи идут в форматах Bo1, Bo3 и Bo5, а карта играется до 7 побед в раундах. Ниже разбираем структуру матча, реальные рынки, крупные турниры и типичные ошибки новичка.</p>
     
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#kak-ustroen-match-v-rainbow-six-siege">Как устроен матч в Rainbow Six Siege</a></li><li><a href="#formaty-serij-bo1-bo3-i-bo5">Форматы серий: Bo1, Bo3 и Bo5</a></li><li><a href="#osnovnye-rynki-i-kak-oni-schitayutsya">Основные рынки и как они считаются</a></li><li><a href="#primery-rascheta-so-stavkoj-1000">Примеры расчёта со ставкой 1000 ₽</a></li><li><a href="#krupnye-turniry-i-chto-uchityvat">Крупные турниры и что учитывать</a></li><li><a href="#tipichnye-oshibki-novichka">Типичные ошибки новичка</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Как устроен матч в Rainbow Six Siege</h2>
+    <h2 id="kak-ustroen-match-v-rainbow-six-siege">Как устроен матч в Rainbow Six Siege</h2>
 <p>Rainbow Six Siege — тактический шутер в формате <strong>5×5</strong>. В каждом раунде одна команда атакует, вторая обороняет заминированную зону или заложника; раунд ограничен по времени, побеждает та сторона, что выполнила задачу или устранила всех противников.</p><p>Карта играется <strong>до 7 побед в раундах</strong>. После шести раундов команды меняются сторонами (атака ↔ оборона). При равном счёте <strong>6:6</strong> назначается овертайм, и карту забирает команда, первой набравшая <strong>8 побед в раундах</strong>. В игре более 70 оперативников с уникальными гаджетами. После обновления <strong>Siege X (2025)</strong> баны оперативников проходят каждый раунд: перед раундом команды банят оперативников, а при смене сторон баны сбрасываются — это влияет на баланс атаки и обороны.</p><p>Понимание того, кто сильнее в атаке и обороне на конкретной карте, для прогноза важнее громкого имени команды.</p>
-<h2>Форматы серий: Bo1, Bo3 и Bo5</h2>
+<h2 id="formaty-serij-bo1-bo3-i-bo5">Форматы серий: Bo1, Bo3 и Bo5</h2>
 <p>Формат серии определяет, сколько карт нужно выиграть и какие рынки доступны:</p><div class="table-wrap"><table><thead><tr><th>Формат</th><th>Карт для победы</th><th>Где встречается</th></tr></thead><tbody><tr><td>Bo1</td><td>1 из 1</td><td>групповой этап, квалификации</td></tr><tr><td>Bo3</td><td>2 из 3</td><td>плей-офф</td></tr><tr><td>Bo5</td><td>3 из 5</td><td>гранд-финалы крупных турниров</td></tr></tbody></table></div><p>В Bo3 тотал карт больше/меньше 2.5 фактически спрашивает, дойдёт ли серия до третьей карты (счёт 2:1) или закончится всухую (2:0). В Bo1 доступен только победитель матча и рынки внутри одной карты, поэтому вариативность результата выше.</p>
-<h2>Основные рынки и как они считаются</h2>
+<h2 id="osnovnye-rynki-i-kak-oni-schitayutsya">Основные рынки и как они считаются</h2>
 <p>Базовые рынки на матч Rainbow Six Siege:</p><ul><li><strong>Победитель матча</strong> — ничьих в серии нет, выбор из двух команд.</li><li><strong>Победитель отдельной карты</strong> — исход конкретной карты серии.</li><li><strong>Фора по картам</strong> — например, −1.5 требует победы 2:0 в Bo3. Подробнее — <a href="/shkola/terminy/chto-takoe-fora">что такое фора</a>.</li><li><strong>Тотал карт</strong> — больше/меньше 2.5 в Bo3. См. <a href="/shkola/terminy/chto-takoe-total">что такое тотал</a>.</li><li><strong>Фора по раундам</strong> — гандикап внутри карты, например −3.5 раунда.</li><li><strong>Тотал раундов</strong> — сколько всего раундов сыграют на карте.</li></ul><div class="table-wrap"><table><caption>Как читаются рынки в Bo3</caption><thead><tr><th>Рынок</th><th>Условие прохода</th></tr></thead><tbody><tr><td>Фора команды А −1.5 карты</td><td>А побеждает 2:0</td></tr><tr><td>Тотал карт больше 2.5</td><td>серия идёт 3 карты (2:1)</td></tr><tr><td>Фора А −3.5 раунда (карта)</td><td>А выигрывает карту с разницей ≥4 раунда</td></tr></tbody></table></div>
-<h2>Примеры расчёта со ставкой 1000 ₽</h2>
+<h2 id="primery-rascheta-so-stavkoj-1000">Примеры расчёта со ставкой 1000 ₽</h2>
 <p>Коэффициенты ниже — гипотетические, для иллюстрации расчёта.</p><ol><li><strong>Победитель матча.</strong> Ставка 1000 ₽ на фаворита в Bo3 при коэффициенте 1.60. При победе возврат составит 1000 × 1.60 = <strong>1600 ₽</strong>, чистая прибыль — 600 ₽.</li><li><strong>Тотал карт больше 2.5.</strong> Ставка 1000 ₽ при коэффициенте 2.10. Проходит только если серия дошла до третьей карты (счёт 2:1): возврат 1000 × 2.10 = <strong>2100 ₽</strong>. Если фаворит выиграл 2:0, ставка проигрывает.</li><li><strong>Фора по раундам.</strong> Ставка 1000 ₽ на фору команды А −3.5 раунда при коэффициенте 1.90. Чтобы ставка зашла, А должна выиграть карту с разницей минимум в 4 раунда (например 7:3): возврат 1000 × 1.90 = <strong>1900 ₽</strong>.</li></ol>
-<h2>Крупные турниры и что учитывать</h2>
+<h2 id="krupnye-turniry-i-chto-uchityvat">Крупные турниры и что учитывать</h2>
 <p>Соревновательный сезон Rainbow Six Siege строится вокруг нескольких вех: главный турнир года <strong>Six Invitational</strong>, два международных <strong>мейджора</strong>, интеграция с <strong>Esports World Cup</strong> и региональные лиги-квалификации. Чем крупнее турнир, тем чаще плей-офф идёт в Bo3, а гранд-финал — в Bo5.</p><p>При анализе полезно смотреть на пул карт, статистику команды за атаку и оборону и свежие результаты, а не только на имя. Линию на матчи топ-турниров предлагают легальные операторы из реестра ЕРАИ; сравнить их условия можно в <a href="/rating">рейтинге букмекеров</a>, а профильную подборку — в <a href="/rejting/dlya-kibersporta">рейтинге для киберспорта</a>.</p>
-<h2>Типичные ошибки новичка</h2>
+<h2 id="tipichnye-oshibki-novichka">Типичные ошибки новичка</h2>
 <p>Частые ошибки:</p><ul><li><strong>Ставка только на фаворита</strong> без учёта пула карт и формы — низкий коэффициент не означает лёгкий проход.</li><li><strong>Игнорирование формата.</strong> Bo1 гораздо более случаен, чем Bo5: апсеты в одной карте случаются регулярно.</li><li><strong>Импульсивные лайв-ставки</strong> после одного проигранного раунда, когда серия ещё далека от развязки.</li><li><strong>Отсутствие банкролл-менеджмента.</strong> Фиксированный процент от банка на ставку снижает риск. Ставьте ответственно и в пределах бюджета.</li></ul>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Сколько раундов в одной карте Rainbow Six Siege?</summary><p>Карта играется до 7 побед в раундах; после 6 раундов команды меняются сторонами. При счёте 6:6 назначается овертайм, и карту забирает команда, первой набравшая 8 побед в раундах.</p></details>
 <details><summary>Что значит фора по картам в Bo3?</summary><p>Фора −1.5 карты требует победы 2:0. Фора +1.5 проходит, если команда выиграет хотя бы одну карту, то есть матч не закончится 0:2.</p></details>
 <details><summary>Чем Bo1 опаснее для ставок, чем Bo5?</summary><p>В одной карте выше роль случайности и отдельных удачных раундов, поэтому апсеты происходят чаще. В Bo5 у сильнейшей команды больше времени выправить серию.</p></details>
 <details><summary>Какие турниры считаются главными?</summary><p>Six Invitational, два международных мейджора, Esports World Cup и региональные лиги. Линию на них дают легальные операторы из реестра ЕРАИ.</p></details>
 <details><summary>Легальны ли ставки на киберспорт в России?</summary><p>Да, если это легальный оператор из реестра ЕРАИ. Играть можно с 18 лет и в меру; помните об ответственной игре.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/pari">PARI</a>, <a href="/bukmekery/zenit">Зенит</a>, <a href="/bukmekery/melbet">Мелбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/stavki/futbol"><b>Ставки на футбол: рынки, роспись и типичные ошибки</b><small>Ставки на спорт</small></a>
       <a class="tile" href="/stavki/hokkej"><b>Ставки на хоккей: тоталы, форы и особенности КХЛ и НХЛ</b><small>Ставки на спорт</small></a>

@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Зенит", "item": "https://stavki-rating.ru/bukmekery/zenit"}, {"@type": "ListItem", "position": 4, "name": "Фрибет в Зенит: механика бесплатной ставки", "item": "https://stavki-rating.ru/bukmekery/zenit/fribet"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Фрибет в Зенит: механика бесплатной ставки", "description": "Механика фрибета у легального букмекера Зенит: что это, минимальный коэффициент, срок использования и что происходит с выигрышем по фрибету.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/zenit/fribet", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Фрибет в Зенит: механика бесплатной ставки", "description": "Механика фрибета у легального букмекера Зенит: что это, минимальный коэффициент, срок использования и что происходит с выигрышем по фрибету.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/zenit/fribet", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что происходит с выигрышем по фрибету?", "acceptedAnswer": {"@type": "Answer", "text": "Если ставка по фрибету выигрывает, на счёт обычно зачисляется чистая прибыль без номинала самого купона. Точный порядок расчёта уточняйте в правилах конкретной акции на официальном сайте zenit.win."}}, {"@type": "Question", "name": "Можно ли вывести сам фрибет?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, номинал фрибета вывести нельзя — вывести можно только выигрыш, полученный по ставке с его использованием, и только после выполнения условий акции."}}, {"@type": "Question", "name": "Какой размер фрибета дают в Зенит?", "acceptedAnswer": {"@type": "Answer", "text": "Точный размер зависит от конкретной акции и периодически меняется, поэтому актуальную цифру нужно смотреть на официальном сайте zenit.win — мы не приводим числа, которые не можем подтвердить."}}, {"@type": "Question", "name": "Сколько действует фрибет?", "acceptedAnswer": {"@type": "Answer", "text": "Срок действия устанавливает сам букмекер в правилах акции — как правило, от нескольких дней до пары недель. После истечения срока неиспользованный фрибет сгорает."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,32 +222,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/zenit">Зенит</a><span>/</span>Фрибет в Зенит: механика бесплатной ставки</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Зенит ·</div>
     <h1>Фрибет в Зенит: механика бесплатной ставки</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Фрибет — это бесплатная ставка, которую букмекер даёт игроку вместо денег: её можно поставить на исход, но при выигрыше на счёт зачисляется чистая прибыль, а не сумма самого фрибета. У Зенита фрибеты выдаются на определённых условиях — как часть приветственного бонуса или отдельных акций. Конкретный размер фрибета для этого бренда мы не указываем: его нужно смотреть на официальном сайте zenit.win.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/zenit?p=zenit&amp;pl=subpage-top">Сайт букмекера Зенит →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#chto-takoe-fribet-i-kak-on-otlichaetsya-ot-deneg">Что такое фрибет и как он отличается от денег</a></li><li><a href="#kak-schitaetsya-vyigrysh-po-fribetu">Как считается выигрыш по фрибету</a></li><li><a href="#tipichnye-usloviya-ispolzovaniya-fribeta">Типичные условия использования фрибета</a></li><li><a href="#kak-poluchit-fribet-v-zenit">Как получить фрибет в Зенит</a></li><li><a href="#na-chto-obratit-vnimanie-pered-ispolzovaniem">На что обратить внимание перед использованием</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Что такое фрибет и как он отличается от денег</h2>
+    <h2 id="chto-takoe-fribet-i-kak-on-otlichaetsya-ot-deneg">Что такое фрибет и как он отличается от денег</h2>
 <p>Фрибет — это купон на бесплатную ставку определённого номинала. В отличие от обычных денег на счёте, сам фрибет нельзя вывести: если ставка по нему выигрывает, на счёт зачисляется чистый выигрыш за вычетом номинала фрибета, а если ставка проигрывает — счёт просто теряет купон без дополнительных потерь.</p><p>Базовое определение и примеры расчёта — в статье <a href="/shkola/terminy/chto-takoe-fribet">что такое фрибет</a>.</p>
-<h2>Как считается выигрыш по фрибету</h2>
+<h2 id="kak-schitaetsya-vyigrysh-po-fribetu">Как считается выигрыш по фрибету</h2>
 <p>Расчёт устроен так: если ставка сыграла с коэффициентом больше единицы, то на счёт зачисляется сумма, равная разнице между потенциальным выигрышем по этому коэффициенту и номиналом самого фрибета — то есть только чистая прибыль. Сам номинал фрибета в выплату не входит и на баланс не возвращается ни при выигрыше, ни при проигрыше.</p><p>Из-за этой особенности реальная выгода от фрибета обычно ниже, чем от такой же суммы собственных денег, поставленных на тот же исход, — и это нормальная механика, а не недостаток конкретного оператора.</p>
-<h2>Типичные условия использования фрибета</h2>
+<h2 id="tipichnye-usloviya-ispolzovaniya-fribeta">Типичные условия использования фрибета</h2>
 <p>У большинства легальных букмекеров фрибет действует по похожим правилам: у него есть минимальный коэффициент для ставки, срок использования (обычно от нескольких дней до пары недель) и иногда ограничение по видам спорта или типу события. Просроченный фрибет сгорает автоматически.</p><p>Точные параметры — минимальный коэффициент, срок и номинал — устанавливает сам оператор и указывает в правилах конкретной акции на официальном сайте zenit.win.</p>
-<h2>Как получить фрибет в Зенит</h2>
+<h2 id="kak-poluchit-fribet-v-zenit">Как получить фрибет в Зенит</h2>
 <p>Фрибеты у легальных букмекеров обычно выдаются новым игрокам как часть приветственного предложения или действующим клиентам — в рамках отдельных акций, иногда с привязкой к промокоду. Действующие условия и то, положен ли фрибет конкретному игроку, видно в личном кабинете или в разделе акций на сайте zenit.win.</p><p>Как устроены промокоды, через которые часто активируются такие предложения, — на странице <a href="/bukmekery/zenit/promokod">промокод Зенит</a>.</p>
-<h2>На что обратить внимание перед использованием</h2>
+<h2 id="na-chto-obratit-vnimanie-pered-ispolzovaniem">На что обратить внимание перед использованием</h2>
 <p>Перед тем как ставить фрибет, стоит прочитать правила конкретной акции: какой минимальный коэффициент нужен, что произойдёт с выигрышем и в какой срок нужно успеть использовать купон. Это касается не только Зенита, а любого легального букмекера.</p><p>Более широкий обзор типов бонусов, включая фрибеты и кэшбэк, — на странице <a href="/bukmekery/zenit/bonus">бонусы Зенит</a>. Что именно значит отыгрыш бонусных условий — в статье <a href="/shkola/terminy/chto-takoe-otygrysh-bonusa">что такое отыгрыш бонуса</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Что происходит с выигрышем по фрибету?</summary><p>Если ставка по фрибету выигрывает, на счёт обычно зачисляется чистая прибыль без номинала самого купона. Точный порядок расчёта уточняйте в правилах конкретной акции на официальном сайте zenit.win.</p></details>
 <details><summary>Можно ли вывести сам фрибет?</summary><p>Нет, номинал фрибета вывести нельзя — вывести можно только выигрыш, полученный по ставке с его использованием, и только после выполнения условий акции.</p></details>
 <details><summary>Какой размер фрибета дают в Зенит?</summary><p>Точный размер зависит от конкретной акции и периодически меняется, поэтому актуальную цифру нужно смотреть на официальном сайте zenit.win — мы не приводим числа, которые не можем подтвердить.</p></details>
 <details><summary>Сколько действует фрибет?</summary><p>Срок действия устанавливает сам букмекер в правилах акции — как правило, от нескольких дней до пары недель. После истечения срока неиспользованный фрибет сгорает.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/zenit/fribet&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/zenit?p=bukmekery/zenit/fribet&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/ligastavok?p=bukmekery/zenit/fribet&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>, <a href="/go/melbet?p=bukmekery/zenit/fribet&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/zenit"><b>Зенит: обзор легального букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/zenit/promokod"><b>Промокод Зенит: как найти и использовать</b><small>Промокод</small></a>

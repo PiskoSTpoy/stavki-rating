@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -171,7 +181,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "PARI", "item": "https://stavki-rating.ru/bukmekery/pari"}, {"@type": "ListItem", "position": 4, "name": "Как зайти на официальный сайт PARI и не попасть на фишинговое «зеркало»", "item": "https://stavki-rating.ru/bukmekery/pari/kak-zajti"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как зайти на официальный сайт PARI и не попасть на фишинговое «зеркало»", "description": "Разбираемся, как попасть на официальный сайт БК PARI, почему бывают проблемы с доступом и как отличить настоящий домен от фишинговых «зеркал».", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/pari/kak-zajti", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как зайти на официальный сайт PARI и не попасть на фишинговое «зеркало»", "description": "Разбираемся, как попасть на официальный сайт БК PARI, почему бывают проблемы с доступом и как отличить настоящий домен от фишинговых «зеркал».", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/pari/kak-zajti", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Существуют ли официальные «зеркала» PARI?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет. У легального оператора есть один официальный домен — pari.ru — и официальное приложение. Любые сторонние адреса под названием «зеркало» не подтверждены оператором и могут быть фишинговыми копиями.</p>"}}, {"@type": "Question", "name": "Почему сайт PARI иногда не открывается?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Обычно это связано с временными техническими ограничениями на стороне отдельных провайдеров, а не с приостановкой деятельности оператора. Это не повод искать сторонние копии сайта.</p>"}}, {"@type": "Question", "name": "Безопасно ли пользоваться VPN для входа на сайт БК?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Мы не рекомендуем использовать VPN или сторонние сервисы для обхода ограничений — это выводит вас за пределы официальных каналов доступа и увеличивает риски. Правильный путь — официальный сайт или приложение.</p>"}}, {"@type": "Question", "name": "Как убедиться, что PARI — легальный оператор?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Проверить статус можно через реестр ЕРАИ и по данным лицензии. Подробный алгоритм — на странице <a href=\"/kak-proverit-licenziyu\">«Как проверить лицензию букмекера»</a>.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -211,32 +221,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/pari">PARI</a><span>/</span>Как зайти на официальный сайт PARI и не попасть на фишинговое «зеркало»</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · PARI ·</div>
     <h1>Как зайти на официальный сайт PARI и не попасть на фишинговое «зеркало»</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Официальный сайт легального букмекера PARI находится на домене pari.ru. Если этот адрес не открывается, дело обычно в технических ограничениях у конкретного провайдера, а не в блокировке самого оператора — PARI работает как легальная букмекерская контора и входит в реестр ЕРАИ. Искать «рабочие зеркала» через сторонние сайты не стоит: под этим названием часто маскируются фишинговые копии, созданные для кражи данных и денег. Самый надёжный путь — заходить напрямую по официальному адресу или через официальное приложение.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/pari?p=pari&amp;pl=subpage-top">Сайт букмекера PARI →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#oficialnyj-domen-pari">Официальный домен PARI</a></li><li><a href="#pochemu-byvayut-problemy-s-dostupom">Почему бывают проблемы с доступом</a></li><li><a href="#chem-opasny-fishingovye-zerkala">Чем опасны фишинговые «зеркала»</a></li><li><a href="#kak-proverit-chto-pered-vami-nastoyaschij-sajt-pari">Как проверить, что перед вами настоящий сайт PARI</a></li><li><a href="#chto-delat-esli-sajt-ne-otkryvaetsya">Что делать, если сайт не открывается</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Официальный домен PARI</h2>
+    <h2 id="oficialnyj-domen-pari">Официальный домен PARI</h2>
 <p>Единственный официальный сайт букмекера — <strong>pari.ru</strong>. PARI (ООО «Букмекерская контора «ПАРИ») — легальный оператор, включённый в реестр Единого регулятора азартных игр (ЕРАИ), и ведёт деятельность только через этот домен и связанные с ним официальные каналы: сайт, мобильное приложение и мобильную версию.</p><p>Любые другие адреса, даже похожие по написанию или обещающие «расширенный доступ», не имеют отношения к оператору.</p>
-<h2>Почему бывают проблемы с доступом</h2>
+<h2 id="pochemu-byvayut-problemy-s-dostupom">Почему бывают проблемы с доступом</h2>
 <p>Периодические сложности с открытием сайта у отдельных пользователей чаще всего связаны с настройками конкретного интернет-провайдера или мобильного оператора, а не с блокировкой самого букмекера как такового. Такие ограничения могут появляться и пропадать без предупреждения и не означают, что у оператора отозвана лицензия или он прекратил работу.</p><p>Проверить актуальный статус легального оператора можно через официальные источники — см. <a href="/kak-proverit-licenziyu">как проверить лицензию букмекера</a>.</p>
-<h2>Чем опасны фишинговые «зеркала»</h2>
+<h2 id="chem-opasny-fishingovye-zerkala">Чем опасны фишинговые «зеркала»</h2>
 <p>По запросам вида «PARI зеркало» в поиске нередко всплывают сторонние сайты, которые визуально копируют дизайн официального ресурса, но домен у них другой. Цель таких копий — получить логин, пароль или данные карты пользователя.</p><ul><li>Такие сайты не связаны с ЕРАИ и не гарантируют вывод денег.</li><li>Ставки на них не защищены правилами легального рынка.</li><li>Ввод данных карты или паспорта на незнакомом домене — прямой риск потери средств.</li></ul><p>Использовать сторонние «зеркала» или VPN-сервисы для обхода ограничений мы не рекомендуем — это не официальный канал доступа к БК.</p>
-<h2>Как проверить, что перед вами настоящий сайт PARI</h2>
+<h2 id="kak-proverit-chto-pered-vami-nastoyaschij-sajt-pari">Как проверить, что перед вами настоящий сайт PARI</h2>
 <div class="table-wrap"><table><caption>Быстрая проверка домена</caption><thead><tr><th>Шаг</th><th>Что делать</th></tr></thead><tbody><tr><td>1</td><td>Сверить адрес в строке браузера — только pari.ru, без лишних символов и подстановок</td></tr><tr><td>2</td><td>Проверить наличие оператора в реестре легальных букмекеров ЕРАИ</td></tr><tr><td>3</td><td>Не переходить по ссылкам из рекламы в мессенджерах и соцсетях без проверки домена</td></tr><tr><td>4</td><td>При сомнениях заходить через официальное приложение, а не через ссылку из поиска</td></tr></tbody></table></div><p>Подробный порядок проверки лицензии описан на странице <a href="/kak-proverit-licenziyu">«Как проверить лицензию»</a>.</p>
-<h2>Что делать, если сайт не открывается</h2>
+<h2 id="chto-delat-esli-sajt-ne-otkryvaetsya">Что делать, если сайт не открывается</h2>
 <p>Если официальный сайт временно недоступен, разумная альтернатива — официальное <a href="/bukmekery/pari/prilozhenie">приложение PARI</a>, которое распространяется через собственные каналы оператора. Регистрация и вход при этом происходят так же, как описано на странице <a href="/bukmekery/pari/registraciya">регистрации в PARI</a>. Сравнить условия других легальных операторов можно в <a href="/rejting">рейтинге букмекеров</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Существуют ли официальные «зеркала» PARI?</summary><p>Нет. У легального оператора есть один официальный домен — pari.ru — и официальное приложение. Любые сторонние адреса под названием «зеркало» не подтверждены оператором и могут быть фишинговыми копиями.</p></details>
 <details><summary>Почему сайт PARI иногда не открывается?</summary><p>Обычно это связано с временными техническими ограничениями на стороне отдельных провайдеров, а не с приостановкой деятельности оператора. Это не повод искать сторонние копии сайта.</p></details>
 <details><summary>Безопасно ли пользоваться VPN для входа на сайт БК?</summary><p>Мы не рекомендуем использовать VPN или сторонние сервисы для обхода ограничений — это выводит вас за пределы официальных каналов доступа и увеличивает риски. Правильный путь — официальный сайт или приложение.</p></details>
 <details><summary>Как убедиться, что PARI — легальный оператор?</summary><p>Проверить статус можно через реестр ЕРАИ и по данным лицензии. Подробный алгоритм — на странице <a href="/kak-proverit-licenziyu">«Как проверить лицензию букмекера»</a>.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/pari/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/marathonbet?p=bukmekery/pari/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>, <a href="/go/melbet?p=bukmekery/pari/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>, <a href="/go/zenit?p=bukmekery/pari/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/pari"><b>PARI: что нужно знать о букмекере</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/pari/promokod"><b>Промокод PARI: где искать и как использовать</b><small>Промокод</small></a>

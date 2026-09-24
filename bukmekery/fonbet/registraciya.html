@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Фонбет", "item": "https://stavki-rating.ru/bukmekery/fonbet"}, {"@type": "ListItem", "position": 4, "name": "Регистрация в Фонбет: пошаговая инструкция", "item": "https://stavki-rating.ru/bukmekery/fonbet/registraciya"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Регистрация в Фонбет: пошаговая инструкция", "description": "Как зарегистрироваться у легального букмекера Фонбет: номер телефона, идентификация через Единый ЦУПИС, способы подтверждения и что нужно для завершения.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/fonbet/registraciya", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Регистрация в Фонбет: пошаговая инструкция", "description": "Как зарегистрироваться у легального букмекера Фонбет: номер телефона, идентификация через Единый ЦУПИС, способы подтверждения и что нужно для завершения.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/fonbet/registraciya", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Сколько времени занимает регистрация у букмекера?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Сама регистрация по номеру телефона занимает несколько минут, а полная идентификация через Единый ЦУПИС может потребовать дополнительного времени, особенно при выборе способа с личным визитом.</p>"}}, {"@type": "Question", "name": "Можно ли зарегистрироваться без Госуслуг?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Да, идентификацию можно пройти и другими способами — например, лично в пункте приёма ставок с паспортом или через привязку карты, оформленной на ваше имя.</p>"}}, {"@type": "Question", "name": "Обязательна ли идентификация для ставок?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Да, без завершённой идентификации через Единый ЦУПИС легальный букмекер не позволит вывести выигранные средства.</p>"}}, {"@type": "Question", "name": "Что делать, если регистрация не проходит?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Стоит проверить корректность введённых данных и статус номера телефона, а при повторяющейся ошибке — обратиться в поддержку оператора для уточнения причины.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,32 +222,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/fonbet">Фонбет</a><span>/</span>Регистрация в Фонбет: пошаговая инструкция</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Фонбет ·</div>
     <h1>Регистрация в Фонбет: пошаговая инструкция</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Регистрация у любого легального букмекера в России, включая Фонбет, строится по единой схеме: указание номера телефона, подтверждение личности и идентификация через Единый ЦУПИС. Ниже — общий порядок шагов и что понадобится для завершения регистрации и первого вывода средств.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/fonbet?p=fonbet&amp;pl=subpage-top">Сайт букмекера Фонбет →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#shagi-registracii-u-legalnogo-bukmekera">Шаги регистрации у легального букмекера</a></li><li><a href="#chto-takoe-edinyj-cupis-i-zachem-on-nuzhen">Что такое Единый ЦУПИС и зачем он нужен</a></li><li><a href="#sposoby-identifikacii-lichnosti">Способы идентификации личности</a></li><li><a href="#chto-delat-posle-uspeshnoj-identifikacii">Что делать после успешной идентификации</a></li><li><a href="#posle-registracii-vhod-i-prilozhenie">После регистрации: вход и приложение</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Шаги регистрации у легального букмекера</h2>
+    <h2 id="shagi-registracii-u-legalnogo-bukmekera">Шаги регистрации у легального букмекера</h2>
 <div class="table-wrap"><table><caption>Порядок регистрации</caption><thead><tr><th>Шаг</th><th>Что нужно сделать</th></tr></thead><tbody><tr><td>1</td><td>Указать номер мобильного телефона на сайте или в приложении оператора</td></tr><tr><td>2</td><td>Подтвердить номер кодом из SMS</td></tr><tr><td>3</td><td>Заполнить обязательные личные данные (ФИО, дата рождения)</td></tr><tr><td>4</td><td>Пройти идентификацию через Единый ЦУПИС</td></tr><tr><td>5</td><td>Пополнить счёт и приступить к ставкам</td></tr></tbody></table></div>
-<h2>Что такое Единый ЦУПИС и зачем он нужен</h2>
+<h2 id="chto-takoe-edinyj-cupis-i-zachem-on-nuzhen">Что такое Единый ЦУПИС и зачем он нужен</h2>
 <p>Единый центр учёта переводов интерактивных ставок (ЦУПИС) — обязательное звено для всех легальных букмекеров в России. Через него проходит идентификация игрока и учёт движения средств, что защищает игрока и подтверждает легальность операций.</p><p>Подробный разбор того, как проходит регистрация и идентификация в ЦУПИС в целом по рынку, — в материале <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">регистрация и ЦУПИС</a>.</p>
-<h2>Способы идентификации личности</h2>
+<h2 id="sposoby-identifikacii-lichnosti">Способы идентификации личности</h2>
 <p>Обычно доступно несколько вариантов подтверждения личности: через портал Госуслуг (самый быстрый способ), при личном визите в пункт приёма ставок с паспортом, либо через привязку банковской карты или электронного кошелька, оформленных на то же имя.</p><p>Без завершённой идентификации можно наблюдать за линией, но нельзя вывести выигранные средства — это общее правило для всех легальных операторов. Поэтому идентификацию разумно проходить сразу после регистрации, а не откладывать до момента, когда понадобится вывести выигрыш.</p>
-<h2>Что делать после успешной идентификации</h2>
+<h2 id="chto-delat-posle-uspeshnoj-identifikacii">Что делать после успешной идентификации</h2>
 <p>После того как идентификация через Единый ЦУПИС подтверждена, аккаунт получает полный доступ: можно пополнять счёт без ограничений по способу оплаты, делать ставки на любые события линии и live, а также выводить выигрыш на привязанный способ. Повторно проходить идентификацию у других легальных букмекеров не нужно — статус в Едином ЦУПИС действует сразу на весь легальный рынок, и при переходе к другому оператору достаточно указать те же данные.</p><p>Если после регистрации возникают сложности со входом в личный кабинет, разберитесь с типовыми причинами на странице <a href="/bukmekery/fonbet/kak-zajti">как зайти на Фонбет</a>.</p>
-<h2>После регистрации: вход и приложение</h2>
+<h2 id="posle-registracii-vhod-i-prilozhenie">После регистрации: вход и приложение</h2>
 <p>После завершения регистрации доступ к счёту можно получить как через браузер, так и через мобильное приложение — установка разобрана на странице <a href="/bukmekery/fonbet/prilozhenie">приложение Фонбет</a>. Функционал в обоих случаях одинаковый: линия, live-ставки, пополнение и вывод средств.</p><p>Перед первой ставкой стоит дополнительно убедиться, что оператор легален — как это проверить самостоятельно, описано в материале <a href="/kak-proverit-licenziyu">как проверить лицензию букмекера</a>. Это займёт пару минут, но избавит от риска столкнуться с нелегальной площадкой под похожим названием, которая имитирует интерфейс известного бренда.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Сколько времени занимает регистрация у букмекера?</summary><p>Сама регистрация по номеру телефона занимает несколько минут, а полная идентификация через Единый ЦУПИС может потребовать дополнительного времени, особенно при выборе способа с личным визитом.</p></details>
 <details><summary>Можно ли зарегистрироваться без Госуслуг?</summary><p>Да, идентификацию можно пройти и другими способами — например, лично в пункте приёма ставок с паспортом или через привязку карты, оформленной на ваше имя.</p></details>
 <details><summary>Обязательна ли идентификация для ставок?</summary><p>Да, без завершённой идентификации через Единый ЦУПИС легальный букмекер не позволит вывести выигранные средства.</p></details>
 <details><summary>Что делать, если регистрация не проходит?</summary><p>Стоит проверить корректность введённых данных и статус номера телефона, а при повторяющейся ошибке — обратиться в поддержку оператора для уточнения причины.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/fonbet/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/zenit?p=bukmekery/fonbet/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/marathonbet?p=bukmekery/fonbet/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>, <a href="/go/ligastavok?p=bukmekery/fonbet/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/fonbet"><b>Фонбет: обзор букмекера, легальный статус и как начать</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/fonbet/promokod"><b>Промокод Фонбет: как это работает</b><small>Промокод</small></a>

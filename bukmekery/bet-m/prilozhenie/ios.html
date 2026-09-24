@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Бет-М", "item": "https://stavki-rating.ru/bukmekery/bet-m"}, {"@type": "ListItem", "position": 4, "name": "Бет-М на iPhone: приложение и мобильная версия сайта", "item": "https://stavki-rating.ru/bukmekery/bet-m/prilozhenie/ios"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бет-М на iPhone: приложение и мобильная версия сайта", "description": "Есть ли у Бет-М приложение для iPhone: что известно про App Store, чем удобна мобильная версия сайта как альтернатива и как ей пользоваться.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/bet-m/prilozhenie/ios", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бет-М на iPhone: приложение и мобильная версия сайта", "description": "Есть ли у Бет-М приложение для iPhone: что известно про App Store, чем удобна мобильная версия сайта как альтернатива и как ей пользоваться.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/bet-m/prilozhenie/ios", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Есть ли у Бет-М приложение для iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "Наличие и актуальность приложения в App Store у конкретного оператора может меняться — точный статус стоит проверять на официальном сайте bet-m.ru или непосредственно в App Store."}}, {"@type": "Question", "name": "Можно ли пользоваться Бет-М с iPhone без установки приложения?", "acceptedAnswer": {"@type": "Answer", "text": "Да, для этого подходит мобильная версия официального сайта — она открывается в браузере телефона и не требует установки отдельного приложения."}}, {"@type": "Question", "name": "Как добавить сайт на домашний экран iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "В браузере откройте меню «Поделиться» и выберите пункт добавления на домашний экран — появится ярлык, по внешнему виду похожий на иконку приложения."}}, {"@type": "Question", "name": "Стоит ли устанавливать приложение не из App Store?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, для iPhone безопасный канал — только официальный App Store. Файлы и профили из сторонних источников создают риск установки поддельного или вредоносного приложения."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/bet-m">Бет-М</a><span>/</span>Бет-М на iPhone: приложение и мобильная версия сайта</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Бет-М ·</div>
     <h1>Бет-М на iPhone: приложение и мобильная версия сайта</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>2 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Для владельцев iPhone доступность приложений букмекеров у разных легальных операторов может отличаться и меняться со временем, поэтому мы не берёмся утверждать конкретный статус для Бет-М — актуальную информацию стоит уточнять на официальном сайте. В любом случае у пользователя есть рабочая альтернатива — мобильная версия сайта, которая открывается прямо в браузере телефона без установки.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/bet-m?p=bet-m&amp;pl=subpage-top">Сайт букмекера Бет-М →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#prilozhenie-v-app-store">Приложение в App Store</a></li><li><a href="#mobilnaya-versiya-sajta-kak-alternativa">Мобильная версия сайта как альтернатива</a></li><li><a href="#na-chto-obratit-vnimanie">На что обратить внимание</a></li><li><a href="#svyazannye-materialy">Связанные материалы</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Приложение в App Store</h2>
+    <h2 id="prilozhenie-v-app-store">Приложение в App Store</h2>
 <p>Правила App Store в отношении приложений для ставок на реальные деньги отличаются от правил Google Play и могут допускать публикацию приложения легального оператора для конкретного региона. Наличие и актуальность такого приложения у Бет-М нужно проверять непосредственно на официальном сайте bet-m.ru или в самом App Store — этот статус может меняться.</p>
-<h2>Мобильная версия сайта как альтернатива</h2>
+<h2 id="mobilnaya-versiya-sajta-kak-alternativa">Мобильная версия сайта как альтернатива</h2>
 <p>Если отдельного приложения для iOS нет или пользователь не хочет его устанавливать, мобильная версия официального сайта — рабочий вариант: она открывается в браузере Safari или любом другом браузере на iPhone, адаптирована под маленький экран и не требует установки.</p><ol><li>Откройте браузер на iPhone и перейдите на официальный сайт bet-m.ru.</li><li>Войдите в личный кабинет с существующими данными или зарегистрируйтесь.</li><li>Для быстрого доступа можно добавить страницу сайта на домашний экран через меню браузера — это создаёт ярлык, похожий на иконку приложения.</li></ol>
-<h2>На что обратить внимание</h2>
+<h2 id="na-chto-obratit-vnimanie">На что обратить внимание</h2>
 <ul><li>Устанавливайте приложение только через официальный App Store, если оно там представлено, — не через сторонние профили конфигурации или файлы за пределами магазина.</li><li>Проверяйте, что издателем приложения указан именно оператор Бет-М, а не сторонний разработчик.</li><li>При использовании мобильной версии сайта убедитесь, что адрес в браузере соответствует официальному домену.</li></ul>
-<h2>Связанные материалы</h2>
+<h2 id="svyazannye-materialy">Связанные материалы</h2>
 <p>Порядок входа и проверки официального домена подробно разобран на <a href="/bukmekery/bet-m/kak-zajti">странице о доступе к официальному сайту Бет-М</a>. Об установке на Android — на <a href="/bukmekery/bet-m/prilozhenie/android">отдельной странице</a>. Общий обзор бренда — на <a href="/bukmekery/bet-m">странице Бет-М в каталоге</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Есть ли у Бет-М приложение для iPhone?</summary><p>Наличие и актуальность приложения в App Store у конкретного оператора может меняться — точный статус стоит проверять на официальном сайте bet-m.ru или непосредственно в App Store.</p></details>
 <details><summary>Можно ли пользоваться Бет-М с iPhone без установки приложения?</summary><p>Да, для этого подходит мобильная версия официального сайта — она открывается в браузере телефона и не требует установки отдельного приложения.</p></details>
 <details><summary>Как добавить сайт на домашний экран iPhone?</summary><p>В браузере откройте меню «Поделиться» и выберите пункт добавления на домашний экран — появится ярлык, по внешнему виду похожий на иконку приложения.</p></details>
 <details><summary>Стоит ли устанавливать приложение не из App Store?</summary><p>Нет, для iPhone безопасный канал — только официальный App Store. Файлы и профили из сторонних источников создают риск установки поддельного или вредоносного приложения.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/bet-m/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/pari?p=bukmekery/bet-m/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>, <a href="/go/fonbet?p=bukmekery/bet-m/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/melbet?p=bukmekery/bet-m/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/bet-m"><b>Бет-М: обзор легального букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/bet-m/promokod"><b>Промокод Бет-М: как это работает</b><small>Промокод</small></a>

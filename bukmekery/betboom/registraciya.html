@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "BetBoom", "item": "https://stavki-rating.ru/bukmekery/betboom"}, {"@type": "ListItem", "position": 4, "name": "Регистрация в BetBoom: как пройти шаг за шагом", "item": "https://stavki-rating.ru/bukmekery/betboom/registraciya"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Регистрация в BetBoom: как пройти шаг за шагом", "description": "Как зарегистрироваться в BetBoom: номер телефона, идентификация через Единый ЦУПИС и что нужно для завершения регистрации в легальной БК из реестра ЕРАИ.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/betboom/registraciya", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Регистрация в BetBoom: как пройти шаг за шагом", "description": "Как зарегистрироваться в BetBoom: номер телефона, идентификация через Единый ЦУПИС и что нужно для завершения регистрации в легальной БК из реестра ЕРАИ.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/betboom/registraciya", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Сколько времени занимает регистрация в BetBoom?", "acceptedAnswer": {"@type": "Answer", "text": "Сама форма регистрации по телефону занимает несколько минут; срок идентификации через ЦУПИС зависит от выбранного способа и может занять от нескольких минут до одного-двух дней."}}, {"@type": "Question", "name": "Можно ли зарегистрироваться без Госуслуг?", "acceptedAnswer": {"@type": "Answer", "text": "Да, идентификация через Единый ЦУПИС возможна и другими способами — например, лично в пункте идентификации или через привязанный электронный кошелёк."}}, {"@type": "Question", "name": "Нужен ли паспорт для регистрации?", "acceptedAnswer": {"@type": "Answer", "text": "Паспортные данные потребуются на этапе идентификации через Единый ЦУПИС — это обязательное требование для всех легальных букмекеров."}}, {"@type": "Question", "name": "Какой минимальный депозит после регистрации?", "acceptedAnswer": {"@type": "Answer", "text": "Минимальная сумма пополнения счёта в BetBoom — от 100 ₽."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/betboom">BetBoom</a><span>/</span>Регистрация в BetBoom: как пройти шаг за шагом</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · BetBoom ·</div>
     <h1>Регистрация в BetBoom: как пройти шаг за шагом</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>2 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Регистрация у BetBoom, как и у любого легального букмекера в России, проходит по номеру телефона с обязательной идентификацией через Единый ЦУПИС. Разбираем общий порядок шагов и что нужно подготовить, чтобы завершить процесс без задержек.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/betboom?p=betboom&amp;pl=subpage-top">Сайт букмекера BetBoom →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#chto-nuzhno-dlya-registracii">Что нужно для регистрации</a></li><li><a href="#poryadok-registracii">Порядок регистрации</a></li><li><a href="#identifikaciya-cherez-edinyj-cupis">Идентификация через Единый ЦУПИС</a></li><li><a href="#posle-registracii">После регистрации</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Что нужно для регистрации</h2>
+    <h2 id="chto-nuzhno-dlya-registracii">Что нужно для регистрации</h2>
 <p>Для регистрации у легального букмекера достаточно действующего номера телефона. Для завершения идентификации через Единый ЦУПИС может понадобиться доступ к учётной записи на Госуслугах, паспортные данные или посещение пункта идентификации — конкретный набор способов зависит от того, какие варианты доступны в моменте.</p>
-<h2>Порядок регистрации</h2>
+<h2 id="poryadok-registracii">Порядок регистрации</h2>
 <div class="table-wrap"><table><caption>Шаги регистрации у легального букмекера</caption><thead><tr><th>Шаг</th><th>Что делать</th></tr></thead><tbody><tr><td>1</td><td>Открыть форму регистрации на сайте betboom.ru или в приложении</td></tr><tr><td>2</td><td>Указать номер телефона и подтвердить его кодом из SMS</td></tr><tr><td>3</td><td>Заполнить обязательные личные данные</td></tr><tr><td>4</td><td>Пройти идентификацию через Единый ЦУПИС (Госуслуги, лично в пункте или через привязанный электронный кошелёк)</td></tr><tr><td>5</td><td>Пополнить счёт и подтвердить учётную запись для полного доступа к функциям</td></tr></tbody></table></div><p>Сама регистрация по номеру телефона обычно занимает несколько минут — это стандартная форма с несколькими обязательными полями. Дальше сроки зависят от способа идентификации: подтверждение через Госуслуги может пройти почти сразу, тогда как посещение пункта идентификации или ручная проверка данных занимает больше времени.</p>
-<h2>Идентификация через Единый ЦУПИС</h2>
+<h2 id="identifikaciya-cherez-edinyj-cupis">Идентификация через Единый ЦУПИС</h2>
 <p>Единый ЦУПИС — обязательное звено легального рынка ставок в России: он проверяет личность клиента и проводит все расчёты между букмекером и игроком. Без прохождения идентификации доступ к выводу средств будет ограничен — это общее правило отрасли, а не особенность конкретного бренда. Подробнее о том, как устроена эта система, читайте в материале <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">регистрация и ЦУПИС</a>.</p><p>Если данные не совпадают — например, номер телефона ранее был привязан к другому человеку — или система не может подтвердить личность автоматически, обычно доступны альтернативные способы: обращение в поддержку букмекера или личное посещение пункта идентификации.</p>
-<h2>После регистрации</h2>
+<h2 id="posle-registracii">После регистрации</h2>
 <p>После завершения идентификации доступны пополнение счёта (минимальная сумма — от 100 ₽), ставки в линии и live, а также личный кабинет с историей операций. Доступ к аккаунту можно получить как через сайт, так и через приложение — если основной сайт недоступен, способы захода разобраны в материале <a href="/bukmekery/betboom/kak-zajti">как зайти на BetBoom</a>, а установка приложения — в статье <a href="/bukmekery/betboom/prilozhenie">приложение BetBoom</a>.</p><p>Перед регистрацией у любого оператора стоит убедиться в его легальном статусе — как это проверить, показано в материале <a href="/kak-proverit-licenziyu">проверка лицензии букмекера</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Сколько времени занимает регистрация в BetBoom?</summary><p>Сама форма регистрации по телефону занимает несколько минут; срок идентификации через ЦУПИС зависит от выбранного способа и может занять от нескольких минут до одного-двух дней.</p></details>
 <details><summary>Можно ли зарегистрироваться без Госуслуг?</summary><p>Да, идентификация через Единый ЦУПИС возможна и другими способами — например, лично в пункте идентификации или через привязанный электронный кошелёк.</p></details>
 <details><summary>Нужен ли паспорт для регистрации?</summary><p>Паспортные данные потребуются на этапе идентификации через Единый ЦУПИС — это обязательное требование для всех легальных букмекеров.</p></details>
 <details><summary>Какой минимальный депозит после регистрации?</summary><p>Минимальная сумма пополнения счёта в BetBoom — от 100 ₽.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/betboom/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/ligastavok?p=bukmekery/betboom/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>, <a href="/go/marathonbet?p=bukmekery/betboom/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>, <a href="/go/betcity?p=bukmekery/betboom/registraciya&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/betboom"><b>BetBoom: обзор легального букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/betboom/promokod"><b>Промокод BetBoom: где искать и как использовать</b><small>Промокод</small></a>

@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -171,7 +181,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Города", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Ставки на спорт в Нижнем Новгороде: как ставить легально", "item": "https://stavki-rating.ru/shkola/goroda/stavki-nizhnij-novgorod"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ставки на спорт в Нижнем Новгороде: как ставить легально", "description": "ХК «Торпедо» в КХЛ 2026/2027: какие рынки на матчи клуба предлагают легальные букмекеры из реестра ЕРАИ и как ставить легально из Нижнего Новгорода.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/goroda/stavki-nizhnij-novgorod", "datePublished": "2026-09-10", "dateModified": "2026-09-10", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ставки на спорт в Нижнем Новгороде: как ставить легально", "description": "ХК «Торпедо» в КХЛ 2026/2027: какие рынки на матчи клуба предлагают легальные букмекеры из реестра ЕРАИ и как ставить легально из Нижнего Новгорода.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/goroda/stavki-nizhnij-novgorod", "datePublished": "2026-09-10", "dateModified": "2026-09-10", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "В какой лиге играет ХК «Торпедо» в сезоне 2026/2027?", "acceptedAnswer": {"@type": "Answer", "text": "В КХЛ."}}, {"@type": "Question", "name": "Где проходят домашние матчи «Торпедо»?", "acceptedAnswer": {"@type": "Answer", "text": "В ледовом дворце «Нагорный» в Нижнем Новгороде; клуб заявляет о планах переезда на новую арену."}}, {"@type": "Question", "name": "Можно ли легально ставить на КХЛ, находясь в Нижнем Новгороде?", "acceptedAnswer": {"@type": "Answer", "text": "Да, через сайт или приложение букмекера с лицензией и местом в реестре ЕРАИ, расчёты — через ЦУПИС. Регион проживания на это не влияет."}}, {"@type": "Question", "name": "Какие рынки обычно доступны на матчи «Торпедо»?", "acceptedAnswer": {"@type": "Answer", "text": "Исход с учётом овертайма и буллитов, фора по шайбам, общий и индивидуальный тотал, тотал по периодам."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -211,28 +221,29 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Города</a><span>/</span>Ставки на спорт в Нижнем Новгороде: как ставить легально</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Школа · Города ·</div>
     <h1>Ставки на спорт в Нижнем Новгороде: как ставить легально</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 10.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-10">10.09.2026</time></span><span>·</span><span>2 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Главный спортивный клуб Нижнего Новгорода — ХК «Торпедо», выступающий в КХЛ. В сезоне 2026/2027 команда по-прежнему представляет город в элитном российском хоккее. Ниже — какие рынки на игры «Торпедо» обычно открывают легальные букмекеры из реестра ЕРАИ и как оформить ставку легально, если вы находитесь в Нижнем Новгороде.</p>
     
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#hk-torpedo-liga-arena-rynki-dlya-stavok">ХК «Торпедо»: лига, арена, рынки для ставок</a></li><li><a href="#kak-legalno-postavit-na-torpedo-iz-nizhnego-novgoroda">Как легально поставить на «Торпедо» из Нижнего Новгорода</a></li><li><a href="#lokalnyj-kontekst-starejshij-brend-goroda">Локальный контекст: старейший бренд города</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>ХК «Торпедо»: лига, арена, рынки для ставок</h2>
+    <h2 id="hk-torpedo-liga-arena-rynki-dlya-stavok">ХК «Торпедо»: лига, арена, рынки для ставок</h2>
 <ul><li><strong>Лига:</strong> КХЛ, сезон 2026/2027.</li><li><strong>Домашняя арена:</strong> ледовый дворец «Нагорный»; по данным клуба, в перспективе команда должна перейти на новую арену в Нижнем Новгороде.</li></ul><p>На матчи «Торпедо» легальные букмекеры обычно расписывают стандартный для хоккея набор рынков: исход с учётом овертайма и буллитов, фору по шайбам, общий тотал матча, индивидуальный тотал каждой команды и тотал по периодам. На принципиальные встречи линия обычно шире.</p>
-<h2>Как легально поставить на «Торпедо» из Нижнего Новгорода</h2>
+<h2 id="kak-legalno-postavit-na-torpedo-iz-nizhnego-novgoroda">Как легально поставить на «Торпедо» из Нижнего Новгорода</h2>
 <p>Территориальной привязки для ставок нет — работать легально можно из любого города, включая Нижний Новгород, через сайт или приложение букмекера, у которого есть лицензия и который включён в реестр Единого регулятора азартных игр (ЕРАИ). Порядок обычный: регистрация на сайте оператора, подтверждение личности по паспортным данным, пополнение счёта через ЦУПИС — расчётный узел, через который по закону проходят все переводы в лицензированных БК. Сравнить условия легальных операторов можно на <a href="/rating">странице рейтинга букмекеров</a>.</p><p>Про физические пункты приёма ставок в Нижнем Новгороде точных актуальных данных по адресам нет, поэтому конкретный адрес называть не будем — если для вас важна ставка офлайн, уточняйте наличие ППС напрямую у выбранного оператора.</p>
-<h2>Локальный контекст: старейший бренд города</h2>
+<h2 id="lokalnyj-kontekst-starejshij-brend-goroda">Локальный контекст: старейший бренд города</h2>
 <p>«Торпедо» — один из старейших клубов советского и российского хоккея, представляющий город на всесоюзном, а затем и континентальном уровне уже несколько десятилетий подряд. Для болельщиков Нижнего Новгорода клуб остаётся главным спортивным брендом города в игровых видах спорта.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>В какой лиге играет ХК «Торпедо» в сезоне 2026/2027?</summary><p>В КХЛ.</p></details>
 <details><summary>Где проходят домашние матчи «Торпедо»?</summary><p>В ледовом дворце «Нагорный» в Нижнем Новгороде; клуб заявляет о планах переезда на новую арену.</p></details>
 <details><summary>Можно ли легально ставить на КХЛ, находясь в Нижнем Новгороде?</summary><p>Да, через сайт или приложение букмекера с лицензией и местом в реестре ЕРАИ, расчёты — через ЦУПИС. Регион проживания на это не влияет.</p></details>
 <details><summary>Какие рынки обычно доступны на матчи «Торпедо»?</summary><p>Исход с учётом овертайма и буллитов, фора по шайбам, общий и индивидуальный тотал, тотал по периодам.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/marathonbet">Марафон</a>, <a href="/bukmekery/fonbet">Фонбет</a>, <a href="/bukmekery/zenit">Зенит</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/shkola/goroda/stavki-yaroslavl"><b>Ставки на спорт в Ярославле: как ставить легально</b><small>Города</small></a>
       <a class="tile" href="/shkola/goroda/stavki-habarovsk"><b>Ставки на спорт в Хабаровске: как ставить легально</b><small>Города</small></a>

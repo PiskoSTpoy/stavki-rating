@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Bettery", "item": "https://stavki-rating.ru/bukmekery/bettery"}, {"@type": "ListItem", "position": 4, "name": "Бонусы Bettery: какие типы бывают и как их отыгрывать", "item": "https://stavki-rating.ru/bukmekery/bettery/bonus"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонусы Bettery: какие типы бывают и как их отыгрывать", "description": "Обзор типов бонусов у легальных букмекеров: приветственный бонус, фрибет, кэшбэк и честные условия отыгрыша без вымышленных цифр для Bettery.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/bettery/bonus", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонусы Bettery: какие типы бывают и как их отыгрывать", "description": "Обзор типов бонусов у легальных букмекеров: приветственный бонус, фрибет, кэшбэк и честные условия отыгрыша без вымышленных цифр для Bettery.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/bettery/bonus", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Какие бонусы есть у Bettery?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Как и у других легальных букмекеров, у Bettery могут быть приветственный бонус, фрибет и кэшбэк. Точный перечень действующих предложений — на официальном сайте bettery.ru.</p>"}}, {"@type": "Question", "name": "Можно ли вывести бонус без отыгрыша?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Как правило нет — почти все бонусные предложения у легальных операторов требуют выполнения условий отыгрыша перед выводом средств.</p>"}}, {"@type": "Question", "name": "Кэшбэк начисляется автоматически?", "acceptedAnswer": {"@type": "Answer", "text": "<p>У большинства букмекеров да, но иногда требуется отдельная активация в личном кабинете или через промокод — уточняйте в правилах конкретной акции.</p>"}}, {"@type": "Question", "name": "Где узнать точный размер бонуса Bettery?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Только на официальном сайте bettery.ru: там указаны действующие на данный момент условия, которые могут периодически меняться.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,36 +222,37 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/bettery">Bettery</a><span>/</span>Бонусы Bettery: какие типы бывают и как их отыгрывать</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Bettery ·</div>
     <h1>Бонусы Bettery: какие типы бывают и как их отыгрывать</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">У легальных букмекеров встречается несколько типов бонусов: приветственный бонус, фрибет, кэшбэк и разовые акции. Разбираем, как устроен каждый тип в общих чертах и какие условия отыгрыша обычно к ним прилагаются. Конкретные суммы, проценты и сроки актуальных предложений Bettery — только на официальном сайте bettery.ru.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/bettery?p=bettery&amp;pl=subpage-top">Сайт букмекера Bettery →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#privetstvennyj-bonus">Приветственный бонус</a></li><li><a href="#fribet">Фрибет</a></li><li><a href="#keshbek">Кэшбэк</a></li><li><a href="#razovye-akcii">Разовые акции</a></li><li><a href="#sravnenie-tipov-bonusov">Сравнение типов бонусов</a></li><li><a href="#na-chto-smotret-pered-aktivaciej-lyubogo-bonusa">На что смотреть перед активацией любого бонуса</a></li><li><a href="#obschie-pravila-otygrysha">Общие правила отыгрыша</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Приветственный бонус</h2>
+    <h2 id="privetstvennyj-bonus">Приветственный бонус</h2>
 <p>Приветственный бонус — предложение для новых игроков, которое активируется обычно при первом пополнении счёта или через промокод при регистрации. У легальных операторов такой бонус почти всегда доступен только после завершения идентификации через ЦУПИС.</p><p>Правила ввода промокода и активации бонуса — на странице <a href="/bukmekery/bettery/promokod">промокод Bettery</a>.</p>
-<h2>Фрибет</h2>
+<h2 id="fribet">Фрибет</h2>
 <p>Фрибет — бесплатная ставка вместо денежного бонуса. Механика, типичные условия и то, что происходит с выигрышем по фрибету, разобраны подробно на странице <a href="/bukmekery/bettery/fribet">фрибет Bettery</a>.</p>
-<h2>Кэшбэк</h2>
+<h2 id="keshbek">Кэшбэк</h2>
 <p>Кэшбэк — частичный возврат части проигранных средств за определённый период. У легальных букмекеров кэшбэк обычно начисляется автоматически по итогам расчётного периода и может иметь ограничение по максимальной сумме возврата.</p><p>Конкретный процент возврата, длительность расчётного периода и лимит выплаты определяет сам оператор — эти параметры не совпадают у разных букмекеров и периодически пересматриваются, поэтому их стоит проверять в актуальных правилах акции.</p>
-<h2>Разовые акции</h2>
+<h2 id="razovye-akcii">Разовые акции</h2>
 <p>Помимо постоянных бонусов легальные букмекеры периодически запускают разовые акции: розыгрыши, специальные предложения к крупным спортивным событиям или временные изменения условий кэшбэка. Такие акции анонсируются отдельно и имеют собственные правила, отличные от базовых условий приветственного бонуса или фрибета. Актуальный список действующих акций Bettery — на официальном сайте bettery.ru.</p>
-<h2>Сравнение типов бонусов</h2>
+<h2 id="sravnenie-tipov-bonusov">Сравнение типов бонусов</h2>
 <div class="table-wrap"><table><caption>Основные типы бонусов у легальных букмекеров</caption><thead><tr><th>Тип бонуса</th><th>Как выдаётся</th><th>Что с ним делать дальше</th></tr></thead><tbody><tr><td>Приветственный бонус</td><td>За регистрацию и/или первый депозит</td><td>Отыграть по условиям (коэффициент, срок)</td></tr><tr><td>Фрибет</td><td>Бесплатная ставка на счёт фрибетов</td><td>Использовать на ставку до истечения срока</td></tr><tr><td>Кэшбэк</td><td>Возврат части проигранных средств</td><td>Обычно зачисляется автоматически, иногда требует активации</td></tr></tbody></table></div>
-<h2>На что смотреть перед активацией любого бонуса</h2>
+<h2 id="na-chto-smotret-pered-aktivaciej-lyubogo-bonusa">На что смотреть перед активацией любого бонуса</h2>
 <ul><li>Минимальный коэффициент ставки, при котором бонус засчитывается.</li><li>Срок, за который нужно выполнить условия отыгрыша — если не успеть, бонус может сгореть.</li><li>Какие виды спорта и типы ставок участвуют в отыгрыше, а какие исключены из него.</li><li>Что происходит с номиналом бонуса при выводе выигрыша после выполнения условий.</li></ul>
-<h2>Общие правила отыгрыша</h2>
+<h2 id="obschie-pravila-otygrysha">Общие правила отыгрыша</h2>
 <p>Почти любой бонус у легального оператора требует выполнения условий: минимального коэффициента ставки, определённого срока и иногда ограничения на виды спорта. Подробный разбор механизма — в материале <a href="/shkola/terminy/chto-takoe-otygrysh-bonusa">что такое отыгрыш бонуса</a>.</p><p>Перед активацией любого предложения стоит прочитать правила акции целиком — именно там указаны точные цифры и сроки для конкретного бонуса.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Какие бонусы есть у Bettery?</summary><p>Как и у других легальных букмекеров, у Bettery могут быть приветственный бонус, фрибет и кэшбэк. Точный перечень действующих предложений — на официальном сайте bettery.ru.</p></details>
 <details><summary>Можно ли вывести бонус без отыгрыша?</summary><p>Как правило нет — почти все бонусные предложения у легальных операторов требуют выполнения условий отыгрыша перед выводом средств.</p></details>
 <details><summary>Кэшбэк начисляется автоматически?</summary><p>У большинства букмекеров да, но иногда требуется отдельная активация в личном кабинете или через промокод — уточняйте в правилах конкретной акции.</p></details>
 <details><summary>Где узнать точный размер бонуса Bettery?</summary><p>Только на официальном сайте bettery.ru: там указаны действующие на данный момент условия, которые могут периодически меняться.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/bettery/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/melbet?p=bukmekery/bettery/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>, <a href="/go/fonbet?p=bukmekery/bettery/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/pari?p=bukmekery/bettery/bonus&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/bettery"><b>Bettery: обзор букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/bettery/promokod"><b>Промокод Bettery: как это устроено</b><small>Промокод</small></a>

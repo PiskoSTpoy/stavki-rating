@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "24bet", "item": "https://stavki-rating.ru/bukmekery/24bet"}, {"@type": "ListItem", "position": 4, "name": "Бонусы 24bet: какие виды бывают и на что смотреть", "item": "https://stavki-rating.ru/bukmekery/24bet/bonus"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонусы 24bet: какие виды бывают и на что смотреть", "description": "Какие бонусы в принципе бывают у легальных букмекеров — приветственный, фрибет, кэшбэк — и на какие условия отыгрыша обратить внимание перед активацией.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/24bet/bonus", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонусы 24bet: какие виды бывают и на что смотреть", "description": "Какие бонусы в принципе бывают у легальных букмекеров — приветственный, фрибет, кэшбэк — и на какие условия отыгрыша обратить внимание перед активацией.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/24bet/bonus", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Какие бонусы есть в 24bet прямо сейчас?", "acceptedAnswer": {"@type": "Answer", "text": "Актуальный набор бонусных предложений и их условия меняются, поэтому конкретные цифры нужно смотреть в разделе акций на официальном сайте 24bet.ru."}}, {"@type": "Question", "name": "Бонус выдаётся автоматически или нужен промокод?", "acceptedAnswer": {"@type": "Answer", "text": "Это зависит от конкретной акции: часть предложений активируется через промокод при регистрации, другие могут применяться автоматически при выполнении условий. Точный порядок описан в правилах акции на сайте оператора."}}, {"@type": "Question", "name": "Можно ли сразу вывести бонусные деньги?", "acceptedAnswer": {"@type": "Answer", "text": "Как правило нет — большинство бонусов у легальных букмекеров требуют отыгрыша по определённым правилам, прежде чем средства становятся доступны для вывода."}}, {"@type": "Question", "name": "Что если не успел отыграть бонус в срок?", "acceptedAnswer": {"@type": "Answer", "text": "Если бонус не был отыгран до истечения установленного срока, он и связанные с ним средства обычно аннулируются. Условия конкретной акции важно читать заранее, до её активации."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,32 +222,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/24bet">24bet</a><span>/</span>Бонусы 24bet: какие виды бывают и на что смотреть</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · 24bet ·</div>
     <h1>Бонусы 24bet: какие виды бывают и на что смотреть</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">У легальных букмекеров бонусы обычно строятся вокруг нескольких стандартных механик: приветственное предложение для новых клиентов, фрибет и кэшбэк за проигранные ставки. В этом материале разбираем, как эти механики работают в целом и на какие условия отыгрыша обращать внимание у 24bet — без конкретных цифр, которые нужно уточнять на официальном сайте.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/24bet?p=24bet&amp;pl=subpage-top">Сайт букмекера 24bet →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#privetstvennyj-bonus-dlya-novyh-klientov">Приветственный бонус для новых клиентов</a></li><li><a href="#fribet-kak-forma-bonusa">Фрибет как форма бонуса</a></li><li><a href="#keshbek-za-proigrannye-stavki">Кэшбэк за проигранные ставки</a></li><li><a href="#na-chto-smotret-v-usloviyah-otygrysha">На что смотреть в условиях отыгрыша</a></li><li><a href="#kak-sravnivat-bonusnye-predlozheniya">Как сравнивать бонусные предложения</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Приветственный бонус для новых клиентов</h2>
+    <h2 id="privetstvennyj-bonus-dlya-novyh-klientov">Приветственный бонус для новых клиентов</h2>
 <p>Это самый распространённый тип бонуса: он начисляется после регистрации и первого пополнения счёта. Обычно приветственное предложение привязано к промокоду или активируется автоматически при выполнении условий акции. Как искать и вводить такой код, подробно описано на странице <a href="/bukmekery/24bet/promokod">о промокодах 24bet</a>.</p><p>Такой бонус, как правило, доступен только один раз на одного клиента и привязан к первому пополнению счёта: повторные депозиты обычно уже не дают права на повторную активацию того же предложения.</p>
-<h2>Фрибет как форма бонуса</h2>
+<h2 id="fribet-kak-forma-bonusa">Фрибет как форма бонуса</h2>
 <p>Фрибет — это бесплатная ставка вместо денежного начисления на счёт. Такой формат часто используют вместо прямого денежного бонуса, потому что итог зависит от результата конкретного события, а не гарантирован заранее. Подробный разбор механики фрибета — на отдельной <a href="/bukmekery/24bet/fribet">странице о фрибете 24bet</a>.</p>
-<h2>Кэшбэк за проигранные ставки</h2>
+<h2 id="keshbek-za-proigrannye-stavki">Кэшбэк за проигранные ставки</h2>
 <p>Кэшбэк — это частичный возврат средств по проигранным ставкам за определённый период, обычно в виде бонусного счёта или фрибета, а не живых денег. Такая механика встречается у ряда легальных операторов как способ удержания активных клиентов, но конкретные условия — процент возврата, период расчёта, лимиты — сильно различаются и должны проверяться напрямую на сайте оператора.</p><p>Кэшбэк удобен тем, что обычно не требует от игрока никаких дополнительных действий вроде ввода промокода — начисление происходит автоматически по итогам расчётного периода, если аккаунт не нарушал условия акции. При этом полученный кэшбэк почти всегда приходит в виде бонусного счёта или фрибета со своими условиями отыгрыша, а не как сумма, доступная к немедленному выводу.</p>
-<h2>На что смотреть в условиях отыгрыша</h2>
+<h2 id="na-chto-smotret-v-usloviyah-otygrysha">На что смотреть в условиях отыгрыша</h2>
 <div class="table-wrap"><table><caption>Что важно проверить перед активацией бонуса</caption><thead><tr><th>Параметр</th><th>Зачем проверять</th></tr></thead><tbody><tr><td>Минимальный коэффициент ставки</td><td>Слишком высокий порог усложняет отыгрыш</td></tr><tr><td>Срок действия бонуса</td><td>Неиспользованный бонус может аннулироваться</td></tr><tr><td>Кратность отыгрыша</td><td>Определяет, сколько раз нужно прокрутить сумму бонуса</td></tr><tr><td>Ограничения на вывод</td><td>Иногда выигрыш с бонуса нельзя вывести сразу</td></tr></tbody></table></div><p>Механика расчёта отыгрыша в целом объясняется в материале <a href="/shkola/terminy/chto-takoe-otygrysh-bonusa">что такое отыгрыш бонуса</a>.</p>
-<h2>Как сравнивать бонусные предложения</h2>
+<h2 id="kak-sravnivat-bonusnye-predlozheniya">Как сравнивать бонусные предложения</h2>
 <p>Поскольку размеры и сроки бонусов у легальных операторов регулярно меняются, надёжнее сравнивать не рекламные цифры, а структуру предложения: тип бонуса (деньги, фрибет или кэшбэк), требования к отыгрышу и ограничения по срокам действия. Сводный обзор актуальных бонусных предложений разных букмекеров собран в разделе <a href="/bonusy">бонусы букмекеров</a>, а сравнение самих операторов между собой — в <a href="/rating">рейтинге букмекеров</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Какие бонусы есть в 24bet прямо сейчас?</summary><p>Актуальный набор бонусных предложений и их условия меняются, поэтому конкретные цифры нужно смотреть в разделе акций на официальном сайте 24bet.ru.</p></details>
 <details><summary>Бонус выдаётся автоматически или нужен промокод?</summary><p>Это зависит от конкретной акции: часть предложений активируется через промокод при регистрации, другие могут применяться автоматически при выполнении условий. Точный порядок описан в правилах акции на сайте оператора.</p></details>
 <details><summary>Можно ли сразу вывести бонусные деньги?</summary><p>Как правило нет — большинство бонусов у легальных букмекеров требуют отыгрыша по определённым правилам, прежде чем средства становятся доступны для вывода.</p></details>
 <details><summary>Что если не успел отыграть бонус в срок?</summary><p>Если бонус не был отыгран до истечения установленного срока, он и связанные с ним средства обычно аннулируются. Условия конкретной акции важно читать заранее, до её активации.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/24bet/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/fonbet?p=bukmekery/24bet/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/zenit?p=bukmekery/24bet/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/ligastavok?p=bukmekery/24bet/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/24bet"><b>24bet: обзор букмекерской конторы</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/24bet/promokod"><b>Промокод 24bet: как это работает</b><small>Промокод</small></a>

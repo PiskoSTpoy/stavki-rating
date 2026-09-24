@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -171,7 +181,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Рейтинги", "item": "https://stavki-rating.ru/rejting"}, {"@type": "ListItem", "position": 3, "name": "Бонус за регистрацию в БК: на что смотреть", "item": "https://stavki-rating.ru/rejting/s-bonusom-za-registraciyu"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонус за регистрацию в БК: на что смотреть", "description": "Бонус за регистрацию в букмекерской конторе: чем фрибет отличается от бонуса на депозит, что такое отыгрыш и как оценить реальную ценность предложения.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/rejting/s-bonusom-za-registraciyu", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонус за регистрацию в БК: на что смотреть", "description": "Бонус за регистрацию в букмекерской конторе: чем фрибет отличается от бонуса на депозит, что такое отыгрыш и как оценить реальную ценность предложения.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/rejting/s-bonusom-za-registraciyu", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Чем фрибет отличается от бонуса на депозит?", "acceptedAnswer": {"@type": "Answer", "text": "Фрибет — разовая ставка за счёт БК без отдельного отыгрыша, но номинал не возвращается. Бонус на депозит начисляется при пополнении и требует отыгрыша по вейджеру, прежде чем его можно вывести."}}, {"@type": "Question", "name": "Что такое вейджер x5?", "acceptedAnswer": {"@type": "Answer", "text": "Это множитель отыгрыша: чтобы получить доступ к бонусу, нужно сделать ставок на сумму, в 5 раз превышающую бонус. Для бонуса 1000 ₽ оборот составит 5000 ₽, часто с условием минимального коэффициента ставок."}}, {"@type": "Question", "name": "Можно ли сразу вывести бонус за регистрацию?", "acceptedAnswer": {"@type": "Answer", "text": "Обычно нет. Бонус на депозит нужно отыграть по условиям, а с фрибета выводится только чистая прибыль после расчёта ставки. Прямой вывод самой бонусной суммы, как правило, недоступен."}}, {"@type": "Question", "name": "Облагается ли выигрыш с бонуса налогом?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Выигрыши у легальных букмекеров облагаются НДФЛ, а с 2026 года оператор удерживает налог как налоговый агент при выплате. Итоговая сумма на руки будет меньше номинала — это стоит закладывать в расчёт."}}, {"@type": "Question", "name": "На что смотреть кроме размера бонуса?", "acceptedAnswer": {"@type": "Answer", "text": "На коэффициент вейджера, срок отыгрыша, минимальные коэффициенты ставок, лимиты и требования к депозиту. Небольшой бонус с мягкими условиями нередко ценнее крупного с жёстким отыгрышем."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -211,33 +221,34 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/rejting">Рейтинги</a><span>/</span>Бонус за регистрацию в БК: на что смотреть</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Рейтинги ·</div>
     <h1>Бонус за регистрацию в БК: на что смотреть</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Бонус за регистрацию — это поощрение, которое легальный букмекер начисляет новому игроку после регистрации и идентификации. Встречаются два основных типа: фрибет (ставка за счёт оператора) и бонус на депозит, который нужно отыграть по установленным условиям. Прежде чем оценивать размер, смотрите на условия отыгрыша: именно они определяют, сможете ли вы реально вывести бонусные средства.</p>
     
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#kakie-byvayut-bonusy-za-registraciyu">Какие бывают бонусы за регистрацию</a></li><li><a href="#chto-takoe-otygrysh-i-kak-on-schitaetsya">Что такое отыгрыш и как он считается</a></li><li><a href="#skrytye-usloviya-kotorye-menyayut-cennost-bonusa">Скрытые условия, которые меняют ценность бонуса</a></li><li><a href="#kak-ocenit-realnuyu-cennost-bonusa">Как оценить реальную ценность бонуса</a></li><li><a href="#kak-vybrat-operatora-i-proverit-usloviya">Как выбрать оператора и проверить условия</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Какие бывают бонусы за регистрацию</h2>
+    <h2 id="kakie-byvayut-bonusy-za-registraciyu">Какие бывают бонусы за регистрацию</h2>
 <p>За регистрацию легальные букмекеры предлагают два основных типа поощрений, и путать их не стоит:</p><ul><li><strong>Фрибет</strong> — ставка за счёт оператора. Номинал не возвращается, отдельного отыгрыша обычно нет, но есть ограничения по коэффициенту и сроку.</li><li><strong>Бонус на депозит</strong> — начисляется при пополнении счёта и требует отыгрыша (вейджера) по установленным правилам, прежде чем средства можно вывести.</li></ul><p>Иногда встречается комбинация: часть суммы выдаётся фрибетом, часть — бонусом на депозит. Механику фрибета разбираем отдельно — <a href="/shkola/terminy/chto-takoe-fribet">что такое фрибет</a>.</p>
-<h2>Что такое отыгрыш и как он считается</h2>
+<h2 id="chto-takoe-otygrysh-i-kak-on-schitaetsya">Что такое отыгрыш и как он считается</h2>
 <p><strong>Отыгрыш (вейджер)</strong> — это требование сделать ставок на определённую сумму, кратную бонусу, прежде чем бонусные средства станут доступны к выводу. Обозначается множителем, например x3 или x10.</p><p>Необходимый оборот считается по формуле <strong>сумма бонуса × коэффициент вейджера</strong>. Разберём на примерах для бонуса 1000 ₽:</p><div class="table-wrap"><table><caption>Оборот для отыгрыша бонуса 1000 ₽</caption><thead><tr><th>Бонус</th><th>Вейджер</th><th>Оборот для отыгрыша</th></tr></thead><tbody><tr><td>1000 ₽</td><td>x3</td><td>3000 ₽</td></tr><tr><td>1000 ₽</td><td>x5</td><td>5000 ₽</td></tr><tr><td>1000 ₽</td><td>x10</td><td>10 000 ₽</td></tr></tbody></table></div><p>К обороту часто добавляют условия: минимальный коэффициент каждой ставки, срок отыгрыша и типы допустимых событий. Подробнее — в материале <a href="/shkola/terminy/chto-takoe-otygrysh-bonusa">что такое отыгрыш бонуса</a>.</p>
-<h2>Скрытые условия, которые меняют ценность бонуса</h2>
+<h2 id="skrytye-usloviya-kotorye-menyayut-cennost-bonusa">Скрытые условия, которые меняют ценность бонуса</h2>
 <ol><li><strong>Минимальный коэффициент ставок.</strong> Если в зачёт идут только ставки от определённого порога, отыграть бонус на низких коэффициентах не выйдет.</li><li><strong>Срок отыгрыша.</strong> Ограниченное время повышает риск: приходится ставить быстрее и на большие суммы.</li><li><strong>Максимальная ставка при отыгрыше.</strong> Иногда размер одной ставки в период отыгрыша ограничен, и процесс растягивается.</li><li><strong>Требование первого депозита.</strong> Бонус нередко привязан к сумме и способу пополнения счёта.</li></ol><p>Эти параметры прописаны в правилах акции. Небольшой бонус с мягкими условиями на практике часто ценнее крупного с жёстким отыгрышем.</p>
-<h2>Как оценить реальную ценность бонуса</h2>
+<h2 id="kak-ocenit-realnuyu-cennost-bonusa">Как оценить реальную ценность бонуса</h2>
 <p>Смотрите не на сумму, а на соотношение размера бонуса и жёсткости отыгрыша. Условно: бонус 1000 ₽ с вейджером x3 требует оборота 3000 ₽, а бонус 1000 ₽ с вейджером x10 — уже 10 000 ₽. При одинаковой сумме первый вариант реализовать проще и с меньшим риском потерь.</p><p>Учитывайте и то, что часть оборота уйдёт на заложенную в коэффициенты маржу букмекера, а сам выигрыш у легальных операторов облагается НДФЛ по установленным правилам. Поэтому «на руки» вы получите меньше, чем номинал бонуса на баннере.</p>
-<h2>Как выбрать оператора и проверить условия</h2>
+<h2 id="kak-vybrat-operatora-i-proverit-usloviya">Как выбрать оператора и проверить условия</h2>
 <p>Правила акции всегда опубликованы на сайте оператора — изучайте их до регистрации. Убедитесь, что букмекер легален и проводит платежи через ЦУПИС: как проверить — в инструкции <a href="/kak-proverit-licenziyu">как проверить лицензию</a>.</p><p>Перечень легальных операторов из реестра ЕРАИ собран в общем <a href="/rating">рейтинге букмекеров</a>. Бонус — приятное дополнение, но выбирать контору стоит по совокупности факторов: линия, коэффициенты, скорость выплат и поддержка, а не по одной цифре на баннере.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Чем фрибет отличается от бонуса на депозит?</summary><p>Фрибет — разовая ставка за счёт БК без отдельного отыгрыша, но номинал не возвращается. Бонус на депозит начисляется при пополнении и требует отыгрыша по вейджеру, прежде чем его можно вывести.</p></details>
 <details><summary>Что такое вейджер x5?</summary><p>Это множитель отыгрыша: чтобы получить доступ к бонусу, нужно сделать ставок на сумму, в 5 раз превышающую бонус. Для бонуса 1000 ₽ оборот составит 5000 ₽, часто с условием минимального коэффициента ставок.</p></details>
 <details><summary>Можно ли сразу вывести бонус за регистрацию?</summary><p>Обычно нет. Бонус на депозит нужно отыграть по условиям, а с фрибета выводится только чистая прибыль после расчёта ставки. Прямой вывод самой бонусной суммы, как правило, недоступен.</p></details>
 <details><summary>Облагается ли выигрыш с бонуса налогом?</summary><p>Да. Выигрыши у легальных букмекеров облагаются НДФЛ, а с 2026 года оператор удерживает налог как налоговый агент при выплате. Итоговая сумма на руки будет меньше номинала — это стоит закладывать в расчёт.</p></details>
 <details><summary>На что смотреть кроме размера бонуса?</summary><p>На коэффициент вейджера, срок отыгрыша, минимальные коэффициенты ставок, лимиты и требования к депозиту. Небольшой бонус с мягкими условиями нередко ценнее крупного с жёстким отыгрышем.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=rejting/s-bonusom-za-registraciyu&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/melbet?p=rejting/s-bonusom-za-registraciyu&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>, <a href="/go/fonbet?p=rejting/s-bonusom-za-registraciyu&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/betcity?p=rejting/s-bonusom-za-registraciyu&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/rejting/s-fribetom"><b>Букмекеры с фрибетом за регистрацию: как выбрать</b><small>Рейтинги</small></a>
       <a class="tile" href="/rejting/s-bolshim-bonusom"><b>БК с самым большим бонусом: почему размер — не главное</b><small>Рейтинги</small></a>

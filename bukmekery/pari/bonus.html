@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "PARI", "item": "https://stavki-rating.ru/bukmekery/pari"}, {"@type": "ListItem", "position": 4, "name": "Бонусы PARI: типы и условия отыгрыша", "item": "https://stavki-rating.ru/bukmekery/pari/bonus"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонусы PARI: типы и условия отыгрыша", "description": "Обзор типов бонусов у легальных букмекеров — приветственный, фрибет, кэшбэк — и честные условия отыгрыша. Разбираем механику, а не цифры за оператора.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/pari/bonus", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонусы PARI: типы и условия отыгрыша", "description": "Обзор типов бонусов у легальных букмекеров — приветственный, фрибет, кэшбэк — и честные условия отыгрыша. Разбираем механику, а не цифры за оператора.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/pari/bonus", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Какой бонус выгоднее — деньги или фрибет?", "acceptedAnswer": {"@type": "Answer", "text": "Это зависит от условий конкретной акции: денежный бонус обычно требует более строгого отыгрыша, а фрибет — простая бесплатная попытка без риска для собственных средств. Сравнивайте условия конкретного предложения."}}, {"@type": "Question", "name": "Кэшбэк начисляется автоматически?", "acceptedAnswer": {"@type": "Answer", "text": "В большинстве программ лояльности легальных букмекеров — да, но точный механизм и периодичность начисления определяет оператор. Актуальные условия PARI смотрите на официальном сайте."}}, {"@type": "Question", "name": "Можно ли получить сразу несколько бонусов?", "acceptedAnswer": {"@type": "Answer", "text": "Обычно правила акций ограничивают одновременное участие в нескольких предложениях одним аккаунтом. Уточняйте это в правилах конкретной акции."}}, {"@type": "Question", "name": "Что случится, если не выполнить условия отыгрыша в срок?", "acceptedAnswer": {"@type": "Answer", "text": "Как правило, бонус и связанные с ним средства аннулируются. Поэтому важно проверять срок действия бонуса сразу после его получения."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/pari">PARI</a><span>/</span>Бонусы PARI: типы и условия отыгрыша</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · PARI ·</div>
     <h1>Бонусы PARI: типы и условия отыгрыша</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Легальные букмекеры, включая PARI, используют несколько типовых видов бонусов — приветственный бонус, фрибет и кэшбэк. Разбираем, как эти механики устроены в принципе и какие риски есть у отыгрыша, без выдуманных цифр по конкретному бренду — точные условия PARI смотрите на официальном сайте pari.ru.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/pari?p=pari&amp;pl=subpage-top">Сайт букмекера PARI →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#privetstvennyj-bonus">Приветственный бонус</a></li><li><a href="#fribet">Фрибет</a></li><li><a href="#keshbek">Кэшбэк</a></li><li><a href="#usloviya-otygrysha-i-na-chto-obratit-vnimanie">Условия отыгрыша и на что обратить внимание</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Приветственный бонус</h2>
+    <h2 id="privetstvennyj-bonus">Приветственный бонус</h2>
 <p>Это предложение, которое букмекер делает новому игроку после регистрации и первого пополнения счёта. Чаще всего оно привязано к сумме депозита или к факту прохождения идентификации через ЦУПИС. Порядок регистрации у PARI разобран в отдельной инструкции по <a href="/bukmekery/pari/registraciya">регистрации в PARI</a>.</p><p>Размер и форма приветственного бонуса — деньгами, фрибетом или иначе — определяются правилами конкретной акции и могут меняться со временем.</p><p>У разных операторов приветственный бонус может засчитываться единоразово на первый депозит либо распределяться на несколько последующих пополнений — конкретную схему стоит смотреть в правилах действующей акции, а не считать её одинаковой у всех букмекеров.</p>
-<h2>Фрибет</h2>
+<h2 id="fribet">Фрибет</h2>
 <p>Фрибет — бесплатная ставка вместо денежного бонуса: игрок получает возможность сделать ставку без риска для собственных средств, а не сумму на баланс. Подробно эта механика и типичные условия использования разобраны в материале о <a href="/bukmekery/pari/fribet">фрибете PARI</a>.</p><p>Эта механика подробно разбирается в отдельном материале, поскольку у фрибета есть собственные типичные условия — срок действия, минимальный коэффициент и порядок расчёта выигрыша, которые отличаются от условий денежного бонуса.</p>
-<h2>Кэшбэк</h2>
+<h2 id="keshbek">Кэшбэк</h2>
 <p>Кэшбэк — это частичный возврат части проигранных средств за определённый период, обычно в виде бонусного счёта или фрибета. У легальных букмекеров такая программа лояльности может распространяться на постоянных клиентов и работать по накопительному принципу.</p><p>Как и в случае с другими бонусами, точный процент и условия начисления кэшбэка у PARI устанавливает сам оператор — это стоит проверять непосредственно на pari.ru.</p><p>В отличие от приветственного бонуса, который выдаётся один раз, кэшбэк обычно работает на регулярной основе и рассчитывается за прошедший период — например, по итогам недели или месяца. Возвращённые средства чаще всего поступают в виде бонусного счёта с собственными условиями отыгрыша, а не напрямую на баланс для вывода.</p>
-<h2>Условия отыгрыша и на что обратить внимание</h2>
+<h2 id="usloviya-otygrysha-i-na-chto-obratit-vnimanie">Условия отыгрыша и на что обратить внимание</h2>
 <p>Практически любой бонус у легального букмекера сопровождается условиями отыгрыша: минимальным коэффициентом ставки, сроком действия и иногда требованием сделать определённое количество ставок. Не выполнив условия в срок, игрок рискует потерять доступ к бонусу или к выигрышу, полученному с его помощью.</p><ul><li>Проверяйте срок действия бонуса сразу после активации.</li><li>Смотрите на минимальный коэффициент, разрешённый правилами акции.</li><li>Уточняйте, распространяется ли отыгрыш только на бонусные средства или и на выигрыш с них.</li></ul><p>Подробнее о механике отыгрыша — в материале <a href="/shkola/terminy/chto-takoe-otygrysh-bonusa">что такое отыгрыш бонуса</a>.</p><p>Полезная привычка — сохранять скриншот или ссылку на правила акции в момент её активации: если условия меняются или возникает спор с поддержкой, это упрощает решение вопроса. Такой подход разумен при работе с любым легальным букмекером, включая PARI.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Какой бонус выгоднее — деньги или фрибет?</summary><p>Это зависит от условий конкретной акции: денежный бонус обычно требует более строгого отыгрыша, а фрибет — простая бесплатная попытка без риска для собственных средств. Сравнивайте условия конкретного предложения.</p></details>
 <details><summary>Кэшбэк начисляется автоматически?</summary><p>В большинстве программ лояльности легальных букмекеров — да, но точный механизм и периодичность начисления определяет оператор. Актуальные условия PARI смотрите на официальном сайте.</p></details>
 <details><summary>Можно ли получить сразу несколько бонусов?</summary><p>Обычно правила акций ограничивают одновременное участие в нескольких предложениях одним аккаунтом. Уточняйте это в правилах конкретной акции.</p></details>
 <details><summary>Что случится, если не выполнить условия отыгрыша в срок?</summary><p>Как правило, бонус и связанные с ним средства аннулируются. Поэтому важно проверять срок действия бонуса сразу после его получения.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/pari/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/marathonbet?p=bukmekery/pari/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>, <a href="/go/pari?p=bukmekery/pari/bonus&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>, <a href="/go/betcity?p=bukmekery/pari/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/pari"><b>PARI: что нужно знать о букмекере</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/pari/promokod"><b>Промокод PARI: где искать и как использовать</b><small>Промокод</small></a>

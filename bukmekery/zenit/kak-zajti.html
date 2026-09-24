@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -171,7 +181,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Зенит", "item": "https://stavki-rating.ru/bukmekery/zenit"}, {"@type": "ListItem", "position": 4, "name": "Как зайти на официальный сайт БК «Зенит» и не попасть на фишинг", "item": "https://stavki-rating.ru/bukmekery/zenit/kak-zajti"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как зайти на официальный сайт БК «Зенит» и не попасть на фишинг", "description": "Как правильно зайти на официальный сайт БК «Зенит»: домен zenit.win, риск фишинговых «зеркал» и способы проверить легальность оператора через реестр ЕРАИ.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/zenit/kak-zajti", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как зайти на официальный сайт БК «Зенит» и не попасть на фишинг", "description": "Как правильно зайти на официальный сайт БК «Зенит»: домен zenit.win, риск фишинговых «зеркал» и способы проверить легальность оператора через реестр ЕРАИ.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/zenit/kak-zajti", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что такое «зеркало Зенит» и нужно ли оно легальному букмекеру?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Термин «зеркало» обычно относится к обходным доменам заблокированных сайтов. У легального оператора с лицензией ЕРАИ такой необходимости нет — достаточно официального адреса zenit.win.</p>"}}, {"@type": "Question", "name": "Почему сайт БК «Зенит» иногда не открывается?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Чаще всего это техническая проблема на стороне провайдера или сервера, а не блокировка. Попробуйте обновить страницу позже или воспользуйтесь официальным мобильным приложением.</p>"}}, {"@type": "Question", "name": "Как понять, что сайт с похожим названием — фишинг?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Проверьте точное написание домена, наличие ссылки на лицензию и реестр ЕРАИ, а также то, откуда вы получили ссылку. Подробнее — на странице <a href=\"/kak-proverit-licenziyu\">как проверить лицензию букмекера</a>.</p>"}}, {"@type": "Question", "name": "Можно ли использовать VPN для доступа к сайту БК?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Мы не рекомендуем использовать сторонние VPN или анонимайзеры для доступа к сайту букмекера: это повышает риск попасть на фишинговую копию. Используйте официальный сайт или приложение.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -211,32 +221,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/zenit">Зенит</a><span>/</span>Как зайти на официальный сайт БК «Зенит» и не попасть на фишинг</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Зенит ·</div>
     <h1>Как зайти на официальный сайт БК «Зенит» и не попасть на фишинг</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Пользователи часто ищут «зеркало Зенит», рассчитывая обойти какие-то ограничения. У легального букмекера «Зенит» есть один официальный адрес — zenit.win, и никаких неофициальных «зеркал» ему не требуется. Ниже — как отличить официальный сайт от подделки и почему поиск зеркал иногда приводит на фишинговые копии.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/zenit?p=zenit&amp;pl=subpage-top">Сайт букмекера Зенит →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#odin-oficialnyj-domen-vmesto-zerkal">Один официальный домен вместо «зеркал»</a></li><li><a href="#pochemu-vse-zhe-byvayut-problemy-s-dostupom">Почему всё же бывают проблемы с доступом</a></li><li><a href="#fishingovye-kopii-pod-pohozhim-nazvaniem">Фишинговые копии под похожим названием</a></li><li><a href="#kak-proverit-chto-pered-vami-oficialnyj-sajt">Как проверить, что перед вами официальный сайт</a></li><li><a href="#oficialnyj-sajt-protiv-fishingovoj-kopii">Официальный сайт против фишинговой копии</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Один официальный домен вместо «зеркал»</h2>
+    <h2 id="odin-oficialnyj-domen-vmesto-zerkal">Один официальный домен вместо «зеркал»</h2>
 <p>У легальных букмекеров, работающих в российском правовом поле, есть единственный официальный сайт. Для БК «Зенит» это домен zenit.win. Понятие «зеркало» в привычном смысле (обходной адрес заблокированного нелегального сайта) к легальному оператору неприменимо: он не заблокирован как нелегальный ресурс и не нуждается в обходных доменах.</p><p>Полную информацию о букмекере и ссылку на официальный сайт можно посмотреть на странице <a href="/bukmekery/zenit">«Зенит» в рейтинге</a>.</p>
-<h2>Почему всё же бывают проблемы с доступом</h2>
+<h2 id="pochemu-vse-zhe-byvayut-problemy-s-dostupom">Почему всё же бывают проблемы с доступом</h2>
 <p>Проблемы с открытием сайта могут возникать по техническим причинам: сбои у интернет-провайдера, нагрузка на сервер, региональные особенности маршрутизации трафика. Это не означает, что у оператора отозвана лицензия или что сайт стал нелегальным.</p><p>В такой ситуации разумно проверить соединение, попробовать зайти позже или воспользоваться официальным мобильным приложением как альтернативным каналом. Использование сторонних анонимайзеров, непроверенных VPN-сервисов или сайтов-подделок ради «обхода» мы не рекомендуем — это создаёт риск потери данных аккаунта и денег.</p>
-<h2>Фишинговые копии под похожим названием</h2>
+<h2 id="fishingovye-kopii-pod-pohozhim-nazvaniem">Фишинговые копии под похожим названием</h2>
 <p>Именно на запрос «зеркало» часто ориентируются мошенники: они регистрируют домены, похожие на название букмекера, и копируют дизайн официального сайта, чтобы получить логин, пароль или данные карты пользователя.</p><ul><li>Адрес отличается от zenit.win даже на одну букву или символ</li><li>Сайт запрашивает данные карты сразу на этапе входа, «для верификации»</li><li>Нет ссылки на лицензию, реестр ЕРАИ или условия из официального источника</li><li>Ссылка пришла в сообщении от незнакомого канала, а не из адресной строки самого сайта</li></ul>
-<h2>Как проверить, что перед вами официальный сайт</h2>
+<h2 id="kak-proverit-chto-pered-vami-oficialnyj-sajt">Как проверить, что перед вами официальный сайт</h2>
 <p>Перед вводом логина и пароля стоит свериться с открытыми источниками: реквизиты оператора и его статус можно сопоставить на странице <a href="/kak-proverit-licenziyu">как проверить лицензию букмекера</a>, где также объясняется, как посмотреть оператора в реестре ЕРАИ.</p><p>Дополнительно можно сверить адрес с независимым каталогом легальных букмекеров — например, на странице <a href="/rejting">рейтинга букмекерских контор</a>, где перечислены только операторы с подтверждённым статусом.</p>
-<h2>Официальный сайт против фишинговой копии</h2>
+<h2 id="oficialnyj-sajt-protiv-fishingovoj-kopii">Официальный сайт против фишинговой копии</h2>
 <div class="table-wrap"><table><caption>Как отличить официальный сайт от подделки</caption><thead><tr><th>Признак</th><th>Официальный сайт</th><th>Фишинговая копия</th></tr></thead><tbody><tr><td>Домен</td><td>zenit.win</td><td>Похожий, но другой адрес</td></tr><tr><td>Данные о лицензии</td><td>Есть ссылка на реестр ЕРАИ</td><td>Отсутствуют или скрыты</td></tr><tr><td>Запрос данных карты</td><td>Только в разделе пополнения после входа</td><td>Часто сразу на странице входа</td></tr><tr><td>Способ получить ссылку</td><td>Официальный сайт, приложение, каталог букмекеров</td><td>Реклама в мессенджерах, «гарантированные зеркала»</td></tr></tbody></table></div>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Что такое «зеркало Зенит» и нужно ли оно легальному букмекеру?</summary><p>Термин «зеркало» обычно относится к обходным доменам заблокированных сайтов. У легального оператора с лицензией ЕРАИ такой необходимости нет — достаточно официального адреса zenit.win.</p></details>
 <details><summary>Почему сайт БК «Зенит» иногда не открывается?</summary><p>Чаще всего это техническая проблема на стороне провайдера или сервера, а не блокировка. Попробуйте обновить страницу позже или воспользуйтесь официальным мобильным приложением.</p></details>
 <details><summary>Как понять, что сайт с похожим названием — фишинг?</summary><p>Проверьте точное написание домена, наличие ссылки на лицензию и реестр ЕРАИ, а также то, откуда вы получили ссылку. Подробнее — на странице <a href="/kak-proverit-licenziyu">как проверить лицензию букмекера</a>.</p></details>
 <details><summary>Можно ли использовать VPN для доступа к сайту БК?</summary><p>Мы не рекомендуем использовать сторонние VPN или анонимайзеры для доступа к сайту букмекера: это повышает риск попасть на фишинговую копию. Используйте официальный сайт или приложение.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/zenit/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/fonbet?p=bukmekery/zenit/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/betcity?p=bukmekery/zenit/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>, <a href="/go/pari?p=bukmekery/zenit/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/zenit"><b>Зенит: обзор легального букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/zenit/promokod"><b>Промокод Зенит: как найти и использовать</b><small>Промокод</small></a>

@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Лига Ставок", "item": "https://stavki-rating.ru/bukmekery/ligastavok"}, {"@type": "ListItem", "position": 4, "name": "Как скачать и установить приложение «Лиги Ставок» на Android", "item": "https://stavki-rating.ru/bukmekery/ligastavok/prilozhenie/android"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как скачать и установить приложение «Лиги Ставок» на Android", "description": "Как официально скачать и установить приложение «Лиги Ставок» на Android через RuStore или сайт, и почему Google Play здесь не вариант — разбор редакции.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/ligastavok/prilozhenie/android", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как скачать и установить приложение «Лиги Ставок» на Android", "description": "Как официально скачать и установить приложение «Лиги Ставок» на Android через RuStore или сайт, и почему Google Play здесь не вариант — разбор редакции.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/ligastavok/prilozhenie/android", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Где официально скачать «Лигу Ставок» на Android?", "acceptedAnswer": {"@type": "Answer", "text": "Через каталог RuStore или установочный файл с официального сайта ligastavok.ru. В Google Play приложения с реальными ставками для российских пользователей не публикуются."}}, {"@type": "Question", "name": "Опасно ли устанавливать файл приложения вручную?", "acceptedAnswer": {"@type": "Answer", "text": "Само по себе нет, если файл получен с официального сайта букмекера. Риск возникает при скачивании со сторонних площадок, где под названием бренда могут распространять изменённые копии."}}, {"@type": "Question", "name": "Нужно ли разрешать установку из неизвестных источников?", "acceptedAnswer": {"@type": "Answer", "text": "Да, это стандартный шаг Android при установке приложения не из встроенного магазина — он не связан со сложностью или недоверием к конкретному букмекеру."}}, {"@type": "Question", "name": "Что делать, если приложение не находится в RuStore?", "acceptedAnswer": {"@type": "Answer", "text": "Проверить актуальную ссылку на приложение и статус доступности на официальном сайте ligastavok.ru; временные технические ограничения не означают, что оператор перестал работать."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,32 +222,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/ligastavok">Лига Ставок</a><span>/</span>Как скачать и установить приложение «Лиги Ставок» на Android</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Лига Ставок ·</div>
     <h1>Как скачать и установить приложение «Лиги Ставок» на Android</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Приложение «Лиги Ставок» для Android распространяется официально через каталог RuStore и напрямую с сайта компании — в Google Play букмекерских приложений с реальными ставками для российских пользователей нет. Разбираем, как установить приложение и не наткнуться на подделку.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/ligastavok?p=ligastavok&amp;pl=subpage-top">Сайт букмекера Лига Ставок →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#pochemu-ne-google-play">Почему не Google Play</a></li><li><a href="#ustanovka-cherez-rustore">Установка через RuStore</a></li><li><a href="#ustanovka-fajla-napryamuyu-s-sajta">Установка файла напрямую с сайта</a></li><li><a href="#obnovlenie-prilozheniya-i-sistemnye-trebovaniya">Обновление приложения и системные требования</a></li><li><a href="#kak-proverit-chto-ustanovlena-podlinnaya-kopiya">Как проверить, что установлена подлинная копия</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Почему не Google Play</h2>
+    <h2 id="pochemu-ne-google-play">Почему не Google Play</h2>
 <p>Google Play не размещает в России программы с реальными ставками на деньги — правило площадки применяется к любым легальным букмекерам без исключения, независимо от лицензии и репутации оператора. Поэтому официальные каналы для Android — это каталог RuStore и прямой файл установки с сайта компании.</p>
-<h2>Установка через RuStore</h2>
+<h2 id="ustanovka-cherez-rustore">Установка через RuStore</h2>
 <ol><li>Открыть каталог RuStore на устройстве Android или установить его с официального сайта RuStore.</li><li>Найти приложение «Лига Ставок» по названию бренда — важно свериться, что издатель совпадает с юридическим лицом ООО «ПМБК».</li><li>Установить приложение и пройти вход или регистрацию.</li></ol>
-<h2>Установка файла напрямую с сайта</h2>
+<h2 id="ustanovka-fajla-napryamuyu-s-sajta">Установка файла напрямую с сайта</h2>
 <p>Второй официальный вариант — скачать установочный файл со страницы приложения на сайте ligastavok.ru. Перед установкой из файла на Android нужно временно разрешить установку приложений из неизвестных источников в настройках безопасности устройства — это стандартный шаг для любой программы, которая не пришла из встроенного магазина.</p><p>Скачивать файл установки стоит только с официального сайта, а не со сторонних форумов или файлообменников, где под тем же названием могут распространяться изменённые копии.</p>
-<h2>Обновление приложения и системные требования</h2>
+<h2 id="obnovlenie-prilozheniya-i-sistemnye-trebovaniya">Обновление приложения и системные требования</h2>
 <p>Приложение, установленное через каталог RuStore, обычно обновляется автоматически, если в настройках каталога включены автообновления — так же, как и другие программы из этого магазина. Если приложение установлено файлом напрямую с сайта, автообновления не работают: при выходе новой версии её нужно будет скачать и установить вручную повторно с официального сайта.</p><p>Для установки и стабильной работы приложения нужна актуальная версия Android и свободное место в памяти устройства; точные системные требования на конкретный момент лучше уточнять на странице приложения на официальном сайте ligastavok.ru.</p>
-<h2>Как проверить, что установлена подлинная копия</h2>
+<h2 id="kak-proverit-chto-ustanovlena-podlinnaya-kopiya">Как проверить, что установлена подлинная копия</h2>
 <ul><li>Название разработчика в свойствах приложения должно совпадать с ООО «ПМБК» — общий порядок проверки легальности оператора описан в <a href="/kak-proverit-licenziyu">инструкции «Как проверить лицензию букмекера»</a>.</li><li>Вход в приложении должен использовать те же данные аккаунта, что и на официальном сайте.</li><li>Если приложение при первом запуске запрашивает данные карты вне стандартной формы пополнения — это повод прервать установку.</li></ul><p>Стоит также обратить внимание на размер файла установки и на то, по какой ссылке он получен: если файл скачан не по прямой ссылке с официального сайта, а найден на стороннем ресурсе, безопаснее удалить его и повторить загрузку с проверенного источника.</p><p>Общие сведения о букмекере можно посмотреть в разделе <a href="/bukmekery/ligastavok">«Лига Ставок» на нашем сайте</a>. Для iOS процесс отличается — см. <a href="/bukmekery/ligastavok/prilozhenie/ios">установку на iPhone</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Где официально скачать «Лигу Ставок» на Android?</summary><p>Через каталог RuStore или установочный файл с официального сайта ligastavok.ru. В Google Play приложения с реальными ставками для российских пользователей не публикуются.</p></details>
 <details><summary>Опасно ли устанавливать файл приложения вручную?</summary><p>Само по себе нет, если файл получен с официального сайта букмекера. Риск возникает при скачивании со сторонних площадок, где под названием бренда могут распространять изменённые копии.</p></details>
 <details><summary>Нужно ли разрешать установку из неизвестных источников?</summary><p>Да, это стандартный шаг Android при установке приложения не из встроенного магазина — он не связан со сложностью или недоверием к конкретному букмекеру.</p></details>
 <details><summary>Что делать, если приложение не находится в RuStore?</summary><p>Проверить актуальную ссылку на приложение и статус доступности на официальном сайте ligastavok.ru; временные технические ограничения не означают, что оператор перестал работать.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/ligastavok/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/fonbet?p=bukmekery/ligastavok/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/ligastavok?p=bukmekery/ligastavok/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>, <a href="/go/marathonbet?p=bukmekery/ligastavok/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/ligastavok"><b>Лига Ставок: обзор букмекера, легальный статус и что важно знать новичку</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/ligastavok/promokod"><b>Промокод Лиги Ставок: как это устроено и где искать актуальный код</b><small>Промокод</small></a>

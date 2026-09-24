@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "OLIMPBET", "item": "https://stavki-rating.ru/bukmekery/olimpbet"}, {"@type": "ListItem", "position": 4, "name": "Как устроен вывод средств у OLIMPBET", "item": "https://stavki-rating.ru/bukmekery/olimpbet/vyvod-sredstv"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как устроен вывод средств у OLIMPBET", "description": "Как устроен вывод средств у легальных букмекеров через Единый ЦУПИС и систему быстрых платежей, зачем нужна идентификация и как удерживается налог.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/olimpbet/vyvod-sredstv", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как устроен вывод средств у OLIMPBET", "description": "Как устроен вывод средств у легальных букмекеров через Единый ЦУПИС и систему быстрых платежей, зачем нужна идентификация и как удерживается налог.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/olimpbet/vyvod-sredstv", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Почему деньги выводятся не прямо от букмекера?", "acceptedAnswer": {"@type": "Answer", "text": "Потому что расчёты легальных операторов в России проходят через Единый ЦУПИС — это требование законодательства, применяемое ко всем букмекерам, включённым в реестр, а не особенность отдельного бренда."}}, {"@type": "Question", "name": "Нужна ли идентификация перед выводом денег?", "acceptedAnswer": {"@type": "Answer", "text": "Да, идентификация через ЦУПИС обязательна для легального вывода средств и обычно проходит один раз при регистрации или первом выводе."}}, {"@type": "Question", "name": "Кто платит налог с выигрыша — я сам или букмекер?", "acceptedAnswer": {"@type": "Answer", "text": "С 2026 года налог как налоговый агент рассчитывает и удерживает сам букмекер до зачисления средств, поэтому отдельно декларировать эти суммы не требуется."}}, {"@type": "Question", "name": "Где узнать точные сроки и лимиты вывода у OLIMPBET?", "acceptedAnswer": {"@type": "Answer", "text": "Такие детали могут меняться, поэтому актуальные способы, сроки и лимиты вывода нужно смотреть на официальном сайте olimp.bet."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/olimpbet">OLIMPBET</a><span>/</span>Как устроен вывод средств у OLIMPBET</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · OLIMPBET ·</div>
     <h1>Как устроен вывод средств у OLIMPBET</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Вывод денег у легального оператора, включая OLIMPBET, технически устроен иначе, чем в обычном интернет-магазине: деньги игроков проходят через Единый центр учёта переводов интерактивных ставок (ЦУПИС), а не напрямую от букмекера на карту. Разбираем общую механику вывода, требования к идентификации и то, как удерживается налог с выигрыша — без конкретных сроков и лимитов, которые нужно уточнять на официальном сайте.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/olimpbet?p=olimpbet&amp;pl=subpage-top">Сайт букмекера OLIMPBET →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#rol-edinogo-cupis-v-vyvode-sredstv">Роль Единого ЦУПИС в выводе средств</a></li><li><a href="#identifikaciya-pered-vyvodom">Идентификация перед выводом</a></li><li><a href="#nalog-s-vyigrysha-kto-i-kogda-uderzhivaet">Налог с выигрыша: кто и когда удерживает</a></li><li><a href="#chto-vliyaet-na-skorost-i-udobstvo-vyvoda">Что влияет на скорость и удобство вывода</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Роль Единого ЦУПИС в выводе средств</h2>
+    <h2 id="rol-edinogo-cupis-v-vyvode-sredstv">Роль Единого ЦУПИС в выводе средств</h2>
 <p>У всех легальных букмекеров России расчёты с игроками проходят через Единый ЦУПИС — организацию, которая учитывает движение денег между игроком и оператором. Формально именно через ЦУПИС происходит зачисление и списание средств, а не напрямую со счёта букмекера. Это отличает легальный сегмент от нелегальных сайтов, где такого посредника нет.</p>
-<h2>Идентификация перед выводом</h2>
+<h2 id="identifikaciya-pered-vyvodom">Идентификация перед выводом</h2>
 <p>Перед первым выводом средств у легального оператора нужно пройти идентификацию — подтвердить личность через ЦУПИС, обычно с привязкой банковской карты или через Систему быстрых платежей (СБП). Это стандартное требование законодательства, а не особенность конкретного бренда, и оно применяется до вывода, а не после.</p><div class="table-wrap"><table><caption>Общая механика вывода у легальных операторов</caption><thead><tr><th>Этап</th><th>Суть</th></tr></thead><tbody><tr><td>Идентификация</td><td>Подтверждение личности через ЦУПИС, обычно при регистрации или первом выводе</td></tr><tr><td>Способ вывода</td><td>Как правило, СБП или банковская карта, привязанная к идентификации</td></tr><tr><td>Удержание налога</td><td>НДФЛ с выигрыша удерживается оператором как налоговым агентом до зачисления средств игроку</td></tr><tr><td>Точные условия</td><td>Актуальные способы, сроки и лимиты вывода — на официальном сайте olimp.bet</td></tr></tbody></table></div>
-<h2>Налог с выигрыша: кто и когда удерживает</h2>
+<h2 id="nalog-s-vyigrysha-kto-i-kogda-uderzhivaet">Налог с выигрыша: кто и когда удерживает</h2>
 <p>С выигрышей у легальных букмекеров удерживается НДФЛ, и по действующему порядку с 2026 года обязанность рассчитать и удержать налог как налоговый агент лежит на самом букмекере — то есть игрок получает средства уже за вычетом налога, без необходимости самостоятельно подавать декларацию по этим суммам. Подробнее общий механизм расчёта описан в материале «<a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">налог на выигрыш</a>», а прикинуть сумму можно калькулятором «<a href="/instrumenty/nalog-na-vyigrysh">налог на выигрыш — калькулятор</a>».</p>
-<h2>Что влияет на скорость и удобство вывода</h2>
+<h2 id="chto-vliyaet-na-skorost-i-udobstvo-vyvoda">Что влияет на скорость и удобство вывода</h2>
 <p>На практике скорость обработки заявки на вывод зависит от способа получения средств, корректности пройденной идентификации и текущей загрузки платёжной инфраструктуры — эти параметры могут меняться, поэтому точные сроки и лимиты по конкретному оператору стоит проверять непосредственно на официальном сайте olimp.bet. Общий порядок регистрации и привязки к ЦУПИС описан в материале «<a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">регистрация и ЦУПИС</a>», а про пополнение счёта — в статье «<a href="/shkola/dengi-i-nalogi/kak-popolnit-schet">как пополнить счёт</a>».</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Почему деньги выводятся не прямо от букмекера?</summary><p>Потому что расчёты легальных операторов в России проходят через Единый ЦУПИС — это требование законодательства, применяемое ко всем букмекерам, включённым в реестр, а не особенность отдельного бренда.</p></details>
 <details><summary>Нужна ли идентификация перед выводом денег?</summary><p>Да, идентификация через ЦУПИС обязательна для легального вывода средств и обычно проходит один раз при регистрации или первом выводе.</p></details>
 <details><summary>Кто платит налог с выигрыша — я сам или букмекер?</summary><p>С 2026 года налог как налоговый агент рассчитывает и удерживает сам букмекер до зачисления средств, поэтому отдельно декларировать эти суммы не требуется.</p></details>
 <details><summary>Где узнать точные сроки и лимиты вывода у OLIMPBET?</summary><p>Такие детали могут меняться, поэтому актуальные способы, сроки и лимиты вывода нужно смотреть на официальном сайте olimp.bet.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/olimpbet/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/zenit?p=bukmekery/olimpbet/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/betcity?p=bukmekery/olimpbet/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>, <a href="/go/pari?p=bukmekery/olimpbet/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/olimpbet"><b>OLIMPBET: обзор букмекерской конторы</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/olimpbet/promokod"><b>Промокод OLIMPBET: как искать и применять</b><small>Промокод</small></a>

@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -171,7 +181,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Как это работает", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Стример рекламирует букмекера — это его личный выбор?", "item": "https://stavki-rating.ru/shkola/kak-eto-rabotaet/strimer-reklamiruet-bk"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Стример рекламирует букмекера — это его личный выбор?", "description": "Разбираемся, почему интеграция блогера с букмекером почти всегда оплаченная реклама, а не личная рекомендация, и как проверить контору самостоятельно.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/kak-eto-rabotaet/strimer-reklamiruet-bk", "datePublished": "2026-09-07", "dateModified": "2026-09-07", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Стример рекламирует букмекера — это его личный выбор?", "description": "Разбираемся, почему интеграция блогера с букмекером почти всегда оплаченная реклама, а не личная рекомендация, и как проверить контору самостоятельно.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/kak-eto-rabotaet/strimer-reklamiruet-bk", "datePublished": "2026-09-07", "dateModified": "2026-09-07", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Если контору рекламирует популярный стример, значит она надёжнее других?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, это никак не связано. Рекламный контракт достаётся тому, кто договорился о бюджете, а не тому, кто прошёл проверку на надёжность. Условия и репутацию конторы нужно смотреть отдельно, независимо от того, кто её рекламирует."}}, {"@type": "Question", "name": "Как отличить рекламу от того, что блогер и правда сам играет в этой конторе?", "acceptedAnswer": {"@type": "Answer", "text": "По закону оплаченная интеграция должна быть помечена словом «Реклама» и меткой ERID. Если пометки нет, а блогер настойчиво продвигает конкретный сайт и промокод — скорее всего, это всё равно реклама, просто её забыли обозначить, а не спонтанный личный совет."}}, {"@type": "Question", "name": "Стоит ли пользоваться промокодом от любимого стримера?", "acceptedAnswer": {"@type": "Answer", "text": "Промокод обычно влияет только на бонусные условия при регистрации, не на надёжность самой конторы. Ничего страшного в нём нет, но перед регистрацией всё равно стоит проверить контору по реестру и почитать реальные условия, а не ориентироваться только на то, что её кто-то пиарит."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -211,25 +221,26 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Как это работает</a><span>/</span>Стример рекламирует букмекера — это его личный выбор?</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Школа · Как это работает ·</div>
     <h1>Стример рекламирует букмекера — это его личный выбор?</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 07.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-07">07.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Почти всегда нет: это оплаченная интеграция, а не личный совет. Стример (или его команда) получил деньги или процент за то, что показал промокод и логотип конторы в эфире — по закону такая реклама должна быть помечена словом «Реклама» и специальной меткой (ERID), это обычная и легальная практика. Но она не говорит о том, что контора лучше остальных: выбор рекламного партнёра — это вопрос бюджета и договорённостей, а не личного опыта или проверки надёжности.</p>
     
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#pochemu-eto-reklama-a-ne-lichnyj-sovet">Почему это реклама, а не личный совет</a></li><li><a href="#kak-proverit-kontoru-samomu-a-ne-verit-chuzhomu-mneniyu">Как проверить контору самому, а не верить чужому мнению</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Почему это реклама, а не личный совет</h2>
+    <h2 id="pochemu-eto-reklama-a-ne-lichnyj-sovet">Почему это реклама, а не личный совет</h2>
 <p>Букмекерские конторы, как и любые другие бренды, покупают интеграции у блогеров и стримеров: платят фиксированную сумму, процент от привлечённых игроков или дают партнёрскую ссылку с отчислениями. Формально это ничем не отличается от рекламы спортивного питания или мобильной игры — та же схема, просто с нишей ставок.</p><p>С 1 сентября 2022 года в России такую рекламу обязаны маркировать (закон № 347-ФЗ): должна быть пометка «Реклама», данные рекламодателя и уникальный идентификатор ERID. С 2025 года требования только ужесточили — если реклама размещена без маркировки, рекламодатель не может учесть расходы на неё при расчёте налога на прибыль. Если блогер честно выполняет закон, вы увидите отметку прямо в описании или в самом видео. Если не увидите — это не значит, что рекламы не было, скорее её просто забыли (или не захотели) обозначить.</p><p>Отдельный момент: по закону рекламировать в России могут только легальные букмекеры из реестра ЕРАИ, продвижение нелегальных площадок — нарушение, за которым следуют штрафы и блокировки. Так что сам факт рекламной интеграции хотя бы намекает, что контора действует в легальном поле — но это единственное, что он подтверждает. Он ничего не говорит про условия вывода, поддержку или репутацию конкретно этой конторы по сравнению с другими из того же реестра.</p>
-<h2>Как проверить контору самому, а не верить чужому мнению</h2>
+<h2 id="kak-proverit-kontoru-samomu-a-ne-verit-chuzhomu-mneniyu">Как проверить контору самому, а не верить чужому мнению</h2>
 <p>Раз выбор блогера — это, по сути, чей-то маркетинговый бюджет, а не тест-драйв конторы, разумно проверять факты отдельно от того, кого вам рекламируют. Смотрите, есть ли контора в реестре ЕРАИ (это обязательное условие легальной работы в России), какие у неё реальные условия — вывод средств, работа через ЦУПИС, служба поддержки.</p><p>Собранный и обновляемый список легальных букмекеров с их условиями можно посмотреть в <a href="/rating">рейтинге на stavki-rating.ru</a> — там сравнение по фактам, а не по тому, кто больше заплатил за рекламу. Если хочется свежую версию того же сравнения — она же лежит и на <a href="/rejting">странице рейтинга</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Если контору рекламирует популярный стример, значит она надёжнее других?</summary><p>Нет, это никак не связано. Рекламный контракт достаётся тому, кто договорился о бюджете, а не тому, кто прошёл проверку на надёжность. Условия и репутацию конторы нужно смотреть отдельно, независимо от того, кто её рекламирует.</p></details>
 <details><summary>Как отличить рекламу от того, что блогер и правда сам играет в этой конторе?</summary><p>По закону оплаченная интеграция должна быть помечена словом «Реклама» и меткой ERID. Если пометки нет, а блогер настойчиво продвигает конкретный сайт и промокод — скорее всего, это всё равно реклама, просто её забыли обозначить, а не спонтанный личный совет.</p></details>
 <details><summary>Стоит ли пользоваться промокодом от любимого стримера?</summary><p>Промокод обычно влияет только на бонусные условия при регистрации, не на надёжность самой конторы. Ничего страшного в нём нет, но перед регистрацией всё равно стоит проверить контору по реестру и почитать реальные условия, а не ориентироваться только на то, что её кто-то пиарит.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/pari">PARI</a>, <a href="/bukmekery/ligastavok">Лига Ставок</a>, <a href="/bukmekery/melbet">Мелбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/shkola/kak-eto-rabotaet/vidy-stavok-na-sport"><b>Виды ставок на спорт: полный разбор форматов и рынков</b><small>Как это работает</small></a>
       <a class="tile" href="/shkola/kak-eto-rabotaet/kak-chitat-koefficienty"><b>Как читать коэффициенты букмекера</b><small>Как это работает</small></a>

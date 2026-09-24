@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "24bet", "item": "https://stavki-rating.ru/bukmekery/24bet"}, {"@type": "ListItem", "position": 4, "name": "Приложение 24bet: официальные каналы для Android и iOS", "item": "https://stavki-rating.ru/bukmekery/24bet/prilozhenie"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Приложение 24bet: официальные каналы для Android и iOS", "description": "Разбираем официальные способы установить приложение 24bet на Android и iOS, почему его нет в Google Play и как отличить настоящий файл от фейкового apk.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/24bet/prilozhenie", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Приложение 24bet: официальные каналы для Android и iOS", "description": "Разбираем официальные способы установить приложение 24bet на Android и iOS, почему его нет в Google Play и как отличить настоящий файл от фейкового apk.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/24bet/prilozhenie", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Можно ли скачать приложение 24bet из Google Play?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, для российской аудитории Google Play не размещает букмекерские приложения со ставками на деньги. Это касается всех легальных операторов, а не только 24bet — используйте официальный сайт или российский магазин приложений."}}, {"@type": "Question", "name": "Безопасно ли скачивать apk с других сайтов?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Безопасный источник — только официальный сайт 24bet.ru или официальный магазин приложений. Файлы с посторонних сайтов могут быть подделаны и использоваться для кражи данных."}}, {"@type": "Question", "name": "Есть ли у 24bet приложение для iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "Способ доступа для iOS у разных легальных букмекеров отличается: где-то есть приложение в App Store, где-то используется мобильная версия сайта. Актуальную информацию по 24bet стоит смотреть на официальном сайте."}}, {"@type": "Question", "name": "Чем приложение отличается от мобильного сайта?", "acceptedAnswer": {"@type": "Answer", "text": "Набор основных функций — регистрация, ставки, работа со счётом — совпадает. Приложение обычно удобнее в повседневном использовании, но мобильная версия сайта не требует установки и подходит как запасной вариант."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,32 +222,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/24bet">24bet</a><span>/</span>Приложение 24bet: официальные каналы для Android и iOS</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · 24bet ·</div>
     <h1>Приложение 24bet: официальные каналы для Android и iOS</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Мобильное приложение 24bet, как и у других легальных букмекеров, распространяется не через Google Play, а через собственные официальные каналы. Ниже — как это устроено для Android и iOS и почему стоит держаться подальше от apk-файлов со сторонних сайтов.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/24bet?p=24bet&amp;pl=subpage-top">Сайт букмекера 24bet →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#pochemu-prilozheniya-bukmekerov-net-v-google-play">Почему приложения букмекеров нет в Google Play</a></li><li><a href="#kak-poluchit-prilozhenie-na-android">Как получить приложение на Android</a></li><li><a href="#kak-poluchit-prilozhenie-na-ios">Как получить приложение на iOS</a></li><li><a href="#kak-ne-popast-na-fejkovyj-apk">Как не попасть на фейковый apk</a></li><li><a href="#chto-mozhno-v-prilozhenii-a-chto-na-sajte">Что можно в приложении, а что — на сайте</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Почему приложения букмекеров нет в Google Play</h2>
+    <h2 id="pochemu-prilozheniya-bukmekerov-net-v-google-play">Почему приложения букмекеров нет в Google Play</h2>
 <p>Google Play не размещает приложения с реальными ставками на деньги для аудитории из России — это ограничение площадки, а не признак проблем у конкретного оператора. Поэтому легальные букмекерские приложения, включая 24bet, распространяются через российские магазины приложений и напрямую с официального сайта оператора.</p><p>Это стандартная практика на рынке легальных ставок в России: то же самое касается других БК из реестра ЕРАИ, а не только 24bet.</p>
-<h2>Как получить приложение на Android</h2>
+<h2 id="kak-poluchit-prilozhenie-na-android">Как получить приложение на Android</h2>
 <p>Для Android актуальны два официальных пути: установка через российский магазин приложений (например, RuStore) или загрузка apk-файла напрямую с официального сайта 24bet.ru. Подробный разбор шагов — на странице <a href="/bukmekery/24bet/prilozhenie/android">про установку 24bet на Android</a>.</p>
-<h2>Как получить приложение на iOS</h2>
+<h2 id="kak-poluchit-prilozhenie-na-ios">Как получить приложение на iOS</h2>
 <p>Ситуация с iPhone отличается от Android: у части легальных букмекеров есть отдельные приложения в App Store, у части — только мобильная версия сайта, которая по функциям близка к приложению. Актуальный способ установки для конкретно 24bet стоит уточнять на официальном сайте — там указывают, доступно ли приложение в App Store или предлагается вход через мобильный браузер. Подробнее — на странице <a href="/bukmekery/24bet/prilozhenie/ios">про установку 24bet на iPhone</a>.</p>
-<h2>Как не попасть на фейковый apk</h2>
+<h2 id="kak-ne-popast-na-fejkovyj-apk">Как не попасть на фейковый apk</h2>
 <p>Поддельные apk-файлы с посторонних сайтов — частый способ кражи данных и денег под видом «приложения букмекера». Несколько простых правил безопасности:</p><ul><li>Скачивать apk только с домена 24bet.ru или из официального магазина приложений — не с файлообменников и форумов.</li><li>Проверять, что ссылка на скачивание ведёт именно на официальный домен, а не на похожий адрес.</li><li>Не устанавливать приложение, если сайт-источник обещает бонус за установку через конкретную стороннюю ссылку — это признак мошеннической схемы, а не официальной акции.</li><li>Не отключать проверки безопасности системы ради установки файла из непроверенного источника.</li></ul>
-<h2>Что можно в приложении, а что — на сайте</h2>
+<h2 id="chto-mozhno-v-prilozhenii-a-chto-na-sajte">Что можно в приложении, а что — на сайте</h2>
 <p>Функционально мобильное приложение и официальный сайт 24bet ориентированы на одни и те же задачи: регистрацию и вход, ставки, работу со счётом. Разница обычно в удобстве — приложение быстрее открывается и может присылать уведомления, а сайт не требует установки и работает в любом браузере. Как устроена регистрация и привязка к ЦУПИС — в разделе Школы <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">про регистрацию и ЦУПИС</a>, а общий обзор бренда — на странице <a href="/bukmekery/24bet">обзора 24bet</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Можно ли скачать приложение 24bet из Google Play?</summary><p>Нет, для российской аудитории Google Play не размещает букмекерские приложения со ставками на деньги. Это касается всех легальных операторов, а не только 24bet — используйте официальный сайт или российский магазин приложений.</p></details>
 <details><summary>Безопасно ли скачивать apk с других сайтов?</summary><p>Нет. Безопасный источник — только официальный сайт 24bet.ru или официальный магазин приложений. Файлы с посторонних сайтов могут быть подделаны и использоваться для кражи данных.</p></details>
 <details><summary>Есть ли у 24bet приложение для iPhone?</summary><p>Способ доступа для iOS у разных легальных букмекеров отличается: где-то есть приложение в App Store, где-то используется мобильная версия сайта. Актуальную информацию по 24bet стоит смотреть на официальном сайте.</p></details>
 <details><summary>Чем приложение отличается от мобильного сайта?</summary><p>Набор основных функций — регистрация, ставки, работа со счётом — совпадает. Приложение обычно удобнее в повседневном использовании, но мобильная версия сайта не требует установки и подходит как запасной вариант.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/24bet/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/pari?p=bukmekery/24bet/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>, <a href="/go/fonbet?p=bukmekery/24bet/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/ligastavok?p=bukmekery/24bet/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/24bet"><b>24bet: обзор букмекерской конторы</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/24bet/promokod"><b>Промокод 24bet: как это работает</b><small>Промокод</small></a>

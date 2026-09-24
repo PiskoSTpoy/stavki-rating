@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "PARI", "item": "https://stavki-rating.ru/bukmekery/pari"}, {"@type": "ListItem", "position": 4, "name": "Как устроен вывод средств у букмекера PARI", "item": "https://stavki-rating.ru/bukmekery/pari/vyvod-sredstv"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как устроен вывод средств у букмекера PARI", "description": "Как работает вывод денег у легального букмекера PARI: идентификация, Единый ЦУПИС, СБП и налог, который удерживает оператор.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/pari/vyvod-sredstv", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как устроен вывод средств у букмекера PARI", "description": "Как работает вывод денег у легального букмекера PARI: идентификация, Единый ЦУПИС, СБП и налог, который удерживает оператор.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/pari/vyvod-sredstv", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Почему деньги выводятся не сразу на карту, а через ЦУПИС?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Такой порядок расчётов установлен законом для всех легальных букмекеров в России — это не решение конкретного оператора, а обязательная инфраструктура рынка.</p>"}}, {"@type": "Question", "name": "Нужно ли подтверждать личность перед выводом у PARI?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Да, идентификация личности перед выводом средств — стандартное требование для легальных операторов, включая PARI.</p>"}}, {"@type": "Question", "name": "Кто платит налог с выигрыша — я сам или букмекер?", "acceptedAnswer": {"@type": "Answer", "text": "<p>С 2026 года налог удерживает сам букмекер как налоговый агент при выводе средств, поэтому на счёт игрока поступает сумма уже без НДФЛ.</p>"}}, {"@type": "Question", "name": "Где узнать точные сроки и лимиты вывода у PARI?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Актуальные сроки обработки и лимиты по конкретным способам вывода нужно смотреть в личном кабинете на официальном сайте pari.ru — они могут отличаться по методу.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,34 +222,35 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/pari">PARI</a><span>/</span>Как устроен вывод средств у букмекера PARI</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · PARI ·</div>
     <h1>Как устроен вывод средств у букмекера PARI</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Вывод денег у любого легального российского букмекера, включая PARI, идёт через инфраструктуру Единого ЦУПИС и требует пройденной идентификации личности. Точные сроки обработки заявки и лимиты по конкретным способам вывода нужно смотреть в личном кабинете на официальном сайте pari.ru — они могут отличаться по методу и меняться со временем. Ниже — общая механика процесса, которая одинакова для всех операторов легального рынка.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/pari?p=pari&amp;pl=subpage-top">Сайт букмекера PARI →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#edinyj-cupis-kak-obyazatelnoe-zveno">Единый ЦУПИС как обязательное звено</a></li><li><a href="#identifikaciya-pered-vyvodom">Идентификация перед выводом</a></li><li><a href="#sposoby-vyvoda-obschaya-logika">Способы вывода: общая логика</a></li><li><a href="#sroki-obrabotki-zayavki">Сроки обработки заявки</a></li><li><a href="#nalog-s-vyigrysha">Налог с выигрыша</a></li><li><a href="#chto-mozhet-zaderzhat-vyvod">Что может задержать вывод</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Единый ЦУПИС как обязательное звено</h2>
+    <h2 id="edinyj-cupis-kak-obyazatelnoe-zveno">Единый ЦУПИС как обязательное звено</h2>
 <p>Все расчёты легальных букмекеров с игроками в России проходят через Единый центр учёта переводов интерактивных ставок (ЦУПИС) — это требование законодательства, а не особенность отдельного оператора. Деньги на вывод сначала поступают через эту систему, а не напрямую с баланса букмекера на карту игрока. Подробнее о механизме — на странице <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">регистрация и ЦУПИС</a>.</p>
-<h2>Идентификация перед выводом</h2>
+<h2 id="identifikaciya-pered-vyvodom">Идентификация перед выводом</h2>
 <p>Перед первым выводом средств у легального оператора обычно требуется подтвердить личность — как правило, через данные паспорта и привязку к Госуслугам или аналогичный порядок, принятый на рынке. Без пройденной идентификации вывод средств, как правило, недоступен — это стандартное требование, а не решение конкретной БК.</p>
-<h2>Способы вывода: общая логика</h2>
+<h2 id="sposoby-vyvoda-obschaya-logika">Способы вывода: общая логика</h2>
 <div class="table-wrap"><table><caption>Типичные способы вывода у легальных операторов</caption><thead><tr><th>Способ</th><th>Особенность</th></tr></thead><tbody><tr><td>СБП (Система быстрых платежей)</td><td>Перевод на карту по номеру телефона, обычно один из самых быстрых способов</td></tr><tr><td>Банковская карта</td><td>Вывод на карту, привязанную к счёту через ЦУПИС</td></tr><tr><td>Электронные кошельки</td><td>Доступность зависит от конкретного оператора</td></tr></tbody></table></div><p>Актуальный список способов вывода и условия по ним нужно проверять в личном кабинете на pari.ru.</p>
-<h2>Сроки обработки заявки</h2>
+<h2 id="sroki-obrabotki-zayavki">Сроки обработки заявки</h2>
 <p>Срок, за который заявка на вывод фактически поступает на карту или счёт, зависит от выбранного способа и внутренних процедур проверки у оператора и в ЦУПИС — эти сроки могут отличаться от способа к способу и со временем меняться. Точные сроки по конкретному методу вывода нужно смотреть в личном кабинете на pari.ru или уточнять в поддержке, а не ориентироваться на общие цифры из сторонних источников.</p>
-<h2>Налог с выигрыша</h2>
+<h2 id="nalog-s-vyigrysha">Налог с выигрыша</h2>
 <p>С 2026 года НДФЛ с выигрышей у российских букмекеров удерживает сам оператор как налоговый агент — то есть на счёт игрока поступает сумма уже за вычетом налога, и подавать декларацию самостоятельно, как правило, не требуется. Общий порядок расчёта налога на выигрыш разобран на странице <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">налог на выигрыш</a>, а прикинуть сумму можно с помощью <a href="/instrumenty/nalog-na-vyigrysh">калькулятора налога на выигрыш</a>.</p>
-<h2>Что может задержать вывод</h2>
+<h2 id="chto-mozhet-zaderzhat-vyvod">Что может задержать вывод</h2>
 <ul><li>Не пройдена идентификация личности в ЦУПИС.</li><li>Способ вывода не совпадает со способом пополнения счёта — у многих операторов это требование по умолчанию.</li><li>Не выполнены условия отыгрыша бонуса, если на счету есть бонусные средства.</li></ul><p>Общий порядок пополнения и вывода у легальных букмекеров описан на странице <a href="/shkola/dengi-i-nalogi/kak-vyvesti-dengi">как вывести деньги с БК</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Почему деньги выводятся не сразу на карту, а через ЦУПИС?</summary><p>Такой порядок расчётов установлен законом для всех легальных букмекеров в России — это не решение конкретного оператора, а обязательная инфраструктура рынка.</p></details>
 <details><summary>Нужно ли подтверждать личность перед выводом у PARI?</summary><p>Да, идентификация личности перед выводом средств — стандартное требование для легальных операторов, включая PARI.</p></details>
 <details><summary>Кто платит налог с выигрыша — я сам или букмекер?</summary><p>С 2026 года налог удерживает сам букмекер как налоговый агент при выводе средств, поэтому на счёт игрока поступает сумма уже без НДФЛ.</p></details>
 <details><summary>Где узнать точные сроки и лимиты вывода у PARI?</summary><p>Актуальные сроки обработки и лимиты по конкретным способам вывода нужно смотреть в личном кабинете на официальном сайте pari.ru — они могут отличаться по методу.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/pari/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/fonbet?p=bukmekery/pari/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/marathonbet?p=bukmekery/pari/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>, <a href="/go/betcity?p=bukmekery/pari/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/pari"><b>PARI: что нужно знать о букмекере</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/pari/promokod"><b>Промокод PARI: где искать и как использовать</b><small>Промокод</small></a>

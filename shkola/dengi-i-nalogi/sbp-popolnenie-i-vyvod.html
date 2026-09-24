@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -171,7 +181,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Деньги и налоги", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "СБП в букмекерских конторах: пополнение и вывод", "item": "https://stavki-rating.ru/shkola/dengi-i-nalogi/sbp-popolnenie-i-vyvod"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "СБП в букмекерских конторах: пополнение и вывод", "description": "Как пополнить счёт и вывести выигрыш через СБП у легальных букмекеров: лимиты по операциям, комиссии свыше 100 000 ₽ и сроки зачисления денег.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/dengi-i-nalogi/sbp-popolnenie-i-vyvod", "datePublished": "2026-09-06", "dateModified": "2026-09-06", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "СБП в букмекерских конторах: пополнение и вывод", "description": "Как пополнить счёт и вывести выигрыш через СБП у легальных букмекеров: лимиты по операциям, комиссии свыше 100 000 ₽ и сроки зачисления денег.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/dengi-i-nalogi/sbp-popolnenie-i-vyvod", "datePublished": "2026-09-06", "dateModified": "2026-09-06", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Есть ли комиссия за вывод через СБП?", "acceptedAnswer": {"@type": "Answer", "text": "<p>До 100 000 ₽ в месяц вывод через СБП идёт без комиссии. При превышении этой суммы за месяц взимается 0,5%, но не более 1500 ₽ с операции.</p>"}}, {"@type": "Question", "name": "Какой лимит на одну операцию через СБП?", "acceptedAnswer": {"@type": "Answer", "text": "<p>При полной идентификации — до 595 000 ₽ за одну операцию, при упрощённой идентификации — до 60 000 ₽.</p>"}}, {"@type": "Question", "name": "Как быстро деньги приходят через СБП?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Зачисление обычно происходит мгновенно, у части операторов — в течение минуты, как при пополнении, так и при выводе.</p>"}}, {"@type": "Question", "name": "Нужно ли платить за пополнение счёта через СБП?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет, у большинства способов пополнения ЦУПИС не берёт отдельную комиссию.</p>"}}, {"@type": "Question", "name": "Что делать, если лимита СБП не хватает для вывода крупного выигрыша?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Стоит пройти полную идентификацию личности в ЦУПИС — это увеличит разовый лимит с 60 000 ₽ до 595 000 ₽. Также можно разбить вывод на несколько операций или воспользоваться выводом на карту.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -211,33 +221,34 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Деньги и налоги</a><span>/</span>СБП в букмекерских конторах: пополнение и вывод</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Школа · Деньги и налоги ·</div>
     <h1>СБП в букмекерских конторах: пополнение и вывод</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 06.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-06">06.09.2026</time></span><span>·</span><span>4 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">У всех легальных операторов из реестра ЕРАИ пополнение и вывод через Систему быстрых платежей работают одинаково, потому что расчёты идут через единую инфраструктуру — Единый ЦУПИС. Деньги привязаны к номеру телефона личного кабинета: зачисление обычно происходит мгновенно, вывод до 100 000 ₽ в месяц проходит без комиссии, а разовая операция ограничена 595 000 ₽ при полной идентификации и 60 000 ₽ при упрощённой.</p>
     
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#kak-popolnit-schet-cherez-sbp">Как пополнить счёт через СБП</a></li><li><a href="#kak-vyvesti-dengi-cherez-sbp">Как вывести деньги через СБП</a></li><li><a href="#komissii-i-limity-sbp-tablica">Комиссии и лимиты СБП: таблица</a></li><li><a href="#polnaya-i-uproschennaya-identifikaciya-pochemu-eto-vazhno">Полная и упрощённая идентификация: почему это важно</a></li><li><a href="#esli-sbp-nedostupen-ili-platezh-zavis">Если СБП недоступен или платёж завис</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Как пополнить счёт через СБП</h2>
+    <h2 id="kak-popolnit-schet-cherez-sbp">Как пополнить счёт через СБП</h2>
 <p>Пополнение через СБП у легального оператора привязано к номеру телефона, который указан в личном кабинете Единого ЦУПИС — это часть обязательной идентификации игрока (подробнее — <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">как устроена регистрация через ЦУПИС</a>). Деньги поступают на игровой счёт в течение минуты, а у большинства способов пополнения ЦУПИС не берёт отдельную комиссию.</p><ul><li>В личном кабинете выбираете пополнение через СБП;</li><li>Подтверждаете операцию в приложении своего банка;</li><li>Деньги зачисляются на счёт — обычно в течение минуты.</li></ul><p>Способ пополнения не влияет на дальнейший вывод: деньги можно вывести как через СБП, так и любым другим доступным способом, потому что привязка идёт к личному кабинету в ЦУПИС, а не к конкретной операции пополнения. Общий порядок пополнения любым способом, включая СБП, разобран в статье <a href="/shkola/dengi-i-nalogi/kak-popolnit-schet">как пополнить счёт в букмекерской конторе</a>.</p>
-<h2>Как вывести деньги через СБП</h2>
+<h2 id="kak-vyvesti-dengi-cherez-sbp">Как вывести деньги через СБП</h2>
 <p>Вывод выигрыша через СБП идёт по той же схеме, что и пополнение: деньги уходят на банковский счёт, привязанный к номеру телефона в личном кабинете ЦУПИС. Зачисление обычно мгновенное, у части операторов — в течение минуты.</p><p>Разовая операция ограничена суммой: до 595 000 ₽ при полной идентификации и до 60 000 ₽ при упрощённой верификации личности. Если сумма выигрыша больше лимита, вывод придётся разбить на несколько операций. Общий алгоритм вывода денег у легальных операторов описан в статье <a href="/shkola/dengi-i-nalogi/kak-vyvesti-dengi">как вывести деньги из букмекерской конторы</a>.</p>
-<h2>Комиссии и лимиты СБП: таблица</h2>
+<h2 id="komissii-i-limity-sbp-tablica">Комиссии и лимиты СБП: таблица</h2>
 <div class="table-wrap"><table><caption>Условия вывода и пополнения через СБП в Едином ЦУПИС</caption><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Комиссия за вывод до 100 000 ₽ в месяц</td><td>Нет</td></tr><tr><td>Комиссия за вывод свыше 100 000 ₽ в месяц</td><td>0,5%, не более 1500 ₽</td></tr><tr><td>Лимит разовой операции, полная идентификация</td><td>До 595 000 ₽</td></tr><tr><td>Лимит разовой операции, упрощённая идентификация</td><td>До 60 000 ₽</td></tr><tr><td>Скорость зачисления</td><td>Обычно мгновенно, у части операторов — в течение минуты</td></tr><tr><td>Комиссия за пополнение</td><td>У большинства способов отсутствует</td></tr></tbody></table></div>
-<h2>Полная и упрощённая идентификация: почему это важно</h2>
+<h2 id="polnaya-i-uproschennaya-identifikaciya-pochemu-eto-vazhno">Полная и упрощённая идентификация: почему это важно</h2>
 <p>Единый ЦУПИС — общая инфраструктура для всех операторов из реестра ЕРАИ, и доступные через СБП лимиты зависят не от конкретной букмекерской конторы, а от уровня подтверждения личности игрока в ЦУПИС. При упрощённой идентификации доступная к выводу сумма заметно ниже, чем при полной, — это ограничение регуляторного контура, а не решение оператора.</p><p>Если планируете выводить крупные суммы, стоит заранее пройти полную идентификацию: тогда разовый лимит через СБП вырастет до 595 000 ₽ вместо 60 000 ₽.</p>
-<h2>Если СБП недоступен или платёж завис</h2>
+<h2 id="esli-sbp-nedostupen-ili-platezh-zavis">Если СБП недоступен или платёж завис</h2>
 <p>Если СБП по какой-то причине недоступен — сбой на стороне банка или технические работы, — можно воспользоваться пополнением и выводом на банковскую карту: этот способ разобран в статье <a href="/shkola/dengi-i-nalogi/karta-popolnenie-i-vyvod">банковская карта в БК: пополнение и вывод</a>. Если операция зависла дольше обычного времени зачисления, в первую очередь стоит проверить статус в приложении своего банка, а затем обратиться в поддержку личного кабинета.</p><p>Перед тем как пользоваться любым способом пополнения или вывода, стоит также убедиться, что оператор входит в реестр ЕРАИ, — как это проверить, рассказано в статье <a href="/kak-proverit-licenziyu">как проверить лицензию букмекерской конторы</a>. Это не ускоряет и не замедляет работу СБП, но снижает риск столкнуться с нелегальным сайтом, у которого могут быть собственные условия, никак не связанные с инфраструктурой Единого ЦУПИС.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Есть ли комиссия за вывод через СБП?</summary><p>До 100 000 ₽ в месяц вывод через СБП идёт без комиссии. При превышении этой суммы за месяц взимается 0,5%, но не более 1500 ₽ с операции.</p></details>
 <details><summary>Какой лимит на одну операцию через СБП?</summary><p>При полной идентификации — до 595 000 ₽ за одну операцию, при упрощённой идентификации — до 60 000 ₽.</p></details>
 <details><summary>Как быстро деньги приходят через СБП?</summary><p>Зачисление обычно происходит мгновенно, у части операторов — в течение минуты, как при пополнении, так и при выводе.</p></details>
 <details><summary>Нужно ли платить за пополнение счёта через СБП?</summary><p>Нет, у большинства способов пополнения ЦУПИС не берёт отдельную комиссию.</p></details>
 <details><summary>Что делать, если лимита СБП не хватает для вывода крупного выигрыша?</summary><p>Стоит пройти полную идентификацию личности в ЦУПИС — это увеличит разовый лимит с 60 000 ₽ до 595 000 ₽. Также можно разбить вывод на несколько операций или воспользоваться выводом на карту.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/melbet">Мелбет</a>, <a href="/bukmekery/marathonbet">Марафон</a>, <a href="/bukmekery/fonbet">Фонбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/shkola/dengi-i-nalogi/kak-vyvesti-dengi"><b>Как вывести деньги из букмекерской конторы</b><small>Деньги и налоги</small></a>
       <a class="tile" href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh"><b>Налог на выигрыш в ставках: сколько платить в 2026</b><small>Деньги и налоги</small></a>

@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "PARI", "item": "https://stavki-rating.ru/bukmekery/pari"}, {"@type": "ListItem", "position": 4, "name": "Фрибет PARI: как работает бесплатная ставка", "item": "https://stavki-rating.ru/bukmekery/pari/fribet"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Фрибет PARI: как работает бесплатная ставка", "description": "Разбираем механику фрибета у легальных букмекеров: что это такое, какие условия отыгрыша типичны и что происходит с выигрышем по такой бесплатной ставке.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/pari/fribet", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Фрибет PARI: как работает бесплатная ставка", "description": "Разбираем механику фрибета у легальных букмекеров: что это такое, какие условия отыгрыша типичны и что происходит с выигрышем по такой бесплатной ставке.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/pari/fribet", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Можно ли вывести фрибет как деньги?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, сам номинал фрибета обычно не выводится — вывести можно только выигрыш, полученный с его помощью, и часто после выполнения условий отыгрыша."}}, {"@type": "Question", "name": "Сгорает ли фрибет, если его не использовать?", "acceptedAnswer": {"@type": "Answer", "text": "Да, если не использовать бонус в течение срока, установленного правилами акции, он обычно аннулируется автоматически."}}, {"@type": "Question", "name": "Есть ли у фрибета минимальный коэффициент?", "acceptedAnswer": {"@type": "Answer", "text": "Во многих акциях легальных букмекеров это условие присутствует — минимальный коэффициент указывается в правилах конкретного предложения. Точные цифры для PARI смотрите на официальном сайте."}}, {"@type": "Question", "name": "Фрибет — это то же самое, что бонус на депозит?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, это разные механики: бонус на депозит обычно добавляет процент к сумме пополнения деньгами, а фрибет — это отдельная бесплатная ставка на выбранное событие."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/pari">PARI</a><span>/</span>Фрибет PARI: как работает бесплатная ставка</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · PARI ·</div>
     <h1>Фрибет PARI: как работает бесплатная ставка</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Фрибет — распространённый бонусный инструмент у легальных букмекеров, включая PARI: вместо денег игроку начисляется бесплатная ставка на определённых условиях. Точный размер фрибета у конкретного бренда меняется, поэтому в этом материале мы разбираем механику — как это работает и на что обратить внимание.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/pari?p=pari&amp;pl=subpage-top">Сайт букмекера PARI →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#chto-takoe-fribet">Что такое фрибет</a></li><li><a href="#tipichnye-usloviya-ispolzovaniya">Типичные условия использования</a></li><li><a href="#chto-proishodit-s-vyigryshem">Что происходит с выигрышем</a></li><li><a href="#gde-poluchit-fribet-u-pari">Где получить фрибет у PARI</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Что такое фрибет</h2>
+    <h2 id="chto-takoe-fribet">Что такое фрибет</h2>
 <p>Фрибет — это бонусная ставка, которую букмекер начисляет игроку вместо реальных денег. Её можно поставить на выбранное событие, но сумма самого фрибета обычно не выводится напрямую — забирается только выигрыш, полученный с её помощью.</p><p>Подробное определение термина и то, чем фрибет отличается от денежного бонуса, разобрано в материале <a href="/shkola/terminy/chto-takoe-fribet">что такое фрибет</a>.</p><p>Такая механика выгодна и оператору, и игроку: букмекер получает вовлечённого клиента без прямых денежных выплат, а игрок — возможность протестировать линию и коэффициенты конкретного букмекера без риска для собственных средств.</p>
-<h2>Типичные условия использования</h2>
+<h2 id="tipichnye-usloviya-ispolzovaniya">Типичные условия использования</h2>
 <p>У большинства легальных букмекеров фрибет действует по схожим правилам: он выдаётся на ограниченный срок, часто требует ставки на событие с минимальным коэффициентом и может быть привязан к определённому виду спорта или типу ставки. Точные параметры для PARI устанавливает сам оператор и публикует в правилах конкретной акции на pari.ru.</p><p>Если фрибет не использован в отведённый срок, он обычно аннулируется — поэтому важно проверять срок действия сразу после получения бонуса.</p><p>Ограничение по минимальному коэффициенту обычно вводится, чтобы отсечь ставки с предсказуемым исходом и низким риском — иначе фрибет было бы легко превратить в гарантированный доход. Похожая логика применяется и к ограничению по видам спорта: она снижает риски оператора при массовой выдаче бонусов.</p>
-<h2>Что происходит с выигрышем</h2>
+<h2 id="chto-proishodit-s-vyigryshem">Что происходит с выигрышем</h2>
 <p>Как правило, при выигрыше по фрибету на счёт зачисляется чистая прибыль — то есть сумма выигрыша за вычетом номинала самой бесплатной ставки. Однако прежде чем эти средства можно вывести, оператор может установить дополнительное условие отыгрыша.</p><p>Общий принцип отыгрыша бонусов у легальных БК описан в материале <a href="/shkola/terminy/chto-takoe-otygrysh-bonusa">что такое отыгрыш бонуса</a>.</p><p>Порядок расчёта чистой прибыли и то, попадает ли она сразу на основной баланс или на отдельный бонусный счёт с условием отыгрыша, определяется правилами конкретной акции. Поэтому перед использованием фрибета стоит прочитать эти правила целиком, а не только уведомление о начислении бонуса.</p>
-<h2>Где получить фрибет у PARI</h2>
+<h2 id="gde-poluchit-fribet-u-pari">Где получить фрибет у PARI</h2>
 <p>Фрибеты у легальных букмекеров обычно доступны новым игрокам как часть приветственного предложения или действующим клиентам — как элемент программы лояльности. Актуальный статус таких предложений у PARI, включая точный размер и условия, нужно проверять на официальном сайте pari.ru.</p><p>Общий обзор бонусных механик бренда — в материале о <a href="/bukmekery/pari/bonus">бонусах PARI</a>.</p><p>Помимо приветственных программ, отдельные фрибеты иногда привязаны к конкретным спортивным событиям или сезонным активностям оператора. В любом случае доступность и параметры таких предложений стоит проверять непосредственно перед использованием, поскольку акции могут завершаться или заменяться новыми.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Можно ли вывести фрибет как деньги?</summary><p>Нет, сам номинал фрибета обычно не выводится — вывести можно только выигрыш, полученный с его помощью, и часто после выполнения условий отыгрыша.</p></details>
 <details><summary>Сгорает ли фрибет, если его не использовать?</summary><p>Да, если не использовать бонус в течение срока, установленного правилами акции, он обычно аннулируется автоматически.</p></details>
 <details><summary>Есть ли у фрибета минимальный коэффициент?</summary><p>Во многих акциях легальных букмекеров это условие присутствует — минимальный коэффициент указывается в правилах конкретного предложения. Точные цифры для PARI смотрите на официальном сайте.</p></details>
 <details><summary>Фрибет — это то же самое, что бонус на депозит?</summary><p>Нет, это разные механики: бонус на депозит обычно добавляет процент к сумме пополнения деньгами, а фрибет — это отдельная бесплатная ставка на выбранное событие.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/pari/fribet&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/pari?p=bukmekery/pari/fribet&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>, <a href="/go/zenit?p=bukmekery/pari/fribet&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/melbet?p=bukmekery/pari/fribet&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/pari"><b>PARI: что нужно знать о букмекере</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/pari/promokod"><b>Промокод PARI: где искать и как использовать</b><small>Промокод</small></a>

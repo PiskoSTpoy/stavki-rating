@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "PARI", "item": "https://stavki-rating.ru/bukmekery/pari"}, {"@type": "ListItem", "position": 4, "name": "PARI на iPhone: приложение и мобильный доступ", "item": "https://stavki-rating.ru/bukmekery/pari/prilozhenie/ios"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "PARI на iPhone: приложение и мобильный доступ", "description": "Разбираемся, как пользоваться PARI на iPhone: есть ли приложение в App Store, мобильная версия сайта как альтернатива и порядок первого входа.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/pari/prilozhenie/ios", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "PARI на iPhone: приложение и мобильный доступ", "description": "Разбираемся, как пользоваться PARI на iPhone: есть ли приложение в App Store, мобильная версия сайта как альтернатива и порядок первого входа.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/pari/prilozhenie/ios", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Есть ли официальное приложение PARI для iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Наличие приложения в App Store для iOS может меняться, поэтому актуальную информацию нужно смотреть на официальном сайте pari.ru перед установкой.</p>"}}, {"@type": "Question", "name": "Что делать, если приложения нет в App Store?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Пользоваться мобильной версией сайта pari.ru через браузер Safari — она даёт доступ к тому же функционалу без установки приложения.</p>"}}, {"@type": "Question", "name": "Можно ли скачать iOS-приложение с другого сайта?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет, устанавливать приложения БК стоит только через App Store (если оно там опубликовано) или по прямой ссылке с официального сайта pari.ru.</p>"}}, {"@type": "Question", "name": "Отличается ли функциональность мобильного сайта от приложения?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Как правило, мобильная версия сайта предоставляет тот же основной функционал — линию, личный кабинет, пополнение и вывод средств, — что и приложение.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,34 +222,35 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/pari">PARI</a><span>/</span>PARI на iPhone: приложение и мобильный доступ</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · PARI ·</div>
     <h1>PARI на iPhone: приложение и мобильный доступ</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Доступность приложения PARI в App Store для iPhone может отличаться от версии для Android и меняться со временем, поэтому актуальный статус лучше проверять непосредственно на официальном сайте pari.ru. Если отдельного приложения в App Store нет или оно временно недоступно, рабочей альтернативой остаётся мобильная версия сайта в браузере Safari — она открывает тот же функционал без установки отдельной программы.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/pari?p=pari&amp;pl=subpage-top">Сайт букмекера PARI →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#est-li-prilozhenie-pari-v-app-store">Есть ли приложение PARI в App Store</a></li><li><a href="#mobilnaya-versiya-sajta-kak-alternativa">Мобильная версия сайта как альтернатива</a></li><li><a href="#chto-dostupno-cherez-mobilnuyu-versiyu-sajta">Что доступно через мобильную версию сайта</a></li><li><a href="#poryadok-dostupa-v-obschih-chertah">Порядок доступа в общих чертах</a></li><li><a href="#esli-status-prilozheniya-izmenitsya">Если статус приложения изменится</a></li><li><a href="#na-chto-obratit-vnimanie">На что обратить внимание</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Есть ли приложение PARI в App Store</h2>
+    <h2 id="est-li-prilozhenie-pari-v-app-store">Есть ли приложение PARI в App Store</h2>
 <p>Политика App Store в отношении букмекерских приложений отличается от политики Google Play и может меняться, поэтому наличие приложения PARI в App Store для конкретного региона стоит уточнять на официальном сайте оператора непосредственно перед установкой. Ссылка на актуальный способ получить приложение для iOS всегда указывается на pari.ru.</p>
-<h2>Мобильная версия сайта как альтернатива</h2>
+<h2 id="mobilnaya-versiya-sajta-kak-alternativa">Мобильная версия сайта как альтернатива</h2>
 <p>Если приложения нет или оно недоступно, можно пользоваться мобильной версией сайта pari.ru через браузер Safari. Она адаптирована под экран смартфона и предоставляет доступ к линии, личному кабинету и выводу средств без установки отдельного приложения.</p><p>Зайти на сайт стоит только через официальный домен — как это проверить, описано на странице <a href="/bukmekery/pari/kak-zajti">как зайти на сайт PARI</a>.</p>
-<h2>Что доступно через мобильную версию сайта</h2>
+<h2 id="chto-dostupno-cherez-mobilnuyu-versiyu-sajta">Что доступно через мобильную версию сайта</h2>
 <p>Мобильная версия pari.ru в браузере Safari, как правило, даёт доступ к тому же набору функций, что и полная версия сайта: линия предматчевых и live-ставок, личный кабинет с историей операций, пополнение счёта и вывод средств. Основное отличие — интерфейс адаптирован под экран телефона, поэтому навигация может выглядеть иначе, чем в приложении на Android.</p>
-<h2>Порядок доступа в общих чертах</h2>
+<h2 id="poryadok-dostupa-v-obschih-chertah">Порядок доступа в общих чертах</h2>
 <ol><li>Открыть официальный сайт pari.ru в Safari или другом браузере на iPhone.</li><li>При наличии приложения в App Store — перейти по ссылке с официального сайта и установить его штатным способом.</li><li>Войти в существующую учётную запись или пройти регистрацию — см. <a href="/bukmekery/pari/registraciya">регистрацию в PARI</a>.</li><li>Добавить ярлык мобильной версии сайта на главный экран для быстрого доступа, если приложение не используется.</li></ol>
-<h2>Если статус приложения изменится</h2>
+<h2 id="esli-status-prilozheniya-izmenitsya">Если статус приложения изменится</h2>
 <p>Политика App Store в отношении букмекерских приложений периодически меняется, поэтому ситуация с доступностью приложения PARI для iPhone может со временем отличаться от описанной выше. Актуальный способ получить доступ — через приложение, если оно опубликовано, или через мобильную версию сайта — всегда указан на официальном сайте pari.ru, и его стоит проверять перед каждой установкой.</p>
-<h2>На что обратить внимание</h2>
+<h2 id="na-chto-obratit-vnimanie">На что обратить внимание</h2>
 <ul><li>Устанавливайте приложение только по ссылке с официального сайта или из App Store, если оно там опубликовано под официальным издателем.</li><li>Не переходите по рекламным ссылкам на «специальные версии для iPhone» со сторонних сайтов.</li><li>Для Android-версии порядок отличается — см. <a href="/bukmekery/pari/prilozhenie/android">приложение PARI для Android</a>.</li></ul>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Есть ли официальное приложение PARI для iPhone?</summary><p>Наличие приложения в App Store для iOS может меняться, поэтому актуальную информацию нужно смотреть на официальном сайте pari.ru перед установкой.</p></details>
 <details><summary>Что делать, если приложения нет в App Store?</summary><p>Пользоваться мобильной версией сайта pari.ru через браузер Safari — она даёт доступ к тому же функционалу без установки приложения.</p></details>
 <details><summary>Можно ли скачать iOS-приложение с другого сайта?</summary><p>Нет, устанавливать приложения БК стоит только через App Store (если оно там опубликовано) или по прямой ссылке с официального сайта pari.ru.</p></details>
 <details><summary>Отличается ли функциональность мобильного сайта от приложения?</summary><p>Как правило, мобильная версия сайта предоставляет тот же основной функционал — линию, личный кабинет, пополнение и вывод средств, — что и приложение.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/pari/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/pari?p=bukmekery/pari/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>, <a href="/go/fonbet?p=bukmekery/pari/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/melbet?p=bukmekery/pari/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/pari"><b>PARI: что нужно знать о букмекере</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/pari/promokod"><b>Промокод PARI: где искать и как использовать</b><small>Промокод</small></a>

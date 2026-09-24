@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Балтбет", "item": "https://stavki-rating.ru/bukmekery/baltbet"}, {"@type": "ListItem", "position": 4, "name": "Бонусы Балтбет: виды и условия отыгрыша", "item": "https://stavki-rating.ru/bukmekery/baltbet/bonus"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонусы Балтбет: виды и условия отыгрыша", "description": "Обзор типов бонусов у легальных букмекеров — приветственный, фрибет, кэшбэк — и честные условия отыгрыша. Механика без выдуманных цифр для Балтбет.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/baltbet/bonus", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонусы Балтбет: виды и условия отыгрыша", "description": "Обзор типов бонусов у легальных букмекеров — приветственный, фрибет, кэшбэк — и честные условия отыгрыша. Механика без выдуманных цифр для Балтбет.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/baltbet/bonus", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Какие бонусы сейчас действуют у Балтбет?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Актуальный список бонусов и их точные условия публикуются на официальном сайте baltbet.ru, так как предложения периодически меняются. Здесь описана только общая механика типов бонусов.</p>"}}, {"@type": "Question", "name": "Можно ли сразу вывести бонус деньгами?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет, как правило бонусные средства нужно сначала отыграть согласно условиям акции — минимальному коэффициенту и сроку. Только после этого выигрыш становится доступен для вывода.</p>"}}, {"@type": "Question", "name": "Кэшбэк начисляется автоматически?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Порядок начисления кэшбэка (автоматически или по заявке) зависит от конкретной программы лояльности оператора. Уточняйте механику в разделе бонусов на официальном сайте.</p>"}}, {"@type": "Question", "name": "Что будет, если не выполнить условия отыгрыша в срок?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Если условия отыгрыша не выполнены до истечения указанного срока, бонус и связанные с ним незавершённые ставки, как правило, аннулируются согласно правилам акции.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/baltbet">Балтбет</a><span>/</span>Бонусы Балтбет: виды и условия отыгрыша</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Балтбет ·</div>
     <h1>Бонусы Балтбет: виды и условия отыгрыша</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>2 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">У легальных букмекеров, включая Балтбет, обычно встречается несколько типов бонусов: приветственный бонус за регистрацию, фрибет и кэшбэк за активность. Ниже — независимый разбор того, как эти механики работают и какие условия отыгрыша к ним обычно прилагаются. Точный размер и сроки действующих бонусов Балтбет указаны только на официальном сайте baltbet.ru.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/baltbet?p=baltbet&amp;pl=subpage-top">Сайт букмекера Балтбет →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#privetstvennyj-bonus">Приветственный бонус</a></li><li><a href="#fribet">Фрибет</a></li><li><a href="#keshbek">Кэшбэк</a></li><li><a href="#usloviya-otygrysha-i-tipichnye-riski">Условия отыгрыша и типичные риски</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Приветственный бонус</h2>
+    <h2 id="privetstvennyj-bonus">Приветственный бонус</h2>
 <p>Приветственный бонус начисляется новому клиенту после регистрации и прохождения идентификации через Единый ЦУПИС. Обычно он привязан к первому пополнению счёта и становится доступен для использования только после выполнения условий отыгрыша.</p><p>Порядок регистрации и идентификации разобран на странице <a href="/bukmekery/baltbet/registraciya">регистрация Балтбет</a>. Часто такой бонус активируется автоматически при первом пополнении либо требует ввода промокода — конкретный сценарий зависит от действующей на момент регистрации акции.</p>
-<h2>Фрибет</h2>
+<h2 id="fribet">Фрибет</h2>
 <p>Фрибет — бесплатная ставка вместо денежного начисления на счёт. Обычно требует минимального коэффициента и имеет ограниченный срок использования. Подробная механика — на странице <a href="/bukmekery/baltbet/fribet">фрибет Балтбет</a>.</p><p>В отличие от денежного бонуса, фрибет нельзя разделить на несколько ставок меньшего размера — как правило, он используется целиком в одном купоне.</p>
-<h2>Кэшбэк</h2>
+<h2 id="keshbek">Кэшбэк</h2>
 <p>Кэшбэк — частичный возврат средств по результатам ставок за определённый период, независимо от их исхода. У разных операторов кэшбэк может рассчитываться по-разному: от суммы проигранных ставок, от оборота или по индивидуальным условиям программы лояльности. Точный механизм и наличие такой программы у Балтбет уточняйте на официальном сайте.</p><p>Такой формат бонуса обычно рассчитан на постоянных клиентов и начисляется регулярно — например, раз в неделю или в месяц, — а не разово при регистрации.</p>
-<h2>Условия отыгрыша и типичные риски</h2>
+<h2 id="usloviya-otygrysha-i-tipichnye-riski">Условия отыгрыша и типичные риски</h2>
 <div class="table-wrap"><table><caption>На что смотреть в правилах любого бонуса</caption><thead><tr><th>Условие</th><th>Зачем проверять</th></tr></thead><tbody><tr><td>Минимальный коэффициент ставки</td><td>Ставки ниже порога могут не засчитываться в отыгрыш</td></tr><tr><td>Срок отыгрыша</td><td>По истечении срока неотыгранный бонус сгорает</td></tr><tr><td>Кратность отыгрыша</td><td>Определяет, сколько раз нужно «прокрутить» сумму бонуса</td></tr><tr><td>Ограничения на вывод</td><td>До выполнения условий вывести бонусные средства как собственные обычно нельзя</td></tr></tbody></table></div><p>Общее определение отыгрыша бонуса — в материале <a href="/shkola/terminy/chto-takoe-otygrysh-bonusa">что такое отыгрыш бонуса</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Какие бонусы сейчас действуют у Балтбет?</summary><p>Актуальный список бонусов и их точные условия публикуются на официальном сайте baltbet.ru, так как предложения периодически меняются. Здесь описана только общая механика типов бонусов.</p></details>
 <details><summary>Можно ли сразу вывести бонус деньгами?</summary><p>Нет, как правило бонусные средства нужно сначала отыграть согласно условиям акции — минимальному коэффициенту и сроку. Только после этого выигрыш становится доступен для вывода.</p></details>
 <details><summary>Кэшбэк начисляется автоматически?</summary><p>Порядок начисления кэшбэка (автоматически или по заявке) зависит от конкретной программы лояльности оператора. Уточняйте механику в разделе бонусов на официальном сайте.</p></details>
 <details><summary>Что будет, если не выполнить условия отыгрыша в срок?</summary><p>Если условия отыгрыша не выполнены до истечения указанного срока, бонус и связанные с ним незавершённые ставки, как правило, аннулируются согласно правилам акции.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/baltbet/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/pari?p=bukmekery/baltbet/bonus&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>, <a href="/go/marathonbet?p=bukmekery/baltbet/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>, <a href="/go/ligastavok?p=bukmekery/baltbet/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/baltbet"><b>Балтбет: обзор букмекерской конторы</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/baltbet/promokod"><b>Промокод Балтбет: как это работает</b><small>Промокод</small></a>

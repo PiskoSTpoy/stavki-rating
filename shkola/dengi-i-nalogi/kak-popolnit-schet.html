@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -171,7 +181,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Деньги и налоги", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Как пополнить счёт у букмекера: способы и лимиты", "item": "https://stavki-rating.ru/shkola/dengi-i-nalogi/kak-popolnit-schet"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как пополнить счёт у букмекера: способы и лимиты", "description": "Как пополнить счёт у легального букмекера в 2026: банковская карта, СБП и другие способы через ЦУПИС, лимиты, комиссии и сроки зачисления средств.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/dengi-i-nalogi/kak-popolnit-schet", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как пополнить счёт у букмекера: способы и лимиты", "description": "Как пополнить счёт у легального букмекера в 2026: банковская карта, СБП и другие способы через ЦУПИС, лимиты, комиссии и сроки зачисления средств.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/dengi-i-nalogi/kak-popolnit-schet", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Нужно ли пройти идентификацию перед пополнением?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Пока идентификация в ЦУПИС не завершена, касса закрыта и пополнить счёт нельзя."}}, {"@type": "Question", "name": "Берут ли комиссию за пополнение?", "acceptedAnswer": {"@type": "Answer", "text": "Легальные букмекеры в большинстве случаев комиссию за пополнение не берут, но её может удержать банк или оператор связи на своей стороне."}}, {"@type": "Question", "name": "Можно ли пополнить счёт с чужой карты?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Реквизиты должны принадлежать вам — платежи с чужих карт контур ЦУПИС не пропускает."}}, {"@type": "Question", "name": "Как быстро зачисляются деньги?", "acceptedAnswer": {"@type": "Answer", "text": "Чаще всего мгновенно. Если средства не пришли, проверьте статус платежа в истории операций и обратитесь в поддержку."}}, {"@type": "Question", "name": "Какой минимальный размер пополнения?", "acceptedAnswer": {"@type": "Answer", "text": "Зависит от букмекера, обычно это небольшая сумма. Точные значения указаны в кассе конкретного оператора."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -211,33 +221,34 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Деньги и налоги</a><span>/</span>Как пополнить счёт у букмекера: способы и лимиты</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Школа · Деньги и налоги ·</div>
     <h1>Как пополнить счёт у букмекера: способы и лимиты</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>4 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Пополнить счёт у легального букмекера можно банковской картой, через СБП, электронные кошельки и другие способы — но любой платёж проходит через ЦУПИС и попадает на игровой счёт только после идентификации. Обычно деньги зачисляются мгновенно, и комиссию за пополнение легальные операторы, как правило, не берут. Перед первым пополнением нужно завершить регистрацию и идентификацию, иначе касса будет недоступна.</p>
     
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#kratko-kakimi-sposobami-popolnyayut-schet">Кратко: какими способами пополняют счёт</a></li><li><a href="#vse-platezhi-idut-cherez-cupis">Все платежи идут через ЦУПИС</a></li><li><a href="#sposoby-popolneniya-i-ih-osobennosti">Способы пополнения и их особенности</a></li><li><a href="#limity-komissii-i-sroki-zachisleniya">Лимиты, комиссии и сроки зачисления</a></li><li><a href="#tipichnye-oshibki-pri-popolnenii">Типичные ошибки при пополнении</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Кратко: какими способами пополняют счёт</h2>
+    <h2 id="kratko-kakimi-sposobami-popolnyayut-schet">Кратко: какими способами пополняют счёт</h2>
 <p>У легального букмекера обычно доступно несколько способов пополнения. Самые распространённые:</p><ul><li>банковская карта (Visa, Mastercard, «Мир»);</li><li>Система быстрых платежей (СБП) — по номеру телефона или QR-коду;</li><li>электронные кошельки и платёжные сервисы, поддерживаемые оператором;</li><li>иногда — со счёта мобильного телефона или через платёжные терминалы.</li></ul><p>Все эти способы объединяет одно: платёж проходит через <strong>ЦУПИС</strong> — центр учёта переводов ставок. Пополнить счёт можно только после регистрации и идентификации. Если для вас важна скорость возврата средств, обратите внимание на подборку <a href="/rejting/s-bystrym-vyvodom">БК с быстрым выводом</a>.</p>
-<h2>Все платежи идут через ЦУПИС</h2>
+<h2 id="vse-platezhi-idut-cherez-cupis">Все платежи идут через ЦУПИС</h2>
 <p>По закону расчёты между игроком и легальным букмекером идут не напрямую, а через ЦУПИС. Это защищает деньги игрока и обеспечивает контроль за легальностью операций. На практике это значит следующее:</p><ul><li>чтобы пополнить счёт, нужно пройти <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">идентификацию через ЦУПИС</a>;</li><li>реквизиты, с которых вы вносите деньги, должны принадлежать вам — платежи с чужих карт не пройдут;</li><li>вывод средств идёт по тому же контуру и, как правило, на те же реквизиты, с которых было пополнение.</li></ul><p>Пополнение обычно зачисляется мгновенно. Легальные операторы в большинстве случаев не берут комиссию за пополнение, но это стоит проверять в кассе конкретной БК — условия могут отличаться.</p>
-<h2>Способы пополнения и их особенности</h2>
+<h2 id="sposoby-popolneniya-i-ih-osobennosti">Способы пополнения и их особенности</h2>
 <p>У каждого способа свои плюсы. Ниже — сравнение по скорости и удобству. Конкретные лимиты и доступность способов задаёт сам оператор, поэтому итоговые условия смотрите в кассе.</p><div class="table-wrap"><table><caption>Сравнение способов пополнения счёта</caption><thead><tr><th>Способ</th><th>Скорость зачисления</th><th>Что учесть</th></tr></thead><tbody><tr><td>Банковская карта</td><td>Мгновенно</td><td>Карта должна быть оформлена на вас</td></tr><tr><td>СБП</td><td>Мгновенно</td><td>По номеру телефона или QR, часто без комиссии</td></tr><tr><td>Электронный кошелёк</td><td>Обычно мгновенно</td><td>Нужен поддерживаемый оператором сервис</td></tr><tr><td>Со счёта телефона</td><td>Быстро</td><td>Возможна комиссия оператора связи</td></tr></tbody></table></div><p>Для большинства игроков самые удобные и предсказуемые способы — карта и СБП: зачисление мгновенное, а комиссии обычно нет.</p>
-<h2>Лимиты, комиссии и сроки зачисления</h2>
+<h2 id="limity-komissii-i-sroki-zachisleniya">Лимиты, комиссии и сроки зачисления</h2>
 <p>Точные суммы зависят от букмекера и от уровня вашей идентификации. Общие ориентиры:</p><ul><li><strong>Минимальное пополнение</strong> обычно небольшое — от нескольких десятков или сотен рублей.</li><li><strong>Лимиты на суммы</strong> могут отличаться при упрощённой и полной идентификации: полная, как правило, снимает часть ограничений.</li><li><strong>Комиссия</strong> за пополнение у легальных БК обычно отсутствует, но её может брать банк или оператор связи на своей стороне.</li><li><strong>Срок зачисления</strong> — чаще всего мгновенно; при задержке платёж стоит поискать в истории операций ЦУПИС.</li></ul><p><strong>Пример 1.</strong> Вы пополняете счёт на 1000 ₽ картой без комиссии — на счёт поступает ровно 1000 ₽.</p><p><strong>Пример 2.</strong> Пополнение на 1000 ₽ со счёта мобильного, где оператор связи удерживает свою комиссию, скажем, 5% — до счёта дойдёт около 950 ₽. Поэтому для внесения средств удобнее карта или СБП.</p><p><strong>Пример 3.</strong> Вы завели 1000 ₽ и решили вывести их обратно, не сделав ни одной ставки: у многих операторов это возможно, но средства уйдут по тому же каналу и на ваши реквизиты. Подробнее — в материале <a href="/shkola/dengi-i-nalogi/kak-vyvesti-dengi">как вывести деньги</a>.</p>
-<h2>Типичные ошибки при пополнении</h2>
+<h2 id="tipichnye-oshibki-pri-popolnenii">Типичные ошибки при пополнении</h2>
 <p>Чаще всего проблемы с пополнением возникают из-за мелочей, которые легко избежать:</p><ul><li><strong>Платёж с чужой карты.</strong> Контур ЦУПИС требует ваши собственные реквизиты — чужой платёж отклонят.</li><li><strong>Пополнение до идентификации.</strong> Пока она не завершена, касса закрыта.</li><li><strong>Ожидание бонуса «по умолчанию».</strong> Само пополнение не всегда активирует бонус — условия и правила отыгрыша нужно смотреть заранее.</li><li><strong>Игнорирование комиссий и лимитов сторонних сервисов.</strong> Банк или оператор связи могут удержать своё.</li><li><strong>Внесение суммы вне бюджета.</strong> Пополняйте только то, что заложено в бюджет на игру — про дисциплину подробно рассказано в материале про <a href="/shkola/strategii/bankroll-menedzhment">банкролл-менеджмент</a>.</li></ul>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Нужно ли пройти идентификацию перед пополнением?</summary><p>Да. Пока идентификация в ЦУПИС не завершена, касса закрыта и пополнить счёт нельзя.</p></details>
 <details><summary>Берут ли комиссию за пополнение?</summary><p>Легальные букмекеры в большинстве случаев комиссию за пополнение не берут, но её может удержать банк или оператор связи на своей стороне.</p></details>
 <details><summary>Можно ли пополнить счёт с чужой карты?</summary><p>Нет. Реквизиты должны принадлежать вам — платежи с чужих карт контур ЦУПИС не пропускает.</p></details>
 <details><summary>Как быстро зачисляются деньги?</summary><p>Чаще всего мгновенно. Если средства не пришли, проверьте статус платежа в истории операций и обратитесь в поддержку.</p></details>
 <details><summary>Какой минимальный размер пополнения?</summary><p>Зависит от букмекера, обычно это небольшая сумма. Точные значения указаны в кассе конкретного оператора.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/pari">PARI</a>, <a href="/bukmekery/fonbet">Фонбет</a>, <a href="/bukmekery/marathonbet">Марафон</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/shkola/dengi-i-nalogi/kak-vyvesti-dengi"><b>Как вывести деньги из букмекерской конторы</b><small>Деньги и налоги</small></a>
       <a class="tile" href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh"><b>Налог на выигрыш в ставках: сколько платить в 2026</b><small>Деньги и налоги</small></a>

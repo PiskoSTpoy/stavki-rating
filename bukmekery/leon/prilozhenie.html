@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Leon", "item": "https://stavki-rating.ru/bukmekery/leon"}, {"@type": "ListItem", "position": 4, "name": "Приложение Leon: как выглядит официальная загрузка и чего стоит избегать", "item": "https://stavki-rating.ru/bukmekery/leon/prilozhenie"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Приложение Leon: как выглядит официальная загрузка и чего стоит избегать", "description": "Через какие официальные каналы можно получить приложение Leon для Android и iOS и почему не стоит скачивать apk с посторонних сайтов.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/leon/prilozhenie", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Приложение Leon: как выглядит официальная загрузка и чего стоит избегать", "description": "Через какие официальные каналы можно получить приложение Leon для Android и iOS и почему не стоит скачивать apk с посторонних сайтов.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/leon/prilozhenie", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Почему приложения Leon нет в Google Play?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Google Play в целом не публикует приложения для ставок на реальные деньги для российской аудитории — это касается всех букмекеров, а не только Leon.</p>"}}, {"@type": "Question", "name": "Где скачать приложение Leon безопасно?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Для Android — через RuStore или файл с официального сайта оператора, для iOS — через App Store. Подробности в материалах про Android и про iOS.</p>"}}, {"@type": "Question", "name": "Опасно ли скачивать apk с сторонних сайтов?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Да, такой файл может быть изменён и содержать вредоносный код. Скачивать стоит только с официального сайта оператора или из RuStore.</p>"}}, {"@type": "Question", "name": "Отличаются ли функции в приложении и на сайте?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет, базовый функционал — линия, личный кабинет, пополнение и вывод — совпадает с версией сайта.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/leon">Leon</a><span>/</span>Приложение Leon: как выглядит официальная загрузка и чего стоит избегать</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Leon ·</div>
     <h1>Приложение Leon: как выглядит официальная загрузка и чего стоит избегать</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>2 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">У Leon есть отдельные приложения для Android и iOS, и получить их стоит только из официальных каналов — с сайта оператора, из RuStore или App Store. Букмекерские приложения с реальными ставками на деньги не публикуются в Google Play для российской аудитории — это общая политика площадки, а не особенность конкретного оператора, поэтому «нашёл в Google Play» уже повод насторожиться.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/leon?p=leon&amp;pl=subpage-top">Сайт букмекера Leon →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#kakie-prilozheniya-est-u-leon">Какие приложения есть у Leon</a></li><li><a href="#pochemu-prilozheniya-net-v-google-play">Почему приложения нет в Google Play</a></li><li><a href="#riski-ustanovki-apk-s-postoronnih-sajtov">Риски установки apk с посторонних сайтов</a></li><li><a href="#chto-delat-bez-prilozheniya">Что делать без приложения</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Какие приложения есть у Leon</h2>
+    <h2 id="kakie-prilozheniya-est-u-leon">Какие приложения есть у Leon</h2>
 <p>Оператор предлагает отдельные версии для двух платформ:</p><ul><li>Приложение для Android — устанавливается через RuStore или напрямую через файл с официального сайта, подробнее в материале <a href="/bukmekery/leon/prilozhenie/android">про установку на Android</a></li><li>Приложение для iOS — доступно через App Store, подробнее в материале <a href="/bukmekery/leon/prilozhenie/ios">про установку на iPhone</a></li></ul><p>Обе версии дают доступ к тем же функциям, что и сайт: линия, роспись, личный кабинет, пополнение и вывод средств.</p>
-<h2>Почему приложения нет в Google Play</h2>
+<h2 id="pochemu-prilozheniya-net-v-google-play">Почему приложения нет в Google Play</h2>
 <p>Google Play не размещает приложения с реальными ставками на деньги для пользователей из России — это ограничение действует в отношении всех букмекеров без исключения, независимо от их легального статуса. Поэтому официальный канал для Android — это RuStore, альтернативные каталоги приложений или файл с сайта оператора, а не Google Play.</p>
-<h2>Риски установки apk с посторонних сайтов</h2>
+<h2 id="riski-ustanovki-apk-s-postoronnih-sajtov">Риски установки apk с посторонних сайтов</h2>
 <p>По запросам вроде «скачать Leon apk» в поиске часто попадаются сайты, не связанные с оператором. Установка файла оттуда — это риск получить изменённое приложение с встроенным вредоносным кодом, доступом к SMS или подмену реквизитов для пополнения счёта.</p><ul><li>Сверяйте, что ссылка на скачивание ведёт на официальный сайт оператора или в RuStore/App Store</li><li>Не переходите по ссылкам на apk из рекламы в мессенджерах и соцсетях</li><li>После установки сверьте, что приложение запрашивает вход через ту же учётную запись, что и на официальном сайте</li></ul>
-<h2>Что делать без приложения</h2>
+<h2 id="chto-delat-bez-prilozheniya">Что делать без приложения</h2>
 <p>Если по каким-то причинам приложение недоступно, полноценной альтернативой остаётся мобильная версия официального сайта — она открывается в браузере и не требует установки. Регистрация и вход при этом происходят так же, как описано в <a href="/bukmekery/leon/registraciya">материале о регистрации в Leon</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Почему приложения Leon нет в Google Play?</summary><p>Google Play в целом не публикует приложения для ставок на реальные деньги для российской аудитории — это касается всех букмекеров, а не только Leon.</p></details>
 <details><summary>Где скачать приложение Leon безопасно?</summary><p>Для Android — через RuStore или файл с официального сайта оператора, для iOS — через App Store. Подробности в материалах про Android и про iOS.</p></details>
 <details><summary>Опасно ли скачивать apk с сторонних сайтов?</summary><p>Да, такой файл может быть изменён и содержать вредоносный код. Скачивать стоит только с официального сайта оператора или из RuStore.</p></details>
 <details><summary>Отличаются ли функции в приложении и на сайте?</summary><p>Нет, базовый функционал — линия, личный кабинет, пополнение и вывод — совпадает с версией сайта.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/leon/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/pari?p=bukmekery/leon/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>, <a href="/go/zenit?p=bukmekery/leon/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/marathonbet?p=bukmekery/leon/prilozhenie&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/leon"><b>Leon: обзор легального букмекера в России</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/leon/promokod"><b>Промокод Leon: как это работает и где искать актуальный код</b><small>Промокод</small></a>

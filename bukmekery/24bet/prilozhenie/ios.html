@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "24bet", "item": "https://stavki-rating.ru/bukmekery/24bet"}, {"@type": "ListItem", "position": 4, "name": "24bet на iPhone: приложение и мобильная версия сайта", "item": "https://stavki-rating.ru/bukmekery/24bet/prilozhenie/ios"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "24bet на iPhone: приложение и мобильная версия сайта", "description": "Как пользоваться 24bet на iPhone: наличие приложения в App Store, мобильная версия сайта как альтернатива и пошаговая установка без сторонних файлов.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/24bet/prilozhenie/ios", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "24bet на iPhone: приложение и мобильная версия сайта", "description": "Как пользоваться 24bet на iPhone: наличие приложения в App Store, мобильная версия сайта как альтернатива и пошаговая установка без сторонних файлов.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/24bet/prilozhenie/ios", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Есть ли у 24bet официальное приложение для iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "Доступность и название приложения в App Store лучше проверять напрямую в поиске App Store или на официальном сайте 24bet.ru, так как это может меняться."}}, {"@type": "Question", "name": "Можно ли установить 24bet через apk на iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, формат apk предназначен для Android и не применяется на iOS. Любые сайты, предлагающие apk «для iPhone», не относятся к официальному 24bet."}}, {"@type": "Question", "name": "Что делать, если приложения в App Store нет?", "acceptedAnswer": {"@type": "Answer", "text": "Использовать мобильную версию сайта 24bet.ru в браузере — она рассчитана на те же основные функции, что и приложение."}}, {"@type": "Question", "name": "Отличается ли аккаунт в браузере от аккаунта в приложении?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, аккаунт единый независимо от способа входа — приложение или браузер используют одни и те же данные для авторизации и идентификации."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,30 +222,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/24bet">24bet</a><span>/</span>24bet на iPhone: приложение и мобильная версия сайта</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · 24bet ·</div>
     <h1>24bet на iPhone: приложение и мобильная версия сайта</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>2 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Для iPhone у легальных букмекеров ситуация с приложениями не всегда одинаковая: у части операторов есть отдельное приложение в App Store, у части основным способом остаётся мобильная версия сайта. Разбираем оба варианта для 24bet и как ими пользоваться.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/24bet?p=24bet&amp;pl=subpage-top">Сайт букмекера 24bet →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#prilozhenie-24bet-v-app-store">Приложение 24bet в App Store</a></li><li><a href="#mobilnaya-versiya-sajta-kak-alternativa">Мобильная версия сайта как альтернатива</a></li><li><a href="#kak-nachat-polzovatsya-na-iphone-obschie-shagi">Как начать пользоваться на iPhone: общие шаги</a></li><li><a href="#chego-izbegat-na-ios">Чего избегать на iOS</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Приложение 24bet в App Store</h2>
+    <h2 id="prilozhenie-24bet-v-app-store">Приложение 24bet в App Store</h2>
 <p>Наличие и название приложения 24bet в App Store может меняться, поэтому надёжнее проверять это непосредственно в поиске App Store на устройстве или на официальном сайте 24bet.ru — там обычно указывают актуальный способ доступа для iOS. Если приложение доступно, устанавливать его стоит только из App Store, а не по ссылкам на apk или файлы «для iPhone» со сторонних сайтов — таких легальных файлов для iOS не существует, это признак мошенничества.</p>
-<h2>Мобильная версия сайта как альтернатива</h2>
+<h2 id="mobilnaya-versiya-sajta-kak-alternativa">Мобильная версия сайта как альтернатива</h2>
 <p>Если отдельного приложения нет или его не хочется устанавливать, доступен основной способ — мобильная версия сайта 24bet.ru в браузере Safari или другом браузере на iPhone. По функциям она рассчитана на то же самое: вход в аккаунт, ставки, работу со счётом. Часть пользователей добавляют сайт на главный экран как ярлык — это ускоряет открытие, но не превращает сайт в отдельное приложение из App Store.</p>
-<h2>Как начать пользоваться на iPhone: общие шаги</h2>
+<h2 id="kak-nachat-polzovatsya-na-iphone-obschie-shagi">Как начать пользоваться на iPhone: общие шаги</h2>
 <ol><li>Проверить в App Store, есть ли актуальное приложение 24bet, либо открыть 24bet.ru в браузере на iPhone.</li><li>Войти в существующий аккаунт или пройти регистрацию с идентификацией.</li><li>При использовании браузера — при желании добавить страницу сайта на главный экран для быстрого доступа.</li><li>Проверить работу основных разделов: ставки, счёт, история операций.</li></ol><p>Как устроена регистрация и подтверждение через ЦУПИС — в разделе Школы <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">про регистрацию и ЦУПИС</a>.</p>
-<h2>Чего избегать на iOS</h2>
+<h2 id="chego-izbegat-na-ios">Чего избегать на iOS</h2>
 <p>Для iPhone не существует официальных apk-файлов — это формат для Android, и любой сайт, предлагающий «apk для iOS» или файл для установки в обход App Store, не связан с официальным 24bet. Устанавливать сторонние профили или файлы конфигурации ради «обхода» ограничений тоже не стоит — это создаёт риск для устройства и данных, а не расширяет легальный доступ. Общий обзор бренда и других каналов доступа — на страницах <a href="/bukmekery/24bet">обзора 24bet</a> и <a href="/bukmekery/24bet/prilozhenie">про приложение 24bet</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Есть ли у 24bet официальное приложение для iPhone?</summary><p>Доступность и название приложения в App Store лучше проверять напрямую в поиске App Store или на официальном сайте 24bet.ru, так как это может меняться.</p></details>
 <details><summary>Можно ли установить 24bet через apk на iPhone?</summary><p>Нет, формат apk предназначен для Android и не применяется на iOS. Любые сайты, предлагающие apk «для iPhone», не относятся к официальному 24bet.</p></details>
 <details><summary>Что делать, если приложения в App Store нет?</summary><p>Использовать мобильную версию сайта 24bet.ru в браузере — она рассчитана на те же основные функции, что и приложение.</p></details>
 <details><summary>Отличается ли аккаунт в браузере от аккаунта в приложении?</summary><p>Нет, аккаунт единый независимо от способа входа — приложение или браузер используют одни и те же данные для авторизации и идентификации.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/24bet/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/betcity?p=bukmekery/24bet/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>, <a href="/go/ligastavok?p=bukmekery/24bet/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>, <a href="/go/marathonbet?p=bukmekery/24bet/prilozhenie/ios&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/24bet"><b>24bet: обзор букмекерской конторы</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/24bet/promokod"><b>Промокод 24bet: как это работает</b><small>Промокод</small></a>

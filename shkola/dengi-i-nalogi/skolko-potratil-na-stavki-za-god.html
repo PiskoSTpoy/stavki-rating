@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -171,7 +181,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Деньги и налоги", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Сколько ты реально потратил на ставки за год", "item": "https://stavki-rating.ru/shkola/dengi-i-nalogi/skolko-potratil-na-stavki-za-god"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Сколько ты реально потратил на ставки за год", "description": "Как вытащить настоящую сумму трат на ставки из личного кабинета ЦУПИС и букмекера, а не гадать на глаз — и почему считать нужно чистый баланс, а не сумму ставок.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/dengi-i-nalogi/skolko-potratil-na-stavki-za-god", "datePublished": "2026-09-07", "dateModified": "2026-09-07", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Сколько ты реально потратил на ставки за год", "description": "Как вытащить настоящую сумму трат на ставки из личного кабинета ЦУПИС и букмекера, а не гадать на глаз — и почему считать нужно чистый баланс, а не сумму ставок.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/dengi-i-nalogi/skolko-potratil-na-stavki-za-god", "datePublished": "2026-09-07", "dateModified": "2026-09-07", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Если играл в нескольких легальных БК, придётся собирать цифры по каждой отдельно?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Раз пополнения и выводы у легальных БК идут только через ЦУПИС, в его личном кабинете видна общая лента по всем твоим счетам — дальше просто выставляешь нужный период и, если хочешь разбивку, фильтруешь по конкретному букмекеру."}}, {"@type": "Question", "name": "У меня выводов за год больше, чем пополнений — это как понимать?", "acceptedAnswer": {"@type": "Answer", "text": "Значит по чистому балансу ты в плюсе: реальных денег из своего кармана в ставки ушло меньше, чем вернулось обратно, даже если общий оборот ставок за год выглядит внушительно."}}, {"@type": "Question", "name": "Эта цифра нужна для налоговой или просто для себя?", "acceptedAnswer": {"@type": "Answer", "text": "Это про личный бюджет, не про отчётность. С выигрышей у легальных букмекеров налог удерживается автоматически при выводе — контора выступает налоговым агентом, и самому подавать декларацию по этим суммам не нужно. А вот сколько реально ушло из своего кармана за год — цифра, которую больше никто за тебя не считает."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -211,25 +221,26 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Деньги и налоги</a><span>/</span>Сколько ты реально потратил на ставки за год</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Школа · Деньги и налоги ·</div>
     <h1>Сколько ты реально потратил на ставки за год</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 07.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-07">07.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Если пытаешься прикинуть сумму «на глаз» — она почти наверняка в разы меньше реальной. Память хорошо хранит пару крупных проигрышей и почти не хранит десятки мелких пополнений по 300–1000 рублей, из которых на самом деле и складывается годовая цифра. Гадать не нужно: у легального букмекера (из реестра ЕРАИ, не у зеркала-однодневки) вся история операций лежит в личном кабинете ЦУПИС и в кабинете самой конторы — точную цифру можно вытащить за пару минут, а не прикидывать в уме.</p>
     
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#gde-smotret-cifry-a-ne-vspominat-ih">Где смотреть цифры, а не вспоминать их</a></li><li><a href="#schitat-nuzhno-chistyj-balans-a-ne-summu-stavok">Считать нужно чистый баланс, а не сумму ставок</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Где смотреть цифры, а не вспоминать их</h2>
+    <h2 id="gde-smotret-cifry-a-ne-vspominat-ih">Где смотреть цифры, а не вспоминать их</h2>
 <p>У любого легального оператора деньги идут через <strong>ЦУПИС</strong> — Центр учёта переводов интерактивных ставок, это обязательный платёжный посредник между игроком и букмекером в России. В личном кабинете ЦУПИС есть единая лента операций: все пополнения, выводы и переводы букмекеру собраны в одном месте, независимо от того, в скольких конторах у тебя счета.</p><ul><li>заходишь в личный кабинет ЦУПИС, раздел «История»;</li><li>выставляешь период — например, последние 12 месяцев;</li><li>можно отфильтровать по типу операции (пополнение / вывод) и по конкретному букмекеру;</li><li>есть кнопка выгрузки истории в CSV — удобно, если хочешь просто сложить цифры в таблице, а не листать вручную.</li></ul><p>Отдельно в личном кабинете самого букмекера обычно видна история ставок — какие пари делались и с каким результатом. Это дополняет картину, но для расчёта именно потраченной суммы важнее лента ЦУПИС: она про движение денег, а не про количество пари. Список легальных операторов, у которых в принципе можно посмотреть такую историю, собран в <a href="/rating">рейтинге</a>.</p>
-<h2>Считать нужно чистый баланс, а не сумму ставок</h2>
+<h2 id="schitat-nuzhno-chistyj-balans-a-ne-summu-stavok">Считать нужно чистый баланс, а не сумму ставок</h2>
 <p>Здесь чаще всего и путаются. Сумма ставок за год — это оборот: если 10 тысяч рублей несколько раз выигрывались и снова ставились, оборот может показать сотни тысяч, хотя из кармана ушла одна исходная сумма. Реальная трата считается иначе:</p><p><strong>Чистая трата за период = сумма всех пополнений − сумма всех выводов</strong></p><p>Например: за год закинул через ЦУПИС 180 000 рублей, а вывел обратно 95 000. Чистая просадка — 85 000, и это честная цифра, а не «наставил на миллион», которая на самом деле про оборот, а не про потраченные деньги. Работает и в другую сторону: если выводов за период больше, чем пополнений, по чистому балансу человек в плюсе — даже если оборот ставок был большим.</p><p>Это просто способ увидеть реальную цифру, а не готовое решение, что с ней делать — дальше каждый сам разбирается, устраивает его эта сумма или нет.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Если играл в нескольких легальных БК, придётся собирать цифры по каждой отдельно?</summary><p>Нет. Раз пополнения и выводы у легальных БК идут только через ЦУПИС, в его личном кабинете видна общая лента по всем твоим счетам — дальше просто выставляешь нужный период и, если хочешь разбивку, фильтруешь по конкретному букмекеру.</p></details>
 <details><summary>У меня выводов за год больше, чем пополнений — это как понимать?</summary><p>Значит по чистому балансу ты в плюсе: реальных денег из своего кармана в ставки ушло меньше, чем вернулось обратно, даже если общий оборот ставок за год выглядит внушительно.</p></details>
 <details><summary>Эта цифра нужна для налоговой или просто для себя?</summary><p>Это про личный бюджет, не про отчётность. С выигрышей у легальных букмекеров налог удерживается автоматически при выводе — контора выступает налоговым агентом, и самому подавать декларацию по этим суммам не нужно. А вот сколько реально ушло из своего кармана за год — цифра, которую больше никто за тебя не считает.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/ligastavok">Лига Ставок</a>, <a href="/bukmekery/pari">PARI</a>, <a href="/bukmekery/betcity">Бетсити</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/shkola/dengi-i-nalogi/kak-vyvesti-dengi"><b>Как вывести деньги из букмекерской конторы</b><small>Деньги и налоги</small></a>
       <a class="tile" href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh"><b>Налог на выигрыш в ставках: сколько платить в 2026</b><small>Деньги и налоги</small></a>

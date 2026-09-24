@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -171,7 +181,7 @@
   @media (max-width: 760px) { .sticky-cta { display: flex; } }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Мелбет", "item": "https://stavki-rating.ru/bukmekery/melbet"}, {"@type": "ListItem", "position": 4, "name": "Как зайти на официальный сайт Мелбет", "item": "https://stavki-rating.ru/bukmekery/melbet/kak-zajti"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как зайти на официальный сайт Мелбет", "description": "Разбираем, как попасть на официальный сайт Мелбет, почему бывают перебои с доступом и как отличить настоящий домен от фишинговых «зеркал» под похожим названием.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/melbet/kak-zajti", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как зайти на официальный сайт Мелбет", "description": "Разбираем, как попасть на официальный сайт Мелбет, почему бывают перебои с доступом и как отличить настоящий домен от фишинговых «зеркал» под похожим названием.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/melbet/kak-zajti", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что делать, если официальный сайт Мелбет не открывается?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Проверить соединение и при необходимости воспользоваться VPN-сервисом или мобильным приложением, если оно уже установлено с официального источника. Не переходите по ссылкам с незнакомых «зеркальных» сайтов и не вводите на них данные аккаунта.</p>"}}, {"@type": "Question", "name": "Является ли «зеркало» официальным способом входа?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Официальным считается только домен melbet.ru и ссылки, которые публикует сам оператор. Сторонние сайты, называющие себя «зеркалом», не находятся под контролем букмекера и могут быть созданы для кражи данных.</p>"}}, {"@type": "Question", "name": "Как проверить, что Мелбет работает легально?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Легальный оператор входит в реестр ЕРАИ, что можно проверить на государственных ресурсах. Порядок такой проверки подробно описан в отдельном материале о проверке лицензии букмекера.</p>"}}, {"@type": "Question", "name": "Безопасно ли вводить данные карты на сайте Мелбет?", "acceptedAnswer": {"@type": "Answer", "text": "<p>На официальном домене операции пополнения и вывода проходят через Единый ЦУПИС и защищённые платёжные шлюзы. Вводить данные карты стоит только убедившись, что адрес в браузере соответствует melbet.ru.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -211,30 +221,31 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/melbet">Мелбет</a><span>/</span>Как зайти на официальный сайт Мелбет</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Мелбет ·</div>
     <h1>Как зайти на официальный сайт Мелбет</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Если сайт Мелбет не открывается напрямую, это почти всегда связано с блокировкой на уровне провайдера, а не с самим оператором. Работает Мелбет легально, и для доступа к нему следует использовать только официальный домен melbet.ru или ссылки, размещённые на проверенных ресурсах. Ниже — как отличить настоящий сайт от подделки и почему не стоит искать «рабочие зеркала» через сомнительные сервисы.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/melbet?p=melbet&amp;pl=subpage-top">Сайт букмекера Мелбет →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#oficialnyj-domen-melbet">Официальный домен Мелбет</a></li><li><a href="#pochemu-byvayut-problemy-s-dostupom">Почему бывают проблемы с доступом</a></li><li><a href="#ostorozhno-fishingovye-zerkala">Осторожно: фишинговые «зеркала»</a></li><li><a href="#kak-proverit-chto-pered-vami-oficialnyj-sajt">Как проверить, что перед вами официальный сайт</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Официальный домен Мелбет</h2>
+    <h2 id="oficialnyj-domen-melbet">Официальный домен Мелбет</h2>
 <p>Мелбет — легальный оператор (ООО «Мелофон»), входит в реестр ЕРАИ, и его основной адрес в интернете — melbet.ru. Все официальные ссылки на бренд, включая раздел о регистрации и мобильных приложениях, ведут на этот домен или его проверенные технические поддомены.</p><p>Если при переходе по прямой ссылке страница не грузится, первым шагом стоит проверить сам домен в адресной строке, а не переходить по первой ссылке из поисковой выдачи или рекламного объявления — среди них нередко встречаются подделки.</p>
-<h2>Почему бывают проблемы с доступом</h2>
+<h2 id="pochemu-byvayut-problemy-s-dostupom">Почему бывают проблемы с доступом</h2>
 <p>Провайдеры в России по требованию регулятора периодически ограничивают доступ к сайтам букмекерских контор на уровне DNS или IP-адреса. Это техническая мера, которая не отражает легальность самого оператора: Мелбет продолжает работать как лицензированная компания, входящая в реестр ЕРАИ, независимо от того, открывается ли конкретный адрес у конкретного провайдера в конкретный момент.</p><p>Проверить актуальный статус лицензии оператора можно на профильных государственных ресурсах — как это сделать, разобрано в отдельном материале.</p>
-<h2>Осторожно: фишинговые «зеркала»</h2>
+<h2 id="ostorozhno-fishingovye-zerkala">Осторожно: фишинговые «зеркала»</h2>
 <p>На фоне блокировок в сети появляется множество сайтов с названиями типа «мелбет-зеркало», «мелбет-вход» и похожими адресами, которые никак не связаны с официальным оператором. Такие ресурсы часто копируют дизайн настоящего сайта, чтобы получить логин, пароль или данные банковской карты пользователя.</p><ul><li>Домен отличается от melbet.ru лишними словами, дефисами или заменой букв на похожие символы.</li><li>Сайт просит ввести данные карты вне процедуры пополнения счёта или обещает бонус за «привязку» карты.</li><li>Нет ссылки на реестр ЕРАИ или сведения об операторе оформлены расплывчато, без указания юридического лица.</li></ul>
-<h2>Как проверить, что перед вами официальный сайт</h2>
+<h2 id="kak-proverit-chto-pered-vami-oficialnyj-sajt">Как проверить, что перед вами официальный сайт</h2>
 <p>Прежде чем вводить логин и пароль от личного кабинета, стоит убедиться, что перед вами именно официальный ресурс. Универсального «правильного зеркала» не существует — есть только официальный домен и official-каналы, где Мелбет публикует актуальные ссылки.</p><div class="table-wrap"><table><caption>Как отличить официальный сайт от подделки</caption><thead><tr><th>Признак</th><th>Официальный сайт</th><th>Подозрительный ресурс</th></tr></thead><tbody><tr><td>Домен</td><td>melbet.ru или проверенный поддомен</td><td>Домен с посторонними словами/дефисами</td></tr><tr><td>Реестр ЕРАИ</td><td>Указан оператор и статус в реестре</td><td>Информация об операторе отсутствует</td></tr><tr><td>Запрос данных карты</td><td>Только в разделе пополнения/вывода</td><td>Просят карту «для доступа» или бонуса</td></tr></tbody></table></div><p>Проверить лицензионный статус оператора и его присутствие в реестре можно через <a href="/kak-proverit-licenziyu">инструкцию по проверке лицензии</a>. Общий обзор бренда и его характеристик собран на <a href="/bukmekery/melbet">странице Мелбет в каталоге</a>, а сравнить оператора с другими легальными БК можно в <a href="/rating">рейтинге букмекеров</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Что делать, если официальный сайт Мелбет не открывается?</summary><p>Проверить соединение и при необходимости воспользоваться VPN-сервисом или мобильным приложением, если оно уже установлено с официального источника. Не переходите по ссылкам с незнакомых «зеркальных» сайтов и не вводите на них данные аккаунта.</p></details>
 <details><summary>Является ли «зеркало» официальным способом входа?</summary><p>Официальным считается только домен melbet.ru и ссылки, которые публикует сам оператор. Сторонние сайты, называющие себя «зеркалом», не находятся под контролем букмекера и могут быть созданы для кражи данных.</p></details>
 <details><summary>Как проверить, что Мелбет работает легально?</summary><p>Легальный оператор входит в реестр ЕРАИ, что можно проверить на государственных ресурсах. Порядок такой проверки подробно описан в отдельном материале о проверке лицензии букмекера.</p></details>
 <details><summary>Безопасно ли вводить данные карты на сайте Мелбет?</summary><p>На официальном домене операции пополнения и вывода проходят через Единый ЦУПИС и защищённые платёжные шлюзы. Вводить данные карты стоит только убедившись, что адрес в браузере соответствует melbet.ru.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/melbet/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/pari?p=bukmekery/melbet/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>, <a href="/go/marathonbet?p=bukmekery/melbet/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>, <a href="/go/zenit?p=bukmekery/melbet/kak-zajti&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/melbet"><b>Мелбет: обзор букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/melbet/promokod"><b>Промокод Мелбет: как это работает</b><small>Промокод</small></a>

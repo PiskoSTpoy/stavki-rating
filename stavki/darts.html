@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Ставки на спорт", "item": "https://stavki-rating.ru/stavki"}, {"@type": "ListItem", "position": 3, "name": "Ставки на дартс: сеты, леги и тоталы", "item": "https://stavki-rating.ru/stavki/darts"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ставки на дартс: сеты, леги и тоталы", "description": "Как ставить на дартс: чем отличаются леги и сеты, рынки исход, фора и тотал, специальные ставки на 180 и чекаут, турниры и примеры со ставкой 1000 ₽.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/stavki/darts", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ставки на дартс: сеты, леги и тоталы", "description": "Как ставить на дартс: чем отличаются леги и сеты, рынки исход, фора и тотал, специальные ставки на 180 и чекаут, турниры и примеры со ставкой 1000 ₽.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/stavki/darts", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Чем отличается лег от сета в дартсе?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Лег — это одна партия до закрытия 501 очка с попаданием в дабл на финальном броске. Сет — серия обычно до 3 выигранных легов. Матч считают либо по легам, либо по сетам.</p>"}}, {"@type": "Question", "name": "Что такое рынок «тотал 180»?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Это ставка на количество максимальных подач (180 очков за три дротика) в матче. Букмекер задаёт линию, а вы выбираете «больше» или «меньше». Рынок зависит от результативности игроков и дистанции матча.</p>"}}, {"@type": "Question", "name": "Какой максимальный чекаут в дартсе?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Наибольшее возможное закрытие за один подход — 170 очков (тройка-20, тройка-20, «булл»). На него и ориентирован рынок «самый высокий чекаут».</p>"}}, {"@type": "Question", "name": "Есть ли ничья в матче по дартсу?", "acceptedAnswer": {"@type": "Answer", "text": "<p>В играх на выбывание ничьей нет — кто-то первым набирает нужное число легов или сетов. Ничья возможна только в отдельных лиговых форматах, например в некоторых вечерах Премьер-лиги.</p>"}}, {"@type": "Question", "name": "Что такое формат «double-in, double-out»?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Это правило, при котором лег нужно и открыть, и закрыть попаданием в удвоение. Оно применяется, например, на World Grand Prix и делает начало легов менее предсказуемым.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,33 +222,34 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/stavki">Ставки на спорт</a><span>/</span>Ставки на дартс: сеты, леги и тоталы</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Ставки на спорт ·</div>
     <h1>Ставки на дартс: сеты, леги и тоталы</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>4 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Прямой ответ: в дартсе ставят на исход матча, фору и тотал по легам или сетам, а также на специальные рынки — тотал 180 (максимальных подач), самый высокий чекаут и точный счёт. Лег выигрывается закрытием 501 очка с обязательным попаданием в удвоение, а сет — это, как правило, победа в трёх легах. Ниже — как считаются очки, реальные рынки, крупные турниры и три примера расчёта со ставкой 1000 ₽.</p>
     
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#leg-set-i-formaty-matchej">Лег, сет и форматы матчей</a></li><li><a href="#realnye-rynki-na-darts">Реальные рынки на дартс</a></li><li><a href="#tri-primera-rascheta-so-stavkoj-1000">Три примера расчёта со ставкой 1000 ₽</a></li><li><a href="#krupnye-turniry-i-vliyanie-formata">Крупные турниры и влияние формата</a></li><li><a href="#tipichnye-oshibki-novichka">Типичные ошибки новичка</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Лег, сет и форматы матчей</h2>
+    <h2 id="leg-set-i-formaty-matchej">Лег, сет и форматы матчей</h2>
 <p>В дартсе счёт ведётся сверху вниз от 501 очка. <strong>Лег</strong> выигрывает игрок, который первым закрывает ровно 501 очко, причём последним броском обязательно нужно попасть в удвоение (дабл) или в «булл» по центру мишени — это формат «straight-in, double-out».</p><p><strong>Сет</strong> — это, как правило, серия до 3 выигранных легов (то есть победа «в трёх легах из пяти»). Матчи считаются двумя способами: по легам (например, «до 11 выигранных легов») или по сетам. На <strong>Чемпионате мира PDC</strong> используется именно формат по сетам, а дистанция растёт по мере турнира.</p><p>В играх на выбывание ничьей нет — кто-то доходит до нужного числа легов или сетов. Ничья возможна только в лиговых форматах (например, в отдельных вечерах Премьер-лиги), и тогда у рынка «исход» появляется третий вариант.</p>
-<h2>Реальные рынки на дартс</h2>
+<h2 id="realnye-rynki-na-darts">Реальные рынки на дартс</h2>
 <p>Помимо исхода, в дартсе много специальных рынков, завязанных на статистику бросков.</p><div class="table-wrap"><table><caption>Рынки на матчи по дартсу</caption><thead><tr><th>Рынок</th><th>Что означает</th></tr></thead><tbody><tr><td>Победитель матча</td><td>Кто выиграет встречу (двухисходный рынок в плей-офф)</td></tr><tr><td>Фора по легам/сетам</td><td>Гандикап к счёту, например Ф1 (−3.5) по легам</td></tr><tr><td>Тотал легов/сетов</td><td>Больше или меньше линии</td></tr><tr><td>Тотал 180</td><td>Сколько максимальных подач (180 очков) будет в матче</td></tr><tr><td>Самый высокий чекаут</td><td>Наибольшее закрытие в матче; максимум — 170</td></tr><tr><td>Точный счёт</td><td>Итоговый счёт по сетам или легам</td></tr><tr><td>«9 дротиков»</td><td>Будет ли идеальный лег из 9 бросков — да/нет</td></tr></tbody></table></div><p>Как работают гандикап и тотальная линия, разобрано в материалах <a href="/shkola/terminy/chto-takoe-fora">что такое фора</a> и <a href="/shkola/terminy/chto-takoe-total">что такое тотал</a>.</p>
-<h2>Три примера расчёта со ставкой 1000 ₽</h2>
+<h2 id="tri-primera-rascheta-so-stavkoj-1000">Три примера расчёта со ставкой 1000 ₽</h2>
 <p>Коэффициенты в примерах гипотетические.</p><p><strong>Пример 1. Победитель матча.</strong> Ставка 1000 ₽ на фаворита за 1.65. Выплата — 1000 × 1.65 = 1650 ₽, прибыль — 650 ₽.</p><p><strong>Пример 2. Тотал легов.</strong> В матче до 11 легов ставка 1000 ₽ на «тотал больше 21.5» за 1.90 — расчёт на затяжную, равную игру. Выплата при проходе — 1000 × 1.90 = 1900 ₽, прибыль — 900 ₽. Если фаворит выигрывает быстро, всухую, тотал «больше» проиграет.</p><p><strong>Пример 3. Фора по сетам.</strong> Ставка 1000 ₽ на Ф1 (−1.5) на фаворита в матче по сетам за 2.05. Для прохода нужна победа с разницей минимум в 2 сета. Выплата — 1000 × 2.05 = 2050 ₽, прибыль — 1050 ₽.</p><p>Быстро прикинуть выплату по любому коэффициенту помогает калькулятор в разделе инструментов сайта.</p>
-<h2>Крупные турниры и влияние формата</h2>
+<h2 id="krupnye-turniry-i-vliyanie-formata">Крупные турниры и влияние формата</h2>
 <p>Основные турниры, вокруг которых строится линия:</p><ul><li><strong>Чемпионат мира PDC</strong> (Alexandra Palace, «Элли-Пэлли») — главный турнир сезона, формат по сетам.</li><li><strong>World Matchplay</strong> — крупный турнир в формате по легам.</li><li><strong>Премьер-лига</strong> — регулярные игровые вечера с очковой таблицей.</li><li><strong>World Grand Prix</strong> — турнир с редким правилом «double-in, double-out»: лег нужно и открыть, и закрыть удвоением.</li></ul><p>Формат влияет на рынки напрямую: в играх по сетам «тотал легов» ведёт себя иначе, чем в матчах, которые считаются только по легам. Всегда уточняйте дистанцию перед ставкой на тотал и фору.</p>
-<h2>Типичные ошибки новичка</h2>
+<h2 id="tipichnye-oshibki-novichka">Типичные ошибки новичка</h2>
 <p>Типичные ошибки в ставках на дартс:</p><ul><li><strong>Путаница легов и сетов.</strong> «Тотал 21.5» в матче по легам и «тотал 4.5» в матче по сетам — разные по смыслу линии.</li><li><strong>Ставка на «9 дротиков» как на частое событие.</strong> Идеальный лег — большая редкость, и высокий коэффициент это отражает.</li><li><strong>Недооценка фактора площадки.</strong> Сцена, зрители и сценический свет влияют на игроков; форма на «телевизионных» турнирах может отличаться.</li><li><strong>Игнорирование статистики чекаутов и 180.</strong> Специальные рынки требуют анализа среднего балла и процента реализации даблов, а не только имени игрока.</li></ul><p>Сравнить условия легальных операторов из реестра ЕРАИ можно в <a href="/rating">рейтинге букмекеров</a>. Близкая по логике «партийная» дисциплина — <a href="/stavki/snooker">ставки на снукер</a>.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Чем отличается лег от сета в дартсе?</summary><p>Лег — это одна партия до закрытия 501 очка с попаданием в дабл на финальном броске. Сет — серия обычно до 3 выигранных легов. Матч считают либо по легам, либо по сетам.</p></details>
 <details><summary>Что такое рынок «тотал 180»?</summary><p>Это ставка на количество максимальных подач (180 очков за три дротика) в матче. Букмекер задаёт линию, а вы выбираете «больше» или «меньше». Рынок зависит от результативности игроков и дистанции матча.</p></details>
 <details><summary>Какой максимальный чекаут в дартсе?</summary><p>Наибольшее возможное закрытие за один подход — 170 очков (тройка-20, тройка-20, «булл»). На него и ориентирован рынок «самый высокий чекаут».</p></details>
 <details><summary>Есть ли ничья в матче по дартсу?</summary><p>В играх на выбывание ничьей нет — кто-то первым набирает нужное число легов или сетов. Ничья возможна только в отдельных лиговых форматах, например в некоторых вечерах Премьер-лиги.</p></details>
 <details><summary>Что такое формат «double-in, double-out»?</summary><p>Это правило, при котором лег нужно и открыть, и закрыть попаданием в удвоение. Оно применяется, например, на World Grand Prix и делает начало легов менее предсказуемым.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/zenit">Зенит</a>, <a href="/bukmekery/marathonbet">Марафон</a>, <a href="/bukmekery/ligastavok">Лига Ставок</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/stavki/futbol"><b>Ставки на футбол: рынки, роспись и типичные ошибки</b><small>Ставки на спорт</small></a>
       <a class="tile" href="/stavki/hokkej"><b>Ставки на хоккей: тоталы, форы и особенности КХЛ и НХЛ</b><small>Ставки на спорт</small></a>

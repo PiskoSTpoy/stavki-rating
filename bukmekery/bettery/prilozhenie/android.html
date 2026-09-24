@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Bettery", "item": "https://stavki-rating.ru/bukmekery/bettery"}, {"@type": "ListItem", "position": 4, "name": "Как скачать приложение Bettery на Android официально", "item": "https://stavki-rating.ru/bukmekery/bettery/prilozhenie/android"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как скачать приложение Bettery на Android официально", "description": "Как официально установить приложение Bettery на Android: RuStore и сайт bettery.ru, почему нет в Google Play, шаги установки и как не скачать подделку.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/bettery/prilozhenie/android", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как скачать приложение Bettery на Android официально", "description": "Как официально установить приложение Bettery на Android: RuStore и сайт bettery.ru, почему нет в Google Play, шаги установки и как не скачать подделку.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/bettery/prilozhenie/android", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Почему нельзя скачать Bettery из Google Play?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Магазин не размещает приложения с реальными ставками на деньги для российской аудитории — это касается всех легальных операторов, не только Bettery.</p>"}}, {"@type": "Question", "name": "apk с официального сайта — это безопасно?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Да, если файл скачан именно с официального домена bettery.ru, а не с сайта-агрегатора или из рекламной ссылки в мессенджере.</p>"}}, {"@type": "Question", "name": "Нужно ли что-то менять в настройках телефона перед установкой apk?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Обычно система попросит разрешить установку приложений из внешнего источника — это стандартный запрос при установке apk не из магазина приложений.</p>"}}, {"@type": "Question", "name": "Приложение и сайт — это один и тот же аккаунт?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Да, вход в приложении и на сайте ведёт в один и тот же личный кабинет — регистрация не создаётся заново под каждый канал.</p>"}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,32 +222,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/bettery">Bettery</a><span>/</span>Как скачать приложение Bettery на Android официально</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Bettery ·</div>
     <h1>Как скачать приложение Bettery на Android официально</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Установить приложение Bettery на Android можно только двумя официальными способами — через каталог RuStore или через apk-файл с сайта bettery.ru. Google Play здесь не вариант в принципе, и дело не в самом Bettery, а в общей политике магазина. Разбираем порядок действий и на что обратить внимание при установке.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/bettery?p=bettery&amp;pl=subpage-top">Сайт букмекера Bettery →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#pochemu-net-v-google-play">Почему нет в Google Play</a></li><li><a href="#oficialnye-kanaly-ustanovki">Официальные каналы установки</a></li><li><a href="#poryadok-ustanovki-v-obschih-chertah">Порядок установки в общих чертах</a></li><li><a href="#kak-ne-ustanovit-poddelku">Как не установить подделку</a></li><li><a href="#chto-delat-esli-prilozhenie-ne-ustanavlivaetsya-ili-ne-zapus">Что делать, если приложение не устанавливается или не запускается</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Почему нет в Google Play</h2>
+    <h2 id="pochemu-net-v-google-play">Почему нет в Google Play</h2>
 <p>Google Play не публикует приложения с реальными ставками на деньги для аудитории из России — это правило распространяется на всех легальных букмекеров, включая крупнейших игроков рынка, а не только на Bettery. Поэтому поиск «Bettery» в Google Play результата не даст, и это не повод сомневаться в легальности оператора.</p>
-<h2>Официальные каналы установки</h2>
+<h2 id="oficialnye-kanaly-ustanovki">Официальные каналы установки</h2>
 <div class="table-wrap"><table><caption>Способы установки на Android</caption><thead><tr><th>Канал</th><th>Что нужно</th></tr></thead><tbody><tr><td>RuStore</td><td>Установленный магазин RuStore, поиск по названию Bettery</td></tr><tr><td>apk с bettery.ru</td><td>Разрешение на установку приложений из внешнего источника в настройках телефона</td></tr></tbody></table></div><p>Разница между способами в основном в удобстве обновлений: в RuStore они приходят автоматически, при установке apk-файла новую версию нужно будет скачивать вручную по мере выхода обновлений.</p>
-<h2>Порядок установки в общих чертах</h2>
+<h2 id="poryadok-ustanovki-v-obschih-chertah">Порядок установки в общих чертах</h2>
 <ol><li>Открыть RuStore или официальный сайт bettery.ru именно с проверенного адреса</li><li>Скачать приложение или apk-файл</li><li>При установке из apk — подтвердить разрешение на установку из внешнего источника, если система запросит это</li><li>После установки стоит проверить, что значок приложения и название совпадают с официальными, прежде чем вводить логин</li><li>Запустить приложение и пройти вход или <a href="/bukmekery/bettery/registraciya">регистрацию</a> — общий порядок описан отдельно</li></ol>
-<h2>Как не установить подделку</h2>
+<h2 id="kak-ne-ustanovit-poddelku">Как не установить подделку</h2>
 <p>Фейковые apk с «Bettery» в названии периодически появляются на сторонних файлообменниках и в рекламе. Разработчик, размер файла и источник загрузки у таких копий не совпадают с официальными. Устанавливать имеет смысл только файл, скачанный напрямую с bettery.ru или из RuStore, и предварительно стоит убедиться, что сам оператор легален — это можно проверить через <a href="/kak-proverit-licenziyu">материал о проверке лицензии букмекера</a>.</p><p>Разрешение «установка из неизвестных источников» в настройках Android стоит выключать обратно после установки apk — это снижает риск случайной установки чего-то ещё из сторонних источников в будущем.</p>
-<h2>Что делать, если приложение не устанавливается или не запускается</h2>
+<h2 id="chto-delat-esli-prilozhenie-ne-ustanavlivaetsya-ili-ne-zapus">Что делать, если приложение не устанавливается или не запускается</h2>
 <p>Если система блокирует установку apk даже после включения нужного разрешения, стоит проверить, не мешает ли этому антивирус или встроенная защита производителя смартфона — у некоторых брендов Android есть собственный слой предупреждений для файлов не из магазина приложений. Если приложение установилось, но не запускается или не заходит в аккаунт, разумно переустановить его заново именно с официального источника, а не искать «исправленную» версию на сторонних сайтах.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Почему нельзя скачать Bettery из Google Play?</summary><p>Магазин не размещает приложения с реальными ставками на деньги для российской аудитории — это касается всех легальных операторов, не только Bettery.</p></details>
 <details><summary>apk с официального сайта — это безопасно?</summary><p>Да, если файл скачан именно с официального домена bettery.ru, а не с сайта-агрегатора или из рекламной ссылки в мессенджере.</p></details>
 <details><summary>Нужно ли что-то менять в настройках телефона перед установкой apk?</summary><p>Обычно система попросит разрешить установку приложений из внешнего источника — это стандартный запрос при установке apk не из магазина приложений.</p></details>
 <details><summary>Приложение и сайт — это один и тот же аккаунт?</summary><p>Да, вход в приложении и на сайте ведёт в один и тот же личный кабинет — регистрация не создаётся заново под каждый канал.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/bettery/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/melbet?p=bukmekery/bettery/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>, <a href="/go/betcity?p=bukmekery/bettery/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>, <a href="/go/ligastavok?p=bukmekery/bettery/prilozhenie/android&amp;pl=article" rel="sponsored nofollow">Сайт Лига Ставок</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/bettery"><b>Bettery: обзор букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/bettery/promokod"><b>Промокод Bettery: как это устроено</b><small>Промокод</small></a>

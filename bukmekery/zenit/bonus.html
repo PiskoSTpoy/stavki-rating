@@ -129,7 +129,17 @@
   /* Текстовый контент страницы */
   .prose { max-width: 75ch; display: grid; gap: 14px; }
   .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
      задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
   .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
@@ -172,7 +182,7 @@
 </style>
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Зенит", "item": "https://stavki-rating.ru/bukmekery/zenit"}, {"@type": "ListItem", "position": 4, "name": "Бонусы в Зенит: какие типы бывают и как их отыгрывать", "item": "https://stavki-rating.ru/bukmekery/zenit/bonus"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонусы в Зенит: какие типы бывают и как их отыгрывать", "description": "Какие бонусы бывают у легальных букмекеров вроде Зенит: приветственный бонус, фрибет, кэшбэк — честно про условия отыгрыша и риски бонусхантинга.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/zenit/bonus", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Organization", "name": "Редакция STAVKI RATING"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонусы в Зенит: какие типы бывают и как их отыгрывать", "description": "Какие бонусы бывают у легальных букмекеров вроде Зенит: приветственный бонус, фрибет, кэшбэк — честно про условия отыгрыша и риски бонусхантинга.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/zenit/bonus", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Какие бонусы есть в Зенит?", "acceptedAnswer": {"@type": "Answer", "text": "Как и у других легальных букмекеров, у Зенита есть приветственный бонус для новых игроков, фрибеты и периодические акции с кэшбэком. Точный состав и условия действующих предложений — на официальном сайте zenit.win."}}, {"@type": "Question", "name": "Нужно ли отыгрывать бонус?", "acceptedAnswer": {"@type": "Answer", "text": "Да, практически все бонусы у легальных БК, включая Зенит, требуют отыгрыша по определённым условиям — коэффициенту ставок и сроку. Подробнее об этом механизме — в нашей статье про отыгрыш бонуса."}}, {"@type": "Question", "name": "Что будет, если не успеть отыграть бонус в срок?", "acceptedAnswer": {"@type": "Answer", "text": "Как правило, бонус аннулируется, если условия акции не выполнены в установленный срок. Точный порядок нужно смотреть в правилах конкретного предложения."}}, {"@type": "Question", "name": "Можно ли получить сразу несколько бонусов?", "acceptedAnswer": {"@type": "Answer", "text": "Обычно правила легальных букмекеров ограничивают одновременное участие в нескольких перекрывающихся акциях — точные ограничения указаны в правилах бонусной программы на официальном сайте."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -212,32 +222,33 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/zenit">Зенит</a><span>/</span>Бонусы в Зенит: какие типы бывают и как их отыгрывать</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Зенит ·</div>
     <h1>Бонусы в Зенит: какие типы бывают и как их отыгрывать</h1>
-    <div class="small muted" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--volt)">✎ Редакция STAVKI RATING</span><span>·</span><span>опубликовано 05.09.2026</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>3 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">У легальных букмекеров бонусная программа обычно строится из нескольких типовых блоков: приветственный бонус для новых игроков, фрибеты и иногда кэшбэк на часть проигранных ставок. У Зенита действуют свои акции на этих же принципах, а точные суммы, сроки и условия нужно смотреть на официальном сайте zenit.win — здесь мы разбираем именно механику и то, на что обратить внимание перед отыгрышем.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/zenit?p=zenit&amp;pl=subpage-top">Сайт букмекера Зенит →</a></div>
     
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#privetstvennyj-bonus-kak-on-obychno-ustroen">Приветственный бонус: как он обычно устроен</a></li><li><a href="#fribet-kak-otdelnyj-vid-bonusa">Фрибет как отдельный вид бонуса</a></li><li><a href="#keshbek-i-drugie-periodicheskie-akcii">Кэшбэк и другие периодические акции</a></li><li><a href="#usloviya-otygrysha-i-tipichnye-riski">Условия отыгрыша и типичные риски</a></li><li><a href="#bonushanting-i-pravila-ispolzovaniya-akcij">Бонусхантинг и правила использования акций</a></li><li><a href="#faq">Частые вопросы</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
-    <h2>Приветственный бонус: как он обычно устроен</h2>
+    <h2 id="privetstvennyj-bonus-kak-on-obychno-ustroen">Приветственный бонус: как он обычно устроен</h2>
 <p>Приветственный бонус — это предложение для новых игроков, которое активируется при регистрации и первом пополнении счёта. Обычно бонус начисляется не сразу как «живые» деньги, а как бонусный баланс, который нужно отыграть на определённых условиях, прежде чем средства станут доступны для вывода.</p><p>Общий обзор бренда и порядок регистрации — на странице <a href="/bukmekery/zenit">Зенит: обзор</a>.</p>
-<h2>Фрибет как отдельный вид бонуса</h2>
+<h2 id="fribet-kak-otdelnyj-vid-bonusa">Фрибет как отдельный вид бонуса</h2>
 <p>Фрибет — бесплатная ставка определённого номинала, которую можно использовать вместо собственных денег. При выигрыше на счёт зачисляется чистая прибыль без номинала купона, а сам фрибет нельзя вывести напрямую.</p><p>Подробнее о механике и условиях фрибета — на странице <a href="/bukmekery/zenit/fribet">фрибет Зенит</a>.</p>
-<h2>Кэшбэк и другие периодические акции</h2>
+<h2 id="keshbek-i-drugie-periodicheskie-akcii">Кэшбэк и другие периодические акции</h2>
 <p>Кэшбэк — это частичный возврат средств от суммы проигранных ставок за определённый период, обычно с ограничением по максимальной сумме и своими условиями начисления. У легальных букмекеров такие акции периодически меняются по составу и срокам, поэтому актуальный список нужно смотреть в разделе акций на сайте zenit.win.</p><p>Кроме кэшбэка операторы периодически запускают акции, привязанные к конкретным турнирам или сезону: повышенные коэффициенты, розыгрыши призов или бонусы за серию ставок. Состав и правила таких акций всегда указаны в разделе бонусов на сайте оператора и могут отличаться от сезона к сезону.</p>
-<h2>Условия отыгрыша и типичные риски</h2>
+<h2 id="usloviya-otygrysha-i-tipichnye-riski">Условия отыгрыша и типичные риски</h2>
 <p>Почти любой бонус привязан к условию отыгрыша: обычно это требование сделать определённое количество ставок с минимальным коэффициентом в ограниченный срок. Если условие не выполнено вовремя, бонус и иногда выигрыш по нему могут быть аннулированы — это стандартная практика, а не особенность конкретного оператора.</p><p>Что именно означает отыгрыш и как он считается — в статье <a href="/shkola/terminy/chto-takoe-otygrysh-bonusa">что такое отыгрыш бонуса</a>. Активировать многие акции можно через промокод — как это устроено у Зенита, смотрите на странице <a href="/bukmekery/zenit/promokod">промокод Зенит</a>.</p>
-<h2>Бонусхантинг и правила использования акций</h2>
+<h2 id="bonushanting-i-pravila-ispolzovaniya-akcij">Бонусхантинг и правила использования акций</h2>
 <p>Легальные букмекеры, включая Зенит, обычно запрещают так называемый бонусхантинг — злоупотребление акциями с помощью нескольких аккаунтов или подстраховочных ставок на все исходы события. Такие действия нарушают правила бонусной программы и могут привести к аннулированию бонуса, а в отдельных случаях — к блокировке счёта.</p><p>Перед участием в любой акции стоит внимательно прочитать её правила именно на сайте оператора: условия отыгрыша, ограничения по видам спорта и минимальный коэффициент могут отличаться от акции к акции.</p>
-    <h2>Частые вопросы</h2>
+    <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Какие бонусы есть в Зенит?</summary><p>Как и у других легальных букмекеров, у Зенита есть приветственный бонус для новых игроков, фрибеты и периодические акции с кэшбэком. Точный состав и условия действующих предложений — на официальном сайте zenit.win.</p></details>
 <details><summary>Нужно ли отыгрывать бонус?</summary><p>Да, практически все бонусы у легальных БК, включая Зенит, требуют отыгрыша по определённым условиям — коэффициенту ставок и сроку. Подробнее об этом механизме — в нашей статье про отыгрыш бонуса.</p></details>
 <details><summary>Что будет, если не успеть отыграть бонус в срок?</summary><p>Как правило, бонус аннулируется, если условия акции не выполнены в установленный срок. Точный порядок нужно смотреть в правилах конкретного предложения.</p></details>
 <details><summary>Можно ли получить сразу несколько бонусов?</summary><p>Обычно правила легальных букмекеров ограничивают одновременное участие в нескольких перекрывающихся акциях — точные ограничения указаны в правилах бонусной программы на официальном сайте.</p></details></div>
     
-    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/zenit/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/zenit?p=bukmekery/zenit/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>, <a href="/go/pari?p=bukmekery/zenit/bonus&amp;pl=article" rel="sponsored nofollow">Сайт PARI</a>, <a href="/go/marathonbet?p=bukmekery/zenit/bonus&amp;pl=article" rel="sponsored nofollow">Сайт Марафон</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
-    <h2 style="margin-top:20px">Читайте также</h2>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/bukmekery/zenit"><b>Зенит: обзор легального букмекера</b><small>Обзор</small></a>
       <a class="tile" href="/bukmekery/zenit/promokod"><b>Промокод Зенит: как найти и использовать</b><small>Промокод</small></a>
