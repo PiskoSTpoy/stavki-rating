@@ -21,6 +21,12 @@
 <meta name="twitter:image" content="https://stavki-rating.ru/media/hero.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"STAVKI RATING","url":"https://stavki-rating.ru/","sameAs":["https://dzen.ru/id/6aa7d40dfd65ee55813772a7"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"STAVKI RATING","url":"https://stavki-rating.ru/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Что значит «легальный букмекер» в этом рейтинге?","acceptedAnswer":{"@type":"Answer","text":"Оператор из перечня организаторов азартных игр ФНС с лицензией на букмекерскую деятельность и подключением к Единому ЦУПИС — таких 16 контор показаны в сравнении."}},
+{"@type":"Question","name":"Как часто обновляются данные о букмекерах?","acceptedAnswer":{"@type":"Answer","text":"Статус каждой конторы сверяется по перечню ФНС и списку партнёров Единого ЦУПИС; актуальный снимок и история изменений — на странице «Реестр»."}},
+{"@type":"Question","name":"Влияют ли партнёрские ссылки на оценку букмекера?","acceptedAnswer":{"@type":"Answer","text":"Нет. Редакция получает вознаграждение за переходы по части ссылок, но это не влияет на оценки в рейтинге."}},
+{"@type":"Question","name":"С какого возраста можно делать ставки?","acceptedAnswer":{"@type":"Answer","text":"С 18 лет. Участие в азартных играх может привести к игровой зависимости — подробнее в разделе «Ответственная игра»."}}
+]}</script>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="120x120" href="/favicon-120.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -98,6 +104,19 @@
   .trust { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); align-items: center; }
   .trust span { display: inline-flex; align-items: center; gap: 7px; }
   .trust b { color: var(--text); font-weight: 600; }
+  .toc { margin: 16px 0 4px; padding: 10px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 60ch; font-size: 13px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 18px; display: flex; flex-wrap: wrap; gap: 4px 16px; list-style: none; padding-left: 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .faq { display: grid; gap: 10px; max-width: 75ch; }
+  .faq details { border: 1px solid var(--line, #28304a); border-radius: 12px; background: var(--surface, #0E1220); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 24px 12px 0; list-style: none; position: relative; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: 0; top: 12px; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; margin: 0; }
   .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); box-shadow: 0 0 10px var(--success); }
   .scene { position: relative; aspect-ratio: 16 / 11; max-height: 340px; width: 100%; border-radius: var(--r-lg); overflow: hidden; background:
       radial-gradient(60% 60% at 50% 45%, rgba(124,92,255,.35), transparent 70%),
@@ -314,7 +333,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   <div class="fade">
     <h1>Рейтинг легальных букмекеров России — сентябрь 2026</h1>
 <div class="small muted meta-row" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;opacity:.85"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-01">01.09.2026</time></span><span>·</span><span>обновлено <time datetime="2026-09-25">25.09.2026</time></span></div>
-    <p class="lead">16 букмекерских контор из реестра ЕРАИ с лицензией ФНС: бонусы, фрибеты, промокоды и скорость вывода — коротко и по делу.</p>
+    <p class="lead">16 букмекерских контор из реестра ЕРАИ с лицензией ФНС: бонусы, фрибеты, промокоды и скорость вывода — коротко и по делу. Данные сверяются по перечню ФНС и списку партнёров Единого ЦУПИС.</p>
     <div class="hero-cta">
       <a class="btn btn-primary" href="#top3">Смотреть рейтинг</a>
       <a class="btn btn-glass" href="#top3">Фрибеты за регистрацию</a>
@@ -322,6 +341,14 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <div class="trust">
       <span><i class="dot"></i><b>Только легальные БК из реестра ЕРАИ</b></span>
     </div>
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol>
+      <li><a href="#top3">Топ-3 сегодня</a></li>
+      <li><a href="#compare">Сравнить все легальные БК</a></li>
+      <li><a href="#picks">Подборки под задачу</a></li>
+      <li><a href="#tools">Инструменты</a></li>
+      <li><a href="#school">Школа беттинга</a></li>
+      <li><a href="#faq">Частые вопросы</a></li>
+    </ol></nav>
   </div>
   <div class="scene" id="scene" role="img" aria-label="Анимация: монеты букмекеров парят и вращаются">
     <video class="hero-video" autoplay muted loop playsinline preload="auto"
@@ -343,7 +370,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <!-- СРАВНЕНИЕ ВСЕХ БК -->
 <section class="section" id="compare"><div class="container">
   <div class="section-head">
-    <div><h2 id="sravnit-vse-legalnye-bk">Сравнить все легальные БК</h2><p>Лучшее значение в колонке подсвечено. На телефоне первая колонка закреплена — таблица прокручивается.</p></div>
+    <div><h2 id="sravnit-vse-legalnye-bk">Сравнить все легальные БК</h2><p>16 букмекеров из реестра ЕРАИ — в одной таблице: лучшее значение в каждой колонке подсвечено, на телефоне первая колонка закреплена.</p></div>
   </div>
   <div class="table-wrap"><table>
     <thead><tr><th>Букмекер</th><th>Оценка</th><th>Бонус</th><th>Маржа</th><th>Вывод</th><th>Приложение</th><th></th></tr></thead>
@@ -352,14 +379,14 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 </div></section>
 
 <!-- ПОДБОРКИ -->
-<section class="section"><div class="container">
-  <div class="section-head"><div><h2 id="podborki-pod-zadachu">Подборки под задачу</h2><p>Рейтинги по одному критерию — не зависят от брендовых запросов и правил партнёрок.</p></div></div>
+<section class="section" id="picks"><div class="container">
+  <div class="section-head"><div><h2 id="podborki-pod-zadachu">Подборки под задачу</h2><p>25 рейтингов по одному критерию (вывод, бонус, приложение и другие) — не зависят от брендовых запросов и правил партнёрок.</p></div></div>
   <div class="tiles" id="tiles"></div>
 </div></section>
 
 <!-- ИНСТРУМЕНТЫ -->
 <section class="section" id="tools"><div class="container">
-  <div class="section-head"><div><h2 id="instrumenty">Инструменты</h2><p>Считают на лету — удобно проверить ставку перед заключением пари.</p></div></div>
+  <div class="section-head"><div><h2 id="instrumenty">Инструменты</h2><p>7 бесплатных калькуляторов — считают на лету, удобно проверить ставку перед заключением пари.</p></div></div>
   <div class="tools">
     <div class="tool"><h3>Калькулятор ставки</h3>
       <div class="tool-form">
@@ -378,11 +405,22 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 
 <!-- ШКОЛА -->
 <section class="section" id="school"><div class="container">
-  <div class="section-head"><div><h2 id="shkola-bettinga">Школа беттинга</h2><p>Определения с примером и расчётом — точно и без воды.</p></div><a class="link-more" href="#school">Все материалы →</a></div>
+  <div class="section-head"><div><h2 id="shkola-bettinga">Школа беттинга</h2><p>166 статей с определениями, примерами и расчётом — точно и без воды.</p></div><a class="link-more" href="#school">Все материалы →</a></div>
   <div class="articles">
     <div class="article"><small>Термины · 6 мин</small><b>Что такое фора и как её читать на примере матча</b><small>Обновлено 2 сентября 2026</small></div>
     <div class="article"><small>Деньги и налоги · 5 мин</small><b>Налог на выигрыш в БК: кто удерживает и когда</b><small>Обновлено 2 сентября 2026</small></div>
     <div class="article"><small>Ответственная игра · 4 мин</small><b>Самозапрет через Госуслуги: как оформить и что он даёт</b><small>Обновлено 2 сентября 2026</small></div>
+  </div>
+</div></section>
+
+<!-- FAQ -->
+<section class="section" id="faq"><div class="container">
+  <div class="section-head"><div><h2 id="chastye-voprosy">Частые вопросы</h2><p>4 вопроса, которые чаще всего задают о рейтинге и легальных БК.</p></div></div>
+  <div class="faq">
+    <details><summary>Что значит «легальный букмекер» в этом рейтинге?</summary><p>Оператор из перечня организаторов азартных игр ФНС с лицензией на букмекерскую деятельность и подключением к Единому ЦУПИС — таких 16 контор показаны в сравнении.</p></details>
+    <details><summary>Как часто обновляются данные о букмекерах?</summary><p>Статус каждой конторы сверяется по перечню ФНС и списку партнёров Единого ЦУПИС; актуальный снимок и история изменений — на странице <a href="/reestr">«Реестр»</a>.</p></details>
+    <details><summary>Влияют ли партнёрские ссылки на оценку букмекера?</summary><p>Нет. Редакция получает вознаграждение за переходы по части ссылок, но это не влияет на оценки в рейтинге.</p></details>
+    <details><summary>С какого возраста можно делать ставки?</summary><p>С 18 лет. Участие в азартных играх может привести к игровой зависимости — подробнее в разделе <a href="/shkola/otvetstvennaya-igra/priznaki-ludomanii">«Ответственная игра»</a>.</p></details>
   </div>
 </div></section>
 
