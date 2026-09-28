@@ -259,13 +259,13 @@
   .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
   .tile b { font-size: 15px; }
   .tile small { color: var(--muted); }
-  .tools { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
-  @media (max-width: 900px) { .tools { grid-template-columns: 1fr; } }
-  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; }
-  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
-  .field input { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; }
-  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .tools { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr); gap: 16px; }
+  @media (max-width: 900px) { .tools { grid-template-columns: minmax(0,1fr); } }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; min-width: 0; }
+  .tool-form { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 10px; }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); min-width: 0; }
+  .field input { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; min-width: 0; box-sizing: border-box; }
+  .result { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 10px; }
   .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
   .result small { display: block; color: var(--muted); font-size: 12px; }
   .result b { font-family: var(--font-display); font-size: 22px; }
