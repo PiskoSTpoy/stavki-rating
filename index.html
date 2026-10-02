@@ -32,7 +32,7 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap">
 <style>
   :root {
     --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
@@ -43,8 +43,8 @@
     --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
     --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
     --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
-    --font-display: "Oswald", "Inter", system-ui, sans-serif;
-    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --font-display: "Golos Text", "Inter", system-ui, sans-serif;
+    --font-sans: "Golos Text", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
     --container: 1240px;
     color-scheme: dark;
   }
@@ -55,7 +55,7 @@
   a:hover { color: var(--volt); }
   img { max-width: 100%; display: block; }
   button { font: inherit; cursor: pointer; }
-  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.12; margin: 0; text-wrap: balance; letter-spacing: -.015em; }
   h1 { font-size: clamp(23px, 2.8vw, 35px); }
   h2 { font-size: clamp(21px, 2.4vw, 28px); }
   h3 { font-size: 18px; font-weight: 500; }
@@ -84,7 +84,7 @@
   @media (max-width: 940px) { .nav { display: none; } }
 
   /* Кнопки */
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
   .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
   .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
   .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
@@ -96,10 +96,10 @@
   @media (prefers-reduced-motion: reduce) { .btn, .ring-fg, .fade, .chipobj, .particles { transition: none !important; animation: none !important; } }
 
   /* Hero — компактный, чтобы Топ-3 был виден сразу */
-  .hero { position: relative; overflow: hidden; padding: 18px 0 14px; }
-  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 36px; align-items: center; }
-  .hero h1 { margin-bottom: 10px; }
-  .hero .lead { font-size: 15.5px; color: var(--muted); max-width: 50ch; margin-bottom: 14px; }
+  .hero { position: relative; overflow: hidden; padding: 40px 0 32px; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
+  .hero h1 { margin-bottom: 16px; font-size: clamp(30px, 4vw, 46px); line-height: 1.08; letter-spacing: -.02em; }
+  .hero .lead { font-size: 17px; line-height: 1.5; color: var(--muted); max-width: 50ch; margin-bottom: 20px; }
   .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
   .trust { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); align-items: center; }
   .trust span { display: inline-flex; align-items: center; gap: 7px; }
@@ -110,7 +110,7 @@
   .toc a { color: var(--volt); text-decoration: none; }
   .toc a:hover { text-decoration: underline; }
   .faq { display: grid; gap: 10px; max-width: 75ch; }
-  .faq details { border: 1px solid var(--line, #28304a); border-radius: 12px; background: var(--surface, #0E1220); padding: 4px 16px; }
+  .faq details { border: 1px solid var(--line, #28304a); border-radius: 12px; background: var(--surface, #FFFFFF); padding: 4px 16px; }
   .faq summary { cursor: pointer; font-weight: 600; padding: 12px 24px 12px 0; list-style: none; position: relative; }
   .faq summary::-webkit-details-marker { display: none; }
   .faq summary::after { content: "+"; position: absolute; right: 0; top: 12px; color: var(--muted); font-weight: 400; }
@@ -186,9 +186,9 @@
   @media (prefers-reduced-motion: reduce) { .coin3 .spin { animation: none; } }
 
   /* Секции */
-  .section { padding: 30px 0; }
+  .section { padding: 56px 0; }
   .section.tight { padding-top: 2px; }
-  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
   .section-head p { color: var(--muted); max-width: 60ch; }
   .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
 

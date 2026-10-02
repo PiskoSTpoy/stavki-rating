@@ -28,7 +28,7 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap">
 <style>
   :root {
     --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
@@ -39,8 +39,8 @@
     --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
     --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
     --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
-    --font-display: "Oswald", "Inter", system-ui, sans-serif;
-    --font-sans: "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --font-display: "Golos Text", "Inter", system-ui, sans-serif;
+    --font-sans: "Golos Text", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
     --container: 1240px;
     color-scheme: dark;
   }
@@ -51,7 +51,7 @@
   a:hover { color: var(--volt); }
   img { max-width: 100%; display: block; }
   button { font: inherit; cursor: pointer; }
-  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: 0; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.12; margin: 0; text-wrap: balance; letter-spacing: -.015em; }
   h1 { font-size: clamp(23px, 2.8vw, 35px); }
   h2 { font-size: clamp(21px, 2.4vw, 28px); }
   h3 { font-size: 18px; font-weight: 500; }
@@ -79,8 +79,19 @@
   .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
   @media (max-width: 940px) { .nav { display: none; } }
 
+  /* Боковые декоративные рейлы с бейджами БК — только на очень широких экранах,
+     чтобы не трогать обычную (desktop/mobile) раскладку контейнера 1240px. */
+  .side-deco { position: fixed; top: 50%; transform: translateY(-50%); width: 200px; z-index: 5; pointer-events: none; display: none; }
+  .side-deco img.side-deco-bg { display: block; width: 100%; height: auto; opacity: .9; }
+  .side-deco.left { left: 20px; }
+  .side-deco.right { right: 20px; }
+  .side-badge { position: absolute; left: 50%; width: 27%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; overflow: hidden; pointer-events: auto; display: flex; align-items: center; justify-content: center; background: #0B0E16; box-shadow: 0 0 0 2px rgba(200,255,77,.35); transition: transform .2s ease, box-shadow .2s ease; }
+  .side-badge:hover { transform: translate(-50%, -50%) scale(1.08); box-shadow: 0 0 0 2px var(--volt), 0 0 22px rgba(200,255,77,.55); }
+  .side-badge img { width: 76%; height: 76%; object-fit: contain; }
+  @media (min-width: 1680px) { .side-deco { display: block; } }
+
   /* Кнопки */
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
   .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
   .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
   .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
@@ -92,9 +103,9 @@
   @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
 
   /* Секции */
-  .section { padding: 30px 0; }
+  .section { padding: 56px 0; }
   .section.tight { padding-top: 6px; }
-  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
   .section-head p { color: var(--muted); max-width: 60ch; }
   .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
 
@@ -182,7 +193,7 @@
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "Мелбет — карточка", "item": "https://stavki-rating.ru/melbet-obzor"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Мелбет", "url": "https://melbet.ru", "legalName": "ООО «Мелофон»", "taxID": "2540179758"}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Мелбет — карточка легальной БК", "url": "https://stavki-rating.ru/melbet-obzor", "inLanguage": "ru-RU", "dateModified": "2026-10-01", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING", "url": "https://stavki-rating.ru"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Мелбет — карточка легальной БК", "url": "https://stavki-rating.ru/melbet-obzor", "inLanguage": "ru-RU", "dateModified": "2026-10-02", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING", "url": "https://stavki-rating.ru"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Мелбет — легальная букмекерская контора в России?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Мелбет входит в перечень организаторов азартных игр ФНС (лицензия Л027-00108-77/00395491 (до 01.06.2022 — № 25) от 07.11.2012; вторая лицензия Л027-00108-77/00395496 (№ 34) от 03.08.2021), подключена к Единому ЦУПИС и принимает интерактивные ставки легально."}}, {"@type": "Question", "name": "Какой официальный сайт у Мелбет?", "acceptedAnswer": {"@type": "Answer", "text": "melbet.ru. Другие адреса с похожим названием, включая домены в зоне .com, к легальной российской конторе не относятся."}}, {"@type": "Question", "name": "Какое юридическое лицо стоит за Мелбет?", "acceptedAnswer": {"@type": "Answer", "text": "ООО «Мелофон», ИНН 2540179758."}}]}</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -199,6 +210,19 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <!-- /Yandex.Metrika counter -->
 </head>
 <body>
+
+<div class="side-deco left" aria-hidden="false">
+  <img class="side-deco-bg" src="/img/decor/side-rail.webp" alt="" aria-hidden="true" width="200" height="334" loading="lazy">
+  <a class="side-badge" style="top:20%" href="/go/marathonbet" aria-label="Марафон — бонус за регистрацию" rel="sponsored"><img src="/img/logos/marathonbet.png" alt="Марафон"></a>
+  <a class="side-badge" style="top:54%" href="/go/pari" aria-label="PARI — бонус за регистрацию" rel="sponsored"><img src="/img/logos/pari.png" alt="PARI"></a>
+  <a class="side-badge" style="top:87%" href="/go/zenit" aria-label="Зенит — бонус за регистрацию" rel="sponsored"><img src="/img/logos/zenit.png" alt="Зенит"></a>
+</div>
+<div class="side-deco right" aria-hidden="false">
+  <img class="side-deco-bg" src="/img/decor/side-rail-right.webp" alt="" aria-hidden="true" width="200" height="334" loading="lazy">
+  <a class="side-badge" style="top:20%" href="/go/melbet" aria-label="Мелбет — бонус за регистрацию" rel="sponsored"><img src="/img/logos/melbet.png" alt="Мелбет"></a>
+  <a class="side-badge" style="top:54%" href="/go/fonbet" aria-label="Фонбет — бонус за регистрацию" rel="sponsored"><img src="/img/logos/fonbet.png" alt="Фонбет"></a>
+  <a class="side-badge" style="top:87%" href="/go/betcity" aria-label="Бетсити — бонус за регистрацию" rel="sponsored"><img src="/img/logos/betcity.png" alt="Бетсити"></a>
+</div>
 
 <header class="site-header"><div class="container">
   <a class="logo" href="/">
@@ -222,7 +246,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span>Мелбет — карточка</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · Карточка ·</div>
     <h1>Мелбет — легальная букмекерская контора</h1>
-    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>статус проверен <time datetime="2026-10-01">01.10.2026</time></span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>статус проверен <time datetime="2026-10-02">02.10.2026</time></span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Мелбет входит в перечень организаторов азартных игр ФНС, работает по лицензии на букмекерскую деятельность и принимает интерактивные ставки через Единый ЦУПИС. Официальный сайт легальной российской версии — <strong style="color:var(--text)">melbet.ru</strong>. Другие адреса с похожим названием (в том числе в зоне .com) к легальной конторе не относятся.</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
       <a class="btn btn-official" rel="sponsored nofollow" href="/go/melbet?p=melbet-obzor&amp;pl=cta">Сайт букмекера →</a><a class="btn btn-glass" href="/bukmekery/melbet">Подробный обзор, промокоды, приложение →</a>
