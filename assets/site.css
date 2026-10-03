@@ -53,16 +53,38 @@
   .search { white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
   @media (max-width: 940px) { .nav { display: none; } }
 
-  /* Боковые декоративные рейлы с бейджами БК — только на очень широких экранах,
-     чтобы не трогать обычную (desktop/mobile) раскладку контейнера 1240px. */
-  .side-deco { position: fixed; top: 50%; transform: translateY(-50%); width: 200px; z-index: 5; pointer-events: none; display: none; }
-  .side-deco img.side-deco-bg { display: block; width: 100%; height: auto; opacity: .9; }
-  .side-deco.left { left: 20px; }
-  .side-deco.right { right: 20px; }
-  .side-badge { position: absolute; left: 50%; width: 27%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; overflow: hidden; pointer-events: auto; display: flex; align-items: center; justify-content: center; background: #0B0E16; box-shadow: 0 0 0 2px rgba(200,255,77,.35); transition: transform .2s ease, box-shadow .2s ease; }
-  .side-badge:hover { transform: translate(-50%, -50%) scale(1.08); box-shadow: 0 0 0 2px var(--volt), 0 0 22px rgba(200,255,77,.55); }
-  .side-badge img { width: 76%; height: 76%; object-fit: contain; }
-  @media (min-width: 1680px) { .side-deco { display: block; } }
+  /* Единая колонка контента: шапка статьи, оглавление и текст выровнены по одному левому краю
+     (раньше .prose с max-width:75ch центрировался отдельно от шапки на всю ширину контейнера). */
+  :root { --col: 820px; }
+  main .container { width: min(var(--col), 100% - 32px); }
+
+  /* Креатив «на всю страницу»: два полотна на всю высоту окна по краям, статья — по центру.
+     Полотно — картинка 9:16 высотой в окно (background-size: auto 100%), ширина по полю слева/справа.
+     Бейджи БК позиционируются в процентах от высоты, поэтому всегда попадают в кольца арта. */
+  .wall { display: none; }
+  @media (min-width: 1500px) {
+    .wall { display: block; position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .wall-side { --W: calc(100vh * .5647); --r1: 22.35%; --r2: 49.6%; --r3: 77.05%; --bd: .3276;
+      position: absolute; top: 0; bottom: 0; width: min(calc((100vw - var(--col)) / 2), var(--W)); }
+    .wall-side::before { content: ""; position: absolute; inset: 0; background-repeat: no-repeat; background-size: auto 100%; background-position: center; }
+    .wall-left { left: 0; }
+    .wall-left::before { background-image: url(/img/decor/wall-left.webp);
+      -webkit-mask-image: linear-gradient(to right, #000 62%, transparent); mask-image: linear-gradient(to right, #000 62%, transparent); }
+    .wall-right { right: 0; }
+    .wall-right::before { background-image: url(/img/decor/wall-right.webp);
+      -webkit-mask-image: linear-gradient(to left, #000 62%, transparent); mask-image: linear-gradient(to left, #000 62%, transparent); }
+    .wall-badge { position: absolute; left: 50%; width: calc(var(--W) * var(--bd)); aspect-ratio: 1; transform: translate(-50%, -50%);
+      border-radius: 50%; overflow: hidden; pointer-events: auto; display: flex; align-items: center; justify-content: center; background: #0B0E16;
+      box-shadow: 0 0 0 3px rgba(200,255,77,.55), 0 0 28px rgba(200,255,77,.35); transition: transform .25s ease, box-shadow .25s ease; animation: wallpulse 3.4s ease-in-out infinite; }
+    .wall-badge:nth-child(2) { animation-delay: .5s; } .wall-badge:nth-child(3) { animation-delay: 1s; }
+    .wall-badge:hover { transform: translate(-50%, -50%) scale(1.07); box-shadow: 0 0 0 3px var(--volt), 0 0 44px rgba(200,255,77,.7); animation-play-state: paused; }
+    .wall-badge img { width: 74%; height: 74%; object-fit: contain; border-radius: 18%; }
+    .wall-tag { position: absolute; left: 0; right: 0; bottom: 14px; text-align: center; font-size: 11px; color: var(--muted-2); letter-spacing: .04em; }
+    .wall ~ main { position: relative; z-index: 1; width: calc(var(--col) + 96px); margin-inline: auto; background: rgba(8,11,20,.86);
+      border-inline: 1px solid var(--line); box-shadow: 0 0 80px rgba(0,0,0,.6); backdrop-filter: blur(10px); }
+  }
+  @keyframes wallpulse { 0%,100% { box-shadow: 0 0 0 3px rgba(200,255,77,.55), 0 0 22px rgba(200,255,77,.28); } 50% { box-shadow: 0 0 0 3px rgba(200,255,77,.8), 0 0 42px rgba(124,92,255,.55); } }
+  @media (prefers-reduced-motion: reduce) { .wall-badge { animation: none !important; } }
 
   /* Кнопки */
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
@@ -112,22 +134,17 @@
   .article small { color: var(--muted); }
 
   /* Текстовый контент страницы */
-  .prose { max-width: 75ch; display: grid; gap: 14px; }
-  /* контейнер-проза: ширина как у шапки страницы, а читаемая колонка (75ch) прижата влево,
-     как заголовок и крупные блоки — раньше колонка «уезжала» к центру и не совпадала с H1 */
-  .container.prose { max-width: none; }
-  .container.prose > * { max-width: 75ch; }
-  .container.prose > .tiles, .container.prose > .table-wrap, .container.prose > .tool, .container.prose > .articles { max-width: 100%; }
-  .container.prose > .table-wrap { max-width: min(100%, 980px); }
-  .container.prose > .toc + h2, .container > .toc + h2 { margin-top: 30px !important; }
+  .prose { max-width: none; display: grid; gap: 14px; }
   .prose > .eyebrow { margin-bottom: -6px; }
+  .container > .toc + h2, .prose > .toc + h2 { margin-top: 30px !important; }
+  .prose > * { min-width: 0; }
   .prose h2 { margin-top: 14px; }
   .prose h2[id] { scroll-margin-top: 84px; }
   .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
   /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
   .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
   .meta-row a { text-decoration: none; }
-  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; font-size: 14px; }
   .toc b { display: block; margin-bottom: 6px; }
   .toc ol { margin: 0; padding-left: 20px; }
   .toc li { margin: 3px 0; }
@@ -161,7 +178,7 @@
   .faq p { color: var(--muted); padding: 0 0 12px; }
 
   /* Футер */
-  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer { position: relative; z-index: 1; background: var(--bg); border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
   .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
   @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-grid > div:first-child { grid-column: 1 / -1; } }
   @media (max-width: 460px) { .footer-grid { grid-template-columns: 1fr; } }
@@ -210,5 +227,5 @@
   .prose .crumbs a { color: var(--muted); }
   .prose .crumbs a:hover { color: var(--text); }
   .prose .toc a:hover { text-decoration: underline; }
-  .prose > .crumbs { padding-top: 0; margin-bottom: -4px; }
+  .prose > .crumbs { padding-top: 14px; margin-bottom: -4px; }
   .meta-row .muted, .meta-row { color: var(--muted); }
