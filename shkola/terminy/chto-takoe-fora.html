@@ -29,168 +29,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap">
-<style>
-  :root {
-    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
-    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
-    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
-    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
-    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
-    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
-    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
-    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
-    --font-display: "Golos Text", "Inter", system-ui, sans-serif;
-    --font-sans: "Golos Text", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
-    --container: 1240px;
-    color-scheme: dark;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-  a { color: inherit; text-decoration: none; }
-  a:hover { color: var(--volt); }
-  img { max-width: 100%; display: block; }
-  button { font: inherit; cursor: pointer; }
-  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.12; margin: 0; text-wrap: balance; letter-spacing: -.015em; }
-  h1 { font-size: clamp(23px, 2.8vw, 35px); }
-  h2 { font-size: clamp(21px, 2.4vw, 28px); }
-  h3 { font-size: 18px; font-weight: 500; }
-  p { margin: 0; }
-  .num { font-variant-numeric: tabular-nums; }
-  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
-  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
-  .muted { color: var(--muted); }
-  .small { font-size: 13px; }
-  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
-
-  /* Тонкая полоса дисклеймера */
-  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
-  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
-
-  /* Шапка */
-  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
-  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
-  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
-  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
-  .nav a { color: var(--muted); }
-  .nav a:hover, .nav a.active { color: var(--text); }
-  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
-  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
-  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
-  @media (max-width: 940px) { .nav { display: none; } }
-
-  /* Боковые декоративные рейлы с бейджами БК — только на очень широких экранах,
-     чтобы не трогать обычную (desktop/mobile) раскладку контейнера 1240px. */
-  .side-deco { position: fixed; top: 50%; transform: translateY(-50%); width: 200px; z-index: 5; pointer-events: none; display: none; }
-  .side-deco img.side-deco-bg { display: block; width: 100%; height: auto; opacity: .9; }
-  .side-deco.left { left: 20px; }
-  .side-deco.right { right: 20px; }
-  .side-badge { position: absolute; left: 50%; width: 27%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; overflow: hidden; pointer-events: auto; display: flex; align-items: center; justify-content: center; background: #0B0E16; box-shadow: 0 0 0 2px rgba(200,255,77,.35); transition: transform .2s ease, box-shadow .2s ease; }
-  .side-badge:hover { transform: translate(-50%, -50%) scale(1.08); box-shadow: 0 0 0 2px var(--volt), 0 0 22px rgba(200,255,77,.55); }
-  .side-badge img { width: 76%; height: 76%; object-fit: contain; }
-  @media (min-width: 1680px) { .side-deco { display: block; } }
-
-  /* Кнопки */
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
-  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
-  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
-  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
-  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
-  .btn-official:hover { border-color: var(--muted); color: var(--text); }
-  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
-  .btn-block { width: 100%; }
-  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
-
-  /* Секции */
-  .section { padding: 56px 0; }
-  .section.tight { padding-top: 6px; }
-  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
-  .section-head p { color: var(--muted); max-width: 60ch; }
-  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
-
-  /* Хлебные крошки */
-  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-  .crumbs a { color: var(--muted); }
-  .crumbs a:hover { color: var(--text); }
-  .crumbs span { color: var(--muted-2); }
-
-  /* Плитки, инструменты, статьи */
-  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
-  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
-  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
-  .tile b { font-size: 15px; }
-  .tile small { color: var(--muted); }
-  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
-  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
-  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
-  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
-  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
-  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
-  .result small { display: block; color: var(--muted); font-size: 12px; }
-  .result b { font-family: var(--font-display); font-size: 22px; }
-  .result .accent { color: var(--volt); }
-  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
-  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
-  .article b { font-size: 16px; line-height: 1.35; }
-  .article small { color: var(--muted); }
-
-  /* Текстовый контент страницы */
-  .prose { max-width: 75ch; display: grid; gap: 14px; }
-  .prose h2 { margin-top: 14px; }
-  .prose h2[id] { scroll-margin-top: 84px; }
-  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
-  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
-  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-  .meta-row a { text-decoration: none; }
-  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
-  .toc b { display: block; margin-bottom: 6px; }
-  .toc ol { margin: 0; padding-left: 20px; }
-  .toc li { margin: 3px 0; }
-  .toc a { color: var(--volt); text-decoration: none; }
-  .toc a:hover { text-decoration: underline; }
-  /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
-     задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
-  .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
-  .prose p { color: var(--text); }
-  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
-  .prose li { line-height: 1.5; }
-  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
-  .prose strong { color: var(--text); font-weight: 700; }
-  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
-  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
-  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
-  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
-  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  .prose tbody tr:last-child td { border-bottom: none; }
-  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
-  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
-  .faq { display: grid; gap: 10px; }
-  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
-  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 24px 12px 0; list-style: none; position: relative; }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: "+"; position: absolute; right: 0; top: 12px; color: var(--muted); font-weight: 400; }
-  .faq details[open] summary::after { content: "–"; }
-  .faq details[open] summary { color: var(--volt); }
-  .faq p { color: var(--muted); padding: 0 0 12px; }
-
-  /* Футер */
-  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
-  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
-  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
-  .footer a { color: var(--muted); display: block; padding: 3px 0; }
-  .footer a:hover { color: var(--text); }
-  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
-
-  /* Липкая мобильная панель */
-  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
-  .sticky-cta .btn { flex: 1; }
-  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
-  @media (max-width: 760px) { .sticky-cta { display: flex; } }
-</style>
+<link rel="stylesheet" href="/assets/site.css?v=20261003">
+<link rel="stylesheet" href="/assets/chrome.css?v=20261003">
+<meta name="theme-color" content="#07090F">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Термины", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Что такое фора в ставках: виды форы и расчёт возврата", "item": "https://stavki-rating.ru/shkola/terminy/chto-takoe-fora"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Что такое фора в ставках: виды форы и расчёт возврата", "description": "Фора в ставках — это виртуальное преимущество или отставание команды. Разбираем азиатскую и европейскую фору, целые и четвертные значения.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/terminy/chto-takoe-fora", "datePublished": "2026-09-04", "dateModified": "2026-09-28", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что означает фора 0 (нулевая фора)?", "acceptedAnswer": {"@type": "Answer", "text": "Фора 0 — это пари на чистую победу выбранной команды без учёта разницы в счёте. Если команда выигрывает, ставка проходит; при ничьей деньги возвращаются (виртуальный счёт равный); при поражении ставка проигрывает. По сути это страховка от ничьей."}}, {"@type": "Question", "name": "Чем получелая фора отличается от целой?", "acceptedAnswer": {"@type": "Answer", "text": "Получелая (например, −1,5) не предполагает возврата — ставка либо выигрывает, либо проигрывает. Целая (например, −1,0) возвращает сумму, если разница в счёте точно совпала с форой. Поэтому у целой форы обычно ниже коэффициент — риск меньше."}}, {"@type": "Question", "name": "Когда возможен полувыигрыш или полупроигрыш?", "acceptedAnswer": {"@type": "Answer", "text": "Только на четвертных форах (±0,25, ±0,75, ±1,25 и т. д.). Ставка делится на две равные части по соседним линиям. Если одна часть выигрывает, а вторая возвращается — это полувыигрыш; если одна проигрывает, а вторая возвращается — полупроигрыш."}}, {"@type": "Question", "name": "Фора и гандикап — это одно и то же?", "acceptedAnswer": {"@type": "Answer", "text": "В основе да: гандикап — англоязычный синоним форы. Иногда гандикапом называют европейскую трёхисходную фору с целыми значениями, а форой — азиатскую двухисходную. Точное значение термина зависит от регламента конкретного букмекера, поэтому важно смотреть тип линии, а не только название."}}, {"@type": "Question", "name": "Что будет со ставкой на фору, если с учётом форы получилась ничья?", "acceptedAnswer": {"@type": "Answer", "text": "По правилам Лиги Ставок пари рассчитывается с коэффициентом 1, то есть ставка возвращается (п. 10.3.10). Например, при Ф1(−1) и победе первой команды ровно в 1 гол деньги возвращаются (п. 10.7.5)."}}, {"@type": "Question", "name": "Когда выигрывает Ф2(+1,5)?", "acceptedAnswer": {"@type": "Answer", "text": "Когда вторая команда победила, сыграла вничью или проиграла не более чем в 1 гол (0:1, 0:0, 1:0, 2:1); при поражении больше чем на 1 гол ставка проигрывает (пример из п. 10.7.5 правил Лиги Ставок)."}}]}</script>
@@ -209,18 +50,19 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <!-- /Yandex.Metrika counter -->
 </head>
 <body>
+<a class="skip" href="#main">К содержанию</a>
 
 <div class="side-deco left" aria-hidden="false">
   <img class="side-deco-bg" src="/img/decor/side-rail.webp" alt="" aria-hidden="true" width="200" height="334" loading="lazy">
-  <a class="side-badge" style="top:20%" href="/go/marathonbet" aria-label="Марафон — бонус за регистрацию" rel="sponsored"><img src="/img/logos/marathonbet.png" alt="Марафон"></a>
-  <a class="side-badge" style="top:54%" href="/go/pari" aria-label="PARI — бонус за регистрацию" rel="sponsored"><img src="/img/logos/pari.png" alt="PARI"></a>
-  <a class="side-badge" style="top:87%" href="/go/zenit" aria-label="Зенит — бонус за регистрацию" rel="sponsored"><img src="/img/logos/zenit.png" alt="Зенит"></a>
+  <a class="side-badge" style="top:20%" href="/go/marathonbet" aria-label="Марафон — бонус за регистрацию" rel="sponsored"><img src="/img/logos/marathonbet.png" alt="Марафон" width="256" height="256" loading="lazy" decoding="async"></a>
+  <a class="side-badge" style="top:54%" href="/go/pari" aria-label="PARI — бонус за регистрацию" rel="sponsored"><img src="/img/logos/pari.png" alt="PARI" width="256" height="256" loading="lazy" decoding="async"></a>
+  <a class="side-badge" style="top:87%" href="/go/zenit" aria-label="Зенит — бонус за регистрацию" rel="sponsored"><img src="/img/logos/zenit.png" alt="Зенит" width="256" height="256" loading="lazy" decoding="async"></a>
 </div>
 <div class="side-deco right" aria-hidden="false">
   <img class="side-deco-bg" src="/img/decor/side-rail-right.webp" alt="" aria-hidden="true" width="200" height="334" loading="lazy">
-  <a class="side-badge" style="top:20%" href="/go/melbet" aria-label="Мелбет — бонус за регистрацию" rel="sponsored"><img src="/img/logos/melbet.png" alt="Мелбет"></a>
-  <a class="side-badge" style="top:54%" href="/go/fonbet" aria-label="Фонбет — бонус за регистрацию" rel="sponsored"><img src="/img/logos/fonbet.png" alt="Фонбет"></a>
-  <a class="side-badge" style="top:87%" href="/go/betcity" aria-label="Бетсити — бонус за регистрацию" rel="sponsored"><img src="/img/logos/betcity.png" alt="Бетсити"></a>
+  <a class="side-badge" style="top:20%" href="/go/melbet" aria-label="Мелбет — бонус за регистрацию" rel="sponsored"><img src="/img/logos/melbet.png" alt="Мелбет" width="256" height="256" loading="lazy" decoding="async"></a>
+  <a class="side-badge" style="top:54%" href="/go/fonbet" aria-label="Фонбет — бонус за регистрацию" rel="sponsored"><img src="/img/logos/fonbet.png" alt="Фонбет" width="256" height="256" loading="lazy" decoding="async"></a>
+  <a class="side-badge" style="top:87%" href="/go/betcity" aria-label="Бетсити — бонус за регистрацию" rel="sponsored"><img src="/img/logos/betcity.png" alt="Бетсити" width="256" height="256" loading="lazy" decoding="async"></a>
 </div>
 
 <header class="site-header"><div class="container">
@@ -228,7 +70,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
     STAVKI RATING
   </a>
-  <nav class="nav">
+  <nav class="nav" aria-label="Основное меню">
     <a href="/rating">Рейтинг</a>
     <a href="/rejting">По критериям</a>
     <a href="/stavki">Виды спорта</a>
@@ -239,13 +81,13 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
 </div></header>
 
-<main>
+<main id="main">
 
   <section class="section tight"><div class="container">
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Термины</a><span>/</span>Что такое фора в ставках: виды форы и расчёт возврата</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Школа · Термины ·</div>
     <h1>Что такое фора в ставках: виды форы и расчёт возврата</h1>
-    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-04">04.09.2026</time></span><span>·</span><span>обновлено и проверено <time datetime="2026-09-28">28.09.2026</time></span><span>·</span><span>7 мин чтения</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-04">04.09.2026</time></span><span>·</span><span>обновлено и проверено <time datetime="2026-09-28">28.09.2026</time></span><span>·</span><span>7 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Фора в ставках — это условное преимущество или отставание, которое добавляется к итоговому результату одной из команд для расчёта пари. Проще говоря, букмекер заранее «прибавляет» или «отнимает» голы, очки или геймы, а ставка рассчитывается уже по скорректированному счёту. Форы бывают положительными (страхуют аутсайдера) и отрицательными (требуют уверенной победы фаворита), а по механике делятся на азиатские и европейские, целые, получелые и четвертные.</p>
     
     
@@ -254,17 +96,17 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 
   <section class="section" style="padding-top:6px"><div class="container prose">
     <h2 id="kak-rabotaet-fora-bazovyj-princip">Как работает фора: базовый принцип</h2>
-<p>Фора обозначается как <strong>Ф1</strong> (для первой команды) или <strong>Ф2</strong> (для второй) со значением в скобках. Отрицательная фора вычитается из результата команды, положительная — прибавляется. Итог считают по виртуальному счёту.</p><p>Пример. Ставка <strong>Ф1(−1,5)</strong> с коэффициентом 1,90, сумма 1000 ₽. Первая команда должна победить с разницей минимум в 2 мяча. Если матч закончился <strong>2:0</strong>, виртуальный счёт 0,5:0 в пользу первой команды — ставка выигрывает: 1000 × 1,90 = <strong>1900 ₽</strong> (чистая прибыль 900 ₽). Если счёт <strong>1:0</strong>, виртуальный итог 0,5:0 против неё — ставка проигрывает, вы теряете 1000 ₽.</p><p>Положительная фора работает наоборот. <strong>Ф2(+1,5)</strong> сыграет, если вторая команда не проиграет более чем в один мяч: при счёте 1:0 в пользу соперника виртуальный счёт становится 1:1,5 — ставка проходит.</p>
+<p>Фора обозначается как <strong>Ф1</strong> (для первой команды) или <strong>Ф2</strong> (для второй) со значением в скобках. Отрицательная фора вычитается из результата команды, положительная — прибавляется. Итог считают по виртуальному счёту.</p><p>Пример. Ставка <strong>Ф1(−1,5)</strong> с коэффициентом 1,90, сумма 1000 ₽. Первая команда должна победить с разницей минимум в 2 мяча. Если матч закончился <strong>2:0</strong>, виртуальный счёт 0,5:0 в пользу первой команды — ставка выигрывает: 1000 × 1,90 = <strong>1900 ₽</strong> (чистая прибыль 900 ₽). Если счёт <strong>1:0</strong>, виртуальный итог 0,5:0 против неё — ставка проигрывает, вы теряете 1000 ₽.</p><p>Положительная фора работает наоборот. <strong>Ф2(+1,5)</strong> сыграет, если вторая команда не проиграет более чем в один мяч: при счёте 1:0 в пользу соперника виртуальный счёт становится 1:1,5 — ставка проходит.</p>
 <h2 id="chto-skazano-v-pravilah-baza-fory-i-dva-primera">Что сказано в правилах: база форы и два примера</h2>
-<p>По правилам Лиги Ставок «Фора» — это пари на победителя события с учётом «базы форы», то есть количества голов, очков и иных единиц счёта, прибавляемого к фактическому результату (п. 10.3.10).</p><p>Если результат с учётом базы форы в пользу выбранной команды, пари выигрывает, если в пользу соперника — проигрывает, а при ничьей рассчитывается с коэффициентом 1. В линии, как показано в п. 10.7.5, форы бывают дробными (−1,5; +1,5; +2,5) и целочисленными (−1; 0; +1), и возврат возможен именно на целочисленных.</p><p>Пример № 1 из правил: в матче Бенфика — Зенит исход Ф1(−1) с коэффициентом 2,13 и ставкой 1000 ₽ даёт возможный выигрыш 2130 ₽. Ставка выигрывает, если первая команда победила больше чем на 1 гол (например, 2:0 или 3:1); при победе ровно на 1 гол деньги возвращаются; при ничьей или поражении ставка проигрывает.</p><p>Пример № 2: исход Ф2(+1,5) с коэффициентом 1,36 и ставкой 1000 ₽ даёт возможный выигрыш 1360 ₽. Ставка выигрывает, если вторая команда победила, сыграла вничью или проиграла не более чем в 1 гол, и проигрывает при поражении больше чем на 1 гол.</p><p>Из коэффициентов видна цена страховки: Ф1(−1) при 2,13 подразумевает вероятность около 47%, а Ф2(+1,5) при 1,36 — около 74%; это разные линии одного матча, и напрямую их сравнивать нельзя. Четвертные форы с шагом 0,25 в примерах правил не описаны — проверяйте их в правилах своей БК. Приведённые правила принадлежат одному лицензированному букмекеру; у других названия, лимиты и порядок расчёта отличаются, поэтому перед ставкой откройте раздел «Правила» своей БК.</p>
+<p>По правилам Лиги Ставок «Фора» — это пари на победителя события с учётом «базы форы», то есть количества голов, очков и иных единиц счёта, прибавляемого к фактическому результату (п. 10.3.10).</p><p>Если результат с учётом базы форы в пользу выбранной команды, пари выигрывает, если в пользу соперника — проигрывает, а при ничьей рассчитывается с коэффициентом 1. В линии, как показано в п. 10.7.5, форы бывают дробными (−1,5; +1,5; +2,5) и целочисленными (−1; 0; +1), и возврат возможен именно на целочисленных.</p><p>Пример № 1 из правил: в матче Бенфика — Зенит исход Ф1(−1) с коэффициентом 2,13 и ставкой 1000 ₽ даёт возможный выигрыш 2130 ₽. Ставка выигрывает, если первая команда победила больше чем на 1 гол (например, 2:0 или 3:1); при победе ровно на 1 гол деньги возвращаются; при ничьей или поражении ставка проигрывает.</p><p>Пример № 2: исход Ф2(+1,5) с коэффициентом 1,36 и ставкой 1000 ₽ даёт возможный выигрыш 1360 ₽. Ставка выигрывает, если вторая команда победила, сыграла вничью или проиграла не более чем в 1 гол, и проигрывает при поражении больше чем на 1 гол.</p><p>Из коэффициентов видна цена страховки: Ф1(−1) при 2,13 подразумевает вероятность около 47%, а Ф2(+1,5) при 1,36 — около 74%; это разные линии одного матча, и напрямую их сравнивать нельзя. Четвертные форы с шагом 0,25 в примерах правил не описаны — проверяйте их в правилах своей БК. Приведённые правила принадлежат одному лицензированному букмекеру; у других названия, лимиты и порядок расчёта отличаются, поэтому перед ставкой откройте раздел «Правила» своей БК.</p>
 <h2 id="aziatskaya-i-evropejskaya-fora">Азиатская и европейская фора</h2>
 <p>Азиатская и европейская фора — 2 принципиально разных механизма расчёта.</p><ul><li><strong>Азиатская фора</strong> — двухисходная, шаг 0,25 (только выигрыш или проигрыш ставки): значения 0, ±0,25, ±0,5, ±0,75, ±1, ±1,25 и так далее. На целых значениях возможен возврат ставки, на четвертных сумма делится на две части.</li><li><strong>Европейская фора</strong> — трёхисходная, только целые значения. Здесь появляется отдельный исход «фора-ничья». Например, при <strong>Ф1(−1)</strong> есть три варианта: «победа первой с форой» (выигрыш в 2+ мяча), «ничья с форой» (победа ровно в 1 мяч) и «победа второй с форой». Возврата тут нет: если вы взяли П1 с форой −1, а команда выиграла 1:0, сыграл исход «ничья с форой» и ставка проигрывает.</li></ul><p>Отличие в том, что азиатская линия возвращает деньги при «пограничном» результате, а европейская превращает его в отдельный проигрышный или выигрышный исход.</p>
 <h2 id="celaya-poluchelaya-i-chetvertnaya-fora">Целая, получелая и четвертная фора</h2>
-<p>Внутри азиатской системы значения ведут себя по-разному.</p><ul><li><strong>Получелая</strong> (±0,5): чистый исход без возврата. Ставка либо полностью выигрывает, либо полностью проигрывает.</li><li><strong>Целая</strong> (0, ±1, ±2): при точном совпадении разницы с форой ставка возвращается. Пример: <strong>Ф1(−1,0)</strong>, ставка 1000 ₽. Победа 2:0 — выигрыш; победа ровно 1:0 — <strong>возврат 1000 ₽</strong> (виртуальная ничья 0:0); ничья или поражение — проигрыш.</li><li><strong>Четвертная</strong> (±0,25, ±0,75, ±1,25): ставка автоматически делится на две равные части по соседним линиям. Отсюда возможны «полувыигрыш» и «полупроигрыш».</li></ul><p>Четвертная фора — способ снизить риск: половина суммы страхуется возвратом, поэтому её выбирают для баланса между защитой и потенциальной прибылью.</p>
+<p>Внутри азиатской системы значения ведут себя по-разному.</p><ul><li><strong>Получелая</strong> (±0,5): чистый исход без возврата. Ставка либо полностью выигрывает, либо полностью проигрывает.</li><li><strong>Целая</strong> (0, ±1, ±2): при точном совпадении разницы с форой ставка возвращается. Пример: <strong>Ф1(−1,0)</strong>, ставка 1000 ₽. Победа 2:0 — выигрыш; победа ровно 1:0 — <strong>возврат 1000 ₽</strong> (виртуальная ничья 0:0); ничья или поражение — проигрыш.</li><li><strong>Четвертная</strong> (±0,25, ±0,75, ±1,25): ставка автоматически делится на две равные части по соседним линиям. Отсюда возможны «полувыигрыш» и «полупроигрыш».</li></ul><p>Четвертная фора — способ снизить риск: половина суммы страхуется возвратом, поэтому её выбирают для баланса между защитой и потенциальной прибылью.</p>
 <h2 id="chto-vhodit-v-schet-fory-v-raznyh-vidah-sporta">Что входит в счёт форы в разных видах спорта</h2>
 <p>Правила Лиги Ставок задают, по какому результату считается фора, и в разных видах спорта база расчёта разная.</p><ul><li><strong>Футбол:</strong> фора считается по основному времени — 90 минут плюс добавленное арбитром время; овертайм и пенальти не входят (п. 11.18.3).</li><li><strong>Баскетбол:</strong> исходы, кроме «1», «Х», «2», второй половины и четвёртой четверти, рассчитываются с учётом овертаймов (п. 11.3.1), поэтому фора по очкам обычно включает овертайм.</li><li><strong>Хоккей:</strong> если не указано иное, считается основное время из трёх периодов по 20 минут (п. 11.19.1).</li><li><strong>Волейбол и настольный теннис:</strong> если в линии не указано иное, фора выражена в очках (пп. 11.7.1, 11.12.1).</li><li><strong>Теннис:</strong> в ставках на количество геймов тай-брейк считается одним геймом (п. 11.16.7).</li><li><strong>Киберспорт:</strong> фора бывает по картам и по раундам; примеры разобраны в материалах <a href="/shkola/terminy/fora-po-kartam-1-5-ks-go">фора по картам в CS2</a> и <a href="/shkola/terminy/gandikap-starkraft-2">гандикап в StarCraft 2</a>.</li></ul><p>Пример для баскетбола: основное время закончилось 105:105, а после овертайма первая команда победила 118:112. Ставка Ф1(−4,5) выигрывает, потому что разница в 6 очков больше 4,5 и учитывается результат с овертаймом; при расчёте только по основному времени (ничья 105:105) она бы проиграла. Перед ставкой проверяйте, какая часть матча учитывается в конкретной линии.</p>
 <h2 id="primery-rascheta-vozvrata-i-poluvyigrysha">Примеры расчёта возврата и полувыигрыша</h2>
-<p><strong>Четвертная Ф1(−1,25)</strong>, коэффициент 1,90, ставка 1000 ₽. Она делится: 500 ₽ на Ф(−1,0) и 500 ₽ на Ф(−1,5).</p><ul><li>Победа 2:0 (разница 2): обе части выигрывают — 500 × 1,90 + 500 × 1,90 = <strong>1900 ₽</strong>.</li><li>Победа 1:0 (разница ровно 1): часть Ф(−1,0) даёт возврат 500 ₽, часть Ф(−1,5) сгорает. На счёт вернётся 500 ₽ при ставке 1000 ₽ — это <strong>полупроигрыш</strong> (минус 500 ₽).</li><li>Ничья или поражение: обе части проигрывают — минус 1000 ₽.</li></ul><p><strong>Полувыигрыш на Ф2(+0,25)</strong>, коэффициент 1,90, ставка 1000 ₽. Делится: 500 ₽ на Ф(0) и 500 ₽ на Ф(+0,5).</p><ul><li>Победа второй команды: обе части выигрывают.</li><li>Ничья: Ф(0) возвращает 500 ₽, Ф(+0,5) выигрывает 500 × 1,90 = 950 ₽. Итого 1450 ₽ при ставке 1000 ₽ — <strong>полувыигрыш</strong> (прибыль 450 ₽).</li><li>Поражение: обе части проигрывают.</li></ul>
+<p><strong>Четвертная Ф1(−1,25)</strong>, коэффициент 1,90, ставка 1000 ₽. Она делится: 500 ₽ на Ф(−1,0) и 500 ₽ на Ф(−1,5).</p><ul><li>Победа 2:0 (разница 2): обе части выигрывают — 500 × 1,90 + 500 × 1,90 = <strong>1900 ₽</strong>.</li><li>Победа 1:0 (разница ровно 1): часть Ф(−1,0) даёт возврат 500 ₽, часть Ф(−1,5) сгорает. На счёт вернётся 500 ₽ при ставке 1000 ₽ — это <strong>полупроигрыш</strong> (минус 500 ₽).</li><li>Ничья или поражение: обе части проигрывают — минус 1000 ₽.</li></ul><p><strong>Полувыигрыш на Ф2(+0,25)</strong>, коэффициент 1,90, ставка 1000 ₽. Делится: 500 ₽ на Ф(0) и 500 ₽ на Ф(+0,5).</p><ul><li>Победа второй команды: обе части выигрывают.</li><li>Ничья: Ф(0) возвращает 500 ₽, Ф(+0,5) выигрывает 500 × 1,90 = 950 ₽. Итого 1450 ₽ при ставке 1000 ₽ — <strong>полувыигрыш</strong> (прибыль 450 ₽).</li><li>Поражение: обе части проигрывают.</li></ul>
 <h2 id="fora-i-gandikap-v-chem-raznica">Фора и гандикап: в чём разница</h2>
 <p>Термин «гандикап» (например, в записи Ф1(−1)) — это англоязычное название форы (handicap), и в большинстве случаев слова используются как синонимы. Разница чаще терминологическая и зависит от линии конкретного оператора.</p><p>В части линий <strong>гандикапом</strong> называют именно европейскую трёхисходную фору с целыми значениями (с отдельным исходом «ничья с гандикапом»), а <strong>форой</strong> — азиатскую двухисходную с дробными значениями и возвратами. В других линиях оба термина обозначают одно и то же. Практический вывод один: перед ставкой нужно смотреть не на название, а на тип значения (целое, получелое, четвертное) и на правила расчёта возврата у конкретного букмекера.</p><p>Все легальные операторы в России включены в реестр и проводят приём и выплату ставок через Единый ЦУПИС; правила расчёта форы публикуются в регламенте каждой конторы, и именно регламент определяет, будет ли возврат при пограничном счёте.</p>
     <h2 id="faq">Частые вопросы</h2>
@@ -312,5 +154,6 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
 </div>
 
+<script src="/assets/site.js" defer></script>
 </body>
 </html>

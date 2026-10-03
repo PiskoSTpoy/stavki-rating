@@ -29,168 +29,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap">
-<style>
-  :root {
-    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
-    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
-    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
-    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
-    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
-    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
-    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
-    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
-    --font-display: "Golos Text", "Inter", system-ui, sans-serif;
-    --font-sans: "Golos Text", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
-    --container: 1240px;
-    color-scheme: dark;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-  a { color: inherit; text-decoration: none; }
-  a:hover { color: var(--volt); }
-  img { max-width: 100%; display: block; }
-  button { font: inherit; cursor: pointer; }
-  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.12; margin: 0; text-wrap: balance; letter-spacing: -.015em; }
-  h1 { font-size: clamp(23px, 2.8vw, 35px); }
-  h2 { font-size: clamp(21px, 2.4vw, 28px); }
-  h3 { font-size: 18px; font-weight: 500; }
-  p { margin: 0; }
-  .num { font-variant-numeric: tabular-nums; }
-  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
-  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
-  .muted { color: var(--muted); }
-  .small { font-size: 13px; }
-  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
-
-  /* Тонкая полоса дисклеймера */
-  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
-  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
-
-  /* Шапка */
-  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
-  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
-  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
-  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
-  .nav a { color: var(--muted); }
-  .nav a:hover, .nav a.active { color: var(--text); }
-  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
-  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
-  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
-  @media (max-width: 940px) { .nav { display: none; } }
-
-  /* Боковые декоративные рейлы с бейджами БК — только на очень широких экранах,
-     чтобы не трогать обычную (desktop/mobile) раскладку контейнера 1240px. */
-  .side-deco { position: fixed; top: 50%; transform: translateY(-50%); width: 200px; z-index: 5; pointer-events: none; display: none; }
-  .side-deco img.side-deco-bg { display: block; width: 100%; height: auto; opacity: .9; }
-  .side-deco.left { left: 20px; }
-  .side-deco.right { right: 20px; }
-  .side-badge { position: absolute; left: 50%; width: 27%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; overflow: hidden; pointer-events: auto; display: flex; align-items: center; justify-content: center; background: #0B0E16; box-shadow: 0 0 0 2px rgba(200,255,77,.35); transition: transform .2s ease, box-shadow .2s ease; }
-  .side-badge:hover { transform: translate(-50%, -50%) scale(1.08); box-shadow: 0 0 0 2px var(--volt), 0 0 22px rgba(200,255,77,.55); }
-  .side-badge img { width: 76%; height: 76%; object-fit: contain; }
-  @media (min-width: 1680px) { .side-deco { display: block; } }
-
-  /* Кнопки */
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
-  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
-  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
-  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
-  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
-  .btn-official:hover { border-color: var(--muted); color: var(--text); }
-  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
-  .btn-block { width: 100%; }
-  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
-
-  /* Секции */
-  .section { padding: 56px 0; }
-  .section.tight { padding-top: 6px; }
-  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
-  .section-head p { color: var(--muted); max-width: 60ch; }
-  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
-
-  /* Хлебные крошки */
-  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-  .crumbs a { color: var(--muted); }
-  .crumbs a:hover { color: var(--text); }
-  .crumbs span { color: var(--muted-2); }
-
-  /* Плитки, инструменты, статьи */
-  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
-  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
-  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
-  .tile b { font-size: 15px; }
-  .tile small { color: var(--muted); }
-  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
-  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
-  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
-  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
-  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
-  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
-  .result small { display: block; color: var(--muted); font-size: 12px; }
-  .result b { font-family: var(--font-display); font-size: 22px; }
-  .result .accent { color: var(--volt); }
-  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
-  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
-  .article b { font-size: 16px; line-height: 1.35; }
-  .article small { color: var(--muted); }
-
-  /* Текстовый контент страницы */
-  .prose { max-width: 75ch; display: grid; gap: 14px; }
-  .prose h2 { margin-top: 14px; }
-  .prose h2[id] { scroll-margin-top: 84px; }
-  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
-  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
-  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-  .meta-row a { text-decoration: none; }
-  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
-  .toc b { display: block; margin-bottom: 6px; }
-  .toc ol { margin: 0; padding-left: 20px; }
-  .toc li { margin: 3px 0; }
-  .toc a { color: var(--volt); text-decoration: none; }
-  .toc a:hover { text-decoration: underline; }
-  /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
-     задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
-  .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
-  .prose p { color: var(--text); }
-  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
-  .prose li { line-height: 1.5; }
-  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
-  .prose strong { color: var(--text); font-weight: 700; }
-  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
-  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
-  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
-  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
-  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  .prose tbody tr:last-child td { border-bottom: none; }
-  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
-  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
-  .faq { display: grid; gap: 10px; }
-  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
-  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 24px 12px 0; list-style: none; position: relative; }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: "+"; position: absolute; right: 0; top: 12px; color: var(--muted); font-weight: 400; }
-  .faq details[open] summary::after { content: "–"; }
-  .faq details[open] summary { color: var(--volt); }
-  .faq p { color: var(--muted); padding: 0 0 12px; }
-
-  /* Футер */
-  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
-  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
-  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
-  .footer a { color: var(--muted); display: block; padding: 3px 0; }
-  .footer a:hover { color: var(--text); }
-  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
-
-  /* Липкая мобильная панель */
-  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
-  .sticky-cta .btn { flex: 1; }
-  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
-  @media (max-width: 760px) { .sticky-cta { display: flex; } }
-</style>
+<link rel="stylesheet" href="/assets/site.css?v=20261003">
+<link rel="stylesheet" href="/assets/chrome.css?v=20261003">
+<meta name="theme-color" content="#07090F">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Города", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Ставки на спорт в Тюмени: как ставить легально", "item": "https://stavki-rating.ru/shkola/goroda/stavki-tyumen"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ставки на спорт в Тюмени: как ставить легально", "description": "Как легально ставить на спорт из Тюмени и на матчи «Рубина» в ВХЛ: хоккейные рынки, разница между основным временем и овертаймом, пример расчёта.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/goroda/stavki-tyumen", "datePublished": "2026-09-10", "dateModified": "2026-09-29", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "В какой лиге играет «Рубин» из Тюмени?", "acceptedAnswer": {"@type": "Answer", "text": "«Рубин» выступает в ВХЛ — Высшей хоккейной лиге, втором по значимости хоккейном дивизионе страны. На его матчи легальные букмекеры расписывают хоккейные рынки, но линия обычно уже, чем на КХЛ."}}, {"@type": "Question", "name": "Можно ли легально ставить на ВХЛ, находясь в Тюмени?", "acceptedAnswer": {"@type": "Answer", "text": "Да, через сайт или приложение букмекера с лицензией из реестра ЕРАИ, с идентификацией и платежами через Единый ЦУПИС. Место проживания на возможность ставить не влияет — правила одинаковы для всей России."}}, {"@type": "Question", "name": "Чем ставка в основное время отличается от ставки с учётом овертайма?", "acceptedAnswer": {"@type": "Answer", "text": "Ставка в основное время рассчитывается по счёту после трёх периодов, и в ней возможна ничья. Ставка с учётом овертайма и буллитов — по итоговому результату, ничьей нет. При счёте 2:2 после трёх периодов и победе в овертайме П1 в основное время проиграет, а победа с ОТ выиграет."}}, {"@type": "Question", "name": "Какие рынки обычно доступны на матчи «Рубина»?", "acceptedAnswer": {"@type": "Answer", "text": "Исход в основное время, победа с учётом овертайма и буллитов, фора по шайбам, общий и индивидуальный тотал, ставки на периоды. Набор зависит от конкретной конторы, поэтому линию стоит сравнить у нескольких операторов."}}, {"@type": "Question", "name": "С какого возраста разрешены ставки на спорт?", "acceptedAnswer": {"@type": "Answer", "text": "С 18 лет. Легальный букмекер проверяет возраст при идентификации через Единый ЦУПИС, а в пункте приёма ставок — по документу, удостоверяющему личность."}}]}</script>
@@ -209,18 +50,19 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <!-- /Yandex.Metrika counter -->
 </head>
 <body>
+<a class="skip" href="#main">К содержанию</a>
 
 <div class="side-deco left" aria-hidden="false">
   <img class="side-deco-bg" src="/img/decor/side-rail.webp" alt="" aria-hidden="true" width="200" height="334" loading="lazy">
-  <a class="side-badge" style="top:20%" href="/go/marathonbet" aria-label="Марафон — бонус за регистрацию" rel="sponsored"><img src="/img/logos/marathonbet.png" alt="Марафон"></a>
-  <a class="side-badge" style="top:54%" href="/go/pari" aria-label="PARI — бонус за регистрацию" rel="sponsored"><img src="/img/logos/pari.png" alt="PARI"></a>
-  <a class="side-badge" style="top:87%" href="/go/zenit" aria-label="Зенит — бонус за регистрацию" rel="sponsored"><img src="/img/logos/zenit.png" alt="Зенит"></a>
+  <a class="side-badge" style="top:20%" href="/go/marathonbet" aria-label="Марафон — бонус за регистрацию" rel="sponsored"><img src="/img/logos/marathonbet.png" alt="Марафон" width="256" height="256" loading="lazy" decoding="async"></a>
+  <a class="side-badge" style="top:54%" href="/go/pari" aria-label="PARI — бонус за регистрацию" rel="sponsored"><img src="/img/logos/pari.png" alt="PARI" width="256" height="256" loading="lazy" decoding="async"></a>
+  <a class="side-badge" style="top:87%" href="/go/zenit" aria-label="Зенит — бонус за регистрацию" rel="sponsored"><img src="/img/logos/zenit.png" alt="Зенит" width="256" height="256" loading="lazy" decoding="async"></a>
 </div>
 <div class="side-deco right" aria-hidden="false">
   <img class="side-deco-bg" src="/img/decor/side-rail-right.webp" alt="" aria-hidden="true" width="200" height="334" loading="lazy">
-  <a class="side-badge" style="top:20%" href="/go/melbet" aria-label="Мелбет — бонус за регистрацию" rel="sponsored"><img src="/img/logos/melbet.png" alt="Мелбет"></a>
-  <a class="side-badge" style="top:54%" href="/go/fonbet" aria-label="Фонбет — бонус за регистрацию" rel="sponsored"><img src="/img/logos/fonbet.png" alt="Фонбет"></a>
-  <a class="side-badge" style="top:87%" href="/go/betcity" aria-label="Бетсити — бонус за регистрацию" rel="sponsored"><img src="/img/logos/betcity.png" alt="Бетсити"></a>
+  <a class="side-badge" style="top:20%" href="/go/melbet" aria-label="Мелбет — бонус за регистрацию" rel="sponsored"><img src="/img/logos/melbet.png" alt="Мелбет" width="256" height="256" loading="lazy" decoding="async"></a>
+  <a class="side-badge" style="top:54%" href="/go/fonbet" aria-label="Фонбет — бонус за регистрацию" rel="sponsored"><img src="/img/logos/fonbet.png" alt="Фонбет" width="256" height="256" loading="lazy" decoding="async"></a>
+  <a class="side-badge" style="top:87%" href="/go/betcity" aria-label="Бетсити — бонус за регистрацию" rel="sponsored"><img src="/img/logos/betcity.png" alt="Бетсити" width="256" height="256" loading="lazy" decoding="async"></a>
 </div>
 
 <header class="site-header"><div class="container">
@@ -228,7 +70,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
     STAVKI RATING
   </a>
-  <nav class="nav">
+  <nav class="nav" aria-label="Основное меню">
     <a href="/rating">Рейтинг</a>
     <a href="/rejting">По критериям</a>
     <a href="/stavki">Виды спорта</a>
@@ -239,17 +81,17 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
 </div></header>
 
-<main>
+<main id="main">
 
   <section class="section tight"><div class="container">
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Города</a><span>/</span>Ставки на спорт в Тюмени: как ставить легально</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Школа · Города ·</div>
     <h1>Ставки на спорт в Тюмени: как ставить легально</h1>
-    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-10">10.09.2026</time></span><span>·</span><span>обновлено и проверено <time datetime="2026-09-29">29.09.2026</time></span><span>·</span><span>6 мин чтения</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-10">10.09.2026</time></span><span>·</span><span>обновлено и проверено <time datetime="2026-09-29">29.09.2026</time></span><span>·</span><span>6 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Легально ставить на спорт из Тюмени можно через сайт или приложение букмекера из реестра ЕРАИ с расчётами через Единый ЦУПИС — отдельных региональных правил нет. Для местных болельщиков главный ориентир — хоккейный клуб «Рубин» из ВХЛ. На его матчи легальные операторы открывают хоккейные рынки, и здесь важно понимать разницу между исходом в основное время и с учётом овертайма: от неё зависит, выиграет ли ставка.</p>
     
     
-    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#rubin-i-vhl-chto-obychno-est-v-linii">«Рубин» и ВХЛ: что обычно есть в линии</a></li><li><a href="#osnovnoe-vremya-ili-s-overtajmom-glavnaya-lovushka-hokkejnyh">Основное время или с овертаймом: главная ловушка хоккейных ставок</a></li><li><a href="#primer-rascheta-so-stavkoj-1000">Пример расчёта со ставкой 1000 ₽</a></li><li><a href="#pervaya-stavka-iz-tyumeni-poryadok-dejstvij">Первая ставка из Тюмени: порядок действий</a></li><li><a href="#pochemu-na-vhl-rynkov-menshe-chem-na-khl">Почему на ВХЛ рынков меньше, чем на КХЛ</a></li><li><a href="#punkty-priema-stavok-i-samokontrol">Пункты приёма ставок и самоконтроль</a></li><li><a href="#faq">Частые вопросы</a></li><li><a href="#istochniki">Источники</a></li></ol></nav>
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#rubin-i-vhl-chto-obychno-est-v-linii">«Рубин» и ВХЛ: что обычно есть в линии</a></li><li><a href="#osnovnoe-vremya-ili-s-overtajmom-glavnaya-lovushka-hokkejnyh">Основное время или с овертаймом: главная ловушка хоккейных ставок</a></li><li><a href="#primer-rascheta-so-stavkoj-1000">Пример расчёта со ставкой 1000 ₽</a></li><li><a href="#pervaya-stavka-iz-tyumeni-poryadok-dejstvij">Первая ставка из Тюмени: порядок действий</a></li><li><a href="#pochemu-na-vhl-rynkov-menshe-chem-na-khl">Почему на ВХЛ рынков меньше, чем на КХЛ</a></li><li><a href="#punkty-priema-stavok-i-samokontrol">Пункты приёма ставок и самоконтроль</a></li><li><a href="#faq">Частые вопросы</a></li><li><a href="#istochniki">Источники</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
@@ -257,8 +99,8 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <p>«Рубин» выступает в ВХЛ — Высшей хоккейной лиге, втором по значимости хоккейном дивизионе страны. На его матчи легальные букмекеры расписывают типовой хоккейный набор:</p><ul><li><b>Исход в основное время</b> — П1, Х или П2 по итогам трёх периодов, ничья возможна.</li><li><b>Победа с учётом овертайма и буллитов</b> — двухисходный рынок, ничьей в нём нет.</li><li><b>Фора по шайбам</b> — результат с поправкой на заданное число шайб.</li><li><b>Общий и индивидуальный тотал</b> — сколько шайб забьют обе команды или одна из них.</li><li><b>Тоталы и исходы периодов</b> — ставки на отдельный отрезок матча.</li></ul><p>Как именно в тоталах и форах учитывается овертайм, написано в правилах приёма ставок конкретной конторы и в названии рынка. Читайте формулировку до того, как добавить ставку в купон, — это частая причина неожиданных проигрышей.</p>
 <h2 id="osnovnoe-vremya-ili-s-overtajmom-glavnaya-lovushka-hokkejnyh">Основное время или с овертаймом: главная ловушка хоккейных ставок</h2>
 <p>В футболе, например в РПЛ, исход почти всегда считается по основному времени. В хоккее у одного матча фактически два результата: счёт после трёх периодов и итоговый счёт после овертайма или буллитов. Букмекеры выставляют рынки на оба варианта, и выглядят они похоже.</p><p>Разберём на сценарии. После трёх периодов «Рубин» и соперник сыграли 2:2, в овертайме «Рубин» забил и победил 3:2. Ставка «П1 в основное время» проиграет: по итогам регулярного времени была ничья. Ставка «Х» (ничья в основное время) выиграет. Ставка «победа "Рубина" с учётом овертайма и буллитов» тоже выиграет. Один и тот же матч дал противоположный результат двум ставкам, которые новичку кажутся одинаковыми.</p><p>Практическое правило: если в названии рынка нет пометки «с ОТ» или «включая овертайм и буллиты», по умолчанию считайте, что речь об основном времени, и сверяйтесь с правилами конторы. Общая логика рынков описана в статье <a href="/shkola/kak-eto-rabotaet/vidy-stavok-na-sport">виды ставок на спорт</a>.</p>
-<h2 id="primer-rascheta-so-stavkoj-1000">Пример расчёта со ставкой 1000 ₽</h2>
-<p>Возьмём тот же сценарий — 2:2 после трёх периодов и 3:2 в овертайме — и три ставки по 1000 ₽. Коэффициенты условные. Налог 13% считается с разницы между выплатой и ставкой, его удерживает сама контора.</p><div class="table-wrap"><table><thead><tr><th>Ставка</th><th>Коэффициент</th><th>Результат</th><th>Выплата</th><th>После налога</th></tr></thead><tbody><tr><td>П1 в основное время</td><td>2,30</td><td>проигрыш</td><td>0 ₽</td><td>−1000 ₽</td></tr><tr><td>Х в основное время</td><td>4,00</td><td>выигрыш</td><td>4000 ₽</td><td>3610 ₽</td></tr><tr><td>Победа «Рубина» с учётом ОТ и буллитов</td><td>1,75</td><td>выигрыш</td><td>1750 ₽</td><td>1652,5 ₽</td></tr></tbody></table></div><p>Расчёт для второй строки: (4000 − 1000) × 13% = 390 ₽ налога, на руки 3610 ₽. Для третьей: (1750 − 1000) × 13% = 97,5 ₽, на руки 1652,5 ₽. Разница между рынками — не только в коэффициенте, но и в том, какой счёт считается итоговым. Подробнее о налоге — в статье <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">налог на выигрыш</a>.</p>
+<h2 id="primer-rascheta-so-stavkoj-1000">Пример расчёта со ставкой 1000 ₽</h2>
+<p>Возьмём тот же сценарий — 2:2 после трёх периодов и 3:2 в овертайме — и три ставки по 1000 ₽. Коэффициенты условные. Налог 13% считается с разницы между выплатой и ставкой, его удерживает сама контора.</p><div class="table-wrap"><table><thead><tr><th>Ставка</th><th>Коэффициент</th><th>Результат</th><th>Выплата</th><th>После налога</th></tr></thead><tbody><tr><td>П1 в основное время</td><td>2,30</td><td>проигрыш</td><td>0 ₽</td><td>−1000 ₽</td></tr><tr><td>Х в основное время</td><td>4,00</td><td>выигрыш</td><td>4000 ₽</td><td>3610 ₽</td></tr><tr><td>Победа «Рубина» с учётом ОТ и буллитов</td><td>1,75</td><td>выигрыш</td><td>1750 ₽</td><td>1652,5 ₽</td></tr></tbody></table></div><p>Расчёт для второй строки: (4000 − 1000) × 13% = 390 ₽ налога, на руки 3610 ₽. Для третьей: (1750 − 1000) × 13% = 97,5 ₽, на руки 1652,5 ₽. Разница между рынками — не только в коэффициенте, но и в том, какой счёт считается итоговым. Подробнее о налоге — в статье <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">налог на выигрыш</a>.</p>
 <h2 id="pervaya-stavka-iz-tyumeni-poryadok-dejstvij">Первая ставка из Тюмени: порядок действий</h2>
 <p>Жителю Тюмени не нужны особые условия — порядок одинаков по всей стране.</p><ol><li>Проверьте контору по <a href="/reestr">реестру</a>: бренд должен быть среди партнёров Единого ЦУПИС, а адрес сайта — совпадать с официальным.</li><li>Создайте аккаунт на своё имя и свой номер телефона.</li><li>Подтвердите личность через Единый ЦУПИС — без этого касса закрыта для вывода. Удобнее всего через Госуслуги.</li><li>Внесите деньги с карты или по СБП; реквизиты должны принадлежать вам.</li><li>В разделе «Хоккей» найдите турнир ВХЛ, выберите рынок, внимательно прочитайте, основное это время или с овертаймом, и подтвердите ставку.</li></ol><p>Если после нажатия кнопки деньги списались, а ставки в истории нет, не повторяйте её — сначала посмотрите разбор <a href="/shkola/kak-eto-rabotaet/spisali-dengi-a-stavka-ne-proshla">списали деньги, а ставка не прошла</a>. Общая инструкция по купону есть в материале <a href="/shkola/kak-eto-rabotaet/kak-sdelat-stavku">как сделать ставку</a>.</p>
 <h2 id="pochemu-na-vhl-rynkov-menshe-chem-na-khl">Почему на ВХЛ рынков меньше, чем на КХЛ</h2>
@@ -270,7 +112,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <details><summary>Можно ли легально ставить на ВХЛ, находясь в Тюмени?</summary><p>Да, через сайт или приложение букмекера с лицензией из реестра ЕРАИ, с идентификацией и платежами через Единый ЦУПИС. Место проживания на возможность ставить не влияет — правила одинаковы для всей России.</p></details>
 <details><summary>Чем ставка в основное время отличается от ставки с учётом овертайма?</summary><p>Ставка в основное время рассчитывается по счёту после трёх периодов, и в ней возможна ничья. Ставка с учётом овертайма и буллитов — по итоговому результату, ничьей нет. При счёте 2:2 после трёх периодов и победе в овертайме П1 в основное время проиграет, а победа с ОТ выиграет.</p></details>
 <details><summary>Какие рынки обычно доступны на матчи «Рубина»?</summary><p>Исход в основное время, победа с учётом овертайма и буллитов, фора по шайбам, общий и индивидуальный тотал, ставки на периоды. Набор зависит от конкретной конторы, поэтому линию стоит сравнить у нескольких операторов.</p></details>
-<details><summary>С какого возраста разрешены ставки на спорт?</summary><p>С 18 лет. Легальный букмекер проверяет возраст при идентификации через Единый ЦУПИС, а в пункте приёма ставок — по документу, удостоверяющему личность.</p></details></div>
+<details><summary>С какого возраста разрешены ставки на спорт?</summary><p>С 18 лет. Легальный букмекер проверяет возраст при идентификации через Единый ЦУПИС, а в пункте приёма ставок — по документу, удостоверяющему личность.</p></details></div>
     <h2 id="istochniki">Источники · проверено 29.09.2026</h2>
 <ul class="sources"><li><a href="https://www.consultant.ru/document/cons_doc_LAW_64924/a57f1222158e68158ece666271e23a895ee61ebf/" rel="noopener" target="_blank">Федеральный закон №244-ФЗ, статья 15: требования к букмекерским конторам и пунктам приёма ставок</a></li><li><a href="https://www.ligastavok.ru/files/document/442/pmbk_rules.pdf" rel="noopener" target="_blank">Правила приёма ставок легальных букмекеров: расчёт хоккейных рынков с учётом овертайма</a></li><li><a href="https://stavki-rating.ru/reestr" rel="noopener" target="_blank">Реестр легальных букмекеров stavki-rating.ru</a></li></ul>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/marathonbet">Марафон</a>, <a href="/bukmekery/pari">PARI</a>, <a href="/bukmekery/ligastavok">Лига Ставок</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
@@ -309,5 +151,6 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
 </div>
 
+<script src="/assets/site.js" defer></script>
 </body>
 </html>

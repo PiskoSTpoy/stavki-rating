@@ -29,168 +29,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap">
-<style>
-  :root {
-    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
-    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
-    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
-    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
-    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
-    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
-    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
-    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
-    --font-display: "Golos Text", "Inter", system-ui, sans-serif;
-    --font-sans: "Golos Text", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
-    --container: 1240px;
-    color-scheme: dark;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-  a { color: inherit; text-decoration: none; }
-  a:hover { color: var(--volt); }
-  img { max-width: 100%; display: block; }
-  button { font: inherit; cursor: pointer; }
-  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.12; margin: 0; text-wrap: balance; letter-spacing: -.015em; }
-  h1 { font-size: clamp(23px, 2.8vw, 35px); }
-  h2 { font-size: clamp(21px, 2.4vw, 28px); }
-  h3 { font-size: 18px; font-weight: 500; }
-  p { margin: 0; }
-  .num { font-variant-numeric: tabular-nums; }
-  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
-  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
-  .muted { color: var(--muted); }
-  .small { font-size: 13px; }
-  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
-
-  /* Тонкая полоса дисклеймера */
-  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
-  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
-
-  /* Шапка */
-  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
-  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
-  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
-  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
-  .nav a { color: var(--muted); }
-  .nav a:hover, .nav a.active { color: var(--text); }
-  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
-  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
-  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
-  @media (max-width: 940px) { .nav { display: none; } }
-
-  /* Боковые декоративные рейлы с бейджами БК — только на очень широких экранах,
-     чтобы не трогать обычную (desktop/mobile) раскладку контейнера 1240px. */
-  .side-deco { position: fixed; top: 50%; transform: translateY(-50%); width: 200px; z-index: 5; pointer-events: none; display: none; }
-  .side-deco img.side-deco-bg { display: block; width: 100%; height: auto; opacity: .9; }
-  .side-deco.left { left: 20px; }
-  .side-deco.right { right: 20px; }
-  .side-badge { position: absolute; left: 50%; width: 27%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; overflow: hidden; pointer-events: auto; display: flex; align-items: center; justify-content: center; background: #0B0E16; box-shadow: 0 0 0 2px rgba(200,255,77,.35); transition: transform .2s ease, box-shadow .2s ease; }
-  .side-badge:hover { transform: translate(-50%, -50%) scale(1.08); box-shadow: 0 0 0 2px var(--volt), 0 0 22px rgba(200,255,77,.55); }
-  .side-badge img { width: 76%; height: 76%; object-fit: contain; }
-  @media (min-width: 1680px) { .side-deco { display: block; } }
-
-  /* Кнопки */
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
-  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
-  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
-  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
-  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
-  .btn-official:hover { border-color: var(--muted); color: var(--text); }
-  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
-  .btn-block { width: 100%; }
-  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
-
-  /* Секции */
-  .section { padding: 56px 0; }
-  .section.tight { padding-top: 6px; }
-  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
-  .section-head p { color: var(--muted); max-width: 60ch; }
-  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
-
-  /* Хлебные крошки */
-  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-  .crumbs a { color: var(--muted); }
-  .crumbs a:hover { color: var(--text); }
-  .crumbs span { color: var(--muted-2); }
-
-  /* Плитки, инструменты, статьи */
-  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
-  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
-  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
-  .tile b { font-size: 15px; }
-  .tile small { color: var(--muted); }
-  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
-  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
-  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
-  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
-  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
-  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
-  .result small { display: block; color: var(--muted); font-size: 12px; }
-  .result b { font-family: var(--font-display); font-size: 22px; }
-  .result .accent { color: var(--volt); }
-  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
-  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
-  .article b { font-size: 16px; line-height: 1.35; }
-  .article small { color: var(--muted); }
-
-  /* Текстовый контент страницы */
-  .prose { max-width: 75ch; display: grid; gap: 14px; }
-  .prose h2 { margin-top: 14px; }
-  .prose h2[id] { scroll-margin-top: 84px; }
-  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
-  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
-  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-  .meta-row a { text-decoration: none; }
-  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; max-width: 75ch; font-size: 14px; }
-  .toc b { display: block; margin-bottom: 6px; }
-  .toc ol { margin: 0; padding-left: 20px; }
-  .toc li { margin: 3px 0; }
-  .toc a { color: var(--volt); text-decoration: none; }
-  .toc a:hover { text-decoration: underline; }
-  /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
-     задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
-  .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
-  .prose p { color: var(--text); }
-  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
-  .prose li { line-height: 1.5; }
-  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
-  .prose strong { color: var(--text); font-weight: 700; }
-  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
-  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
-  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
-  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
-  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  .prose tbody tr:last-child td { border-bottom: none; }
-  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
-  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
-  .faq { display: grid; gap: 10px; }
-  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
-  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 24px 12px 0; list-style: none; position: relative; }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: "+"; position: absolute; right: 0; top: 12px; color: var(--muted); font-weight: 400; }
-  .faq details[open] summary::after { content: "–"; }
-  .faq details[open] summary { color: var(--volt); }
-  .faq p { color: var(--muted); padding: 0 0 12px; }
-
-  /* Футер */
-  .footer { border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
-  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
-  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
-  .footer a { color: var(--muted); display: block; padding: 3px 0; }
-  .footer a:hover { color: var(--text); }
-  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
-
-  /* Липкая мобильная панель */
-  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
-  .sticky-cta .btn { flex: 1; }
-  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
-  @media (max-width: 760px) { .sticky-cta { display: flex; } }
-</style>
+<link rel="stylesheet" href="/assets/site.css?v=20261003">
+<link rel="stylesheet" href="/assets/chrome.css?v=20261003">
+<meta name="theme-color" content="#07090F">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Деньги и налоги", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Первый крупный выигрыш: что делать в первые сутки", "item": "https://stavki-rating.ru/shkola/dengi-i-nalogi/pervyj-krupnyj-vyigrysh-chto-delat"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Первый крупный выигрыш: что делать в первые сутки", "description": "Практический чек-лист первых суток после крупного выигрыша: что происходит с деньгами технически.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/dengi-i-nalogi/pervyj-krupnyj-vyigrysh-chto-delat", "datePublished": "2026-09-07", "dateModified": "2026-09-29", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Можно вывести весь крупный выигрыш одной заявкой?", "acceptedAnswer": {"@type": "Answer", "text": "Заявку подать можно, но фактическая выплата зависит от лимитов оператора на сумму и частоту вывода. Если выигрыш их превышает, деньги обычно приходят несколькими траншами в течение нескольких дней — точные цифры смотрите в разделе «Касса» своего кабинета."}}, {"@type": "Question", "name": "Букмекер попросил дополнительное подтверждение после крупного выигрыша — это нормально?", "acceptedAnswer": {"@type": "Answer", "text": "Да, это обычная практика при крупных или нетипичных для счёта суммах: служба безопасности легального оператора может уточнить данные перед выплатой. Это не обвинение в мошенничестве, а стандартная проверка — чем быстрее вы ответите на запрос, тем быстрее пройдёт выплата."}}, {"@type": "Question", "name": "Банк написал, что временно ограничил операции по карте, после того как пришёл выигрыш, — тоже нормально?", "acceptedAnswer": {"@type": "Answer", "text": "Да, но это отдельная история от проверки букмекера. Крупное разовое поступление иногда привлекает внимание антифрод-системы самого банка — это часть его обязательной работы по 115-ФЗ о противодействии отмыванию доходов, а не что-то специфичное именно для ставок. Обычно достаточно показать банку выписку или скрин личного кабинета букмекера, подтверждающий источник средств."}}, {"@type": "Question", "name": "Нужно ли самому платить налог с этого выигрыша?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, если оператор легальный. Букмекер сам удерживает НДФЛ с прибыли при выплате как налоговый агент, и подавать декларацию 3-НДФЛ не требуется — точные ставки и расчёт на цифрах разобраны в статье про налог на выигрыш."}}, {"@type": "Question", "name": "Есть ли предел максимального выигрыша по одной ставке?", "acceptedAnswer": {"@type": "Answer", "text": "По правилам Лиги Ставок максимальный выигрыш по одному пари без учёта суммы ставки — до 25 000 000 ₽, по матчам топ-чемпионатов по футболу — до 50 000 000 ₽; букмекер вправе изменить лимит в любой момент (пп. 8.6–8.8). У других контор лимиты отличаются."}}]}</script>
@@ -209,18 +50,19 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <!-- /Yandex.Metrika counter -->
 </head>
 <body>
+<a class="skip" href="#main">К содержанию</a>
 
 <div class="side-deco left" aria-hidden="false">
   <img class="side-deco-bg" src="/img/decor/side-rail.webp" alt="" aria-hidden="true" width="200" height="334" loading="lazy">
-  <a class="side-badge" style="top:20%" href="/go/marathonbet" aria-label="Марафон — бонус за регистрацию" rel="sponsored"><img src="/img/logos/marathonbet.png" alt="Марафон"></a>
-  <a class="side-badge" style="top:54%" href="/go/pari" aria-label="PARI — бонус за регистрацию" rel="sponsored"><img src="/img/logos/pari.png" alt="PARI"></a>
-  <a class="side-badge" style="top:87%" href="/go/zenit" aria-label="Зенит — бонус за регистрацию" rel="sponsored"><img src="/img/logos/zenit.png" alt="Зенит"></a>
+  <a class="side-badge" style="top:20%" href="/go/marathonbet" aria-label="Марафон — бонус за регистрацию" rel="sponsored"><img src="/img/logos/marathonbet.png" alt="Марафон" width="256" height="256" loading="lazy" decoding="async"></a>
+  <a class="side-badge" style="top:54%" href="/go/pari" aria-label="PARI — бонус за регистрацию" rel="sponsored"><img src="/img/logos/pari.png" alt="PARI" width="256" height="256" loading="lazy" decoding="async"></a>
+  <a class="side-badge" style="top:87%" href="/go/zenit" aria-label="Зенит — бонус за регистрацию" rel="sponsored"><img src="/img/logos/zenit.png" alt="Зенит" width="256" height="256" loading="lazy" decoding="async"></a>
 </div>
 <div class="side-deco right" aria-hidden="false">
   <img class="side-deco-bg" src="/img/decor/side-rail-right.webp" alt="" aria-hidden="true" width="200" height="334" loading="lazy">
-  <a class="side-badge" style="top:20%" href="/go/melbet" aria-label="Мелбет — бонус за регистрацию" rel="sponsored"><img src="/img/logos/melbet.png" alt="Мелбет"></a>
-  <a class="side-badge" style="top:54%" href="/go/fonbet" aria-label="Фонбет — бонус за регистрацию" rel="sponsored"><img src="/img/logos/fonbet.png" alt="Фонбет"></a>
-  <a class="side-badge" style="top:87%" href="/go/betcity" aria-label="Бетсити — бонус за регистрацию" rel="sponsored"><img src="/img/logos/betcity.png" alt="Бетсити"></a>
+  <a class="side-badge" style="top:20%" href="/go/melbet" aria-label="Мелбет — бонус за регистрацию" rel="sponsored"><img src="/img/logos/melbet.png" alt="Мелбет" width="256" height="256" loading="lazy" decoding="async"></a>
+  <a class="side-badge" style="top:54%" href="/go/fonbet" aria-label="Фонбет — бонус за регистрацию" rel="sponsored"><img src="/img/logos/fonbet.png" alt="Фонбет" width="256" height="256" loading="lazy" decoding="async"></a>
+  <a class="side-badge" style="top:87%" href="/go/betcity" aria-label="Бетсити — бонус за регистрацию" rel="sponsored"><img src="/img/logos/betcity.png" alt="Бетсити" width="256" height="256" loading="lazy" decoding="async"></a>
 </div>
 
 <header class="site-header"><div class="container">
@@ -228,7 +70,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
     STAVKI RATING
   </a>
-  <nav class="nav">
+  <nav class="nav" aria-label="Основное меню">
     <a href="/rating">Рейтинг</a>
     <a href="/rejting">По критериям</a>
     <a href="/stavki">Виды спорта</a>
@@ -239,13 +81,13 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
 </div></header>
 
-<main>
+<main id="main">
 
   <section class="section tight"><div class="container">
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Деньги и налоги</a><span>/</span>Первый крупный выигрыш: что делать в первые сутки</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Школа · Деньги и налоги ·</div>
     <h1>Первый крупный выигрыш: что делать в первые сутки</h1>
-    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-07">07.09.2026</time></span><span>·</span><span>обновлено и проверено <time datetime="2026-09-29">29.09.2026</time></span><span>·</span><span>6 мин чтения</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-07">07.09.2026</time></span><span>·</span><span>обновлено и проверено <time datetime="2026-09-29">29.09.2026</time></span><span>·</span><span>6 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Крупный выигрыш зачислен на счёт, и первый порыв — тут же поставить снова или мгновенно вывести всё одним движением. На самом деле в эти часы с деньгами происходит несколько технических шагов, которые от вас почти не зависят: заявка на вывод проходит внутреннюю проверку оператора, маршрутизацию через ЦУПИС и, при крупной сумме, может занять чуть больше времени из-за лимитов или дополнительной проверки безопасности — это стандартная процедура, а не что-то настороженное лично к вам. Налог с прибыли легальный букмекер удержит автоматически, самому подавать декларацию не нужно. А единственное, что реально в ваших руках прямо сейчас, — не превращать этот куш в топливо для следующей, более крупной ставки на эмоциях.</p>
     
     
@@ -258,19 +100,19 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <h2 id="pochemu-ne-stoit-srazu-podnimat-sleduyuschuyu-stavku">Почему не стоит сразу поднимать следующую ставку</h2>
 <p>После крупной победы в БК возникает соблазн зайти ещё раз, но уже крупнее — кажется, что «рука зашла». Это известная психологическая ловушка: эйфория после выигрыша толкает переоценивать свои шансы и увеличивать размер следующей ставки без всякой связи с реальным анализом события. Подробный разбор механики — в материале <a href="/shkola/otvetstvennaya-igra/psihologiya-stavok">психология ставок</a>.</p><p>Практический совет простой: дайте себе паузу хотя бы на несколько часов и вернитесь к тому размеру ставки, который был у вас до выигрыша, а не к сумме, подсказанной моментом. Крупный выигрыш не меняет математику следующего события — маржа букмекера в коэффициентах остаётся той же. Если держать план в моменте азарта сложно, у легальных операторов есть настраиваемые лимиты на сумму и частоту ставок — как их задать, описано в материале <a href="/shkola/dengi-i-nalogi/limity-i-samokontrol">лимиты и самоконтроль</a>.</p>
 <h2 id="chto-skazano-v-pravilah-maksimalnyj-vyigrysh-i-limity-vyplat">Что сказано в правилах: максимальный выигрыш и лимиты выплаты</h2>
-<p>По правилам Лиги Ставок максимальный выигрыш по одному пари без учёта суммы ставки может составлять до 25 000 000 ₽ (п. 8.6), а по матчам топ-чемпионатов по футболу — до 50 000 000 ₽ (п. 8.7).</p><p>Букмекер вправе в любой момент изменить максимальный выигрыш по событию и для каждого клиента (п. 8.8), а в экспрессе с событиями, у которых есть ограничения по выплате, выплата определяется событием с минимальным лимитом (п. 8.9). Пример с цифрами: чтобы упереться в лимит 25 000 000 ₽ при коэффициенте 25, нужна ставка 1 000 000 ₽ (25 000 000 ÷ 25), поэтому обычных ставок эти ограничения не касаются.</p><p>При выплате действуют и другие правила: букмекер вправе устанавливать верхний и нижний пределы суммы по каждому запросу без предупреждения (п. 3.4.9), предлагать индивидуальные условия получения выигрыша (п. 3.4.6) и в любой момент потребовать документы или личную явку, приостановив выплаты на время идентификации (пп. 3.1.3, 6.1.3). Поэтому крупный выигрыш лучше выводить без спешки и заранее подтвердить идентификацию. Приведённые правила принадлежат одному лицензированному букмекеру; у других лимиты отличаются.</p>
+<p>По правилам Лиги Ставок максимальный выигрыш по одному пари без учёта суммы ставки может составлять до 25 000 000 ₽ (п. 8.6), а по матчам топ-чемпионатов по футболу — до 50 000 000 ₽ (п. 8.7).</p><p>Букмекер вправе в любой момент изменить максимальный выигрыш по событию и для каждого клиента (п. 8.8), а в экспрессе с событиями, у которых есть ограничения по выплате, выплата определяется событием с минимальным лимитом (п. 8.9). Пример с цифрами: чтобы упереться в лимит 25 000 000 ₽ при коэффициенте 25, нужна ставка 1 000 000 ₽ (25 000 000 ÷ 25), поэтому обычных ставок эти ограничения не касаются.</p><p>При выплате действуют и другие правила: букмекер вправе устанавливать верхний и нижний пределы суммы по каждому запросу без предупреждения (п. 3.4.9), предлагать индивидуальные условия получения выигрыша (п. 3.4.6) и в любой момент потребовать документы или личную явку, приостановив выплаты на время идентификации (пп. 3.1.3, 6.1.3). Поэтому крупный выигрыш лучше выводить без спешки и заранее подтвердить идентификацию. Приведённые правила принадлежат одному лицензированному букмекеру; у других лимиты отличаются.</p>
 <h2 id="chto-sdelat-v-pervye-sutki-korotkij-poryadok">Что сделать в первые сутки: короткий порядок</h2>
 <p>4 шага в первые сутки уберут большинство ошибок с крупным выигрышем. Первый — не поднимать сразу новую ставку: дайте азарту остыть, деньги на счёте никуда не денутся. Второй — проверить лимиты вывода у оператора и в ЦУПИС, чтобы понимать, одной заявкой или частями выводить сумму. Третий — подать вывод только на свои реквизиты (карта или счёт на ваше имя): совпадение ФИО обязательно, иначе платёж завернут. Четвёртый — сохранить подтверждения (историю ставки и вывода): они пригодятся, если банк спросит происхождение средств или понадобится свериться по налогу. Спокойные сутки почти всегда выгоднее одного импульсивного движения.</p>
 <h2 id="nalog-s-krupnogo-vyigrysha-kto-uderzhivaet">Налог с крупного выигрыша: кто удерживает</h2>
-<p>НДФЛ с выигрыша по статье 214.7 НК РФ удерживает сам легальный букмекер как налоговый агент, если выплата по одной операции составляет 15 000 ₽ или больше. В этом случае вы получаете сумму уже за вычетом налога, и отдельно доплачивать ничего не нужно. Если же отдельная выплата меньше 15 000 ₽, обязанность посчитать и задекларировать налог по итогам года переходит к вам. База считается не со всей выплаты, а с разницы между выплатой и суммой ставки. Точный порядок для вашей ситуации лучше уточнить в <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">гайде про налог на выигрыш</a> или у бухгалтера — этот раздел не заменяет налоговую консультацию.</p>
+<p>НДФЛ с выигрыша по статье 214.7 НК РФ удерживает сам легальный букмекер как налоговый агент, если выплата по одной операции составляет 15 000 ₽ или больше. В этом случае вы получаете сумму уже за вычетом налога, и отдельно доплачивать ничего не нужно. Если же отдельная выплата меньше 15 000 ₽, обязанность посчитать и задекларировать налог по итогам года переходит к вам. База считается не со всей выплаты, а с разницы между выплатой и суммой ставки. Точный порядок для вашей ситуации лучше уточнить в <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">гайде про налог на выигрыш</a> или у бухгалтера — этот раздел не заменяет налоговую консультацию.</p>
     <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Можно вывести весь крупный выигрыш одной заявкой?</summary><p>Заявку подать можно, но фактическая выплата зависит от лимитов оператора на сумму и частоту вывода. Если выигрыш их превышает, деньги обычно приходят несколькими траншами в течение нескольких дней — точные цифры смотрите в разделе «Касса» своего кабинета.</p></details>
 <details><summary>Букмекер попросил дополнительное подтверждение после крупного выигрыша — это нормально?</summary><p>Да, это обычная практика при крупных или нетипичных для счёта суммах: служба безопасности легального оператора может уточнить данные перед выплатой. Это не обвинение в мошенничестве, а стандартная проверка — чем быстрее вы ответите на запрос, тем быстрее пройдёт выплата.</p></details>
 <details><summary>Банк написал, что временно ограничил операции по карте, после того как пришёл выигрыш, — тоже нормально?</summary><p>Да, но это отдельная история от проверки букмекера. Крупное разовое поступление иногда привлекает внимание антифрод-системы самого банка — это часть его обязательной работы по 115-ФЗ о противодействии отмыванию доходов, а не что-то специфичное именно для ставок. Обычно достаточно показать банку выписку или скрин личного кабинета букмекера, подтверждающий источник средств.</p></details>
 <details><summary>Нужно ли самому платить налог с этого выигрыша?</summary><p>Нет, если оператор легальный. Букмекер сам удерживает НДФЛ с прибыли при выплате как налоговый агент, и подавать декларацию 3-НДФЛ не требуется — точные ставки и расчёт на цифрах разобраны в статье про налог на выигрыш.</p></details>
-<details><summary>Есть ли предел максимального выигрыша по одной ставке?</summary><p>По правилам Лиги Ставок максимальный выигрыш по одному пари без учёта суммы ставки — до 25 000 000 ₽, по матчам топ-чемпионатов по футболу — до 50 000 000 ₽; букмекер вправе изменить лимит в любой момент (пп. 8.6–8.8). У других контор лимиты отличаются.</p></details></div>
+<details><summary>Есть ли предел максимального выигрыша по одной ставке?</summary><p>По правилам Лиги Ставок максимальный выигрыш по одному пари без учёта суммы ставки — до 25 000 000 ₽, по матчам топ-чемпионатов по футболу — до 50 000 000 ₽; букмекер вправе изменить лимит в любой момент (пп. 8.6–8.8). У других контор лимиты отличаются.</p></details></div>
     <h2 id="istochniki">Источники · проверено 29.09.2026</h2>
-<ul class="sources"><li><a href="https://www.consultant.ru/document/cons_doc_LAW_64924/" rel="noopener" target="_blank">Федеральный закон № 244-ФЗ о государственном регулировании азартных игр — расчёты через Единый ЦУПИС, идентификация участника</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/2131996820b390e802ee0587d8a21548eb19c764/" rel="noopener" target="_blank">НК РФ, ст. 214.7 — НДФЛ с выигрышей в букмекерской конторе: база «выплата − ставка», удержание налоговым агентом</a></li><li><a href="https://www.ligastavok.ru/files/document/442/pmbk_rules.pdf" rel="noopener" target="_blank">Правила приёма ставок БК «Лига Ставок», ред. с 01.09.2026: пп. 3.1.3, 3.4.6, 3.4.9, 6.1.3, 8.6–8.9 (максимальный выигрыш, лимиты выплаты, приостановка на время идентификации)</a></li></ul>
+<ul class="sources"><li><a href="https://www.consultant.ru/document/cons_doc_LAW_64924/" rel="noopener" target="_blank">Федеральный закон № 244-ФЗ о государственном регулировании азартных игр — расчёты через Единый ЦУПИС, идентификация участника</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/2131996820b390e802ee0587d8a21548eb19c764/" rel="noopener" target="_blank">НК РФ, ст. 214.7 — НДФЛ с выигрышей в букмекерской конторе: база «выплата − ставка», удержание налоговым агентом</a></li><li><a href="https://www.ligastavok.ru/files/document/442/pmbk_rules.pdf" rel="noopener" target="_blank">Правила приёма ставок БК «Лига Ставок», ред. с 01.09.2026: пп. 3.1.3, 3.4.6, 3.4.9, 6.1.3, 8.6–8.9 (максимальный выигрыш, лимиты выплаты, приостановка на время идентификации)</a></li></ul>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/pari">PARI</a>, <a href="/bukmekery/marathonbet">Марафон</a>, <a href="/bukmekery/ligastavok">Лига Ставок</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
     <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
@@ -307,5 +149,6 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
 </div>
 
+<script src="/assets/site.js" defer></script>
 </body>
 </html>
