@@ -29,190 +29,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap">
-<style>
-  :root {
-    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
-    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
-    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
-    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
-    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
-    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
-    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
-    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
-    --font-display: "Golos Text", "Inter", system-ui, sans-serif;
-    --font-sans: "Golos Text", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
-    --container: 1240px;
-    color-scheme: dark;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-  a { color: inherit; text-decoration: none; }
-  a:hover { color: var(--volt); }
-  img { max-width: 100%; display: block; }
-  button { font: inherit; cursor: pointer; }
-  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.12; margin: 0; text-wrap: balance; letter-spacing: -.015em; }
-  h1 { font-size: clamp(23px, 2.8vw, 35px); }
-  h2 { font-size: clamp(21px, 2.4vw, 28px); }
-  h3 { font-size: 18px; font-weight: 500; }
-  p { margin: 0; }
-  .num { font-variant-numeric: tabular-nums; }
-  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
-  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
-  .muted { color: var(--muted); }
-  .small { font-size: 13px; }
-  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
-
-  /* Тонкая полоса дисклеймера */
-  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
-  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
-
-  /* Шапка */
-  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
-  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
-  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
-  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
-  .nav a { color: var(--muted); }
-  .nav a:hover, .nav a.active { color: var(--text); }
-  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
-  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
-  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
-  @media (max-width: 940px) { .nav { display: none; } }
-
-  /* Единая колонка контента: шапка статьи, оглавление и текст выровнены по одному левому краю
-     (раньше .prose с max-width:75ch центрировался отдельно от шапки на всю ширину контейнера). */
-  :root { --col: 820px; }
-  main .container { width: min(var(--col), 100% - 32px); }
-
-  /* Креатив «на всю страницу»: два полотна на всю высоту окна по краям, статья — по центру.
-     Полотно — картинка 9:16 высотой в окно (background-size: auto 100%), ширина по полю слева/справа.
-     Бейджи БК позиционируются в процентах от высоты, поэтому всегда попадают в кольца арта. */
-  .wall { display: none; }
-  @media (min-width: 1500px) {
-    .wall { display: block; position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-    .wall-side { --W: calc(100vh * .5647); --r1: 22.35%; --r2: 49.6%; --r3: 77.05%; --bd: .3276;
-      position: absolute; top: 0; bottom: 0; width: min(calc((100vw - var(--col)) / 2), var(--W)); }
-    .wall-side::before { content: ""; position: absolute; inset: 0; background-repeat: no-repeat; background-size: auto 100%; background-position: center; }
-    .wall-left { left: 0; }
-    .wall-left::before { background-image: url(/img/decor/wall-left.webp);
-      -webkit-mask-image: linear-gradient(to right, #000 62%, transparent); mask-image: linear-gradient(to right, #000 62%, transparent); }
-    .wall-right { right: 0; }
-    .wall-right::before { background-image: url(/img/decor/wall-right.webp);
-      -webkit-mask-image: linear-gradient(to left, #000 62%, transparent); mask-image: linear-gradient(to left, #000 62%, transparent); }
-    .wall-badge { position: absolute; left: 50%; width: calc(var(--W) * var(--bd)); aspect-ratio: 1; transform: translate(-50%, -50%);
-      border-radius: 50%; overflow: hidden; pointer-events: auto; display: flex; align-items: center; justify-content: center; background: #0B0E16;
-      box-shadow: 0 0 0 3px rgba(200,255,77,.55), 0 0 28px rgba(200,255,77,.35); transition: transform .25s ease, box-shadow .25s ease; animation: wallpulse 3.4s ease-in-out infinite; }
-    .wall-badge:nth-child(2) { animation-delay: .5s; } .wall-badge:nth-child(3) { animation-delay: 1s; }
-    .wall-badge:hover { transform: translate(-50%, -50%) scale(1.07); box-shadow: 0 0 0 3px var(--volt), 0 0 44px rgba(200,255,77,.7); animation-play-state: paused; }
-    .wall-badge img { width: 74%; height: 74%; object-fit: contain; border-radius: 18%; }
-    .wall-tag { position: absolute; left: 0; right: 0; bottom: 14px; text-align: center; font-size: 11px; color: var(--muted-2); letter-spacing: .04em; }
-    main { position: relative; z-index: 1; width: calc(var(--col) + 96px); margin-inline: auto; background: rgba(8,11,20,.86);
-      border-inline: 1px solid var(--line); box-shadow: 0 0 80px rgba(0,0,0,.6); backdrop-filter: blur(10px); }
-  }
-  @keyframes wallpulse { 0%,100% { box-shadow: 0 0 0 3px rgba(200,255,77,.55), 0 0 22px rgba(200,255,77,.28); } 50% { box-shadow: 0 0 0 3px rgba(200,255,77,.8), 0 0 42px rgba(124,92,255,.55); } }
-  @media (prefers-reduced-motion: reduce) { .wall-badge { animation: none !important; } }
-
-  /* Кнопки */
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
-  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
-  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
-  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
-  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
-  .btn-official:hover { border-color: var(--muted); color: var(--text); }
-  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
-  .btn-block { width: 100%; }
-  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
-
-  /* Секции */
-  .section { padding: 56px 0; }
-  .section.tight { padding-top: 6px; }
-  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
-  .section-head p { color: var(--muted); max-width: 60ch; }
-  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
-
-  /* Хлебные крошки */
-  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-  .crumbs a { color: var(--muted); }
-  .crumbs a:hover { color: var(--text); }
-  .crumbs span { color: var(--muted-2); }
-
-  /* Плитки, инструменты, статьи */
-  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
-  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
-  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
-  .tile b { font-size: 15px; }
-  .tile small { color: var(--muted); }
-  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
-  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
-  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
-  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
-  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
-  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
-  .result small { display: block; color: var(--muted); font-size: 12px; }
-  .result b { font-family: var(--font-display); font-size: 22px; }
-  .result .accent { color: var(--volt); }
-  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
-  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
-  .article b { font-size: 16px; line-height: 1.35; }
-  .article small { color: var(--muted); }
-
-  /* Текстовый контент страницы */
-  .prose { max-width: none; display: grid; gap: 14px; }
-  .prose h2 { margin-top: 14px; }
-  .prose h2[id] { scroll-margin-top: 84px; }
-  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
-  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
-  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-  .meta-row a { text-decoration: none; }
-  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; font-size: 14px; }
-  .toc b { display: block; margin-bottom: 6px; }
-  .toc ol { margin: 0; padding-left: 20px; }
-  .toc li { margin: 3px 0; }
-  .toc a { color: var(--volt); text-decoration: none; }
-  .toc a:hover { text-decoration: underline; }
-  /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
-     задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
-  .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
-  .prose p { color: var(--text); }
-  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
-  .prose li { line-height: 1.5; }
-  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
-  .prose strong { color: var(--text); font-weight: 700; }
-  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
-  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
-  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
-  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
-  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  .prose tbody tr:last-child td { border-bottom: none; }
-  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
-  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
-  .faq { display: grid; gap: 10px; }
-  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
-  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 24px 12px 0; list-style: none; position: relative; }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: "+"; position: absolute; right: 0; top: 12px; color: var(--muted); font-weight: 400; }
-  .faq details[open] summary::after { content: "–"; }
-  .faq details[open] summary { color: var(--volt); }
-  .faq p { color: var(--muted); padding: 0 0 12px; }
-
-  /* Футер */
-  .footer { position: relative; z-index: 1; background: var(--bg); border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
-  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
-  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
-  .footer a { color: var(--muted); display: block; padding: 3px 0; }
-  .footer a:hover { color: var(--text); }
-  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
-
-  /* Липкая мобильная панель */
-  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
-  .sticky-cta .btn { flex: 1; }
-  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
-  @media (max-width: 760px) { .sticky-cta { display: flex; } }
-</style>
+<link rel="stylesheet" href="/assets/site.css?v=20261004">
+<link rel="stylesheet" href="/assets/chrome.css?v=20261004">
+<meta name="theme-color" content="#07090F">
 <meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Букмекеры", "item": "https://stavki-rating.ru/bukmekery"}, {"@type": "ListItem", "position": 3, "name": "24bet", "item": "https://stavki-rating.ru/bukmekery/24bet"}, {"@type": "ListItem", "position": 4, "name": "Вывод средств из 24bet: как устроен механизм у легального букмекера", "item": "https://stavki-rating.ru/bukmekery/24bet/vyvod-sredstv"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Вывод средств из 24bet: как устроен механизм у легального букмекера", "description": "Вывод из 24bet по тарифам ЦУПИС на 28.09.2026: лимиты, сроки и комиссии по карте, СБП и счёту, идентификация и налог с выигрыша.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/bukmekery/24bet/vyvod-sredstv", "datePublished": "2026-09-05", "dateModified": "2026-09-28", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
@@ -232,6 +51,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <!-- /Yandex.Metrika counter -->
 </head>
 <body>
+<a class="skip" href="#main">К содержанию</a>
 
 <div class="wall" aria-label="Партнёрские предложения">
 <div class="wall-side wall-left">
@@ -253,7 +73,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
     STAVKI RATING
   </a>
-  <nav class="nav">
+  <nav class="nav" aria-label="Основное меню">
     <a href="/rating">Рейтинг</a>
     <a href="/rejting">По критериям</a>
     <a href="/stavki">Виды спорта</a>
@@ -264,46 +84,46 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
 </div></header>
 
-<main>
+<main id="main">
 
   <section class="section tight"><div class="container">
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/bukmekery">Букмекеры</a><span>/</span><a href="/bukmekery/24bet">24bet</a><span>/</span>Вывод средств из 24bet: как устроен механизм у легального букмекера</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Букмекеры · 24bet ·</div>
     <h1>Вывод средств из 24bet: как устроен механизм у легального букмекера</h1>
-    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>обновлено и проверено <time datetime="2026-09-28">28.09.2026</time></span><span>·</span><span>7 мин чтения</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>обновлено и проверено <time datetime="2026-09-28">28.09.2026</time></span><span>·</span><span>7 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Вывод денег у любого легального российского букмекера, включая 24bet, идёт не напрямую на карту, а через Единый ЦУПИС — расчётный центр, обязательный для всех операторов из реестра ЕРАИ. Разбираем общую механику: от идентификации до налога, который букмекер удерживает как агент.</p>
     <div style="margin-top:16px"><a class="btn btn-official" rel="sponsored nofollow" href="/go/24bet?p=24bet&amp;pl=subpage-top">Сайт букмекера 24bet →</a></div>
     
-    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#pochemu-vyvod-idet-cherez-edinyj-cupis">Почему вывод идёт через Единый ЦУПИС</a></li><li><a href="#tarify-cupis-dlya-24bet-limity-sroki-i-komissii-vyvoda">Тарифы ЦУПИС для 24bet: лимиты, сроки и комиссии вывода</a></li><li><a href="#kakie-sposoby-popolneniya-i-vyvoda-ukazany-v-tarifah-24bet">Какие способы пополнения и вывода указаны в тарифах 24bet</a></li><li><a href="#gde-poyavlyaetsya-komissiya-koshelek-cupis-i-pryamoj-vyvod">Где появляется комиссия: Кошелёк ЦУПИС и прямой вывод</a></li><li><a href="#identifikaciya-nuzhna-do-pervoj-stavki-a-ne-tolko-dlya-vyvod">Идентификация нужна до первой ставки, а не только для вывода</a></li><li><a href="#sposoby-vyvoda">Способы вывода</a></li><li><a href="#nalog-s-vyigrysha-chto-menyaetsya-s-2026-goda">Налог с выигрыша: что меняется с 2026 года</a></li><li><a href="#sroki-i-limity-chto-zadaet-cupis-a-chto-operator">Сроки и лимиты: что задаёт ЦУПИС, а что оператор</a></li><li><a href="#faq">Частые вопросы</a></li><li><a href="#istochniki">Источники</a></li></ol></nav>
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#pochemu-vyvod-idet-cherez-edinyj-cupis">Почему вывод идёт через Единый ЦУПИС</a></li><li><a href="#tarify-cupis-dlya-24bet-limity-sroki-i-komissii-vyvoda">Тарифы ЦУПИС для 24bet: лимиты, сроки и комиссии вывода</a></li><li><a href="#kakie-sposoby-popolneniya-i-vyvoda-ukazany-v-tarifah-24bet">Какие способы пополнения и вывода указаны в тарифах 24bet</a></li><li><a href="#gde-poyavlyaetsya-komissiya-koshelek-cupis-i-pryamoj-vyvod">Где появляется комиссия: Кошелёк ЦУПИС и прямой вывод</a></li><li><a href="#identifikaciya-nuzhna-do-pervoj-stavki-a-ne-tolko-dlya-vyvod">Идентификация нужна до первой ставки, а не только для вывода</a></li><li><a href="#sposoby-vyvoda">Способы вывода</a></li><li><a href="#nalog-s-vyigrysha-chto-menyaetsya-s-2026-goda">Налог с выигрыша: что меняется с 2026 года</a></li><li><a href="#sroki-i-limity-chto-zadaet-cupis-a-chto-operator">Сроки и лимиты: что задаёт ЦУПИС, а что оператор</a></li><li><a href="#faq">Частые вопросы</a></li><li><a href="#istochniki">Источники</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
     <h2 id="pochemu-vyvod-idet-cherez-edinyj-cupis">Почему вывод идёт через Единый ЦУПИС</h2>
 <p>Единый центр учёта переводов интерактивных ставок (ЦУПИС) — обязательное звено между счётом игрока у букмекера и его банковским счётом. Через ЦУПИС проходят и пополнения, и выводы у всех легальных операторов, это требование закона о ставках, а не особенность конкретного бренда. Технически это означает, что вывод из 24bet не отличается принципиально от вывода у других легальных БК: деньги идут со счёта в ЦУПИС на реквизиты игрока.</p>
 <h2 id="tarify-cupis-dlya-24bet-limity-sroki-i-komissii-vyvoda">Тарифы ЦУПИС для 24bet: лимиты, сроки и комиссии вывода</h2>
-<p>Комиссию ЦУПИС за вывод из кабинета 24bet тарифы на 28.09.2026 не предусматривают ни по одному способу — ни для карты, ни для СБП, ни для банковского счёта. Деньги приходят на карту Visa, Mastercard или «Мир» и на банковский счёт за срок до 3 рабочих дней, по СБП и на Кошелёк ЦУПИС — за 1 минуту; лимит одной операции — 595 000 ₽ на продвинутом уровне идентификации и 100 000 ₽ на базовом (справка ЦУПИС).</p><div class="table-wrap"><table><caption>Способы и лимиты по тарифам ЦУПИС для 24bet на 28.09.2026</caption><thead><tr><th>Способ</th><th>Пополнение</th><th>Вывод</th></tr></thead><tbody><tr><td>Visa, Mastercard, «Мир» (карты российских банков)</td><td>до 595 000 ₽, без комиссии ЦУПИС, 1 минута</td><td>до 595 000 ₽, без комиссии, до 3 рабочих дней</td></tr><tr><td>СБП</td><td>до 595 000 ₽, без комиссии, 1 минута</td><td>до 595 000 ₽, без комиссии, 1 минута</td></tr><tr><td>Кошелёк ЦУПИС</td><td>до 595 000 ₽, без комиссии, 1 минута</td><td>до 595 000 ₽, без комиссии, 1 минута</td></tr><tr><td>ЮMoney</td><td>до 595 000 ₽, без комиссии, 1 минута</td><td>до 15 000 ₽, без комиссии, 1 минута</td></tr><tr><td>Банковский счёт</td><td>не предусмотрено</td><td>до 595 000 ₽, без комиссии, до 3 рабочих дней</td></tr><tr><td>SberPay, Mir Pay, T-Pay</td><td>до 595 000 ₽, без комиссии, 1 минута</td><td>не предусмотрено</td></tr><tr><td>ВТБ Pay</td><td>до 15 000 ₽, без комиссии, 1 минута</td><td>не предусмотрено</td></tr><tr><td>Мобильная коммерция (МТС, МегаФон, Билайн, Tele2)</td><td>до 13 800–15 000 ₽, 1 минута; комиссию берёт оператор связи</td><td>не предусмотрено</td></tr><tr><td>Терминалы и онлайн-банки (Элекснет)</td><td>до 15 000 ₽, без комиссии, 1 минута</td><td>не предусмотрено</td></tr></tbody></table></div><p>К оплате принимаются только карты российских банков; при пополнении картой Visa, Mastercard, «Мир» и через SberPay банк-эмитент может взять собственную комиссию (примечания ЦУПИС к тарифам).</p><p>По справке ЦУПИС на карту деньги обычно приходят сразу, иногда за срок до 3 дней — он зависит от банка, выпустившего карту; на банковский счёт — на следующий день, а иногда до 3 рабочих дней.</p>
+<p>Комиссию ЦУПИС за вывод из кабинета 24bet тарифы на 28.09.2026 не предусматривают ни по одному способу — ни для карты, ни для СБП, ни для банковского счёта. Деньги приходят на карту Visa, Mastercard или «Мир» и на банковский счёт за срок до 3 рабочих дней, по СБП и на Кошелёк ЦУПИС — за 1 минуту; лимит одной операции — 595 000 ₽ на продвинутом уровне идентификации и 100 000 ₽ на базовом (справка ЦУПИС).</p><div class="table-wrap"><table><caption>Способы и лимиты по тарифам ЦУПИС для 24bet на 28.09.2026</caption><thead><tr><th>Способ</th><th>Пополнение</th><th>Вывод</th></tr></thead><tbody><tr><td>Visa, Mastercard, «Мир» (карты российских банков)</td><td>до 595 000 ₽, без комиссии ЦУПИС, 1 минута</td><td>до 595 000 ₽, без комиссии, до 3 рабочих дней</td></tr><tr><td>СБП</td><td>до 595 000 ₽, без комиссии, 1 минута</td><td>до 595 000 ₽, без комиссии, 1 минута</td></tr><tr><td>Кошелёк ЦУПИС</td><td>до 595 000 ₽, без комиссии, 1 минута</td><td>до 595 000 ₽, без комиссии, 1 минута</td></tr><tr><td>ЮMoney</td><td>до 595 000 ₽, без комиссии, 1 минута</td><td>до 15 000 ₽, без комиссии, 1 минута</td></tr><tr><td>Банковский счёт</td><td>не предусмотрено</td><td>до 595 000 ₽, без комиссии, до 3 рабочих дней</td></tr><tr><td>SberPay, Mir Pay, T-Pay</td><td>до 595 000 ₽, без комиссии, 1 минута</td><td>не предусмотрено</td></tr><tr><td>ВТБ Pay</td><td>до 15 000 ₽, без комиссии, 1 минута</td><td>не предусмотрено</td></tr><tr><td>Мобильная коммерция (МТС, МегаФон, Билайн, Tele2)</td><td>до 13 800–15 000 ₽, 1 минута; комиссию берёт оператор связи</td><td>не предусмотрено</td></tr><tr><td>Терминалы и онлайн-банки (Элекснет)</td><td>до 15 000 ₽, без комиссии, 1 минута</td><td>не предусмотрено</td></tr></tbody></table></div><p>К оплате принимаются только карты российских банков; при пополнении картой Visa, Mastercard, «Мир» и через SberPay банк-эмитент может взять собственную комиссию (примечания ЦУПИС к тарифам).</p><p>По справке ЦУПИС на карту деньги обычно приходят сразу, иногда за срок до 3 дней — он зависит от банка, выпустившего карту; на банковский счёт — на следующий день, а иногда до 3 рабочих дней.</p>
 <h2 id="kakie-sposoby-popolneniya-i-vyvoda-ukazany-v-tarifah-24bet">Какие способы пополнения и вывода указаны в тарифах 24bet</h2>
-<p>В тарифах ЦУПИС для 24bet указаны все дополнительные Pay-способы — SberPay, Mir Pay, T-Pay и ВТБ Pay, причём через ВТБ Pay пополнение ограничено 15 000 ₽; выводить деньги на них нельзя. Через ЮMoney вывод ограничен 15 000 ₽ за 1 минуту, а через Кошелёк ЦУПИС — 595 000 ₽. Через терминалы Элекснет счёт пополняют наличными до 15 000 ₽ без комиссии.</p><p>С баланса телефона у 24bet пополнить счёт можно у четырёх операторов связи, комиссию берёт сам оператор: Tele2 — 8,5% (до 13 800 ₽), МТС, МегаФон и Билайн — без комиссии (до 15 000 ₽). Вывод на телефон не предусмотрен.</p>
+<p>В тарифах ЦУПИС для 24bet указаны все дополнительные Pay-способы — SberPay, Mir Pay, T-Pay и ВТБ Pay, причём через ВТБ Pay пополнение ограничено 15 000 ₽; выводить деньги на них нельзя. Через ЮMoney вывод ограничен 15 000 ₽ за 1 минуту, а через Кошелёк ЦУПИС — 595 000 ₽. Через терминалы Элекснет счёт пополняют наличными до 15 000 ₽ без комиссии.</p><p>С баланса телефона у 24bet пополнить счёт можно у четырёх операторов связи, комиссию берёт сам оператор: Tele2 — 8,5% (до 13 800 ₽), МТС, МегаФон и Билайн — без комиссии (до 15 000 ₽). Вывод на телефон не предусмотрен.</p>
 <h2 id="gde-poyavlyaetsya-komissiya-koshelek-cupis-i-pryamoj-vyvod">Где появляется комиссия: Кошелёк ЦУПИС и прямой вывод</h2>
-<p>Комиссия ЦУПИС появляется только на маршруте через Кошелёк: при прямом выводе из кабинета 24bet на карту, счёт или по СБП она равна 0 ₽. Вывод из кабинета на сам Кошелёк тоже бесплатен, но перевод с Кошелька на карту стоит 1,5% (минимум 30 ₽; на продвинутом уровне комиссию не берут до 1 декабря 2026 года по акции «У нас отмена»), а на банковский счёт — 2,9% + 30 ₽ (тарифы Кошелька).</p><p>Тарифы ЦУПИС задают технические возможности платёжного контура, а набор способов в кабинете определяет сам букмекер: по п. 3.4.7 правил «Лиги Ставок», например, компания вправе оставить клиенту единственный способ пополнения и вывода. У других контор правила свои, поэтому список способов и минимальные суммы 24bet смотрите в кабинете и в правилах оператора.</p><p>Способы подробнее разобраны в Школе: <a href="/shkola/dengi-i-nalogi/sbp-popolnenie-i-vyvod">СБП</a>, <a href="/shkola/dengi-i-nalogi/karta-popolnenie-i-vyvod">банковская карта</a>, <a href="/shkola/dengi-i-nalogi/kak-vyvesti-dengi">общий порядок вывода</a> и <a href="/shkola/dengi-i-nalogi/kak-popolnit-schet">пополнение счёта</a>. Сравнение тарифов всех 16 букмекеров — на странице <a href="/shkola/dengi-i-nalogi/tarify-cupis-po-bukmekeram">«Тарифы ЦУПИС по 16 букмекерам»</a>.</p>
+<p>Комиссия ЦУПИС появляется только на маршруте через Кошелёк: при прямом выводе из кабинета 24bet на карту, счёт или по СБП она равна 0 ₽. Вывод из кабинета на сам Кошелёк тоже бесплатен, но перевод с Кошелька на карту стоит 1,5% (минимум 30 ₽; на продвинутом уровне комиссию не берут до 1 декабря 2026 года по акции «У нас отмена»), а на банковский счёт — 2,9% + 30 ₽ (тарифы Кошелька).</p><p>Тарифы ЦУПИС задают технические возможности платёжного контура, а набор способов в кабинете определяет сам букмекер: по п. 3.4.7 правил «Лиги Ставок», например, компания вправе оставить клиенту единственный способ пополнения и вывода. У других контор правила свои, поэтому список способов и минимальные суммы 24bet смотрите в кабинете и в правилах оператора.</p><p>Способы подробнее разобраны в Школе: <a href="/shkola/dengi-i-nalogi/sbp-popolnenie-i-vyvod">СБП</a>, <a href="/shkola/dengi-i-nalogi/karta-popolnenie-i-vyvod">банковская карта</a>, <a href="/shkola/dengi-i-nalogi/kak-vyvesti-dengi">общий порядок вывода</a> и <a href="/shkola/dengi-i-nalogi/kak-popolnit-schet">пополнение счёта</a>. Сравнение тарифов всех 16 букмекеров — на странице <a href="/shkola/dengi-i-nalogi/tarify-cupis-po-bukmekeram">«Тарифы ЦУПИС по 16 букмекерам»</a>.</p>
 <h2 id="identifikaciya-nuzhna-do-pervoj-stavki-a-ne-tolko-dlya-vyvod">Идентификация нужна до первой ставки, а не только для вывода</h2>
-<p>К моменту вывода личность в Едином ЦУПИС уже подтверждена: ставки у 24bet принимают только после идентификации или упрощённой идентификации клиента (ст. 6.1 закона № 244-ФЗ).</p><p>Граждане РФ подтверждают личность онлайн: через Госуслуги, Сбер ID, T-ID или онлайн-анкету с паспортом и ИНН или СНИЛС; иностранцы и нерезиденты проходят проверку очно в пунктах приёма ставок FONBET, BetBoom и «Лиги Ставок» (справка ЦУПИС).</p><p>Для вывода в аккаунте ЦУПИС нужна подтверждённая электронная почта, а перевод подтверждается кодом из SMS на телефон, привязанный к ЦУПИС. Деньги уходят только на ваши реквизиты: ФИО владельца банковского счёта должно совпадать с ФИО в аккаунте, а на цифровую карту ЦУПИС переводят только на свою.</p><p>Порядок регистрации и уровни идентификации разобраны в материале <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">«Регистрация и ЦУПИС»</a>.</p>
+<p>К моменту вывода личность в Едином ЦУПИС уже подтверждена: ставки у 24bet принимают только после идентификации или упрощённой идентификации клиента (ст. 6.1 закона № 244-ФЗ).</p><p>Граждане РФ подтверждают личность онлайн: через Госуслуги, Сбер ID, T-ID или онлайн-анкету с паспортом и ИНН или СНИЛС; иностранцы и нерезиденты проходят проверку очно в пунктах приёма ставок FONBET, BetBoom и «Лиги Ставок» (справка ЦУПИС).</p><p>Для вывода в аккаунте ЦУПИС нужна подтверждённая электронная почта, а перевод подтверждается кодом из SMS на телефон, привязанный к ЦУПИС. Деньги уходят только на ваши реквизиты: ФИО владельца банковского счёта должно совпадать с ФИО в аккаунте, а на цифровую карту ЦУПИС переводят только на свою.</p><p>Порядок регистрации и уровни идентификации разобраны в материале <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">«Регистрация и ЦУПИС»</a>.</p>
 <h2 id="sposoby-vyvoda">Способы вывода</h2>
-<div class="table-wrap"><table><caption>Основные способы вывода у легальных букмекеров</caption><thead><tr><th>Способ</th><th>Как работает</th></tr></thead><tbody><tr><td>СБП (Система быстрых платежей)</td><td>перевод по номеру телефона на счёт в выбранном банке</td></tr><tr><td>Банковская карта</td><td>вывод на свою карту Visa, Mastercard или «Мир»: до 595 000 ₽, до 3 рабочих дней</td></tr><tr><td>Банковский счёт</td><td>перевод по реквизитам счёта, указанным при выводе</td></tr></tbody></table></div><p>Лимиты и сроки по способам приведены в тарифах ЦУПИС выше; какие способы открыты в кабинете, определяет сам оператор — актуальные условия уточняйте на официальном сайте 24bet.ru.</p>
-<h2 id="nalog-s-vyigrysha-chto-menyaetsya-s-2026-goda">Налог с выигрыша: что меняется с 2026 года</h2>
-<p>С 2026 года букмекер выступает налоговым агентом и самостоятельно удерживает НДФЛ с суммы чистого выигрыша при выводе — это общее правило для легальных операторов, а не специфика 24bet. Игроку в большинстве случаев не нужно отдельно декларировать такой доход самостоятельно, если налог уже удержан оператором. Порядок расчёта и нюансы налогообложения выигрышей подробно разобраны в материале <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">про налог на выигрыш</a>, а общий порядок вывода счёта — в разделе Школы <a href="/shkola/dengi-i-nalogi/kak-vyvesti-dengi">как вывести деньги</a>.</p>
+<div class="table-wrap"><table><caption>Основные способы вывода у легальных букмекеров</caption><thead><tr><th>Способ</th><th>Как работает</th></tr></thead><tbody><tr><td>СБП (Система быстрых платежей)</td><td>перевод по номеру телефона на счёт в выбранном банке</td></tr><tr><td>Банковская карта</td><td>вывод на свою карту Visa, Mastercard или «Мир»: до 595 000 ₽, до 3 рабочих дней</td></tr><tr><td>Банковский счёт</td><td>перевод по реквизитам счёта, указанным при выводе</td></tr></tbody></table></div><p>Лимиты и сроки по способам приведены в тарифах ЦУПИС выше; какие способы открыты в кабинете, определяет сам оператор — актуальные условия уточняйте на официальном сайте 24bet.ru.</p>
+<h2 id="nalog-s-vyigrysha-chto-menyaetsya-s-2026-goda">Налог с выигрыша: что меняется с 2026 года</h2>
+<p>С 2026 года букмекер выступает налоговым агентом и самостоятельно удерживает НДФЛ с суммы чистого выигрыша при выводе — это общее правило для легальных операторов, а не специфика 24bet. Игроку в большинстве случаев не нужно отдельно декларировать такой доход самостоятельно, если налог уже удержан оператором. Порядок расчёта и нюансы налогообложения выигрышей подробно разобраны в материале <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">про налог на выигрыш</a>, а общий порядок вывода счёта — в разделе Школы <a href="/shkola/dengi-i-nalogi/kak-vyvesti-dengi">как вывести деньги</a>.</p>
 <h2 id="sroki-i-limity-chto-zadaet-cupis-a-chto-operator">Сроки и лимиты: что задаёт ЦУПИС, а что оператор</h2>
-<p>Сроки и лимиты ЦУПИС для 24bet зависят от способа: по СБП и на Кошелёк — 1 минута, на карту и банковский счёт — до 3 рабочих дней, потолок — 595 000 ₽ на продвинутом уровне идентификации. Внутренние проверки и собственные ограничения оператора могут добавить время, поэтому единого числа для всех случаев нет: актуальные условия — на официальном сайте 24bet.ru или в поддержке. Общий обзор бренда — на странице <a href="/bukmekery/24bet">обзора 24bet</a>.</p>
+<p>Сроки и лимиты ЦУПИС для 24bet зависят от способа: по СБП и на Кошелёк — 1 минута, на карту и банковский счёт — до 3 рабочих дней, потолок — 595 000 ₽ на продвинутом уровне идентификации. Внутренние проверки и собственные ограничения оператора могут добавить время, поэтому единого числа для всех случаев нет: актуальные условия — на официальном сайте 24bet.ru или в поддержке. Общий обзор бренда — на странице <a href="/bukmekery/24bet">обзора 24bet</a>.</p>
     <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Почему деньги из 24bet нельзя вывести напрямую на карту без ЦУПИС?</summary><p>Порядок вывода через ЦУПИС установлен для всех легальных букмекеров: все переводы, включая пополнения и выводы, проходят через Единый ЦУПИС. Это требование распространяется на весь рынок легальных ставок, а не только на 24bet.</p></details>
-<details><summary>Нужна ли идентификация для вывода средств?</summary><p>Да, и раньше вывода: без идентификации в Едином ЦУПИС ставки у 24bet недоступны (справка ЦУПИС; ст. 6.1 закона № 244-ФЗ). Для самого вывода нужна подтверждённая электронная почта в аккаунте ЦУПИС и код из SMS на привязанный к нему номер.</p></details>
-<details><summary>Берётся ли налог с выигрыша автоматически?</summary><p>С 2026 года букмекер как налоговый агент удерживает НДФЛ с чистого выигрыша при выводе самостоятельно, без дополнительных действий игрока в большинстве случаев.</p></details>
+<details><summary>Нужна ли идентификация для вывода средств?</summary><p>Да, и раньше вывода: без идентификации в Едином ЦУПИС ставки у 24bet недоступны (справка ЦУПИС; ст. 6.1 закона № 244-ФЗ). Для самого вывода нужна подтверждённая электронная почта в аккаунте ЦУПИС и код из SMS на привязанный к нему номер.</p></details>
+<details><summary>Берётся ли налог с выигрыша автоматически?</summary><p>С 2026 года букмекер как налоговый агент удерживает НДФЛ с чистого выигрыша при выводе самостоятельно, без дополнительных действий игрока в большинстве случаев.</p></details>
 <details><summary>Где узнать точные сроки и минимальную сумму вывода в 24bet?</summary><p>Сроки и лимиты ЦУПИС для 24bet приведены выше (на 28.09.2026); минимальную сумму заявки и собственные ограничения оператора смотрите на официальном сайте 24bet.ru — они зависят от способа и меняются.</p></details>
-<details><summary>Какая комиссия и какой срок вывода из 24bet на карту и по СБП?</summary><p>По тарифам Единого ЦУПИС на 28.09.2026 комиссии ЦУПИС за вывод нет: на карту Visa, Mastercard или «Мир» и на банковский счёт деньги приходят до 3 рабочих дней, по СБП и на Кошелёк ЦУПИС — за 1 минуту. Лимит одной операции — до 595 000 ₽ на продвинутом уровне идентификации и до 100 000 ₽ на базовом.</p></details>
-<details><summary>Можно ли вывести деньги из 24bet на SberPay, Mir Pay или T-Pay?</summary><p>Нет: в тарифах ЦУПИС SberPay, Mir Pay, T-Pay и ВТБ Pay указаны только для пополнения. Вывести деньги можно на карту Visa, Mastercard или «Мир», по СБП, на Кошелёк ЦУПИС, в ЮMoney (до 15 000 ₽) и на банковский счёт.</p></details>
-<details><summary>Сколько стоит пополнение счёта 24bet с баланса телефона?</summary><p>Комиссию берёт оператор связи; по тарифам ЦУПИС для 24bet: Tele2 — 8,5% (до 13 800 ₽), МТС, МегаФон и Билайн — без комиссии (до 15 000 ₽). Вывод на телефон не предусмотрен.</p></details></div>
+<details><summary>Какая комиссия и какой срок вывода из 24bet на карту и по СБП?</summary><p>По тарифам Единого ЦУПИС на 28.09.2026 комиссии ЦУПИС за вывод нет: на карту Visa, Mastercard или «Мир» и на банковский счёт деньги приходят до 3 рабочих дней, по СБП и на Кошелёк ЦУПИС — за 1 минуту. Лимит одной операции — до 595 000 ₽ на продвинутом уровне идентификации и до 100 000 ₽ на базовом.</p></details>
+<details><summary>Можно ли вывести деньги из 24bet на SberPay, Mir Pay или T-Pay?</summary><p>Нет: в тарифах ЦУПИС SberPay, Mir Pay, T-Pay и ВТБ Pay указаны только для пополнения. Вывести деньги можно на карту Visa, Mastercard или «Мир», по СБП, на Кошелёк ЦУПИС, в ЮMoney (до 15 000 ₽) и на банковский счёт.</p></details>
+<details><summary>Сколько стоит пополнение счёта 24bet с баланса телефона?</summary><p>Комиссию берёт оператор связи; по тарифам ЦУПИС для 24bet: Tele2 — 8,5% (до 13 800 ₽), МТС, МегаФон и Билайн — без комиссии (до 15 000 ₽). Вывод на телефон не предусмотрен.</p></details></div>
     <h2 id="istochniki">Источники · проверено 28.09.2026</h2>
-<ul class="sources"><li><a href="https://1cupis.ru/info/rates/24bet/" rel="noopener" target="_blank">Единый ЦУПИС: тарифы БК «24bet» — способы, лимиты, сроки и комиссии пополнения и вывода (на 28.09.2026)</a></li><li><a href="https://1cupis.ru/info/rates/wallet/" rel="noopener" target="_blank">Единый ЦУПИС: тарифы Кошелька (перевод со счёта букмекера на Кошелёк, с Кошелька на карту, счёт и по СБП)</a></li><li><a href="https://1cupis.ru/info/help/usloviya-perevodov-limity-komissii-sroki/chto-takoe-limity-i-zachem-oni-nuzhny/" rel="noopener" target="_blank">Единый ЦУПИС, справка: что такое лимиты (базовый и продвинутый уровни идентификации, суммы операций)</a></li><li><a href="https://1cupis.ru/info/help/usloviya-perevodov-limity-komissii-sroki/kak-bystro-zachislyayutsya-dengi/" rel="noopener" target="_blank">Единый ЦУПИС, справка: как быстро зачисляются деньги</a></li><li><a href="https://1cupis.ru/info/help/sposoby-vyvoda-so-scheta-bukmekera/na-bankovskuyu-kartu/" rel="noopener" target="_blank">Единый ЦУПИС, справка: как перевести деньги с баланса букмекера на банковскую карту</a></li><li><a href="https://1cupis.ru/info/help/sposoby-vyvoda-so-scheta-bukmekera/cherez-sbp/" rel="noopener" target="_blank">Единый ЦУПИС, справка: перевод с баланса букмекера через СБП</a></li><li><a href="https://1cupis.ru/info/help/podtverzhdenie-lichnosti/zachem-ehto-nuzhno-i-mozhno-li-delat-stavki-bez-podtverzhdeniya-lichnosti/" rel="noopener" target="_blank">Единый ЦУПИС, справка: можно ли делать ставки без подтверждения личности</a></li><li><a href="https://1cupis.ru/info/help/podtverzhdenie-lichnosti/podtverzhdenie-lichnosti-dlya-nerezidentov/" rel="noopener" target="_blank">Единый ЦУПИС, справка: подтверждение личности для нерезидентов и иностранцев</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_64924/4f324e82526a8cdf92df0c109cc622e1be17b78d/" rel="noopener" target="_blank">Федеральный закон № 244-ФЗ, ст. 6.1 — приём интерактивных ставок при идентификации или упрощённой идентификации; функции единого центра учёта переводов ставок</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/2131996820b390e802ee0587d8a21548eb19c764/" rel="noopener" target="_blank">НК РФ, ст. 214.7 — НДФЛ с выигрышей в букмекерской конторе: база «выплата − ставка», удержание налоговым агентом</a></li></ul>
+<ul class="sources"><li><a href="https://1cupis.ru/info/rates/24bet/" rel="noopener" target="_blank">Единый ЦУПИС: тарифы БК «24bet» — способы, лимиты, сроки и комиссии пополнения и вывода (на 28.09.2026)</a></li><li><a href="https://1cupis.ru/info/rates/wallet/" rel="noopener" target="_blank">Единый ЦУПИС: тарифы Кошелька (перевод со счёта букмекера на Кошелёк, с Кошелька на карту, счёт и по СБП)</a></li><li><a href="https://1cupis.ru/info/help/usloviya-perevodov-limity-komissii-sroki/chto-takoe-limity-i-zachem-oni-nuzhny/" rel="noopener" target="_blank">Единый ЦУПИС, справка: что такое лимиты (базовый и продвинутый уровни идентификации, суммы операций)</a></li><li><a href="https://1cupis.ru/info/help/usloviya-perevodov-limity-komissii-sroki/kak-bystro-zachislyayutsya-dengi/" rel="noopener" target="_blank">Единый ЦУПИС, справка: как быстро зачисляются деньги</a></li><li><a href="https://1cupis.ru/info/help/sposoby-vyvoda-so-scheta-bukmekera/na-bankovskuyu-kartu/" rel="noopener" target="_blank">Единый ЦУПИС, справка: как перевести деньги с баланса букмекера на банковскую карту</a></li><li><a href="https://1cupis.ru/info/help/sposoby-vyvoda-so-scheta-bukmekera/cherez-sbp/" rel="noopener" target="_blank">Единый ЦУПИС, справка: перевод с баланса букмекера через СБП</a></li><li><a href="https://1cupis.ru/info/help/podtverzhdenie-lichnosti/zachem-ehto-nuzhno-i-mozhno-li-delat-stavki-bez-podtverzhdeniya-lichnosti/" rel="noopener" target="_blank">Единый ЦУПИС, справка: можно ли делать ставки без подтверждения личности</a></li><li><a href="https://1cupis.ru/info/help/podtverzhdenie-lichnosti/podtverzhdenie-lichnosti-dlya-nerezidentov/" rel="noopener" target="_blank">Единый ЦУПИС, справка: подтверждение личности для нерезидентов и иностранцев</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_64924/4f324e82526a8cdf92df0c109cc622e1be17b78d/" rel="noopener" target="_blank">Федеральный закон № 244-ФЗ, ст. 6.1 — приём интерактивных ставок при идентификации или упрощённой идентификации; функции единого центра учёта переводов ставок</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/2131996820b390e802ee0587d8a21548eb19c764/" rel="noopener" target="_blank">НК РФ, ст. 214.7 — НДФЛ с выигрышей в букмекерской конторе: база «выплата − ставка», удержание налоговым агентом</a></li></ul>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=bukmekery/24bet/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/fonbet?p=bukmekery/24bet/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/melbet?p=bukmekery/24bet/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>, <a href="/go/zenit?p=bukmekery/24bet/vyvod-sredstv&amp;pl=article" rel="sponsored nofollow">Сайт Зенит</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
     <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
@@ -321,16 +141,19 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 
 <footer class="footer"><div class="container">
   <div class="footer-grid">
-    <div>
-      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
-      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
+    <div class="footer-brand">
+      <a class="logo" href="/"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</a>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх.</p>
+      <span class="age-pill"><b>18+</b> Возрастная категория</span>
     </div>
-    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty">Инструменты</a></div>
-    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/eksperty">Эксперты и партнёры</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
-    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+    <div><h4>Рейтинги</h4><a href="/rating">Каталог легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/bonusy">Бонусы и фрибеты</a><a href="/promokody">Промокоды</a><a href="/reestr">Реестр ЕРАИ</a></div>
+    <div><h4>Разобраться</h4><a href="/stavki">Ставки по видам спорта</a><a href="/shkola">Школа ставок</a><a href="/instrumenty">Калькуляторы</a><a href="/novosti">Новости</a></div>
+    <div><h4>О проекте</h4><a href="/contacts">О проекте и контакты</a><a href="/avtor/aleksej-kamnev">Редакция и автор</a><a href="/eksperty">Эксперты и партнёры</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/politika-konfidencialnosti">Политика конфиденциальности</a></div>
+    <div><h4>Ответственная игра</h4><a href="/shkola/otvetstvennaya-igra/priznaki-ludomanii">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/shkola/dengi-i-nalogi/limity-i-samokontrol">Лимиты и самоконтроль</a></div>
   </div>
   <div class="legal-box">
-    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span><b>18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span>Материалы могут содержать рекламу; отдельные места размещения партнёров оплачены. Оценки редакции ориентировочные; размеры и условия бонусов уточняйте на официальных сайтах букмекеров.</span>
     <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
   </div>
 </div></footer>
@@ -340,5 +163,6 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
 </div>
 
+<script src="/assets/site.js" defer></script>
 </body>
 </html>

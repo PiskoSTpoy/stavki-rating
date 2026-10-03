@@ -29,190 +29,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap">
-<style>
-  :root {
-    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
-    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
-    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
-    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
-    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
-    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
-    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
-    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
-    --font-display: "Golos Text", "Inter", system-ui, sans-serif;
-    --font-sans: "Golos Text", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
-    --container: 1240px;
-    color-scheme: dark;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-  a { color: inherit; text-decoration: none; }
-  a:hover { color: var(--volt); }
-  img { max-width: 100%; display: block; }
-  button { font: inherit; cursor: pointer; }
-  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.12; margin: 0; text-wrap: balance; letter-spacing: -.015em; }
-  h1 { font-size: clamp(23px, 2.8vw, 35px); }
-  h2 { font-size: clamp(21px, 2.4vw, 28px); }
-  h3 { font-size: 18px; font-weight: 500; }
-  p { margin: 0; }
-  .num { font-variant-numeric: tabular-nums; }
-  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
-  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
-  .muted { color: var(--muted); }
-  .small { font-size: 13px; }
-  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
-
-  /* Тонкая полоса дисклеймера */
-  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
-  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
-
-  /* Шапка */
-  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
-  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
-  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
-  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
-  .nav a { color: var(--muted); }
-  .nav a:hover, .nav a.active { color: var(--text); }
-  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
-  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
-  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
-  @media (max-width: 940px) { .nav { display: none; } }
-
-  /* Единая колонка контента: шапка статьи, оглавление и текст выровнены по одному левому краю
-     (раньше .prose с max-width:75ch центрировался отдельно от шапки на всю ширину контейнера). */
-  :root { --col: 820px; }
-  main .container { width: min(var(--col), 100% - 32px); }
-
-  /* Креатив «на всю страницу»: два полотна на всю высоту окна по краям, статья — по центру.
-     Полотно — картинка 9:16 высотой в окно (background-size: auto 100%), ширина по полю слева/справа.
-     Бейджи БК позиционируются в процентах от высоты, поэтому всегда попадают в кольца арта. */
-  .wall { display: none; }
-  @media (min-width: 1500px) {
-    .wall { display: block; position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-    .wall-side { --W: calc(100vh * .5647); --r1: 22.35%; --r2: 49.6%; --r3: 77.05%; --bd: .3276;
-      position: absolute; top: 0; bottom: 0; width: min(calc((100vw - var(--col)) / 2), var(--W)); }
-    .wall-side::before { content: ""; position: absolute; inset: 0; background-repeat: no-repeat; background-size: auto 100%; background-position: center; }
-    .wall-left { left: 0; }
-    .wall-left::before { background-image: url(/img/decor/wall-left.webp);
-      -webkit-mask-image: linear-gradient(to right, #000 62%, transparent); mask-image: linear-gradient(to right, #000 62%, transparent); }
-    .wall-right { right: 0; }
-    .wall-right::before { background-image: url(/img/decor/wall-right.webp);
-      -webkit-mask-image: linear-gradient(to left, #000 62%, transparent); mask-image: linear-gradient(to left, #000 62%, transparent); }
-    .wall-badge { position: absolute; left: 50%; width: calc(var(--W) * var(--bd)); aspect-ratio: 1; transform: translate(-50%, -50%);
-      border-radius: 50%; overflow: hidden; pointer-events: auto; display: flex; align-items: center; justify-content: center; background: #0B0E16;
-      box-shadow: 0 0 0 3px rgba(200,255,77,.55), 0 0 28px rgba(200,255,77,.35); transition: transform .25s ease, box-shadow .25s ease; animation: wallpulse 3.4s ease-in-out infinite; }
-    .wall-badge:nth-child(2) { animation-delay: .5s; } .wall-badge:nth-child(3) { animation-delay: 1s; }
-    .wall-badge:hover { transform: translate(-50%, -50%) scale(1.07); box-shadow: 0 0 0 3px var(--volt), 0 0 44px rgba(200,255,77,.7); animation-play-state: paused; }
-    .wall-badge img { width: 74%; height: 74%; object-fit: contain; border-radius: 18%; }
-    .wall-tag { position: absolute; left: 0; right: 0; bottom: 14px; text-align: center; font-size: 11px; color: var(--muted-2); letter-spacing: .04em; }
-    main { position: relative; z-index: 1; width: calc(var(--col) + 96px); margin-inline: auto; background: rgba(8,11,20,.86);
-      border-inline: 1px solid var(--line); box-shadow: 0 0 80px rgba(0,0,0,.6); backdrop-filter: blur(10px); }
-  }
-  @keyframes wallpulse { 0%,100% { box-shadow: 0 0 0 3px rgba(200,255,77,.55), 0 0 22px rgba(200,255,77,.28); } 50% { box-shadow: 0 0 0 3px rgba(200,255,77,.8), 0 0 42px rgba(124,92,255,.55); } }
-  @media (prefers-reduced-motion: reduce) { .wall-badge { animation: none !important; } }
-
-  /* Кнопки */
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
-  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
-  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
-  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
-  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
-  .btn-official:hover { border-color: var(--muted); color: var(--text); }
-  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
-  .btn-block { width: 100%; }
-  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
-
-  /* Секции */
-  .section { padding: 56px 0; }
-  .section.tight { padding-top: 6px; }
-  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
-  .section-head p { color: var(--muted); max-width: 60ch; }
-  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
-
-  /* Хлебные крошки */
-  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-  .crumbs a { color: var(--muted); }
-  .crumbs a:hover { color: var(--text); }
-  .crumbs span { color: var(--muted-2); }
-
-  /* Плитки, инструменты, статьи */
-  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
-  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
-  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
-  .tile b { font-size: 15px; }
-  .tile small { color: var(--muted); }
-  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
-  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
-  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
-  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
-  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
-  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
-  .result small { display: block; color: var(--muted); font-size: 12px; }
-  .result b { font-family: var(--font-display); font-size: 22px; }
-  .result .accent { color: var(--volt); }
-  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
-  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
-  .article b { font-size: 16px; line-height: 1.35; }
-  .article small { color: var(--muted); }
-
-  /* Текстовый контент страницы */
-  .prose { max-width: none; display: grid; gap: 14px; }
-  .prose h2 { margin-top: 14px; }
-  .prose h2[id] { scroll-margin-top: 84px; }
-  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
-  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
-  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-  .meta-row a { text-decoration: none; }
-  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; font-size: 14px; }
-  .toc b { display: block; margin-bottom: 6px; }
-  .toc ol { margin: 0; padding-left: 20px; }
-  .toc li { margin: 3px 0; }
-  .toc a { color: var(--volt); text-decoration: none; }
-  .toc a:hover { text-decoration: underline; }
-  /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
-     задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
-  .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
-  .prose p { color: var(--text); }
-  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
-  .prose li { line-height: 1.5; }
-  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
-  .prose strong { color: var(--text); font-weight: 700; }
-  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
-  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
-  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
-  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
-  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  .prose tbody tr:last-child td { border-bottom: none; }
-  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
-  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
-  .faq { display: grid; gap: 10px; }
-  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
-  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 24px 12px 0; list-style: none; position: relative; }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: "+"; position: absolute; right: 0; top: 12px; color: var(--muted); font-weight: 400; }
-  .faq details[open] summary::after { content: "–"; }
-  .faq details[open] summary { color: var(--volt); }
-  .faq p { color: var(--muted); padding: 0 0 12px; }
-
-  /* Футер */
-  .footer { position: relative; z-index: 1; background: var(--bg); border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
-  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
-  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
-  .footer a { color: var(--muted); display: block; padding: 3px 0; }
-  .footer a:hover { color: var(--text); }
-  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
-
-  /* Липкая мобильная панель */
-  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
-  .sticky-cta .btn { flex: 1; }
-  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
-  @media (max-width: 760px) { .sticky-cta { display: flex; } }
-</style>
+<link rel="stylesheet" href="/assets/site.css?v=20261004">
+<link rel="stylesheet" href="/assets/chrome.css?v=20261004">
+<meta name="theme-color" content="#07090F">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Деньги и налоги", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Как вывести деньги из букмекерской конторы", "item": "https://stavki-rating.ru/shkola/dengi-i-nalogi/kak-vyvesti-dengi"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как вывести деньги из букмекерской конторы", "description": "Как вывести деньги из букмекерской конторы в 2026 году: проверка личности в ЦУПИС, способы (СБП, карта, счёт, Кошелёк), сроки, лимиты, комиссии и НДФЛ.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/dengi-i-nalogi/kak-vyvesti-dengi", "datePublished": "2026-09-04", "dateModified": "2026-09-28", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Можно ли вывести деньги без идентификации?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Делать ставки и получать выплаты без проверки личности нельзя: по ст. 6.1 закона № 244-ФЗ требуется идентификация или упрощённая идентификация участника. В ЦУПИС для этого есть базовый и продвинутый уровни; вывод на карту и счёт возможен и на базовом, но с меньшими лимитами."}}, {"@type": "Question", "name": "Нужно ли самому платить налог с выигрыша?", "acceptedAnswer": {"@type": "Answer", "text": "С 2026 года в общем случае нет: букмекер выступает налоговым агентом с любой суммы выигрыша, сам рассчитывает и удерживает НДФЛ и перечисляет его в бюджет. Подавать 3-НДФЛ по таким выигрышам, как правило, не требуется."}}, {"@type": "Question", "name": "С какой суммы берётся налог?", "acceptedAnswer": {"@type": "Answer", "text": "Налог считается по каждому выигрышу отдельно: из выплаты вычитается ставка, и с разницы удерживается НДФЛ — 13% для резидентов, пока годовая база не выше 2,4 млн ₽ (выше действует шкала 15–22%), или 30% для нерезидентов. Если ставка проиграла, налога нет, но он и не уменьшается на проигрыши."}}, {"@type": "Question", "name": "Сколько идёт вывод и есть ли комиссия?", "acceptedAnswer": {"@type": "Answer", "text": "По справке ЦУПИС: СБП и Кошелёк — до 1 минуты, банковская карта — обычно сразу, иногда до 3 дней, счёт — до 3 рабочих дней. Из кабинета букмекера комиссии по тарифам ЦУПИС нет; при переводе с Кошелька: карта 1,5% (минимум 30 ₽), счёт 2,9% + 30 ₽, СБП 0% до 100 000 ₽ в месяц."}}, {"@type": "Question", "name": "Почему букмекер задерживает вывод?", "acceptedAnswer": {"@type": "Answer", "text": "Чаще всего из-за неподтверждённой электронной почты, разных номеров телефона в ЦУПИС и у букмекера, неподходящих реквизитов, неподтверждённой заявки, задержки на стороне банка (до 3 рабочих дней), проверки службой безопасности или незакрытого бонуса. Начните с проверки статуса заявки в кабинете букмекера."}}, {"@type": "Question", "name": "Нужно ли подтверждать электронную почту?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Без подтверждённой почты в аккаунте ЦУПИС вывести выигрыши не получится, справка ЦУПИС требует подтвердить адрес по ссылке из письма."}}, {"@type": "Question", "name": "Можно ли вывести деньги на карту или счёт другого человека?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. На банковский счёт деньги переводят только на свой (ФИО владельца аккаунта ЦУПИС и счёта совпадают), на цифровую карту — только на свою; по правилам Лиги Ставок использовать чужие карты запрещено (п. 3.4.8)."}}, {"@type": "Question", "name": "Может ли букмекер ограничить сумму одного вывода?", "acceptedAnswer": {"@type": "Answer", "text": "По правилам Лиги Ставок — да: он вправе без предупреждения и объяснений установить верхний и нижний пределы суммы, выплачиваемой по каждому запросу (п. 3.4.9); крупные суммы иногда выводят несколькими заявками. У других контор пределы отличаются."}}]}</script>
@@ -231,6 +50,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <!-- /Yandex.Metrika counter -->
 </head>
 <body>
+<a class="skip" href="#main">К содержанию</a>
 
 <div class="wall" aria-label="Партнёрские предложения">
 <div class="wall-side wall-left">
@@ -252,7 +72,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
     STAVKI RATING
   </a>
-  <nav class="nav">
+  <nav class="nav" aria-label="Основное меню">
     <a href="/rating">Рейтинг</a>
     <a href="/rejting">По критериям</a>
     <a href="/stavki">Виды спорта</a>
@@ -263,13 +83,13 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
 </div></header>
 
-<main>
+<main id="main">
 
   <section class="section tight"><div class="container">
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Деньги и налоги</a><span>/</span>Как вывести деньги из букмекерской конторы</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Школа · Деньги и налоги ·</div>
     <h1>Как вывести деньги из букмекерской конторы</h1>
-    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-04">04.09.2026</time></span><span>·</span><span>обновлено и проверено <time datetime="2026-09-28">28.09.2026</time></span><span>·</span><span>10 мин чтения</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-04">04.09.2026</time></span><span>·</span><span>обновлено и проверено <time datetime="2026-09-28">28.09.2026</time></span><span>·</span><span>10 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Чтобы вывести деньги из легальной букмекерской конторы, нужно пройти проверку личности в Едином ЦУПИС, подтвердить электронную почту, открыть в кабинете букмекера раздел вывода выигрыша, выбрать способ (СБП, банковская карта, счёт или Кошелёк ЦУПИС) и ввести код из СМС. По тарифам ЦУПИС вывод из кабинета букмекера идёт без комиссии: СБП и Кошелёк — до минуты, карта и счёт — до трёх рабочих дней. НДФЛ с выигрыша удерживает сам букмекер.</p>
     
     
@@ -278,13 +98,13 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 
   <section class="section" style="padding-top:6px"><div class="container prose">
     <h2 id="glavnoe-uslovie-identifikaciya-i-cupis">Главное условие: идентификация и ЦУПИС</h2>
-<p>Все легальные букмекеры проводят расчёты через <strong>Единый ЦУПИС</strong> — ООО НКО «Мобильная карта», которую распоряжением Президента РФ № 236-рп от 25 августа 2021 года определили единым центром учёта переводов ставок.</p><p>Делать ставки и получать выплаты без проверки личности нельзя: по ст. 6.1 закона № 244-ФЗ интерактивные ставки принимаются и выигрыши выплачиваются при условии идентификации или упрощённой идентификации участника и установления его возраста. В ЦУПИС этому соответствуют два уровня: базовый (онлайн-анкета с паспортом и ИНН или СНИЛС либо Госуслуги) и продвинутый (Госуслуги, Сбер ID или T-ID). Вывести выигрыш на карту или счёт можно и на базовом уровне, но лимиты на нём ниже: одна операция до 100 000 ₽ вместо 595 000 ₽.</p><ul><li><strong>Подтверждённая электронная почта</strong> в аккаунте ЦУПИС: по справке ЦУПИС без неё не получится выводить выигрыши, а в порядке вывода есть отдельный шаг «подтвердите email».</li><li><strong>Один и тот же номер телефона</strong> в ЦУПИС и у всех букмекеров: на него приходит код из СМС для подтверждения перевода.</li><li><strong>Только свои реквизиты</strong>: на банковский счёт переводят только на свой, а ФИО владельца аккаунта ЦУПИС и владельца счёта должны совпадать; на цифровую карту ЦУПИС — только на свою.</li></ul><p>Способ выплаты букмекер вправе определить сам, вплоть до единственного (п. 3.4.7 правил Лиги Ставок; у других контор набор способов свой), поэтому пополнение и вывод могут идти разными способами.</p>
+<p>Все легальные букмекеры проводят расчёты через <strong>Единый ЦУПИС</strong> — ООО НКО «Мобильная карта», которую распоряжением Президента РФ № 236-рп от 25 августа 2021 года определили единым центром учёта переводов ставок.</p><p>Делать ставки и получать выплаты без проверки личности нельзя: по ст. 6.1 закона № 244-ФЗ интерактивные ставки принимаются и выигрыши выплачиваются при условии идентификации или упрощённой идентификации участника и установления его возраста. В ЦУПИС этому соответствуют два уровня: базовый (онлайн-анкета с паспортом и ИНН или СНИЛС либо Госуслуги) и продвинутый (Госуслуги, Сбер ID или T-ID). Вывести выигрыш на карту или счёт можно и на базовом уровне, но лимиты на нём ниже: одна операция до 100 000 ₽ вместо 595 000 ₽.</p><ul><li><strong>Подтверждённая электронная почта</strong> в аккаунте ЦУПИС: по справке ЦУПИС без неё не получится выводить выигрыши, а в порядке вывода есть отдельный шаг «подтвердите email».</li><li><strong>Один и тот же номер телефона</strong> в ЦУПИС и у всех букмекеров: на него приходит код из СМС для подтверждения перевода.</li><li><strong>Только свои реквизиты</strong>: на банковский счёт переводят только на свой, а ФИО владельца аккаунта ЦУПИС и владельца счёта должны совпадать; на цифровую карту ЦУПИС — только на свою.</li></ul><p>Способ выплаты букмекер вправе определить сам, вплоть до единственного (п. 3.4.7 правил Лиги Ставок; у других контор набор способов свой), поэтому пополнение и вывод могут идти разными способами.</p>
 <h2 id="sposoby-vyvoda-karta-sbp-i-koshelek">Способы вывода: карта, СБП и кошелёк</h2>
-<p>Со счёта букмекера деньги выводят на Кошелёк ЦУПИС, по СБП, на банковскую карту или счёт и на цифровую карту ЦУПИС. По тарифам ЦУПИС переводы на Кошелёк, по СБП, на карту и на счёт из кабинета букмекера идут без комиссии.</p><div class="table-wrap"><table><caption>Способы вывода из кабинета букмекера (справка и тарифы ЦУПИС на 28.09.2026)</caption><thead><tr><th>Способ</th><th>Срок</th><th>Комиссия</th><th>Что учесть</th></tr></thead><tbody><tr><td>Кошелёк ЦУПИС</td><td>До 1 минуты</td><td>Без комиссии</td><td>Способ есть только у букмекеров-партнёров ЦУПИС</td></tr><tr><td>СБП</td><td>До 1 минуты</td><td>Без комиссии</td><td>Код из СМС приходит на телефон, привязанный к ЦУПИС</td></tr><tr><td>Цифровая карта ЦУПИС</td><td>95% операций быстрее секунды</td><td>В справке о выводе не указана</td><td>Только на свою цифровую карту</td></tr><tr><td>Банковская карта</td><td>Обычно сразу, иногда до 3 дней</td><td>Без комиссии</td><td>Срок зависит от банка, выпустившего карту</td></tr><tr><td>Банковский счёт</td><td>Обычно на следующий рабочий день, иногда до 3 рабочих дней</td><td>Без комиссии</td><td>Только свой счёт, ФИО владельца должны совпадать</td></tr></tbody></table></div><p>Если выигрыш сначала переведён на Кошелёк, условия другие: перевод с Кошелька на банковскую карту стоит 1,5% (минимум 30 ₽), на банковский счёт — 2,9% + 30 ₽, по СБП — 0% в пределах 100 000 ₽ в месяц и 0,5% сверх этой суммы (не больше 1500 ₽). Переводы с Кошелька по СБП доступны только на продвинутом уровне, а на карту с продвинутого уровня комиссию не берут с 1 ноября 2024 по 1 декабря 2026 года по акции «У нас отмена». Для перевода с Кошелька на карту подходят только дебетовые карты российских банков: кредитная карта и цифровая карта ЦУПИС не принимаются.</p><p>Если нужны наличные, деньги с ЦУПИС можно снять и в банкомате: на Android это делается через Mir Pay с комиссией 1,5%, но не меньше 30 ₽, а на iPhone проще перевести деньги по СБП на свою карту. Порядок по шагам — в материале <a href="/shkola/dengi-i-nalogi/cifrovaya-karta-cupis">как снять наличные с цифровой карты ЦУПИС в банкомате</a>.</p>
+<p>Со счёта букмекера деньги выводят на Кошелёк ЦУПИС, по СБП, на банковскую карту или счёт и на цифровую карту ЦУПИС. По тарифам ЦУПИС переводы на Кошелёк, по СБП, на карту и на счёт из кабинета букмекера идут без комиссии.</p><div class="table-wrap"><table><caption>Способы вывода из кабинета букмекера (справка и тарифы ЦУПИС на 28.09.2026)</caption><thead><tr><th>Способ</th><th>Срок</th><th>Комиссия</th><th>Что учесть</th></tr></thead><tbody><tr><td>Кошелёк ЦУПИС</td><td>До 1 минуты</td><td>Без комиссии</td><td>Способ есть только у букмекеров-партнёров ЦУПИС</td></tr><tr><td>СБП</td><td>До 1 минуты</td><td>Без комиссии</td><td>Код из СМС приходит на телефон, привязанный к ЦУПИС</td></tr><tr><td>Цифровая карта ЦУПИС</td><td>95% операций быстрее секунды</td><td>В справке о выводе не указана</td><td>Только на свою цифровую карту</td></tr><tr><td>Банковская карта</td><td>Обычно сразу, иногда до 3 дней</td><td>Без комиссии</td><td>Срок зависит от банка, выпустившего карту</td></tr><tr><td>Банковский счёт</td><td>Обычно на следующий рабочий день, иногда до 3 рабочих дней</td><td>Без комиссии</td><td>Только свой счёт, ФИО владельца должны совпадать</td></tr></tbody></table></div><p>Если выигрыш сначала переведён на Кошелёк, условия другие: перевод с Кошелька на банковскую карту стоит 1,5% (минимум 30 ₽), на банковский счёт — 2,9% + 30 ₽, по СБП — 0% в пределах 100 000 ₽ в месяц и 0,5% сверх этой суммы (не больше 1500 ₽). Переводы с Кошелька по СБП доступны только на продвинутом уровне, а на карту с продвинутого уровня комиссию не берут с 1 ноября 2024 по 1 декабря 2026 года по акции «У нас отмена». Для перевода с Кошелька на карту подходят только дебетовые карты российских банков: кредитная карта и цифровая карта ЦУПИС не принимаются.</p><p>Если нужны наличные, деньги с ЦУПИС можно снять и в банкомате: на Android это делается через Mir Pay с комиссией 1,5%, но не меньше 30 ₽, а на iPhone проще перевести деньги по СБП на свою карту. Порядок по шагам — в материале <a href="/shkola/dengi-i-nalogi/cifrovaya-karta-cupis">как снять наличные с цифровой карты ЦУПИС в банкомате</a>.</p>
 <h2 id="sroki-limity-i-komissii">Сроки, лимиты и комиссии</h2>
-<p>Срок вывода зависит от способа: по справке ЦУПИС до 1 минуты по СБП и на Кошелёк, до 3 рабочих дней на банковскую карту и счёт, где скорость определяет банк.</p><div class="table-wrap"><table><caption>Ориентиры по выводу (справка и тарифы ЦУПИС на 28.09.2026)</caption><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Вывод по СБП и на Кошелёк</td><td>До 1 минуты</td></tr><tr><td>Вывод на банковскую карту</td><td>Обычно сразу, иногда до 3 дней</td></tr><tr><td>Вывод на банковский счёт</td><td>До 3 рабочих дней</td></tr><tr><td>Комиссия ЦУПИС при выводе из кабинета букмекера</td><td>0% по тарифам</td></tr><tr><td>Размер одной операции, базовый уровень</td><td>До 100 000 ₽</td></tr><tr><td>Размер одной операции, продвинутый уровень</td><td>До 595 000 ₽</td></tr><tr><td>Минимальная и максимальная сумма запроса</td><td>Определяет букмекер</td></tr></tbody></table></div><p>Нижний и верхний пределы суммы по одному запросу букмекер вправе устанавливать сам, в том числе без предупреждения (п. 3.4.9 правил Лиги Ставок; у других контор пределы свои), поэтому крупный вывод иногда идёт несколькими заявками. Лимиты по уровням идентификации, расчёт и сравнение комиссий при переводе с Кошелька разобраны в материале <a href="/shkola/dengi-i-nalogi/sbp-popolnenie-i-vyvod">СБП в букмекерских конторах: пополнение и вывод</a>. Тарифы ЦУПИС по каждому из 16 букмекеров сведены в таблицы на странице <a href="/shkola/dengi-i-nalogi/tarify-cupis-po-bukmekeram">«Тарифы ЦУПИС по 16 букмекерам»</a>.</p>
+<p>Срок вывода зависит от способа: по справке ЦУПИС до 1 минуты по СБП и на Кошелёк, до 3 рабочих дней на банковскую карту и счёт, где скорость определяет банк.</p><div class="table-wrap"><table><caption>Ориентиры по выводу (справка и тарифы ЦУПИС на 28.09.2026)</caption><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Вывод по СБП и на Кошелёк</td><td>До 1 минуты</td></tr><tr><td>Вывод на банковскую карту</td><td>Обычно сразу, иногда до 3 дней</td></tr><tr><td>Вывод на банковский счёт</td><td>До 3 рабочих дней</td></tr><tr><td>Комиссия ЦУПИС при выводе из кабинета букмекера</td><td>0% по тарифам</td></tr><tr><td>Размер одной операции, базовый уровень</td><td>До 100 000 ₽</td></tr><tr><td>Размер одной операции, продвинутый уровень</td><td>До 595 000 ₽</td></tr><tr><td>Минимальная и максимальная сумма запроса</td><td>Определяет букмекер</td></tr></tbody></table></div><p>Нижний и верхний пределы суммы по одному запросу букмекер вправе устанавливать сам, в том числе без предупреждения (п. 3.4.9 правил Лиги Ставок; у других контор пределы свои), поэтому крупный вывод иногда идёт несколькими заявками. Лимиты по уровням идентификации, расчёт и сравнение комиссий при переводе с Кошелька разобраны в материале <a href="/shkola/dengi-i-nalogi/sbp-popolnenie-i-vyvod">СБП в букмекерских конторах: пополнение и вывод</a>. Тарифы ЦУПИС по каждому из 16 букмекеров сведены в таблицы на странице <a href="/shkola/dengi-i-nalogi/tarify-cupis-po-bukmekeram">«Тарифы ЦУПИС по 16 букмекерам»</a>.</p>
 <h2 id="nalog-uderzhivaet-bukmeker-kak-schitaetsya">Налог удерживает букмекер: как считается</h2>
-<p>С <strong>1 января 2026 года</strong> букмекер удерживает НДФЛ с любого выигрыша, а налоговая база — не вывод минус депозит, а выигрыш минус ставка. Так сказано в п. 1 ст. 214.7 НК РФ: налоговый агент уменьшает сумму выигрыша на ставку, которая была условием участия, и считает налог отдельно по каждой сумме выигрыша.</p><p>Прежний порог в 15 000 ₽, ниже которого игрок сам декларировал доход, для букмекеров больше не действует: в общем случае подавать 3-НДФЛ по выигрышам у легальной БК не нужно, налог рассчитывается и перечисляется при выплате. Сумма, которую вы выводите, и депозиты в расчёте налога не участвуют.</p><p>Ставки НДФЛ для налоговых резидентов идут по шкале (п. 1 ст. 224 НК РФ): 13% при годовой базе до 2,4 млн ₽, 15% с части от 2,4 до 5 млн ₽, 18% с части от 5 до 20 млн ₽, 20% с части от 20 до 50 млн ₽ и 22% с части свыше 50 млн ₽. Шкала применяется к совокупности всех доходов физического лица за год, а выигрыши азартных игр входят в эту совокупность (п. 2.1 ст. 210). Для нерезидентов ставка — 30% (п. 3 ст. 224).</p><p>Разберём на примерах со ставкой 1000 ₽ и НДФЛ 13% (расчёты собственные, по формуле «выплата − ставка», без учёта освобождения доходов до 4000 ₽ за налоговый период по п. 28 ст. 217 НК РФ):</p><ul><li><strong>Пример 1.</strong> Ставка 1000 ₽ на коэффициент 2,0 выиграла: выплата 2000 ₽, база 2000 − 1000 = 1000 ₽, НДФЛ 13% = <strong>130 ₽</strong>, на карту придёт <strong>1870 ₽</strong>.</li><li><strong>Пример 2.</strong> Ставка 1000 ₽ на коэффициент 5,0: выплата 5000 ₽, база 4000 ₽, налог <strong>520 ₽</strong>, к выплате <strong>4480 ₽</strong>.</li><li><strong>Пример 3.</strong> Ставка 1000 ₽ на коэффициент 1,5: выплата 1500 ₽, база 500 ₽, налог <strong>65 ₽</strong>, на руки <strong>1435 ₽</strong>.</li><li><strong>Пример 4.</strong> Две ставки по 1000 ₽: первая выиграла при коэффициенте 2,0, вторая проиграла. Налог 130 ₽ считается только по выигравшей ставке и не уменьшается на проигрыш, поэтому вложено 2000 ₽, получено 2000 − 130 = 1870 ₽, и итог по деньгам — минус 130 ₽, хотя до налога был «ноль».</li></ul><p>Подробно о ставках, освобождении и примерах — в материале <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">налог на выигрыш в ставках</a>.</p>
+<p>С <strong>1 января 2026 года</strong> букмекер удерживает НДФЛ с любого выигрыша, а налоговая база — не вывод минус депозит, а выигрыш минус ставка. Так сказано в п. 1 ст. 214.7 НК РФ: налоговый агент уменьшает сумму выигрыша на ставку, которая была условием участия, и считает налог отдельно по каждой сумме выигрыша.</p><p>Прежний порог в 15 000 ₽, ниже которого игрок сам декларировал доход, для букмекеров больше не действует: в общем случае подавать 3-НДФЛ по выигрышам у легальной БК не нужно, налог рассчитывается и перечисляется при выплате. Сумма, которую вы выводите, и депозиты в расчёте налога не участвуют.</p><p>Ставки НДФЛ для налоговых резидентов идут по шкале (п. 1 ст. 224 НК РФ): 13% при годовой базе до 2,4 млн ₽, 15% с части от 2,4 до 5 млн ₽, 18% с части от 5 до 20 млн ₽, 20% с части от 20 до 50 млн ₽ и 22% с части свыше 50 млн ₽. Шкала применяется к совокупности всех доходов физического лица за год, а выигрыши азартных игр входят в эту совокупность (п. 2.1 ст. 210). Для нерезидентов ставка — 30% (п. 3 ст. 224).</p><p>Разберём на примерах со ставкой 1000 ₽ и НДФЛ 13% (расчёты собственные, по формуле «выплата − ставка», без учёта освобождения доходов до 4000 ₽ за налоговый период по п. 28 ст. 217 НК РФ):</p><ul><li><strong>Пример 1.</strong> Ставка 1000 ₽ на коэффициент 2,0 выиграла: выплата 2000 ₽, база 2000 − 1000 = 1000 ₽, НДФЛ 13% = <strong>130 ₽</strong>, на карту придёт <strong>1870 ₽</strong>.</li><li><strong>Пример 2.</strong> Ставка 1000 ₽ на коэффициент 5,0: выплата 5000 ₽, база 4000 ₽, налог <strong>520 ₽</strong>, к выплате <strong>4480 ₽</strong>.</li><li><strong>Пример 3.</strong> Ставка 1000 ₽ на коэффициент 1,5: выплата 1500 ₽, база 500 ₽, налог <strong>65 ₽</strong>, на руки <strong>1435 ₽</strong>.</li><li><strong>Пример 4.</strong> Две ставки по 1000 ₽: первая выиграла при коэффициенте 2,0, вторая проиграла. Налог 130 ₽ считается только по выигравшей ставке и не уменьшается на проигрыш, поэтому вложено 2000 ₽, получено 2000 − 130 = 1870 ₽, и итог по деньгам — минус 130 ₽, хотя до налога был «ноль».</li></ul><p>Подробно о ставках, освобождении и примерах — в материале <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">налог на выигрыш в ставках</a>.</p>
 <h2 id="pochemu-vyvod-mogut-zaderzhat-ili-otklonit">Почему вывод могут задержать или отклонить</h2>
 <p>Вывод чаще всего задерживают из-за настроек аккаунта ЦУПИС и проверок, а не по прихоти букмекера; в справке ЦУПИС и правилах Лиги Ставок названы такие причины:</p><ul><li><strong>Не подтверждена электронная почта</strong> в аккаунте ЦУПИС — без неё вывод недоступен.</li><li><strong>Не совпадают номера телефонов</strong> в ЦУПИС и в кабинете букмекера либо код из СМС не доходит; на Android справка ЦУПИС советует включить пуш-уведомления вместо СМС.</li><li><strong>Реквизиты не подходят:</strong> счёт на другое ФИО, кредитная карта или цифровая карта при переводе с Кошелька на банковскую карту.</li><li><strong>Заявка не подтверждена</strong> в кабинете букмекера — справка ЦУПИС называет это первым, что нужно проверить, если выигрыш не переводится или деньги не пришли на карту.</li><li><strong>Задержка на стороне банка:</strong> на карту и счёт перевод может идти до 3 рабочих дней.</li><li><strong>Проверка службой безопасности</strong> при крупной сумме, подозрении на мультиаккаунт или бонусный абуз (критерии подозрительной активности — пп. 6.2.2–6.2.8 правил Лиги Ставок).</li><li><strong>Незакрытый бонус</strong> с невыполненными условиями отыгрыша (вейджером).</li></ul><p>Если срок вышел, а деньги не пришли, сначала проверьте статус заявки в кабинете букмекера, затем уточните перевод в банке-эмитенте (до 3 рабочих дней), после этого напишите в поддержку ЦУПИС с деталями перевода: дата и время, сумма, способ.</p>
 <h2 id="poshagovyj-poryadok-vyvoda">Пошаговый порядок вывода</h2>
@@ -292,16 +112,16 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <h2 id="chto-skazano-v-pravilah-vyplata-edinstvennyj-sposob-i-predel">Что сказано в правилах: выплата, единственный способ и пределы</h2>
 <p>По правилам Лиги Ставок выплата по интерактивным ставкам идёт со счёта букмекера в ЕЦУПС на счёт клиента в ЕЦУПС (п. 3.4.3). Способ получения выплаты букмекер вправе определить по своему усмотрению, вплоть до единственного (п. 3.4.7).</p><p>Верхний и нижний пределы суммы по одному запросу он вправе установить без предупреждения (п. 3.4.9). При нарушении условия «вся внесённая сумма должна принять участие в игре» (п. 3.3.11) он вправе ограничить число запросов на выплату тремя в сутки (п. 3.4.5).</p><p>Использование чужих карт и кошельков запрещено (п. 3.4.8). Если выплата задержалась, сначала проверьте, пройдена ли идентификация, совпадают ли реквизиты и нет ли невыполненного бонуса. Условия других букмекеров отличаются.</p>
     <h2 id="faq">Частые вопросы</h2>
-    <div class="faq"><details><summary>Можно ли вывести деньги без идентификации?</summary><p>Нет. Делать ставки и получать выплаты без проверки личности нельзя: по ст. 6.1 закона № 244-ФЗ требуется идентификация или упрощённая идентификация участника. В ЦУПИС для этого есть базовый и продвинутый уровни; вывод на карту и счёт возможен и на базовом, но с меньшими лимитами.</p></details>
-<details><summary>Нужно ли самому платить налог с выигрыша?</summary><p>С 2026 года в общем случае нет: букмекер выступает налоговым агентом с любой суммы выигрыша, сам рассчитывает и удерживает НДФЛ и перечисляет его в бюджет. Подавать 3-НДФЛ по таким выигрышам, как правило, не требуется.</p></details>
-<details><summary>С какой суммы берётся налог?</summary><p>Налог считается по каждому выигрышу отдельно: из выплаты вычитается ставка, и с разницы удерживается НДФЛ — 13% для резидентов, пока годовая база не выше 2,4 млн ₽ (выше действует шкала 15–22%), или 30% для нерезидентов. Если ставка проиграла, налога нет, но он и не уменьшается на проигрыши.</p></details>
-<details><summary>Сколько идёт вывод и есть ли комиссия?</summary><p>По справке ЦУПИС: СБП и Кошелёк — до 1 минуты, банковская карта — обычно сразу, иногда до 3 дней, счёт — до 3 рабочих дней. Из кабинета букмекера комиссии по тарифам ЦУПИС нет; при переводе с Кошелька: карта 1,5% (минимум 30 ₽), счёт 2,9% + 30 ₽, СБП 0% до 100 000 ₽ в месяц.</p></details>
+    <div class="faq"><details><summary>Можно ли вывести деньги без идентификации?</summary><p>Нет. Делать ставки и получать выплаты без проверки личности нельзя: по ст. 6.1 закона № 244-ФЗ требуется идентификация или упрощённая идентификация участника. В ЦУПИС для этого есть базовый и продвинутый уровни; вывод на карту и счёт возможен и на базовом, но с меньшими лимитами.</p></details>
+<details><summary>Нужно ли самому платить налог с выигрыша?</summary><p>С 2026 года в общем случае нет: букмекер выступает налоговым агентом с любой суммы выигрыша, сам рассчитывает и удерживает НДФЛ и перечисляет его в бюджет. Подавать 3-НДФЛ по таким выигрышам, как правило, не требуется.</p></details>
+<details><summary>С какой суммы берётся налог?</summary><p>Налог считается по каждому выигрышу отдельно: из выплаты вычитается ставка, и с разницы удерживается НДФЛ — 13% для резидентов, пока годовая база не выше 2,4 млн ₽ (выше действует шкала 15–22%), или 30% для нерезидентов. Если ставка проиграла, налога нет, но он и не уменьшается на проигрыши.</p></details>
+<details><summary>Сколько идёт вывод и есть ли комиссия?</summary><p>По справке ЦУПИС: СБП и Кошелёк — до 1 минуты, банковская карта — обычно сразу, иногда до 3 дней, счёт — до 3 рабочих дней. Из кабинета букмекера комиссии по тарифам ЦУПИС нет; при переводе с Кошелька: карта 1,5% (минимум 30 ₽), счёт 2,9% + 30 ₽, СБП 0% до 100 000 ₽ в месяц.</p></details>
 <details><summary>Почему букмекер задерживает вывод?</summary><p>Чаще всего из-за неподтверждённой электронной почты, разных номеров телефона в ЦУПИС и у букмекера, неподходящих реквизитов, неподтверждённой заявки, задержки на стороне банка (до 3 рабочих дней), проверки службой безопасности или незакрытого бонуса. Начните с проверки статуса заявки в кабинете букмекера.</p></details>
 <details><summary>Нужно ли подтверждать электронную почту?</summary><p>Да. Без подтверждённой почты в аккаунте ЦУПИС вывести выигрыши не получится, справка ЦУПИС требует подтвердить адрес по ссылке из письма.</p></details>
 <details><summary>Можно ли вывести деньги на карту или счёт другого человека?</summary><p>Нет. На банковский счёт деньги переводят только на свой (ФИО владельца аккаунта ЦУПИС и счёта совпадают), на цифровую карту — только на свою; по правилам Лиги Ставок использовать чужие карты запрещено (п. 3.4.8).</p></details>
 <details><summary>Может ли букмекер ограничить сумму одного вывода?</summary><p>По правилам Лиги Ставок — да: он вправе без предупреждения и объяснений установить верхний и нижний пределы суммы, выплачиваемой по каждому запросу (п. 3.4.9); крупные суммы иногда выводят несколькими заявками. У других контор пределы отличаются.</p></details></div>
     <h2 id="istochniki">Источники · проверено 28.09.2026</h2>
-<ul class="sources"><li><a href="https://www.consultant.ru/document/cons_doc_LAW_64924/4f324e82526a8cdf92df0c109cc622e1be17b78d/" rel="noopener" target="_blank">Федеральный закон № 244-ФЗ, ст. 6.1 — приём интерактивных ставок и выплата выигрышей при идентификации или упрощённой идентификации; функции единого центра учёта переводов ставок (ч. 2.1)</a></li><li><a href="https://www.garant.ru/products/ipo/prime/doc/402555808/" rel="noopener" target="_blank">Распоряжение Президента РФ от 25.08.2021 № 236-рп — ООО НКО «Мобильная карта» определена единым центром учёта переводов ставок букмекерских контор и тотализаторов</a></li><li><a href="https://1cupis.ru/info/help/sposoby-vyvoda-so-scheta-bukmekera/na-bankovskuyu-kartu/" rel="noopener" target="_blank">Единый ЦУПИС, справка: как перевести деньги с баланса букмекера на банковскую карту</a></li><li><a href="https://1cupis.ru/info/help/sposoby-vyvoda-so-scheta-bukmekera/na-bankovskij-schet/" rel="noopener" target="_blank">Единый ЦУПИС, справка: как перевести деньги с баланса букмекера на банковский счёт</a></li><li><a href="https://1cupis.ru/info/help/sposoby-vyvoda-so-scheta-bukmekera/cherez-sbp/" rel="noopener" target="_blank">Единый ЦУПИС, справка: перевод с баланса букмекера через СБП</a></li><li><a href="https://1cupis.ru/info/help/sposoby-vyvoda-so-scheta-bukmekera/vyvod-so-scheta-bukmekera-na-koshelek/" rel="noopener" target="_blank">Единый ЦУПИС, справка: вывод с баланса букмекера на Кошелёк</a></li><li><a href="https://1cupis.ru/info/help/koshelek-popolnenie-i-vyvod/vyvod-s-koshelka-na-bankovskuyu-kartu/" rel="noopener" target="_blank">Единый ЦУПИС, справка: перевод с Кошелька на банковскую карту (комиссия, срок, какие карты подходят)</a></li><li><a href="https://1cupis.ru/info/rates/wallet/" rel="noopener" target="_blank">Единый ЦУПИС: тарифы Кошелька (пополнение и вывод, СБП, карта, счёт)</a></li><li><a href="https://1cupis.ru/info/rates/" rel="noopener" target="_blank">Единый ЦУПИС: общие условия по тарифам и тарифы каждого из 16 букмекеров-партнёров</a></li><li><a href="https://1cupis.ru/info/help/registraciya-i-lichnyj-kabinet/kak-zaregistrirovatsya/" rel="noopener" target="_blank">Единый ЦУПИС, справка: как зарегистрироваться (телефон, почта, ПИН-код)</a></li><li><a href="https://1cupis.ru/info/help/podtverzhdenie-lichnosti/kak-i-gde-podtverdit-lichnost/" rel="noopener" target="_blank">Единый ЦУПИС, справка: как и где подтвердить личность</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/2131996820b390e802ee0587d8a21548eb19c764/" rel="noopener" target="_blank">НК РФ, ст. 214.7 — НДФЛ с выигрышей в букмекерской конторе: база «выигрыш − ставка», удержание налоговым агентом, расчёт по каждой сумме выигрыша</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/3e4bbd6dd9fb5dd4e9394f447653506e1d6fa3a9/" rel="noopener" target="_blank">НК РФ, ст. 224 — налоговые ставки НДФЛ (шкала 13% / 15% / 18% / 20% / 22% для резидентов, 30% для нерезидентов)</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/9b06776ae7a39546ad4e3ba04bebef14baabf8d2/" rel="noopener" target="_blank">НК РФ, ст. 210 (п. 2.1) — выигрыши азартных игр входят в совокупность баз, к которой применяется шкала ст. 224</a></li><li><a href="https://www.ligastavok.ru/files/document/442/pmbk_rules.pdf" rel="noopener" target="_blank">Правила приёма ставок БК «Лига Ставок», ред. с 01.09.2026: пп. 3.3.11, 3.4.3, 3.4.5, 3.4.7–3.4.9 (выплата через ЕЦУПС, способ и пределы выплаты)</a></li><li><a href="https://1cupis.ru/" rel="noopener" target="_blank">Единый ЦУПИС: официальный сайт (список партнёров-букмекеров)</a></li></ul>
+<ul class="sources"><li><a href="https://www.consultant.ru/document/cons_doc_LAW_64924/4f324e82526a8cdf92df0c109cc622e1be17b78d/" rel="noopener" target="_blank">Федеральный закон № 244-ФЗ, ст. 6.1 — приём интерактивных ставок и выплата выигрышей при идентификации или упрощённой идентификации; функции единого центра учёта переводов ставок (ч. 2.1)</a></li><li><a href="https://www.garant.ru/products/ipo/prime/doc/402555808/" rel="noopener" target="_blank">Распоряжение Президента РФ от 25.08.2021 № 236-рп — ООО НКО «Мобильная карта» определена единым центром учёта переводов ставок букмекерских контор и тотализаторов</a></li><li><a href="https://1cupis.ru/info/help/sposoby-vyvoda-so-scheta-bukmekera/na-bankovskuyu-kartu/" rel="noopener" target="_blank">Единый ЦУПИС, справка: как перевести деньги с баланса букмекера на банковскую карту</a></li><li><a href="https://1cupis.ru/info/help/sposoby-vyvoda-so-scheta-bukmekera/na-bankovskij-schet/" rel="noopener" target="_blank">Единый ЦУПИС, справка: как перевести деньги с баланса букмекера на банковский счёт</a></li><li><a href="https://1cupis.ru/info/help/sposoby-vyvoda-so-scheta-bukmekera/cherez-sbp/" rel="noopener" target="_blank">Единый ЦУПИС, справка: перевод с баланса букмекера через СБП</a></li><li><a href="https://1cupis.ru/info/help/sposoby-vyvoda-so-scheta-bukmekera/vyvod-so-scheta-bukmekera-na-koshelek/" rel="noopener" target="_blank">Единый ЦУПИС, справка: вывод с баланса букмекера на Кошелёк</a></li><li><a href="https://1cupis.ru/info/help/koshelek-popolnenie-i-vyvod/vyvod-s-koshelka-na-bankovskuyu-kartu/" rel="noopener" target="_blank">Единый ЦУПИС, справка: перевод с Кошелька на банковскую карту (комиссия, срок, какие карты подходят)</a></li><li><a href="https://1cupis.ru/info/rates/wallet/" rel="noopener" target="_blank">Единый ЦУПИС: тарифы Кошелька (пополнение и вывод, СБП, карта, счёт)</a></li><li><a href="https://1cupis.ru/info/rates/" rel="noopener" target="_blank">Единый ЦУПИС: общие условия по тарифам и тарифы каждого из 16 букмекеров-партнёров</a></li><li><a href="https://1cupis.ru/info/help/registraciya-i-lichnyj-kabinet/kak-zaregistrirovatsya/" rel="noopener" target="_blank">Единый ЦУПИС, справка: как зарегистрироваться (телефон, почта, ПИН-код)</a></li><li><a href="https://1cupis.ru/info/help/podtverzhdenie-lichnosti/kak-i-gde-podtverdit-lichnost/" rel="noopener" target="_blank">Единый ЦУПИС, справка: как и где подтвердить личность</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/2131996820b390e802ee0587d8a21548eb19c764/" rel="noopener" target="_blank">НК РФ, ст. 214.7 — НДФЛ с выигрышей в букмекерской конторе: база «выигрыш − ставка», удержание налоговым агентом, расчёт по каждой сумме выигрыша</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/3e4bbd6dd9fb5dd4e9394f447653506e1d6fa3a9/" rel="noopener" target="_blank">НК РФ, ст. 224 — налоговые ставки НДФЛ (шкала 13% / 15% / 18% / 20% / 22% для резидентов, 30% для нерезидентов)</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/9b06776ae7a39546ad4e3ba04bebef14baabf8d2/" rel="noopener" target="_blank">НК РФ, ст. 210 (п. 2.1) — выигрыши азартных игр входят в совокупность баз, к которой применяется шкала ст. 224</a></li><li><a href="https://www.ligastavok.ru/files/document/442/pmbk_rules.pdf" rel="noopener" target="_blank">Правила приёма ставок БК «Лига Ставок», ред. с 01.09.2026: пп. 3.3.11, 3.4.3, 3.4.5, 3.4.7–3.4.9 (выплата через ЕЦУПС, способ и пределы выплаты)</a></li><li><a href="https://1cupis.ru/" rel="noopener" target="_blank">Единый ЦУПИС: официальный сайт (список партнёров-букмекеров)</a></li></ul>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/zenit">Зенит</a>, <a href="/bukmekery/pari">PARI</a>, <a href="/bukmekery/melbet">Мелбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
     <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
@@ -319,16 +139,19 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 
 <footer class="footer"><div class="container">
   <div class="footer-grid">
-    <div>
-      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
-      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
+    <div class="footer-brand">
+      <a class="logo" href="/"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</a>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх.</p>
+      <span class="age-pill"><b>18+</b> Возрастная категория</span>
     </div>
-    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty">Инструменты</a></div>
-    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/eksperty">Эксперты и партнёры</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
-    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+    <div><h4>Рейтинги</h4><a href="/rating">Каталог легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/bonusy">Бонусы и фрибеты</a><a href="/promokody">Промокоды</a><a href="/reestr">Реестр ЕРАИ</a></div>
+    <div><h4>Разобраться</h4><a href="/stavki">Ставки по видам спорта</a><a href="/shkola">Школа ставок</a><a href="/instrumenty">Калькуляторы</a><a href="/novosti">Новости</a></div>
+    <div><h4>О проекте</h4><a href="/contacts">О проекте и контакты</a><a href="/avtor/aleksej-kamnev">Редакция и автор</a><a href="/eksperty">Эксперты и партнёры</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/politika-konfidencialnosti">Политика конфиденциальности</a></div>
+    <div><h4>Ответственная игра</h4><a href="/shkola/otvetstvennaya-igra/priznaki-ludomanii">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/shkola/dengi-i-nalogi/limity-i-samokontrol">Лимиты и самоконтроль</a></div>
   </div>
   <div class="legal-box">
-    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span><b>18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span>Материалы могут содержать рекламу; отдельные места размещения партнёров оплачены. Оценки редакции ориентировочные; размеры и условия бонусов уточняйте на официальных сайтах букмекеров.</span>
     <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
   </div>
 </div></footer>
@@ -338,5 +161,6 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
 </div>
 
+<script src="/assets/site.js" defer></script>
 </body>
 </html>
