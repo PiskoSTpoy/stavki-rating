@@ -1,0 +1,5 @@
+/* Устаревшее имя таблицы стилей. Весь сайт теперь на единой дизайн-системе
+   (site.css + chrome.css); файл оставлен, чтобы старые страницы и кэши не теряли оформление. */
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap');
+@import url('/assets/site.css');
+@import url('/assets/chrome.css');

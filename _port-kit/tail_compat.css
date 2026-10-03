@@ -1,0 +1,38 @@
+
+
+  /* ── совместимость с разметкой «служебных» страниц (новости, каталог, контакты,
+     переходы /go/): они приведены к общему дизайну тем же набором классов ── */
+  .prose > details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .prose > details + details { margin-top: -4px; }
+  .prose > details > summary { cursor: pointer; font-weight: 600; padding: 12px 24px 12px 0; list-style: none; position: relative; }
+  .prose > details > summary::-webkit-details-marker { display: none; }
+  .prose > details > summary::after { content: "+"; position: absolute; right: 0; top: 12px; color: var(--muted); font-weight: 400; }
+  .prose > details[open] > summary::after { content: "–"; }
+  .prose > details[open] > summary { color: var(--volt); }
+  .prose > details > p { color: var(--muted); padding: 0 0 12px; }
+  .prose .notice { border: 1px solid var(--line); border-left: 3px solid var(--volt); background: var(--surface-2); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .prose .notice p { color: var(--muted); }
+  .prose .notice [data-age-badge] { display: inline-block; border: 1.5px solid var(--danger); color: var(--danger); border-radius: 6px; padding: 0 6px; font-size: 12px; margin-right: 8px; }
+  .prose .sources, .prose .history { font-size: 14px; color: var(--muted); }
+  .prose .sources li, .prose .history li { color: var(--muted); }
+  .prose .go-note { font-size: 17px; }
+  .prose code { background: var(--surface-2); border: 1px solid var(--line); padding: 1px 7px; border-radius: 6px; font-size: .9em; }
+  .prose .tw { display: contents; }
+  .prose .catalog td:first-child { white-space: nowrap; }
+  .prose .catalog .ok { color: var(--success); font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+  .prose .catalog a { white-space: nowrap; }
+  .btn-neutral { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; background: var(--glass); border: 1px solid var(--glass-border); color: var(--text); text-decoration: none !important; transition: background .2s, border-color .2s; }
+  .btn-neutral:hover { background: var(--surface-3); color: var(--text); border-color: var(--muted); }
+  .form { display: grid; gap: 12px; max-width: 460px; }
+  .form input, .form textarea, .form select { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-2); color: var(--text); font: inherit; font-size: 16px; }
+  .form button { padding: 13px 22px; border: 0; border-radius: 999px; background: var(--volt); color: var(--volt-ink); font: inherit; font-weight: 700; cursor: pointer; }
+  .form .ok { color: var(--success); } .form .err { color: var(--danger); }
+  @media (max-width: 560px) { .prose .catalog td:first-child { white-space: normal; } }
+
+  /* хлебные крошки и строка автора внутри текстового контейнера — без подчёркивания «как у ссылок в тексте» */
+  .prose .crumbs a, .prose .meta-row a, .prose .toc a { text-decoration: none; }
+  .prose .crumbs a { color: var(--muted); }
+  .prose .crumbs a:hover { color: var(--text); }
+  .prose .toc a:hover { text-decoration: underline; }
+  .prose > .crumbs { padding-top: 14px; margin-bottom: -4px; }
+  .meta-row .muted, .meta-row { color: var(--muted); }
