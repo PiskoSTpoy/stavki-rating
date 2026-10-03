@@ -65,6 +65,10 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://stavki-rating.ru/politika-konfidencialnosti</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://stavki-rating.ru/leon-obzor</loc>
     <priority>0.7</priority>
   </url>
