@@ -61,14 +61,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stavki-rating.ru/eksperty</loc>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://stavki-rating.ru/politika-konfidencialnosti</loc>
-    <priority>0.3</priority>
-  </url>
-  <url>
     <loc>https://stavki-rating.ru/leon-obzor</loc>
     <priority>0.7</priority>
   </url>
@@ -86,6 +78,10 @@
   </url>
   <url>
     <loc>https://stavki-rating.ru/novosti</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-alberta-onlajn-stavki-22-platformy</loc>
     <priority>0.7</priority>
   </url>
   <url>
@@ -157,6 +153,10 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://stavki-rating.ru/novosti-irlandiya-regulyator-nehvatka-finansirovaniya</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://stavki-rating.ru/novosti-issledovanie-igrokov-2025</loc>
     <priority>0.7</priority>
   </url>
@@ -170,6 +170,10 @@
   </url>
   <url>
     <loc>https://stavki-rating.ru/novosti-kazahstan-zapret-stavok-dolzhnikam</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-kreditnye-karty-zapret-stavok-pozicii</loc>
     <priority>0.7</priority>
   </url>
   <url>
@@ -210,6 +214,10 @@
   </url>
   <url>
     <loc>https://stavki-rating.ru/novosti-ndfl-minusovye-bettory</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-ndfl-srok-1-fevralya-2027-bez-peni</loc>
     <priority>0.7</priority>
   </url>
   <url>
@@ -274,6 +282,10 @@
   </url>
   <url>
     <loc>https://stavki-rating.ru/novosti-punkty-priema-stavok-sokrashchenie-2026</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-reklama-bukmekerov-v-prilozheniyah-umg</loc>
     <priority>0.7</priority>
   </url>
   <url>

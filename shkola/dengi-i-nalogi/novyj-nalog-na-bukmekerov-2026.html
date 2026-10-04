@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Новый налог для букмекеров с 2026 года: что изменилось</title>
+<title>Новый налог для букмекеров с 2026 года: что изменилось</title>
 <meta name="description" content="С 1 января 2026 года букмекеры платят 7% с валового игрового дохода (GGR) и 25% налога на прибыль вместо минимальных сборов — нагрузка выросла в 60 раз.">
 <link rel="canonical" href="https://stavki-rating.ru/shkola/dengi-i-nalogi/novyj-nalog-na-bukmekerov-2026">
 <meta name="yandex-verification" content="4edbdcb14677aee3">
@@ -29,9 +29,190 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="/assets/site.css?v=20261004">
-<link rel="stylesheet" href="/assets/chrome.css?v=20261004">
-<meta name="theme-color" content="#07090F">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Golos Text", "Inter", system-ui, sans-serif;
+    --font-sans: "Golos Text", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.12; margin: 0; text-wrap: balance; letter-spacing: -.015em; }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Единая колонка контента: шапка статьи, оглавление и текст выровнены по одному левому краю
+     (раньше .prose с max-width:75ch центрировался отдельно от шапки на всю ширину контейнера). */
+  :root { --col: 820px; }
+  main .container { width: min(var(--col), 100% - 32px); }
+
+  /* Креатив «на всю страницу»: два полотна на всю высоту окна по краям, статья — по центру.
+     Полотно — картинка 9:16 высотой в окно (background-size: auto 100%), ширина по полю слева/справа.
+     Бейджи БК позиционируются в процентах от высоты, поэтому всегда попадают в кольца арта. */
+  .wall { display: none; }
+  @media (min-width: 1500px) {
+    .wall { display: block; position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .wall-side { --W: calc(100vh * .5647); --r1: 22.35%; --r2: 49.6%; --r3: 77.05%; --bd: .3276;
+      position: absolute; top: 0; bottom: 0; width: min(calc((100vw - var(--col)) / 2), var(--W)); }
+    .wall-side::before { content: ""; position: absolute; inset: 0; background-repeat: no-repeat; background-size: auto 100%; background-position: center; }
+    .wall-left { left: 0; }
+    .wall-left::before { background-image: url(/img/decor/wall-left.webp);
+      -webkit-mask-image: linear-gradient(to right, #000 62%, transparent); mask-image: linear-gradient(to right, #000 62%, transparent); }
+    .wall-right { right: 0; }
+    .wall-right::before { background-image: url(/img/decor/wall-right.webp);
+      -webkit-mask-image: linear-gradient(to left, #000 62%, transparent); mask-image: linear-gradient(to left, #000 62%, transparent); }
+    .wall-badge { position: absolute; left: 50%; width: calc(var(--W) * var(--bd)); aspect-ratio: 1; transform: translate(-50%, -50%);
+      border-radius: 50%; overflow: hidden; pointer-events: auto; display: flex; align-items: center; justify-content: center; background: #0B0E16;
+      box-shadow: 0 0 0 3px rgba(200,255,77,.55), 0 0 28px rgba(200,255,77,.35); transition: transform .25s ease, box-shadow .25s ease; animation: wallpulse 3.4s ease-in-out infinite; }
+    .wall-badge:nth-child(2) { animation-delay: .5s; } .wall-badge:nth-child(3) { animation-delay: 1s; }
+    .wall-badge:hover { transform: translate(-50%, -50%) scale(1.07); box-shadow: 0 0 0 3px var(--volt), 0 0 44px rgba(200,255,77,.7); animation-play-state: paused; }
+    .wall-badge img { width: 74%; height: 74%; object-fit: contain; border-radius: 18%; }
+    .wall-tag { position: absolute; left: 0; right: 0; bottom: 14px; text-align: center; font-size: 11px; color: var(--muted-2); letter-spacing: .04em; }
+    main { position: relative; z-index: 1; width: calc(var(--col) + 96px); margin-inline: auto; background: rgba(8,11,20,.86);
+      border-inline: 1px solid var(--line); box-shadow: 0 0 80px rgba(0,0,0,.6); backdrop-filter: blur(10px); }
+  }
+  @keyframes wallpulse { 0%,100% { box-shadow: 0 0 0 3px rgba(200,255,77,.55), 0 0 22px rgba(200,255,77,.28); } 50% { box-shadow: 0 0 0 3px rgba(200,255,77,.8), 0 0 42px rgba(124,92,255,.55); } }
+  @media (prefers-reduced-motion: reduce) { .wall-badge { animation: none !important; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
+
+  /* Секции */
+  .section { padding: 56px 0; }
+  .section.tight { padding-top: 6px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Хлебные крошки */
+  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs span { color: var(--muted-2); }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .result .accent { color: var(--volt); }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Текстовый контент страницы */
+  .prose { max-width: none; display: grid; gap: 14px; }
+  .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
+  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
+     задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
+  .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
+  .prose p { color: var(--text); }
+  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
+  .prose li { line-height: 1.5; }
+  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--text); font-weight: 700; }
+  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
+  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
+  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose tbody tr:last-child td { border-bottom: none; }
+  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
+  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
+  .faq { display: grid; gap: 10px; }
+  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 24px 12px 0; list-style: none; position: relative; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: 0; top: 12px; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; }
+
+  /* Футер */
+  .footer { position: relative; z-index: 1; background: var(--bg); border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+</style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Деньги и налоги", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Новый налог для букмекеров с 2026 года: что изменилось и что это значит для игрока", "item": "https://stavki-rating.ru/shkola/dengi-i-nalogi/novyj-nalog-na-bukmekerov-2026"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Новый налог для букмекеров с 2026 года: что изменилось и что это значит для игрока", "description": "С 1 января 2026 года букмекеры платят 7% с валового игрового дохода (GGR) и 25% налога на прибыль вместо минимальных сборов — нагрузка выросла в 60 раз.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/dengi-i-nalogi/novyj-nalog-na-bukmekerov-2026", "datePublished": "2026-09-07", "dateModified": "2026-09-28", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "С какого числа действует новый налог для букмекеров?", "acceptedAnswer": {"@type": "Answer", "text": "С 1 января 2026 года. Закон № 425-ФЗ принят Государственной думой в ноябре 2025 года и подписан 28 ноября 2025 года."}}, {"@type": "Question", "name": "Это налог с моего выигрыша или с бизнеса букмекера?", "acceptedAnswer": {"@type": "Answer", "text": "С бизнеса букмекера — это налог на его валовой игровой доход и прибыль. Налог с вашего личного выигрыша (НДФЛ) считается по отдельным правилам: с 1 января 2026 года его с каждой выплаты удерживает букмекер как налоговый агент, а база равна выигрышу за вычетом ставки."}}, {"@type": "Question", "name": "Почему выросла в 60 раз, а не, скажем, в 2 раза?", "acceptedAnswer": {"@type": "Answer", "text": "Потому что раньше действовали в основном небольшие фиксированные сборы (платежи за пункты приёма ставок и процессинговые центры), а не налог, привязанный к реальным объёмам оборота отрасли. Переход на процент от GGR и налог на прибыль вывел нагрузку на принципиально другой порядок величины."}}, {"@type": "Question", "name": "Значит ли это, что легальные БК стали хуже, чем нелегальные с их бонусами?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Меньшие бонусы — это неудобство, а отсутствие лицензии у нелегального оператора — это риск вообще не получить выигрыш и не иметь никакой защиты. Размер бонуса не компенсирует потерю гарантии выплаты."}}, {"@type": "Question", "name": "Сколько букмекеры платят на спорт помимо налога?", "acceptedAnswer": {"@type": "Answer", "text": "Целевые отчисления составляют 2,25% принятых ставок в 2026–2027 годах и 2,5% с 2028 года, но не менее 30 млн ₽ в квартал (ст. 6.2 закона № 244-ФЗ). Они идут на профессиональный и детско-юношеский спорт и на Российский спортивный фонд, а не в бюджет."}}, {"@type": "Question", "name": "Может ли нагрузка на букмекеров вырасти ещё?", "acceptedAnswer": {"@type": "Answer", "text": "Есть законопроект сенатора Гибатдинова и депутатов КПРФ: с 2028 года он предлагает поднять целевые отчисления на спорт с 2,5% до 10%. В конце сентября 2026 года правительство дало на него отрицательный отзыв; сведений о принятии нет."}}]}</script>
@@ -50,7 +231,6 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <!-- /Yandex.Metrika counter -->
 </head>
 <body>
-<a class="skip" href="#main">К содержанию</a>
 
 <div class="wall" aria-label="Партнёрские предложения">
 <div class="wall-side wall-left">
@@ -72,7 +252,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
     STAVKI RATING
   </a>
-  <nav class="nav" aria-label="Основное меню">
+  <nav class="nav">
     <a href="/rating">Рейтинг</a>
     <a href="/rejting">По критериям</a>
     <a href="/stavki">Виды спорта</a>
@@ -83,14 +263,14 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
 </div></header>
 
-<main id="main">
+<main>
 
   <section class="section tight"><div class="container">
-    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Деньги и налоги</a><span>/</span>Новый налог для букмекеров с 2026 года: что изменилось и что это значит для игрока</nav>
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Деньги и налоги</a><span>/</span>Новый налог для букмекеров с 2026 года: что изменилось и что это значит для игрока</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Школа · Деньги и налоги ·</div>
-    <h1>Новый налог для букмекеров с 2026 года: что изменилось и что это значит для игрока</h1>
-    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-07">07.09.2026</time></span><span>·</span><span>обновлено и проверено <time datetime="2026-09-28">28.09.2026</time></span><span>·</span><span>6 мин чтения</span></div>
-    <p class="muted" style="max-width:75ch;margin-top:12px">С 1 января 2026 года легальные букмекеры в России платят 7% с валового игрового дохода (GGR — разницы между принятыми ставками и выплаченными выигрышами) и налог на прибыль по стандартной ставке 25%, под которую отрасль раньше не подпадала. Целевые отчисления на развитие спорта выросли с 2% до 2,25% принятых ставок. По оценке «Ведомостей», налоговые платежи могут вырасти примерно в 60 раз — с 1 млрд ₽ в 2024 году до порядка 60 млрд ₽. Налог 7% — это налог на бизнес букмекера, а не на ваш выигрыш, но тот же закон изменил и порядок удержания НДФЛ с выигрышей (подробности ниже).</p>
+    <h1>Новый налог для букмекеров с 2026 года: что изменилось и что это значит для игрока</h1>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-07">07.09.2026</time></span><span>·</span><span>обновлено и проверено <time datetime="2026-09-28">28.09.2026</time></span><span>·</span><span>6 мин чтения</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">С 1 января 2026 года легальные букмекеры в России платят 7% с валового игрового дохода (GGR — разницы между принятыми ставками и выплаченными выигрышами) и налог на прибыль по стандартной ставке 25%, под которую отрасль раньше не подпадала. Целевые отчисления на развитие спорта выросли с 2% до 2,25% принятых ставок. По оценке «Ведомостей», налоговые платежи могут вырасти примерно в 60 раз — с 1 млрд ₽ в 2024 году до порядка 60 млрд ₽. Налог 7% — это налог на бизнес букмекера, а не на ваш выигрыш, но тот же закон изменил и порядок удержания НДФЛ с выигрышей (подробности ниже).</p>
     
     
     <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#chto-imenno-izmenilos-staraya-i-novaya-sistema">Что именно изменилось: старая и новая система</a></li><li><a href="#zachem-gosudarstvu-eto-ponadobilos-i-skolko-eto-v-dengah">Зачем государству это понадобилось и сколько это в деньгах</a></li><li><a href="#odin-vyigrysh-dva-naloga-gde-prohodit-granica">Один выигрыш — два налога: где проходит граница</a></li><li><a href="#chto-eto-znachit-dlya-igroka-i-chego-eto-ne-znachit">Что это значит для игрока — и чего это НЕ значит</a></li><li><a href="#kak-proverit-stali-li-koefficienty-huzhe">Как проверить, стали ли коэффициенты хуже</a></li><li><a href="#faq">Частые вопросы</a></li><li><a href="#istochniki">Источники</a></li></ol></nav>
@@ -98,24 +278,24 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 
   <section class="section" style="padding-top:6px"><div class="container prose">
     <h2 id="chto-imenno-izmenilos-staraya-i-novaya-sistema">Что именно изменилось: старая и новая система</h2>
-<p>До 2026 года букмекеры платили в основном фиксированные и небольшие по масштабу бизнеса сборы. Пункт приёма ставок обходился в 10 000–14 000 ₽ в год, а процессинговые центры — в 2,5–10 млн ₽ (данные РИА «Новости»). Такие платежи не зависели от суммы принятых ставок. Целевые отчисления на спорт составляли 2% от общего объёма принятых ставок.</p><p>С 1 января 2026 года действует другая модель:</p><ul><li><strong>7% с GGR</strong> (Gross Gaming Revenue) — валового игрового дохода, то есть разницы между суммой принятых ставок и суммой выплаченных выигрышей за период, а не с полного оборота ставок;</li><li><strong>25% налог на прибыль</strong> — стандартная ставка для юридических лиц;</li><li><strong>2,25% целевых отчислений</strong> на развитие физической культуры и спорта — рост с прежних 2%.</li></ul><p>В первой версии законопроекта предлагалось брать 5% от общей суммы принятых ставок. Ко второму чтению в Госдуме налог заменили на 7% именно с GGR. По расчёту «Ведомостей», 5% с оборота дали бы около 85 млрд ₽, а 7% с GGR — менее 28 млрд ₽.</p>
+<p>До 2026 года букмекеры платили в основном фиксированные и небольшие по масштабу бизнеса сборы. Пункт приёма ставок обходился в 10 000–14 000 ₽ в год, а процессинговые центры — в 2,5–10 млн ₽ (данные РИА «Новости»). Такие платежи не зависели от суммы принятых ставок. Целевые отчисления на спорт составляли 2% от общего объёма принятых ставок.</p><p>С 1 января 2026 года действует другая модель:</p><ul><li><strong>7% с GGR</strong> (Gross Gaming Revenue) — валового игрового дохода, то есть разницы между суммой принятых ставок и суммой выплаченных выигрышей за период, а не с полного оборота ставок;</li><li><strong>25% налог на прибыль</strong> — стандартная ставка для юридических лиц;</li><li><strong>2,25% целевых отчислений</strong> на развитие физической культуры и спорта — рост с прежних 2%.</li></ul><p>В первой версии законопроекта предлагалось брать 5% от общей суммы принятых ставок. Ко второму чтению в Госдуме налог заменили на 7% именно с GGR. По расчёту «Ведомостей», 5% с оборота дали бы около 85 млрд ₽, а 7% с GGR — менее 28 млрд ₽.</p>
 <h2 id="zachem-gosudarstvu-eto-ponadobilos-i-skolko-eto-v-dengah">Зачем государству это понадобилось и сколько это в деньгах</h2>
-<p>По оценке «Ведомостей», в 2024 году государство получило от букмекеров около 1 млрд ₽, а после введения новой системы сумма может вырасти в 60 раз — примерно до 60 млрд ₽ в год. Отсюда и формулировка «нагрузка выросла в 60 раз», которая встречается в СМИ.</p><p>Налог на игорный бизнес при этом стал федеральным: новая глава 25.5 НК РФ пришла на смену главе 29 и действует во всех регионах одинаково (по описанию справочников «1С:ИТС» и «Бухгалтерия.ру»). Глава введена законом от 28 ноября 2025 года № 425-ФЗ.</p><p>Прогнозы по маркетингу пока остаются оценками. По данным «Ведомостей», президент медиафутбольной команды «БроукБойз» ожидал сокращения маркетинговых бюджетов до 60% у сильных букмекеров и на 60–90% у остальных, а РПЛ получила предложение на 30% ниже действующего контракта. Итоговые цифры 2026 года станут известны из отчётности операторов, а расходы на спонсорство в 2025 году (22,6 млрд ₽) разобраны в материале <a href="/shkola/dengi-i-nalogi/sponsorstvo-sporta-bukmekerami-2025">о спонсорстве спорта букмекерами</a>.</p>
+<p>По оценке «Ведомостей», в 2024 году государство получило от букмекеров около 1 млрд ₽, а после введения новой системы сумма может вырасти в 60 раз — примерно до 60 млрд ₽ в год. Отсюда и формулировка «нагрузка выросла в 60 раз», которая встречается в СМИ.</p><p>Налог на игорный бизнес при этом стал федеральным: новая глава 25.5 НК РФ пришла на смену главе 29 и действует во всех регионах одинаково (по описанию справочников «1С:ИТС» и «Бухгалтерия.ру»). Глава введена законом от 28 ноября 2025 года № 425-ФЗ.</p><p>Прогнозы по маркетингу пока остаются оценками. По данным «Ведомостей», президент медиафутбольной команды «БроукБойз» ожидал сокращения маркетинговых бюджетов до 60% у сильных букмекеров и на 60–90% у остальных, а РПЛ получила предложение на 30% ниже действующего контракта. Итоговые цифры 2026 года станут известны из отчётности операторов, а расходы на спонсорство в 2025 году (22,6 млрд ₽) разобраны в материале <a href="/shkola/dengi-i-nalogi/sponsorstvo-sporta-bukmekerami-2025">о спонсорстве спорта букмекерами</a>.</p>
 <h2 id="odin-vyigrysh-dva-naloga-gde-prohodit-granica">Один выигрыш — два налога: где проходит граница</h2>
-<p>Один выигрыш затрагивает два разных налога: НДФЛ игрока с базы «выплата минус ставка» и налог букмекера с суммарного GGR.</p><p>Пример со ставкой 1000 ₽ на коэффициент 2,50: выплата 2500 ₽, налог игрока (2500 − 1000) × 13% = 195 ₽, на руки — 2305 ₽. Для букмекера эта ставка уменьшает GGR на 1500 ₽ (принято 1000 ₽, выплачено 2500 ₽); 7% считается не с отдельной ставки, а с итога по всем ставкам за налоговый период, где выигрыши одних клиентов гасятся проигрышами других.</p><p>Игроку поэтому не нужно ничего рассчитывать по налогу букмекера: его платит компания. НДФЛ при выплате удерживает сам букмекер как налоговый агент; порядок, шкала ставок 13–22% и таблица расчёта — в материале <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">«Налог на выигрыш в ставках»</a>.</p>
+<p>Один выигрыш затрагивает два разных налога: НДФЛ игрока с базы «выплата минус ставка» и налог букмекера с суммарного GGR.</p><p>Пример со ставкой 1000 ₽ на коэффициент 2,50: выплата 2500 ₽, налог игрока (2500 − 1000) × 13% = 195 ₽, на руки — 2305 ₽. Для букмекера эта ставка уменьшает GGR на 1500 ₽ (принято 1000 ₽, выплачено 2500 ₽); 7% считается не с отдельной ставки, а с итога по всем ставкам за налоговый период, где выигрыши одних клиентов гасятся проигрышами других.</p><p>Игроку поэтому не нужно ничего рассчитывать по налогу букмекера: его платит компания. НДФЛ при выплате удерживает сам букмекер как налоговый агент; порядок, шкала ставок 13–22% и таблица расчёта — в материале <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">«Налог на выигрыш в ставках»</a>.</p>
 <h2 id="chto-eto-znachit-dlya-igroka-i-chego-eto-ne-znachit">Что это значит для игрока — и чего это НЕ значит</h2>
-<p><strong>Налог 7% с игрового дохода — не налог с вашего личного выигрыша.</strong> НДФЛ с выигрыша — отдельный налог, но его порядок изменил тот же закон № 425-ФЗ: с 1 января 2026 года букмекер как налоговый агент удерживает налог с каждой выплаты независимо от суммы (порог 15 000 ₽ отменён), а база равна выигрышу за вычетом ставки. Подробный расчёт — в статье <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">«Налог на выигрыш в ставках»</a>.</p><p>Что реально может измениться для игрока — это косвенные эффекты роста нагрузки на сам бизнес букмекеров:</p><ul><li><strong>Возможно, меньше бонусов и промо.</strong> Участники рынка прогнозировали сокращение маркетинговых бюджетов, поэтому приветственные бонусы и фрибеты могут стать скромнее; проверяйте условия конкретной БК, а не общие прогнозы.</li><li><strong>Соблазн переоценить офшоры.</strong> Именно в такой момент часть игроков может решить, что у нелегальных операторов «выгоднее» из-за более крупных бонусов. Это ложная экономия: у офшоров нет российской защиты, расчёты не идут через ЦУПИС, выплату выигрыша нельзя гарантировать, а риск блокировки счёта и потери денег остаётся без возможности пожаловаться в российские инстанции — см. <a href="/shkola/legalnost/pochemu-nelegalnye-bk-mogut-ne-vyplatit">почему нелегальные БК могут не выплатить</a>.</li><li><strong>Налог 7% не вписан в коэффициент отдельной строкой</strong> — его платит букмекер с валового дохода, а не с каждой ставки. Но затраты могут закладываться в маржу, поэтому сравнивайте коэффициенты на одно событие у нескольких БК (пример расчёта маржи — ниже).</li></ul>
+<p><strong>Налог 7% с игрового дохода — не налог с вашего личного выигрыша.</strong> НДФЛ с выигрыша — отдельный налог, но его порядок изменил тот же закон № 425-ФЗ: с 1 января 2026 года букмекер как налоговый агент удерживает налог с каждой выплаты независимо от суммы (порог 15 000 ₽ отменён), а база равна выигрышу за вычетом ставки. Подробный расчёт — в статье <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">«Налог на выигрыш в ставках»</a>.</p><p>Что реально может измениться для игрока — это косвенные эффекты роста нагрузки на сам бизнес букмекеров:</p><ul><li><strong>Возможно, меньше бонусов и промо.</strong> Участники рынка прогнозировали сокращение маркетинговых бюджетов, поэтому приветственные бонусы и фрибеты могут стать скромнее; проверяйте условия конкретной БК, а не общие прогнозы.</li><li><strong>Соблазн переоценить офшоры.</strong> Именно в такой момент часть игроков может решить, что у нелегальных операторов «выгоднее» из-за более крупных бонусов. Это ложная экономия: у офшоров нет российской защиты, расчёты не идут через ЦУПИС, выплату выигрыша нельзя гарантировать, а риск блокировки счёта и потери денег остаётся без возможности пожаловаться в российские инстанции — см. <a href="/shkola/legalnost/pochemu-nelegalnye-bk-mogut-ne-vyplatit">почему нелегальные БК могут не выплатить</a>.</li><li><strong>Налог 7% не вписан в коэффициент отдельной строкой</strong> — его платит букмекер с валового дохода, а не с каждой ставки. Но затраты могут закладываться в маржу, поэтому сравнивайте коэффициенты на одно событие у нескольких БК (пример расчёта маржи — ниже).</li></ul>
 <h2 id="kak-proverit-stali-li-koefficienty-huzhe">Как проверить, стали ли коэффициенты хуже</h2>
-<p>Маржа букмекера на рынке из двух исходов считается по формуле: 1 ÷ K1 + 1 ÷ K2 − 1, где K1 и K2 — коэффициенты.</p><p>Пример: при коэффициентах 1,90 и 1,90 сумма обратных величин равна 0,5263 + 0,5263 = 1,0526, то есть маржа составляет около 5,3%. При коэффициентах 1,85 и 1,85 сумма равна 1,0811, и маржа возрастает до 8,1%. Если на одно и то же событие у одной БК маржа 5,3%, а у другой 8,1%, вторая забирает заметно больше с каждой ставки.</p><p>Сравнивать нужно одно и то же событие и один и тот же рынок в один момент времени; для расчёта есть <a href="/instrumenty/kalkulyator-marzhi">калькулятор маржи</a>, а термин объяснён в материале <a href="/shkola/terminy/chto-takoe-marzha-bukmekera">«Что такое маржа букмекера»</a>. Какой была маржа до 2026 года, по открытым данным определить нельзя, поэтому вывод о влиянии налога на коэффициенты можно сделать только по собственным замерам.</p>
+<p>Маржа букмекера на рынке из двух исходов считается по формуле: 1 ÷ K1 + 1 ÷ K2 − 1, где K1 и K2 — коэффициенты.</p><p>Пример: при коэффициентах 1,90 и 1,90 сумма обратных величин равна 0,5263 + 0,5263 = 1,0526, то есть маржа составляет около 5,3%. При коэффициентах 1,85 и 1,85 сумма равна 1,0811, и маржа возрастает до 8,1%. Если на одно и то же событие у одной БК маржа 5,3%, а у другой 8,1%, вторая забирает заметно больше с каждой ставки.</p><p>Сравнивать нужно одно и то же событие и один и тот же рынок в один момент времени; для расчёта есть <a href="/instrumenty/kalkulyator-marzhi">калькулятор маржи</a>, а термин объяснён в материале <a href="/shkola/terminy/chto-takoe-marzha-bukmekera">«Что такое маржа букмекера»</a>. Какой была маржа до 2026 года, по открытым данным определить нельзя, поэтому вывод о влиянии налога на коэффициенты можно сделать только по собственным замерам.</p>
     <h2 id="faq">Частые вопросы</h2>
-    <div class="faq"><details><summary>С какого числа действует новый налог для букмекеров?</summary><p>С 1 января 2026 года. Закон № 425-ФЗ принят Государственной думой в ноябре 2025 года и подписан 28 ноября 2025 года.</p></details>
-<details><summary>Это налог с моего выигрыша или с бизнеса букмекера?</summary><p>С бизнеса букмекера — это налог на его валовой игровой доход и прибыль. Налог с вашего личного выигрыша (НДФЛ) считается по отдельным правилам: с 1 января 2026 года его с каждой выплаты удерживает букмекер как налоговый агент, а база равна выигрышу за вычетом ставки.</p></details>
+    <div class="faq"><details><summary>С какого числа действует новый налог для букмекеров?</summary><p>С 1 января 2026 года. Закон № 425-ФЗ принят Государственной думой в ноябре 2025 года и подписан 28 ноября 2025 года.</p></details>
+<details><summary>Это налог с моего выигрыша или с бизнеса букмекера?</summary><p>С бизнеса букмекера — это налог на его валовой игровой доход и прибыль. Налог с вашего личного выигрыша (НДФЛ) считается по отдельным правилам: с 1 января 2026 года его с каждой выплаты удерживает букмекер как налоговый агент, а база равна выигрышу за вычетом ставки.</p></details>
 <details><summary>Почему выросла в 60 раз, а не, скажем, в 2 раза?</summary><p>Потому что раньше действовали в основном небольшие фиксированные сборы (платежи за пункты приёма ставок и процессинговые центры), а не налог, привязанный к реальным объёмам оборота отрасли. Переход на процент от GGR и налог на прибыль вывел нагрузку на принципиально другой порядок величины.</p></details>
 <details><summary>Значит ли это, что легальные БК стали хуже, чем нелегальные с их бонусами?</summary><p>Нет. Меньшие бонусы — это неудобство, а отсутствие лицензии у нелегального оператора — это риск вообще не получить выигрыш и не иметь никакой защиты. Размер бонуса не компенсирует потерю гарантии выплаты.</p></details>
-<details><summary>Сколько букмекеры платят на спорт помимо налога?</summary><p>Целевые отчисления составляют 2,25% принятых ставок в 2026–2027 годах и 2,5% с 2028 года, но не менее 30 млн ₽ в квартал (ст. 6.2 закона № 244-ФЗ). Они идут на профессиональный и детско-юношеский спорт и на Российский спортивный фонд, а не в бюджет.</p></details>
-<details><summary>Может ли нагрузка на букмекеров вырасти ещё?</summary><p>Есть законопроект сенатора Гибатдинова и депутатов КПРФ: с 2028 года он предлагает поднять целевые отчисления на спорт с 2,5% до 10%. В конце сентября 2026 года правительство дало на него отрицательный отзыв; сведений о принятии нет.</p></details></div>
+<details><summary>Сколько букмекеры платят на спорт помимо налога?</summary><p>Целевые отчисления составляют 2,25% принятых ставок в 2026–2027 годах и 2,5% с 2028 года, но не менее 30 млн ₽ в квартал (ст. 6.2 закона № 244-ФЗ). Они идут на профессиональный и детско-юношеский спорт и на Российский спортивный фонд, а не в бюджет.</p></details>
+<details><summary>Может ли нагрузка на букмекеров вырасти ещё?</summary><p>Есть законопроект сенатора Гибатдинова и депутатов КПРФ: с 2028 года он предлагает поднять целевые отчисления на спорт с 2,5% до 10%. В конце сентября 2026 года правительство дало на него отрицательный отзыв; сведений о принятии нет.</p></details></div>
     <h2 id="istochniki">Источники · проверено 28.09.2026</h2>
-<ul class="sources"><li><a href="https://www.garant.ru/products/ipo/prime/doc/413065215/" rel="noopener" target="_blank">Гарант: Федеральный закон от 28.11.2025 № 425-ФЗ — глава 25.5 НК РФ «Налог на игорный бизнес» (7 % с дохода от ставок за вычетом выигрышей), налог на прибыль 25 %</a></li><li><a href="https://www.vedomosti.ru/sport/around/articles/2025/12/26/1166565-gosudarstvo-uvelichilo-nalogovuyu-nagruzku-na-bukmekerov" rel="noopener" target="_blank">«Ведомости.Спорт» (26.12.2025): закон года — государство увеличило налоговую нагрузку на букмекеров</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_64924/" rel="noopener" target="_blank">Федеральный закон № 244-ФЗ о государственном регулировании азартных игр — расчёты через Единый ЦУПИС, идентификация участника</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_64924/b88f09630b6a7135acfd3968937c47b5fd9e7d39/" rel="noopener" target="_blank">Закон № 244-ФЗ, ст. 6.2 — целевые отчисления букмекерских контор: база («выручка»), ставки 2,25% (2026–2027) и 2,5% (с 2028), минимум 30 млн ₽ в квартал, срок уплаты</a></li><li><a href="https://www.buhgalteria.ru/article/novyy-poryadok-nalogooblozheniya-organizatorov-azartnykh-igr-s-2026-goda-" rel="noopener" target="_blank">Бухгалтерия.ру: новый порядок налогообложения организаторов азартных игр с 2026 года — 7% с дохода от приёма ставок за вычетом выигрышей и отчислений спортфедерациям, налог стал федеральным</a></li><li><a href="https://www.sports.ru/betting/industry/1116982161-gosduma-prinyala-vo-vtorom-chtenii-novye-nalogi-dlya-bukmekerov-7-ot-g.html" rel="noopener" target="_blank">Sports.ru, «Беттинг-индустрия» (18.11.2025): Госдума приняла во втором чтении налоги для букмекеров — 7% от GGR вместо 5% от оборота и 25% от прибыли</a></li><li><a href="https://investfuture.ru/articles/bukmekery-adaptiruyutsya-k-novym-nalogovym-usloviyam-s-1-yanvarya-2026-goda-1170288364" rel="noopener" target="_blank">Инвестфутуре (18.11.2025): до 2026 года отчисления на спорт — 2% от общего объёма принятых ставок, далее 2,25% и 2,5%</a></li><li><a href="https://m.business-gazeta.ru/news/688223" rel="noopener" target="_blank">«Бизнес Online» со ссылкой на РИА «Новости» (20.11.2025): прежние платежи букмекеров — 10–14 тыс. ₽ за пункт приёма ставок, 2,5–10 млн ₽ за процессинговые центры</a></li><li><a href="https://www.pnp.ru/social/celevye-otchisleniya-bukmekerov-na-sport-predlozhili-uvelichit-do-10.html" rel="noopener" target="_blank">Парламентская газета (03.04.2026): законопроект сенатора А. Гибатдинова и депутатов КПРФ о повышении целевых отчислений букмекеров до 10% и минимума до 50 млн ₽ в квартал</a></li><li><a href="https://www.sports.ru/betting/industry/1117380994-kabmin-vystupil-protiv-zakonoproekta-o-povyshenii-otchislenij-bukmeker.html" rel="noopener" target="_blank">Sports.ru, «Беттинг-индустрия» (сентябрь 2026): Кабмин выступил против законопроекта о повышении отчислений букмекеров до 10%</a></li></ul>
+<ul class="sources"><li><a href="https://www.garant.ru/products/ipo/prime/doc/413065215/" rel="noopener" target="_blank">Гарант: Федеральный закон от 28.11.2025 № 425-ФЗ — глава 25.5 НК РФ «Налог на игорный бизнес» (7 % с дохода от ставок за вычетом выигрышей), налог на прибыль 25 %</a></li><li><a href="https://www.vedomosti.ru/sport/around/articles/2025/12/26/1166565-gosudarstvo-uvelichilo-nalogovuyu-nagruzku-na-bukmekerov" rel="noopener" target="_blank">«Ведомости.Спорт» (26.12.2025): закон года — государство увеличило налоговую нагрузку на букмекеров</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_64924/" rel="noopener" target="_blank">Федеральный закон № 244-ФЗ о государственном регулировании азартных игр — расчёты через Единый ЦУПИС, идентификация участника</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_64924/b88f09630b6a7135acfd3968937c47b5fd9e7d39/" rel="noopener" target="_blank">Закон № 244-ФЗ, ст. 6.2 — целевые отчисления букмекерских контор: база («выручка»), ставки 2,25% (2026–2027) и 2,5% (с 2028), минимум 30 млн ₽ в квартал, срок уплаты</a></li><li><a href="https://www.buhgalteria.ru/article/novyy-poryadok-nalogooblozheniya-organizatorov-azartnykh-igr-s-2026-goda-" rel="noopener" target="_blank">Бухгалтерия.ру: новый порядок налогообложения организаторов азартных игр с 2026 года — 7% с дохода от приёма ставок за вычетом выигрышей и отчислений спортфедерациям, налог стал федеральным</a></li><li><a href="https://www.sports.ru/betting/industry/1116982161-gosduma-prinyala-vo-vtorom-chtenii-novye-nalogi-dlya-bukmekerov-7-ot-g.html" rel="noopener" target="_blank">Sports.ru, «Беттинг-индустрия» (18.11.2025): Госдума приняла во втором чтении налоги для букмекеров — 7% от GGR вместо 5% от оборота и 25% от прибыли</a></li><li><a href="https://investfuture.ru/articles/bukmekery-adaptiruyutsya-k-novym-nalogovym-usloviyam-s-1-yanvarya-2026-goda-1170288364" rel="noopener" target="_blank">Инвестфутуре (18.11.2025): до 2026 года отчисления на спорт — 2% от общего объёма принятых ставок, далее 2,25% и 2,5%</a></li><li><a href="https://m.business-gazeta.ru/news/688223" rel="noopener" target="_blank">«Бизнес Online» со ссылкой на РИА «Новости» (20.11.2025): прежние платежи букмекеров — 10–14 тыс. ₽ за пункт приёма ставок, 2,5–10 млн ₽ за процессинговые центры</a></li><li><a href="https://www.pnp.ru/social/celevye-otchisleniya-bukmekerov-na-sport-predlozhili-uvelichit-do-10.html" rel="noopener" target="_blank">Парламентская газета (03.04.2026): законопроект сенатора А. Гибатдинова и депутатов КПРФ о повышении целевых отчислений букмекеров до 10% и минимума до 50 млн ₽ в квартал</a></li><li><a href="https://www.sports.ru/betting/industry/1117380994-kabmin-vystupil-protiv-zakonoproekta-o-povyshenii-otchislenij-bukmeker.html" rel="noopener" target="_blank">Sports.ru, «Беттинг-индустрия» (сентябрь 2026): Кабмин выступил против законопроекта о повышении отчислений букмекеров до 10%</a></li></ul>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/fonbet">Фонбет</a>, <a href="/bukmekery/ligastavok">Лига Ставок</a>, <a href="/bukmekery/pari">PARI</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
     <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
@@ -133,19 +313,16 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 
 <footer class="footer"><div class="container">
   <div class="footer-grid">
-    <div class="footer-brand">
-      <a class="logo" href="/"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</a>
-      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх.</p>
-      <span class="age-pill"><b>18+</b> Возрастная категория</span>
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
     </div>
-    <div><h4>Рейтинги</h4><a href="/rating">Каталог легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/bonusy">Бонусы и фрибеты</a><a href="/promokody">Промокоды</a><a href="/reestr">Реестр ЕРАИ</a></div>
-    <div><h4>Разобраться</h4><a href="/stavki">Ставки по видам спорта</a><a href="/shkola">Школа ставок</a><a href="/instrumenty">Калькуляторы</a><a href="/novosti">Новости</a></div>
-    <div><h4>О проекте</h4><a href="/contacts">О проекте и контакты</a><a href="/avtor/aleksej-kamnev">Редакция и автор</a><a href="/eksperty">Эксперты и партнёры</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/politika-konfidencialnosti">Политика конфиденциальности</a></div>
-    <div><h4>Ответственная игра</h4><a href="/shkola/otvetstvennaya-igra/priznaki-ludomanii">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/shkola/dengi-i-nalogi/limity-i-samokontrol">Лимиты и самоконтроль</a></div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty">Инструменты</a></div>
+    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/eksperty">Эксперты и партнёры</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
   </div>
   <div class="legal-box">
-    <span><b>18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
-    <span>Материалы могут содержать рекламу; отдельные места размещения партнёров оплачены. Оценки редакции ориентировочные; размеры и условия бонусов уточняйте на официальных сайтах букмекеров.</span>
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
     <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
   </div>
 </div></footer>
@@ -155,6 +332,5 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
 </div>
 
-<script src="/assets/site.js" defer></script>
 </body>
 </html>

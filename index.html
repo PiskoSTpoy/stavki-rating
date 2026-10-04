@@ -294,8 +294,6 @@
   .fade { animation: fadeIn .5s ease both; }
   @keyframes fadeIn { from { opacity: .001; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 </style>
-<link rel="stylesheet" href="/assets/chrome.css?v=20261004">
-<meta name="theme-color" content="#07090F">
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
 (function(m,e,t,r,i,k,a){
@@ -312,31 +310,28 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Рейтинг легальных букмекеров России — stavki-rating.ru", "url": "https://stavki-rating.ru/", "inLanguage": "ru-RU", "datePublished": "2026-09-01", "dateModified": "2026-10-03", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING", "url": "https://stavki-rating.ru"}}</script>
 </head>
 <body>
-<a class="skip" href="#main">К содержанию</a>
 
 <header class="site-header"><div class="container">
-  <a class="logo" href="/">
+  <a class="logo" href="#top">
     <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
     STAVKI RATING
   </a>
-  <nav class="nav" aria-label="Основное меню">
-    <a href="/rating">Рейтинг</a>
-    <a href="/rejting">По критериям</a>
-    <a href="/stavki">Виды спорта</a>
-    <a href="/instrumenty">Инструменты</a>
-    <a href="/shkola">Школа</a>
-    <a href="/bonusy">Бонусы</a>
+  <nav class="nav">
+    <a href="#top3" class="active">Букмекеры</a>
+    <a href="#top3">Бонусы</a>
+    <a href="#compare">Сравнение</a>
+    <a href="#tools">Инструменты</a>
+    <a href="#school">Школа</a>
   </nav>
   <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
 </div></header>
 
-<main id="main">
 <a id="top"></a>
 
 <!-- HERO (компактный) -->
 <section class="hero"><div class="container hero-grid">
   <div class="fade">
-    <h1>Рейтинг легальных букмекеров России — октябрь 2026</h1>
+    <h1>Рейтинг легальных букмекеров России — сентябрь 2026</h1>
 <div class="small muted meta-row" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;opacity:.85"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-01">01.09.2026</time></span><span>·</span><span>обновлено <time datetime="2026-10-03">03.10.2026</time></span></div>
     <p class="lead">16 букмекерских контор из реестра ЕРАИ с лицензией ФНС: бонусы, фрибеты, промокоды и скорость вывода — коротко и по делу. Данные сверяются по перечню ФНС и списку партнёров Единого ЦУПИС.</p>
     <div class="hero-cta">
@@ -399,10 +394,10 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
         <label class="field">Коэффициент<input id="odds" type="number" value="1.85" step="0.01" min="1.01" oninput="calc()"></label>
       </div>
       <div class="result">
-        <div><small>Выплата при выигрыше</small><b class="num" id="pay">1 850 ₽</b></div>
-        <div><small>Чистая прибыль</small><b class="num" id="profit">850 ₽</b></div>
+        <div><small>Выплата при выигрыше</small><b class="num" id="pay">1 850 ₽</b></div>
+        <div><small>Чистая прибыль</small><b class="num" id="profit">850 ₽</b></div>
       </div>
-      <p class="small muted">Подразумеваемая вероятность: <b id="prob">54,1 %</b>. Расчёт не гарантирует исход — ставки связаны с риском.</p>
+      <p class="small muted">Подразумеваемая вероятность: <b id="prob">54,1 %</b>. Расчёт не гарантирует исход — ставки связаны с риском.</p>
     </div>
     <div style="display:grid;gap:12px" id="toolTiles"></div>
   </div>
@@ -412,9 +407,9 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <section class="section" id="school"><div class="container">
   <div class="section-head"><div><h2 id="shkola-bettinga">Школа беттинга</h2><p>166 статей с определениями, примерами и расчётом — точно и без воды.</p></div><a class="link-more" href="#school">Все материалы →</a></div>
   <div class="articles">
-    <div class="article"><small>Термины · 6 мин</small><b>Что такое фора и как её читать на примере матча</b><small>Обновлено 2 сентября 2026</small></div>
-    <div class="article"><small>Деньги и налоги · 5 мин</small><b>Налог на выигрыш в БК: кто удерживает и когда</b><small>Обновлено 2 сентября 2026</small></div>
-    <div class="article"><small>Ответственная игра · 4 мин</small><b>Самозапрет через Госуслуги: как оформить и что он даёт</b><small>Обновлено 2 сентября 2026</small></div>
+    <div class="article"><small>Термины · 6 мин</small><b>Что такое фора и как её читать на примере матча</b><small>Обновлено 2 сентября 2026</small></div>
+    <div class="article"><small>Деньги и налоги · 5 мин</small><b>Налог на выигрыш в БК: кто удерживает и когда</b><small>Обновлено 2 сентября 2026</small></div>
+    <div class="article"><small>Ответственная игра · 4 мин</small><b>Самозапрет через Госуслуги: как оформить и что он даёт</b><small>Обновлено 2 сентября 2026</small></div>
   </div>
 </div></section>
 
@@ -425,29 +420,24 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <details><summary>Что значит «легальный букмекер» в этом рейтинге?</summary><p>Оператор из перечня организаторов азартных игр ФНС с лицензией на букмекерскую деятельность и подключением к Единому ЦУПИС — таких 16 контор показаны в сравнении.</p></details>
     <details><summary>Как часто обновляются данные о букмекерах?</summary><p>Статус каждой конторы сверяется по перечню ФНС и списку партнёров Единого ЦУПИС; актуальный снимок и история изменений — на странице <a href="/reestr">«Реестр»</a>.</p></details>
     <details><summary>Влияют ли партнёрские ссылки на оценку букмекера?</summary><p>Нет. Редакция получает вознаграждение за переходы по части ссылок, но это не влияет на оценки в рейтинге.</p></details>
-    <details><summary>С какого возраста можно делать ставки?</summary><p>С 18 лет. Участие в азартных играх может привести к игровой зависимости — подробнее в разделе <a href="/shkola/otvetstvennaya-igra/priznaki-ludomanii">«Ответственная игра»</a>.</p></details>
+    <details><summary>С какого возраста можно делать ставки?</summary><p>С 18 лет. Участие в азартных играх может привести к игровой зависимости — подробнее в разделе <a href="/shkola/otvetstvennaya-igra/priznaki-ludomanii">«Ответственная игра»</a>.</p></details>
   </div>
 </div></section>
-
-</main>
 
 <!-- ФУТЕР -->
 <footer class="footer"><div class="container">
   <div class="footer-grid">
-    <div class="footer-brand">
-      <a class="logo" href="/"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</a>
-      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх.</p>
-      <span class="age-pill"><b>18+</b> Возрастная категория</span>
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Возрастная категория 18+. Размеры бонусов, рейтинги и другие показатели носят ориентировочный характер и могут меняться — точные и актуальные условия смотрите на официальных сайтах букмекеров.</p>
     </div>
-    <div><h4>Рейтинги</h4><a href="/rating">Каталог легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/bonusy">Бонусы и фрибеты</a><a href="/promokody">Промокоды</a><a href="/reestr">Реестр ЕРАИ</a></div>
-    <div><h4>Разобраться</h4><a href="/stavki">Ставки по видам спорта</a><a href="/shkola">Школа ставок</a><a href="/instrumenty">Калькуляторы</a><a href="/novosti">Новости</a></div>
-    <div><h4>О проекте</h4><a href="/contacts">О проекте и контакты</a><a href="/avtor/aleksej-kamnev">Редакция и автор</a><a href="/eksperty">Эксперты и партнёры</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/politika-konfidencialnosti">Политика конфиденциальности</a></div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/bonusy">Промокоды и фрибеты</a><a href="#compare">Сравнение</a><a href="#top3">Приложения</a></div>
+    <div><h4>Редакция</h4><a href="/contacts">О проекте и редакция</a><a href="/eksperty">Эксперты и партнёры</a><a href="#compare">Методика рейтинга</a><a href="#top">Реклама на сайте</a><a href="#top">Политика конфиденциальности</a></div>
     <div><h4>Ответственная игра</h4><a href="/shkola/otvetstvennaya-igra/priznaki-ludomanii">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/shkola/dengi-i-nalogi/limity-i-samokontrol">Лимиты и самоконтроль</a></div>
   </div>
   <div class="legal-box">
-    <span><b>18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
     <span>Материалы могут содержать рекламу; отдельные места размещения партнёров оплачены. Оценки редакции ориентировочные; размеры и условия бонусов уточняйте на официальных сайтах букмекеров.</span>
-    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
   </div>
 </div></footer>
 
@@ -456,7 +446,6 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   <a class="btn btn-primary" href="#top3">Смотреть рейтинг</a>
 </div>
 <div class="toast" id="toast">Скопировано</div>
-<script src="/assets/site.js" defer></script>
 
 <script>
 /* ---------- Данные (реквизиты БК — проверены 02.09.2026; бонусы/маржа/скорость вывода — ДЕМО, не измерены) ----------
@@ -467,22 +456,22 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
      конверсию) не считаются напрямую в одну шкалу без данных по LTV игрока — это эвристика по номиналу, не финрасчёт.
    - 4.0-4.7: БК без партнёрской ссылки (0 ₽ с любого трафика) — порядок внутри тира не имеет критерия. */
 const BRANDS = [
-  { slug:'marathonbet', name:'Марафон',     dom:'marathonbet.ru', color:'#16A34A', rating:5.0, bonus:'Бонус до 3 300 ₽', payout:'до 6 часов', margin:'5,2 %' },
-  { slug:'pari',        name:'PARI',        dom:'pari.ru',        color:'#8B5CF6', rating:4.9, bonus:'5 фрибетов по 1 000 ₽', payout:'до 1 часа', margin:'5,0 %' },
-  { slug:'zenit',       name:'Зенит',       dom:'zenit.win',      color:'#1D4ED8', rating:4.9, bonus:'Бонус до 5 000 ₽', payout:'до 12 часов', margin:'5,7 %' },
-  { slug:'melbet',      name:'Мелбет',      dom:'melbet.ru',      color:'#F97316', rating:4.8, bonus:'100% на депозит до 15 000 ₽', payout:'до 24 часов', margin:'5,9 %' },
-  { slug:'fonbet',      name:'Фонбет',      dom:'fon.bet',        color:'#D8312B', rating:4.8, bonus:'Фрибет до 15 000 ₽', payout:'до 15 мин', margin:'4,5 %' },
-  { slug:'betcity',     name:'Бетсити',     dom:'betcity.ru',     color:'#2563EB', rating:4.8, bonus:'Фрибет до 3 000 ₽', payout:'до 2 часов', margin:'5,5 %' },
-  { slug:'winline',     name:'Winline',     dom:'winline.ru',     color:'#FF6A13', rating:4.7, bonus:'Фрибет 3 000 ₽ новым', payout:'до 30 мин', margin:'5,1 %' },
-  { slug:'ligastavok',  name:'Лига Ставок', dom:'ligastavok.ru',  color:'#F59E0B', rating:4.6, bonus:'Фрибет 1 500 ₽', payout:'до 1 часа', margin:'5,4 %' },
-  { slug:'betboom',     name:'BetBoom',     dom:'betboom.ru',     color:'#06B6D4', rating:4.5, bonus:'Фрибет 2 000 ₽', payout:'до 2 часов', margin:'5,3 %' },
-  { slug:'olimpbet',    name:'OLIMPBET',    dom:'olimp.bet',      color:'#E11D48', rating:4.4, bonus:'Фрибет 1 000 ₽', payout:'до 3 часов', margin:'5,6 %' },
-  { slug:'leon',        name:'Leon',        dom:'leon.ru',        color:'#EAB308', rating:4.3, bonus:'Приветственный фрибет', payout:'до 24 часов', margin:'5,8 %' },
-  { slug:'baltbet',     name:'Балтбет',     dom:'baltbet.ru',     color:'#0EA5E9', rating:4.2, bonus:'Фрибет 500 ₽', payout:'до 24 часов', margin:'6,0 %' },
-  { slug:'sportbet',    name:'Спортбет',    dom:'sportbet.ru',    color:'#DC2626', rating:4.1, bonus:'Бонус за регистрацию', payout:'до 24 часов', margin:'6,1 %' },
-  { slug:'24bet',       name:'24bet',       dom:'24bet.ru',       color:'#7C3AED', rating:4.0, bonus:'Бонус новым', payout:'до 24 часов', margin:'6,2 %' },
-  { slug:'bettery',     name:'Bettery',     dom:'bettery.ru',     color:'#0891B2', rating:4.0, bonus:'Бонус новым', payout:'до 24 часов', margin:'6,0 %' },
-  { slug:'bet-m',       name:'Бет-М',       dom:'bet-m.ru',       color:'#4F46E5', rating:4.0, bonus:'Бонус новым', payout:'до 24 часов', margin:'6,3 %' },
+  { slug:'marathonbet', name:'Марафон',     dom:'marathonbet.ru', color:'#16A34A', rating:5.0, bonus:'Бонус до 3 300 ₽', payout:'до 6 часов', margin:'5,2 %' },
+  { slug:'pari',        name:'PARI',        dom:'pari.ru',        color:'#8B5CF6', rating:4.9, bonus:'5 фрибетов по 1 000 ₽', payout:'до 1 часа', margin:'5,0 %' },
+  { slug:'zenit',       name:'Зенит',       dom:'zenit.win',      color:'#1D4ED8', rating:4.9, bonus:'Бонус до 5 000 ₽', payout:'до 12 часов', margin:'5,7 %' },
+  { slug:'melbet',      name:'Мелбет',      dom:'melbet.ru',      color:'#F97316', rating:4.8, bonus:'100% на депозит до 15 000 ₽', payout:'до 24 часов', margin:'5,9 %' },
+  { slug:'fonbet',      name:'Фонбет',      dom:'fon.bet',        color:'#D8312B', rating:4.8, bonus:'Фрибет до 15 000 ₽', payout:'до 15 мин', margin:'4,5 %' },
+  { slug:'betcity',     name:'Бетсити',     dom:'betcity.ru',     color:'#2563EB', rating:4.8, bonus:'Фрибет до 3 000 ₽', payout:'до 2 часов', margin:'5,5 %' },
+  { slug:'winline',     name:'Winline',     dom:'winline.ru',     color:'#FF6A13', rating:4.7, bonus:'Фрибет 3 000 ₽ новым', payout:'до 30 мин', margin:'5,1 %' },
+  { slug:'ligastavok',  name:'Лига Ставок', dom:'ligastavok.ru',  color:'#F59E0B', rating:4.6, bonus:'Фрибет 1 500 ₽', payout:'до 1 часа', margin:'5,4 %' },
+  { slug:'betboom',     name:'BetBoom',     dom:'betboom.ru',     color:'#06B6D4', rating:4.5, bonus:'Фрибет 2 000 ₽', payout:'до 2 часов', margin:'5,3 %' },
+  { slug:'olimpbet',    name:'OLIMPBET',    dom:'olimp.bet',      color:'#E11D48', rating:4.4, bonus:'Фрибет 1 000 ₽', payout:'до 3 часов', margin:'5,6 %' },
+  { slug:'leon',        name:'Leon',        dom:'leon.ru',        color:'#EAB308', rating:4.3, bonus:'Приветственный фрибет', payout:'до 24 часов', margin:'5,8 %' },
+  { slug:'baltbet',     name:'Балтбет',     dom:'baltbet.ru',     color:'#0EA5E9', rating:4.2, bonus:'Фрибет 500 ₽', payout:'до 24 часов', margin:'6,0 %' },
+  { slug:'sportbet',    name:'Спортбет',    dom:'sportbet.ru',    color:'#DC2626', rating:4.1, bonus:'Бонус за регистрацию', payout:'до 24 часов', margin:'6,1 %' },
+  { slug:'24bet',       name:'24bet',       dom:'24bet.ru',       color:'#7C3AED', rating:4.0, bonus:'Бонус новым', payout:'до 24 часов', margin:'6,2 %' },
+  { slug:'bettery',     name:'Bettery',     dom:'bettery.ru',     color:'#0891B2', rating:4.0, bonus:'Бонус новым', payout:'до 24 часов', margin:'6,0 %' },
+  { slug:'bet-m',       name:'Бет-М',       dom:'bet-m.ru',       color:'#4F46E5', rating:4.0, bonus:'Бонус новым', payout:'до 24 часов', margin:'6,3 %' },
 ];
 const RATINGS = [
   ['С фрибетом за регистрацию','7 БК','/rejting/s-fribetom'], ['С высокими коэффициентами','по марже','/rejting/po-koefficientam'], ['С быстрым выводом','до 1 часа','/rejting/s-bystrym-vyvodom'],

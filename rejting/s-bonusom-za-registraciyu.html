@@ -29,9 +29,190 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="/assets/site.css?v=20261004">
-<link rel="stylesheet" href="/assets/chrome.css?v=20261004">
-<meta name="theme-color" content="#07090F">
+<style>
+  :root {
+    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
+    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
+    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
+    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
+    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
+    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
+    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
+    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
+    --font-display: "Golos Text", "Inter", system-ui, sans-serif;
+    --font-sans: "Golos Text", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    --container: 1240px;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--volt); }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.12; margin: 0; text-wrap: balance; letter-spacing: -.015em; }
+  h1 { font-size: clamp(23px, 2.8vw, 35px); }
+  h2 { font-size: clamp(21px, 2.4vw, 28px); }
+  h3 { font-size: 18px; font-weight: 500; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
+
+  /* Тонкая полоса дисклеймера */
+  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
+
+  /* Шапка */
+  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
+  .nav a { color: var(--muted); }
+  .nav a:hover, .nav a.active { color: var(--text); }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
+  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
+  @media (max-width: 940px) { .nav { display: none; } }
+
+  /* Единая колонка контента: шапка статьи, оглавление и текст выровнены по одному левому краю
+     (раньше .prose с max-width:75ch центрировался отдельно от шапки на всю ширину контейнера). */
+  :root { --col: 820px; }
+  main .container { width: min(var(--col), 100% - 32px); }
+
+  /* Креатив «на всю страницу»: два полотна на всю высоту окна по краям, статья — по центру.
+     Полотно — картинка 9:16 высотой в окно (background-size: auto 100%), ширина по полю слева/справа.
+     Бейджи БК позиционируются в процентах от высоты, поэтому всегда попадают в кольца арта. */
+  .wall { display: none; }
+  @media (min-width: 1500px) {
+    .wall { display: block; position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .wall-side { --W: calc(100vh * .5647); --r1: 22.35%; --r2: 49.6%; --r3: 77.05%; --bd: .3276;
+      position: absolute; top: 0; bottom: 0; width: min(calc((100vw - var(--col)) / 2), var(--W)); }
+    .wall-side::before { content: ""; position: absolute; inset: 0; background-repeat: no-repeat; background-size: auto 100%; background-position: center; }
+    .wall-left { left: 0; }
+    .wall-left::before { background-image: url(/img/decor/wall-left.webp);
+      -webkit-mask-image: linear-gradient(to right, #000 62%, transparent); mask-image: linear-gradient(to right, #000 62%, transparent); }
+    .wall-right { right: 0; }
+    .wall-right::before { background-image: url(/img/decor/wall-right.webp);
+      -webkit-mask-image: linear-gradient(to left, #000 62%, transparent); mask-image: linear-gradient(to left, #000 62%, transparent); }
+    .wall-badge { position: absolute; left: 50%; width: calc(var(--W) * var(--bd)); aspect-ratio: 1; transform: translate(-50%, -50%);
+      border-radius: 50%; overflow: hidden; pointer-events: auto; display: flex; align-items: center; justify-content: center; background: #0B0E16;
+      box-shadow: 0 0 0 3px rgba(200,255,77,.55), 0 0 28px rgba(200,255,77,.35); transition: transform .25s ease, box-shadow .25s ease; animation: wallpulse 3.4s ease-in-out infinite; }
+    .wall-badge:nth-child(2) { animation-delay: .5s; } .wall-badge:nth-child(3) { animation-delay: 1s; }
+    .wall-badge:hover { transform: translate(-50%, -50%) scale(1.07); box-shadow: 0 0 0 3px var(--volt), 0 0 44px rgba(200,255,77,.7); animation-play-state: paused; }
+    .wall-badge img { width: 74%; height: 74%; object-fit: contain; border-radius: 18%; }
+    .wall-tag { position: absolute; left: 0; right: 0; bottom: 14px; text-align: center; font-size: 11px; color: var(--muted-2); letter-spacing: .04em; }
+    main { position: relative; z-index: 1; width: calc(var(--col) + 96px); margin-inline: auto; background: rgba(8,11,20,.86);
+      border-inline: 1px solid var(--line); box-shadow: 0 0 80px rgba(0,0,0,.6); backdrop-filter: blur(10px); }
+  }
+  @keyframes wallpulse { 0%,100% { box-shadow: 0 0 0 3px rgba(200,255,77,.55), 0 0 22px rgba(200,255,77,.28); } 50% { box-shadow: 0 0 0 3px rgba(200,255,77,.8), 0 0 42px rgba(124,92,255,.55); } }
+  @media (prefers-reduced-motion: reduce) { .wall-badge { animation: none !important; } }
+
+  /* Кнопки */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
+  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
+  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
+  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-official:hover { border-color: var(--muted); color: var(--text); }
+  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
+  .btn-block { width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
+
+  /* Секции */
+  .section { padding: 56px 0; }
+  .section.tight { padding-top: 6px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
+
+  /* Хлебные крошки */
+  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs span { color: var(--muted-2); }
+
+  /* Плитки, инструменты, статьи */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
+  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
+  .tile b { font-size: 15px; }
+  .tile small { color: var(--muted); }
+  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
+  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
+  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
+  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .result small { display: block; color: var(--muted); font-size: 12px; }
+  .result b { font-family: var(--font-display); font-size: 22px; }
+  .result .accent { color: var(--volt); }
+  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
+  .article b { font-size: 16px; line-height: 1.35; }
+  .article small { color: var(--muted); }
+
+  /* Текстовый контент страницы */
+  .prose { max-width: none; display: grid; gap: 14px; }
+  .prose h2 { margin-top: 14px; }
+  .prose h2[id] { scroll-margin-top: 84px; }
+  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
+  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-row a { text-decoration: none; }
+  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; font-size: 14px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin: 3px 0; }
+  .toc a { color: var(--volt); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
+     задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
+  .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
+  .prose p { color: var(--text); }
+  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
+  .prose li { line-height: 1.5; }
+  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
+  .prose strong { color: var(--text); font-weight: 700; }
+  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
+  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
+  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
+  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
+  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose tbody tr:last-child td { border-bottom: none; }
+  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
+  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
+  .faq { display: grid; gap: 10px; }
+  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
+  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 24px 12px 0; list-style: none; position: relative; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: 0; top: 12px; color: var(--muted); font-weight: 400; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details[open] summary { color: var(--volt); }
+  .faq p { color: var(--muted); padding: 0 0 12px; }
+
+  /* Футер */
+  .footer { position: relative; z-index: 1; background: var(--bg); border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .footer a { color: var(--muted); display: block; padding: 3px 0; }
+  .footer a:hover { color: var(--text); }
+  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
+
+  /* Липкая мобильная панель */
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
+  .sticky-cta .btn { flex: 1; }
+  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
+  @media (max-width: 760px) { .sticky-cta { display: flex; } }
+</style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Рейтинги", "item": "https://stavki-rating.ru/rejting"}, {"@type": "ListItem", "position": 3, "name": "Бонус за регистрацию в БК: на что смотреть", "item": "https://stavki-rating.ru/rejting/s-bonusom-za-registraciyu"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Бонус за регистрацию в БК: на что смотреть", "description": "Бонус за регистрацию в букмекерской конторе: чем фрибет отличается от бонуса на депозит, что такое отыгрыш и как оценить реальную ценность предложения.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/rejting/s-bonusom-za-registraciyu", "datePublished": "2026-09-05", "dateModified": "2026-09-28", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Чем фрибет отличается от бонуса на депозит?", "acceptedAnswer": {"@type": "Answer", "text": "Фрибет — разовая ставка за счёт БК без отдельного отыгрыша, но номинал не возвращается. Бонус на депозит начисляется при пополнении и требует отыгрыша по вейджеру, прежде чем его можно вывести."}}, {"@type": "Question", "name": "Что такое вейджер x5?", "acceptedAnswer": {"@type": "Answer", "text": "Это множитель отыгрыша: чтобы получить доступ к бонусу, нужно сделать ставок на сумму, в 5 раз превышающую бонус. Для бонуса 1000 ₽ оборот составит 5000 ₽, часто с условием минимального коэффициента ставок."}}, {"@type": "Question", "name": "Можно ли сразу вывести бонус за регистрацию?", "acceptedAnswer": {"@type": "Answer", "text": "Обычно нет. Бонус на депозит нужно отыграть по условиям, а с фрибета выводится только чистая прибыль после расчёта ставки. Прямой вывод самой бонусной суммы, как правило, недоступен."}}, {"@type": "Question", "name": "Облагается ли выигрыш с бонуса налогом?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Выигрыши у легальных букмекеров облагаются НДФЛ, а с 2026 года оператор удерживает налог как налоговый агент при выплате. Итоговая сумма на руки будет меньше номинала — это стоит закладывать в расчёт."}}, {"@type": "Question", "name": "На что смотреть кроме размера бонуса?", "acceptedAnswer": {"@type": "Answer", "text": "На коэффициент вейджера, срок отыгрыша, минимальные коэффициенты ставок, лимиты и требования к депозиту. Небольшой бонус с мягкими условиями нередко ценнее крупного с жёстким отыгрышем."}}, {"@type": "Question", "name": "Как посчитать, сколько нужно поставить для отыгрыша бонуса?", "acceptedAnswer": {"@type": "Answer", "text": "Умножьте сумму бонуса на вейджер из правил акции: бонус 2000 ₽ с вейджером x5 требует ставок на 10 000 ₽, причём в зачёт идут только ставки с коэффициентом не ниже указанного в правилах."}}]}</script>
@@ -50,7 +231,6 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <!-- /Yandex.Metrika counter -->
 </head>
 <body>
-<a class="skip" href="#main">К содержанию</a>
 
 <div class="wall" aria-label="Партнёрские предложения">
 <div class="wall-side wall-left">
@@ -72,7 +252,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
     STAVKI RATING
   </a>
-  <nav class="nav" aria-label="Основное меню">
+  <nav class="nav">
     <a href="/rating">Рейтинг</a>
     <a href="/rejting">По критериям</a>
     <a href="/stavki">Виды спорта</a>
@@ -83,13 +263,13 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
 </div></header>
 
-<main id="main">
+<main>
 
   <section class="section tight"><div class="container">
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/rejting">Рейтинги</a><span>/</span>Бонус за регистрацию в БК: на что смотреть</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Рейтинги ·</div>
     <h1>Бонус за регистрацию в БК: на что смотреть</h1>
-    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>обновлено и проверено <time datetime="2026-09-28">28.09.2026</time></span><span>·</span><span>6 мин чтения</span></div>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>обновлено и проверено <time datetime="2026-09-28">28.09.2026</time></span><span>·</span><span>6 мин чтения</span></div>
     <p class="muted" style="max-width:75ch;margin-top:12px">Бонус за регистрацию — это поощрение, которое легальный букмекер начисляет новому игроку после регистрации и идентификации. Встречаются два основных типа: фрибет (ставка за счёт оператора) и бонус на депозит, который нужно отыграть по установленным условиям. Прежде чем оценивать размер, смотрите на условия отыгрыша: именно они определяют, сможете ли вы реально вывести бонусные средства.</p>
     
     
@@ -102,22 +282,22 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <h2 id="fribet-i-bonus-na-depozit-sravnenie-uslovij">Фрибет и бонус на депозит: сравнение условий</h2>
 <p>Фрибет и бонус на депозит у легальных букмекеров различаются по 5 параметрам: нужен ли собственный депозит, есть ли отыгрыш, возвращается ли номинал, действует ли ограничение по коэффициенту и на какой срок дают поощрение.</p><div class="table-wrap"><table><caption>Типовые различия по правилам акций легальных БК (конкретные значения — в правилах каждого оператора)</caption><thead><tr><th>Параметр</th><th>Фрибет</th><th>Бонус на депозит</th></tr></thead><tbody><tr><td>Нужен собственный депозит</td><td>Обычно нет (часто достаточно регистрации и идентификации)</td><td>Да, бонус начисляется от суммы пополнения</td></tr><tr><td>Отыгрыш (вейджер)</td><td>Как правило, нет</td><td>Есть, множитель x3–x10 и выше</td></tr><tr><td>Возврат номинала при выигрыше</td><td>Нет, выплачивается только чистый выигрыш</td><td>Да, после отыгрыша бонус становится обычным балансом</td></tr><tr><td>Ограничение по коэффициенту</td><td>Часто есть (минимальный или максимальный коэффициент)</td><td>Часто есть минимальный коэффициент для зачёта в отыгрыш</td></tr><tr><td>Срок действия</td><td>Дни или недели с момента начисления</td><td>Срок на отыгрыш, после него бонус сгорает</td></tr></tbody></table></div><p>Таблица описывает типовую механику, а не условия конкретного букмекера: у каждого легального оператора параметры зафиксированы в правилах акции на его сайте, и именно там нужно смотреть цифры перед регистрацией.</p>
 <h2 id="chto-takoe-otygrysh-i-kak-on-schitaetsya">Что такое отыгрыш и как он считается</h2>
-<p>Вейджер x5 означает, что перед выводом бонуса 1000 ₽ нужно сделать ставок на 5000 ₽: множитель умножается на сумму бонуса. <strong>Отыгрыш (вейджер)</strong> — требование сделать ставок на сумму, кратную бонусу, прежде чем бонусные средства станут доступны к выводу; обозначается множителем x3, x5, x10.</p><p>Необходимый оборот считается по формуле <strong>сумма бонуса × коэффициент вейджера</strong>. Примеры для бонуса 1000 ₽:</p><div class="table-wrap"><table><caption>Оборот для отыгрыша бонуса 1000 ₽</caption><thead><tr><th>Бонус</th><th>Вейджер</th><th>Оборот для отыгрыша</th></tr></thead><tbody><tr><td>1000 ₽</td><td>x3</td><td>3000 ₽</td></tr><tr><td>1000 ₽</td><td>x5</td><td>5000 ₽</td></tr><tr><td>1000 ₽</td><td>x10</td><td>10 000 ₽</td></tr></tbody></table></div>
+<p>Вейджер x5 означает, что перед выводом бонуса 1000 ₽ нужно сделать ставок на 5000 ₽: множитель умножается на сумму бонуса. <strong>Отыгрыш (вейджер)</strong> — требование сделать ставок на сумму, кратную бонусу, прежде чем бонусные средства станут доступны к выводу; обозначается множителем x3, x5, x10.</p><p>Необходимый оборот считается по формуле <strong>сумма бонуса × коэффициент вейджера</strong>. Примеры для бонуса 1000 ₽:</p><div class="table-wrap"><table><caption>Оборот для отыгрыша бонуса 1000 ₽</caption><thead><tr><th>Бонус</th><th>Вейджер</th><th>Оборот для отыгрыша</th></tr></thead><tbody><tr><td>1000 ₽</td><td>x3</td><td>3000 ₽</td></tr><tr><td>1000 ₽</td><td>x5</td><td>5000 ₽</td></tr><tr><td>1000 ₽</td><td>x10</td><td>10 000 ₽</td></tr></tbody></table></div>
 <h2 id="skrytye-usloviya-kotorye-menyayut-cennost-bonusa">Скрытые условия, которые меняют ценность бонуса</h2>
 <p>4 параметра из правил акции меняют ценность бонуса сильнее, чем его размер: минимальный коэффициент ставок, срок отыгрыша, лимит на одну ставку и требование к первому депозиту.</p><ol><li><strong>Минимальный коэффициент ставок.</strong> Если в зачёт идут только ставки от определённого порога, отыграть бонус на низких коэффициентах не выйдет.</li><li><strong>Срок отыгрыша.</strong> Ограниченное время повышает риск: приходится ставить быстрее и на большие суммы.</li><li><strong>Максимальная ставка при отыгрыше.</strong> Иногда размер одной ставки в период отыгрыша ограничен, и процесс растягивается.</li><li><strong>Требование первого депозита.</strong> Бонус нередко привязан к сумме и способу пополнения счёта.</li></ol><p>Все четыре параметра прописаны в правилах акции конкретного букмекера. Небольшой бонус с мягкими условиями на практике часто ценнее крупного с жёстким отыгрышем.</p>
 <h2 id="kak-ocenit-realnuyu-cennost-bonusa">Как оценить реальную ценность бонуса</h2>
-<p>Бонус 1000 ₽ с вейджером x3 требует оборота 3000 ₽, а тот же бонус с вейджером x10 — 10 000 ₽: ценность бонуса определяет отыгрыш, а не сумма на баннере. При одинаковой сумме первый вариант реализовать проще и с меньшим риском потерь.</p><p>Учитывайте и то, что часть оборота уйдёт на заложенную в коэффициенты маржу букмекера, а выигрыш у легальных операторов облагается НДФЛ по правилам статьи 214.7 Налогового кодекса — расчёт с примерами в статье <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">налог на выигрыш в ставках</a>. Поэтому «на руки» вы получите меньше, чем номинал бонуса на баннере.</p>
+<p>Бонус 1000 ₽ с вейджером x3 требует оборота 3000 ₽, а тот же бонус с вейджером x10 — 10 000 ₽: ценность бонуса определяет отыгрыш, а не сумма на баннере. При одинаковой сумме первый вариант реализовать проще и с меньшим риском потерь.</p><p>Учитывайте и то, что часть оборота уйдёт на заложенную в коэффициенты маржу букмекера, а выигрыш у легальных операторов облагается НДФЛ по правилам статьи 214.7 Налогового кодекса — расчёт с примерами в статье <a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">налог на выигрыш в ставках</a>. Поэтому «на руки» вы получите меньше, чем номинал бонуса на баннере.</p>
 <h2 id="kak-proverit-usloviya-bonusa-do-registracii-6-shagov">Как проверить условия бонуса до регистрации: 6 шагов</h2>
-<p>Проверка условий бонуса занимает 5–10 минут и состоит из 6 шагов, каждый из которых отвечает на один вопрос из правил акции легального букмекера.</p><ol><li><strong>Найдите правила акции</strong> на сайте букмекера (раздел «Акции», «Бонусы» или ссылка «Правила» под баннером) и проверьте дату их последнего обновления.</li><li><strong>Определите тип поощрения:</strong> фрибет или бонус на депозит — от этого зависит, будет ли отыгрыш.</li><li><strong>Найдите вейджер</strong> и посчитайте оборот: сумма бонуса × множитель. Бонус 2000 ₽ с вейджером x5 — это 10 000 ₽ ставок.</li><li><strong>Проверьте минимальный коэффициент</strong> ставок, которые идут в зачёт: чем он выше, тем рискованнее отыгрыш.</li><li><strong>Посмотрите срок отыгрыша и лимит на ставку:</strong> 7 дней и лимит 1000 ₽ на ставку при обороте 10 000 ₽ означают минимум 10 ставок за неделю.</li><li><strong>Уточните требования к депозиту</strong> (сумма, способ пополнения) и убедитесь, что платежи идут через Единый ЦУПИС.</li></ol><p>Если хотя бы один из 6 пунктов в правилах не описан, считайте условие неизвестным и не закладывайте бонус в расчёт — пример с числами в этом шаге иллюстрирует расчёт, а не условия конкретной акции.</p>
+<p>Проверка условий бонуса занимает 5–10 минут и состоит из 6 шагов, каждый из которых отвечает на один вопрос из правил акции легального букмекера.</p><ol><li><strong>Найдите правила акции</strong> на сайте букмекера (раздел «Акции», «Бонусы» или ссылка «Правила» под баннером) и проверьте дату их последнего обновления.</li><li><strong>Определите тип поощрения:</strong> фрибет или бонус на депозит — от этого зависит, будет ли отыгрыш.</li><li><strong>Найдите вейджер</strong> и посчитайте оборот: сумма бонуса × множитель. Бонус 2000 ₽ с вейджером x5 — это 10 000 ₽ ставок.</li><li><strong>Проверьте минимальный коэффициент</strong> ставок, которые идут в зачёт: чем он выше, тем рискованнее отыгрыш.</li><li><strong>Посмотрите срок отыгрыша и лимит на ставку:</strong> 7 дней и лимит 1000 ₽ на ставку при обороте 10 000 ₽ означают минимум 10 ставок за неделю.</li><li><strong>Уточните требования к депозиту</strong> (сумма, способ пополнения) и убедитесь, что платежи идут через Единый ЦУПИС.</li></ol><p>Если хотя бы один из 6 пунктов в правилах не описан, считайте условие неизвестным и не закладывайте бонус в расчёт — пример с числами в этом шаге иллюстрирует расчёт, а не условия конкретной акции.</p>
 <h2 id="kak-vybrat-operatora-i-proverit-usloviya">Как выбрать оператора и проверить условия</h2>
 <p>Легальный букмекер из реестра ЕРАИ публикует правила акции на своём сайте и проводит платежи через Единый ЦУПИС — оба факта проверяйте до регистрации: как это сделать, в инструкции <a href="/kak-proverit-licenziyu">как проверить лицензию</a>.</p><p>Перечень легальных операторов из реестра ЕРАИ собран в общем <a href="/rating">рейтинге букмекеров</a>. Бонус — приятное дополнение, но выбирать контору стоит по совокупности факторов: линия, коэффициенты, скорость выплат и поддержка, а не по одной цифре на баннере.</p>
     <h2 id="faq">Частые вопросы</h2>
     <div class="faq"><details><summary>Чем фрибет отличается от бонуса на депозит?</summary><p>Фрибет — разовая ставка за счёт БК без отдельного отыгрыша, но номинал не возвращается. Бонус на депозит начисляется при пополнении и требует отыгрыша по вейджеру, прежде чем его можно вывести.</p></details>
-<details><summary>Что такое вейджер x5?</summary><p>Это множитель отыгрыша: чтобы получить доступ к бонусу, нужно сделать ставок на сумму, в 5 раз превышающую бонус. Для бонуса 1000 ₽ оборот составит 5000 ₽, часто с условием минимального коэффициента ставок.</p></details>
+<details><summary>Что такое вейджер x5?</summary><p>Это множитель отыгрыша: чтобы получить доступ к бонусу, нужно сделать ставок на сумму, в 5 раз превышающую бонус. Для бонуса 1000 ₽ оборот составит 5000 ₽, часто с условием минимального коэффициента ставок.</p></details>
 <details><summary>Можно ли сразу вывести бонус за регистрацию?</summary><p>Обычно нет. Бонус на депозит нужно отыграть по условиям, а с фрибета выводится только чистая прибыль после расчёта ставки. Прямой вывод самой бонусной суммы, как правило, недоступен.</p></details>
-<details><summary>Облагается ли выигрыш с бонуса налогом?</summary><p>Да. Выигрыши у легальных букмекеров облагаются НДФЛ, а с 2026 года оператор удерживает налог как налоговый агент при выплате. Итоговая сумма на руки будет меньше номинала — это стоит закладывать в расчёт.</p></details>
+<details><summary>Облагается ли выигрыш с бонуса налогом?</summary><p>Да. Выигрыши у легальных букмекеров облагаются НДФЛ, а с 2026 года оператор удерживает налог как налоговый агент при выплате. Итоговая сумма на руки будет меньше номинала — это стоит закладывать в расчёт.</p></details>
 <details><summary>На что смотреть кроме размера бонуса?</summary><p>На коэффициент вейджера, срок отыгрыша, минимальные коэффициенты ставок, лимиты и требования к депозиту. Небольшой бонус с мягкими условиями нередко ценнее крупного с жёстким отыгрышем.</p></details>
-<details><summary>Как посчитать, сколько нужно поставить для отыгрыша бонуса?</summary><p>Умножьте сумму бонуса на вейджер из правил акции: бонус 2000 ₽ с вейджером x5 требует ставок на 10 000 ₽, причём в зачёт идут только ставки с коэффициентом не ниже указанного в правилах.</p></details></div>
+<details><summary>Как посчитать, сколько нужно поставить для отыгрыша бонуса?</summary><p>Умножьте сумму бонуса на вейджер из правил акции: бонус 2000 ₽ с вейджером x5 требует ставок на 10 000 ₽, причём в зачёт идут только ставки с коэффициентом не ниже указанного в правилах.</p></details></div>
     <h2 id="istochniki">Источники · проверено 28.09.2026</h2>
 <ul class="sources"><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/2131996820b390e802ee0587d8a21548eb19c764/" rel="noopener" target="_blank">НК РФ, ст. 214.7 — особенности определения налоговой базы и исчисления налога по доходам в виде выигрышей в букмекерских конторах</a></li><li><a href="https://1cupis.ru/" rel="noopener" target="_blank">Единый ЦУПИС — официальный сайт (список партнёров-букмекеров)</a></li></ul>
     <div class="partner-picks" style="margin:22px 0;padding:14px 16px;border:1px solid var(--line,#28304a);border-radius:12px;background:rgba(200,255,77,.05)"><b>Играть — только у легальных букмекеров</b> с лицензией ФНС и через Единый ЦУПИС: <a href="/go/winline?p=rejting/s-bonusom-za-registraciyu&amp;pl=article" rel="sponsored nofollow">Сайт Winline</a>, <a href="/go/melbet?p=rejting/s-bonusom-za-registraciyu&amp;pl=article" rel="sponsored nofollow">Сайт Мелбет</a>, <a href="/go/fonbet?p=rejting/s-bonusom-za-registraciyu&amp;pl=article" rel="sponsored nofollow">Сайт Фонбет</a>, <a href="/go/betcity?p=rejting/s-bonusom-za-registraciyu&amp;pl=article" rel="sponsored nofollow">Сайт Бетсити</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+. Участие в азартных играх может привести к игровой зависимости.</span></div>
@@ -137,19 +317,16 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 
 <footer class="footer"><div class="container">
   <div class="footer-grid">
-    <div class="footer-brand">
-      <a class="logo" href="/"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</a>
-      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх.</p>
-      <span class="age-pill"><b>18+</b> Возрастная категория</span>
+    <div>
+      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
     </div>
-    <div><h4>Рейтинги</h4><a href="/rating">Каталог легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/bonusy">Бонусы и фрибеты</a><a href="/promokody">Промокоды</a><a href="/reestr">Реестр ЕРАИ</a></div>
-    <div><h4>Разобраться</h4><a href="/stavki">Ставки по видам спорта</a><a href="/shkola">Школа ставок</a><a href="/instrumenty">Калькуляторы</a><a href="/novosti">Новости</a></div>
-    <div><h4>О проекте</h4><a href="/contacts">О проекте и контакты</a><a href="/avtor/aleksej-kamnev">Редакция и автор</a><a href="/eksperty">Эксперты и партнёры</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/politika-konfidencialnosti">Политика конфиденциальности</a></div>
-    <div><h4>Ответственная игра</h4><a href="/shkola/otvetstvennaya-igra/priznaki-ludomanii">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/shkola/dengi-i-nalogi/limity-i-samokontrol">Лимиты и самоконтроль</a></div>
+    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty">Инструменты</a></div>
+    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/eksperty">Эксперты и партнёры</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
+    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
   </div>
   <div class="legal-box">
-    <span><b>18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
-    <span>Материалы могут содержать рекламу; отдельные места размещения партнёров оплачены. Оценки редакции ориентировочные; размеры и условия бонусов уточняйте на официальных сайтах букмекеров.</span>
+    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
     <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
   </div>
 </div></footer>
@@ -159,6 +336,5 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
 </div>
 
-<script src="/assets/site.js" defer></script>
 </body>
 </html>
