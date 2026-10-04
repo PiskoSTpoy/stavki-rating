@@ -29,190 +29,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap">
-<style>
-  :root {
-    --bg: #07090F; --surface: #0E1220; --surface-2: #141A2B; --surface-3: #1B2236;
-    --glass: rgba(255,255,255,.04); --glass-border: rgba(255,255,255,.09); --line: rgba(255,255,255,.10);
-    --text: #F2F5FA; --muted: #98A2B3; --muted-2: #6B7588;
-    --volt: #C8FF4D; --volt-ink: #0B1200; --violet: #7C5CFF; --violet-soft: rgba(124,92,255,.18);
-    --success: #22D3A5; --warning: #FFB020; --danger: #FF5C7A;
-    --grad: linear-gradient(135deg, #7C5CFF 0%, #C8FF4D 100%);
-    --glow: 0 0 0 1px rgba(200,255,77,.28), 0 12px 40px rgba(124,92,255,.28);
-    --r-sm: 10px; --r-md: 16px; --r-lg: 24px;
-    --font-display: "Golos Text", "Inter", system-ui, sans-serif;
-    --font-sans: "Golos Text", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
-    --container: 1240px;
-    color-scheme: dark;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-  a { color: inherit; text-decoration: none; }
-  a:hover { color: var(--volt); }
-  img { max-width: 100%; display: block; }
-  button { font: inherit; cursor: pointer; }
-  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.12; margin: 0; text-wrap: balance; letter-spacing: -.015em; }
-  h1 { font-size: clamp(23px, 2.8vw, 35px); }
-  h2 { font-size: clamp(21px, 2.4vw, 28px); }
-  h3 { font-size: 18px; font-weight: 500; }
-  p { margin: 0; }
-  .num { font-variant-numeric: tabular-nums; }
-  .container { width: min(var(--container), 100% - 32px); margin-inline: auto; }
-  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
-  .muted { color: var(--muted); }
-  .small { font-size: 13px; }
-  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 6px; }
-
-  /* Тонкая полоса дисклеймера */
-  .topbar { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
-  .topbar .container { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 6px 0; flex-wrap: wrap; }
-
-  /* Шапка */
-  .site-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
-  .site-header .container { display: flex; align-items: center; gap: 28px; height: 62px; }
-  .logo { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
-  .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; margin-left: 8px; }
-  .nav a { color: var(--muted); }
-  .nav a:hover, .nav a.active { color: var(--text); }
-  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
-  .age { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 6px; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 700; font-size: 12px; flex: none; }
-  .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--muted); font-size: 13px; background: var(--glass); cursor: text; }
-  @media (max-width: 940px) { .nav { display: none; } }
-
-  /* Единая колонка контента: шапка статьи, оглавление и текст выровнены по одному левому краю
-     (раньше .prose с max-width:75ch центрировался отдельно от шапки на всю ширину контейнера). */
-  :root { --col: 820px; }
-  main .container { width: min(var(--col), 100% - 32px); }
-
-  /* Креатив «на всю страницу»: два полотна на всю высоту окна по краям, статья — по центру.
-     Полотно — картинка 9:16 высотой в окно (background-size: auto 100%), ширина по полю слева/справа.
-     Бейджи БК позиционируются в процентах от высоты, поэтому всегда попадают в кольца арта. */
-  .wall { display: none; }
-  @media (min-width: 1500px) {
-    .wall { display: block; position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-    .wall-side { --W: calc(100vh * .5647); --r1: 22.35%; --r2: 49.6%; --r3: 77.05%; --bd: .3276;
-      position: absolute; top: 0; bottom: 0; width: min(calc((100vw - var(--col)) / 2), var(--W)); }
-    .wall-side::before { content: ""; position: absolute; inset: 0; background-repeat: no-repeat; background-size: auto 100%; background-position: center; }
-    .wall-left { left: 0; }
-    .wall-left::before { background-image: url(/img/decor/wall-left.webp);
-      -webkit-mask-image: linear-gradient(to right, #000 62%, transparent); mask-image: linear-gradient(to right, #000 62%, transparent); }
-    .wall-right { right: 0; }
-    .wall-right::before { background-image: url(/img/decor/wall-right.webp);
-      -webkit-mask-image: linear-gradient(to left, #000 62%, transparent); mask-image: linear-gradient(to left, #000 62%, transparent); }
-    .wall-badge { position: absolute; left: 50%; width: calc(var(--W) * var(--bd)); aspect-ratio: 1; transform: translate(-50%, -50%);
-      border-radius: 50%; overflow: hidden; pointer-events: auto; display: flex; align-items: center; justify-content: center; background: #0B0E16;
-      box-shadow: 0 0 0 3px rgba(200,255,77,.55), 0 0 28px rgba(200,255,77,.35); transition: transform .25s ease, box-shadow .25s ease; animation: wallpulse 3.4s ease-in-out infinite; }
-    .wall-badge:nth-child(2) { animation-delay: .5s; } .wall-badge:nth-child(3) { animation-delay: 1s; }
-    .wall-badge:hover { transform: translate(-50%, -50%) scale(1.07); box-shadow: 0 0 0 3px var(--volt), 0 0 44px rgba(200,255,77,.7); animation-play-state: paused; }
-    .wall-badge img { width: 74%; height: 74%; object-fit: contain; border-radius: 18%; }
-    .wall-tag { position: absolute; left: 0; right: 0; bottom: 14px; text-align: center; font-size: 11px; color: var(--muted-2); letter-spacing: .04em; }
-    main { position: relative; z-index: 1; width: calc(var(--col) + 96px); margin-inline: auto; background: rgba(8,11,20,.86);
-      border-inline: 1px solid var(--line); box-shadow: 0 0 80px rgba(0,0,0,.6); backdrop-filter: blur(10px); }
-  }
-  @keyframes wallpulse { 0%,100% { box-shadow: 0 0 0 3px rgba(200,255,77,.55), 0 0 22px rgba(200,255,77,.28); } 50% { box-shadow: 0 0 0 3px rgba(200,255,77,.8), 0 0 42px rgba(124,92,255,.55); } }
-  @media (prefers-reduced-motion: reduce) { .wall-badge { animation: none !important; } }
-
-  /* Кнопки */
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; border: 1px solid transparent; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
-  .btn-primary { background: var(--volt); color: var(--volt-ink); box-shadow: 0 6px 24px rgba(200,255,77,.18); }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow); color: var(--volt-ink); }
-  .btn-glass { background: var(--glass); border-color: var(--glass-border); color: var(--text); }
-  .btn-glass:hover { background: var(--surface-3); color: var(--text); }
-  .btn-official { background: transparent; border-color: var(--line); color: var(--text); }
-  .btn-official:hover { border-color: var(--muted); color: var(--text); }
-  .btn-sm { padding: 9px 14px; font-size: 13px; border-radius: 10px; }
-  .btn-block { width: 100%; }
-  @media (prefers-reduced-motion: reduce) { .btn { transition: none !important; } }
-
-  /* Секции */
-  .section { padding: 56px 0; }
-  .section.tight { padding-top: 6px; }
-  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
-  .section-head p { color: var(--muted); max-width: 60ch; }
-  .link-more { font-size: 14px; font-weight: 600; color: var(--volt); }
-
-  /* Хлебные крошки */
-  .crumbs { padding: 16px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-  .crumbs a { color: var(--muted); }
-  .crumbs a:hover { color: var(--text); }
-  .crumbs span { color: var(--muted-2); }
-
-  /* Плитки, инструменты, статьи */
-  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
-  .tile { border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; background: var(--surface); display: grid; gap: 6px; transition: border-color .2s, transform .15s; }
-  .tile:hover { border-color: rgba(124,92,255,.5); transform: translateY(-2px); }
-  .tile b { font-size: 15px; }
-  .tile small { color: var(--muted); }
-  .tool { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); display: grid; gap: 14px; max-width: 640px; }
-  .tool-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  @media (max-width: 560px) { .tool-form { grid-template-columns: 1fr; } }
-  .field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
-  .field input, .field select { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 10px 12px; font: inherit; font-size: 15px; width: 100%; }
-  .result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  @media (max-width: 560px) { .result { grid-template-columns: 1fr; } }
-  .result div { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
-  .result small { display: block; color: var(--muted); font-size: 12px; }
-  .result b { font-family: var(--font-display); font-size: 22px; }
-  .result .accent { color: var(--volt); }
-  .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
-  .article { border-top: 2px solid var(--violet); padding-top: 12px; display: grid; gap: 6px; }
-  .article b { font-size: 16px; line-height: 1.35; }
-  .article small { color: var(--muted); }
-
-  /* Текстовый контент страницы */
-  .prose { max-width: none; display: grid; gap: 14px; }
-  .prose h2 { margin-top: 14px; }
-  .prose h2[id] { scroll-margin-top: 84px; }
-  .prose h3 { font-size: 17px; font-weight: 700; margin-top: 8px; }
-  /* SEO/GEO 2026 (25.09.2026): строка метаданных статьи и оглавление из H2 (якоря фрагментов) */
-  .meta-row { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-  .meta-row a { text-decoration: none; }
-  .toc { margin: 16px 0 4px; padding: 12px 14px; border: 1px solid var(--line, #28304a); border-radius: 12px; font-size: 14px; }
-  .toc b { display: block; margin-bottom: 6px; }
-  .toc ol { margin: 0; padding-left: 20px; }
-  .toc li { margin: 3px 0; }
-  .toc a { color: var(--volt); text-decoration: none; }
-  .toc a:hover { text-decoration: underline; }
-  /* h4 — подразделы свёрнутых интентов на бренд-хабах (19.09.2026). Глобальный сброс
-     задаёт margin:0, без этого правила подзаголовок сливается с текстом абзаца. */
-  .prose h4 { font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--text); }
-  .prose p { color: var(--text); }
-  .prose ul, .prose ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--text); }
-  .prose li { line-height: 1.5; }
-  .prose a { color: var(--volt); text-decoration: underline; text-underline-offset: 3px; }
-  .prose strong { color: var(--text); font-weight: 700; }
-  .prose .callout { background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--volt); border-radius: var(--r-md); padding: 14px 16px; color: var(--muted); }
-  .prose .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--r-md); }
-  .prose table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 440px; }
-  .prose thead th { background: var(--surface-2); color: var(--text); font-weight: 700; text-align: left; }
-  .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  .prose tbody tr:last-child td { border-bottom: none; }
-  .prose tbody td:first-child { color: var(--text); font-weight: 600; }
-  .prose caption { caption-side: bottom; color: var(--muted); font-size: 12px; padding: 8px 4px 0; text-align: left; }
-  .faq { display: grid; gap: 10px; }
-  .faq details { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: 4px 16px; }
-  .faq summary { cursor: pointer; font-weight: 600; padding: 12px 24px 12px 0; list-style: none; position: relative; }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: "+"; position: absolute; right: 0; top: 12px; color: var(--muted); font-weight: 400; }
-  .faq details[open] summary::after { content: "–"; }
-  .faq details[open] summary { color: var(--volt); }
-  .faq p { color: var(--muted); padding: 0 0 12px; }
-
-  /* Футер */
-  .footer { position: relative; z-index: 1; background: var(--bg); border-top: 1px solid var(--line); padding: 36px 0 90px; margin-top: 30px; color: var(--muted); font-size: 13px; }
-  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 22px; }
-  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-  .footer h4 { font-family: var(--font-sans); font-size: 13px; color: var(--text); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
-  .footer a { color: var(--muted); display: block; padding: 3px 0; }
-  .footer a:hover { color: var(--text); }
-  .legal-box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; display: grid; gap: 6px; }
-
-  /* Липкая мобильная панель */
-  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 16px; display: none; gap: 10px; align-items: center; }
-  .sticky-cta .btn { flex: 1; }
-  .sticky-cta small { font-size: 10.5px; color: var(--muted); line-height: 1.25; max-width: 130px; }
-  @media (max-width: 760px) { .sticky-cta { display: flex; } }
-</style>
+<link rel="stylesheet" href="/assets/site.css?v=f65998b1">
+<link rel="stylesheet" href="/assets/chrome.css?v=f65998b1">
+<meta name="theme-color" content="#07090F">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Деньги и налоги", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Налог на выигрыш в ставках: сколько платить в 2026", "item": "https://stavki-rating.ru/shkola/dengi-i-nalogi/nalog-na-vyigrysh"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Налог на выигрыш в ставках: сколько платить в 2026", "description": "Как в 2026 году платят НДФЛ с выигрышей у легальных букмекеров: база «выплата минус ставка», шкала ставок 13–22%, кто удерживает налог, примеры расчёта.", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/dengi-i-nalogi/nalog-na-vyigrysh", "datePublished": "2026-09-05", "dateModified": "2026-09-28", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "С какой суммы удерживают налог со ставок в 2026 году?", "acceptedAnswer": {"@type": "Answer", "text": "С 2026 года букмекер удерживает НДФЛ с любой выплаты — прежнего порога в 15 000 ₽ больше нет. Налог берут с базы «выплата минус ставка»."}}, {"@type": "Question", "name": "Какая ставка налога на выигрыш?", "acceptedAnswer": {"@type": "Answer", "text": "Для налоговых резидентов — 13%, пока совокупный годовой доход не выше 2,4 млн ₽, и 15%, 18%, 20% и 22% с частей выше порогов 2,4 / 5 / 20 / 50 млн ₽ (п. 1 ст. 224 НК РФ). Для нерезидентов — 30%. Для большинства игроков актуальна ставка 13%."}}, {"@type": "Question", "name": "Нужно ли подавать декларацию 3-НДФЛ?", "acceptedAnswer": {"@type": "Answer", "text": "По выигрышам у легального букмекера — как правило, нет: оператор сам является налоговым агентом и удерживает налог при выплате."}}, {"@type": "Question", "name": "Уменьшают ли проигрыши сумму налога?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Налоговая база считается по каждой выплате отдельно, поэтому убыточные ставки не уменьшают налог с выигрышных."}}, {"@type": "Question", "name": "Как посчитать налог заранее?", "acceptedAnswer": {"@type": "Answer", "text": "Вычтите из ожидаемой выплаты сумму ставки и умножьте результат на 13%. Или воспользуйтесь калькулятором налога на выигрыш."}}]}</script>
@@ -231,6 +50,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 <!-- /Yandex.Metrika counter -->
 </head>
 <body>
+<a class="skip" href="#main">К содержанию</a>
 
 <div class="wall" aria-label="Партнёрские предложения">
 <div class="wall-side wall-left">
@@ -252,7 +72,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
     STAVKI RATING
   </a>
-  <nav class="nav">
+  <nav class="nav" aria-label="Основное меню">
     <a href="/rating">Рейтинг</a>
     <a href="/rejting">По критериям</a>
     <a href="/stavki">Виды спорта</a>
@@ -263,45 +83,45 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
 </div></header>
 
-<main>
+<main id="main">
 
   <section class="section tight"><div class="container">
     <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Деньги и налоги</a><span>/</span>Налог на выигрыш в ставках: сколько платить в 2026</nav>
     <div class="eyebrow" style="margin:16px 0 8px">· Школа · Деньги и налоги ·</div>
     <h1>Налог на выигрыш в ставках: сколько платить в 2026</h1>
-    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>обновлено и проверено <time datetime="2026-09-28">28.09.2026</time></span><span>·</span><span>6 мин чтения</span></div>
-    <p class="muted" style="max-width:75ch;margin-top:12px">С 2026 года налог с выигрышей у легальных букмекеров удерживает сама букмекерская контора как налоговый агент — при выплате и с любой суммы. Налоговая база считается как «сумма выплаты минус сумма вашей ставки» отдельно по каждому выигрышу, а не со всей выплаты. Ставка НДФЛ для резидентов идёт по шкале: 13% при совокупном годовом доходе до 2,4 млн ₽ и 15–22% с частей выше. Самостоятельно подавать декларацию 3-НДФЛ по таким выигрышам в общем случае не нужно.</p>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-09-05">05.09.2026</time></span><span>·</span><span>обновлено и проверено <time datetime="2026-09-28">28.09.2026</time></span><span>·</span><span>6 мин чтения</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">С 2026 года налог с выигрышей у легальных букмекеров удерживает сама букмекерская контора как налоговый агент — при выплате и с любой суммы. Налоговая база считается как «сумма выплаты минус сумма вашей ставки» отдельно по каждому выигрышу, а не со всей выплаты. Ставка НДФЛ для резидентов идёт по шкале: 13% при совокупном годовом доходе до 2,4 млн ₽ и 15–22% с частей выше. Самостоятельно подавать декларацию 3-НДФЛ по таким выигрышам в общем случае не нужно.</p>
     
     
-    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#kratko-kak-schitaetsya-nalog-so-stavok">Кратко: как считается налог со ставок</a></li><li><a href="#stavka-ndfl-shkala-ot-13-do-22">Ставка НДФЛ: шкала от 13% до 22%</a></li><li><a href="#kto-platit-nalog-vy-ili-bukmeker">Кто платит налог — вы или букмекер</a></li><li><a href="#primery-rascheta-so-stavkoj-1000">Примеры расчёта со ставкой 1000 ₽</a></li><li><a href="#tipichnye-oshibki-i-zabluzhdeniya">Типичные ошибки и заблуждения</a></li><li><a href="#faq">Частые вопросы</a></li><li><a href="#istochniki">Источники</a></li></ol></nav>
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#kratko-kak-schitaetsya-nalog-so-stavok">Кратко: как считается налог со ставок</a></li><li><a href="#stavka-ndfl-shkala-ot-13-do-22">Ставка НДФЛ: шкала от 13% до 22%</a></li><li><a href="#kto-platit-nalog-vy-ili-bukmeker">Кто платит налог — вы или букмекер</a></li><li><a href="#primery-rascheta-so-stavkoj-1000">Примеры расчёта со ставкой 1000 ₽</a></li><li><a href="#tipichnye-oshibki-i-zabluzhdeniya">Типичные ошибки и заблуждения</a></li><li><a href="#faq">Частые вопросы</a></li><li><a href="#istochniki">Источники</a></li></ol></nav>
   </div></section>
 
   <section class="section" style="padding-top:6px"><div class="container prose">
     <h2 id="kratko-kak-schitaetsya-nalog-so-stavok">Кратко: как считается налог со ставок</h2>
-<p>Налог с выигрышей в букмекерской конторе — это НДФЛ, налог на доходы физических лиц. С 2026 года порядок упростился: букмекер из реестра легальных операторов выступает <strong>налоговым агентом</strong> и удерживает налог сам при каждой выплате, независимо от её размера. Раньше действовал порог: с выплат до 15 000 ₽ игрок платил налог самостоятельно. Теперь этого разделения по сумме для букмекеров нет.</p><p>Ключевой момент — налог считается не со всей суммы, которую вы получаете, а с <strong>чистого результата конкретной выплаты</strong>. Налоговая база = сумма выплаты минус сумма ставки, с которой эта выплата получена. То есть свою ставку из расчёта вычитают и берут налог только с превышения над ней.</p><ul><li>Ставка НДФЛ для резидентов — <strong>13%</strong>, пока совокупный годовой доход не выше 2,4 млн ₽.</li><li><strong>15–22%</strong> — с частей дохода выше 2,4 млн ₽: 15% до 5 млн, 18% до 20 млн, 20% до 50 млн, 22% свыше 50 млн.</li><li>Налог удерживает букмекер при выводе средств; подавать декларацию 3-НДФЛ по этим выигрышам, как правило, не требуется.</li></ul><p>Чтобы быстро прикинуть сумму к удержанию, используйте <a href="/instrumenty/nalog-na-vyigrysh">калькулятор налога на выигрыш</a>.</p>
+<p>Налог с выигрышей в букмекерской конторе — это НДФЛ, налог на доходы физических лиц. С 2026 года порядок упростился: букмекер из реестра легальных операторов выступает <strong>налоговым агентом</strong> и удерживает налог сам при каждой выплате, независимо от её размера. Раньше действовал порог: с выплат до 15 000 ₽ игрок платил налог самостоятельно. Теперь этого разделения по сумме для букмекеров нет.</p><p>Ключевой момент — налог считается не со всей суммы, которую вы получаете, а с <strong>чистого результата конкретной выплаты</strong>. Налоговая база = сумма выплаты минус сумма ставки, с которой эта выплата получена. То есть свою ставку из расчёта вычитают и берут налог только с превышения над ней.</p><ul><li>Ставка НДФЛ для резидентов — <strong>13%</strong>, пока совокупный годовой доход не выше 2,4 млн ₽.</li><li><strong>15–22%</strong> — с частей дохода выше 2,4 млн ₽: 15% до 5 млн, 18% до 20 млн, 20% до 50 млн, 22% свыше 50 млн.</li><li>Налог удерживает букмекер при выводе средств; подавать декларацию 3-НДФЛ по этим выигрышам, как правило, не требуется.</li></ul><p>Чтобы быстро прикинуть сумму к удержанию, используйте <a href="/instrumenty/nalog-na-vyigrysh">калькулятор налога на выигрыш</a>.</p>
 <h2 id="stavka-ndfl-shkala-ot-13-do-22">Ставка НДФЛ: шкала от 13% до 22%</h2>
-<p>Ставки НДФЛ для налоговых резидентов идут по шкале (п. 1 ст. 224 НК РФ), а порог считается по совокупности всех доходов физического лица за год, включая выигрыши (п. 2.1 ст. 210 НК РФ).</p><div class="table-wrap"><table><caption>Шкала НДФЛ для налоговых резидентов РФ (ст. 224 п. 1 НК РФ)</caption><thead><tr><th>Совокупный доход за год</th><th>Ставка</th></tr></thead><tbody><tr><td>До 2,4 млн ₽</td><td>13%</td></tr><tr><td>Часть от 2,4 до 5 млн ₽</td><td>15%</td></tr><tr><td>Часть от 5 до 20 млн ₽</td><td>18%</td></tr><tr><td>Часть от 20 до 50 млн ₽</td><td>20%</td></tr><tr><td>Часть свыше 50 млн ₽</td><td>22%</td></tr></tbody></table></div><p>Повышенная ставка действует только на часть дохода выше порога. Например, при совокупной базе 3 млн ₽ налог составит 312 000 ₽ + 15% от 600 000 ₽ = 402 000 ₽ (расчёт по п. 1 ст. 225 НК РФ), то есть около 13,4% от всей суммы. Для нерезидентов ставка — 30% (п. 3 ст. 224).</p><p>Букмекер считает налог отдельно по каждой сумме выигрыша (п. 1 ст. 214.7), а накопительный порядок удержания по ст. 226 на такие доходы не распространяется (п. 2 ст. 226). Порог 2,4 млн ₽ относится ко всем доходам физического лица за год, а оператор знает только собственные выплаты, поэтому при суммах такого масштаба итоговый расчёт стоит уточнить в ФНС. Для абсолютного большинства игроков актуальна ставка 13%.</p><p>Отдельно п. 28 ст. 217 НК РФ освобождает от НДФЛ выигрыши азартных игр в пределах 4 000 ₽ за налоговый период. Учитывает ли оператор это освобождение при удержании автоматически, в статьях 214.7 и 226 не сказано, поэтому примеры на этой странице и калькулятор считают налог без него; если сомневаетесь в цифрах удержания, их можно уточнить в поддержке букмекера или у ФНС.</p><p>Налоговые вычеты по статьям 218–221 НК РФ (стандартные, социальные, имущественные) к выигрышам не применяются: они относятся только к основной налоговой базе (п. 3 ст. 210).</p>
+<p>Ставки НДФЛ для налоговых резидентов идут по шкале (п. 1 ст. 224 НК РФ), а порог считается по совокупности всех доходов физического лица за год, включая выигрыши (п. 2.1 ст. 210 НК РФ).</p><div class="table-wrap"><table><caption>Шкала НДФЛ для налоговых резидентов РФ (ст. 224 п. 1 НК РФ)</caption><thead><tr><th>Совокупный доход за год</th><th>Ставка</th></tr></thead><tbody><tr><td>До 2,4 млн ₽</td><td>13%</td></tr><tr><td>Часть от 2,4 до 5 млн ₽</td><td>15%</td></tr><tr><td>Часть от 5 до 20 млн ₽</td><td>18%</td></tr><tr><td>Часть от 20 до 50 млн ₽</td><td>20%</td></tr><tr><td>Часть свыше 50 млн ₽</td><td>22%</td></tr></tbody></table></div><p>Повышенная ставка действует только на часть дохода выше порога. Например, при совокупной базе 3 млн ₽ налог составит 312 000 ₽ + 15% от 600 000 ₽ = 402 000 ₽ (расчёт по п. 1 ст. 225 НК РФ), то есть около 13,4% от всей суммы. Для нерезидентов ставка — 30% (п. 3 ст. 224).</p><p>Букмекер считает налог отдельно по каждой сумме выигрыша (п. 1 ст. 214.7), а накопительный порядок удержания по ст. 226 на такие доходы не распространяется (п. 2 ст. 226). Порог 2,4 млн ₽ относится ко всем доходам физического лица за год, а оператор знает только собственные выплаты, поэтому при суммах такого масштаба итоговый расчёт стоит уточнить в ФНС. Для абсолютного большинства игроков актуальна ставка 13%.</p><p>Отдельно п. 28 ст. 217 НК РФ освобождает от НДФЛ выигрыши азартных игр в пределах 4 000 ₽ за налоговый период. Учитывает ли оператор это освобождение при удержании автоматически, в статьях 214.7 и 226 не сказано, поэтому примеры на этой странице и калькулятор считают налог без него; если сомневаетесь в цифрах удержания, их можно уточнить в поддержке букмекера или у ФНС.</p><p>Налоговые вычеты по статьям 218–221 НК РФ (стандартные, социальные, имущественные) к выигрышам не применяются: они относятся только к основной налоговой базе (п. 3 ст. 210).</p>
 <h2 id="kto-platit-nalog-vy-ili-bukmeker">Кто платит налог — вы или букмекер</h2>
-<p>С 2026 года ответ простой: налог удерживает <strong>букмекер</strong>. Легальный оператор, подключённый к ЦУПИС, рассчитывает налоговую базу по каждой выплате, вычитает из неё сумму вашей ставки и перечисляет НДФЛ в бюджет. Деньги вы получаете уже за вычетом налога.</p><p>Удержание налога касается только операторов из реестра — тех, кто работает через <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">ЦУПИС и идентификацию</a>. У нелегальных контор без лицензии нет ни налогового агента, ни правовой защиты игрока — связываться с ними не стоит. Проверить статус оператора помогает страница <a href="/kak-proverit-licenziyu">как проверить лицензию</a>.</p><p>Поскольку налог удерживается автоматически при выводе, отдельная подача 3-НДФЛ и самостоятельная уплата по выигрышам у букмекера в общем случае не требуются.</p>
-<h2 id="primery-rascheta-so-stavkoj-1000">Примеры расчёта со ставкой 1000 ₽</h2>
-<p>Разберём на цифрах со ставкой 1000 ₽. Во всех примерах сумма ставки — 1000 ₽, ставка налога — 13%. Формула: (выплата − ставка) × 13% = налог.</p><p><strong>Пример 1.</strong> Ставка 1000 ₽ на коэффициент 2.50. Выплата = 1000 × 2,5 = 2500 ₽. База = 2500 − 1000 = 1500 ₽. Налог = 1500 × 13% = 195 ₽. На руки — 2500 − 195 = 2305 ₽, чистая прибыль — 1305 ₽.</p><p><strong>Пример 2.</strong> Ставка 1000 ₽ на коэффициент 20.00. Выплата = 20 000 ₽. База = 20 000 − 1000 = 19 000 ₽. Налог = 19 000 × 13% = 2470 ₽. На руки — 17 530 ₽.</p><p><strong>Пример 3.</strong> Ставка 1000 ₽ проиграла. Выплаты нет — и налога нет. При этом убыток по этой ставке не уменьшает налог с других удачных выплат: проигрыши и выигрыши не «сальдируются», база считается по каждой выплате отдельно.</p><div class="table-wrap"><table><caption>Расчёт налога при ставке 1000 ₽ и удержании 13%</caption><thead><tr><th>Коэффициент</th><th>Выплата, ₽</th><th>База, ₽</th><th>Налог 13%, ₽</th><th>На руки, ₽</th></tr></thead><tbody><tr><td>1.80</td><td>1800</td><td>800</td><td>104</td><td>1696</td></tr><tr><td>2.50</td><td>2500</td><td>1500</td><td>195</td><td>2305</td></tr><tr><td>5.00</td><td>5000</td><td>4000</td><td>520</td><td>4480</td></tr><tr><td>10.00</td><td>10 000</td><td>9000</td><td>1170</td><td>8830</td></tr><tr><td>20.00</td><td>20 000</td><td>19 000</td><td>2470</td><td>17 530</td></tr></tbody></table></div><p>Как видно, налог берут только с чистого дохода, поэтому итоговая доходность ставки всегда чуть ниже «сырого» коэффициента. Это стоит закладывать в расчёты рентабельности — например, при оценке <a href="/shkola/terminy/chto-takoe-roi">ROI</a> дистанции.</p>
+<p>С 2026 года ответ простой: налог удерживает <strong>букмекер</strong>. Легальный оператор, подключённый к ЦУПИС, рассчитывает налоговую базу по каждой выплате, вычитает из неё сумму вашей ставки и перечисляет НДФЛ в бюджет. Деньги вы получаете уже за вычетом налога.</p><p>Удержание налога касается только операторов из реестра — тех, кто работает через <a href="/shkola/kak-eto-rabotaet/registraciya-i-cupis">ЦУПИС и идентификацию</a>. У нелегальных контор без лицензии нет ни налогового агента, ни правовой защиты игрока — связываться с ними не стоит. Проверить статус оператора помогает страница <a href="/kak-proverit-licenziyu">как проверить лицензию</a>.</p><p>Поскольку налог удерживается автоматически при выводе, отдельная подача 3-НДФЛ и самостоятельная уплата по выигрышам у букмекера в общем случае не требуются.</p>
+<h2 id="primery-rascheta-so-stavkoj-1000">Примеры расчёта со ставкой 1000 ₽</h2>
+<p>Разберём на цифрах со ставкой 1000 ₽. Во всех примерах сумма ставки — 1000 ₽, ставка налога — 13%. Формула: (выплата − ставка) × 13% = налог.</p><p><strong>Пример 1.</strong> Ставка 1000 ₽ на коэффициент 2.50. Выплата = 1000 × 2,5 = 2500 ₽. База = 2500 − 1000 = 1500 ₽. Налог = 1500 × 13% = 195 ₽. На руки — 2500 − 195 = 2305 ₽, чистая прибыль — 1305 ₽.</p><p><strong>Пример 2.</strong> Ставка 1000 ₽ на коэффициент 20.00. Выплата = 20 000 ₽. База = 20 000 − 1000 = 19 000 ₽. Налог = 19 000 × 13% = 2470 ₽. На руки — 17 530 ₽.</p><p><strong>Пример 3.</strong> Ставка 1000 ₽ проиграла. Выплаты нет — и налога нет. При этом убыток по этой ставке не уменьшает налог с других удачных выплат: проигрыши и выигрыши не «сальдируются», база считается по каждой выплате отдельно.</p><div class="table-wrap"><table><caption>Расчёт налога при ставке 1000 ₽ и удержании 13%</caption><thead><tr><th>Коэффициент</th><th>Выплата, ₽</th><th>База, ₽</th><th>Налог 13%, ₽</th><th>На руки, ₽</th></tr></thead><tbody><tr><td>1.80</td><td>1800</td><td>800</td><td>104</td><td>1696</td></tr><tr><td>2.50</td><td>2500</td><td>1500</td><td>195</td><td>2305</td></tr><tr><td>5.00</td><td>5000</td><td>4000</td><td>520</td><td>4480</td></tr><tr><td>10.00</td><td>10 000</td><td>9000</td><td>1170</td><td>8830</td></tr><tr><td>20.00</td><td>20 000</td><td>19 000</td><td>2470</td><td>17 530</td></tr></tbody></table></div><p>Как видно, налог берут только с чистого дохода, поэтому итоговая доходность ставки всегда чуть ниже «сырого» коэффициента. Это стоит закладывать в расчёты рентабельности — например, при оценке <a href="/shkola/terminy/chto-takoe-roi">ROI</a> дистанции.</p>
 <h2 id="tipichnye-oshibki-i-zabluzhdeniya">Типичные ошибки и заблуждения</h2>
-<p>Вокруг НДФЛ со ставок много мифов. Разберём частые:</p><ul><li><strong>«Налог берут со всей выплаты».</strong> Нет — только с базы, то есть с суммы выплаты за вычетом вашей ставки.</li><li><strong>«Нужно самому подавать 3-НДФЛ».</strong> По выигрышам у легального букмекера с 2026 года налог удерживает оператор как налоговый агент.</li><li><strong>«Проигрыши уменьшат налог».</strong> Нет: база считается по каждой выплате отдельно, убыточные ставки её не снижают.</li><li><strong>«Пока не вывел — налога нет».</strong> Налог привязан к выплате и удерживается при выводе средств через ЦУПИС.</li><li><strong>«Правила такие же, как в лотерее».</strong> Выигрыши в лотереях, акциях и конкурсах облагаются по своим правилам — не путайте их со ставками.</li></ul><p>Полученные после налога деньги выводятся через тот же контур ЦУПИС — как это устроено, описано в материале <a href="/shkola/dengi-i-nalogi/kak-vyvesti-dengi">как вывести деньги</a>.</p>
+<p>Вокруг НДФЛ со ставок много мифов. Разберём частые:</p><ul><li><strong>«Налог берут со всей выплаты».</strong> Нет — только с базы, то есть с суммы выплаты за вычетом вашей ставки.</li><li><strong>«Нужно самому подавать 3-НДФЛ».</strong> По выигрышам у легального букмекера с 2026 года налог удерживает оператор как налоговый агент.</li><li><strong>«Проигрыши уменьшат налог».</strong> Нет: база считается по каждой выплате отдельно, убыточные ставки её не снижают.</li><li><strong>«Пока не вывел — налога нет».</strong> Налог привязан к выплате и удерживается при выводе средств через ЦУПИС.</li><li><strong>«Правила такие же, как в лотерее».</strong> Выигрыши в лотереях, акциях и конкурсах облагаются по своим правилам — не путайте их со ставками.</li></ul><p>Полученные после налога деньги выводятся через тот же контур ЦУПИС — как это устроено, описано в материале <a href="/shkola/dengi-i-nalogi/kak-vyvesti-dengi">как вывести деньги</a>.</p>
     <h2 id="faq">Частые вопросы</h2>
-    <div class="faq"><details><summary>С какой суммы удерживают налог со ставок в 2026 году?</summary><p>С 2026 года букмекер удерживает НДФЛ с любой выплаты — прежнего порога в 15 000 ₽ больше нет. Налог берут с базы «выплата минус ставка».</p></details>
-<details><summary>Какая ставка налога на выигрыш?</summary><p>Для налоговых резидентов — 13%, пока совокупный годовой доход не выше 2,4 млн ₽, и 15%, 18%, 20% и 22% с частей выше порогов 2,4 / 5 / 20 / 50 млн ₽ (п. 1 ст. 224 НК РФ). Для нерезидентов — 30%. Для большинства игроков актуальна ставка 13%.</p></details>
+    <div class="faq"><details><summary>С какой суммы удерживают налог со ставок в 2026 году?</summary><p>С 2026 года букмекер удерживает НДФЛ с любой выплаты — прежнего порога в 15 000 ₽ больше нет. Налог берут с базы «выплата минус ставка».</p></details>
+<details><summary>Какая ставка налога на выигрыш?</summary><p>Для налоговых резидентов — 13%, пока совокупный годовой доход не выше 2,4 млн ₽, и 15%, 18%, 20% и 22% с частей выше порогов 2,4 / 5 / 20 / 50 млн ₽ (п. 1 ст. 224 НК РФ). Для нерезидентов — 30%. Для большинства игроков актуальна ставка 13%.</p></details>
 <details><summary>Нужно ли подавать декларацию 3-НДФЛ?</summary><p>По выигрышам у легального букмекера — как правило, нет: оператор сам является налоговым агентом и удерживает налог при выплате.</p></details>
 <details><summary>Уменьшают ли проигрыши сумму налога?</summary><p>Нет. Налоговая база считается по каждой выплате отдельно, поэтому убыточные ставки не уменьшают налог с выигрышных.</p></details>
 <details><summary>Как посчитать налог заранее?</summary><p>Вычтите из ожидаемой выплаты сумму ставки и умножьте результат на 13%. Или воспользуйтесь калькулятором налога на выигрыш.</p></details></div>
     <h2 id="istochniki">Источники · проверено 28.09.2026</h2>
-<ul class="sources"><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/2131996820b390e802ee0587d8a21548eb19c764/" rel="noopener" target="_blank">НК РФ, ст. 214.7 — НДФЛ с выигрышей в букмекерской конторе: база «выплата − ставка», удержание налоговым агентом</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/3e4bbd6dd9fb5dd4e9394f447653506e1d6fa3a9/" rel="noopener" target="_blank">НК РФ, ст. 224 (пп. 1 и 3) — налоговые ставки НДФЛ: шкала 13% / 15% / 18% / 20% / 22% для резидентов, 30% для нерезидентов</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/625f7f7ad302ab285fe87457521eb265c7dbee3c/" rel="noopener" target="_blank">НК РФ, ст. 217 (п. 28) — выигрыши до 4 000 ₽ за налоговый период не облагаются</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/9b06776ae7a39546ad4e3ba04bebef14baabf8d2/" rel="noopener" target="_blank">НК РФ, ст. 210 (пп. 2.1, 2.3, 3) — выигрыши азартных игр входят в совокупность баз для шкалы ст. 224; вычеты ст. 218–221 к ним не применяются</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/4f473e7d7c60c27330c18142e513d9795abee788/" rel="noopener" target="_blank">НК РФ, ст. 225 (п. 1) — порядок исчисления налога по шкале: пороги 2,4 / 5 / 20 / 50 млн ₽ и суммы 312 / 702 / 3402 / 9402 тыс. ₽</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/ecfd690acbabfd266e9d5c4ac0275726d4d0a7c1/" rel="noopener" target="_blank">НК РФ, ст. 226 (п. 2) — накопительный порядок исчисления агентами не распространяется на доходы по ст. 214.7</a></li></ul>
+<ul class="sources"><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/2131996820b390e802ee0587d8a21548eb19c764/" rel="noopener" target="_blank">НК РФ, ст. 214.7 — НДФЛ с выигрышей в букмекерской конторе: база «выплата − ставка», удержание налоговым агентом</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/3e4bbd6dd9fb5dd4e9394f447653506e1d6fa3a9/" rel="noopener" target="_blank">НК РФ, ст. 224 (пп. 1 и 3) — налоговые ставки НДФЛ: шкала 13% / 15% / 18% / 20% / 22% для резидентов, 30% для нерезидентов</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/625f7f7ad302ab285fe87457521eb265c7dbee3c/" rel="noopener" target="_blank">НК РФ, ст. 217 (п. 28) — выигрыши до 4 000 ₽ за налоговый период не облагаются</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/9b06776ae7a39546ad4e3ba04bebef14baabf8d2/" rel="noopener" target="_blank">НК РФ, ст. 210 (пп. 2.1, 2.3, 3) — выигрыши азартных игр входят в совокупность баз для шкалы ст. 224; вычеты ст. 218–221 к ним не применяются</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/4f473e7d7c60c27330c18142e513d9795abee788/" rel="noopener" target="_blank">НК РФ, ст. 225 (п. 1) — порядок исчисления налога по шкале: пороги 2,4 / 5 / 20 / 50 млн ₽ и суммы 312 / 702 / 3402 / 9402 тыс. ₽</a></li><li><a href="https://www.consultant.ru/document/cons_doc_LAW_28165/ecfd690acbabfd266e9d5c4ac0275726d4d0a7c1/" rel="noopener" target="_blank">НК РФ, ст. 226 (п. 2) — накопительный порядок исчисления агентами не распространяется на доходы по ст. 214.7</a></li></ul>
     <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/marathonbet">Марафон</a>, <a href="/bukmekery/fonbet">Фонбет</a>, <a href="/bukmekery/melbet">Мелбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
     <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
     <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
     <div class="tiles">
       <a class="tile" href="/shkola/dengi-i-nalogi/nalog-s-vozvrata-stavki"><b>Нужно ли платить налог, если ставка вернулась (void)</b><small>Деньги и налоги</small></a>
       <a class="tile" href="/shkola/dengi-i-nalogi/nalog-vs-nadezhnost"><b>Налог с выигрыша против надёжности: что теряете и что получаете</b><small>Деньги и налоги</small></a>
-      <a class="tile" href="/shkola/dengi-i-nalogi/novyj-nalog-na-bukmekerov-2026"><b>Новый налог для букмекеров с 2026 года: что изменилось и что это значит для игрока</b><small>Деньги и налоги</small></a>
+      <a class="tile" href="/shkola/dengi-i-nalogi/novyj-nalog-na-bukmekerov-2026"><b>Новый налог для букмекеров с 2026 года: что изменилось и что это значит для игрока</b><small>Деньги и налоги</small></a>
       <a class="tile" href="/instrumenty/nalog-na-vyigrysh"><b>Калькулятор налога</b><small>сколько реально удержат с выигрыша</small></a>
       <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
       <a class="tile" href="/reestr"><b>Реестр: кто легален сегодня</b><small>ежедневная сверка ЦУПИС и лицензий</small></a>
@@ -312,16 +132,19 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 
 <footer class="footer"><div class="container">
   <div class="footer-grid">
-    <div>
-      <div class="logo" style="margin-bottom:10px"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</div>
-      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх. Возрастная категория 18+.</p>
+    <div class="footer-brand">
+      <a class="logo" href="/"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</a>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх.</p>
+      <span class="age-pill"><b>18+</b> Возрастная категория</span>
     </div>
-    <div><h4>Букмекеры</h4><a href="/rating">Рейтинг легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/stavki">Ставки по видам спорта</a><a href="/bonusy">Бонусы и промокоды</a><a href="/instrumenty">Инструменты</a></div>
-    <div><h4>Редакция</h4><a href="/">О проекте и редакция</a><a href="/eksperty">Эксперты и партнёры</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/novosti">Новости</a><a href="/contacts">Контакты</a></div>
-    <div><h4>Ответственная игра</h4><a href="/otvetstvennaya-igra">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/otvetstvennaya-igra">Лимиты и самоконтроль</a></div>
+    <div><h4>Рейтинги</h4><a href="/rating">Каталог легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/bonusy">Бонусы и фрибеты</a><a href="/promokody">Промокоды</a><a href="/reestr">Реестр ЕРАИ</a></div>
+    <div><h4>Разобраться</h4><a href="/stavki">Ставки по видам спорта</a><a href="/shkola">Школа ставок</a><a href="/instrumenty">Калькуляторы</a><a href="/novosti">Новости</a></div>
+    <div><h4>О проекте</h4><a href="/contacts">О проекте и контакты</a><a href="/avtor/aleksej-kamnev">Редакция и автор</a><a href="/eksperty">Эксперты и партнёры</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/politika-konfidencialnosti">Политика конфиденциальности</a></div>
+    <div><h4>Ответственная игра</h4><a href="/shkola/otvetstvennaya-igra/priznaki-ludomanii">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/shkola/dengi-i-nalogi/limity-i-samokontrol">Лимиты и самоконтроль</a></div>
   </div>
   <div class="legal-box">
-    <span><b style="color:var(--text)">18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span><b>18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span>Материалы могут содержать рекламу; отдельные места размещения партнёров оплачены. Оценки редакции ориентировочные; размеры и условия бонусов уточняйте на официальных сайтах букмекеров.</span>
     <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
   </div>
 </div></footer>
@@ -331,5 +154,6 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
 </div>
 
+<script src="/assets/site.js" defer></script>
 </body>
 </html>
