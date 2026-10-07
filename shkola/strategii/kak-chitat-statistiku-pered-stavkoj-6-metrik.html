@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Как читать статистику перед ставкой: 6 метрик</title>
+<meta name="description" content="6 метрик перед ставкой на футбол: xG, удары, владение, форма, личные встречи, дом и гости — что показывает каждая и как выборка меняет вывод (наш расчёт).">
+<link rel="canonical" href="https://stavki-rating.ru/shkola/strategii/kak-chitat-statistiku-pered-stavkoj-6-metrik">
+<meta name="yandex-verification" content="4edbdcb14677aee3">
+  <meta name="zen-verification" content="5nDNKfHEF7aU3VHKwj53tV6xxX6MeqopSvcIdNycit0Ck6o07VtBqMxgRmHydsNc">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://stavki-rating.ru/shkola/strategii/kak-chitat-statistiku-pered-stavkoj-6-metrik">
+<meta property="og:title" content="Как читать статистику перед ставкой: 6 метрик">
+<meta property="og:description" content="6 метрик перед ставкой на футбол: xG, удары, владение, форма, личные встречи, дом и гости — что показывает каждая и как выборка меняет вывод (наш расчёт).">
+<meta property="og:image" content="https://stavki-rating.ru/media/hero.jpg">
+<meta property="og:image:width" content="1376">
+<meta property="og:image:height" content="768">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Как читать статистику перед ставкой: 6 метрик">
+<meta name="twitter:description" content="6 метрик перед ставкой на футбол: xG, удары, владение, форма, личные встречи, дом и гости — что показывает каждая и как выборка меняет вывод (наш расчёт).">
+<meta name="twitter:image" content="https://stavki-rating.ru/media/hero.jpg">
+<!-- физические файлы дублируют SVG-иконку выше - Яндекс и другие боты явно ищут ссылку на
+     обычный файл, инлайновый data-URI не засчитывают как валидный favicon (FAVICON_PROBLEM).
+     09.09.2026: Вебмастер отдельно попросил SVG-файл или 120x120 PNG (не устраивает ни
+     data-URI, ни .ico) - добавлены оба варианта. -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="120x120" href="/favicon-120.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/assets/site.css?v=f65998b1">
+<link rel="stylesheet" href="/assets/chrome.css?v=f65998b1">
+<meta name="theme-color" content="#07090F">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Стратегии", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "Как читать статистику перед ставкой: 6 метрик", "item": "https://stavki-rating.ru/shkola/strategii/kak-chitat-statistiku-pered-stavkoj-6-metrik"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как читать статистику перед ставкой: 6 метрик", "description": "6 метрик перед ставкой на футбол: xG, удары, владение, форма, личные встречи, дом и гости — что показывает каждая и как выборка меняет вывод (наш расчёт).", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/strategii/kak-chitat-statistiku-pered-stavkoj-6-metrik", "datePublished": "2026-10-05", "dateModified": "2026-10-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Какие метрики смотреть перед ставкой на футбол?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Чаще всего xG, удары и удары в створ, владение, форму, личные встречи и результаты дома и в гостях; ни одна не гарантирует исход.</p>"}}, {"@type": "Question", "name": "Достаточно ли формы за 5 матчей?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет: при 60% побед интервал около ±43 п. п.; для выводов нужно 10–20 матчей и контекст.</p>"}}, {"@type": "Question", "name": "Что такое xG и чем он полезен?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Вероятность гола с удара по модели; показывает качество моментов, но не равен результату (Opta Analyst).</p>"}}, {"@type": "Question", "name": "Почему владение мячом не показывает силу команды?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Оно измеряет время с мячом, а не угрозу воротам: смотрите владение вместе с xG и ударами в створ.</p>"}}, {"@type": "Question", "name": "Помогают ли личные встречи?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Как контекст — да, как вероятность — слабо: матчей мало, составы меняются.</p>"}}]}</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){
+    m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112360025', 'ym');
+
+ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/112360025" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+
+<div class="wall" aria-label="Партнёрские предложения">
+<div class="wall-side wall-left">
+  <a class="wall-badge" style="top:var(--r1)" href="/go/marathonbet" rel="sponsored nofollow" aria-label="Марафон — бонус за регистрацию"><img src="/img/logos/marathonbet.png" alt="Марафон" loading="lazy"></a>
+  <a class="wall-badge" style="top:var(--r2)" href="/go/pari" rel="sponsored nofollow" aria-label="PARI — бонус за регистрацию"><img src="/img/logos/pari.png" alt="PARI" loading="lazy"></a>
+  <a class="wall-badge" style="top:var(--r3)" href="/go/zenit" rel="sponsored nofollow" aria-label="Зенит — бонус за регистрацию"><img src="/img/logos/zenit.png" alt="Зенит" loading="lazy"></a>
+  <span class="wall-tag">Реклама · 18+</span>
+</div>
+<div class="wall-side wall-right">
+  <a class="wall-badge" style="top:var(--r1)" href="/go/melbet" rel="sponsored nofollow" aria-label="Мелбет — бонус за регистрацию"><img src="/img/logos/melbet.png" alt="Мелбет" loading="lazy"></a>
+  <a class="wall-badge" style="top:var(--r2)" href="/go/fonbet" rel="sponsored nofollow" aria-label="Фонбет — бонус за регистрацию"><img src="/img/logos/fonbet.png" alt="Фонбет" loading="lazy"></a>
+  <a class="wall-badge" style="top:var(--r3)" href="/go/betcity" rel="sponsored nofollow" aria-label="Бетсити — бонус за регистрацию"><img src="/img/logos/betcity.png" alt="Бетсити" loading="lazy"></a>
+  <span class="wall-tag">Реклама · 18+</span>
+</div>
+</div>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav" aria-label="Основное меню">
+    <a href="/rating">Рейтинг</a>
+    <a href="/rejting">По критериям</a>
+    <a href="/stavki">Виды спорта</a>
+    <a href="/instrumenty">Инструменты</a>
+    <a href="/shkola">Школа</a>
+    <a href="/bonusy">Бонусы</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main id="main">
+
+  <section class="section tight"><div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Стратегии</a><span>/</span>Как читать статистику перед ставкой: 6 метрик</nav>
+    <div class="eyebrow" style="margin:16px 0 8px">· Школа · Стратегии ·</div>
+    <h1>Как читать статистику перед ставкой: 6 метрик</h1>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-10-05">05.10.2026</time></span><span>·</span><span>факты проверены <time datetime="2026-10-05">05.10.2026</time></span><span>·</span><span>5 мин чтения</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">Для ставки на футбол чаще всего смотрят 6 метрик: xG, удары, владение, форму, личные встречи и разницу дома и в гостях. У каждой своя ловушка, а главная — малая выборка: доля побед по последним 5 матчам имеет доверительный интервал около ±43 процентных пунктов, по 38 матчам сезона — около ±16. Ниже — что показывает каждая метрика, как её проверить и почему нельзя строить ставку на одном числе.</p>
+    
+    
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#tablica-6-metrik-chto-pokazyvayut-i-gde-lovushka">Таблица: 6 метрик, что показывают и где ловушка</a></li><li><a href="#1-xg-kachestvo-momentov">1. xG: качество моментов</a></li><li><a href="#2-udary-i-udary-v-stvor">2. Удары и удары в створ</a></li><li><a href="#3-vladenie-myachom">3. Владение мячом</a></li><li><a href="#4-forma-rezultaty-poslednih-matchej">4. Форма: результаты последних матчей</a></li><li><a href="#5-lichnye-vstrechi">5. Личные встречи</a></li><li><a href="#6-dom-i-gosti">6. Дом и гости</a></li><li><a href="#primer-proverki-po-shagam-uslovnye-dannye-nash-raschet">Пример проверки по шагам (условные данные, наш расчёт)</a></li><li><a href="#kak-sobrat-eto-v-odnu-proverku">Как собрать это в одну проверку</a></li><li><a href="#faq">Частые вопросы</a></li><li><a href="#istochniki">Источники</a></li></ol></nav>
+  </div></section>
+
+  <section class="section" style="padding-top:6px"><div class="container prose">
+    <h2 id="tablica-6-metrik-chto-pokazyvayut-i-gde-lovushka">Таблица: 6 метрик, что показывают и где ловушка</h2>
+<p>6 метрик описывают прошлое, а ставка — будущее; каждая полезна только вместе с контекстом.</p><div class="table-wrap"><table><caption>Шесть метрик перед ставкой</caption><thead><tr><th>Метрика</th><th>Что показывает</th><th>Главная ловушка</th></tr></thead><tbody><tr><td>xG (ожидаемые голы)</td><td>качество созданных моментов</td><td>не равен ожидаемому результату матча (Opta)</td></tr><tr><td>Удары и удары в створ</td><td>объём атак; в среднем около 25 ударов за матч (Opta)</td><td>много ударов — не значит много опасных моментов</td></tr><tr><td>Владение мячом</td><td>доля времени с мячом</td><td>не измеряет угрозу воротам</td></tr><tr><td>Форма (последние матчи)</td><td>недавние результаты</td><td>малая выборка: 5 матчей — слишком мало</td></tr><tr><td>Личные встречи</td><td>прошлые матчи этих соперников</td><td>мало матчей, меняются составы</td></tr><tr><td>Дом и гости</td><td>разница в результативности по местам</td><td>выборка делится пополам</td></tr></tbody></table></div><p>Дальше — по одной метрике с практической проверкой.</p>
+<h2 id="1-xg-kachestvo-momentov">1. xG: качество моментов</h2>
+<p>xG оценивает вероятность гола с каждого удара и суммируется по матчу; по Opta, больший xG в матче не означает, что команда должна была выиграть.</p><p>Для ставки полезнее средний xG за 10–20 матчей, чем за один; как xG переводится в вероятности исходов — в статье <a href="/shkola/terminy/xg-v-stavkah-na-futbol">xG в ставках на футбол</a>.</p>
+<h2 id="2-udary-i-udary-v-stvor">2. Удары и удары в створ</h2>
+<p>Opta указывает, что в среднем за матч приходится около 25 ударов: команда с 18 ударами из них, возможно, давит, но 18 ударов с дальней дистанции дают мало xG.</p><p>Правила «Марафона» отдельно уточняют, что при расчёте пари забитые голы учитываются в статистике «Удары в створ» и «Удары всего», а автоголы не учитываются. Для рынков на удары это значит: сверяйте определение статистики в правилах оператора.</p>
+<h2 id="3-vladenie-myachom">3. Владение мячом</h2>
+<p>Высокое владение показывает контроль, но не угрозу: команда может держать мяч 65% времени и создавать мало моментов.</p><p>Проверяйте владение вместе с xG и ударами в створ: если владение велико, а xG низкий, перевес команды иллюзорен.</p>
+<h2 id="4-forma-rezultaty-poslednih-matchej">4. Форма: результаты последних матчей</h2>
+<p>Доля побед по последним матчам — самая частая метрика и самая шумная: выборка из 5 игр слишком мала, чтобы отличить форму от случайности.</p><div class="table-wrap"><table><caption>95% доверительный интервал доли побед при наблюдаемых 60% (наш расчёт)</caption><thead><tr><th>Число матчей</th><th>Интервал</th></tr></thead><tbody><tr><td>5</td><td>около ±42,9 п. п.</td></tr><tr><td>10</td><td>около ±30,4 п. п.</td></tr><tr><td>20</td><td>около ±21,5 п. п.</td></tr><tr><td>38 (сезон)</td><td>около ±15,6 п. п.</td></tr><tr><td>100</td><td>около ±9,6 п. п.</td></tr></tbody></table></div><p>По пяти матчам «60% побед» может означать и 17%, и 100% на деле; поэтому форма — подсказка, а не основание для ставки.</p>
+<h2 id="5-lichnye-vstrechi">5. Личные встречи</h2>
+<p>Ставка «на историю» между двумя клубами опирается на малое число игр и меняющиеся составы: пять последних встреч дают интервал около ±43 п. п.</p><p>Личные встречи полезны как контекст (стиль игры, тренерские схемы), но не как вероятность исхода.</p>
+<h2 id="6-dom-i-gosti">6. Дом и гости</h2>
+<p>Разницу в результатах дома и в гостях считают по половине выборки: у команды 19 домашних матчей за сезон, и интервал доли побед на 19 матчах около ±22 п. п.</p><p>Сравнивайте не только результаты, но и xG дома и в гостях и учитывайте график; при малой выборке разница может быть случайной.</p>
+<h2 id="primer-proverki-po-shagam-uslovnye-dannye-nash-raschet">Пример проверки по шагам (условные данные, наш расчёт)</h2>
+<p>Условный пример: хозяева в среднем за 10 матчей создают 1,6 xG и пропускают 1,0; гости создают 1,1 xG и пропускают 1,4.</p><ul><li>Ожидаемые голы хозяев — среднее их атаки и обороны гостей: (1,6 + 1,4) / 2 = 1,50.</li><li>Ожидаемые голы гостей — среднее их атаки и обороны хозяев: (1,1 + 1,0) / 2 = 1,05.</li><li>По распределению Пуассона: победа хозяев 47,6%, ничья 25,9%, победа гостей 26,5%; тотал больше 2,5 — 46,9%; обе забьют — 50,5%.</li><li>Справедливые коэффициенты без маржи: 2,10 / 3,86 / 3,77; для ТБ 2,5 — 2,13, для ОЗ — 1,98.</li></ul><p>Дальше сравнивайте эти числа с линией: если букмекер предлагает на победу хозяев 1,95, подразумеваемая вероятность 51,3% выше нашей оценки на 3,7 п. п., то есть перевеса нет. Подход — упрощение: он не учитывает состав, мотивацию и график.</p>
+<h2 id="kak-sobrat-eto-v-odnu-proverku">Как собрать это в одну проверку</h2>
+<ol><li>Возьмите 10–20 матчей, а не 3–5, и укажите период.</li><li>Сравните xG созданный и пропущенный с реальными голами: это видно, где везёт, а где метрики объясняют результат.</li><li>Сравните вывод с линией: перевод в вероятности — в статье о xG, маржа — в <a href="/shkola/terminy/chto-takoe-marzha-bukmekera">что такое маржа букмекера</a>.</li><li>Если вывода нет, не ставьте: ставка без перевеса теряет на марже и налоге 13%.</li></ol><p>Материал справочный и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</p>
+    <h2 id="faq">Частые вопросы</h2>
+    <div class="faq"><details><summary>Какие метрики смотреть перед ставкой на футбол?</summary><p>Чаще всего xG, удары и удары в створ, владение, форму, личные встречи и результаты дома и в гостях; ни одна не гарантирует исход.</p></details>
+<details><summary>Достаточно ли формы за 5 матчей?</summary><p>Нет: при 60% побед интервал около ±43 п. п.; для выводов нужно 10–20 матчей и контекст.</p></details>
+<details><summary>Что такое xG и чем он полезен?</summary><p>Вероятность гола с удара по модели; показывает качество моментов, но не равен результату (Opta Analyst).</p></details>
+<details><summary>Почему владение мячом не показывает силу команды?</summary><p>Оно измеряет время с мячом, а не угрозу воротам: смотрите владение вместе с xG и ударами в створ.</p></details>
+<details><summary>Помогают ли личные встречи?</summary><p>Как контекст — да, как вероятность — слабо: матчей мало, составы меняются.</p></details></div>
+    <h2 id="istochniki">Источники · проверено 05.10.2026</h2>
+<ul class="sources"><li><a href="https://theanalyst.com/articles/what-is-expected-goals-xg" rel="noopener" target="_blank">Opta Analyst: What Is Expected Goals (xG)? (прочитано 05.10.2026)</a></li><li><a href="https://www.marathonbet.ru/su/help/sports-rules/rules-sport-by-sport/football" rel="noopener" target="_blank">Правила БК «Марафон» (marathonbet.ru, © 2026), раздел 8.2 «Правила по видам спорта: футбол» (удары в створ и удары всего)</a></li></ul>
+    <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/betcity">Бетсити</a>, <a href="/bukmekery/pari">PARI</a>, <a href="/bukmekery/melbet">Мелбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
+    <div class="tiles">
+      <a class="tile" href="/shkola/strategii/stavki-na-favoritov"><b>Стратегия ставок на фаворитов: плюсы и риски</b><small>Стратегии</small></a>
+      <a class="tile" href="/shkola/strategii/dnevnik-stavok-zachem"><b>Дневник ставок: что в нём писать, как считать результат и зачем это нужно</b><small>Стратегии</small></a>
+      <a class="tile" href="/shkola/terminy/chto-takoe-lesenka"><b>Что такое лестница в ставках</b><small>Стратегии</small></a>
+      <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
+      <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
+      <a class="tile" href="/reestr"><b>Реестр: кто легален сегодня</b><small>ежедневная сверка ЦУПИС и лицензий</small></a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="logo" href="/"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</a>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх.</p>
+      <span class="age-pill"><b>18+</b> Возрастная категория</span>
+    </div>
+    <div><h4>Рейтинги</h4><a href="/rating">Каталог легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/bonusy">Бонусы и фрибеты</a><a href="/promokody">Промокоды</a><a href="/reestr">Реестр ЕРАИ</a></div>
+    <div><h4>Разобраться</h4><a href="/stavki">Ставки по видам спорта</a><a href="/shkola">Школа ставок</a><a href="/instrumenty">Калькуляторы</a><a href="/novosti">Новости</a></div>
+    <div><h4>О проекте</h4><a href="/contacts">О проекте и контакты</a><a href="/avtor/aleksej-kamnev">Редакция и автор</a><a href="/eksperty">Эксперты и партнёры</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/politika-konfidencialnosti">Политика конфиденциальности</a></div>
+    <div><h4>Ответственная игра</h4><a href="/shkola/otvetstvennaya-igra/priznaki-ludomanii">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/shkola/dengi-i-nalogi/limity-i-samokontrol">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b>18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span>Материалы могут содержать рекламу; отдельные места размещения партнёров оплачены. Оценки редакции ориентировочные; размеры и условия бонусов уточняйте на официальных сайтах букмекеров.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>xG в ставках на футбол: что это и как использовать</title>
+<meta name="description" content="xG — вероятность гола с удара по модели Opta: как читать, чем он отличается от результата матча и как перевести в вероятности исходов (наш расчёт).">
+<link rel="canonical" href="https://stavki-rating.ru/shkola/terminy/xg-v-stavkah-na-futbol">
+<meta name="yandex-verification" content="4edbdcb14677aee3">
+  <meta name="zen-verification" content="5nDNKfHEF7aU3VHKwj53tV6xxX6MeqopSvcIdNycit0Ck6o07VtBqMxgRmHydsNc">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://stavki-rating.ru/shkola/terminy/xg-v-stavkah-na-futbol">
+<meta property="og:title" content="xG в ставках на футбол: что это и как использовать">
+<meta property="og:description" content="xG — вероятность гола с удара по модели Opta: как читать, чем он отличается от результата матча и как перевести в вероятности исходов (наш расчёт).">
+<meta property="og:image" content="https://stavki-rating.ru/media/hero.jpg">
+<meta property="og:image:width" content="1376">
+<meta property="og:image:height" content="768">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="xG в ставках на футбол: что это и как использовать">
+<meta name="twitter:description" content="xG — вероятность гола с удара по модели Opta: как читать, чем он отличается от результата матча и как перевести в вероятности исходов (наш расчёт).">
+<meta name="twitter:image" content="https://stavki-rating.ru/media/hero.jpg">
+<!-- физические файлы дублируют SVG-иконку выше - Яндекс и другие боты явно ищут ссылку на
+     обычный файл, инлайновый data-URI не засчитывают как валидный favicon (FAVICON_PROBLEM).
+     09.09.2026: Вебмастер отдельно попросил SVG-файл или 120x120 PNG (не устраивает ни
+     data-URI, ни .ico) - добавлены оба варианта. -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="120x120" href="/favicon-120.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/assets/site.css?v=f65998b1">
+<link rel="stylesheet" href="/assets/chrome.css?v=f65998b1">
+<meta name="theme-color" content="#07090F">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://stavki-rating.ru/"}, {"@type": "ListItem", "position": 2, "name": "Школа", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 3, "name": "Термины", "item": "https://stavki-rating.ru/shkola"}, {"@type": "ListItem", "position": 4, "name": "xG в ставках на футбол: что это и как использовать", "item": "https://stavki-rating.ru/shkola/terminy/xg-v-stavkah-na-futbol"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "xG в ставках на футбол: что это и как использовать", "description": "xG — вероятность гола с удара по модели Opta: как читать, чем он отличается от результата матча и как перевести в вероятности исходов (наш расчёт).", "inLanguage": "ru-RU", "mainEntityOfPage": "https://stavki-rating.ru/shkola/terminy/xg-v-stavkah-na-futbol", "datePublished": "2026-10-05", "dateModified": "2026-10-05", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "/avtor/aleksej-kamnev", "jobTitle": "основатель и редактор stavki-rating.ru, аналитик легального рынка ставок"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что такое xG простыми словами?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Вероятность гола с конкретного удара по модели: 0,1 означает, что в среднем один гол из десяти таких ударов (Opta Analyst).</p>"}}, {"@type": "Question", "name": "Значит ли больший xG, что команда должна была выиграть?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет: по Opta, xG измеряет качество шансов, а не ожидаемый исход матча.</p>"}}, {"@type": "Question", "name": "Какой xG у пенальти?", "acceptedAnswer": {"@type": "Answer", "text": "<p>В модели Opta пенальти оценён постоянной величиной по историческому проценту реализации — 0,79 xG.</p>"}}, {"@type": "Question", "name": "Как перевести xG в вероятность исхода?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Можно приближённо через распределение Пуассона со средним, равным ожидаемым голам: для 1,8 : 0,9 это 58,6% на победу хозяев (наш расчёт, упрощение).</p>"}}, {"@type": "Question", "name": "Достаточно ли одного xG для ставки?", "acceptedAnswer": {"@type": "Answer", "text": "<p>Нет: это одна метрика качества моментов; прогноз исхода требует контекста, и результат остаётся вероятностным.</p>"}}]}</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){
+    m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112360025', 'ym');
+
+ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/112360025" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+
+<div class="wall" aria-label="Партнёрские предложения">
+<div class="wall-side wall-left">
+  <a class="wall-badge" style="top:var(--r1)" href="/go/marathonbet" rel="sponsored nofollow" aria-label="Марафон — бонус за регистрацию"><img src="/img/logos/marathonbet.png" alt="Марафон" loading="lazy"></a>
+  <a class="wall-badge" style="top:var(--r2)" href="/go/pari" rel="sponsored nofollow" aria-label="PARI — бонус за регистрацию"><img src="/img/logos/pari.png" alt="PARI" loading="lazy"></a>
+  <a class="wall-badge" style="top:var(--r3)" href="/go/zenit" rel="sponsored nofollow" aria-label="Зенит — бонус за регистрацию"><img src="/img/logos/zenit.png" alt="Зенит" loading="lazy"></a>
+  <span class="wall-tag">Реклама · 18+</span>
+</div>
+<div class="wall-side wall-right">
+  <a class="wall-badge" style="top:var(--r1)" href="/go/melbet" rel="sponsored nofollow" aria-label="Мелбет — бонус за регистрацию"><img src="/img/logos/melbet.png" alt="Мелбет" loading="lazy"></a>
+  <a class="wall-badge" style="top:var(--r2)" href="/go/fonbet" rel="sponsored nofollow" aria-label="Фонбет — бонус за регистрацию"><img src="/img/logos/fonbet.png" alt="Фонбет" loading="lazy"></a>
+  <a class="wall-badge" style="top:var(--r3)" href="/go/betcity" rel="sponsored nofollow" aria-label="Бетсити — бонус за регистрацию"><img src="/img/logos/betcity.png" alt="Бетсити" loading="lazy"></a>
+  <span class="wall-tag">Реклама · 18+</span>
+</div>
+</div>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav" aria-label="Основное меню">
+    <a href="/rating">Рейтинг</a>
+    <a href="/rejting">По критериям</a>
+    <a href="/stavki">Виды спорта</a>
+    <a href="/instrumenty">Инструменты</a>
+    <a href="/shkola">Школа</a>
+    <a href="/bonusy">Бонусы</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main id="main">
+
+  <section class="section tight"><div class="container">
+    <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/shkola">Школа</a><span>/</span><a href="/shkola">Термины</a><span>/</span>xG в ставках на футбол: что это и как использовать</nav>
+    <div class="eyebrow" style="margin:16px 0 8px">· Школа · Термины ·</div>
+    <h1>xG в ставках на футбол: что это и как использовать</h1>
+    <div class="small muted meta-row"><a href="/avtor/aleksej-kamnev" style="color:var(--volt)">✎ Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-10-05">05.10.2026</time></span><span>·</span><span>факты проверены <time datetime="2026-10-05">05.10.2026</time></span><span>·</span><span>4 мин чтения</span></div>
+    <p class="muted" style="max-width:75ch;margin-top:12px">xG («ожидаемые голы») — число от 0 до 1 для каждого удара: вероятность, что он закончится голом, по модели, обученной на прошлых ударах. Модель Opta обучена почти на миллионе ударов; пенальти в ней оценён в 0,79. Сумма xG показывает качество созданных моментов, а не результат матча: команда с большим xG не обязана была выиграть. Для ставок xG полезен как вход в расчёт вероятностей — ниже наш расчёт по распределению Пуассона и разбор ошибок.</p>
+    
+    
+    <nav class="toc" aria-label="Содержание"><b>Содержание</b><ol><li><a href="#chto-takoe-xg-po-opredeleniyu-opta">Что такое xG по определению Opta</a></li><li><a href="#kak-chitat-xg-i-chego-on-ne-znachit">Как читать xG и чего он не значит</a></li><li><a href="#ot-xg-k-veroyatnostyam-ishodov-nash-raschet">От xG к вероятностям исходов: наш расчёт</a></li><li><a href="#primer-sravneniya-s-liniej">Пример сравнения с линией</a></li><li><a href="#tipichnye-oshibki-pri-ispolzovanii-xg">Типичные ошибки при использовании xG</a></li><li><a href="#faq">Частые вопросы</a></li><li><a href="#istochniki">Источники</a></li></ol></nav>
+  </div></section>
+
+  <section class="section" style="padding-top:6px"><div class="container prose">
+    <h2 id="chto-takoe-xg-po-opredeleniyu-opta">Что такое xG по определению Opta</h2>
+<p>По описанию Opta Analyst, expected goals измеряет качество шанса: вероятность, что удар станет голом, рассчитанная по информации о похожих ударах в прошлом, по шкале от нуля (шанс невозможно реализовать) до единицы.</p><ul><li>Пример Opta: если удар из штрафной получил xG 0,1, то в среднем игрок забивает один гол из каждых десяти таких ударов, то есть в 10% случаев.</li><li>Модель Opta использует машинное обучение (XGBoost) на почти миллионе ударов из 40 турниров сезонов 2018/19–2021/22 и учитывает более 20 переменных.</li><li>Среди главных факторов: расстояние и угол до ворот, положение вратаря, открытость створа, давление защитников, тип удара, развитие атаки и предыдущее действие.</li><li>Пенальти оценены постоянной величиной по исторической реализации — 0,79 xG.</li></ul><p>Opta указывает, что в среднем за матч приходится около 25 ударов, поэтому ручная оценка каждого момента нереальна, а модель делает её за секунды.</p>
+<h2 id="kak-chitat-xg-i-chego-on-ne-znachit">Как читать xG и чего он не значит</h2>
+<p>Opta Analyst подчёркивает: больший xG за матч не означает, что команда должна была победить, потому что метрика измеряет качество моментов, а не ожидаемый исход игры.</p><ul><li>Слово «ожидаемые» взято из теории вероятностей: это математическое ожидание, а не прогноз точного числа голов.</li><li>Перевыполнение xG не обязано «возвращаться» в ноль: игрок, забивший на 5 голов больше xG, уже «записал» эти голы (ошибка игрока — вера в «должно выровняться», по Opta, ловушка Gambler's Fallacy).</li><li>xG — «просто метрика»: Opta напоминает, что матчи выигрывают реальные голы, а не xG.</li></ul><p>Поэтому xG уместно сравнивать с фактическим результатом за длинный отрезок: если команда регулярно создаёт 1,8 xG и забивает 1,2, вопрос в реализации и случайности, а не в «удаче матча».</p>
+<h2 id="ot-xg-k-veroyatnostyam-ishodov-nash-raschet">От xG к вероятностям исходов: наш расчёт</h2>
+<p>Допущение нашего расчёта: число голов каждой команды распределено по Пуассону со средним, равным ожидаемым голам, а голы команд независимы. Это упрощение, а не модель Opta.</p><div class="table-wrap"><table><caption>Вероятности по ожидаемым голам хозяев и гостей (наш расчёт, распределение Пуассона)</caption><thead><tr><th>Ожидаемые голы (хозяева : гости)</th><th>Победа хозяев</th><th>Ничья</th><th>Победа гостей</th><th>Тотал больше 2,5</th><th>Обе забьют</th></tr></thead><tbody><tr><td>1,8 : 0,9</td><td>58,6%</td><td>22,9%</td><td>18,5%</td><td>50,6%</td><td>49,5%</td></tr><tr><td>1,3 : 1,3</td><td>36,8%</td><td>26,4%</td><td>36,8%</td><td>48,2%</td><td>52,9%</td></tr><tr><td>2,4 : 0,6</td><td>77,4%</td><td>15,2%</td><td>7,4%</td><td>57,7%</td><td>41,0%</td></tr><tr><td>1,0 : 1,0</td><td>34,6%</td><td>30,9%</td><td>34,6%</td><td>32,3%</td><td>40,0%</td></tr></tbody></table></div><p>Справедливый коэффициент без маржи равен 1 / вероятность: для победы хозяев при 58,6% это 1,71, для тотала больше 2,5 при 50,6% — 1,97. Реальные линии букмекера содержат маржу, поэтому коэффициенты ниже: смотрите <a href="/shkola/terminy/chto-takoe-marzha-bukmekera">что такое маржа букмекера</a>.</p>
+<h2 id="primer-sravneniya-s-liniej">Пример сравнения с линией</h2>
+<p>Допустим, по ожидаемым голам 1,8 : 0,9 наш расчёт даёт победе хозяев 58,6%, а букмекер предлагает 1,60; его линия подразумевает вероятность 1 / 1,60 = 62,5%.</p><ul><li>Разница 62,5% − 58,6% = 3,9 процентных пункта: по нашему расчёту линия не даёт перевеса, а расход на маржу и налог 13% с выигрыша делает ставку ещё менее выгодной.</li><li>Для тотала больше 2,5 при 50,6% справедливый коэффициент 1,97; при линии 1,90 подразумеваемая вероятность 52,6%, то есть выше нашей оценки на 2,0 п. п.</li><li>Вывод по обоим примерам: сама по себе модель не находит ставку с перевесом — она показывает, насколько линия близка к честной.</li></ul><p>Налог на выигрыш считается с чистой суммы выигрыша; как он сдвигает порог безубыточности, разобрано в статье <a href="/shkola/strategii/kakie-koefficienty-prohodyat-chashche">какие коэффициенты проходят чаще</a>.</p>
+<h2 id="tipichnye-oshibki-pri-ispolzovanii-xg">Типичные ошибки при использовании xG</h2>
+<ul><li>Оценка по одному матчу: на 25 ударах разброс велик, а Opta называет самой частой ошибкой применение xG на уровне отдельной игры.</li><li>Подмена xG прогнозом исхода: по Opta, xG измеряет качество моментов, а не ожидаемый результат игры; состав, мотивация и график в метрику не входят.</li><li>Слепое доверие Poisson-расчёту выше: это наше упрощение (независимость голов), а не модель Opta.</li><li>Вера в «возврат к среднему» после серии: перевыполнение уже произошло и не обнуляется.</li></ul><p>Как xG встраивается в проверку других показателей, смотрите в статье <a href="/shkola/strategii/kak-chitat-statistiku-pered-stavkoj-6-metrik">как читать статистику перед ставкой: 6 метрик</a>. Материал справочный и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</p>
+    <h2 id="faq">Частые вопросы</h2>
+    <div class="faq"><details><summary>Что такое xG простыми словами?</summary><p>Вероятность гола с конкретного удара по модели: 0,1 означает, что в среднем один гол из десяти таких ударов (Opta Analyst).</p></details>
+<details><summary>Значит ли больший xG, что команда должна была выиграть?</summary><p>Нет: по Opta, xG измеряет качество шансов, а не ожидаемый исход матча.</p></details>
+<details><summary>Какой xG у пенальти?</summary><p>В модели Opta пенальти оценён постоянной величиной по историческому проценту реализации — 0,79 xG.</p></details>
+<details><summary>Как перевести xG в вероятность исхода?</summary><p>Можно приближённо через распределение Пуассона со средним, равным ожидаемым голам: для 1,8 : 0,9 это 58,6% на победу хозяев (наш расчёт, упрощение).</p></details>
+<details><summary>Достаточно ли одного xG для ставки?</summary><p>Нет: это одна метрика качества моментов; прогноз исхода требует контекста, и результат остаётся вероятностным.</p></details></div>
+    <h2 id="istochniki">Источники · проверено 05.10.2026</h2>
+<ul class="sources"><li><a href="https://theanalyst.com/articles/what-is-expected-goals-xg" rel="noopener" target="_blank">Opta Analyst: What Is Expected Goals (xG)? (прочитано 05.10.2026)</a></li></ul>
+    <div class="partner-picks" style="margin:22px 0;padding:12px 14px;border:1px solid var(--line,#28304a);border-radius:12px">Легальные букмекеры из реестра ЕРАИ: <a href="/bukmekery/winline">Winline</a>, <a href="/bukmekery/zenit">Зенит</a>, <a href="/bukmekery/pari">PARI</a>, <a href="/bukmekery/melbet">Мелбет</a>. <span class="muted">Полный список — в <a href="/reestr">реестре легальных БК</a>. 18+.</span></div>
+    <div class="callout">Материал носит справочный характер и не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости.</div>
+    <h2 id="chitajte-takzhe" style="margin-top:20px">Читайте также</h2>
+    <div class="tiles">
+      <a class="tile" href="/shkola/terminy/chto-takoe-ekspress"><b>Что такое экспресс в ставках на спорт</b><small>Термины</small></a>
+      <a class="tile" href="/shkola/terminy/chto-takoe-fora"><b>Что такое фора в ставках: виды форы и расчёт возврата</b><small>Термины</small></a>
+      <a class="tile" href="/shkola/terminy/stavka-na-nichyu"><b>Ставка на ничью: когда она оправдана</b><small>Термины</small></a>
+      <a class="tile" href="/instrumenty/kalkulyator-stavok"><b>Калькулятор ставок</b><small>выплата и прибыль по коэффициенту</small></a>
+      <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить конторы из реестра</small></a>
+      <a class="tile" href="/reestr"><b>Реестр: кто легален сегодня</b><small>ежедневная сверка ЦУПИС и лицензий</small></a>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="logo" href="/"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</a>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх.</p>
+      <span class="age-pill"><b>18+</b> Возрастная категория</span>
+    </div>
+    <div><h4>Рейтинги</h4><a href="/rating">Каталог легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/bonusy">Бонусы и фрибеты</a><a href="/promokody">Промокоды</a><a href="/reestr">Реестр ЕРАИ</a></div>
+    <div><h4>Разобраться</h4><a href="/stavki">Ставки по видам спорта</a><a href="/shkola">Школа ставок</a><a href="/instrumenty">Калькуляторы</a><a href="/novosti">Новости</a></div>
+    <div><h4>О проекте</h4><a href="/contacts">О проекте и контакты</a><a href="/avtor/aleksej-kamnev">Редакция и автор</a><a href="/eksperty">Эксперты и партнёры</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/politika-konfidencialnosti">Политика конфиденциальности</a></div>
+    <div><h4>Ответственная игра</h4><a href="/shkola/otvetstvennaya-igra/priznaki-ludomanii">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/shkola/dengi-i-nalogi/limity-i-samokontrol">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b>18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span>Материалы могут содержать рекламу; отдельные места размещения партнёров оплачены. Оценки редакции ориентировочные; размеры и условия бонусов уточняйте на официальных сайтах букмекеров.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+<script src="/assets/site.js" defer></script>
+</body>
+</html>
