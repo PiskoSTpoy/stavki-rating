@@ -131,6 +131,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
       <a class="tile" href="/instrumenty/kalkulyator-vilok"><b>Калькулятор вилок</b><small>распределение ставок, прибыль в %</small></a>
       <a class="tile" href="/instrumenty/kalkulyator-marzhi"><b>Калькулятор маржи</b><small>оверраунд букмекера и честные коэффициенты</small></a>
       <a class="tile" href="/instrumenty/kalkulyator-cashout"><b>Калькулятор кэшаута</b><small>честная стоимость продажи ставки до финиша</small></a>
+      <a class="tile" href="/instrumenty/kalkulyator-fribeta"><b>Калькулятор фрибета</b><small>сколько своих денег поставить на перекрытие бонуса</small></a>
       <a class="tile" href="/rating"><b>Рейтинг легальных БК</b><small>сравнить все конторы из реестра</small></a>
     </div>
   </div></section>
@@ -225,6 +226,27 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     return { potentialPayout: round2(potentialPayout), fairValue: round2(fair), actual: actual, profit: round2(actual - stake) };
   }
 
+  /* ── Фрибет: перекрытие бонусной ставки ставкой на противоположный исход ──
+     F — сумма фрибета, a — коэффициент, на который он поставлен, b — коэффициент противоположного исхода
+     у другого (или того же) букмекера, h — своих денег на перекрытие. Исходы взаимоисключающие и исчерпывающие.
+     snr (stake not returned, «без возврата»): выплата по фрибету F·(a−1), сама бонусная сумма не возвращается.
+     sr  (stake returned, «с возвратом»):     выплата по фрибету F·a.
+     Требуем равный результат при любом исходе:
+       snr: F·(a−1) − h = h·(b−1)  ⇒  h = F·(a−1)/b,  прибыль = F·(a−1)·(b−1)/b
+       sr:  F·a − h     = h·(b−1)  ⇒  h = F·a/b,      прибыль = F·a·(b−1)/b
+     rate — какую долю номинала фрибета удаётся превратить в деньги, %. Все формулы — наш расчёт. */
+  function freebet(F, oFree, oHedge, type) {
+    if (!isNum(F) || F <= 0 || !isNum(oFree) || oFree <= 1 || !isNum(oHedge) || oHedge <= 1) return null;
+    if (type !== "snr" && type !== "sr") return null;
+    var win = type === "snr" ? F * (oFree - 1) : F * oFree;
+    var h = win / oHedge;
+    var profit = h * (oHedge - 1);
+    return {
+      type: type, hedgeStake: round2(h), profit: round2(profit), rate: round2(profit / F * 100),
+      ifFreeWins: round2(win - h), ifHedgeWins: round2(profit),
+    };
+  }
+
   /* ── Налог на выигрыш (НДФЛ, РФ, ред. НК РФ от 04.08.2026) ───────────
      База выигрышей = выплата − ставка (ст.214.7 п.1), отдельно по каждой сумме выигрыша. С 01.01.2026 БК-агент удерживает с любой выплаты.
      Резидент: база выигрышей входит в совокупность баз п.2.1 ст.210, к которой применяется шкала п.1 ст.224
@@ -267,6 +289,7 @@ ym(112360025, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     arb2: arb2,
     margin: margin,
     cashout: cashout,
+    freebet: freebet,
     progressiveTax: progressiveTax, winTax: winTax,
   };
   root.SRCalc = api;
