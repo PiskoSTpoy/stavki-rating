@@ -14,5 +14,43 @@
 - [Как проверить лицензию БК](https://stavki-rating.ru/kak-proverit-licenziyu): проверка легальности оператора
 - [Ответственная игра](https://stavki-rating.ru/otvetstvennaya-igra): признаки зависимости, самозапрет
 
+## Ответы на частые вопросы
+- [Как проверить лицензию букмекера](https://stavki-rating.ru/kak-proverit-licenziyu): пошагово по перечню ФНС и списку Единого ЦУПИС
+- [Сколько букмекерских контор в России](https://stavki-rating.ru/shkola/terminy/skolko-bukmekerskih-kontor-v-rossii): число по перечню ФНС и списку партнёров ЦУПИС с датами сверки
+- [Налог на выигрыш в БК](https://stavki-rating.ru/shkola/dengi-i-nalogi/nalog-na-vyigrysh): база, шкала НДФЛ, кто удерживает
+- [Калькулятор налога на выигрыш](https://stavki-rating.ru/instrumenty/nalog-na-vyigrysh): расчёт по правилам 2026 года
+- [Что такое ЦУПИС](https://stavki-rating.ru/shkola/legalnost/chto-takoe-cupis): роль Единого ЦУПИС в приёме ставок
+- [Как вывести деньги из БК](https://stavki-rating.ru/shkola/dengi-i-nalogi/kak-vyvesti-dengi): порядок вывода средств
+- [Что делать, если БК не выводит деньги](https://stavki-rating.ru/shkola/dengi-i-nalogi/bk-ne-vyvodit-dengi): разбор ситуации, когда вывод не проходит
+- [Промокоды букмекеров](https://stavki-rating.ru/promokody): как устроены промокоды букмекеров
+
+## Открытые данные
+- [Реестр легальных букмекеров](https://stavki-rating.ru/reestr): бренд, юрлицо, ИНН, лицензия, подключение к ЦУПИС, история изменений
+- [reestr.json](https://stavki-rating.ru/reestr.json) и [reestr.csv](https://stavki-rating.ru/reestr.csv): те же данные в машинном виде, лицензия CC BY 4.0, ссылка на stavki-rating.ru/reestr
+
+## Карточки легальных букмекеров
+- [Фонбет](https://stavki-rating.ru/bukmekery/fonbet): юрлицо, ИНН, лицензия ФНС, статус
+- [Лига Ставок](https://stavki-rating.ru/bukmekery/ligastavok): юрлицо, ИНН, лицензия ФНС, статус
+- [Марафон](https://stavki-rating.ru/bukmekery/marathonbet): юрлицо, ИНН, лицензия ФНС, статус
+- [Winline](https://stavki-rating.ru/bukmekery/winline): юрлицо, ИНН, лицензия ФНС, статус
+- [OLIMPBET](https://stavki-rating.ru/bukmekery/olimpbet): юрлицо, ИНН, лицензия ФНС, статус
+- [PARI](https://stavki-rating.ru/bukmekery/pari): юрлицо, ИНН, лицензия ФНС, статус
+- [BetBoom](https://stavki-rating.ru/bukmekery/betboom): юрлицо, ИНН, лицензия ФНС, статус
+- [Бетсити](https://stavki-rating.ru/bukmekery/betcity): юрлицо, ИНН, лицензия ФНС, статус
+- [Мелбет](https://stavki-rating.ru/bukmekery/melbet): юрлицо, ИНН, лицензия ФНС, статус
+- [Leon](https://stavki-rating.ru/bukmekery/leon): юрлицо, ИНН, лицензия ФНС, статус
+- [Зенит](https://stavki-rating.ru/bukmekery/zenit): юрлицо, ИНН, лицензия ФНС, статус
+- [Балтбет](https://stavki-rating.ru/bukmekery/baltbet): юрлицо, ИНН, лицензия ФНС, статус
+- [Спортбет](https://stavki-rating.ru/bukmekery/sportbet): юрлицо, ИНН, лицензия ФНС, статус
+- [Bettery](https://stavki-rating.ru/bukmekery/bettery): юрлицо, ИНН, лицензия ФНС, статус
+- [Бет-М](https://stavki-rating.ru/bukmekery/bet-m): юрлицо, ИНН, лицензия ФНС, статус
+- [24bet](https://stavki-rating.ru/bukmekery/24bet): юрлицо, ИНН, лицензия ФНС, статус
+
+## Авторство и методология
+- [Автор: Алексей Камнев](https://stavki-rating.ru/avtor/aleksej-kamnev): основатель и редактор проекта
+- [Эксперты и редакция](https://stavki-rating.ru/eksperty): кто готовит и проверяет материалы
+- [Новости рынка](https://stavki-rating.ru/novosti): новости рынка легальных букмекеров
+- [Контакты](https://stavki-rating.ru/contacts)
+
 ## Правила использования
 Все факты о букмекерах (лицензия, ИНН, реестр) сверены с официальным перечнем ФНС и списком партнёров Единого ЦУПИС. Размеры бонусов — ориентировочные, актуальные условия у операторов на официальных сайтах. Материалы не рекомендуют конкретный бренд как «лучший».
