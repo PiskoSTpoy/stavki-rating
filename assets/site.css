@@ -73,6 +73,15 @@
     .wall-right { right: 0; }
     .wall-right::before { background-image: url(/img/decor/wall-right.webp);
       -webkit-mask-image: linear-gradient(to left, #000 62%, transparent); mask-image: linear-gradient(to left, #000 62%, transparent); }
+    /* Темы стен по разделу: тема ставится скриптом в volt-shell.html; нет JS — «праздник» (растр выше) */
+    .wall[data-theme="stadium"] .wall-left::before { background-image: url(/img/decor/walls/stadium-left.svg); }
+    .wall[data-theme="stadium"] .wall-right::before { background-image: url(/img/decor/walls/stadium-right.svg); }
+    .wall[data-theme="quotes"] .wall-left::before { background-image: url(/img/decor/walls/quotes-left.svg); }
+    .wall[data-theme="quotes"] .wall-right::before { background-image: url(/img/decor/walls/quotes-right.svg); }
+    .wall[data-theme="grid"] .wall-left::before { background-image: url(/img/decor/walls/grid-left.svg); }
+    .wall[data-theme="grid"] .wall-right::before { background-image: url(/img/decor/walls/grid-right.svg); }
+    .wall[data-theme="orbit"] .wall-left::before { background-image: url(/img/decor/walls/orbit-left.svg); }
+    .wall[data-theme="orbit"] .wall-right::before { background-image: url(/img/decor/walls/orbit-right.svg); }
     .wall-badge { position: absolute; left: 50%; width: calc(var(--W) * var(--bd)); aspect-ratio: 1; transform: translate(-50%, -50%);
       border-radius: 50%; overflow: hidden; pointer-events: auto; display: flex; align-items: center; justify-content: center; background: #0B0E16;
       box-shadow: 0 0 0 3px rgba(200,255,77,.55), 0 0 28px rgba(200,255,77,.35); transition: transform .25s ease, box-shadow .25s ease; animation: wallpulse 3.4s ease-in-out infinite; }
