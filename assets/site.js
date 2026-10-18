@@ -94,4 +94,42 @@
       update();
     }
   });
+
+  /* ── измерение кликов по партнёрским ссылкам /go/… ──
+     Событие go_click уходит в Яндекс.Метрику до перехода. Страница /go/<бренд> перенаправляет
+     мгновенно, поэтому её собственный хит мог не успевать, и цель «url содержит /go/» была ненадёжна.
+     Переход откладывается только до ответа счётчика, но не дольше 400 мс; без счётчика
+     (блокировщик) ссылка работает как обычно. Открытие в новой вкладке и клик с модификатором не откладываются. */
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href^="/go/"]') : null;
+    if (!a || typeof window.ym !== "function") return;
+    var href = a.getAttribute("href") || "";
+    var parts = href.split("#")[0].split("?");
+    var brand = (parts[0].split("/")[2] || "").toLowerCase();
+    var q = new URLSearchParams(parts[1] || "");
+    var params = {
+      brand: brand,
+      page: location.pathname,
+      placement: q.get("pl") || a.getAttribute("data-pl") || (a.className || "").split(" ")[0] || "link"
+    };
+    var plain = e.button === 0 && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey &&
+      (!a.target || a.target === "_self") && !e.defaultPrevented;
+    var done = false;
+    var go = function () {
+      if (done) return;
+      done = true;
+      location.href = a.href;
+    };
+    try {
+      if (plain) {
+        e.preventDefault();
+        window.ym(112360025, "reachGoal", "go_click", params, go);
+        setTimeout(go, 400);
+      } else {
+        window.ym(112360025, "reachGoal", "go_click", params);
+      }
+    } catch (err) {
+      if (plain) go();
+    }
+  }, true);
 })();
