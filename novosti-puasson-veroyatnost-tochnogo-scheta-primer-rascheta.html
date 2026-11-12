@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Распределение Пуассона в ставках: расчёт точного счёта</title>
+<meta name="description" content="Как по среднему числу голов посчитать вероятность счёта 1:1, исхода 1X2 и тотала 2,5 по формуле Пуассона: пример с таблицей и справедливыми коэффициентами.">
+<meta name="yandex-verification" content="4edbdcb14677aee3" />
+  <link rel="canonical" href="https://stavki-rating.ru/novosti-puasson-veroyatnost-tochnogo-scheta-primer-rascheta">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Распределение Пуассона в ставках: расчёт точного счёта">
+  <meta property="og:description" content="Как по среднему числу голов посчитать вероятность счёта 1:1, исхода 1X2 и тотала 2,5 по формуле Пуассона: пример с таблицей и справедливыми коэффициентами.">
+  <meta property="og:url" content="https://stavki-rating.ru/novosti-puasson-veroyatnost-tochnogo-scheta-primer-rascheta">
+  <meta property="og:site_name" content="STAVKI RATING">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://stavki-rating.ru/img/hero.jpg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="120x120" href="/favicon-120.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/assets/site.css?v=7fb3a1e7">
+<link rel="stylesheet" href="/assets/chrome.css?v=7fb3a1e7">
+<meta name="theme-color" content="#07090F">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"STAVKI RATING","url":"https://stavki-rating.ru/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://stavki-rating.ru/"},{"@type":"ListItem","position":2,"name":"Новости","item":"https://stavki-rating.ru/novosti"},{"@type":"ListItem","position":3,"name":"Распределение Пуассона в ставках: расчёт точного счёта","item":"https://stavki-rating.ru/novosti-puasson-veroyatnost-tochnogo-scheta-primer-rascheta"}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+
+<div class="wall" aria-label="Партнёрские предложения" data-theme="stadium">
+<div class="wall-side wall-left">
+  <a class="wall-badge" style="top:var(--r1)" href="/go/pari" rel="sponsored nofollow" aria-label="PARI — партнёрское предложение"><img src="/img/logos/pari.png" alt="PARI" loading="lazy"></a>
+  <a class="wall-badge" style="top:var(--r2)" href="/go/zenit" rel="sponsored nofollow" aria-label="Зенит — партнёрское предложение"><img src="/img/logos/zenit.png" alt="Зенит" loading="lazy"></a>
+  <a class="wall-badge" style="top:var(--r3)" href="/go/fonbet" rel="sponsored nofollow" aria-label="Фонбет — партнёрское предложение"><img src="/img/logos/fonbet.png" alt="Фонбет" loading="lazy"></a>
+  <span class="wall-tag">Реклама · 18+</span>
+</div>
+<div class="wall-side wall-right">
+  <a class="wall-badge" style="top:var(--r1)" href="/go/betcity" rel="sponsored nofollow" aria-label="Бетсити — партнёрское предложение"><img src="/img/logos/betcity.png" alt="Бетсити" loading="lazy"></a>
+  <a class="wall-badge" style="top:var(--r2)" href="/go/winline" rel="sponsored nofollow" aria-label="Winline — партнёрское предложение"><img src="/img/logos/winline.png" alt="Winline" loading="lazy"></a>
+  <a class="wall-badge" style="top:var(--r3)" href="/go/ligastavok" rel="sponsored nofollow" aria-label="Лига Ставок — партнёрское предложение"><img src="/img/logos/ligastavok.png" alt="Лига Ставок" loading="lazy"></a>
+  <span class="wall-tag">Реклама · 18+</span>
+</div>
+</div>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav" aria-label="Основное меню">
+    <a href="/rating">Рейтинг</a>
+    <a href="/rejting">По критериям</a>
+    <a href="/stavki">Виды спорта</a>
+    <a href="/instrumenty">Инструменты</a>
+    <a href="/shkola">Школа</a>
+    <a href="/bonusy">Бонусы</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main id="main">
+  <section class="section tight"><div class="container prose page-svc">
+<nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/novosti">Новости</a><span>/</span>Распределение Пуассона в ставках: расчёт точного счёта</nav>
+<span class="eyebrow">· Расчёты · 12.11.2026 ·</span>
+<h1>Как по формуле Пуассона посчитать вероятность точного счёта матча?</h1>
+<div class="small muted meta-row" style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;font-size:13px;opacity:.85"><a href="https://stavki-rating.ru/avtor/aleksej-kamnev">Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-11-12">12.11.2026</time></span><span>·</span><span>обновлено <time datetime="2026-11-12">12.11.2026</time></span><span>·</span><span>факты проверены 12.11.2026</span><span>·</span><span>6 мин чтения</span></div>
+<p>Вероятность счёта по Пуассону считается так: для каждой команды берётся ожидаемое число голов λ, затем вероятность k голов равна λ в степени k, умноженной на e в степени минус λ и делённой на k факториал. Для условного матча с λ = 1,5 и 1,1 вероятность счёта 1:1 равна 12,3%, то есть справедливый коэффициент составляет 8,16.</p>
+<nav class="toc" aria-label="Содержание" style="margin:16px 0 4px;padding:12px 14px;border:1px solid rgba(128,128,128,.35);border-radius:12px;max-width:75ch;font-size:14px"><b style="display:block;margin-bottom:6px">Содержание</b><ol style="margin:0;padding-left:20px"><li><a href="#kakaya-formula-lezhit-v-osnove-rascheta">Какая формула лежит в основе расчёта</a></li><li><a href="#kak-poshagovo-poschitat-schet-1-1">Как пошагово посчитать счёт 1:1</a></li><li><a href="#tablica-veroyatnostej-schetov-ot-0-0-do-3-3">Таблица вероятностей счетов от 0:0 до 3:3</a></li><li><a href="#kak-iz-tablicy-poluchit-ishod-total-i-obe-zabyut">Как из таблицы получить исход, тотал и «обе забьют»</a></li><li><a href="#kak-sravnit-raschet-s-koefficientom-bukmekera">Как сравнить расчёт с коэффициентом букмекера</a></li><li><a href="#gde-metod-puassona-oshibaetsya">Где метод Пуассона ошибается</a></li><li><a href="#chastye-voprosy">Частые вопросы</a></li><li><a href="#istochniki-provereno-12-11-2026">Источники · проверено 12.11.2026</a></li></ol></nav>
+<h2 id="kakaya-formula-lezhit-v-osnove-rascheta">Какая формула лежит в основе расчёта</h2>
+<p>Распределение Пуассона описывает число событий за фиксированный интервал при известном среднем λ: вероятность ровно k событий равна λᵏ·e^−λ / k!, а среднее и дисперсия совпадают с λ. Для футбола событием служит гол, интервалом — матч, а λ — ожидаемое число голов команды. Допущение у метода одно, но сильное: голы двух команд считаются независимыми. Диксон и Коулз в работе 1997 года построили на основе пуассоновской регрессии модель для чемпионатов Англии 1992–1995 годов и усложнили её учётом структуры данных и изменения силы команд во времени, поэтому простая схема ниже — лишь отправная точка.</p>
+<h2 id="kak-poshagovo-poschitat-schet-1-1">Как пошагово посчитать счёт 1:1</h2>
+<p>Условные исходные данные: хозяева в среднем забивают 1,5 гола за матч, гости — 1,1. Вероятность одного гола хозяев равна 1,5^1 · e^−1,5 / 1! = 33,47%, вероятность одного гола гостей — 1,1^1 · e^−1,1 / 1! = 36,62%. Перемножив независимые вероятности, получаем 33,47% · 36,62% = 12,26%. Справедливый коэффициент — единица, делённая на эту вероятность: 8,16. Для сравнения, 0:0 выпадает в 7,4% случаев, потому что e^−1,5 · e^−1,1 = e^−2,6.</p>
+<h2 id="tablica-veroyatnostej-schetov-ot-0-0-do-3-3">Таблица вероятностей счетов от 0:0 до 3:3</h2>
+<p>Таблица ниже получена тем же перемножением для всех пар от 0 до 3 голов; сумма этой части — около 91,0% всех исходов, остальное приходится на счета с четырьмя и более голами у одной из команд. Самая вероятная клетка — 1:1 (12,3%), второе место делят 1:0 и 0:1, но отстают они от лидера всего на 1,1 процентных пункта.</p>
+<div class="tw"><div class="table-wrap"><table><thead><tr><th>Голы хозяев ↓ / гостей →</th><th>0</th><th>1</th><th>2</th><th>3</th></tr></thead><tbody><tr><td>0</td><td>7,4%</td><td>8,2%</td><td>4,5%</td><td>1,6%</td></tr><tr><td>1</td><td>11,1%</td><td>12,3%</td><td>6,7%</td><td>2,5%</td></tr><tr><td>2</td><td>8,4%</td><td>9,2%</td><td>5,1%</td><td>1,9%</td></tr><tr><td>3</td><td>4,2%</td><td>4,6%</td><td>2,5%</td><td>0,9%</td></tr></tbody></table></div></div>
+<h2 id="kak-iz-tablicy-poluchit-ishod-total-i-obe-zabyut">Как из таблицы получить исход, тотал и «обе забьют»</h2>
+<p>Суммирование клеток превращает таблицу точных счетов в привычные рынки: победа хозяев — это сумма клеток с большим числом голов у хозяев, ничья — диагональ, тотал больше 2,5 — единица минус сумма счетов до двух голов включительно. Для рынка «обе забьют» нужна вероятность того, что каждая команда забьёт хотя бы раз: (1 − e^−1,5) · (1 − e^−1,1) = 51,8%. Результаты для условного матча сведены в таблицу вместе со справедливыми коэффициентами.</p>
+<div class="tw"><div class="table-wrap"><table><thead><tr><th>Рынок</th><th>Вероятность</th><th>Справедливый коэффициент</th></tr></thead><tbody><tr><td>Победа хозяев (1)</td><td>46,4%</td><td>2,15</td></tr><tr><td>Ничья (X)</td><td>25,8%</td><td>3,88</td></tr><tr><td>Победа гостей (2)</td><td>27,8%</td><td>3,60</td></tr><tr><td>Тотал больше 2,5</td><td>48,2%</td><td>2,08</td></tr><tr><td>Тотал меньше 2,5</td><td>51,8%</td><td>1,93</td></tr><tr><td>Обе забьют — да</td><td>51,8%</td><td>1,93</td></tr><tr><td>Точный счёт 1:1</td><td>12,3%</td><td>8,16</td></tr></tbody></table></div></div>
+<h2 id="kak-sravnit-raschet-s-koefficientom-bukmekera">Как сравнить расчёт с коэффициентом букмекера</h2>
+<p>Справедливый коэффициент — это нижняя граница, ниже которой ставка невыгодна по вашей же оценке. Если расчёт даёт победу хозяев с вероятностью 46,4%, то при коэффициенте 2,30 ожидаемый результат на единицу ставки равен 0,46 · 2,30 − 1 = 6,8%, а при 2,00 — -7,2%. Но предупреждение важнее самого расчёта: средние голы λ надо откуда-то взять, и оценка по нескольким матчам даёт широкий разброс. Букмекер к тому же закладывает в линию маржу, поэтому справедливый коэффициент из таблицы нужно сравнивать с коэффициентом после <a href="/novosti-kak-ubrat-marzhu-iz-koefficientov-proporcionalnyj-stepennoj-shin">удаления маржи</a>, а не с котировкой напрямую.</p>
+<h2 id="gde-metod-puassona-oshibaetsya">Где метод Пуассона ошибается</h2>
+<p>Простая схема не знает про состав, мотивацию и погоду: в расчёте участвует только λ, и она не корректирует отдельно вероятности ничьих и низких счетов. Независимость голов нарушается и по ходу матча — после пропущенного гола команда меняет тактику. Поэтому расчёт по Пуассону годится как проверка порядка величин и учебный инструмент, а не как готовая система; на ожидаемые голы стоит смотреть вместе с <a href="https://stavki-rating.ru/shkola/terminy/xg-v-stavkah-na-futbol">xG</a> и контекстом матча.</p>
+<h2 id="chastye-voprosy">Частые вопросы</h2>
+<details><summary>По какой формуле считают вероятность счёта по Пуассону?</summary><p>P(k) = λᵏ · e^−λ / k!, где λ — ожидаемое число голов команды. Вероятность счёта равна произведению вероятностей для хозяев и гостей.</p></details>
+<details><summary>Какова вероятность счёта 1:1 при λ 1,5 и 1,1?</summary><p>12,3%, справедливый коэффициент 8,16. Пример условный и не относится к реальному матчу.</p></details>
+<details><summary>Можно ли ставить по расчёту Пуассона без поправок?</summary><p>Нет: метод считает голы независимыми, не учитывает состав и мотивацию, а оценка λ по малой выборке неточна. Расчёт полезен как проверка порядка величин.</p></details>
+<details><summary>Чем модель Диксона — Коулза отличается от простого Пуассона?</summary><p>Работа 1997 года использует пуассоновскую регрессию, но учитывает структуру данных и изменение силы команд во времени; простая схема этого не делает.</p></details>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как по формуле Пуассона посчитать вероятность точного счёта матча?", "description": "Как по среднему числу голов посчитать вероятность счёта 1:1, исхода 1X2 и тотала 2,5 по формуле Пуассона: пример с таблицей и справедливыми коэффициентами.", "datePublished": "2026-11-12", "dateModified": "2026-11-12", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "https://stavki-rating.ru/avtor/aleksej-kamnev"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING", "url": "https://stavki-rating.ru/"}, "mainEntityOfPage": "https://stavki-rating.ru/novosti-puasson-veroyatnost-tochnogo-scheta-primer-rascheta", "inLanguage": "ru"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "По какой формуле считают вероятность счёта по Пуассону?", "acceptedAnswer": {"@type": "Answer", "text": "P(k) = λᵏ · e^−λ / k!, где λ — ожидаемое число голов команды. Вероятность счёта равна произведению вероятностей для хозяев и гостей."}}, {"@type": "Question", "name": "Какова вероятность счёта 1:1 при λ 1,5 и 1,1?", "acceptedAnswer": {"@type": "Answer", "text": "12,3%, справедливый коэффициент 8,16. Пример условный и не относится к реальному матчу."}}, {"@type": "Question", "name": "Можно ли ставить по расчёту Пуассона без поправок?", "acceptedAnswer": {"@type": "Answer", "text": "Нет: метод считает голы независимыми, не учитывает состав и мотивацию, а оценка λ по малой выборке неточна. Расчёт полезен как проверка порядка величин."}}, {"@type": "Question", "name": "Чем модель Диксона — Коулза отличается от простого Пуассона?", "acceptedAnswer": {"@type": "Answer", "text": "Работа 1997 года использует пуассоновскую регрессию, но учитывает структуру данных и изменение силы команд во времени; простая схема этого не делает."}}]}</script>
+<h2 id="istochniki-provereno-12-11-2026">Источники · проверено 12.11.2026</h2>
+<ul><li><a href="https://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D1%81%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%9F%D1%83%D0%B0%D1%81%D1%81%D0%BE%D0%BD%D0%B0">Википедия — «Распределение Пуассона» (формула P(k) = λᵏ·e^−λ / k!, среднее и дисперсия равны λ)</a></li><li><a href="https://eprints.lancs.ac.uk/id/eprint/19492">Dixon M., Coles S. — «Modelling association football scores and inefficiencies in the football betting market», J. Royal Statistical Society C, 1997, 46(2), 265–280 (аннотация)</a></li></ul>
+<p>Связанные материалы: <a href="https://stavki-rating.ru/shkola/kak-eto-rabotaet/kak-chitat-koefficienty">Как читать коэффициенты</a>, <a href="https://stavki-rating.ru/shkola/terminy/xg-v-stavkah-na-futbol">Что такое xG в ставках на футбол</a>, <a href="https://stavki-rating.ru/shkola/terminy/total-v-futbole-primery">Тотал в футболе: примеры</a>, <a href="https://stavki-rating.ru/shkola/strategii/cennostnye-stavki">Ценностные ставки</a>, <a href="/instrumenty/konverter-koefficientov">Конвертер коэффициентов</a>, <a href="/rating">Каталог легальных БК</a></p>
+<p>Материал справочный, не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости. Подробнее о самоконтроле — в разделе <a href="/otvetstvennaya-igra">«Ответственная игра»</a>.</p>
+  </div></section>
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="logo" href="/"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</a>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх.</p>
+      <span class="age-pill"><b>18+</b> Возрастная категория</span>
+    </div>
+    <div><h4>Рейтинги</h4><a href="/rating">Каталог легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/bonusy">Бонусы и фрибеты</a><a href="/promokody">Промокоды</a><a href="/reestr">Реестр ЕРАИ</a><a href="/bukmekery/fonbet">Фонбет: статус и реквизиты</a><a href="/bukmekery/tennisi">Tennisi: статус</a></div>
+    <div><h4>Разобраться</h4><a href="/stavki">Ставки по видам спорта</a><a href="/shkola">Школа ставок</a><a href="/instrumenty">Калькуляторы</a><a href="/instrumenty/kalkulyator-fribeta">Калькулятор фрибета</a><a href="/instrumenty/nalog-na-vyigrysh">Калькулятор налога</a><a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">Налог на выигрыш</a><a href="/shkola/terminy/skolko-bukmekerskih-kontor-v-rossii">Сколько легальных БК</a><a href="/shkola/legalnost/chto-takoe-cupis">Что такое ЦУПИС</a><a href="/novosti">Новости</a></div>
+    <div><h4>О проекте</h4><a href="/contacts">О проекте и контакты</a><a href="/avtor/aleksej-kamnev">Редакция и автор</a><a href="/eksperty">Эксперты и партнёры</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/politika-konfidencialnosti">Политика конфиденциальности</a></div>
+    <div><h4>Ответственная игра</h4><a href="/shkola/otvetstvennaya-igra/priznaki-ludomanii">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/shkola/dengi-i-nalogi/limity-i-samokontrol">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b>18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span>Материалы могут содержать рекламу; отдельные места размещения партнёров оплачены. Оценки редакции ориентировочные; размеры и условия бонусов уточняйте на официальных сайтах букмекеров.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+<script src="/assets/site.js" defer></script>
+<script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+ym(112360025,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
+</body>
+</html>
