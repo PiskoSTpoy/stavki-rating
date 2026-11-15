@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Смещение «фаворит — аутсайдер» и как оно меняет вероятности</title>
+<meta name="description" content="Что такое favourite-longshot bias и как он влияет на снятие маржи: расчёт линий 1,25/4,20, 1,80/2,05 и 1,50/4,20/6,50 тремя методами, факты из Shin 1993 и Snowberg–Wolfers 2010.">
+<meta name="yandex-verification" content="4edbdcb14677aee3" />
+  <link rel="canonical" href="https://stavki-rating.ru/novosti-favorit-autsajder-smeshchenie-marzha-shin-raschet">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Смещение «фаворит — аутсайдер» и как оно меняет вероятности">
+  <meta property="og:description" content="Что такое favourite-longshot bias и как он влияет на снятие маржи: расчёт линий 1,25/4,20, 1,80/2,05 и 1,50/4,20/6,50 тремя методами, факты из Shin 1993 и Snowberg–Wolfers 2010.">
+  <meta property="og:url" content="https://stavki-rating.ru/novosti-favorit-autsajder-smeshchenie-marzha-shin-raschet">
+  <meta property="og:site_name" content="STAVKI RATING">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://stavki-rating.ru/img/hero.jpg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="120x120" href="/favicon-120.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/assets/site.css?v=7fb3a1e7">
+<link rel="stylesheet" href="/assets/chrome.css?v=7fb3a1e7">
+<meta name="theme-color" content="#07090F">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"STAVKI RATING","url":"https://stavki-rating.ru/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://stavki-rating.ru/"},{"@type":"ListItem","position":2,"name":"Новости","item":"https://stavki-rating.ru/novosti"},{"@type":"ListItem","position":3,"name":"Смещение «фаворит — аутсайдер» и как оно меняет вероятности","item":"https://stavki-rating.ru/novosti-favorit-autsajder-smeshchenie-marzha-shin-raschet"}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+
+<div class="wall" aria-label="Партнёрские предложения" data-theme="stadium">
+<div class="wall-side wall-left">
+  <a class="wall-badge" style="top:var(--r1)" href="/go/pari" rel="sponsored nofollow" aria-label="PARI — партнёрское предложение"><img src="/img/logos/pari.png" alt="PARI" loading="lazy"></a>
+  <a class="wall-badge" style="top:var(--r2)" href="/go/zenit" rel="sponsored nofollow" aria-label="Зенит — партнёрское предложение"><img src="/img/logos/zenit.png" alt="Зенит" loading="lazy"></a>
+  <a class="wall-badge" style="top:var(--r3)" href="/go/fonbet" rel="sponsored nofollow" aria-label="Фонбет — партнёрское предложение"><img src="/img/logos/fonbet.png" alt="Фонбет" loading="lazy"></a>
+  <span class="wall-tag">Реклама · 18+</span>
+</div>
+<div class="wall-side wall-right">
+  <a class="wall-badge" style="top:var(--r1)" href="/go/betcity" rel="sponsored nofollow" aria-label="Бетсити — партнёрское предложение"><img src="/img/logos/betcity.png" alt="Бетсити" loading="lazy"></a>
+  <a class="wall-badge" style="top:var(--r2)" href="/go/winline" rel="sponsored nofollow" aria-label="Winline — партнёрское предложение"><img src="/img/logos/winline.png" alt="Winline" loading="lazy"></a>
+  <a class="wall-badge" style="top:var(--r3)" href="/go/ligastavok" rel="sponsored nofollow" aria-label="Лига Ставок — партнёрское предложение"><img src="/img/logos/ligastavok.png" alt="Лига Ставок" loading="lazy"></a>
+  <span class="wall-tag">Реклама · 18+</span>
+</div>
+</div>
+
+<header class="site-header"><div class="container">
+  <a class="logo" href="/">
+    <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>
+    STAVKI RATING
+  </a>
+  <nav class="nav" aria-label="Основное меню">
+    <a href="/rating">Рейтинг</a>
+    <a href="/rejting">По критериям</a>
+    <a href="/stavki">Виды спорта</a>
+    <a href="/instrumenty">Инструменты</a>
+    <a href="/shkola">Школа</a>
+    <a href="/bonusy">Бонусы</a>
+  </nav>
+  <div class="header-right"><a class="search" href="/rating">Поиск по БК и бонусам</a></div>
+</div></header>
+
+<main id="main">
+  <section class="section tight"><div class="container prose page-svc">
+<nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/novosti">Новости</a><span>/</span>Смещение «фаворит — аутсайдер» и как оно меняет вероятности</nav>
+<span class="eyebrow">· Расчёты · 15.11.2026 ·</span>
+<h1>Что такое смещение «фаворит — аутсайдер» и как оно меняет расчёт вероятностей?</h1>
+<div class="small muted meta-row" style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;font-size:13px;opacity:.85"><a href="https://stavki-rating.ru/avtor/aleksej-kamnev">Алексей Камнев</a><span>·</span><span>опубликовано <time datetime="2026-11-15">15.11.2026</time></span><span>·</span><span>обновлено <time datetime="2026-11-15">15.11.2026</time></span><span>·</span><span>факты проверены 15.11.2026</span><span>·</span><span>6 мин чтения</span></div>
+<p>Смещение «фаворит — аутсайдер» — эмпирическая закономерность: ставки на аутсайдеров в среднем возвращают меньше, чем ставки на фаворитов. Из-за неё метод снятия маржи пропорциональным способом завышает вероятность аутсайдера: на линии 1,25 / 4,20 он даёт 22,94%, а метод Шина — 21,90%.</p>
+<nav class="toc" aria-label="Содержание" style="margin:16px 0 4px;padding:12px 14px;border:1px solid rgba(128,128,128,.35);border-radius:12px;max-width:75ch;font-size:14px"><b style="display:block;margin-bottom:6px">Содержание</b><ol style="margin:0;padding-left:20px"><li><a href="#chto-utverzhdaet-zakonomernost">Что утверждает закономерность</a></li><li><a href="#pochemu-voznikaet-smeschenie">Почему возникает смещение</a></li><li><a href="#kak-tri-metoda-po-raznomu-snimayut-marzhu">Как три метода по-разному снимают маржу</a></li><li><a href="#kak-chitat-rashozhdenie-v-procentnyh-punktah">Как читать расхождение в процентных пунктах</a></li><li><a href="#chto-iz-etogo-sleduet-dlya-stavok-na-autsajderov">Что из этого следует для ставок на аутсайдеров</a></li><li><a href="#ogranicheniya-rascheta">Ограничения расчёта</a></li><li><a href="#chastye-voprosy">Частые вопросы</a></li><li><a href="#istochniki-provereno-15-11-2026">Источники · проверено 15.11.2026</a></li></ol></nav>
+<h2 id="chto-utverzhdaet-zakonomernost">Что утверждает закономерность</h2>
+<p>Закономерность состоит в том, что коэффициенты на аутсайдеров в среднем «слишком короткие», а на фаворитов — «слишком длинные» по сравнению с частотой их побед. Это явление давно описано в экономической литературе по тотализаторам и букмекерским рынкам, а Wikipedia относит его к поведенческим искажениям рынка. Для читателя вывод практический: простая формула «вероятность = 1/коэффициент, делить на сумму» ошибается именно там, где коэффициент высокий.</p>
+<h2 id="pochemu-voznikaet-smeschenie">Почему возникает смещение</h2>
+<p>Пока нет единого объяснения, исследователи противопоставляют две группы версий. Snowberg и Wolfers (Journal of Political Economy, 2010) проверяли «любовь к риску» и «ошибочное восприятие вероятностей» на данных ставок, включая составные ставки в тотализаторе, и пришли к выводу, что лучше согласуется второе объяснение — ошибки восприятия вероятностей. Шин (Economic Journal, 1993) предложил иную модель: инсайдеры, которые знают результат, а букмекер защищается, расширяя спред. Вторую модель и использует метод Шина при снятии маржи.</p>
+<h2 id="kak-tri-metoda-po-raznomu-snimayut-marzhu">Как три метода по-разному снимают маржу</h2>
+<p>Пропорциональный метод делит каждую обратную величину на сумму, степенной возводит их в общую степень до единичной суммы, метод Шина решает уравнение для доли инсайдерских ставок z. Для линии 1,25 / 4,20 маржа равна 3,81%, z = 0,04; пропорциональный метод даёт аутсайдеру 22,94%, степенной — 21,35%, Шина — 21,90%. Чем выше коэффициент, тем заметнее расхождение методов у аутсайдера.</p>
+<div class="tw"><div class="table-wrap"><table><thead><tr><th>Линия</th><th>Маржа</th><th>Исход</th><th>Пропорционально</th><th>Степенной метод</th><th>Метод Шина</th></tr></thead><tbody><tr><td>Фаворит 1,25 / аутсайдер 4,20</td><td>3,81%</td><td>1,25</td><td>77,06%</td><td>78,65%</td><td>78,10%</td></tr><tr><td></td><td></td><td>4,20</td><td>22,94%</td><td>21,35%</td><td>21,90%</td></tr><tr><td>Лёгкий фаворит 1,80 / 2,05</td><td>4,34%</td><td>1,80</td><td>53,25%</td><td>53,46%</td><td>53,39%</td></tr><tr><td></td><td></td><td>2,05</td><td>46,75%</td><td>46,54%</td><td>46,61%</td></tr><tr><td>1X2: 1,50 / 4,20 / 6,50</td><td>5,86%</td><td>1,50</td><td>62,98%</td><td>64,86%</td><td>64,27%</td></tr><tr><td></td><td></td><td>4,20</td><td>22,49%</td><td>21,60%</td><td>22,01%</td></tr><tr><td></td><td></td><td>6,50</td><td>14,53%</td><td>13,55%</td><td>13,72%</td></tr></tbody></table></div></div>
+<h2 id="kak-chitat-rashozhdenie-v-procentnyh-punktah">Как читать расхождение в процентных пунктах</h2>
+<p>Разница между методами — это и есть оценка влияния смещения на вероятность. На линии 1,25 / 4,20 метод Шина отнимает у аутсайдера 1,03 п. п. по сравнению с пропорциональным и столько же прибавляет фавориту, а на почти равной линии 1,80 / 2,05 расхождение — всего 0,14 п. п. Для линии 1X2 1,50 / 4,20 / 6,50 расхождение по самому большому коэффициенту — 0,81 п. п. Это важно для ценностных ставок: если сравнивать свою оценку с вероятностью, снятой пропорционально, «ценность» на аутсайдерах будет завышена.</p>
+<h2 id="chto-iz-etogo-sleduet-dlya-stavok-na-autsajderov">Что из этого следует для ставок на аутсайдеров</h2>
+<p>Из закономерности не следует, что ставки на фаворитов приносят прибыль: маржа БК остаётся, а вывод относится к среднему по большим выборкам, а не к конкретному матчу. Следствие более скромное: оценку «справедливой» вероятности аутсайдера надо брать ниже, чем даёт пропорциональное снятие маржи, и критерий Келли или оценка ценности по ним будут осторожнее. Прикладной материал о ставках на фаворитов — в <a href="https://stavki-rating.ru/shkola/strategii/stavki-na-favoritov">разборе стратегии ставок на фаворитов</a>.</p>
+<h2 id="ogranicheniya-rascheta">Ограничения расчёта</h2>
+<p>Метод Шина основан на модели с инсайдерами и работает без привязки к реальной доле инсайдеров, поэтому оценка z — это параметр модели, а не измеренный факт. Работа Коулмана 2007 года на данных скачек показала, что оценка того же порядка получается и на тотализаторе без букмекера, что ставит под вопрос трактовку z как «доли инсайдеров». Поэтому расчёты выше — не истина, а три разумных приближения: расхождение между ними даёт диапазон неопределённости. Если нужен быстрый расчёт, используйте <a href="/instrumenty/konverter-koefficientov">конвертер коэффициентов</a>.</p>
+<h2 id="chastye-voprosy">Частые вопросы</h2>
+<details><summary>Что такое favourite-longshot bias?</summary><p>Закономерность, при которой ставки на аутсайдеров в среднем возвращают меньше, чем ставки на фаворитов; по Wikipedia, относится к поведенческим искажениям рынка.</p></details>
+<details><summary>Какой метод снятия маржи лучше?</summary><p>Универсального нет: пропорциональный проще, степенной и Шина учитывают смещение; на линиях с равными шансами разница мала.</p></details>
+<details><summary>Значит ли это, что нужно ставить на фаворитов?</summary><p>Нет: вывод касается средней доходности и не отменяет маржу БК; прибыль на фаворитах не гарантирована.</p></details>
+<details><summary>Что показали Snowberg и Wolfers?</summary><p>Согласно аннотации работы, данные лучше объясняются ошибочным восприятием вероятностей, чем любовью к риску.</p></details>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Что такое смещение «фаворит — аутсайдер» и как оно меняет расчёт вероятностей?", "description": "Что такое favourite-longshot bias и как он влияет на снятие маржи: расчёт линий 1,25/4,20, 1,80/2,05 и 1,50/4,20/6,50 тремя методами, факты из Shin 1993 и Snowberg–Wolfers 2010.", "datePublished": "2026-11-15", "dateModified": "2026-11-15", "author": {"@type": "Person", "name": "Алексей Камнев", "url": "https://stavki-rating.ru/avtor/aleksej-kamnev"}, "publisher": {"@type": "Organization", "name": "STAVKI RATING", "url": "https://stavki-rating.ru/"}, "mainEntityOfPage": "https://stavki-rating.ru/novosti-favorit-autsajder-smeshchenie-marzha-shin-raschet", "inLanguage": "ru"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что такое favourite-longshot bias?", "acceptedAnswer": {"@type": "Answer", "text": "Закономерность, при которой ставки на аутсайдеров в среднем возвращают меньше, чем ставки на фаворитов; по Wikipedia, относится к поведенческим искажениям рынка."}}, {"@type": "Question", "name": "Какой метод снятия маржи лучше?", "acceptedAnswer": {"@type": "Answer", "text": "Универсального нет: пропорциональный проще, степенной и Шина учитывают смещение; на линиях с равными шансами разница мала."}}, {"@type": "Question", "name": "Значит ли это, что нужно ставить на фаворитов?", "acceptedAnswer": {"@type": "Answer", "text": "Нет: вывод касается средней доходности и не отменяет маржу БК; прибыль на фаворитах не гарантирована."}}, {"@type": "Question", "name": "Что показали Snowberg и Wolfers?", "acceptedAnswer": {"@type": "Answer", "text": "Согласно аннотации работы, данные лучше объясняются ошибочным восприятием вероятностей, чем любовью к риску."}}]}</script>
+<h2 id="istochniki-provereno-15-11-2026">Источники · проверено 15.11.2026</h2>
+<ul><li><a href="https://en.wikipedia.org/wiki/Favourite-longshot_bias">Wikipedia — «Favourite-longshot bias» (смещение «фаворит — аутсайдер»)</a></li><li><a href="https://www.nber.org/papers/w15923">Snowberg E., Wolfers J. — «Explaining the Favorite-Longshot Bias: Is it Risk-Love or Misperceptions?», NBER w15923 / Journal of Political Economy, 2010</a></li><li><a href="https://ideas.repec.org/a/ecj/econjl/v103y1993i420p1141-53.html">Shin H. S. — «Measuring the Incidence of Insider Trading in a Market for State-Contingent Claims», Economic Journal, 1993, 103(420), 1141–1153</a></li></ul>
+<p>Связанные материалы: <a href="/novosti-kak-ubrat-marzhu-iz-koefficientov-proporcionalnyj-stepennoj-shin">Как убрать маржу из коэффициентов</a>, <a href="https://stavki-rating.ru/shkola/strategii/stavki-na-favoritov">Ставки на фаворитов</a>, <a href="https://stavki-rating.ru/shkola/strategii/cennostnye-stavki">Ценностные ставки</a>, <a href="https://stavki-rating.ru/shkola/strategii/kriterij-kelli">Критерий Келли</a>, <a href="/instrumenty/konverter-koefficientov">Конвертер коэффициентов</a>, <a href="/rating">Каталог легальных БК</a></p>
+<p>Материал справочный, не является призывом к участию в азартных играх. 18+. Участие в азартных играх может привести к игровой зависимости. Подробнее о самоконтроле — в разделе <a href="/otvetstvennaya-igra">«Ответственная игра»</a>.</p>
+  </div></section>
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="logo" href="/"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" style="flex:none"><defs><linearGradient id="vaG2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#C8FF4D"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#vaG2)"/><ellipse cx="32" cy="35" rx="22" ry="8.5" fill="none" stroke="#07090F" stroke-opacity=".32" stroke-width="2.4" transform="rotate(-18 32 35)"/><polygon points="36,8 17,36 29,36 26,56 47,27 35,27" fill="#07090F"/></svg>STAVKI RATING</a>
+      <p>stavki-rating.ru — независимый справочник о легальных букмекерах России из реестра ЕРАИ. Материалы носят справочный характер и не являются призывом к участию в азартных играх.</p>
+      <span class="age-pill"><b>18+</b> Возрастная категория</span>
+    </div>
+    <div><h4>Рейтинги</h4><a href="/rating">Каталог легальных БК</a><a href="/rejting">Рейтинги по критериям</a><a href="/bonusy">Бонусы и фрибеты</a><a href="/promokody">Промокоды</a><a href="/reestr">Реестр ЕРАИ</a><a href="/bukmekery/fonbet">Фонбет: статус и реквизиты</a><a href="/bukmekery/tennisi">Tennisi: статус</a></div>
+    <div><h4>Разобраться</h4><a href="/stavki">Ставки по видам спорта</a><a href="/shkola">Школа ставок</a><a href="/instrumenty">Калькуляторы</a><a href="/instrumenty/kalkulyator-fribeta">Калькулятор фрибета</a><a href="/instrumenty/nalog-na-vyigrysh">Калькулятор налога</a><a href="/shkola/dengi-i-nalogi/nalog-na-vyigrysh">Налог на выигрыш</a><a href="/shkola/terminy/skolko-bukmekerskih-kontor-v-rossii">Сколько легальных БК</a><a href="/shkola/legalnost/chto-takoe-cupis">Что такое ЦУПИС</a><a href="/novosti">Новости</a></div>
+    <div><h4>О проекте</h4><a href="/contacts">О проекте и контакты</a><a href="/avtor/aleksej-kamnev">Редакция и автор</a><a href="/eksperty">Эксперты и партнёры</a><a href="/kak-proverit-licenziyu">Как проверить лицензию</a><a href="/politika-konfidencialnosti">Политика конфиденциальности</a></div>
+    <div><h4>Ответственная игра</h4><a href="/shkola/otvetstvennaya-igra/priznaki-ludomanii">Признаки зависимости</a><a href="https://www.gosuslugi.ru/" rel="nofollow">Самозапрет через Госуслуги</a><a href="/shkola/dengi-i-nalogi/limity-i-samokontrol">Лимиты и самоконтроль</a></div>
+  </div>
+  <div class="legal-box">
+    <span><b>18+</b> Участие в азартных играх может привести к возникновению игровой зависимости. Информация приводится только для операторов из реестра ЕРАИ.</span>
+    <span>Материалы могут содержать рекламу; отдельные места размещения партнёров оплачены. Оценки редакции ориентировочные; размеры и условия бонусов уточняйте на официальных сайтах букмекеров.</span>
+    <span>© 2026 STAVKI RATING · Материалы носят справочный характер · калькуляторы считают в браузере, суммы никуда не отправляются.</span>
+  </div>
+</div></footer>
+
+<div class="sticky-cta">
+  <small>18+ · Игра может вызывать зависимость.</small>
+  <a class="btn btn-primary" href="/rating">Смотреть рейтинг</a>
+</div>
+
+<script src="/assets/site.js" defer></script>
+<script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+ym(112360025,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
+</body>
+</html>
