@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://stavki-rating.ru/</loc>
@@ -1322,4 +1322,24 @@
   <url><loc>https://stavki-rating.ru/bukmekery</loc></url>
   <url><loc>https://stavki-rating.ru/avtor/aleksej-kamnev</loc></url>
   <url><loc>https://stavki-rating.ru/reestr</loc></url>
-</urlset>
+<url>
+    <loc>https://stavki-rating.ru/novosti-brejk-pojnt-v-tennise-kak-schitat</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-dvojnaya-oshibka-v-tennise</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-ejs-v-tennise-chto-schitaetsya</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-schet-40-40-v-tennise</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-taj-brejk-kto-podaet</loc>
+    <priority>0.7</priority>
+  </url>
+  </urlset>
