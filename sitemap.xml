@@ -1342,4 +1342,24 @@
     <loc>https://stavki-rating.ru/novosti-taj-brejk-kto-podaet</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-aut-v-tennise-myach-na-linii</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-kogda-menyayutsya-storonami-v-tennise</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-let-v-tennise-pereigrovka-podachi</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-mozhno-li-kasatsya-setki-v-tennise</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-zastup-pri-podache-v-tennise</loc>
+    <priority>0.7</priority>
+  </url>
   </urlset>
