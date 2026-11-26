@@ -1362,4 +1362,24 @@
     <loc>https://stavki-rating.ru/novosti-zastup-pri-podache-v-tennise</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-dvojnoe-kasanie-v-tennise</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-ocherednost-podachi-v-tennise-oshibka</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-pereryv-mezhdu-gejmami-v-tennise</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-podacha-snizu-v-tennise-razreshena</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-priem-podachi-v-tennise-do-otskoka</loc>
+    <priority>0.7</priority>
+  </url>
   </urlset>
