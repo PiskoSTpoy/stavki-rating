@@ -1382,4 +1382,24 @@
     <loc>https://stavki-rating.ru/novosti-priem-podachi-v-tennise-do-otskoka</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-kto-pervyj-podaet-v-tennise</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-mozhno-li-brosat-raketku-v-tennise</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-mozhno-li-krichat-v-bolshom-tennise</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-mozhno-li-v-tennise-otbivat-rukoj</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stavki-rating.ru/novosti-pochemu-menyayut-myachi-v-tennise</loc>
+    <priority>0.7</priority>
+  </url>
   </urlset>
